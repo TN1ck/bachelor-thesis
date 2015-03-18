@@ -2,10 +2,12 @@ requirejs.config({
     baseUrl: '/bower_components',
     paths: {
         jquery: 'jquery/dist/jquery',
-        react: 'react/react',
+        react: 'react/react-with-addons',
         lodash: 'lodash/lodash',
         cookies: 'Cookies/dist/cookies',
-        store: 'store.js/store'
+        store: 'store.js/store',
+        fluxxor: 'fluxxor/build/fluxxor',
+        reflux: 'reflux/dist/reflux'
     }
 });
 

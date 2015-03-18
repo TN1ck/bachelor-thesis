@@ -5,6 +5,10 @@ import React from 'react';
 import $ from 'jquery';
 import cookies from 'cookies';
 import store from 'store';
+import fluxxor from 'fluxxor';
+import Reflux from 'reflux';
+
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var SETTINGS = {};
 
@@ -26,7 +30,19 @@ var getLocalSettings = function(settings) {
     return result;
 };
 
+var actions = Reflux.createActions([
+    'login',
+    'loginViaCookie',
+    'logout'
+]);
+
 class User {
+
+    constructor () {
+        this.username = '';
+        this.password = '';
+        this.token = '';
+    }
 
     request () {
 
@@ -345,6 +361,7 @@ var ReactTile = React.createClass({
     },
     componentWillUnmount: function () {
         Layout.removeTile(this.props.tile);
+        Layout.layout();
     },
     render: function () {
         var tile = React.createElement(tileTypes[this.props.tile.type], {tile: this.props.tile});
@@ -416,14 +433,21 @@ var ReactWall = React.createClass({
 
         // proof of concept for making it responsive when resizing
         window.addEventListener('resize', () => {
-            console.log('resize!');
-            columns = calculateColumns();
-            var copy = _.clone(TileStore.tiles);
-            // Layout.tiles = [];
-            TileStore.tiles = [];
-            this.setState({data: TileStore, numberOfColumns: columns});
-            TileStore.tiles = copy;
-            this.setState({data: TileStore});
+            
+            if (this.resizeCallback) {
+                clearTimeout(this.resizeCallback);    
+            }
+
+            this.resizeCallback = setTimeout(() => {
+                columns = calculateColumns();
+                var copy = _.clone(TileStore.tiles);
+                // Layout.tiles = [];
+                TileStore.tiles = [];
+                this.setState({data: TileStore, numberOfColumns: columns});
+                TileStore.tiles = copy;
+                this.setState({data: TileStore});
+                this.resizeCallback = false;                 
+            }, 200);
 
         });
     },
@@ -438,110 +462,184 @@ var ReactWall = React.createClass({
         var style = {};
         var columns = chunks.map(tiles => <ReactTileColumn tiles={tiles} style={style}/>);
         return (
-            <div className='wall'>
+            <div>
                 {columns}
             </div>
         );
     }
 });
 
+var userStore = Reflux.createStore({
+    
+    init: function () {
+        
+        this.user = new User();
+        this.error = false;
+        
+        this.listenTo(actions.loginViaCookie, this.loginViaCookie);
+        this.listenTo(actions.login, this.login);
+        this.listenTo(actions.logout, this.logout);
+    },
 
-class ReactApp extends React.Component {
+    getInitialState: function () {
+        return this.triggerState.bind(this)();
+    },
 
-    constructor(props) {
-        super(props);
+    loginViaCookie: function () {
+        this.user.loginViaCookie();
+        this.triggerState.bind(this)();
+    },
 
-        var user = new User();
+    login: function (user) {
+        var that = this;
+        this.user.login(user.username, user.password, user.keep).then(() => {
+            this.triggerState.bind(that)();
+        });
+    },
 
-        var result;
-        if (cookies.enabled) {
-            result = user.loginViaCookie();
-        }
+    logout: function () {
+        this.user.logout();
+        this.triggerState.bind(this)();
+    },
 
-        this.state = {
-            user: user,
+    getState: function () {
+        return {
+            username: this.user.username,
+            password: this.user.password,
+            token: this.user.token,
+            error: this.error
+        };
+    },
+
+    triggerState: function () {
+        var state = this.getState();
+        this.trigger(state);
+    }
+
+
+});
+
+var ReactLogin = React.createClass({
+    mixins: [Reflux.listenTo(userStore, "onStatusChange")],
+    
+    onStatusChange: function(user) {
+        this.setState({user: user, loading: false});
+    },
+
+    componentDidMount: function () {
+        actions.loginViaCookie();
+    },
+
+    getInitialState: function () {
+        return {
+            user: {},
             remember: true,
             loading: false,
-            error: false        };
-    }
+            error: false
+        };
+    },
 
-    handleSubmit (e) {
+    handleSubmit: function (e) {
+        
         e.preventDefault();
+        
         var username = this.refs.username.getDOMNode().value;
         var password = this.refs.password.getDOMNode().value;
-        var promise = this.state.user.login(username, password, this.state.remember);
-        this.setState({loading: true});
-        
-        promise.done(() => {
-            this.setState({loading: false});
-        }).fail(() => {
-            this.setState({loading: false, error: true});
-        })
-    }
 
-    handleChange (e) {
+        actions.login({
+            username: username,
+            password: password,
+            keep: this.state.remember
+        });
+        
+    },
+
+    handleChange: function (e) {
         this.setState({
             remember: !this.state.remember
         });
-    }
+    },
 
-    handleLogout () {
-        this.state.user.logout();
-        this.setState({user: this.state.user});
-    }
+    render: function () {
 
-    render () {
+        var loading = <i className="fa fa-spinner fa-pulse"></i>;
+        
+        return (
+            <form className="wall-login from-above" onSubmit={this.handleSubmit}>
+                <div className="wall-login-header">
+                    Du musst angemeldet sein um die dai-wall zu benutzen
+                </div>
+                <div className="wall-login-content">
+                    <div className="labelgroup">
+                        <label htmlFor="username">Benutzername</label>
+                        <input disabled={this.state.loading} ref="username" id="username" placeholder="Benutzername" required autofocus/>
+                    </div>
+                    <div className="labelgroup">
+                        <label htmlFor="password">Password</label>
+                        <input ref="password" id="password" type="password" placeholder="Password" required/>
+                    </div>
+                    <label htmlFor="remember">
+                        <input checked={this.state.remember} onChange={this.handleChange} ref="remember" id="remember" type="checkbox" /> Eingeloggt bleiben
+                    </label>
+                    <button disabled={this.state.loading}>
+                        Anmelden {this.state.loading ? loading : ''}
+                    </button>
+                </div>
+            </form>
+        );
+    }
+});
+
+
+var ReactApp = React.createClass({
+
+    mixins: [Reflux.listenTo(userStore, "onStatusChange")],
+
+    onStatusChange: function(user) {
+        this.setState({user: user});
+    },
+
+    handleLogout:  function () {
+        actions.logout();
+    },
+
+    getInitialState: function () {
+        return {
+            user: {},
+        };
+    },
+
+    render: function () {
         var header = (
             <div className='wall-header'>
                 <div className='wall-header-info'>
                     Angemeldet als {this.state.user.username}
                 </div>
                 <div className='wall-header-settings'>
-                    <span>settings</span> | <span onClick={this.handleLogout.bind(this)}>logout</span>
+                    <span>settings</span> | <span onClick={this.handleLogout}>logout</span>
                 </div>
             </div>
         );
 
-        if (!this.state.user.isLogedIn()) {
-            return (
-                <div>
-                    {header}
-                    <div className="blur">
-                        <ReactWall user={this.state.user} />
-                    </div>
-                    <form className="wall-login" onSubmit={this.handleSubmit.bind(this)}>
-                        <div className="wall-login-header">
-                            Du musst angemeldet sein um die dai-wall zu benutzen
-                        </div>
-                        <div className="wall-login-content">
-                            <div className="labelgroup">
-                                <label for="username">Benutzername</label>
-                                <input ref="username" id="username" placeholder="Benutzername" required autofocus/>
-                            </div>
-                            <div className="labelgroup">
-                                <label for="password">Password</label>
-                                <input ref="password" id="password" type="password" placeholder="Password" required/>
-                            </div>
-                            <label for="remember">
-                                <input checked={this.state.remember} onChange={this.handleChange.bind(this)} ref="remember" id="remember" type="checkbox" /> Eingeloggt bleiben
-                            </label>
-                            <button>
-                                Anmelden
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    {header}
-                    <ReactWall user={this.state.user} />  
-                </div>
-            );
+        var login;
+
+        if (!this.state.user.token) {
+            login = <ReactLogin />;
         }
+
+        return (
+            <div className='wall'>
+                <div className={this.state.user.token ? '' : 'blur'}>
+                    {header}
+                    <ReactWall user={this.state.user} />
+                </div>
+                <ReactCSSTransitionGroup transitionName="from-above" transitionAppear={true}>
+                    {login}
+                </ReactCSSTransitionGroup>
+            </div>
+        );
     }
-};
+});
 
 // user.login('Gesis3', 'G3Test');
 
