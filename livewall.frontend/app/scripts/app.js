@@ -7,7 +7,8 @@ requirejs.config({
         cookies: 'Cookies/dist/cookies',
         store: 'store.js/store',
         fluxxor: 'fluxxor/build/fluxxor',
-        reflux: 'reflux/dist/reflux'
+        reflux: 'reflux/dist/reflux',
+        immutable: 'immutable/dist/immutable'
     }
 });
 
