@@ -33,7 +33,10 @@ var getLocalSettings = function(settings) {
 var actions = Reflux.createActions([
     'login',
     'loginViaCookie',
-    'logout'
+    'logout',
+    'addItem',
+    'loadItems',
+    'upvoteItem'
 ]);
 
 class User {
@@ -74,7 +77,6 @@ class User {
         this.password = '';
         this.token = '';
         this.deleteCookie();
-        console.log(this);
     }
 
     setCookie () {
@@ -105,7 +107,6 @@ class User {
     }
 
     isLogedIn () {
-        console.log('token', this.token);
         return !!this.token;
     }
 }
@@ -148,15 +149,14 @@ class RedditSource {
                 }
 
                 return {
-                    i: i,
                     author: d.author,
                     created: d.created,
                     title: d.title,
                     url: d.url,
-                    // score: d.score,
+                    score: d.score,
                     domain: d.domain,
                     type: type,
-                    score: _.random(0, 10)
+                    // score: _.random(0, 10)
                 };
             });
             return {
@@ -185,11 +185,12 @@ class PiaSource {
 
     getData () {
         var url = SETTINGS.PIA_URL + '/' + this.broker.name;
+        
         var params = {
             query: this.search,
             start: 0,
             num: 10,
-            username: user.username,
+            username: this.user.username,
             action: 'ACTION_SOLR'
         };
 
@@ -203,21 +204,175 @@ class PiaSource {
 
         // http://pia-gesis.dai-labor.de/zentral?username=gesis3&query=pia%20enterprise&action=ACTION_SOLR&filter=dai-labor&start=0&num=10&dojo.preventCache=1426084708658&json.wrf=dojo.io.script.jsonp_dojoIoScript4._jsonpCallback
 
-        $.ajax({  
+        return $.ajax({  
             type: 'GET',        
             url: url,  // Send the login info to this page
             data: params, 
             dataType: 'jsonp', 
             jsonp: 'json.wrf',
-            success: function(result)
-            { 
-                // console.log(result);
-            } 
 
+        }).promise().then(function (data) {
+            console.log('pia', data);
+            var items = [];
+            var docs = [].concat.apply([], data.results.map((d) => { return d.solr.response.docs; }));
+            docs.forEach(function(d, i) {
+                var content = d.file_content;
+                var lines = content.split('...');
+                lines = lines.filter(d => {
+                    return d.length > 2;
+                }).map(d => {
+                    return d + '...';
+                });
+                var item = {
+                    author: d.result_type,
+                    created: d.file_lastModification,
+                    title: d.xmp_title,
+                    content: lines,
+                    url: d.file_URI,
+                    // score: d.score,
+                    domain: d.host,
+                    type: 'pia',
+                    score: Math.round(d.normalized_score)
+                };
+                items.push(item);
+            });
+            return {data: items};
         });  
     }
 }
 
+var calculateColumns = function () {
+    
+    var screens = {
+        large: 1200,
+        desktop: 992,
+        tablet: 768,
+        phone: 480
+    }
+
+    var width = window.innerWidth;
+    var columns = 1;
+
+    if (width > screens.large) {
+        columns = 4;
+    } else if (width > screens.desktop) {
+        columns = 4;
+    } else if (width > screens.tablet) {
+        columns = 3;
+    } else if (width > screens.phone) {
+        columns = 2;
+    }
+
+    return columns;
+
+};
+
+var columns = calculateColumns();
+
+var Layout  = {
+    items: {},
+    layout: function () {
+        console.log('layouting...');
+
+        var chunks = _.range(columns).map(i => { return []; });
+        
+        dataStore.items.forEach((item, i) => {
+            chunks[i % (chunks.length)].push(item);
+        });
+
+        chunks = chunks.map( (chunk) => {
+            return _.sortBy(chunk, (x) => -x.score);
+        });
+        var counter = 0;
+        
+        var margin = 14;
+        // var width = margin;
+        chunks.forEach((column, j) => {
+            var height = 0;
+            column.forEach((tile, i) => {
+                var domTile = this.items[tile.uuid];
+                
+                if (!domTile) {
+                    return;
+                }
+
+                // check if css was already set
+                if (domTile.topHeight !== height) {
+                    $(domTile.dom).css({
+                        transition: '0.5s',
+                        position: 'absolute',
+                        height: domTile.height,
+                        width: domTile.width,
+                        left: 0,
+                        top: 0,
+                        transform: 'translate(0px, ' + height + 'px )'
+                    });
+                    
+                    domTile.topHeight = height;
+                }
+
+                height += domTile.height + margin;
+                counter++;
+            });
+            // width += this.items[counter - 1].width + margin;
+        });
+
+    },
+    addTile: function (dom, props) {
+        var width = dom.offsetWidth;
+        var height = dom.offsetHeight;
+        this.items[props.uuid] = {dom: dom, width: width, height: height, props};
+    },
+    removeTile: function(props) {
+        delete this.items[props.uuid];
+    }
+};
+
+var userStore = Reflux.createStore({
+    
+    init: function () {
+        
+        this.user = new User();
+        this.error = false;
+
+        this.user.loginViaCookie();
+        this.listenTo(actions.login, this.login);
+        this.listenTo(actions.logout, this.logout);
+
+    },
+
+    getInitialState: function () {
+        return this.triggerState.bind(this)();
+    },
+
+    login: function (user) {
+        var that = this;
+        this.user.login(user.username, user.password, user.keep).then(() => {
+            this.triggerState.bind(that)();
+        });
+    },
+
+    logout: function () {
+        this.user.logout();
+        this.triggerState.bind(this)();
+    },
+
+    getState: function () {
+        return {
+            username: this.user.username,
+            password: this.user.password,
+            token: this.user.token,
+            error: this.error
+        };
+    },
+
+    triggerState: function () {
+        var state = this.getState();
+        this.trigger(state);
+    }
+
+
+});
 
 var ReactImageTile = React.createClass({
     render: function () {
@@ -250,105 +405,30 @@ var ReactLinkTile = React.createClass({
     }
 });
 
-var tileTypes = {
-    image: ReactImageTile,
-    link: ReactLinkTile
-};
-
-var TileStore = {
-    tiles: [],
-    cache: {},
-    addTile: function(tile) {
-        
-        if (this.cache[tile.title]) {
-            return;
-        }
-
-        this.cache[tile.title] = tile;
-        this.tiles.push(tile);
-    }
-};
-
-var calculateColumns = function () {
-    
-    var screens = {
-        large: 1200,
-        desktop: 992,
-        tablet: 768,
-        phone: 480
-    }
-
-    var width = window.innerWidth;
-    var columns = 1;
-
-    if (width > screens.large) {
-        columns = 4;
-    } else if (width > screens.desktop) {
-        columns = 4;
-    } else if (width > screens.tablet) {
-        columns = 3;
-    } else if (width > screens.phone) {
-        columns = 2;
-    }
-
-    return columns;
-
-};
-
-var columns = calculateColumns();
-
-var Layout  = {
-    tiles: [],
-    layout: function () {
-        // console.log('layouting', this.tiles.length);
-        var chunks = _.range(columns).map(i => { return []; });
-        
-        TileStore.tiles.forEach((tile, i) => {
-            chunks[i % (chunks.length)].push(tile);
+var ReactPiaTile = React.createClass({
+    render: function () {
+        var lis = this.props.tile.content.map((d) => {
+            return <li dangerouslySetInnerHTML={{__html: d}}></li>
         });
-
-        chunks = chunks.map( (chunk) => {
-            return _.sortBy(chunk, (x) => -x.score);
-        });
-        var counter = 0;
-        
-        var margin = 14;
-        // var width = margin;
-        chunks.forEach((column, j) => {
-            var height = 0;
-            column.forEach((tile, i) => {
-                // console.log(this.tiles, tile.i);
-                var domTile = this.tiles[tile.i];
-                
-                if (!domTile) {
-                    return;
-                }
-
-                $(domTile.dom).css({
-                    transition: '0.5s',
-                    position: 'absolute',
-                    height: domTile.height,
-                    width: domTile.width,
-                    left: 0,
-                    top: 0,
-                    transform: 'translate(0px, ' + height + 'px )'
-                });
-                height += domTile.height + margin;
-                counter++;
-            });
-            // width += this.tiles[counter - 1].width + margin;
-        });
-
-    },
-    addTile: function (dom, props) {
-        var width = dom.offsetWidth;
-        var height = dom.offsetHeight;
-        this.tiles[props.i] = {dom: dom, width: width, height: height, props};
-    },
-    removeTile: function(props) {
-        this.tiles.splice(props.i, 1);
+        return (
+            <div className="tile-content tile-pia">
+                <div className="tile-content-title">
+                    <a href={this.props.tile.url}>{this.props.tile.title}</a>
+                </div>
+                <div className="tile-content-content">
+                    <a href={this.props.tile.url}>
+                        <ul>
+                            {lis}
+                        </ul>
+                    </a>
+                </div>
+                <div className="tile-content-domain">
+                    {this.props.tile.domain}
+                </div>
+            </div>
+        );
     }
-};
+});
 
 var ReactTile = React.createClass({
     displayName: 'tile',
@@ -363,12 +443,19 @@ var ReactTile = React.createClass({
         Layout.removeTile(this.props.tile);
         Layout.layout();
     },
+    handleUpvote: function (e) {
+        e.preventDefault;
+        actions.upvoteItem(this.props.tile);
+    },
+    // shouldComponentUpdate: function (props) {
+    //     return props.tile.score !== this.props.tile.score;
+    // },
     render: function () {
         var tile = React.createElement(tileTypes[this.props.tile.type], {tile: this.props.tile});
         return (
             <article className='tile animate-2'>
                 <header className='tile-header'>
-                    <div className='tile-header-upvote'>
+                    <div className='tile-header-upvote' onClick={this.handleUpvote}>
                         {this.props.tile.score}
                     </div>
                     <div className='tile-header-info'>
@@ -389,7 +476,7 @@ var ReactTileColumn = React.createClass({
         };
     },
     render: function () {
-        var tiles = this.props.tiles.map(tile => <ReactTile tile={tile}/>);
+        var tiles = this.props.tiles.map(tile => <ReactTile tile={tile} key={tile.uuid}/>);
         return (
             <div className='tile-column' style={this.props.style}>
                 {tiles}
@@ -398,38 +485,149 @@ var ReactTileColumn = React.createClass({
     }
 });
 
+var tileTypes = {
+    image: ReactImageTile,
+    link: ReactLinkTile,
+    pia: ReactPiaTile
+};
+
+var dataStore = Reflux.createStore({
+
+    init: function () {
+        this.items = [];
+        this.cache = {};
+        this.itemCounter = 0;
+        this.user = userStore.getState();
+        this.sources =  [];
+        // this.sources.push({
+        //     source: new PiaSource(this.user, 'zentral', 'dai labor'),
+        //     polling: false
+        // });
+        this.sources.push({
+            source: new RedditSource('politics'),
+            polling: 5
+        });
+
+        // listen for changes of user
+        this.listenTo(userStore, this.changeUser);
+
+        this.listenTo(actions.addItem, this.addItem);
+        this.listenTo(actions.upvoteItem, this.upvoteItem);
+        this.listenTo(actions.loadItems, this.loadItems);
+    },
+
+    changeUser: function(user) {
+        if (user.token) {
+            this.user = user;
+            this.reset();
+            this.loadItems();
+        }
+    },
+
+    loadSource: function (source) {
+        source.getData().then(data => {
+
+            data.data.forEach((d, i) => {
+                // append tile when image finishes loading
+                if (d.type === 'image') {
+                    var img = new Image;
+                    img.src = d.url;
+                    img.onload = () => {
+                        this.addItem(d);
+                        this.triggerState.bind(this)();
+                    };    
+                } else {
+                    setTimeout(() => {
+                        this.addItem(d);
+                        this.triggerState.bind(this)();
+                    }, _.random(200 * i));
+                }
+                
+            });
+
+        });
+    },
+
+    loadItems: function () {
+        this.sources.forEach(s => {
+           this.loadSource(s.source);
+        });
+
+        // polling
+        this.sources.forEach(s => {
+            if (s.polling) {
+                console.log('polling...');
+                var callback = () => {
+                    this.loadSource(s.source);
+                    setTimeout(function() {
+                        callback();
+                    }, s.polling * 1000);
+                };
+
+                setTimeout(function() {
+                    callback();
+                }, s.polling * 1000);
+
+            }
+        })
+    },
+
+    reset: function (item) {
+        this.items.splice(0, this.items.length);
+    },
+
+    addItem: function (item) {
+        item.uuid = item.title + item.content;
+        if (this.cache[item.uuid]) {
+            var item_cached = this.cache[item.uuid];
+            this.items[item_cached.i] = item;
+            Layout.layout();
+        } else {
+            item.i = this.items.length;
+            this.items.push(item);
+            this.cache[item.uuid] = item;
+        }
+        this.triggerState.bind(this)();
+
+        this.itemCounter++;
+    },
+
+    removeItem: function (item) {
+        var index = item.i;
+        array.splice(index, 1);
+        delete this.cache[item.uuid];
+    },
+
+    triggerState: function () {
+        this.trigger(this.items);
+    },
+
+    upvoteItem: function (item) {
+        item.score++;
+        this.triggerState.bind(this)(this.items);
+        Layout.layout();
+    }
+
+});
+
 var ReactWall = React.createClass({
+    mixins: [Reflux.listenTo(dataStore, "onStatusChange")],
+    
+    onStatusChange: function(items) {
+        this.setState({items: items});
+    },
+
     displayName: 'wall',
+
     getInitialState: function () {
         return {
-            numberOfColumns: columns,
-            data: TileStore
+            items: [],
+            numberOfColumns: columns
         }
     },
     componentDidMount: function() {
 
-        sources.forEach(s => {
-            s.getData('politics').then(data => {
-
-                data.data.forEach((d, i) => {
-                    // append tile when image finishes loading
-                    if (d.type === 'image') {
-                        var img = new Image;
-                        img.src = d.url;
-                        img.onload = () => {
-                            TileStore.addTile(d);
-                            this.setState({data: TileStore});
-                        };    
-                    } else {
-                        setTimeout(() => {
-                            TileStore.addTile(d);
-                            this.setState({data: TileStore});
-                        }, _.random(200 * i));
-                    }
-                    
-                });
-            });
-        });
+        actions.loadItems();
 
         // proof of concept for making it responsive when resizing
         window.addEventListener('resize', () => {
@@ -440,13 +638,11 @@ var ReactWall = React.createClass({
 
             this.resizeCallback = setTimeout(() => {
                 columns = calculateColumns();
-                var copy = _.clone(TileStore.tiles);
-                // Layout.tiles = [];
-                TileStore.tiles = [];
-                this.setState({data: TileStore, numberOfColumns: columns});
-                TileStore.tiles = copy;
-                this.setState({data: TileStore});
-                this.resizeCallback = false;                 
+                // var copy = _.clone(TileStore.tiles);
+                Layout.tiles = [];
+                this.setState({items: []});
+                this.setState({items: dataStore.items, numberOfColumns: columns})
+                this.resizeCallback = false;
             }, 200);
 
         });
@@ -454,13 +650,13 @@ var ReactWall = React.createClass({
     render: function () {
         var chunks = _.range(this.state.numberOfColumns).map(i => { return []; });
 
-        this.state.data.tiles.forEach((tile, i) => {
-            chunks[i % (chunks.length)].push(tile);
+        this.state.items.forEach((item, i) => {
+            chunks[i % (chunks.length)].push(item);
         });
 
         // var style = {width: 'calc(' + 100 / this.state.numberOfColumns + '% - 20px)' }
         var style = {};
-        var columns = chunks.map(tiles => <ReactTileColumn tiles={tiles} style={style}/>);
+        var columns = chunks.map(items => <ReactTileColumn tiles={items} style={style}/>);
         return (
             <div>
                 {columns}
@@ -469,65 +665,11 @@ var ReactWall = React.createClass({
     }
 });
 
-var userStore = Reflux.createStore({
-    
-    init: function () {
-        
-        this.user = new User();
-        this.error = false;
-        
-        this.listenTo(actions.loginViaCookie, this.loginViaCookie);
-        this.listenTo(actions.login, this.login);
-        this.listenTo(actions.logout, this.logout);
-    },
-
-    getInitialState: function () {
-        return this.triggerState.bind(this)();
-    },
-
-    loginViaCookie: function () {
-        this.user.loginViaCookie();
-        this.triggerState.bind(this)();
-    },
-
-    login: function (user) {
-        var that = this;
-        this.user.login(user.username, user.password, user.keep).then(() => {
-            this.triggerState.bind(that)();
-        });
-    },
-
-    logout: function () {
-        this.user.logout();
-        this.triggerState.bind(this)();
-    },
-
-    getState: function () {
-        return {
-            username: this.user.username,
-            password: this.user.password,
-            token: this.user.token,
-            error: this.error
-        };
-    },
-
-    triggerState: function () {
-        var state = this.getState();
-        this.trigger(state);
-    }
-
-
-});
-
 var ReactLogin = React.createClass({
     mixins: [Reflux.listenTo(userStore, "onStatusChange")],
     
     onStatusChange: function(user) {
         this.setState({user: user, loading: false});
-    },
-
-    componentDidMount: function () {
-        actions.loginViaCookie();
     },
 
     getInitialState: function () {
@@ -605,7 +747,7 @@ var ReactApp = React.createClass({
 
     getInitialState: function () {
         return {
-            user: {},
+            user: userStore.getState(),
         };
     },
 
@@ -645,7 +787,5 @@ var ReactApp = React.createClass({
 
 // var source = new PiaSource(user, 'zentral', 'dai labor');
 // source.getData();
-
-var sources = [new RedditSource('politics')];
 
 React.render(<ReactApp/>, document.getElementById('react'));

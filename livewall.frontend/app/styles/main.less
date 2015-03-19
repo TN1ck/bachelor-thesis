@@ -22,22 +22,47 @@
 @desktop-strict: ~"only screen and (min-width: @{md-min}) and (max-width: @{md-max})";
 @large:          ~"only screen and (min-width: @{lg-min})";
 
+// good looking colors
+// @tile-background: @white;
+// @tile-font: @black;
+// @tile-special: @olive;
+// @body-background: @olive;
+
+@nepheritis: #27ae60;
+@tile-background: @white;
+@tile-font: @black;
+@tile-special: @olive;
+@body-background: @olive	;
+
+// @tile-background: @gray - #222;
+// @tile-font: @white;
+// @tile-special: @yellow;
+// @body-background: @yellow - #666;
+
+
 body {
 	color: #222;
 	// font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-family: 'Lato', sans-serif;
 	-webkit-font-smoothing: subpixel-antialiased;
-	background-color: @white;
-}	
+	background-color: @body-background;
+	
+}
+
+.stopselect{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 .wall {
 
 	@margin: 8;
 	@padding: 11;
-	
-	@tile-content-color: @white;
-	@tile-font-color: @black;
-	@tile-font-special-color: @olive;
+
 
 	.tile-column {
 		position: relative;
@@ -60,10 +85,10 @@ body {
 			position: relative;
 			float: left;
 			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
-			border: 1px solid @tile-font-special-color;
+			border: 1px solid @tile-special;
 			width: 100%;
-			background: @tile-content-color;
-			color: @tile-font-color;
+			background: @tile-background;
+			color: @tile-font;
 			margin-bottom: unit(@margin * 2, px);
 
 
@@ -82,22 +107,22 @@ body {
 			.tile-content {
 
 				float: left;
-				background-color: @tile-content-color;
+				background-color: @tile-background;
 				margin-bottom: 20px;
 				width: 100%;
 
 				&.tile-link {
 					
-					background-color: @tile-content-color;
+					background-color: @tile-background;
 					padding: unit(@padding, px);
 					width: calc(~"100% - "unit(@padding * 2, px));
 
 					a {
-						color: @tile-font-color;
+						color: @tile-font;
 						text-decoration: none;
 
 						&:hover {
-							color: @tile-font-special-color;
+							color: @tile-special;
 							// text-decoration: underline;
 						}
 					}
@@ -110,7 +135,75 @@ body {
 					}
 
 					.tile-content-domain {
-						color: @tile-font-special-color;
+						color: @tile-special;
+						position: absolute;
+						bottom: unit(@margin, px);
+						right: unit(@margin, px);
+					}
+					
+				}
+
+				&.tile-pia {
+					
+					background-color: @tile-background;
+					padding: unit(@padding, px);
+					width: calc(~"100% - "unit(@padding * 2, px));
+
+					a {
+						color: @tile-font;
+						text-decoration: none;
+
+						&:hover {
+							color: @tile-special;
+							// text-decoration: underline;
+						}
+					}
+					
+					.tile-content-title {
+						font-weight: 600;
+						float: left;
+						font-size: 12pt;
+
+						a {
+							color: @tile-special;
+							text-decoration: none;
+
+							&:hover {
+								color: @tile-font;
+								// text-decoration: underline;
+							}
+						}
+
+					}
+
+					.tile-content-content {
+						float: left;
+						font-size: 11pt;
+						font-weight: 300;
+
+						ul {
+							padding-left: 0;
+							li {
+								list-style-type: none;
+								padding: 5px unit(@padding, px);
+								margin:  0 unit(-@padding, px);
+								// border-bottom: 1px solid @tile-special;
+
+								&:last-child {
+									border-bottom: none;
+								}
+
+								&:nth-child(even) {
+									background-color: #fafafa;
+								}
+							}
+
+						}
+
+					}
+
+					.tile-content-domain {
+						color: @tile-special;
 						position: absolute;
 						bottom: unit(@margin, px);
 						right: unit(@margin, px);
@@ -126,16 +219,16 @@ body {
 					.tile-content-title {
 						font-weight: 300;
 						padding: unit(@padding, px);
-						background-color: @tile-content-color;
-						color: @tile-font-color;
-						// background-color: @tile-content-color;
+						background-color: @tile-background;
+						color: @tile-font;
+						// background-color: @tile-background;
 						// color: @white;
 						// float: left;
 						font-size: 10pt;
 					}
 
 					.tile-content-domain {
-						color: @tile-font-special-color;
+						color: @tile-special;
 						font-size: 10pt;
 						position: absolute;
 						right: unit(@padding / 2, px);
@@ -159,16 +252,18 @@ body {
 
 			.tile-header {
 				float: left;
-				background-color: @tile-content-color - #111;
+				background-color: @tile-background - #111;
 				width: 100%;
 
 				.tile-header-upvote {
+					.stopselect();
+
 					cursor: pointer;
 					float: left;
-					background-color: @tile-content-color;
+					background-color: @tile-background;
 					padding: unit(@padding / 2, px) unit(@padding, px);
 					font-size: 1.3em;
-					color: @tile-font-special-color;
+					color: @tile-special;
 					font-weight: 300;
 					text-align: center;
 
@@ -179,7 +274,7 @@ body {
 					}
 
 					&:hover {
-						background-color: @tile-content-color - #222;
+						background-color: @tile-background - #222;
 					}
 				}
 
@@ -188,7 +283,7 @@ body {
 
 				.tile-header-info {
 					// margin-top: 2px;
-					color: @tile-font-color;
+					color: @tile-font;
 					font-weight: 300;
 					font-size: 10pt;
 					// width: calc(~"100% - "unit(@padding, px));
@@ -199,103 +294,110 @@ body {
 			}
 		}
 	}
-}
 
-.wall-header {
-	color: @gray;
-	font-size: 12px;
-	width: 100%;
-	float: left;
-	line-height: 0.6em;
-
-
-	.wall-header-info {
-		margin-left: 7px;
+	.wall-header {
+		color: @white;
+		font-size: 12px;
+		width: 100%;
 		float: left;
-	}
+		line-height: 0.6em;
 
-	.wall-header-settings {
-		margin-right: 7px;
-		float: right;
 
-		span:hover {
-			text-decoration: underline;
-			cursor: pointer;
-		}
-	}
-}
-
-.wall-login {
-
-	z-index: 999;
-	position: absolute;
-	width: 400px;
-	height: 350px;
-	background-color: fadeout(@white, 0%);
-	border: 2px solid @olive;
-	color: @black;
-	margin-left: -200px;
-	left: 50%;
-	top: 50%;
-	margin-top: -175px;
-
-	.wall-login-header {
-		// font-family: 'Pacifico', cursive;
-		text-align: center;
-		padding: 0 30px;
-		font-weight: 300;
-		background-color: fadeout(@white, 0%);
-		padding-top: 40px;
-		font-size: 1.5em;
-		margin: 0;
-	}
-	
-	.wall-login-content {
-		margin-top: 30px;
-		width: 200px;
-		margin-left: calc(~"50% - " 100px);
-
-		.labelgroup {
-			label {
-				display: block;
-				font-size: 12pt;
-				margin-bottom: 2px;
-			}
-
-			input {
-				padding: 5px;
-				width: 190px;
-				border: 1px solid @olive;
-				box-shadow: inset 0 1px 3px #ddd;
-				border-radius: 2px;
-				margin-bottom: 10px;
-			}
+		.wall-header-info {
+			margin-left: 7px;
+			float: left;
 		}
 
-		button {
+		.wall-header-settings {
+			margin-right: 7px;
 			float: right;
-			margin-top: 30px;
-			background-color: @white;
-			border: 1px solid @olive;
-			padding: 8px 12px;
 
-			&:hover {
-				color: @white;
+			span:hover {
+				text-decoration: underline;
 				cursor: pointer;
-				background-color: @olive
 			}
+		}
+	}
+
+	.wall-login {
+
+		z-index: 999;
+		position: absolute;
+		width: 400px;
+		height: 350px;
+		background-color: @tile-background;
+		border: 2px solid @tile-special;
+		color: @tile-font;
+		margin-left: -200px;
+		left: 50%;
+		top: 50%;
+		margin-top: -175px;
+
+		.wall-login-header {
+			// font-family: 'Pacifico', cursive;
+			text-align: center;
+			padding: 0 30px;
+			font-weight: 300;
+			background-color: @tile-background;
+			padding-top: 40px;
+			font-size: 1.5em;
+			margin: 0;
 		}
 		
+		.wall-login-content {
+			margin-top: 30px;
+			width: 200px;
+			margin-left: calc(~"50% - " 100px);
 
+			.labelgroup {
+				label {
+					display: block;
+					font-size: 12pt;
+					margin-bottom: 2px;
+				}
+
+				input {
+					padding: 5px;
+					width: 190px;
+					border: 1px solid @tile-special;
+					box-shadow: inset 0 1px 3px #ddd;
+					border-radius: 2px;
+					margin-bottom: 10px;
+
+					&:disabled {
+						border: 1px solid @gray;
+					}
+				}
+			}
+
+			button {
+				float: right;
+				margin-top: 30px;
+				background-color: @tile-background;
+				border: 1px solid @tile-special;
+				padding: 8px 12px;
+
+				&:hover {
+					color: @tile-background;
+					cursor: pointer;
+					background-color: @tile-special
+				}
+			}
+			
+
+		}
 	}
 }
 
 .blur {
 	pointer-events: none;
-	filter: blur(5px);
+	// firefox is slow as fuck
+	// filter: blur(5px);
 	-webkit-filter: blur(5px);
-	-moz-filter: blur(5px);
-	filter: url('/media/blur.svg#blur'); /* for Firefox */
+	// -moz-filter: blur(5px);
+	// filter: url('/media/blur.svg#blur'); /* for Firefox */
+	// bug in chrome with adding/removing blur
+	-webkit-backface-visibility: hidden;
 }
 
 // ANIMATION
@@ -310,12 +412,49 @@ body {
 	100% { opacity: 1; }
 }
 
-@-webkit-keyframes moveUp {
-	0% { }
+@-webkit-keyframes moveIn {
+	0% { opacity: 0; }
 	100% { -webkit-transform: translateY(0); opacity: 1; }
 }
 
-@keyframes moveUp {
-	0% { }
+@keyframes moveIn {
+	0% { opacity: 0; }
 	100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+
+@-webkit-keyframes moveOut {
+	0% { opacity: 1; }
+	100% { -webkit-transform: translateY(-200px);  opacity: 0; }
+}
+
+@keyframes moveOut {
+	0% { opacity: 1; }
+	100% { -webkit-transform: translateY(-200px); transform: translateY(0); opacity: 0; }
+}
+
+
+.from-above {
+
+	&-enter, &-appear {
+		opacity: 0;
+		transform: translateY(-200px);
+		-webkit-transform: translateY(-200px);
+
+		&.from-above-enter-active, &.from-above-appear-active {
+			-webkit-animation: moveIn 0.65s ease forwards;
+			animation: moveIn 0.65s ease forwards;
+		}
+	}
+
+	&-leave {
+			
+		opacity: 1;
+		transform: translateY(0);
+		-webkit-transform: translateY(0);
+
+		&.from-above-leave-active {
+			-webkit-animation: moveOut 0.65s ease forwards;
+			animation: moveOut 0.65s ease forwards;
+		}
+	}
 }
