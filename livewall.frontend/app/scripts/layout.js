@@ -9,10 +9,8 @@ var sortFunction = function (a, b) {
 
 var Layout  = {
     items: {},
-    layout: function () {
-        console.log('layouting...');
-
-        var chunks = _.range(calculateColumns()).map(i => { return []; });
+    getColumns: function () {
+        var chunks = _.range(calculateColumns(window.innerWidth)).map(i => { return []; });
         
         dataStore.items.forEach((_item, i) => {
             chunks[i % (chunks.length)].push(_item);
@@ -22,25 +20,38 @@ var Layout  = {
             chunk.sort(sortFunction);
             return chunk;
         });
+
+        return chunks;
+    },
+    relayout: function () {
+        console.log('relayout');
+        _.values(this.items).forEach(function(item) {
+            item.width = item.dom.offsetWidth;
+            item.height = item.dom.offsetHeight;
+        });
+
+        this.layout();
+    },
+    layout: function () {
+        var columns = this.getColumns(); 
         
         var margin = 14;
         // var width = margin;
-        chunks.forEach((column, j) => {
+        columns.forEach((column, j) => {
             var height = 0;
             column.forEach((_item, i) => {
 
                 var item = this.items[_item.get('uuid')];
 
+                if (!item) {
+                    return;
+                }
+
                 // check if css was already set
                 if (item.topHeight !== height) {
                     $(item.dom).css({
-                        transition: '0.5s',
-                        position: 'absolute',
-                        height: item.height,
-                        width: item.width,
-                        left: 0,
-                        top: 0,
-                        transform: 'translate(0px, ' + height + 'px )'
+                        transform: 'translate3D(0, ' + height + 'px, 0)'
+                        // top: height + 'px' // transform is faster
                     });
                     
                     item.topHeight = height;

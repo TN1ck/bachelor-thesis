@@ -39,7 +39,7 @@ var ReactWall = React.createClass({
     getInitialState: function () {
         return {
             items: Immutable.List(),
-            numberOfColumns: calculateColumns()
+            width: window.innerWidth
         }
     },
     componentDidMount: function() {
@@ -48,24 +48,31 @@ var ReactWall = React.createClass({
 
         // proof of concept for making it responsive when resizing
         window.addEventListener('resize', () => {
+
+            var width = window.innerWidth;
+
+            if (this.state.width === width) {
+                return;
+            }
             
             if (this.resizeCallback) {
                 clearTimeout(this.resizeCallback);    
             }
 
             this.resizeCallback = setTimeout(() => {
-                columns = calculateColumns();
-                // var copy = _.clone(TileStore.tiles);
-                Layout.tiles = [];
-                this.setState({items: Immutable.List()});
-                this.setState({items: dataStore.items, numberOfColumns: columns})
+                this.setState({width: width});
                 this.resizeCallback = false;
             }, 200);
 
         });
     },
+    componentDidUpdate: function(props, state) {
+        if (state.width !== this.state.width) {
+            Layout.relayout();
+        }
+    },
     render: function () {
-        var chunks = _.range(this.state.numberOfColumns).map(i => { return Immutable.List(); });
+        var chunks = _.range(calculateColumns(this.state.width)).map(i => { return Immutable.List(); });
 
         this.state.items.forEach((item, i) => {
             var index = i % chunks.length;

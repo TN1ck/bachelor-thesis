@@ -1,4 +1,4 @@
-export var calculateColumns = function () {
+export var calculateColumns = function (width) {
     
     var screens = {
         large: 1200,
@@ -7,7 +7,6 @@ export var calculateColumns = function () {
         phone: 480
     }
 
-    var width = window.innerWidth;
     var columns = 1;
 
     if (width > screens.large) {

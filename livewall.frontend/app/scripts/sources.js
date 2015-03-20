@@ -43,7 +43,7 @@ export class RedditSource {
                     created: d.created,
                     title: d.title,
                     url: d.url,
-                    score: d.score,
+                    score: Math.round(d.score / 100),
                     domain: d.domain,
                     type: type,
                     // score: _.random(0, 10)

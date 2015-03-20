@@ -68,6 +68,8 @@ body {
 		position: relative;
 		float: left;
 		margin: unit(@margin, px);
+
+		width: calc(~"100% - "unit(@margin * 2, px));
 		
 		@media @phone {
 			width: calc(~"50% - "unit(@margin * 2, px));
@@ -90,7 +92,13 @@ body {
 			background: @tile-background;
 			color: @tile-font;
 			margin-bottom: unit(@margin * 2, px);
-
+			transition-duration: 0.65s;
+			transition-property: transform;
+			transition-timing-function: ease;
+			position: absolute;
+			left: 0;
+            top: 0;
+			transform: translate3D(0, 0, 0);
 
 			&.animate-1 {
 				-webkit-transform: translateY(200px);

@@ -7,7 +7,7 @@ import Reflux from 'reflux';
 import Immutable from 'immutable';
 
 import {RedditSource, PiaSource} from './sources.js';
-
+import SETTINGS from './settings.js';
 import actions from './actions.js';
 
 export class User {
@@ -145,8 +145,12 @@ export var dataStore = Reflux.createStore({
         });
         this.sources.push({
             source: new RedditSource('politics'),
-            polling: 5
+            polling: 30
         });
+        // this.sources.push({
+        //     source: new RedditSource('earthporn'),
+        //     polling: 30
+        // });
 
         // listen for changes of user
         this.listenTo(userStore, this.changeUser);
