@@ -181,13 +181,12 @@ export var dataStore = Reflux.createStore({
                         this.addItem(dIm);
                     };    
                 } else {
-                    setTimeout(() => {
-                        var dIm = Immutable.Map(d);
-                        this.addItem(dIm);
-                    }, _.random(200 * i));
+                    var dIm = Immutable.Map(d);
+                    this.addItem(dIm, false);
                 }
-                
             });
+
+            this.triggerState.bind(this)();
 
         });
     },
@@ -221,7 +220,7 @@ export var dataStore = Reflux.createStore({
         this.cache = {};
     },
 
-    addItem: function (item) {
+    addItem: function (item, trigger = true) {
         
         var uuid = item.get('title') + item.get('content');
         item = item.set('uuid', uuid);
@@ -237,10 +236,15 @@ export var dataStore = Reflux.createStore({
         }
 
         this.cache[uuid] = item;
-
-        this.triggerState.bind(this)();
+        if (trigger) {
+            this.triggerState.bind(this)();
+        }
 
         this.itemCounter++;
+    },
+
+    addItems: function (item) {
+
     },
 
     removeItem: function (item) {

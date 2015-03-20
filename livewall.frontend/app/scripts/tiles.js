@@ -72,14 +72,10 @@ export var ReactTile = React.createClass({
     displayName: 'tile',
     componentDidMount: function () {
         var dom = this.getDOMNode();
-        // var width = dom.offsetWidth;
-        // var height = dom.offsetHeight;
         Layout.addTile(dom, this.props.tile);
-        Layout.layout();
     },
     componentWillUnmount: function () {
         Layout.removeTile(this.props.tile);
-        Layout.layout();
     },
     handleUpvote: function (e) {
         e.preventDefault;
@@ -90,14 +86,17 @@ export var ReactTile = React.createClass({
         return props.tile.get('score') !== this.props.tile.get('score');
     },
     componentDidUpdate: function (props) {
-        Layout.layout();
+        Layout.layout(true);
     },
     render: function () {
         
         var tile = React.createElement(tileTypes[this.props.tile.get('type')], {tile: this.props.tile});
+        // precalculate the left offset of the tile so the animation starts at the correct position
+        var leftOffset = Layout.getLeftOffset(this.props.tile);
+        var style = {transform: 'translate( ' + leftOffset +  'px , 0px)'};
         
         return (
-            <article className='tile animate-2'>
+            <article className='tile' style={style}>
                 <header className='tile-header'>
                     <div className='tile-header-upvote' onClick={this.handleUpvote}>
                         {this.props.tile.get('score')}

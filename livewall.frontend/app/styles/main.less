@@ -62,28 +62,18 @@ body {
 
 	@margin: 8;
 	@padding: 11;
+	float: left;
+	width: 100%;
 
-
-	.tile-column {
-		position: relative;
-		float: left;
+	.tiles {
 		margin: unit(@margin, px);
-
-		width: calc(~"100% - "unit(@margin * 2, px));
-		
-		@media @phone {
-			width: calc(~"50% - "unit(@margin * 2, px));
-		}
-		
-		@media @tablet {
-			width: calc(~"33% - "unit(@margin * 2, px));
-		}
-
-		@media @desktop {
-			width: calc(~"25% - "unit(@margin * 2, px));
-		}
+		float: left;
+		width: 100%;
+		position: relative;
 
 		.tile {
+			opacity: 0;
+
 			position: relative;
 			float: left;
 			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
@@ -93,12 +83,26 @@ body {
 			color: @tile-font;
 			margin-bottom: unit(@margin * 2, px);
 			transition-duration: 0.65s;
-			transition-property: transform;
+			transition-property: transform opacity;
 			transition-timing-function: ease;
 			position: absolute;
 			left: 0;
-            top: 0;
-			transform: translate3D(0, 0, 0);
+	        top: 0;
+			transform: translate(0, 0) translateZ(0);
+
+			width: calc(~"100% - "unit(@margin * 2, px));
+		
+			@media @phone {
+				width: calc(~"50% - "unit(@margin * 2, px));
+			}
+			
+			@media @tablet {
+				width: calc(~"33% - "unit(@margin * 2, px));
+			}
+
+			@media @desktop {
+				width: calc(~"25% - "unit(@margin * 2, px));
+			}
 
 			&.animate-1 {
 				-webkit-transform: translateY(200px);
@@ -115,13 +119,13 @@ body {
 			.tile-content {
 
 				float: left;
-				background-color: @tile-background;
+				background: @tile-background;
 				margin-bottom: 20px;
 				width: 100%;
 
 				&.tile-link {
 					
-					background-color: @tile-background;
+					background: @tile-background;
 					padding: unit(@padding, px);
 					width: calc(~"100% - "unit(@padding * 2, px));
 
@@ -153,7 +157,7 @@ body {
 
 				&.tile-pia {
 					
-					background-color: @tile-background;
+					background: @tile-background;
 					padding: unit(@padding, px);
 					width: calc(~"100% - "unit(@padding * 2, px));
 
@@ -229,14 +233,11 @@ body {
 						padding: unit(@padding, px);
 						background-color: @tile-background;
 						color: @tile-font;
-						// background-color: @tile-background;
-						// color: @white;
-						// float: left;
 						font-size: 10pt;
 					}
 
 					.tile-content-domain {
-						color: @tile-special;
+						color: @tile-background;
 						font-size: 10pt;
 						position: absolute;
 						right: unit(@padding / 2, px);
@@ -301,99 +302,100 @@ body {
 				}
 			}
 		}
+
+	}
+}
+
+.wall-header {
+	color: @white;
+	font-size: 12px;
+	width: 100%;
+	float: left;
+	line-height: 0.6em;
+
+
+	.wall-header-info {
+		margin-left: 7px;
+		float: left;
 	}
 
-	.wall-header {
-		color: @white;
-		font-size: 12px;
-		width: 100%;
-		float: left;
-		line-height: 0.6em;
+	.wall-header-settings {
+		margin-right: 7px;
+		float: right;
 
-
-		.wall-header-info {
-			margin-left: 7px;
-			float: left;
+		span:hover {
+			text-decoration: underline;
+			cursor: pointer;
 		}
+	}
+}
 
-		.wall-header-settings {
-			margin-right: 7px;
-			float: right;
+.wall-login {
 
-			span:hover {
-				text-decoration: underline;
-				cursor: pointer;
+	z-index: 999;
+	position: absolute;
+	width: 300px;
+	height: 400px;
+	background-color: @tile-background;
+	border: 2px solid @tile-special;
+	color: @tile-font;
+	margin-left: -150px;
+	left: 50%;
+	top: 50%;
+	margin-top: -175px;
+
+	.wall-login-header {
+		// font-family: 'Pacifico', cursive;
+		text-align: center;
+		padding: 0 30px;
+		font-weight: 300;
+		background-color: @tile-background;
+		padding-top: 40px;
+		font-size: 1.5em;
+		margin: 0;
+	}
+	
+	.wall-login-content {
+		margin-top: 30px;
+		width: 200px;
+		margin-left: calc(~"50% - " 100px);
+
+		.labelgroup {
+			label {
+				display: block;
+				font-size: 12pt;
+				margin-bottom: 2px;
+			}
+
+			input {
+				padding: 5px;
+				width: 190px;
+				border: 1px solid @tile-special;
+				box-shadow: inset 0 1px 3px #ddd;
+				border-radius: 2px;
+				margin-bottom: 10px;
+
+				&:disabled {
+					border: 1px solid @gray;
+				}
 			}
 		}
-	}
 
-	.wall-login {
-
-		z-index: 999;
-		position: absolute;
-		width: 400px;
-		height: 350px;
-		background-color: @tile-background;
-		border: 2px solid @tile-special;
-		color: @tile-font;
-		margin-left: -200px;
-		left: 50%;
-		top: 50%;
-		margin-top: -175px;
-
-		.wall-login-header {
-			// font-family: 'Pacifico', cursive;
-			text-align: center;
-			padding: 0 30px;
-			font-weight: 300;
+		button {
+			float: right;
+			margin-top: 30px;
 			background-color: @tile-background;
-			padding-top: 40px;
-			font-size: 1.5em;
-			margin: 0;
+			border: 1px solid @tile-special;
+			padding: 8px 12px;
+
+			&:hover {
+				color: @tile-background;
+				cursor: pointer;
+				background-color: @tile-special
+			}
 		}
 		
-		.wall-login-content {
-			margin-top: 30px;
-			width: 200px;
-			margin-left: calc(~"50% - " 100px);
 
-			.labelgroup {
-				label {
-					display: block;
-					font-size: 12pt;
-					margin-bottom: 2px;
-				}
-
-				input {
-					padding: 5px;
-					width: 190px;
-					border: 1px solid @tile-special;
-					box-shadow: inset 0 1px 3px #ddd;
-					border-radius: 2px;
-					margin-bottom: 10px;
-
-					&:disabled {
-						border: 1px solid @gray;
-					}
-				}
-			}
-
-			button {
-				float: right;
-				margin-top: 30px;
-				background-color: @tile-background;
-				border: 1px solid @tile-special;
-				padding: 8px 12px;
-
-				&:hover {
-					color: @tile-background;
-					cursor: pointer;
-					background-color: @tile-special
-				}
-			}
-			
-
-		}
 	}
 }
 

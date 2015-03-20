@@ -8,27 +8,11 @@ import Immutable from 'immutable';
 import actions from './actions.js';
 import SETTINGS from './settings.js';
 import {RedditSource, PiaSource} from './sources.js';
-import {calculateColumns} from './utils.js';
 import Layout from './layout.js';
 import {userStore, dataStore} from './stores.js';
 import {ReactTile} from './tiles.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
-var ReactTileColumn = React.createClass({
-    displayName: 'column',
-    render: function () {
-        var tiles = this.props.tiles.toArray().map((tile) => {
-            return <ReactTile tile={tile} key={tile.get('uuid')}/>;
-        });
-
-        return (
-            <div className='tile-column' style={this.props.style}>
-                {tiles}
-            </div>
-        );
-    }
-});
 
 var ReactWall = React.createClass({
     displayName: 'wall',
@@ -38,52 +22,24 @@ var ReactWall = React.createClass({
     },
     getInitialState: function () {
         return {
-            items: Immutable.List(),
-            width: window.innerWidth
+            items: Immutable.List()
         }
     },
     componentDidMount: function() {
-
         actions.loadItems();
-
-        // proof of concept for making it responsive when resizing
-        window.addEventListener('resize', () => {
-
-            var width = window.innerWidth;
-
-            if (this.state.width === width) {
-                return;
-            }
-            
-            if (this.resizeCallback) {
-                clearTimeout(this.resizeCallback);    
-            }
-
-            this.resizeCallback = setTimeout(() => {
-                this.setState({width: width});
-                this.resizeCallback = false;
-            }, 200);
-
-        });
     },
     componentDidUpdate: function(props, state) {
-        if (state.width !== this.state.width) {
-            Layout.relayout();
+        if (this.state.items.count() !== state.items.count()) {
+            Layout.layout(state.items.count() !== 0);
         }
     },
     render: function () {
-        var chunks = _.range(calculateColumns(this.state.width)).map(i => { return Immutable.List(); });
-
-        this.state.items.forEach((item, i) => {
-            var index = i % chunks.length;
-            chunks[index] = chunks[index].push(item);
+        var tiles = this.state.items.toArray().map((tile) => {
+            return <ReactTile tile={tile} key={tile.get('uuid')}/>;
         });
-        // var style = {width: 'calc(' + 100 / this.state.numberOfColumns + '% - 20px)' }
-        var style = {};
-        var columns = chunks.map(items => <ReactTileColumn tiles={items} style={style}/>);
         return (
-            <div>
-                {columns}
+            <div className='tiles'>
+                {tiles}
             </div>
         );
     }
