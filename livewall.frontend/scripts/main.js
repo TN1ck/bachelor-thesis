@@ -13,7 +13,7 @@ import Layout from './layout.js';
 import {userStore, dataStore} from './stores.js';
 import {ReactTile} from './tiles.js';
 
-// import '../styles/main.less';
+import '../styles/main.less';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -215,4 +215,4 @@ var ReactApp = React.createClass({
     }
 });
 
-React.render(<ReactApp/>, document.getElementById('react'));
+export default ReactApp;
