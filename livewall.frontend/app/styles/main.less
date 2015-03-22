@@ -347,9 +347,27 @@ body {
 		margin-top: 15px;
 		float: left;
 
+		.source-add {
+			float: left;
+			padding: 7px;
+			border-radius: 4px;
+			border: solid 1px @tile-background;
+			&:after {
+				content: "";
+				font-family: "FontAwesome";
+			}
+			
+			&:hover {
+				cursor: pointer;
+				color: @tile-special;
+				background: @tile-background;
+			}
+		}
+
 		ul {
 			padding: 0;
 			margin: 0;
+			float: left;
 
 			li {
 				list-style-type: none;
@@ -358,7 +376,7 @@ body {
 
 				.source-container {
 					float: left;
-					border: solid 1px white;
+					border: solid 1px @tile-background;
 					border-radius: 4px;
 
 					.source-name {
@@ -370,12 +388,29 @@ body {
 
 					.source-search {
 						float: left;
-						border-radius: 4px;
 						padding: 7px;
-						margin-left: 5px;
+						border-left: solid 1px @tile-background;
 						color: @tile-background;
 						background: @tile-special;
 					}
+
+					.source-remove {
+						float: left;
+						padding: 7px 7px;
+						border-left: solid 1px @tile-background;
+
+						&:hover {
+							cursor: pointer;
+							color: @tile-special;
+							background: @tile-background;
+						}
+
+						&:after {
+							font-family: 'FontAwesome';
+							content: "";
+						}
+					}
+
 				}
 
 			}

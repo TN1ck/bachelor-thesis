@@ -1,9 +1,10 @@
 'use strict';
 
 import _ from 'lodash';
-import React from 'react';
+import React from 'react/addons';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
+// import ReactSelect from 'reactSelect';
 
 import actions from './actions.js';
 import SETTINGS from './settings.js';
@@ -11,6 +12,8 @@ import {RedditSource, PiaSource} from './sources.js';
 import Layout from './layout.js';
 import {userStore, dataStore} from './stores.js';
 import {ReactTile} from './tiles.js';
+
+// import '../styles/main.less';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -124,8 +127,11 @@ var ReactSource = React.createClass({
         return (
             <li>
                 <div className='source-container'>
-                    <div className='source-name'>{this.props.source.source.getName()}</div>
+                    <div className='source-name'>
+                        {this.props.source.source.getName()}
+                    </div>
                     <div className='source-search'>{this.props.source.source.search}</div>
+                    <div className='source-remove'></div>
                 </div>
             </li>
         );
@@ -145,6 +151,7 @@ var ReactHeader = React.createClass({
     render: function () {
 
         var sourceNames = _.map(this.state.sources, (s, k) => <ReactSource key={k} source={s}/>);
+        var options = ['pia|zentral', 'pia|haus', 'reddit'].map(d => <option value={d}>{d}</option>)
 
         return (
             <div className='wall-header'>
@@ -160,6 +167,8 @@ var ReactHeader = React.createClass({
                     <ul>
                         {sourceNames}
                     </ul>
+                    <div className='source-add'>
+                    </div>
                 </div>
             </div>
         );

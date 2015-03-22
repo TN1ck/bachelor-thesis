@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react/addons';
 
 import actions from './actions.js';
 import Layout from './layout.js';

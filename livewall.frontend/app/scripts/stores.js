@@ -1,8 +1,7 @@
 import _ from 'lodash';
-import React from 'react';
+import React from 'react/addons';
 import $ from 'jquery';
-import cookies from 'cookies';
-import store from 'store';
+import cookies from 'cookies-js';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
 
