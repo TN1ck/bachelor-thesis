@@ -89,12 +89,12 @@ export var ReactTile = React.createClass({
         Layout.layout(true);
     },
     render: function () {
-        
+
         var tile = React.createElement(tileTypes[this.props.tile.get('type')], {tile: this.props.tile});
         // precalculate the left offset of the tile so the animation starts at the correct position
-        var leftOffset = Layout.getLeftOffset(this.props.tile);
-        var style = {transform: 'translate( ' + leftOffset +  'px , 0px)'};
-        
+
+        var style = Layout.getStyle(this.props.tile);
+
         return (
             <article className='tile' style={style}>
                 <header className='tile-header'>

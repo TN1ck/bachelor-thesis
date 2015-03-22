@@ -4,6 +4,7 @@
 *.aux
 *.pdf
 *.run.xml
+*.out
 *.toc
 livewall.frontend/bower_components/
 livewall.frontend/dist/

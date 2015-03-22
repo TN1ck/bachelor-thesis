@@ -4,16 +4,20 @@ import {dataStore} from './stores.js';
 
 
 var Layout  = {
-    
+
     items: {},
     margin: 14,
     sortFunction: function (a, b) {
-        return -(a.get('score') - b.get('score'));
+        var result = -(a.get('score') - b.get('score'));
+        if (result === 0) {
+          result = a.get('uuid') > b.get('uuid') ? 1 : -1;
+        }
+        return result;
     },
     calculateColumns: function () {
 
         var width = window.innerWidth;
-        
+
         var screens = {
             large: 1200,
             desktop: 992,
@@ -43,7 +47,7 @@ var Layout  = {
     },
     relayout: function () {
         console.log('relayout');
-        
+
         var {width: columnWidth, columns: numberOfColumns} = this.calculateColumns();
         this.columnWidth = columnWidth;
         this.numberOfColumns = numberOfColumns;
@@ -60,7 +64,7 @@ var Layout  = {
         console.log('layouting...', transition);
 
         var chunks = _.range(this.numberOfColumns).map(i => { return []; });
-        
+
         dataStore.items.forEach((_item, i) => {
             var columnIndex = i % this.numberOfColumns;
             chunks[columnIndex].push(_item);
@@ -84,25 +88,28 @@ var Layout  = {
                     return;
                 }
 
+
                 // check if css was already set
                 if (item.topHeight !== height || item.relayout) {
 
-
                     var css = {
-                        transform: 'translate( ' + width +  'px , ' + height + 'px)',
+                        // round width and height so that everythig is pixel-perfect
+                        // this is normally not important, but in combination with translate3D it can lead to blurry elements
+                        transform: 'translate3D( ' + Math.round(width) +  'px , ' + Math.round(height) + 'px, 0)',
                         opacity: 1
                     };
 
                     if (!transition) {
-                        css['transition-property'] = 'opacity';
+                        item.$dom.addClass('animate-opacity').removeClass('animate-opacity-transform');
                     } else {
-                        // jquery needs the ','
-                        css['transition-property'] = 'transform, opacity';
+                        item.$dom.addClass('animate-opacity-transform').removeClass('animate-opacity');
                     }
 
-                    $(item.dom).css(css);
-                    
+                    item.$dom.css(css);
+
                     item.topHeight = height;
+                    item.width = width;
+                    item.relayout = false;
                 }
 
                 height += item.height + this.margin;
@@ -119,9 +126,24 @@ var Layout  = {
         var columnIndex = dataStore.items.indexOf(tile) % this.numberOfColumns;
         return (this.columnWidth + this.margin) * columnIndex;
     },
+    getStyle: function (tile) {
+        var item = this.items[tile.get('uuid')];
+        if (!item) {
+            var leftOffset = this.getLeftOffset(tile);
+            return {
+                transform: 'translate3D( ' + leftOffset +  'px , 0px, 0)',
+                // transform: '-webkit-translate3D( ' + leftOffset +  'px , 0px, 0)'
+            };
+        } else {
+            return {
+                transform: 'translate3D( ' + Math.round(item.width) + ',' + Math.round(item.topHeight) + 'px, 0)',
+                opacity: 1
+            };
+        }
+    },
     addTile: function (dom, props) {
         var height = dom.offsetHeight;
-        this.items[props.get('uuid')] = {dom: dom, height: height};
+        this.items[props.get('uuid')] = {dom: dom, $dom: $(dom), height: height};
     },
     removeTile: function(props) {
         delete this.items[props.get('uuid')];
@@ -142,16 +164,14 @@ window.addEventListener('resize', () => {
     if (Layout.width === width) {
         return;
     }
-    
-    if (resizeCallback) {
-        clearTimeout(resizeCallback);    
-    }
+
+    Layout.width = width;
+    clearTimeout(resizeCallback);
 
     resizeCallback = setTimeout(() => {
-        Layout.width = width;
         Layout.relayout();
         resizeCallback = false;
-    }, 200);
+    }, 600);
 
 });
 

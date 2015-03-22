@@ -7,8 +7,16 @@ export class RedditSource {
         this.search = search;
     }
 
+    getKey () {
+        return `reddit - ${this.search || 'frontpage'}`;
+    }
+
+    getName () {
+        return 'reddit';
+    }
+
     getData () {
-        
+
         var url = 'https://www.reddit.com';
 
         if (this.search) {
@@ -31,10 +39,10 @@ export class RedditSource {
 
                 if (d.domain.indexOf('imgur.com') > -1 && !(d.url.indexOf('/a/') > -1)
                     && !endsWith(d.url, '.gifv') || endsWith(d.url, '.jpg')) {
-                    
+
                     type = 'image';
-                    if (!(d.url.endsWith('.jpg') || d.url.endsWith('.png'))) {
-                        d.url += '.jpg';
+                    if (!(endsWith(d.url, '.jpg') || endsWith(d.url, '.png'))) {
+                        d.url = 'http://firesize.com/x/500x300/g_none/' + d.url + '.jpg';
                     }
                 }
 
@@ -57,8 +65,7 @@ export class RedditSource {
 };
 
 export class PiaSource {
-    constructor(user, broker, search, filter) {
-        this.user = user;
+    constructor(broker, search, filter) {
         this.search = search;
         this.brokers = {
             zentral: {
@@ -73,14 +80,22 @@ export class PiaSource {
         this.broker = this.brokers[broker];
     }
 
-    getData () {
+    getKey () {
+        return `pia - ${this.broker.name} - ${this.search}`;
+    }
+
+    getName () {
+        return `pia|${this.broker.name}`;
+    }
+
+    getData (user) {
         var url = SETTINGS.PIA_URL + '/' + this.broker.name;
-        
+
         var params = {
             query: this.search,
             start: 0,
             num: 10,
-            username: this.user.username,
+            username: user.username,
             action: 'ACTION_SOLR'
         };
 
@@ -94,11 +109,11 @@ export class PiaSource {
 
         // http://pia-gesis.dai-labor.de/zentral?username=gesis3&query=pia%20enterprise&action=ACTION_SOLR&filter=dai-labor&start=0&num=10&dojo.preventCache=1426084708658&json.wrf=dojo.io.script.jsonp_dojoIoScript4._jsonpCallback
 
-        return $.ajax({  
-            type: 'GET',        
+        return $.ajax({
+            type: 'GET',
             url: url,  // Send the login info to this page
-            data: params, 
-            dataType: 'jsonp', 
+            data: params,
+            dataType: 'jsonp',
             jsonp: 'json.wrf',
 
         }).promise().then(function (data) {
@@ -127,6 +142,6 @@ export class PiaSource {
                 items.push(item);
             });
             return {data: items};
-        });  
+        });
     }
 };

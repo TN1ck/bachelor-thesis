@@ -7,7 +7,8 @@
     "lodash": "^3.2.0",
     "react": "^0.12.2",
     "vinyl-source-stream": "^1.1.0",
-    "vinyl-transform": "^1.0.0"
+    "vinyl-transform": "^1.0.0",
+    "watchify": "^2.4.0"
   },
   "devDependencies": {
     "babelify": "^5.0.3",
