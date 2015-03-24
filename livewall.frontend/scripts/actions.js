@@ -8,7 +8,8 @@ var actions = Reflux.createActions([
     'loadItems',
     'upvoteItem',
     'addSource',
-    'removeSource'
+    'removeSource',
+    'changedSources'
 ]);
 
 export default actions;

@@ -68,7 +68,6 @@ var Layout  = {
         dataStore.items.forEach((_item, i) => {
             var columnIndex = i % this.numberOfColumns;
             chunks[columnIndex].push(_item);
-
         });
 
         var columns = chunks.map( (chunk) => {
@@ -88,9 +87,8 @@ var Layout  = {
                     return;
                 }
 
-
                 // check if css was already set
-                if (item.topHeight !== height || item.relayout) {
+                if (item.topHeight !== height || item.relayout || item.column !== j) {
 
                     var css = {
                         // round width and height so that everythig is pixel-perfect
@@ -110,6 +108,7 @@ var Layout  = {
                     item.topHeight = height;
                     item.width = width;
                     item.relayout = false;
+                    item.column = j;
                 }
 
                 height += item.height + this.margin;

@@ -1,3 +1,5 @@
+'use strict';
+
 import _ from 'lodash';
 import React from 'react/addons';
 import $ from 'jquery';
@@ -5,7 +7,7 @@ import cookies from 'cookies-js';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
 
-import {RedditSource, PiaSource} from './sources.js';
+import {Reddit, PiaZentral, PiaHaus} from './sources.js';
 import SETTINGS from './settings.js';
 import actions from './actions.js';
 
@@ -140,8 +142,12 @@ export var dataStore = Reflux.createStore({
         this.user = userStore.getState();
 
         this.sources = {};
-        this.availAbleSources = ['pia', 'reddit'];
 
+        this.availableSources = [
+            PiaHaus,
+            PiaZentral,
+            Reddit
+        ];
 
         // listen for changes of user
         this.listenTo(userStore, this.changeUser);
@@ -153,24 +159,24 @@ export var dataStore = Reflux.createStore({
         this.listenTo(actions.addSource, this.addSource);
         this.listenTo(actions.removeSource, this.removeSource);
 
-        var source = new PiaSource('zentral', 'dai labor');
+        var source = new PiaZentral('dai labor');
 
-        this.sources[source.getKey()] = {
+        this.sources[source.key] = {
             source: source,
             polling: false
         };
 
-        source = new RedditSource('politics');
-        this.sources[source.getKey()] = {
+        source = new Reddit('politics');
+        this.sources[source.key] = {
             source: source,
             polling: false
         };
 
-        // source = new RedditSource('earthporn');
-        // this.sources[source.getKey()] = {
-        //     source: source,
-        //     polling: false
-        // };
+        source = new Reddit('earthporn');
+        this.sources[source.key] = {
+            source: source,
+            polling: false
+        };
     },
 
     changeUser: function(user) {
@@ -182,36 +188,33 @@ export var dataStore = Reflux.createStore({
         this.triggerState();
     },
 
-    addSource: function (name, options) {
-        // a generell dispatcher would involve too much magic
-        // http://stackoverflow.com/questions/1606797/use-of-apply-with-new-operator-is-this-possible
-        var source;
-        switch (name) {
-            case 'pia':
-                source = new PiaSource(options.broker, options.search, options.filter);
-                break;
-            case 'reddit':
-                source = new RedditSource(options.search);
-                break;
-            default:
-                console.log('unrecognized source', name, options);
-        }
+    addSource: function (options) {
+
+        var source = _.find(this.availableSources, s => {
+            return s.name === options.source;
+        });
+
+        console.log(source.constructor);
 
         var sourceObject = {
-            source: source,
+            source: new source (options.search),
             polling: options.polling
         };
 
-        this.sources = this.sources[source.getKey()] = sourceObject;
-        this.loadSource(sourceObject);
+
+        this.sources[sourceObject.source.key] = sourceObject;
+        actions.changedSources(this.sources);
+        this.loadSource(sourceObject.source);
 
     },
     removeSource: function (source) {
-        delete this.sources[source.getKey()];
+        delete this.sources[source.key];
+        console.log('removing source', source, source.key);
 
         this.items = this.items.filter((item) => {
-            return item.get('source') !== source.source;
+            return item.get('source') !== source.key;
         });
+        actions.changedSources(this.sources);
         this.triggerState.bind(this)();
     },
 
@@ -223,7 +226,7 @@ export var dataStore = Reflux.createStore({
 
             data.data.forEach((d, i) => {
 
-                d.source = source.getKey();
+                d.source = source.key;
 
                 // append tile when image finishes loading
                 if (d.type === 'image') {
@@ -270,7 +273,7 @@ export var dataStore = Reflux.createStore({
         })
     },
 
-    reset: function (item) {
+    reset: function () {
         this.items = Immutable.List();
         this.cache = {};
     },
@@ -281,8 +284,8 @@ export var dataStore = Reflux.createStore({
         item = item.set('uuid', uuid);
 
         if (this.cache[uuid]) {
-            var item_cached = this.cache[uuid];
-            var index = item_cached.get('i');
+            var itemCached = this.cache[uuid];
+            var index = itemCached.get('i');
             item = item.set('i', index);
             this.items = this.items.set(index, item);
         } else {
@@ -296,10 +299,6 @@ export var dataStore = Reflux.createStore({
         }
 
         this.itemCounter++;
-    },
-
-    addItems: function (item) {
-
     },
 
     removeItem: function (item) {

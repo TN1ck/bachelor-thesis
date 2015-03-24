@@ -12,6 +12,7 @@ import {RedditSource, PiaSource} from './sources.js';
 import Layout from './layout.js';
 import {userStore, dataStore} from './stores.js';
 import {ReactTile} from './tiles.js';
+import {camelCaseToBar} from './utils.js';
 
 import '../styles/main.less';
 
@@ -46,13 +47,15 @@ var ReactWall = React.createClass({
         });
         var loading;
         if (tiles.length === 0) {
-            loading = <i className="fa fa-spinner fa-pulse white fa-5x"></i>;
+            loading = <i className="fa fa-gear fa-spin white fa-5x"></i>;
         }
 
         return (
             <div className='tiles'>
                 {tiles}
-                {loading}
+                <div className="wall-loader">
+                    {loading}
+                </div>
             </div>
         );
     }
@@ -123,15 +126,18 @@ var ReactLogin = React.createClass({
 
 var ReactSource = React.createClass({
     displayName: 'source',
+    removeSource: function () {
+        actions.removeSource(this.props.source.source);
+    },
     render: function () {
         return (
             <li>
                 <div className='source-container'>
                     <div className='source-name'>
-                        {this.props.source.source.getName()}
+                        {this.props.source.source.name}
                     </div>
                     <div className='source-search'>{this.props.source.source.search}</div>
-                    <div className='source-remove'></div>
+                    <div className='source-remove' onClick={this.removeSource}></div>
                 </div>
             </li>
         );
@@ -140,18 +146,34 @@ var ReactSource = React.createClass({
 
 var ReactHeader = React.createClass({
     displayName: 'header',
+    mixins: [Reflux.listenTo(actions.changedSources, 'onSourceChange')],
     getInitialState: function () {
         return {
             sources: dataStore.sources
         }
     },
+    onSourceChange: function (sources) {
+        this.setState({
+            sources: sources
+        })
+    },
     handleLogout:  function () {
         actions.logout();
+    },
+    handleSubmit: function (e) {
+
+        e.preventDefault();
+
+        var selectedSource = this.refs.select.getDOMNode().value;
+        var search         = this.refs.search.getDOMNode().value;
+        actions.addSource({search: search, source: selectedSource});
+
     },
     render: function () {
 
         var sourceNames = _.map(this.state.sources, (s, k) => <ReactSource key={k} source={s}/>);
-        var options = ['pia|zentral', 'pia|haus', 'reddit'].map(d => <option value={d}>{d}</option>)
+
+        var options = dataStore.availableSources.map(s => <option value={s.name}>{camelCaseToBar(s.name)}</option>)
 
         return (
             <div className='wall-header'>
@@ -167,8 +189,18 @@ var ReactHeader = React.createClass({
                     <ul>
                         {sourceNames}
                     </ul>
-                    <div className='source-add'>
-                    </div>
+                    <form className='select-group-container' onSubmit={this.handleSubmit}>
+                        <div className='select-container'>
+                            <select className='select' ref='select' defaultValue={"pia|zentral"}>
+                                {options}
+                            </select>
+                        </div>
+                        <div className='input'>
+                            <input required ref='search'></input>
+                        </div>
+                        <button className='source-add'>
+                        </button>
+                    </form>
                 </div>
             </div>
         );
