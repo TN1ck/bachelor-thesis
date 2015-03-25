@@ -35,7 +35,6 @@ export class User {
         this.password = password;
 
         return this.request().then(data => {
-            console.log(data);
             this.token = data.token;
             if (keep) {
                 this.setCookie()
@@ -161,22 +160,23 @@ export var dataStore = Reflux.createStore({
 
         var source = new PiaZentral('dai labor');
 
-        this.sources[source.key] = {
-            source: source,
-            polling: false
-        };
+        // this.sources[source.key] = {
+        //     source: source,
+        //     polling: false
+        // };
 
         source = new Reddit('politics');
         this.sources[source.key] = {
             source: source,
-            polling: false
+            polling: false,
+            loaded: false
         };
 
-        source = new Reddit('earthporn');
-        this.sources[source.key] = {
-            source: source,
-            polling: false
-        };
+        // source = new Reddit('earthporn');
+        // this.sources[source.key] = {
+        //     source: source,
+        //     polling: false
+        // };
     },
 
     changeUser: function(user) {
@@ -194,8 +194,6 @@ export var dataStore = Reflux.createStore({
             return s.name === options.source;
         });
 
-        console.log(source.constructor);
-
         var sourceObject = {
             source: new source (options.search),
             polling: options.polling
@@ -204,13 +202,12 @@ export var dataStore = Reflux.createStore({
 
         this.sources[sourceObject.source.key] = sourceObject;
         actions.changedSources(this.sources);
-        this.loadSource(sourceObject.source);
+
+        this.loadSource(sourceObject);
 
     },
     removeSource: function (source) {
         delete this.sources[source.key];
-        console.log('removing source', source, source.key);
-
         this.items = this.items.filter((item) => {
             return item.get('source') !== source.key;
         });
@@ -220,13 +217,14 @@ export var dataStore = Reflux.createStore({
 
     loadSource: function (source) {
 
-        source.loading = true;
+        source.loaded = false;
+        actions.changedSources(this.sources);
 
-        return source.getData(this.user).then(data => {
+        return source.source.getData(this.user).then(data => {
 
             data.data.forEach((d, i) => {
 
-                d.source = source.key;
+                d.source = source.source.key;
 
                 // append tile when image finishes loading
                 if (d.type === 'image') {
@@ -242,7 +240,8 @@ export var dataStore = Reflux.createStore({
                 }
             });
 
-            source.loading = false;
+            source.loaded = true;
+            actions.changedSources(this.sources);
             this.triggerState.bind(this)();
 
         });
@@ -251,7 +250,7 @@ export var dataStore = Reflux.createStore({
     loadItems: function () {
 
         _.values(this.sources).forEach(s => {
-            this.loadSource(s.source);
+            this.loadSource(s);
         });
 
         // polling
@@ -259,7 +258,7 @@ export var dataStore = Reflux.createStore({
             if (s.polling) {
                 var callback = () => {
                     console.log('polling...');
-                    this.loadSource(s.source);
+                    this.loadSource(s);
                     setTimeout(function() {
                         callback();
                     }, s.polling * 1000);

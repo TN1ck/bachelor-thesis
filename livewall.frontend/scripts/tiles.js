@@ -65,7 +65,9 @@ var ReactPiaTile = React.createClass({
 var tileTypes = {
     image: ReactImageTile,
     link: ReactLinkTile,
-    pia: ReactPiaTile
+    'pia-pdf': ReactPiaTile,
+    'pia-web': ReactPiaTile,
+    'pia-contact': ReactPiaTile,
 };
 
 export var ReactTile = React.createClass({
@@ -85,8 +87,8 @@ export var ReactTile = React.createClass({
         // the sole reason we are using immutable data structures
         return props.tile.get('score') !== this.props.tile.get('score');
     },
-    componentDidUpdate: function (props) {
-        Layout.layout(true);
+    componentWillUpdate: function (props) {
+        Layout.layout(true, true);
     },
     render: function () {
 
@@ -96,7 +98,7 @@ export var ReactTile = React.createClass({
         var style = Layout.getStyle(this.props.tile);
 
         return (
-            <article className='tile' style={style}>
+            <article className={'tile ' + style.class} style={style.css}>
                 <header className='tile-header'>
                     <div className='tile-header-upvote' onClick={this.handleUpvote}>
                         {this.props.tile.get('score')}

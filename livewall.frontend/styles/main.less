@@ -157,9 +157,9 @@ body {
 
 				&.tile-pia {
 
+					box-sizing: border-box;
 					background: @tile-background;
-					// padding: unit(@wall-padding, px);
-					// width: calc(~"100% - "unit(@wall-padding * 2, px));
+					padding: unit(@wall-padding, px);
 
 					a {
 						color: @tile-font;
@@ -198,9 +198,7 @@ body {
 							li {
 								list-style-type: none;
 								padding: 5px unit(@wall-padding, px);
-								margin: 0;
-								padding: 0;
-								// border-bottom: 1px solid @tile-special;
+								margin: 0 unit(-@wall-padding, px);
 
 								&:last-child {
 									border-bottom: none;
@@ -438,20 +436,17 @@ body {
 						background: @tile-special;
 					}
 
-					.source-remove {
+					.source-button {
 						float: left;
 						padding: 7px;
 						border-left: solid 1px @tile-background;
+						font-family: "FontAwesome";
+						-webkit-font-smoothing: antialiased;
 
 						&:hover {
 							cursor: pointer;
 							color: @tile-special;
 							background: @tile-background;
-						}
-
-						&:after {
-							font-family: 'FontAwesome';
-							content: "";
 						}
 					}
 

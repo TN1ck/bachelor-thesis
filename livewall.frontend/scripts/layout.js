@@ -1,5 +1,8 @@
+'use strict';
+
 import _ from 'lodash';
 import $ from 'jquery';
+import Immutable from 'immutable';
 import {dataStore} from './stores.js';
 
 
@@ -59,13 +62,11 @@ var Layout  = {
         this.layout();
 
     },
-    layout: function (transition = true) {
+    group: function (items) {
 
-        console.log('layouting...', transition);
+        var chunks = _.range(this.numberOfColumns).map(() => { return []; });
 
-        var chunks = _.range(this.numberOfColumns).map(i => { return []; });
-
-        dataStore.items.forEach((_item, i) => {
+        items.forEach((_item, i) => {
             var columnIndex = i % this.numberOfColumns;
             chunks[columnIndex].push(_item);
         });
@@ -75,10 +76,19 @@ var Layout  = {
             return chunk;
         });
 
-        var width = 0;
+        return columns;
+    },
+
+    layout: function (transition = true, dom = true) {
+
+        console.log('layouting...' + (dom ? '' : ' without touching the dom'), transition);
+
+        var columns = this.group(dataStore.items);
+
+        var left = 0;
         columns.forEach((column, j) => {
-            var height = 0;
-            var lastItem;
+
+            var top = 0;
             column.forEach((_item, i) => {
 
                 var item = this.items[_item.get('uuid')];
@@ -88,35 +98,36 @@ var Layout  = {
                 }
 
                 // check if css was already set
-                if (item.topHeight !== height || item.relayout || item.column !== j) {
+                if (item.position.top !== top || item.relayout || item.position.column !== j) {
 
                     var css = {
                         // round width and height so that everythig is pixel-perfect
                         // this is normally not important, but in combination with translate3D it can lead to blurry elements
-                        transform: 'translate3D( ' + Math.round(width) +  'px , ' + Math.round(height) + 'px, 0)',
+                        transform: 'translate3D( ' + Math.round(left) +  'px , ' + Math.round(top) + 'px, 0)',
                         opacity: 1
                     };
 
-                    if (!transition) {
-                        item.$dom.addClass('animate-opacity').removeClass('animate-opacity-transform');
-                    } else {
-                        item.$dom.addClass('animate-opacity-transform').removeClass('animate-opacity');
-                    }
+                    item.class = transition ? 'animate-opacity-transform' : 'animate-opacity';
+                    item.css = css;
 
-                    item.$dom.css(css);
-
-                    item.topHeight = height;
-                    item.width = width;
+                    item.position = {
+                        left: left,
+                        top: top,
+                        column: j
+                    };
                     item.relayout = false;
-                    item.column = j;
+
+                    if (dom) {
+                        item.$dom.css(css);
+                        item.$dom.removeClass('animate-opacity').removeClass('animate-opacity-transform').addClass(item.class);
+                    }
                 }
 
-                height += item.height + this.margin;
-                lastItem = item;
+                top += item.height + this.margin;
 
             });
 
-            width += this.columnWidth + this.margin;
+            left += this.columnWidth + this.margin;
 
         });
 
@@ -126,23 +137,31 @@ var Layout  = {
         return (this.columnWidth + this.margin) * columnIndex;
     },
     getStyle: function (tile) {
+
         var item = this.items[tile.get('uuid')];
+        var css;
+        var cssClass;
+
         if (!item) {
             var leftOffset = this.getLeftOffset(tile);
-            return {
+            css = {
                 transform: 'translate3D( ' + leftOffset +  'px , 0px, 0)',
                 // transform: '-webkit-translate3D( ' + leftOffset +  'px , 0px, 0)'
             };
+            cssClass = 'animate-opacity';
         } else {
-            return {
-                transform: 'translate3D( ' + Math.round(item.width) + ',' + Math.round(item.topHeight) + 'px, 0)',
-                opacity: 1
-            };
+            css = item.css;
+            cssClass = item.class;
+        }
+
+        return {
+            css: css,
+            class: cssClass
         }
     },
     addTile: function (dom, props) {
         var height = dom.offsetHeight;
-        this.items[props.get('uuid')] = {dom: dom, $dom: $(dom), height: height};
+        this.items[props.get('uuid')] = {dom: dom, $dom: $(dom), height: height, position: {top: 0, left: 0, column: -1}};
     },
     removeTile: function(props) {
         delete this.items[props.get('uuid')];

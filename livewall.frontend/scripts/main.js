@@ -130,6 +130,9 @@ var ReactSource = React.createClass({
         actions.removeSource(this.props.source.source);
     },
     render: function () {
+        var loading = <span className="fa-gear fa-spin"></span>;
+        var remove = <span className="fa-remove"></span>;
+
         return (
             <li>
                 <div className='source-container'>
@@ -137,7 +140,7 @@ var ReactSource = React.createClass({
                         {this.props.source.source.name}
                     </div>
                     <div className='source-search'>{this.props.source.source.search}</div>
-                    <div className='source-remove' onClick={this.removeSource}></div>
+                    <div className='source-button' onClick={this.removeSource}>{this.props.source.loaded ? remove : loading}</div>
                 </div>
             </li>
         );

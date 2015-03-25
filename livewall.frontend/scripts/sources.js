@@ -1,4 +1,6 @@
 import $ from 'jquery';
+
+import {getDomain} from './utils.js';
 import SETTINGS from './settings.js';
 
 // The options you can give a source should not change their returned json, i.e. this is how we seperate them
@@ -94,9 +96,25 @@ class Pia {
 
     processJSON (json) {
 
+        var docs = [];
+
+        var types = {
+            Leibniz: 'pia-pdf',
+            Kontakte: 'pia-contact',
+            Web: 'pia-web'
+        };
+
+        json.results.forEach((results) => {
+            var type = types[results.type] || results.type;
+            docs = docs.concat(results.solr.response.docs.map(item => {
+                item.type = type;
+                return item;
+            }));
+        });
+
         var items = [];
-        var docs = [].concat.apply([], json.results.map((d) => { return d.solr.response.docs; }));
-        docs.forEach(function(d, i) {
+
+        docs.forEach(function (d) {
             var content = d.file_content;
             var lines = content.split('...');
             lines = lines.filter(d => {
@@ -104,21 +122,22 @@ class Pia {
             }).map(d => {
                 return d + '...';
             });
+
             var item = {
                 author: d.result_type,
                 created: d.file_lastModification,
                 title: d.xmp_title,
                 content: lines,
                 url: d.file_URI,
-                // score: d.score,
-                domain: d.host,
-                type: 'pia',
+                domain: d.host || getDomain(d.file_URI),
+                type: d.type,
                 score: Math.round(d.normalized_score)
             };
             items.push(item);
         });
 
         return {data: items};
+
     }
 
     getData (user) {
