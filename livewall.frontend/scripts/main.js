@@ -45,9 +45,9 @@ export var ReactLogout = React.createClass({
                         <i className="fa fa-5x fa-check olive"></i>
                     </div>
                     <div className='center'>
-                        <button>
-                            <Link to="login">Anmelden</Link>
-                        </button>
+                        <Link to="login">
+                            <button>Anmelden</button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -168,9 +168,9 @@ export var ReactLogin = React.createClass({
         </form>;
 
         var logoutForm = <div className='center'>
-            <button>
-                <Link to="logout">Abmelden</Link>
-            </button>
+            <Link to="logout">
+                <button>Abmelden</button>
+            </Link>
         </div>;
 
         return (
