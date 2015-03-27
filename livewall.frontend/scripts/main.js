@@ -14,20 +14,9 @@ import Layout from './layout.js';
 import {dataStore} from './stores.js';
 import {ReactTile} from './tiles.js';
 import {camelCaseToBar} from './utils.js';
-import {user} from './auth.js';
+import {user, requireAuth} from './auth.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
-var requireAuth = {
-    statics: {
-        willTransitionTo: function (transition) {
-            console.log('check login..', user.isLogedIn());
-            if (!user.isLogedIn()) {
-                transition.redirect('/login', {}, {'nextPath' : transition.path});
-            }
-        }
-    }
-};
 
 export var ReactLogout = React.createClass({
     componentDidMount: function () {
@@ -129,7 +118,6 @@ export var ReactLogin = React.createClass({
                 router.replaceWith('/');
             }
         }).fail(() => {
-            console.log('fail');
             this.setState({error: true});
         });
 
@@ -159,8 +147,6 @@ export var ReactLogin = React.createClass({
                 <p>{text.error}</p>
             </div>
         };
-
-        console.log(this.state.error);
 
         var loginForm = <form onSubmit={this.handleSubmit}>
             <div className="labelgroup">
@@ -303,9 +289,6 @@ export var ReactApp = React.createClass({
     displayName: 'app',
     contextTypes: {
         router: React.PropTypes.func
-    },
-    componentWillMount () {
-        user.loginViaCookie();
     },
     render: function () {
         var router = this.context.router;

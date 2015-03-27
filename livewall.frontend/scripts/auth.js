@@ -8,6 +8,7 @@ class User {
         this.username = 'Gast';
         this.password = '';
         this.token = '';
+        this.loginViaCookie();
     }
 
     request () {
@@ -74,3 +75,14 @@ class User {
 }
 
 export var user = new User();
+
+export var requireAuth = {
+    statics: {
+        willTransitionTo: function (transition) {
+            console.log('check login..', user.isLogedIn());
+            if (!user.isLogedIn()) {
+                transition.redirect('/login', {}, {'nextPath' : transition.path});
+            }
+        }
+    }
+};

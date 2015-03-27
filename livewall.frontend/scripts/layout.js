@@ -26,7 +26,7 @@ var Layout  = {
             desktop: 992,
             tablet: 768,
             phone: 480
-        }
+        };
 
         var columns = 1;
 
