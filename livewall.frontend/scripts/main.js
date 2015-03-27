@@ -128,6 +128,9 @@ export var ReactLogin = React.createClass({
             } else {
                 router.replaceWith('/');
             }
+        }).fail(() => {
+            console.log('fail');
+            this.setState({error: true});
         });
 
 
@@ -145,8 +148,19 @@ export var ReactLogin = React.createClass({
 
         var text = {
             notLoged: 'Melden Sie sich an um die DAI-Wall zu benutzen.',
-            Loged: 'Sie sind bereits angemeldet, wollen sie sich abmelden?'
+            Loged: 'Sie sind bereits angemeldet, wollen sie sich abmelden?',
+            error: 'Ein Fehler ist aufgetreten, bitte stellen Sie sicher das ihr Benutzername und das zugehörige Passwort korrekt sind.'
         };
+
+        var error;
+        if (this.state.error) {
+            error = <div className='error'>
+                <b>Oh nein... </b>
+                <p>{text.error}</p>
+            </div>
+        };
+
+        console.log(this.state.error);
 
         var loginForm = <form onSubmit={this.handleSubmit}>
             <div className="labelgroup">
@@ -179,6 +193,7 @@ export var ReactLogin = React.createClass({
                     {userStatus ? text.Loged : text.notLoged}
                 </div>
                 <div className="wall-login-content">
+                    {error}
                     {userStatus ? logoutForm : loginForm}
                 </div>
             </div>
