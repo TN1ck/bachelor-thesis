@@ -100,10 +100,12 @@ var Layout  = {
                 // check if css was already set
                 if (item.position.top !== top || item.relayout || item.position.column !== j) {
 
+                    // round width and height so that everythig is pixel-perfect
+                    // this is normally not important, but in combination with translate3D it can lead to blurry elements
+                    var translate = 'translate3D( ' + Math.round(left) +  'px , ' + Math.round(top) + 'px, 0)';
                     var css = {
-                        // round width and height so that everythig is pixel-perfect
-                        // this is normally not important, but in combination with translate3D it can lead to blurry elements
-                        transform: 'translate3D( ' + Math.round(left) +  'px , ' + Math.round(top) + 'px, 0)',
+                        transform: translate,
+                        '-webkit-transform': translate,
                         opacity: 1
                     };
 
@@ -146,7 +148,7 @@ var Layout  = {
             var leftOffset = this.getLeftOffset(tile);
             css = {
                 transform: 'translate3D( ' + leftOffset +  'px , 0px, 0)',
-                // transform: '-webkit-translate3D( ' + leftOffset +  'px , 0px, 0)'
+                '-webkit-transform': 'translate3D( ' + leftOffset +  'px , 0px, 0)'
             };
             cssClass = 'animate-opacity';
         } else {
