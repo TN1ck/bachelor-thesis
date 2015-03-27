@@ -3,8 +3,6 @@ import {ReactApp, ReactLogin, ReactAdmin, ReactWall} from './main.js';
 var Router = require('react-router');
 var { Route, RouteHandler, Link, DefaultRoute} = Router;
 
-import '../styles/main.less';
-
 // React dev tools
 if (typeof window !== 'undefined') {
     window.react = React;

@@ -38,7 +38,7 @@ export class Reddit {
 
                 type = 'image';
                 if (!(endsWith(d.url, '.jpg') || endsWith(d.url, '.png'))) {
-                    d.url = 'http://firesize.com/x/500x300/g_none/' + d.url + '.jpg';
+                    d.url = 'http://firesize.com/x/500x500/g_none/' + d.url + '.jpg';
                 }
             }
 

@@ -1,6 +1,7 @@
 'use strict';
 
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: 'eval',
@@ -16,7 +17,8 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin("[name].css")
   ],
   resolve: {
     extensions: ['', '.js', '.jsx', '.css', '.scss']
@@ -38,7 +40,11 @@ module.exports = {
         'css-loader',
         'autoprefixer-loader',
       ], exclude: /node_modules/ },
-      { test: /\.less$/, loader: "style!css!less" },
+
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+      },
     ]
   },
 };
