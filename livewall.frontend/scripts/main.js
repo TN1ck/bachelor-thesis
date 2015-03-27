@@ -13,14 +13,27 @@ import Layout from './layout.js';
 import {userStore, dataStore} from './stores.js';
 import {ReactTile} from './tiles.js';
 import {camelCaseToBar} from './utils.js';
-
-import '../styles/main.less';
+import {RouteHandler, Link} from 'react-router';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-var ReactWall = React.createClass({
+var requireAuth = {
+    statics: {
+        willTransitionTo: function (transition) {
+            console.log('check login..', userStore.user.isLogedIn());
+            if (!userStore.user.isLogedIn()) {
+                transition.redirect('/login', {}, {'nextPath' : transition.path});
+            }
+        }
+    }
+};
+
+export var ReactWall = React.createClass({
     displayName: 'wall',
-    mixins: [Reflux.listenTo(dataStore, "onStoreChange"), Reflux.listenTo(userStore, "onUserChange")],
+    mixins: [
+        Reflux.listenTo(dataStore, "onStoreChange"), Reflux.listenTo(userStore, "onUserChange"),
+        requireAuth
+    ],
     onStoreChange: function(items) {
         this.setState({items: items});
     },
@@ -61,9 +74,12 @@ var ReactWall = React.createClass({
     }
 });
 
-var ReactLogin = React.createClass({
+export var ReactLogin = React.createClass({
     displayName: 'login',
     mixins: [Reflux.listenTo(userStore, "onStatusChange")],
+    contextTypes: {
+        router: React.PropTypes.func.isRequired
+    },
     getInitialState: function () {
         return {
             user: {},
@@ -79,14 +95,27 @@ var ReactLogin = React.createClass({
 
         e.preventDefault();
 
+        var router = this.context.router;
+        var nextPath = router.getCurrentQuery().nextPath;
+
         var username = this.refs.username.getDOMNode().value;
         var password = this.refs.password.getDOMNode().value;
 
         actions.login({
             username: username,
             password: password,
-            keep: this.state.remember
+            keep: this.state.remember,
+            callback: () => {
+                if (!userStore.user.isLogedIn())
+                    return this.setState({ error: true });
+                if (nextPath) {
+                    router.replaceWith(nextPath);
+                } else {
+                    router.replaceWith('/');
+                }
+            }
         });
+
 
     },
     handleChange: function (e) {
@@ -99,27 +128,29 @@ var ReactLogin = React.createClass({
         var loading = <i className="fa fa-spinner fa-pulse"></i>;
 
         return (
-            <form className="wall-login from-above" onSubmit={this.handleSubmit}>
-                <div className="wall-login-header">
-                    {'Du musst angemeldet sein um die dai-wall in vollem Umfang zu benutzen'}
-                </div>
-                <div className="wall-login-content">
-                    <div className="labelgroup">
-                        <label htmlFor="username">Benutzername</label>
-                        <input disabled={this.state.loading} ref="username" id="username" placeholder="Benutzername" required autofocus/>
+            <div className='wall-login'>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="wall-login-header">
+                        {'Du musst angemeldet sein um die dai-wall in vollem Umfang zu benutzen'}
                     </div>
-                    <div className="labelgroup">
-                        <label htmlFor="password">Password</label>
-                        <input ref="password" id="password" type="password" placeholder="Password" required/>
+                    <div className="wall-login-content">
+                        <div className="labelgroup">
+                            <label htmlFor="username">Benutzername</label>
+                            <input disabled={this.state.loading} ref="username" id="username" placeholder="Benutzername" required autofocus/>
+                        </div>
+                        <div className="labelgroup">
+                            <label htmlFor="password">Password</label>
+                            <input ref="password" id="password" type="password" placeholder="Password" required/>
+                        </div>
+                        <label htmlFor="remember">
+                            <input checked={this.state.remember} onChange={this.handleChange} ref="remember" id="remember" type="checkbox" /> Eingeloggt bleiben
+                        </label>
+                        <button disabled={this.state.loading}>
+                            Anmelden {this.state.loading ? loading : ''}
+                        </button>
                     </div>
-                    <label htmlFor="remember">
-                        <input checked={this.state.remember} onChange={this.handleChange} ref="remember" id="remember" type="checkbox" /> Eingeloggt bleiben
-                    </label>
-                    <button disabled={this.state.loading}>
-                        Anmelden {this.state.loading ? loading : ''}
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
         );
     }
 });
@@ -152,7 +183,7 @@ var ReactHeader = React.createClass({
     mixins: [Reflux.listenTo(actions.changedSources, 'onSourceChange')],
     getInitialState: function () {
         return {
-            sources: dataStore.sources
+            sources: dataStore.sources,
         }
     },
     onSourceChange: function (sources) {
@@ -182,7 +213,7 @@ var ReactHeader = React.createClass({
             <div className='wall-header'>
                 <div className='wall-header-topbar'>
                     <div className='wall-header-info'>
-                        Angemeldet als {this.props.user.username}
+                        Angemeldet als {userStore.user.username}
                     </div>
                     <div className='wall-header-settings'>
                         <span>settings</span> | <span onClick={this.handleLogout}>logout</span>
@@ -210,44 +241,30 @@ var ReactHeader = React.createClass({
     }
 });
 
+export var ReactAdmin = React.createClass({
+    mixins: [requireAuth],
+    render: function () {
+        return (
+            <div className='wall'>
+                <ReactHeader/>
+                <RouteHandler />
+            </div>
+        );
+    }
+})
 
-var ReactApp = React.createClass({
+export var ReactApp = React.createClass({
     displayName: 'app',
-    mixins: [Reflux.listenTo(userStore, "onStatusChange")],
-    onStatusChange: function(user) {
-        this.setState({user: user});
-    },
-    getInitialState: function () {
-        return {
-            user: userStore.getState(),
-            toggleLogin: true
-        };
+    componentWillMount () {
+        userStore.user.loginViaCookie();
     },
     render: function () {
-
-        var main;
-
-        if (!this.state.user.token) {
-          main = <ReactCSSTransitionGroup transitionName="from-above" transitionAppear={true}>
-              <ReactLogin />
-          </ReactCSSTransitionGroup>;
-        } else {
-          main = <div className={this.state.toggleLogin ? 'wall-container animate-1' : 'wall-container menu-open' } >
-            <div className='wall'>
-                <ReactHeader user={this.state.user}/>
-                <div className={this.state.user.token ? '' : 'blur'}>
-                    <ReactWall user={this.state.user} />
-                </div>
-            </div>
-          </div>;
-        }
-
         return (
-          <div>
-            {main}
-          </div>
+            <div>
+                <ReactCSSTransitionGroup transitionName="from-above" transitionAppear={true}>
+                    <RouteHandler />
+                </ReactCSSTransitionGroup>
+            </div>
         );
     }
 });
-
-export default ReactApp;

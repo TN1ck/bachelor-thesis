@@ -103,7 +103,7 @@ export var userStore = Reflux.createStore({
         var that = this;
         this.user.login(user.username, user.password, user.keep).then(() => {
             this.triggerState.bind(that)();
-        });
+        }).then(user.callback || function () { }).then(user.callback || function () {});
     },
 
     logout: function () {
@@ -160,18 +160,18 @@ export var dataStore = Reflux.createStore({
 
         var source = new PiaZentral('dai labor');
 
-        // this.sources[source.key] = {
-        //     source: source,
-        //     polling: false
-        // };
-
-        source = new Reddit('politics');
         this.sources[source.key] = {
             source: source,
-            polling: false,
-            loaded: false
+            polling: false
         };
 
+        // source = new Reddit('politics');
+        // this.sources[source.key] = {
+        //     source: source,
+        //     polling: false,
+        //     loaded: false
+        // };
+        //
         // source = new Reddit('earthporn');
         // this.sources[source.key] = {
         //     source: source,
