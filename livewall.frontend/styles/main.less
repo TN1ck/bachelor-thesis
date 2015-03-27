@@ -331,7 +331,15 @@ body {
 			margin-right: 7px;
 			float: right;
 
+			a {
+				text-decoration: none;
+				color: @tile-background;
+			}
+
 			span:hover {
+				a {
+					text-decoration: underline;
+				}
 				text-decoration: underline;
 				cursor: pointer;
 			}
@@ -488,6 +496,14 @@ body {
 		padding-bottom: 40px;
 		margin-left: calc(~"50% - " 100px);
 
+		.center {
+			position: relative;
+			left: 50%;
+		  	width: 100px;
+			margin-left: -50px;
+
+		}
+
 		.labelgroup {
 			label {
 				display: block;
@@ -510,16 +526,25 @@ body {
 		}
 
 		button {
-			float: right;
+			float: left;
 			margin-top: 30px;
 			background-color: @tile-background;
 			border: 1px solid @tile-special;
 			padding: 8px 12px;
 
+			a {
+				color: @black;
+				text-decoration: none;
+			}
+
 			&:hover {
 				color: @tile-background;
 				cursor: pointer;
-				background-color: @tile-special
+				background-color: @tile-special;
+
+				a {
+					color: @tile-background;
+				}
 			}
 		}
 

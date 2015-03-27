@@ -1,133 +1,12 @@
 'use strict';
 
 import _ from 'lodash';
-import React from 'react/addons';
-import $ from 'jquery';
-import cookies from 'cookies-js';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
 
 import {Reddit, PiaZentral, PiaHaus} from './sources.js';
-import SETTINGS from './settings.js';
 import actions from './actions.js';
-
-export class User {
-
-    constructor () {
-        this.username = 'Gast';
-        this.password = '';
-        this.token = '';
-    }
-
-    request () {
-
-        return $.ajax({
-            url: SETTINGS.LOGIN_URL,
-            data: 'username=' + this.username + '&' + 'password=' + this.password,
-            processData: false,
-            type: 'POST'
-        }).promise();
-    }
-
-    login (username, password, keep) {
-
-        this.username = username;
-        this.password = password;
-
-        return this.request().then(data => {
-            this.token = data.token;
-            if (keep) {
-                this.setCookie()
-            }
-        });
-
-    }
-
-    logout () {
-        this.username = 'Gast';
-        this.password = '';
-        this.token = '';
-        this.deleteCookie();
-    }
-
-    setCookie () {
-        if (this.token) {
-            cookies.set('username', this.username);
-            cookies.set('token', this.token);
-        }
-    }
-
-    deleteCookie () {
-        cookies.expire('username');
-        cookies.expire('token');
-    }
-
-    loginViaCookie () {
-
-        var username = cookies.get('username');
-        var token = cookies.get('token');
-
-        if (username && token) {
-            // make pseudo request and check if it works
-            this.token = token;
-            this.username = username;
-            return true;
-        }
-
-        return false;
-    }
-
-    isLogedIn () {
-        return !!this.token;
-    }
-}
-
-export var userStore = Reflux.createStore({
-
-    init: function () {
-
-        this.user = new User();
-        this.error = false;
-
-        this.user.loginViaCookie();
-        this.listenTo(actions.login, this.login);
-        this.listenTo(actions.logout, this.logout);
-
-    },
-
-    getInitialState: function () {
-        return this.triggerState.bind(this)();
-    },
-
-    login: function (user) {
-        var that = this;
-        this.user.login(user.username, user.password, user.keep).then(() => {
-            this.triggerState.bind(that)();
-        }).then(user.callback || function () { }).then(user.callback || function () {});
-    },
-
-    logout: function () {
-        this.user.logout();
-        this.triggerState.bind(this)();
-    },
-
-    getState: function () {
-        return {
-            username: this.user.username,
-            password: this.user.password,
-            token: this.user.token,
-            error: this.error
-        };
-    },
-
-    triggerState: function () {
-        var state = this.getState();
-        this.trigger(state);
-    }
-
-
-});
-
+import {user} from './auth.js';
 
 export var dataStore = Reflux.createStore({
 
@@ -138,8 +17,6 @@ export var dataStore = Reflux.createStore({
         this.cache = {};
         this.itemCounter = 0;
 
-        this.user = userStore.getState();
-
         this.sources = {};
 
         this.availableSources = [
@@ -147,9 +24,6 @@ export var dataStore = Reflux.createStore({
             PiaZentral,
             Reddit
         ];
-
-        // listen for changes of user
-        this.listenTo(userStore, this.changeUser);
 
         this.listenTo(actions.addItem, this.addItem);
         this.listenTo(actions.upvoteItem, this.upvoteItem);
@@ -177,15 +51,6 @@ export var dataStore = Reflux.createStore({
         //     source: source,
         //     polling: false
         // };
-    },
-
-    changeUser: function(user) {
-        console.log('changeUser');
-        this.user = user;
-        this.reset();
-        this.triggerState();
-        this.loadItems();
-        this.triggerState();
     },
 
     addSource: function (options) {
@@ -220,7 +85,7 @@ export var dataStore = Reflux.createStore({
         source.loaded = false;
         actions.changedSources(this.sources);
 
-        return source.source.getData(this.user).then(data => {
+        return source.source.getData(user).then(data => {
 
             data.data.forEach((d, i) => {
 
