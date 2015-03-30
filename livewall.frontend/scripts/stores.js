@@ -3,6 +3,7 @@
 import _ from 'lodash';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
+import jquery from 'jquery';
 
 import {Reddit, PiaZentral, PiaHaus} from './sources.js';
 import actions from './actions.js';
@@ -74,7 +75,10 @@ export var dataStore = Reflux.createStore({
     removeSource: function (source) {
         delete this.sources[source.key];
         this.items = this.items.filter((item) => {
-            return item.get('source') !== source.key;
+            var result = item.get('source') !== source.key;
+            // remove it from the cache
+            delete this.cache[item.get('uuid')];
+            return result;
         });
         actions.changedSources(this.sources);
         this.triggerState.bind(this)();
@@ -85,31 +89,43 @@ export var dataStore = Reflux.createStore({
         source.loaded = false;
         actions.changedSources(this.sources);
 
-        return source.source.getData(user).then(data => {
+        var result = jquery.Deferred();
+        try {
+            result = source.source.getData(user).then(data => {
 
-            data.data.forEach((d, i) => {
+                data.data.forEach((d, i) => {
 
-                d.source = source.source.key;
+                    d.source = source.source.key;
 
-                // append tile when image finishes loading
-                if (d.type === 'image') {
-                    var img = new Image;
-                    img.src = d.url;
-                    img.onload = () => {
+                    // append tile when image finishes loading
+                    if (d.type === 'image') {
+                        var img = new Image;
+                        img.src = d.url;
+                        img.onload = () => {
+                            var dIm = Immutable.Map(d);
+                            this.addItem(dIm);
+                        };
+                    } else {
                         var dIm = Immutable.Map(d);
-                        this.addItem(dIm);
-                    };
-                } else {
-                    var dIm = Immutable.Map(d);
-                    this.addItem(dIm, false);
-                }
+                        this.addItem(dIm, false);
+                    }
+                });
+
+                source.loaded = true;
+                actions.changedSources(this.sources);
+                this.triggerState.bind(this)();
+
+            }).fail(() => {
+                console.log('failed...');
+                source.loaded = false;
+                source.error = true;
+                actions.changedSources(this.sources);
             });
+        } catch (e) {
+            console.log('error while loading data.');
+        }
 
-            source.loaded = true;
-            actions.changedSources(this.sources);
-            this.triggerState.bind(this)();
-
-        });
+        return result;
     },
 
     loadItems: function () {

@@ -195,6 +195,10 @@ var ReactSource = React.createClass({
     render: function () {
         var loading = <span className="fa-gear fa-spin"></span>;
         var remove = <span className="fa-remove"></span>;
+        var error;
+        if (this.props.source.error) {
+            error = <div className='source-search source-search__error'>fehler beim laden</div>
+        }
 
         return (
             <li>
@@ -203,7 +207,8 @@ var ReactSource = React.createClass({
                         {this.props.source.source.name}
                     </div>
                     <div className='source-search'>{this.props.source.source.search}</div>
-                    <div className='source-button' onClick={this.removeSource}>{this.props.source.loaded ? remove : loading}</div>
+                    {error}
+                    <div className='source-button' onClick={this.removeSource}>{(this.props.source.loaded || this.props.source.error) ? remove : loading}</div>
                 </div>
             </li>
         );

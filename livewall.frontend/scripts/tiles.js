@@ -9,12 +9,14 @@ var ReactImageTile = React.createClass({
         return (
             <div className="tile-content tile-image">
                 <div className="tile-content-image">
-                    <img src={this.props.tile.get('url')}></img>
-                    <div className="tile-content-domain">
-                        {this.props.tile.get('domain')}
-                    </div>
+                    <a target='_blank' href={this.props.tile.get('url')}>
+                        <img src={this.props.tile.get('url')}></img>
+                        <div className="tile-content-domain">
+                            {this.props.tile.get('domain')}
+                        </div>
+                    </a>
                 </div>
-                <div className="tile-content-title">{this.props.tile.get('title')}</div>
+                <div className="tile-content-title"><a target='_blank' href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a></div>
             </div>
         );
     }
@@ -26,7 +28,7 @@ var ReactLinkTile = React.createClass({
         return (
             <div className="tile-content tile-link">
                 <div className="tile-content-title">
-                    <a href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a>
+                    <a target='_blank' href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a>
                 </div>
                 <div className="tile-content-domain">
                     {this.props.tile.get('domain')}
@@ -45,10 +47,10 @@ var ReactPiaTile = React.createClass({
         return (
             <div className="tile-content tile-pia">
                 <div className="tile-content-title">
-                    <a href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a>
+                    <a target='_blank' href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a>
                 </div>
                 <div className="tile-content-content">
-                    <a href={this.props.tile.get('url')}>
+                    <a target='_blank' href={this.props.tile.get('url')}>
                         <ul>
                             {lis}
                         </ul>

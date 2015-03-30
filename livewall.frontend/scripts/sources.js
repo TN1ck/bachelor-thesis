@@ -116,12 +116,16 @@ class Pia {
 
         docs.forEach(function (d) {
             var content = d.file_content;
-            var lines = content.split('...');
-            lines = lines.filter(d => {
-                return d.length > 2;
-            }).map(d => {
-                return d + '...';
-            });
+            var lines = content;
+
+            if (typeof content === 'string') {
+                lines = content.split('...');
+                lines = lines.filter(d => {
+                    return d.length > 2;
+                }).map(d => {
+                    return d + '...';
+                });
+            }
 
             var item = {
                 author: d.result_type,
