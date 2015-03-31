@@ -1,7 +1,11 @@
 import React from 'react';
-import {ReactApp, ReactLogin, ReactLogout, ReactAdmin, ReactWall} from './main.js';
 var Router = require('react-router');
 var { Route, RouteHandler, Link, DefaultRoute} = Router;
+
+import {ReactAdmin, ReactApp} from './components/app.js';
+import {ReactWall} from './components/wall.js';
+import {ReactLogin, ReactLogout} from './components/auth.js';
+import {ReactSettings} from './components/settings.js';
 
 import '../styles/main.less';
 
@@ -13,6 +17,7 @@ if (typeof window !== 'undefined') {
 var routes = (
     <Route handler={ReactApp}>
         <Route name='login' handler={ReactLogin}/>
+        <Route name='settings' handler={ReactSettings}/>
         <Route name='logout' handler={ReactLogout}/>
         <Route name='admin' path='/' handler={ReactAdmin}>
             <DefaultRoute name='wall' handler={ReactWall}/>

@@ -8,6 +8,7 @@ import jquery from 'jquery';
 import {Reddit, PiaZentral, PiaHaus} from './sources.js';
 import actions from './actions.js';
 import {user} from './auth.js';
+import {SETTINGS} from './settings.js';
 
 export var dataStore = Reflux.createStore({
 
@@ -33,25 +34,17 @@ export var dataStore = Reflux.createStore({
         this.listenTo(actions.addSource, this.addSource);
         this.listenTo(actions.removeSource, this.removeSource);
 
-        var source = new PiaZentral('dai labor');
+        SETTINGS.SOURCES.forEach(config => {
+            console.log(config);
+            var sourceClass = _.find(this.availableSources, {name: config.name});
+            var source = new sourceClass(config.search);
+            this.sources[source.key] = {
+                source: source,
+                polling: config.polling
+            };
 
-        this.sources[source.key] = {
-            source: source,
-            polling: false
-        };
+        });
 
-        // source = new Reddit('politics');
-        // this.sources[source.key] = {
-        //     source: source,
-        //     polling: false,
-        //     loaded: false
-        // };
-        //
-        // source = new Reddit('earthporn');
-        // this.sources[source.key] = {
-        //     source: source,
-        //     polling: false
-        // };
     },
 
     addSource: function (options) {
@@ -123,6 +116,7 @@ export var dataStore = Reflux.createStore({
             });
         } catch (e) {
             console.log('error while loading data.');
+            console.error(e);
         }
 
         return result;

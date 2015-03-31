@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import SETTINGS from './settings.js';
+import {SETTINGS} from './settings.js';
 import cookies from 'cookies-js';
 
 class User {

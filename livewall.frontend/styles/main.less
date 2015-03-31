@@ -53,6 +53,31 @@ body {
     user-select: none;
 }
 
+.labelgroup {
+
+	box-sizing: border-box;
+	width: calc(~"100% - "unit(@wall-padding * 2, px));
+
+	label {
+		display: block;
+		font-size: 12pt;
+		margin-bottom: 2px;
+	}
+
+	input {
+		padding: 5px;
+		width: calc(~"100% - "unit(10, px));
+		border: 1px solid @tile-special;
+		box-shadow: inset 0 1px 3px #ddd;
+		border-radius: 2px;
+		margin-bottom: 10px;
+
+		&:disabled {
+			border: 1px solid @gray;
+		}
+	}
+}
+
 .animate-opacity-transform {
 	transition-property: opacity transform;
 	-webkit-transition-property: transform opacity;
@@ -320,25 +345,25 @@ body {
 	text-align: left;
 }
 
+@wall-header-padding: 5px;
+@wall-header-font-size: 12px;
+
 .wall-header {
 	font-family: 'Source Code Pro', sans-serif;
 	letter-spacing: 0;
 	word-spacing: 0;
 	color: @white;
-	// height: 15px;
-	padding: 10px 0;
-	font-size: 12px;
+	padding: @wall-header-padding 0;
+	font-size: @wall-header-font-size;
 	background: @body-background;
-	// z-index: 999;
 	width: 100%;
 	float: left;
-	line-height: 0.6em;
-
 
 	.wall-header-topbar {
 
 		width: 100%;
 		float: left;
+		line-height: 0em;
 
 		.wall-header-info {
 			margin-left: 7px;
@@ -352,147 +377,152 @@ body {
 			a {
 				text-decoration: none;
 				color: @tile-background;
-			}
 
-			span:hover {
-				a {
+				&:hover {
 					text-decoration: underline;
 				}
-				text-decoration: underline;
-				cursor: pointer;
-			}
-		}
-	}
-
-	.wall-header-sources {
-		margin-left: 7px;
-		float: left;
-
-		.select-group-container {
-			margin-top: 10px;
-			float: left;
-			background: @tile-background;
-			border-radius: 4px;
-		}
-
-		.select-container {
-			float: left;
-		}
-
-		.input {
-			float: left;
-			input {
-				box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset;
-				height: 21px;
-				border: none;
-				border-left: solid 1px @tile-special;
-				padding-left: 5px;
-			}
-		}
-
-		.select {
-			float: left;
-			display: block;
-			width: 100%;
-			height: 23px;
-			padding: 0 7px;
-			font-size: 12px;
-			border: solid 1px @tile-background;
-			color: @tile-special;
-			background-color: @tile-background;
-			border-radius: 0px;
-			border-top-left-radius: 4px;
-			border-bottom-left-radius: 4px;
-			font-family: 'Source Code Pro', sans-serif;
-		}
-
-		.source-add {
-			display: block;
-			float: left;
-			height: 23px;
-			padding: 3px 7px;
-			margin: 0;
-			background: @tile-special;
-			border: none;
-			border: solid 1px @tile-background;
-			border-radius: 4px;
-			border-top-left-radius: 0;
-			border-bottom-left-radius: 0;
-			color: @tile-background;
-
-			&:after {
-				content: "";
-				font-family: "FontAwesome";
 			}
 
-			&:hover {
-				cursor: pointer;
-				color: @tile-special;
-				background: @tile-background;
-			}
-		}
-
-		ul {
-			float: left;
-			padding: 0;
-			margin: 0;
-
-			li {
-				list-style-type: none;
-				float: left;
-				margin-right: 10px;
-				margin-top: 10px;
-
-				.source-container {
-					float: left;
-					border: solid 1px @tile-background;
-					border-radius: 4px;
-
-					.source-name {
-						float: left;
-						color: @tile-special;
-						background: @tile-background;
-						padding: 7px;
-					}
-
-					.source-search {
-
-						float: left;
-						padding: 7px;
-						border-left: solid 1px @tile-background;
-						color: @tile-background;
-						background: @tile-special;
-
-						&__error {
-							background: @red;
-							color: @white;
-						}
-					}
-
-					.source-button {
-						float: left;
-						padding: 7px;
-						border-left: solid 1px @tile-background;
-						font-family: "FontAwesome";
-						-webkit-font-smoothing: antialiased;
-
-						&:hover {
-							cursor: pointer;
-							color: @tile-special;
-							background: @tile-background;
-						}
-					}
-
-				}
-
-			}
 		}
 	}
 
 }
 
-.wall-login {
-	top: 0;
+.sources {
+	line-height: 0.6em;
+	font-family: 'Source Code Pro', sans-serif;
+	margin-left: 7px;
+	float: left;
+	font-size: 12px;
+
+	.select-group-container {
+		border: solid 1px @tile-special;
+		margin-top: 10px;
+		float: left;
+		background: @tile-background;
+		border-radius: 4px;
+	}
+
+	.select-container {
+		float: left;
+	}
+
+	.input {
+		float: left;
+		input {
+			box-shadow: 0 0 4px rgba(0, 0, 0, 0.4) inset;
+			height: 21px;
+			border: none;
+			border-left: solid 1px @tile-special;
+			padding-left: 5px;
+		}
+	}
+
+	.select {
+		float: left;
+		display: block;
+		width: 100%;
+		height: 23px;
+		padding: 0 7px;
+		border: solid 1px @tile-background;
+		color: @tile-special;
+		background-color: @tile-background;
+		border-radius: 0px;
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+		font-family: 'Source Code Pro', sans-serif;
+	}
+
+	.source-add {
+		display: block;
+		float: left;
+		height: 23px;
+		padding: 3px 7px;
+		margin: 0;
+		background: @tile-special;
+		border: none;
+		border: solid 1px @tile-background;
+		border-radius: 4px;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		color: @tile-background;
+
+		&:after {
+			content: "";
+			font-family: "FontAwesome";
+		}
+
+		&:hover {
+			cursor: pointer;
+			color: @tile-special;
+			background: @tile-background;
+		}
+	}
+
+	ul {
+		float: left;
+		padding: 0;
+		margin: 0;
+
+		li {
+			background: @tile-special;
+			border-radius: 5px;
+			border: solid 1px @tile-special;
+			list-style-type: none;
+			float: left;
+			margin-right: 10px;
+			margin-top: 10px;
+
+			.source-container {
+				float: left;
+				border: solid 1px @tile-background;
+				border-radius: 4px;
+
+				.source-name {
+					float: left;
+					color: @tile-special;
+					background: @tile-background;
+					padding: 7px;
+				}
+
+				.source-search {
+
+					float: left;
+					padding: 7px;
+					border-left: solid 1px @tile-background;
+					color: @tile-background;
+					background: @tile-special;
+
+					&__error {
+						background: @red;
+						color: @white;
+					}
+				}
+
+				.source-button {
+					float: left;
+					padding: 7px;
+					color: @tile-background;
+					border-left: solid 1px @tile-background;
+					font-family: "FontAwesome";
+					-webkit-font-smoothing: antialiased;
+
+					&:hover {
+						cursor: pointer;
+						color: @tile-special;
+						background: @tile-background;
+					}
+				}
+
+			}
+
+		}
+	}
+}
+
+
+.fullpage {
+	top: @wall-header-padding * 2 + @wall-header-font-size * 1.25;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -503,6 +533,11 @@ body {
 	background-color: @tile-background;
 	// border: 2px solid @tile-special;
 	color: @tile-font;
+}
+
+.wall-login {
+
+	.fullpage();
 
 	.wall-login-header {
 		// font-family: 'Pacifico', cursive;
@@ -527,27 +562,6 @@ body {
 		  	width: 100px;
 			margin-left: -50px;
 
-		}
-
-		.labelgroup {
-			label {
-				display: block;
-				font-size: 12pt;
-				margin-bottom: 2px;
-			}
-
-			input {
-				padding: 5px;
-				width: 190px;
-				border: 1px solid @tile-special;
-				box-shadow: inset 0 1px 3px #ddd;
-				border-radius: 2px;
-				margin-bottom: 10px;
-
-				&:disabled {
-					border: 1px solid @gray;
-				}
-			}
 		}
 
 		button {
@@ -575,6 +589,10 @@ body {
 
 
 	}
+}
+
+.wall-settings {
+	padding: unit(@wall-padding, px);
 }
 
 .wall-container {
@@ -621,6 +639,16 @@ body {
 	100% { opacity: 1; }
 }
 
+@-webkit-keyframes fadeOut {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+@keyframes fadeOut {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
 @-webkit-keyframes moveIn {
 	0% { opacity: 0; }
 	100% { -webkit-transform: translateY(0); opacity: 1; }
@@ -641,6 +669,15 @@ body {
 	100% { -webkit-transform: translateY(-200px); transform: translateY(0); opacity: 0; }
 }
 
+@-webkit-keyframes flyOut {
+	0% { -webkit-transform: scale(1); }
+	100% { -webkit-transform: scale(0.01, 0.01); }
+}
+
+@keyframes flyOut {
+	0% { transform: scaleZ(1); }
+	100% { transform: scaleZ(0.01, 0.01); }
+}
 
 .from-above {
 
@@ -664,6 +701,40 @@ body {
 		&.from-above-leave-active {
 			-webkit-animation: moveOut 0.65s ease forwards;
 			animation: moveOut 0.65s ease forwards;
+		}
+	}
+}
+
+.fly-out {
+
+	&-enter, &-appear {
+
+	}
+
+	&-leave {
+
+		&.fly-out-leave-active {
+			-webkit-animation: flyOut 0.65s ease forwards;
+			animation: flyOut 0.65s ease forwards;
+		}
+	}
+}
+
+
+.fade {
+
+	&-enter, &-appear {
+		&.fade-enter-active, &.fade-appear-active {
+			-webkit-animation: fadeIn 0.65s ease forwards;
+			animation: fadeIn 0.65s ease forwards;
+		}
+	}
+
+	&-leave {
+
+		&.fade-leave-active {
+			-webkit-animation: fadeOut 0.65s ease forwards;
+			animation: fadeOut 0.65s ease forwards;
 		}
 	}
 }

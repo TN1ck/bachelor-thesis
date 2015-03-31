@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 import {getDomain} from './utils.js';
-import SETTINGS from './settings.js';
+import {SETTINGS} from './settings.js';
 
 // The options you can give a source should not change their returned json, i.e. this is how we seperate them
 // Due to this, we have a PiaSource for every broker it can can use
