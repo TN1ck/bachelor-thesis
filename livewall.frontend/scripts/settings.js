@@ -6,13 +6,10 @@ import _ from 'lodash';
 var defaults = {};
 
 defaults.LOGIN_URL = 'http://pia-gesis.dai-labor.de/login/';
+defaults.PROFILE_URL = 'http://pia-gesis.dai-labor.de/haus';
 defaults.PIA_URL   = 'http://pia-gesis.dai-labor.de';
 
-defaults.SOURCES = [
-    {name: 'Reddit', search: 'politics'},
-    {name: 'PiaZentral', search: 'dai'},
-    {name: 'PiaZentral', search: 'machine'},
-];
+defaults.SEARCHES = ['politics', 'machine', 'dai', 'test', 'wurst', 'whatever'];
 
 
 

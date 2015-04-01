@@ -2,6 +2,7 @@ import $ from 'jquery';
 
 import {getDomain} from './utils.js';
 import {SETTINGS} from './settings.js';
+import {hashCode, colors} from './utils.js';
 
 // The options you can give a source should not change their returned json, i.e. this is how we seperate them
 // Due to this, we have a PiaSource for every broker it can can use
@@ -29,6 +30,8 @@ export class Reddit {
             return (lastIndex !== -1) && (lastIndex + term.length === str.length);
         }
 
+        var color = colors[hashCode(this.search) % colors.length];
+
         var items = json.data.children.map((d, i) => {
             d = d.data;
             var type = 'link';
@@ -43,6 +46,9 @@ export class Reddit {
             }
 
             return {
+                color: color,
+                search: this.search,
+                uuid: d.permalink,
                 author: d.author,
                 created: d.created,
                 title: d.title,
@@ -114,7 +120,9 @@ class Pia {
 
         var items = [];
 
-        docs.forEach(function (d) {
+        var color = colors[hashCode(this.search) % colors.length];
+
+        docs.forEach((d) => {
             var content = d.file_content;
             var lines = content;
 
@@ -128,6 +136,9 @@ class Pia {
             }
 
             var item = {
+                color: color,
+                search: this.search,
+                uuid: d.file_URI,
                 author: d.result_type,
                 created: d.file_lastModification,
                 title: d.xmp_title,

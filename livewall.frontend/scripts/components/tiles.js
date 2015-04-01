@@ -2,6 +2,7 @@ import React from 'react/addons';
 
 import actions from '../actions.js';
 import Layout from '../layout.js';
+import {hashCode, colors, colorLuminance} from '../utils.js';
 
 var ReactImageTile = React.createClass({
     displayName: 'ImageTile',
@@ -30,9 +31,6 @@ var ReactLinkTile = React.createClass({
                 <div className="tile-content-title">
                     <a target='_blank' href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a>
                 </div>
-                <div className="tile-content-domain">
-                    {this.props.tile.get('domain')}
-                </div>
             </div>
         );
     }
@@ -48,16 +46,6 @@ var ReactPiaTile = React.createClass({
             <div className="tile-content tile-pia">
                 <div className="tile-content-title">
                     <a target='_blank' href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a>
-                </div>
-                <div className="tile-content-content">
-                    <a target='_blank' href={this.props.tile.get('url')}>
-                        <ul>
-                            {lis}
-                        </ul>
-                    </a>
-                </div>
-                <div className="tile-content-domain">
-                    {this.props.tile.get('domain')}
                 </div>
             </div>
         );
@@ -98,11 +86,16 @@ export var ReactTile = React.createClass({
         // precalculate the left offset of the tile so the animation starts at the correct position
 
         var style = Layout.getStyle(this.props.tile);
+        var color = this.props.tile.get('color')
+        var colorLight = color;
+        var colorDark = color;
+
+        style.css['background-color'] = color;
 
         return (
-            <article className={'tile ' + style.class} style={style.css}>
-                <header className='tile-header'>
-                    <div className='tile-header-upvote' onClick={this.handleUpvote}>
+            <article className={`tile white ${style.class}`} style={style.css}>
+                <header className='tile-header' style={{'background-color': colorDark, color: 'white'}}>
+                    <div className='tile-header-upvote' onClick={this.handleUpvote} style={{'background-color': colorLight, color: 'white'}}>
                         {this.props.tile.get('score')}
                     </div>
                     <div className='tile-header-info'>
@@ -110,6 +103,11 @@ export var ReactTile = React.createClass({
                     </div>
                 </header>
                 {tile}
+                <footer className="tile-footer" style={{'background-color': colorDark, color: 'white'}}>
+                    <div className="tile-footer-domain">
+                        {this.props.tile.get('domain')}
+                    </div>
+                </footer>
             </article>
         );
 

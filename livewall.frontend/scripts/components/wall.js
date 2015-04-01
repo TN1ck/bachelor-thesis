@@ -10,7 +10,7 @@ import {user, requireAuth} from '../auth.js';
 import actions from '../actions.js';
 
 import {ReactTile} from './tiles.js';
-import {ReactSources} from './sources.js';
+import {ReactSearches} from './searches.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -38,6 +38,7 @@ export var ReactWall = React.createClass({
         }
     },
     render: function () {
+
         var tiles = this.state.items.toArray().map((tile) => {
             return <ReactTile tile={tile} key={tile.get('uuid')}/>;
         });
@@ -46,9 +47,10 @@ export var ReactWall = React.createClass({
             loading = <i className="fa fa-gear fa-spin white fa-5x"></i>;
         }
 
+
         return (
             <div>
-                <ReactSources />
+                <ReactSearches />
                 <div className='tiles'>
                     <ReactCSSTransitionGroup transitionName="fade" transitionAppear={false} transitionEnter={false}>
                         {tiles}

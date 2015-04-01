@@ -5,7 +5,7 @@ import Reflux from 'reflux';
 import Immutable from 'immutable';
 import jquery from 'jquery';
 
-import {Reddit, PiaZentral, PiaHaus} from './sources.js';
+import {Reddit, PiaZentral, PiaHaus} from './agents.js';
 import actions from './actions.js';
 import {user} from './auth.js';
 import {SETTINGS} from './settings.js';
@@ -18,8 +18,7 @@ export var dataStore = Reflux.createStore({
 
         this.cache = {};
         this.itemCounter = 0;
-
-        this.sources = {};
+        this.searches = {};
 
         this.availableSources = [
             PiaHaus,
@@ -31,64 +30,87 @@ export var dataStore = Reflux.createStore({
         this.listenTo(actions.upvoteItem, this.upvoteItem);
         this.listenTo(actions.loadItems, this.loadItems);
 
-        this.listenTo(actions.addSource, this.addSource);
-        this.listenTo(actions.removeSource, this.removeSource);
+        this.listenTo(actions.addSearch, this.addSearch);
+        this.listenTo(actions.removeSearch, this.removeSearch);
 
-        SETTINGS.SOURCES.forEach(config => {
-            console.log(config);
-            var sourceClass = _.find(this.availableSources, {name: config.name});
-            var source = new sourceClass(config.search);
-            this.sources[source.key] = {
-                source: source,
-                polling: config.polling
+        SETTINGS.SEARCHES.forEach(searchTerm => {
+            var agents = this.availableSources.map(source => {
+                var searchAgent = new source(searchTerm);
+                return {
+                    agent: searchAgent,
+                    loaded: false,
+                    polling: false,
+                };
+            })
+
+            this.searches[searchTerm] = {
+                loaded: false,
+                agents: agents,
+                name: searchTerm
             };
 
         });
 
     },
 
-    addSource: function (options) {
+    addSearch: function (searchTerm) {
 
-        var source = _.find(this.availableSources, s => {
-            return s.name === options.source;
+        if (this.searches[searchTerm]) {
+            return;
+        }
+
+
+        var agents = this.availableSources.map(source => {
+
+            var searchAgent = {
+                agent: new source(searchTerm),
+                loaded: false,
+                polling: false
+            };
+
+            this.loadData(searchAgent);
+
+            return searchAgent
         });
 
-        var sourceObject = {
-            source: new source (options.search),
-            polling: options.polling
+        this.searches[searchTerm] = {
+            loaded: false,
+            agents: agents,
+            name: searchTerm
         };
 
+        actions.changedSearches(this.searches);
 
-        this.sources[sourceObject.source.key] = sourceObject;
-        actions.changedSources(this.sources);
-
-        this.loadSource(sourceObject);
 
     },
-    removeSource: function (source) {
-        delete this.sources[source.key];
+    removeSearch: function (searchTerm) {
+
+        delete this.searches[searchTerm];
+
         this.items = this.items.filter((item) => {
-            var result = item.get('source') !== source.key;
+            var result = item.get('search') !== searchTerm;
             // remove it from the cache
-            delete this.cache[item.get('uuid')];
+            if (!result) {
+                delete this.cache[item.get('uuid')];
+            }
             return result;
         });
-        actions.changedSources(this.sources);
+        actions.changedSearches(this.searches);
         this.triggerState.bind(this)();
     },
 
-    loadSource: function (source) {
+    loadData: function (agent) {
 
-        source.loaded = false;
-        actions.changedSources(this.sources);
+        agent.loaded = false;
+        actions.changedSearches(this.searches);
 
         var result = jquery.Deferred();
         try {
-            result = source.source.getData(user).then(data => {
+            result = agent.agent.getData(user).then(data => {
 
                 data.data.forEach((d, i) => {
 
-                    d.source = source.source.key;
+                    d.agent = agent.agent.key;
 
                     // append tile when image finishes loading
                     if (d.type === 'image') {
@@ -104,15 +126,15 @@ export var dataStore = Reflux.createStore({
                     }
                 });
 
-                source.loaded = true;
-                actions.changedSources(this.sources);
+                agent.loaded = true;
+                actions.changedSearches(this.searches);
                 this.triggerState.bind(this)();
 
             }).fail(() => {
                 console.log('failed...');
-                source.loaded = false;
-                source.error = true;
-                actions.changedSources(this.sources);
+                agent.loaded = false;
+                agent.error = true;
+                actions.changedSearches(this.searches);
             });
         } catch (e) {
             console.log('error while loading data.');
@@ -124,27 +146,27 @@ export var dataStore = Reflux.createStore({
 
     loadItems: function () {
 
-        _.values(this.sources).forEach(s => {
-            this.loadSource(s);
+        _.values(this.searches).forEach(search => {
+            search.agents.forEach(this.loadData);
         });
 
         // polling
-        _.values(this.sources).forEach(s => {
-            if (s.polling) {
-                var callback = () => {
-                    console.log('polling...');
-                    this.loadSource(s);
-                    setTimeout(function() {
-                        callback();
-                    }, s.polling * 1000);
-                };
-
-                setTimeout(function() {
-                    callback();
-                }, s.polling * 1000);
-
-            }
-        })
+        // _.values(this.searches).forEach(s => {
+        //     if (s.polling) {
+        //         var callback = () => {
+        //             console.log('polling...');
+        //             this.loadData(s);
+        //             setTimeout(function() {
+        //                 callback();
+        //             }, s.polling * 1000);
+        //         };
+        //
+        //         setTimeout(function() {
+        //             callback();
+        //         }, s.polling * 1000);
+        //
+        //     }
+        // });
     },
 
     reset: function () {
@@ -154,20 +176,18 @@ export var dataStore = Reflux.createStore({
 
     addItem: function (item, trigger = true) {
 
-        var uuid = item.get('title') + item.get('content');
-        item = item.set('uuid', uuid);
+        var uuid = item.get('uuid');
 
         if (this.cache[uuid]) {
             var itemCached = this.cache[uuid];
-            var index = itemCached.get('i');
-            item = item.set('i', index);
+            var index = this.items.indexOf(itemCached);
             this.items = this.items.set(index, item);
         } else {
-            item = item.set('i', this.items.count());
             this.items = this.items.push(item);
         }
 
         this.cache[uuid] = item;
+
         if (trigger) {
             this.triggerState.bind(this)();
         }
@@ -176,8 +196,8 @@ export var dataStore = Reflux.createStore({
     },
 
     removeItem: function (item) {
-        var index = item.get('i');
-        this.items = this.items.splice(index, 1);
+        var index = this.items.indexOf(item);
+        this.items = this.items.delete(index);
         delete this.cache[item.get('uuid')];
     },
 
@@ -186,8 +206,9 @@ export var dataStore = Reflux.createStore({
     },
 
     upvoteItem: function (item) {
-        item = item.update('score', x => { return x + 1 });
-        this.items = this.items.set(item.get('i'), item);
+        var index = this.items.indexOf(item);
+        item = item.update('score', x => { return x + 1; });
+        this.items = this.items.set(index, item);
         this.triggerState.bind(this)(this.items);
     }
 

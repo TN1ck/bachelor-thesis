@@ -9,7 +9,7 @@ import {dataStore} from './stores.js';
 var Layout  = {
 
     items: {},
-    margin: 14,
+    margin: 4 * 2,
     sortFunction: function (a, b) {
         var result = -(a.get('score') - b.get('score'));
         if (result === 0) {
@@ -31,11 +31,11 @@ var Layout  = {
         var columns = 1;
 
         if (width > screens.large) {
-            columns = 4;
+            columns = 5;
         } else if (width > screens.desktop) {
-            columns = 4;
+            columns = 5;
         } else if (width > screens.tablet) {
-            columns = 3;
+            columns = 4;
         } else if (width > screens.phone) {
             columns = 2;
         }

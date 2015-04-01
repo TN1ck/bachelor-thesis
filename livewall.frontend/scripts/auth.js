@@ -11,14 +11,135 @@ class User {
         this.loginViaCookie();
     }
 
-    request () {
-
+    loginRequest () {
         return $.ajax({
             url: SETTINGS.LOGIN_URL,
-            data: 'username=' + this.username + '&' + 'password=' + this.password,
-            processData: false,
+            data: {
+                username: this.username,
+                password: this.password
+            },
             type: 'POST'
         }).promise();
+    }
+
+    profile () {
+
+        var params = {
+            username: this.username,
+            token: this.token,
+            action: 'ACTION_MANAGE_LOAD_PROFILE'
+        };
+
+        return $.ajax({
+            type: 'GET',
+            url: SETTINGS.PROFILE_URL,
+            data: params,
+            dataType: 'jsonp',
+            jsonp: 'json.wrf',
+
+        }).promise().then(json => {
+            console.log(json);
+
+            // extract searches and favorites
+            var extract = function (node, results) {
+                // is it a leave?
+                var isLeave = !node.itemgroup;
+                // recursion end
+                if (isLeave) {
+                    results[node.source] = node;
+                } else {
+                    node.itemgroup.forEach((n) => extract(n, results));
+                }
+                return;
+            };
+
+            // favorites are the first entry, searches the second
+            this.profileRoots = {
+                favorites: json[0],
+                searches: json[1]
+            };
+
+            var searches = {};
+            var favorites = {};
+
+            extract(this.profileRoots.favorites, favorites);
+            extract(this.profileRoots.searches, searches);
+
+            this.searches = searches;
+            this.favorites = favorites;
+
+            return json;
+        });
+
+    }
+
+    favorite (item) {
+
+        if (!this.profileRoots.favorites) {
+            console.error('No favorite root set.');
+            return;
+        }
+
+        var params = {
+            username: this.username,
+            token: this.token,
+            action: 'ACTION_MANAGE_ADD',
+            parentId: this.profileRoots.favorites.id,
+            item: JSON.stringify(item)
+        };
+
+        return $.ajax({
+            type: 'GET',
+            url: SETTINGS.PROFILE_URL,
+            data: params,
+            dataType: 'jsonp',
+            jsonp: 'json.wrf',
+
+        }).promise().then(json => {
+            console.log(json);
+            return json;
+        }).fail().then(() => {
+            console.error('error when trying to favorite item');
+        });
+    }
+
+    unfavorite (item) {
+
+        var _item  = this.favorites[item.uuid];
+
+        if (_item) {
+            console.error('Cannot unfavorite things that aren not favorited yet');
+            return;
+        }
+
+        var params = {
+            username: this.username,
+            token: this.token,
+            action: 'ACTION_MANAGE_REMOVE',
+            itemId: _item.id,
+        };
+
+        return $.ajax({
+            type: 'GET',
+            url: SETTINGS.PROFILE_URL,
+            data: params,
+            dataType: 'jsonp',
+            jsonp: 'json.wrf',
+
+        }).promise().then(json => {
+            console.log(json);
+            return json;
+        }).fail().then(() => {
+            console.error('error when trying to unfavorite item');
+        });
+    }
+
+    upvote (item, factor) {
+
+    }
+
+    downvote (item) {
+
     }
 
     login (username, password, keep) {
@@ -26,10 +147,10 @@ class User {
         this.username = username;
         this.password = password;
 
-        return this.request().then(data => {
+        return this.loginRequest().then(data => {
             this.token = data.token;
             if (keep) {
-                this.setCookie()
+                this.setCookie();
             }
         });
 

@@ -4,9 +4,9 @@ var actions = Reflux.createActions([
     'addItem',
     'loadItems',
     'upvoteItem',
-    'addSource',
-    'removeSource',
-    'changedSources'
+    'addSearch',
+    'removeSearch',
+    'changedSearches'
 ]);
 
 export default actions;
