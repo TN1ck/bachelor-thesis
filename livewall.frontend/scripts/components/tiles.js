@@ -86,7 +86,7 @@ export var ReactTile = React.createClass({
         // precalculate the left offset of the tile so the animation starts at the correct position
 
         var style = Layout.getStyle(this.props.tile);
-        var color = this.props.tile.get('color')
+        var color = this.props.tile.get('color');
         var colorLight = color;
         var colorDark = color;
 
@@ -95,17 +95,21 @@ export var ReactTile = React.createClass({
         return (
             <article className={`tile white ${style.class}`} style={style.css}>
                 <header className='tile-header' style={{'background-color': colorDark, color: 'white'}}>
-                    <div className='tile-header-upvote' onClick={this.handleUpvote} style={{'background-color': colorLight, color: 'white'}}>
+                    <div className='tile-header-upvote' style={{'background-color': colorLight}}>
                         {this.props.tile.get('score')}
                     </div>
-                    <div className='tile-header-info'>
-                        von {this.props.tile.get('author')}
+                    <div className='tile-header-buttons'>
+                        <div className='tile-header-upvote-button' onClick={this.handleUpvote}></div>
+                        <div className='tile-header-downvote-button'></div>
                     </div>
                 </header>
                 {tile}
-                <footer className="tile-footer" style={{'background-color': colorDark, color: 'white'}}>
+                <footer className="tile-footer" style={{'background-color': colorDark}}>
                     <div className="tile-footer-domain">
                         {this.props.tile.get('domain')}
+                    </div>
+                    <div className='tile-footer-author'>
+                        von {this.props.tile.get('author')}
                     </div>
                 </footer>
             </article>
