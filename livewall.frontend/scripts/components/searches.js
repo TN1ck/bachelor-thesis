@@ -25,17 +25,17 @@ export var ReactSearch = React.createClass({
 
         var error;
         if (errors > 0) {
-            // error = <div className='source-search source-search__error'>{errors}/{numberOfAgents} Anfragen fehlerhaft</div>
+            // error = <div className='querie-search querie-search__error'>{errors}/{numberOfAgents} Anfragen fehlerhaft</div>
         }
 
         var color = colors[hashCode(this.props.search.name) % colors.length];
 
         return (
-            <li style={{'background-color': color, 'border-color': color}}>
-                <div className='source-container'>
-                    <div className='source-search'>{this.props.search.name}</div>
+            <li style={{'background-color': color, 'border-color': color}} className='querie-element'>
+                <div className='querie-container'>
+                    <div className='querie-term'>{this.props.search.name}</div>
                     {error}
-                    <div className='source-button' onClick={this.props.removeSearch}>{((loaded === numberOfAgents) || errors > 0)? remove : loading}</div>
+                    <div className='querie-button' onClick={this.props.removeSearch}>{((loaded === numberOfAgents) || errors > 0)? remove : loading}</div>
                 </div>
             </li>
         );
@@ -53,12 +53,14 @@ export var ReactAddSearch = React.createClass({
     },
     render: function () {
         return (
-            <form className='select-group-container' onSubmit={this.handleSubmit}>
-                <div className='input'>
-                    <input required ref='search'></input>
+            <form className='querie-element' onSubmit={this.handleSubmit}>
+                <div className='querie-container'>
+                    <div className='querie-input'>
+                        <input required ref='search'></input>
+                    </div>
+                    <button className='querie-add'>
+                    </button>
                 </div>
-                <button className='source-add'>
-                </button>
             </form>
         );
     }
@@ -86,8 +88,8 @@ export var ReactSearches = React.createClass({
     render: function () {
         var searchNames = _.map(this.state.searches, (s, k) => <ReactSearch removeSearch={this.removeSearch.bind(this, k)} key={k} search={s}/>);
         return (
-            <div className='sources'>
-                <ul>
+            <div className='queries'>
+                <ul className='queries-list'>
                     {searchNames}
                 </ul>
                 <ReactAddSearch submitCallback={this.submitCallback}></ReactAddSearch>

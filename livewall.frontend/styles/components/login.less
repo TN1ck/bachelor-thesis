@@ -1,0 +1,58 @@
+@import "../utils";
+
+.wall-login {
+
+	.fullpage();
+
+	.wall-login-header {
+
+		text-align: center;
+		padding: 0 30px;
+		font-weight: 300;
+		background-color: @tile-background;
+		padding-top: 30px;
+		font-size: 1.5em;
+	}
+
+	.wall-login-content {
+
+        float: left;
+		width: 200px;
+		margin-top: 30px;
+		padding-bottom: 40px;
+		margin-left: calc(~"50% - " 100px);
+
+		.center {
+			position: relative;
+			left: 50%;
+		  	width: 100px;
+			margin-left: -50px;
+
+		}
+
+		button {
+			float: left;
+			margin-top: 30px;
+			background-color: @tile-background;
+			border: 1px solid @tile-special;
+			padding: 8px 12px;
+
+			a {
+				color: @black;
+				text-decoration: none;
+			}
+
+			&:hover {
+				color: @tile-background;
+				cursor: pointer;
+				background-color: @tile-special;
+
+				a {
+					color: @tile-background;
+				}
+			}
+		}
+
+
+	}
+}

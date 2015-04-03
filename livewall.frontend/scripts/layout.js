@@ -9,7 +9,7 @@ import {dataStore} from './stores.js';
 var Layout  = {
 
     items: {},
-    margin: 4 * 2,
+    margin: 8 * 2, // needs to be the same value as in styles/components/tiles.less
     sortFunction: function (a, b) {
         var result = -(a.get('score') - b.get('score'));
         if (result === 0) {
@@ -85,7 +85,7 @@ var Layout  = {
 
         var columns = this.group(dataStore.items);
 
-        var left = 0;
+        var left = this.margin / 2;
         columns.forEach((column, j) => {
 
             var top = 0;
@@ -136,7 +136,7 @@ var Layout  = {
     },
     getLeftOffset: function (tile) {
         var columnIndex = dataStore.items.indexOf(tile) % this.numberOfColumns;
-        return (this.columnWidth + this.margin) * columnIndex;
+        return (this.columnWidth + this.margin) * columnIndex + this.margin / 2;
     },
     getStyle: function (tile) {
 

@@ -1,0 +1,56 @@
+@import "variables";
+@import "colors";
+
+.fullpage {
+	top: @wall-header-padding * 2 + @wall-header-font-size * 1.25;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	float: left;
+	background-color: @tile-background;
+	// border: 2px solid @tile-special;
+	color: @tile-font;
+}
+
+.stopselect{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.labelgroup {
+
+	box-sizing: border-box;
+	width: calc(~"100% - "unit(@wall-padding * 2, px));
+
+	label {
+		display: block;
+		font-size: 12pt;
+		margin-bottom: 2px;
+	}
+
+	input {
+		padding: 5px;
+		width: calc(~"100% - "unit(10, px));
+		border: 1px solid @tile-special;
+		box-shadow: inset 0 1px 3px #ddd;
+		border-radius: 2px;
+		margin-bottom: 10px;
+
+		&:disabled {
+			border: 1px solid @gray;
+		}
+	}
+}
+
+.error {
+	color: @red;
+	font-size: 14px;
+	text-align: left;
+}

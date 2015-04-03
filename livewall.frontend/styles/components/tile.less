@@ -1,0 +1,210 @@
+@import "../responsive";
+@import "../variables";
+@import "../colors";
+
+@tile-margin: 8px;
+@tile-padding: 16px;
+@font-size: 14px;
+
+.tile {
+
+    opacity: 0;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    width: 100%;
+    transition-duration: 0.65s;
+    transition-timing-function: ease;
+    position: absolute;
+    transform: translate3D(0, 0, 0);
+
+    // it is possible to do this via width in javascript, but it won't work as good as when it's done here
+    width: calc(~"100% - " @tile-margin * 2);
+
+    @media @phone {
+        width: calc(~"50% - " @tile-margin * 2);
+    }
+
+    @media @tablet {
+        width: calc(~"25% - " @tile-margin * 2);
+    }
+
+    @media @desktop {
+        width: calc(~"20% - " @tile-margin * 2);
+    }
+
+}
+
+.tile-footer {
+
+    color: inherit;
+    float: left;
+    width: 100%;
+
+    .tile-footer-domain {
+        float: right;
+        font-weight: 300;
+        font-size: @font-size * 0.8;
+        padding-right: @tile-margin;
+        padding-bottom: @tile-margin;
+    }
+}
+
+.tile-content {
+    box-sizing: border-box;
+    // border-left: solid 2px;
+    // border-right: solid 2px;
+    border-color: inherit;
+    float: left;
+    padding-bottom: 20px;
+    width: 100%;
+    color: inherit;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+            color: @black;
+            // text-decoration: underline;
+        }
+    }
+
+    &.tile-link {
+
+        padding: @tile-padding;
+        box-sizing: border-box;
+
+
+        .tile-content-title {
+            width: 100%;
+            word-wrap: break-word;
+            float: left;
+            font-size: @font-size;
+            font-weight: 300;
+
+        }
+
+        .tile-content-domain {
+            position: absolute;
+            bottom: @tile-margin;
+            right: @tile-margin;
+        }
+
+    }
+
+    &.tile-pia {
+
+        box-sizing: border-box;
+        padding: @tile-padding;
+
+        .tile-content-title {
+            width: 100%;
+            word-wrap: break-word;
+            float: left;
+            font-size: @font-size;
+            font-weight: 300;
+
+        }
+
+        .tile-content-content {
+            width: 100%;
+            word-wrap: break-word;
+            float: left;
+            font-size: @font-size;
+            font-weight: 300;
+
+        }
+
+        .tile-content-domain {
+            font-size: @font-size * 0.8;
+            position: absolute;
+            bottom: @tile-margin;
+            right: @tile-margin;
+        }
+
+    }
+
+    &.tile-image {
+
+        float: left;
+        position: relative;
+
+        .tile-content-title {
+            font-weight: 300;
+            padding: @tile-padding;
+            font-size: 10pt;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+
+                &:hover {
+                    color: @black;
+                }
+            }
+        }
+
+        .tile-content-domain {
+            font-size: @font-size * 0.8;
+            position: absolute;
+            right: @tile-padding / 2;
+            bottom: @tile-padding / 2;
+        }
+
+        .tile-content-image {
+            position: relative;
+
+            img {
+                display:block;
+                width: 100%;
+            }
+
+        }
+
+    }
+
+
+}
+
+.tile-header {
+    color: inherit;
+    float: left;
+    width: 100%;
+
+    .tile-header-upvote {
+        .stopselect();
+
+        color: inherit;
+        cursor: pointer;
+        float: left;
+        padding: @tile-padding / 2 @tile-padding;
+        font-size: @font-size * 1.2;
+        font-weight: 300;
+        text-align: center;
+
+        &:before {
+            font-family: 'FontAwesome';
+            margin-right: 7px;
+            content: " ";
+        }
+
+        &:hover {
+            background-color: @gray !important;
+        }
+    }
+
+    .tile-header-score {
+    }
+
+    .tile-header-info {
+        // margin-top: 2px;
+        font-weight: 300;
+        font-size: @font-size * 0.8;
+        // width: calc(~"100% - "@tile-padding);
+        padding-left: @tile-padding;
+        padding-top: @tile-padding;
+        float: left;
+    }
+}

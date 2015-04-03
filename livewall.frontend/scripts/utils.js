@@ -51,5 +51,5 @@ export var colorLuminance = function (hex, lum) {
 
 // export var colors = ['#D65B3C', '#D77F47', '#D9AA5A', '#2980b9', '#19806E', '#AE8EA7'];
 export var colors = ['#248EE6', '#F5A623', '#96bf48', '#ec663c', '#47bbb3', '#9c4274'];
-// export var colors = ['#27ae60', '#2980b9', '#16a085', '#3498db', '#2ecc71', '#1abc9c'];
+// export var colors = ['#27ae60', '#2980b9', '#16a085', '#3498db', '#2ecc71', '#1abc9c', '#c0392b', '#e74c3c', '#e67e22', '#d35400', '#f39c12', '#f1c40f'];
 // export var colors = ['#c0392b', '#e74c3c', '#e67e22', '#d35400', '#f39c12', '#f1c40f'];
