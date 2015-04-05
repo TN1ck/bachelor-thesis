@@ -104,12 +104,11 @@ export var ReactTile = React.createClass({
         var colorDark = color;
 
         var favourited = this.props.tile.get('favourite') ? 'favourite' : 'unfavourite';
-        console.log(favourited, 'favourite');
 
         style.css['background-color'] = color;
 
         return (
-            <article className={`tile white ${style.class}`} style={style.css}>
+            <article className={`tile white ${style.class} tile-${this.props.tile.get('type')}`} style={style.css}>
                 <header className='tile-header' style={{'background-color': colorDark, color: 'white'}}>
                     <div className='tile-header-upvote' style={{'background-color': colorLight}}>
                         {this.props.tile.get('score')}

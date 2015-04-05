@@ -22,6 +22,19 @@ class User {
         }).promise();
     }
 
+    checkLogin (token) {
+        return $.ajax({
+            url: SETTINGS.PROFILE_URL,
+            data: {
+                token: token,
+                action: 'ACTION_CHECK_LOGIN',
+            },
+            dataType: 'jsonp',
+            jsonp: 'json.wrf',
+            type: 'GET'
+        });
+    }
+
     profile () {
 
         var params = {
@@ -38,54 +51,73 @@ class User {
             jsonp: 'json.wrf',
 
         }).promise().then(json => {
-            console.log(json);
-
-            // extract searches and favorites
-            var extract = function (node, results) {
-                // is it a leave?
-                var isLeave = !node.itemgroup;
-                // recursion end
-                if (isLeave) {
-                    results[node.source] = node;
-                } else {
-                    node.itemgroup.forEach((n) => extract(n, results));
-                }
-                return;
-            };
-
-            // favorites are the first entry, searches the second
-            this.profileRoots = {
-                favorites: json[0],
-                searches: json[1]
-            };
-
-            var searches = {};
-            var favorites = {};
-
-            extract(this.profileRoots.favorites, favorites);
-            extract(this.profileRoots.searches, searches);
-
-            this.searches = searches;
-            this.favorites = favorites;
-
-            return json;
+            return this.processProfile(json);
         });
 
     }
 
-    favorite (item) {
+    processProfile (json) {
 
-        if (!this.profileRoots.favorites) {
-            console.error('No favorite root set.');
+        // extract searches and favourites
+        var extract = function (node, results) {
+            // is it a leave?
+            var isLeave = !node.itemgroup;
+            // recursion end
+            if (isLeave) {
+                results[node.source] = node;
+            } else {
+                node.itemgroup.forEach((n) => extract(n, results));
+            }
+            return;
+        };
+
+        // favourites are the first entry, searches the second
+        this.profileRoots = {
+            favourites: json[0],
+            searches: json[1]
+        };
+
+        var searches = {};
+        var favourites = {};
+
+        extract(this.profileRoots.favourites, favourites);
+        extract(this.profileRoots.searches, searches);
+
+        this.searches = searches;
+        this.favourites = favourites;
+
+        return {
+            searches: searches,
+            favourites: favourites
+        };
+    }
+
+    favourite (item) {
+
+        if (!this.profileRoots.favourites) {
+            console.error('No favourite root set.');
             return;
         }
+
+        var rawItem = item.get('raw');
+
+        if (!rawItem) {
+            console.error('Only Elements that are conform to the DAI-Apis can be favourited.');
+            return;
+        }
+
+        var escapedRawItem = escape(JSON.stringify(rawItem));
 
         var params = {
             username: this.username,
             token: this.token,
             action: 'ACTION_MANAGE_ADD',
-            parentId: this.profileRoots.favorites.id,
-            item: JSON.stringify(item)
+            parentId: this.profileRoots.favourites.id,
+            item: JSON.stringify({
+                name: item.get('title'),
+                source: item.get('uuid'),
+                document: escapedRawItem
+            })
         };
 
         return $.ajax({
@@ -95,20 +127,17 @@ class User {
             dataType: 'jsonp',
             jsonp: 'json.wrf',
 
-        }).promise().then(json => {
-            console.log(json);
+        }).then(json => {
             return json;
-        }).fail().then(() => {
-            console.error('error when trying to favorite item');
         });
     }
 
-    unfavorite (item) {
+    unfavourite (item) {
 
-        var _item  = this.favorites[item.uuid];
+        var _item  = this.favourites[item.get('uuid')];
 
-        if (_item) {
-            console.error('Cannot unfavorite things that aren not favorited yet');
+        if (!_item) {
+            console.error('Cannot unfavourite things that aren not favorited yet');
             return;
         }
 
@@ -126,11 +155,8 @@ class User {
             dataType: 'jsonp',
             jsonp: 'json.wrf',
 
-        }).promise().then(json => {
-            console.log(json);
+        }).then(json => {
             return json;
-        }).fail().then(() => {
-            console.error('error when trying to unfavorite item');
         });
     }
 
@@ -180,17 +206,37 @@ class User {
         var username = cookies.get('username');
         var token = cookies.get('token');
 
-        if (username && token) {
-            // make pseudo request and check if it works
-            this.token = token;
-            this.username = username;
-            return true;
+        if (token) {
+            this.loginPromise = this.checkLogin(token).then(() => {
+                this.token = token;
+                this.username = username;
+                this.loginPromise = false;
+                return true;
+            }).fail(() => {
+                this.loginPromise = false;
+                return false;
+            });
         }
 
         return false;
     }
 
-    isLogedIn () {
+    isLogedIn (cb) {
+
+        // check if a login-request is running and call the callback with the result
+        if (this.loginPromise && cb) {
+            this.loginPromise.then(() => {
+                cb(true);
+            }).fail(() => {
+                cb(false);
+            });
+            return;
+        }
+
+        if (cb) {
+            cb(!!this.token);
+        }
+
         return !!this.token;
     }
 }
@@ -199,11 +245,13 @@ export var user = new User();
 
 export var requireAuth = {
     statics: {
-        willTransitionTo: function (transition) {
-            console.log('check login..', user.isLogedIn());
-            if (!user.isLogedIn()) {
-                transition.redirect('/login', {}, {'nextPath' : transition.path});
-            }
+        willTransitionTo: function (transition, params, query, callback) {
+            user.isLogedIn((result) => {
+                if (!result) {
+                    transition.redirect('/login', {}, {'nextPath' : transition.path});
+                }
+                callback();
+            });
         }
     }
 };

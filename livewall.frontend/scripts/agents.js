@@ -123,6 +123,7 @@ class Pia {
         var color = colors[hashCode(this.search) % colors.length];
 
         docs.forEach((d) => {
+
             var content = d.file_content;
             var lines = content;
 
@@ -138,7 +139,7 @@ class Pia {
             var item = {
                 color: color,
                 search: this.search,
-                uuid: d.file_URI,
+                uuid: d.file_URI || d.source,
                 author: d.result_type,
                 created: d.file_lastModification,
                 title: d.xmp_title,
@@ -146,7 +147,8 @@ class Pia {
                 url: d.file_URI,
                 domain: d.host || getDomain(d.file_URI),
                 type: d.type,
-                score: Math.round(d.normalized_score)
+                score: Math.round(d.normalized_score),
+                raw: d
             };
             items.push(item);
         });

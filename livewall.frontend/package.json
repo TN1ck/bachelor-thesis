@@ -16,6 +16,7 @@
     "less-loader": "^2.1.0",
     "lodash": "^3.5.0",
     "react": "^0.13.0",
+    "react-router": "^0.13.2",
     "reflux": "^0.2.7",
     "store.js": "^1.0.4"
   },

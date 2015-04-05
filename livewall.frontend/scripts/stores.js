@@ -19,10 +19,14 @@ export var dataStore = Reflux.createStore({
         this.cache = {};
         this.searches = {};
 
+        this.profile = {
+            searches: {},
+            favourites: {}
+        };
+
         this.availableSources = [
             PiaHaus,
-            PiaZentral,
-            Reddit
+            PiaZentral
         ];
 
         this.listenTo(actions.addItem, this.addItem);
@@ -52,6 +56,10 @@ export var dataStore = Reflux.createStore({
 
         });
 
+    },
+
+    getIndexByUUID: function (uuid) {
+        return this.items.findIndex(item => item.get('uuid') === uuid);
     },
 
     addSearch: function (searchTerm) {
@@ -144,11 +152,31 @@ export var dataStore = Reflux.createStore({
         return result;
     },
 
+    matchFavourites: function () {
+            this.items = this.items.map((item) => {
+                var uuid = item.get('uuid')
+                if (this.profile.favourites[uuid]) {
+                    item = item.set('favourite', true);
+                }
+                return item;
+            });
+    },
+
+    loadProfile: function () {
+        user.profile().then((result) => {
+            this.profile.searches = result.searches;
+            this.profile.favourites = result.favourites;
+            this.triggerState();
+        });
+    },
+
     loadItems: function () {
 
         _.values(this.searches).forEach(search => {
             search.agents.forEach(this.loadData);
         });
+
+        this.loadProfile();
 
         // polling
         // _.values(this.searches).forEach(s => {
@@ -179,7 +207,7 @@ export var dataStore = Reflux.createStore({
         var uuid = item.get('uuid');
 
         if (this.cache[uuid]) {
-            var index = this.items.findIndex(item => item.get('uuid') === uuid);
+            var index = this.getIndexByUUID(uuid);
             this.items = this.items.set(index, item);
         } else {
             this.items = this.items.push(item);
@@ -194,35 +222,50 @@ export var dataStore = Reflux.createStore({
     },
 
     removeItem: function (item) {
-        var index = this.items.indexOf(item);
+        var index = this.getIndexByUUID(item.get('uuid'));
         this.items = this.items.delete(index);
         delete this.cache[item.get('uuid')];
     },
 
     triggerState: function () {
+        this.matchFavourites();
         this.trigger(this.items);
     },
 
     upvoteItem: function (item) {
-        var index = this.items.indexOf(item);
+        var index = this.getIndexByUUID(item.get('uuid'));
         item = item.update('score', x => { return x + 1; });
         this.items = this.items.set(index, item);
         this.triggerState.bind(this)(this.items);
     },
 
     downvoteItem: function (item) {
-        var index = this.items.indexOf(item);
+        var index = this.getIndexByUUID(item.get('uuid'));
         item = item.update('score', x => { return x - 1; });
         this.items = this.items.set(index, item);
         this.triggerState.bind(this)(this.items);
     },
 
     favouriteItem: function (item) {
-        var index = this.items.indexOf(item);
+        var index = this.getIndexByUUID(item.get('uuid'));
+        var favourite = item.get('favourite');
 
-        item = item.update('favourite', x => { return !x; });
-        this.items = this.items.set(index, item);
-        this.triggerState.bind(this)(this.items);
+        var successCallback = () => {
+            var itemNew = item.set('favourite', !favourite);
+            this.items = this.items.set(index, itemNew);
+            this.loadProfile();
+        };
+
+        var failCallback = () => {
+        };
+
+        var fn = favourite ? 'unfavourite' : 'favourite';
+
+        user[fn](item)
+            .then(successCallback)
+            .fail(failCallback);
+
+
     }
 
 });
