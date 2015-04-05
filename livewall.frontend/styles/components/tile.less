@@ -14,8 +14,9 @@
     float: left;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
     width: 100%;
-    transition-duration: 0.65s;
-    transition-timing-function: ease;
+    transition-duration: 0.8s;
+    // transition-timing-function: ease-in-out;
+    transition-timing-function: cubic-bezier(.6,0,.4,1);
     position: absolute;
     transform: translate3D(0, 0, 0);
 
@@ -81,6 +82,7 @@
     &.tile-link {
 
         padding: @tile-padding;
+        padding-top: 0;
         box-sizing: border-box;
 
 
@@ -105,6 +107,7 @@
 
         box-sizing: border-box;
         padding: @tile-padding;
+        padding-top: 0;
 
         .tile-content-title {
             width: 100%;
@@ -180,7 +183,7 @@
     float: left;
     width: 100%;
     position: relative;
-    height: @font-size * 2.0;
+    height: @font-size * 3.25;
 
     .tile-header-upvote {
         .stopselect();
@@ -200,7 +203,7 @@
     .tile-header-buttons {
         position: relative;
         left: @tile-padding;
-        top: @tile-padding / 2;
+        top: @tile-padding / 1.75;
 
         .tile-header-upvote-button {
 
@@ -252,6 +255,51 @@
             }
 
         }
+
+        .tile-header-favourite-button {
+
+            color: @white;
+            padding: 0 @font-size;
+            position: absolute;
+            top: @tile-padding / 2;
+            right: @tile-padding;
+            font-size: @font-size * 1.5;
+            line-height: @font-size;
+            font-weight: 300;
+            opacity: 0.2;
+            transition: opacity 0.3s ease;
+
+                &.favourite {
+
+                    opacity: 0.7;
+
+                    &:after {
+                        width: @tile-padding;
+                        height: @tile-padding;
+                        font-family: 'FontAwesome';
+                        content: "";
+
+                    }
+                }
+
+                &.unfavourite {
+
+                    &:after {
+                        width: @tile-padding;
+                        height: @tile-padding;
+                        font-family: 'FontAwesome';
+                        content: "";
+                    }
+                }
+
+                &:hover {
+                    opacity: 0.9;
+                    cursor: pointer;
+                    color: @white;
+                }
+
+        }
+
     }
 
 

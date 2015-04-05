@@ -42,10 +42,12 @@ var ReactPiaTile = React.createClass({
         var lis = this.props.tile.get('content').map((d) => {
             return <li dangerouslySetInnerHTML={{__html: d}}></li>
         });
+
+        var html = this.props.tile.get('title') || '';
         return (
             <div className="tile-content tile-pia">
                 <div className="tile-content-title">
-                    <a target='_blank' href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a>
+                    <a target='_blank' href={this.props.tile.get('url')} dangerouslySetInnerHTML={{__html: html}}></a>
                 </div>
             </div>
         );
@@ -73,9 +75,20 @@ export var ReactTile = React.createClass({
         e.preventDefault;
         actions.upvoteItem(this.props.tile);
     },
+    handleDownvote: function (e) {
+        e.preventDefault;
+        actions.downvoteItem(this.props.tile);
+    },
+    handleFavourite: function (e) {
+        e.preventDefault;
+        actions.favouriteItem(this.props.tile);
+    },
     shouldComponentUpdate: function (props) {
         // the sole reason we are using immutable data structures
-        return props.tile.get('score') !== this.props.tile.get('score');
+        var score = (props.tile.get('score') !== this.props.tile.get('score'));
+        var favourite = (props.tile.get('favourite') !== this.props.tile.get('favourite'));
+        return score || favourite;
+
     },
     componentWillUpdate: function (props) {
         Layout.layout(true, true);
@@ -90,6 +103,9 @@ export var ReactTile = React.createClass({
         var colorLight = color;
         var colorDark = color;
 
+        var favourited = this.props.tile.get('favourite') ? 'favourite' : 'unfavourite';
+        console.log(favourited, 'favourite');
+
         style.css['background-color'] = color;
 
         return (
@@ -100,7 +116,8 @@ export var ReactTile = React.createClass({
                     </div>
                     <div className='tile-header-buttons'>
                         <div className='tile-header-upvote-button' onClick={this.handleUpvote}></div>
-                        <div className='tile-header-downvote-button'></div>
+                        <div className='tile-header-downvote-button' onClick={this.handleDownvote}></div>
+                        <div className={`tile-header-favourite-button ${favourited}`} onClick={this.handleFavourite}></div>
                     </div>
                 </header>
                 {tile}

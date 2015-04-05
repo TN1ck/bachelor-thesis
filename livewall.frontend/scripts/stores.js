@@ -17,7 +17,6 @@ export var dataStore = Reflux.createStore({
         this.items = Immutable.List();
 
         this.cache = {};
-        this.itemCounter = 0;
         this.searches = {};
 
         this.availableSources = [
@@ -28,6 +27,8 @@ export var dataStore = Reflux.createStore({
 
         this.listenTo(actions.addItem, this.addItem);
         this.listenTo(actions.upvoteItem, this.upvoteItem);
+        this.listenTo(actions.downvoteItem, this.downvoteItem);
+        this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.loadItems, this.loadItems);
 
         this.listenTo(actions.addSearch, this.addSearch);
@@ -111,17 +112,16 @@ export var dataStore = Reflux.createStore({
                 data.data.forEach((d, i) => {
 
                     d.agent = agent.agent.key;
+                    var dIm = Immutable.Map(d);
 
                     // append tile when image finishes loading
                     if (d.type === 'image') {
                         var img = new Image;
                         img.src = d.url;
                         img.onload = () => {
-                            var dIm = Immutable.Map(d);
                             this.addItem(dIm);
                         };
                     } else {
-                        var dIm = Immutable.Map(d);
                         this.addItem(dIm, false);
                     }
                 });
@@ -179,8 +179,7 @@ export var dataStore = Reflux.createStore({
         var uuid = item.get('uuid');
 
         if (this.cache[uuid]) {
-            var itemCached = this.cache[uuid];
-            var index = this.items.indexOf(itemCached);
+            var index = this.items.findIndex(item => item.get('uuid') === uuid);
             this.items = this.items.set(index, item);
         } else {
             this.items = this.items.push(item);
@@ -192,7 +191,6 @@ export var dataStore = Reflux.createStore({
             this.triggerState.bind(this)();
         }
 
-        this.itemCounter++;
     },
 
     removeItem: function (item) {
@@ -208,6 +206,21 @@ export var dataStore = Reflux.createStore({
     upvoteItem: function (item) {
         var index = this.items.indexOf(item);
         item = item.update('score', x => { return x + 1; });
+        this.items = this.items.set(index, item);
+        this.triggerState.bind(this)(this.items);
+    },
+
+    downvoteItem: function (item) {
+        var index = this.items.indexOf(item);
+        item = item.update('score', x => { return x - 1; });
+        this.items = this.items.set(index, item);
+        this.triggerState.bind(this)(this.items);
+    },
+
+    favouriteItem: function (item) {
+        var index = this.items.indexOf(item);
+
+        item = item.update('favourite', x => { return !x; });
         this.items = this.items.set(index, item);
         this.triggerState.bind(this)(this.items);
     }

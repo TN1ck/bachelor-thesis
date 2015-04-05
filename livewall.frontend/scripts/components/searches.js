@@ -27,8 +27,8 @@ export var ReactSearch = React.createClass({
         if (errors > 0) {
             // error = <div className='querie-search querie-search__error'>{errors}/{numberOfAgents} Anfragen fehlerhaft</div>
         }
-
-        var color = colors[hashCode(this.props.search.name) % colors.length];
+        var hash = hashCode(this.props.search.name)
+        var color = colors[hash % colors.length];
 
         return (
             <li style={{'background-color': color, 'border-color': color}} className='querie-element'>

@@ -25,7 +25,7 @@ export var hashCode = function (str) {
         hash = ((hash << 5) - hash) + char;
         hash = hash & hash; // Convert to 32bit integer
     }
-    return hash;
+    return hash < 0 ? hash * -1 : hash;
 };
 
 export var colorLuminance = function (hex, lum) {
