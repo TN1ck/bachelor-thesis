@@ -23,12 +23,12 @@ export var ReactHeader = React.createClass({
         });
 
         return (
-            <div className='wall-header'>
-                <div className='wall-header-topbar'>
-                    <div className='wall-header-info'>
+            <div className='wall__header'>
+                <div className='wall__header__topbar'>
+                    <div className='wall__header__info'>
                         Angemeldet als {user.username}
                     </div>
-                    <div className='wall-header-settings'>
+                    <div className='wall__header__settings'>
                         {nav}
                     </div>
                 </div>

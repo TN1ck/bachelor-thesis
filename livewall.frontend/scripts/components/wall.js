@@ -10,7 +10,7 @@ import {user, requireAuth} from '../auth.js';
 import actions from '../actions.js';
 
 import {ReactTile} from './tiles.js';
-import {ReactSearches} from './searches.js';
+import {ReactQueries} from './queries.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -50,12 +50,12 @@ export var ReactWall = React.createClass({
 
         return (
             <div>
-                <ReactSearches />
+                <ReactQueries />
                 <div className='tiles'>
                     <ReactCSSTransitionGroup transitionName="fade" transitionAppear={false} transitionEnter={false}>
                         {tiles}
                     </ReactCSSTransitionGroup>
-                    <div className="wall-loader">
+                    <div className="wall__loader">
                         {loading}
                     </div>
                 </div>

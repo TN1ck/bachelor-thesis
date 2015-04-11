@@ -10,12 +10,12 @@ import {hashCode, colors} from './utils.js';
 
 export class Reddit {
 
-    constructor (search) {
-        this.search = search;
+    constructor (query) {
+        this.query = query;
     }
 
     get key () {
-        return `${this.name} - ${this.search || 'frontpage'}`;
+        return `${this.name} - ${this.query || 'frontpage'}`;
     }
 
     get name () {
@@ -30,7 +30,7 @@ export class Reddit {
             return (lastIndex !== -1) && (lastIndex + term.length === str.length);
         }
 
-        var color = colors[hashCode(this.search) % colors.length];
+        var color = colors[hashCode(this.query) % colors.length];
 
         var items = json.data.children.map((d, i) => {
             d = d.data;
@@ -47,7 +47,7 @@ export class Reddit {
 
             return {
                 color: color,
-                search: this.search,
+                query: this.query,
                 uuid: d.permalink,
                 author: d.author,
                 created: d.created,
@@ -68,8 +68,8 @@ export class Reddit {
 
         var url = 'https://www.reddit.com';
 
-        if (this.search) {
-            url += '/r/' + this.search;
+        if (this.query) {
+            url += '/r/' + this.query;
         }
 
         url += '/.json';
@@ -82,18 +82,18 @@ export class Reddit {
 
 class Pia {
 
-    constructor(search, filter) {
+    constructor(query, filter) {
         this.sourceName = 'pia';
         this.broker = {
             name: '',
             public: true
         };
-        this.search = search;
+        this.query = query;
         this.filter = filter;
     }
 
     get key () {
-        return `${this.sourceName} - ${this.broker.name} - ${this.search}`;
+        return `${this.sourceName} - ${this.broker.name} - ${this.query}`;
     }
 
     get name () {
@@ -101,6 +101,11 @@ class Pia {
     }
 
     processJSON (json) {
+
+        if (json.status && json.status.code !== 200) {
+            console.error('Authentication failed');
+            return {data: []};
+        }
 
         var docs = [];
 
@@ -120,7 +125,7 @@ class Pia {
 
         var items = [];
 
-        var color = colors[hashCode(this.search) % colors.length];
+        var color = colors[hashCode(this.query) % colors.length];
 
         docs.forEach((d) => {
 
@@ -138,7 +143,7 @@ class Pia {
 
             var item = {
                 color: color,
-                search: this.search,
+                query: this.query,
                 uuid: d.file_URI || d.source,
                 author: d.result_type,
                 created: d.file_lastModification,
@@ -167,7 +172,7 @@ class Pia {
         var url = SETTINGS.PIA_URL + '/' + this.broker.name;
 
         var params = {
-            query: this.search,
+            query: this.query,
             start: 0,
             num: 10,
             username: user.username,
@@ -181,8 +186,6 @@ class Pia {
         if (!this.broker.public) {
             params.token = user.token;
         }
-
-        // http://pia-gesis.dai-labor.de/zentral?username=gesis3&query=pia%20enterprise&action=ACTION_SOLR&filter=dai-labor&start=0&num=10&dojo.preventCache=1426084708658&json.wrf=dojo.io.script.jsonp_dojoIoScript4._jsonpCallback
 
         return $.ajax({
             type: 'GET',
@@ -198,8 +201,8 @@ class Pia {
 }
 
 export class PiaZentral extends Pia {
-    constructor (search, filter) {
-        super(search, filter);
+    constructor (query, filter) {
+        super(query, filter);
         this.broker = {
             name: 'zentral',
             public: true
@@ -208,8 +211,8 @@ export class PiaZentral extends Pia {
 }
 
 export class PiaHaus extends Pia {
-    constructor (search, filter) {
-        super(search, filter);
+    constructor (query, filter) {
+        super(query, filter);
         this.broker = {
             name: 'haus',
             public: false

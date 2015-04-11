@@ -16,11 +16,11 @@ export var ReactLogout = React.createClass({
     },
     render: function () {
         return (
-            <div className='wall-login'>
-                <div className="wall-login-header">
+            <div className='wall__login'>
+                <div className="wall__login__header">
                     Sie haben sich erfolgreich ausgeloggt.
                 </div>
-                <div className="wall-login-content">
+                <div className="wall__login__content">
                     <div className='center'>
                         <i className="fa fa-5x fa-check olive"></i>
                     </div>
@@ -122,11 +122,11 @@ export var ReactLogin = React.createClass({
         </div>;
 
         return (
-            <div className='wall-login'>
-                <div className="wall-login-header">
+            <div className='wall__login'>
+                <div className="wall__login__header">
                     {userStatus ? text.Loged : text.notLoged}
                 </div>
-                <div className="wall-login-content">
+                <div className="wall__login__content">
                     {error}
                     {userStatus ? logoutForm : loginForm}
                 </div>

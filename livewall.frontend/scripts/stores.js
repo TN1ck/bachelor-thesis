@@ -17,10 +17,10 @@ export var dataStore = Reflux.createStore({
         this.items = Immutable.List();
 
         this.cache = {};
-        this.searches = {};
+        this.queries = {};
 
         this.profile = {
-            searches: {},
+            queries: {},
             favourites: {}
         };
 
@@ -35,23 +35,23 @@ export var dataStore = Reflux.createStore({
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.loadItems, this.loadItems);
 
-        this.listenTo(actions.addSearch, this.addSearch);
-        this.listenTo(actions.removeSearch, this.removeSearch);
+        this.listenTo(actions.addQuery, this.addQuery);
+        this.listenTo(actions.removeQuery, this.removeQuery);
 
-        SETTINGS.SEARCHES.forEach(searchTerm => {
+        SETTINGS.QUERIES.forEach(queryTerm => {
             var agents = this.availableSources.map(source => {
-                var searchAgent = new source(searchTerm);
+                var queryAgent = new source(queryTerm);
                 return {
-                    agent: searchAgent,
+                    agent: queryAgent,
                     loaded: false,
                     polling: false,
                 };
             })
 
-            this.searches[searchTerm] = {
+            this.queries[queryTerm] = {
                 loaded: false,
                 agents: agents,
-                name: searchTerm
+                name: queryTerm
             };
 
         });
@@ -62,56 +62,56 @@ export var dataStore = Reflux.createStore({
         return this.items.findIndex(item => item.get('uuid') === uuid);
     },
 
-    addSearch: function (searchTerm) {
+    addQuery: function (queryTerm) {
 
-        if (this.searches[searchTerm]) {
+        if (this.queries[queryTerm]) {
             return;
         }
 
 
         var agents = this.availableSources.map(source => {
 
-            var searchAgent = {
-                agent: new source(searchTerm),
+            var querieAgent = {
+                agent: new source(queryTerm),
                 loaded: false,
                 polling: false
             };
 
-            this.loadData(searchAgent);
+            this.loadData(querieAgent);
 
-            return searchAgent
+            return querieAgent
         });
 
-        this.searches[searchTerm] = {
+        this.queries[queryTerm] = {
             loaded: false,
             agents: agents,
-            name: searchTerm
+            name: queryTerm
         };
 
-        actions.changedSearches(this.searches);
+        actions.changedQueries(this.queries);
 
 
     },
-    removeSearch: function (searchTerm) {
+    removeQuery: function (queryTerm) {
 
-        delete this.searches[searchTerm];
+        delete this.queries[queryTerm];
 
         this.items = this.items.filter((item) => {
-            var result = item.get('search') !== searchTerm;
+            var result = item.get('query') !== queryTerm;
             // remove it from the cache
             if (!result) {
                 delete this.cache[item.get('uuid')];
             }
             return result;
         });
-        actions.changedSearches(this.searches);
+        actions.changedQueries(this.queries);
         this.triggerState.bind(this)();
     },
 
     loadData: function (agent) {
 
         agent.loaded = false;
-        actions.changedSearches(this.searches);
+        actions.changedQueries(this.queries);
 
         var result = jquery.Deferred();
         try {
@@ -135,14 +135,14 @@ export var dataStore = Reflux.createStore({
                 });
 
                 agent.loaded = true;
-                actions.changedSearches(this.searches);
+                actions.changedQueries(this.queries);
                 this.triggerState.bind(this)();
 
             }).fail(() => {
                 console.log('failed...');
                 agent.loaded = false;
                 agent.error = true;
-                actions.changedSearches(this.searches);
+                actions.changedQueries(this.queries);
             });
         } catch (e) {
             console.log('error while loading data.');
@@ -164,7 +164,7 @@ export var dataStore = Reflux.createStore({
 
     loadProfile: function () {
         user.profile().then((result) => {
-            this.profile.searches = result.searches;
+            this.profile.queries = result.queries;
             this.profile.favourites = result.favourites;
             this.triggerState();
         });
@@ -172,14 +172,14 @@ export var dataStore = Reflux.createStore({
 
     loadItems: function () {
 
-        _.values(this.searches).forEach(search => {
-            search.agents.forEach(this.loadData);
+        _.values(this.queries).forEach(query => {
+            query.agents.forEach(this.loadData);
         });
 
         this.loadProfile();
 
         // polling
-        // _.values(this.searches).forEach(s => {
+        // _.values(this.queries).forEach(s => {
         //     if (s.polling) {
         //         var callback = () => {
         //             console.log('polling...');

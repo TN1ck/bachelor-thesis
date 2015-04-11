@@ -19,7 +19,7 @@ class User {
                 password: this.password
             },
             type: 'POST'
-        }).promise();
+        });
     }
 
     checkLogin (token) {
@@ -32,6 +32,14 @@ class User {
             dataType: 'jsonp',
             jsonp: 'json.wrf',
             type: 'GET'
+        }).then( response => {
+            if (response &&
+                response.status &&
+                response.status.code === 200) {
+                    return true;
+            } else {
+                return false;
+            }
         });
     }
 
@@ -58,7 +66,7 @@ class User {
 
     processProfile (json) {
 
-        // extract searches and favourites
+        // extract queries and favourites
         var extract = function (node, results) {
             // is it a leave?
             var isLeave = !node.itemgroup;
@@ -71,23 +79,23 @@ class User {
             return;
         };
 
-        // favourites are the first entry, searches the second
+        // favourites are the first entry, queries the second
         this.profileRoots = {
             favourites: json[0],
-            searches: json[1]
+            queries: json[1]
         };
 
-        var searches = {};
+        var queries = {};
         var favourites = {};
 
         extract(this.profileRoots.favourites, favourites);
-        extract(this.profileRoots.searches, searches);
+        extract(this.profileRoots.queries, queries);
 
-        this.searches = searches;
+        this.queries = queries;
         this.favourites = favourites;
 
         return {
-            searches: searches,
+            queries: queries,
             favourites: favourites
         };
     }
@@ -207,14 +215,16 @@ class User {
         var token = cookies.get('token');
 
         if (token) {
-            this.loginPromise = this.checkLogin(token).then(() => {
-                this.token = token;
-                this.username = username;
+            this.loginPromise = this.checkLogin(token).then((result) => {
+                if (result) {
+                    this.token = token;
+                    this.username = username;
+                }
                 this.loginPromise = false;
-                return true;
+                return result;
             }).fail(() => {
                 this.loginPromise = false;
-                return false;
+                return result;
             });
         }
 
@@ -225,8 +235,8 @@ class User {
 
         // check if a login-request is running and call the callback with the result
         if (this.loginPromise && cb) {
-            this.loginPromise.then(() => {
-                cb(true);
+            this.loginPromise.then((result) => {
+                cb(result);
             }).fail(() => {
                 cb(false);
             });

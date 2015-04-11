@@ -8,16 +8,16 @@ var ReactImageTile = React.createClass({
     displayName: 'ImageTile',
     render: function () {
         return (
-            <div className="tile-content tile-image">
-                <div className="tile-content-image">
+            <div className="tile__content tile__image">
+                <div className="tile__content__image">
                     <a target='_blank' href={this.props.tile.get('url')}>
                         <img src={this.props.tile.get('url')}></img>
-                        <div className="tile-content-domain">
+                        <div className="tile__content__domain">
                             {this.props.tile.get('domain')}
                         </div>
                     </a>
                 </div>
-                <div className="tile-content-title"><a target='_blank' href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a></div>
+                <div className="tile__content__title"><a target='_blank' href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a></div>
             </div>
         );
     }
@@ -27,8 +27,8 @@ var ReactLinkTile = React.createClass({
     displayName: 'LinkTile',
     render: function () {
         return (
-            <div className="tile-content tile-link">
-                <div className="tile-content-title">
+            <div className="tile__content tile__link">
+                <div className="tile__content__title">
                     <a target='_blank' href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a>
                 </div>
             </div>
@@ -44,10 +44,23 @@ var ReactPiaTile = React.createClass({
         });
 
         var html = this.props.tile.get('title') || '';
+
+        var icons = {
+            'pia-pdf':     'fa-file-pdf-o',
+            'pia-web':     'fa-globe',
+            'pia-contact': 'fa-user'
+        };
+
+        var icon = icons[this.props.tile.get('type')];
+
         return (
-            <div className="tile-content tile-pia">
-                <div className="tile-content-title">
-                    <a target='_blank' href={this.props.tile.get('url')} dangerouslySetInnerHTML={{__html: html}}></a>
+            <div className="tile__content tile--pia">
+                <div className="tile__content__title">
+                    <a target='_blank' href={this.props.tile.get('url')}>
+                        <i className={'tile__content__icon fa ' + icon}></i>
+                        <p dangerouslySetInnerHTML={{__html: html}}>
+                        </p>
+                    </a>
                 </div>
             </div>
         );
@@ -108,23 +121,23 @@ export var ReactTile = React.createClass({
         style.css['background-color'] = color;
 
         return (
-            <article className={`tile white ${style.class} tile-${this.props.tile.get('type')}`} style={style.css}>
-                <header className='tile-header' style={{'background-color': colorDark, color: 'white'}}>
-                    <div className='tile-header-upvote' style={{'background-color': colorLight}}>
+            <article className={`tile white ${style.class} tile--${this.props.tile.get('type')}`} style={style.css}>
+                <header className='tile__header' style={{'background-color': colorDark, color: 'white'}}>
+                    <div className='tile__header__upvote' style={{'background-color': colorLight}}>
                         {this.props.tile.get('score')}
                     </div>
-                    <div className='tile-header-buttons'>
-                        <div className='tile-header-upvote-button' onClick={this.handleUpvote}></div>
-                        <div className='tile-header-downvote-button' onClick={this.handleDownvote}></div>
-                        <div className={`tile-header-favourite-button ${favourited}`} onClick={this.handleFavourite}></div>
+                    <div className='tile__header__buttons'>
+                        <div className='tile__header__upvote-button' onClick={this.handleUpvote}></div>
+                        <div className='tile__header__downvote-button' onClick={this.handleDownvote}></div>
+                        <div className={`tile__header__favourite-button ${favourited}`} onClick={this.handleFavourite}></div>
                     </div>
                 </header>
                 {tile}
-                <footer className="tile-footer" style={{'background-color': colorDark}}>
-                    <div className="tile-footer-domain">
+                <footer className="tile__footer" style={{'background-color': colorDark}}>
+                    <div className="tile__footer__domain">
                         {this.props.tile.get('domain')}
                     </div>
-                    <div className='tile-footer-author'>
+                    <div className='tile__footer__author'>
                         von {this.props.tile.get('author')}
                     </div>
                 </footer>

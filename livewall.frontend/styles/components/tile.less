@@ -15,8 +15,8 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
     width: 100%;
     transition-duration: 0.8s;
-    // transition-timing-function: ease-in-out;
-    transition-timing-function: cubic-bezier(.6,0,.4,1);
+    transition-timing-function: ease;
+    // transition-timing-function: cubic-bezier(.6,0,.4,1);
     position: absolute;
     transform: translate3D(0, 0, 0);
 
@@ -37,7 +37,7 @@
 
 }
 
-.tile-footer {
+.tile__footer {
 
     color: inherit;
     float: left;
@@ -48,18 +48,18 @@
     opacity: 0.8;
     color: @white;
 
-    .tile-footer-domain {
+    &__domain {
         float: right;
         padding-right: @tile-padding;
     }
 
-    .tile-footer-author {
+    &__author {
         float: left;
         padding-left: @tile-padding;
     }
 }
 
-.tile-content {
+.tile__content {
     box-sizing: border-box;
     // border-left: solid 2px;
     // border-right: solid 2px;
@@ -79,14 +79,14 @@
         }
     }
 
-    &.tile-link {
+    &.tile--link {
 
         padding: @tile-padding;
         padding-top: 0;
         box-sizing: border-box;
 
 
-        .tile-content-title {
+        .tile__content__title {
             width: 100%;
             word-wrap: break-word;
             float: left;
@@ -95,7 +95,7 @@
 
         }
 
-        .tile-content-domain {
+        .tile__content__domain {
             position: absolute;
             bottom: @tile-margin;
             right: @tile-margin;
@@ -103,13 +103,38 @@
 
     }
 
-    &.tile-pia {
+    &.tile--pia {
 
         box-sizing: border-box;
         padding: @tile-padding;
-        padding-top: 0;
+        padding-top: 5px;
 
-        .tile-content-title {
+        .tile__content__icon {
+            opacity: 0.5;
+            width: 30px;
+            height: 30px;
+            float: left;
+            font-size: 30px;
+        }
+
+
+
+        .tile__content__title {
+            width: 100%;
+            word-wrap: break-word;
+            float: left;
+            font-size: @font-size;
+            font-weight: 300;
+
+            p {
+                margin: 0;
+                margin-left: 35px;
+                padding: 0;
+            }
+
+        }
+
+        .tile__content__content {
             width: 100%;
             word-wrap: break-word;
             float: left;
@@ -118,16 +143,7 @@
 
         }
 
-        .tile-content-content {
-            width: 100%;
-            word-wrap: break-word;
-            float: left;
-            font-size: @font-size;
-            font-weight: 300;
-
-        }
-
-        .tile-content-domain {
+        .tile__content__domain {
             font-size: @font-size * 0.8;
             position: absolute;
             bottom: @tile-margin;
@@ -136,12 +152,12 @@
 
     }
 
-    &.tile-image {
+    &.tile--image {
 
         float: left;
         position: relative;
 
-        .tile-content-title {
+        .tile__content__title {
             font-weight: 300;
             padding: @tile-padding;
             font-size: 10pt;
@@ -156,14 +172,14 @@
             }
         }
 
-        .tile-content-domain {
+        .tile__content__domain {
             font-size: @font-size * 0.8;
             position: absolute;
             right: @tile-padding / 2;
             bottom: @tile-padding / 2;
         }
 
-        .tile-content-image {
+        .tile__content__image {
             position: relative;
 
             img {
@@ -178,14 +194,14 @@
 
 }
 
-.tile-header {
+.tile__header {
     color: inherit;
     float: left;
     width: 100%;
     position: relative;
     height: @font-size * 3.25;
 
-    .tile-header-upvote {
+    .tile__header__upvote {
         .stopselect();
 
         color: inherit;
@@ -200,12 +216,12 @@
 
     }
 
-    .tile-header-buttons {
+    .tile__header__buttons {
         position: relative;
         left: @tile-padding;
         top: @tile-padding / 1.75;
 
-        .tile-header-upvote-button {
+        .tile__header__upvote-button {
 
             color: @white;
             position: absolute;
@@ -229,7 +245,7 @@
             }
         }
 
-        .tile-header-downvote-button {
+        .tile__header__downvote-button {
 
             color: @white;
             padding: 0 @font-size;
@@ -256,7 +272,7 @@
 
         }
 
-        .tile-header-favourite-button {
+        .tile__header__favourite-button {
 
             color: @white;
             padding: 0 @font-size;
@@ -303,10 +319,10 @@
     }
 
 
-    .tile-header-score {
+    .tile__header__score {
     }
 
-    .tile-header-info {
+    .tile__header__info {
         // margin-top: 2px;
         font-weight: 300;
         font-size: @font-size * 0.8;
