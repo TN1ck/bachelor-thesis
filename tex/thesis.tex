@@ -10,7 +10,7 @@
 \usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
 \geometry{a4paper}                   % ... or a4paper or a5paper or ...
 %\geometry{landscape}                % Activate for for rotated page geometry
-%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent section
 \geometry{left=3cm}
 \geometry{right=3cm}
 \geometry{bottom=2cm}
@@ -97,7 +97,7 @@
 
 \makeatletter
 \renewcommand\listoffigures{%
-    \section*{\listfigurename}% Used to be \section*{\listfigurename}
+    \section*{\listfigurename}% Used to be \section**{\listfigurename}
       \@mkboth{\MakeUppercase\listfigurename}%
               {\MakeUppercase\listfigurename}%
     \@starttoc{lof}%
@@ -212,41 +212,41 @@ Berlin, \today\\
 
 \chapter{Einleitung}
 
-\section{Motivation}
+\section*{Motivation}
 
 Die gemeinsame Darstellung von Inhalten verschiedener Quellen ist ein interessantes und weit erforschtes Thema. Die grundsätzliche Idee ist dem Benutzer die Benutzung bzw. die Konsumierung von Inhalten angenehmer zu gestalten indem ein einheitliches Interface für Inhalte geschaffen wird. Bevor der \textit{digitalen Revolution} war dies ein immens aufwendiges und kostpieliges Unterfangen, als Beispiel sei die frühen Enzyklopädien genannt\footnote{Enzyklopädien sind insofern eine einheitliche Aggregierung des Inhalts, das sie versucht haben sämtliches Wissen in einer Quelle bereitzustellen die homogen in Sprache und Darstellung ist.}. Durch die momentan verfügbaren Technologien ist das erstellen einer einheitlichen Datenquelle für verschiedene Inhalte deutlich einfacher geworden, wobei die Schwierigkeit einer guten zusammenführung dennoch weiterhin besteht und Produkte die dies gut machen sehr erfolgreich sind - wie z.B. die Suchmaschine von Google.
 Wenn man sich jedoch auf eine Teilmenge der verfügbaren Informationen beschränkt wie z.B. Nachrichten die per RSS\footnote{Ein weit verbreitetes Dateiformat im Internet \url{http://de.wikipedia.org/wiki/RSS}} verfügbar sind ist es deutlich einfacher eine angemessene zusammenführung der Inhalte zu gestalten, prominente Beispiele für eine Anwendung dieser Art ist z.B. die Nachrichten-Applikation \textit{pulse}\footnote{\url{https://www.pulse.me/}} die auf Basis von RSS ein angenehmens und sehr attraktives Interface für die gleichzeitige Konsumierung mehrerer Nachrichtenseiten anbietet, der Erfolg von \textit{pulse} spricht für sich\footnote{ca. 22 Millionen Downloads auf dem Android-System}.
 
 Diese Arbeit zielt auf einen Spezialfall der Darstellungsformen verschiedener Inhalte ab, die der \textit{social media wall} was eine populäre Form für Inhalte mit kurzen Texten und oder Bildern ist\footnote{Natürlich sind auch Inhalte anderer Art möglich, jedoch sind die Elemente solcher Wände in jeglichem Aspekt daraufhin optimiert.}.
 
-\section{Anforderungen}
+\section*{Anforderungen}
 
 Die Anforderungen der Applikation waren von vornerein nicht vollständig geklärt, viel mehr gab es ein grobes Gerüst was die Anwendung liefern sollte. Die komplette Ausarbeitung ist während der Entwicklung geschehen.
 
-\subsection{Darstellung von Daten}
+\subsection*{Darstellung von Daten}
 
   Einer der Hauptanforderungen ist die Darstellung von Datenpunkten (im zukünftigen Verlauf des Textes wird die Darstellung dieser Datenpunkte als \textit{Kacheln} bezeichnet) im Stil einer \textit{Social Media Wall}. Daraus folgen weiterhin die Anforderungen dass es unterschiedliche \textit{Kacheln} gibt - also für verschiedene Daten verschiedene Darstellungen z.B. könnten Suchergebnisse für Kontakte und Webseiten ganz unterschiedlich aufgebaut sein. Die dargestellten Inhalte sind weiterhin dynamisch, während des Betriebes können Kacheln hinzukommen/entfert werden und auch die Interaktion mit den Kacheln kann das Layout ändern.
 
-\subsection{Benutzung mehrerer Datenquellen}
+\subsection*{Benutzung mehrerer Datenquellen}
   Die angezeigten Daten können aus mehreren Datenuellen kommen, d.h. die gleichzeitige Darstellung von Daten von z.B. Facebook mit denen von Twitter. Hier war es wieder besonders wichtig, dass man einfach neue Datenquellen hinzufügen kann. Auch das während des Betriebes vorhandene Quellen mit anderen Parametern (wie einer Suchanfrage) neu hinzugefügt werden kann.
 
-\subsection{Authentifizierungssystem}
+\subsection*{Authentifizierungssystem}
   Das DAI stellt aus gutem Grund ihre Datenquellen nur intern zu Verfügung bzw. nur nach einer Authentizieferung mittels Benutzername/Passwort, somit muss die Applikation in der Lage sein diese Authentfizierung auszuführen und sicherzustellen dass niemals \textit{zuviel} unauthentifizierten Benutzern angezeigt wird.
 
-\subsection{Single Page Application}
+\subsection*{Single Page Application}
   Es soll eine sogenannte \textit{Single Page Application} werden, d.h. eine Webapplikation bei der JavaScript abseits des initialen Seitenaufrufes alles rendert, im Gegensatz zur klassischen Methodik bei der jede Interaktion zu einer komplett neuen Seite die vom Server gerendert wird resultiert.
 
-\subsection{Gamification}
+\subsection*{Gamification}
   Um die Benutzung der Seite zu animieren sollen Gamification-Methoden eingeführt werden wie z.B. Punkte für das tägliche einloggen bis hinzu erweiterten Methoden wie eines Compulsion Loop.
 
-\subsection{Konfiguration}
+\subsection*{Konfiguration}
   Es muss möglich sein viele Parameter anzupassen, einige davon auch als Benutzerinterface für den Benutzer andere wiederum als simple Konfigurationsdatei für verwendete URLs und ähnliches.
 
-\section{Relevante Arbeiten}
+\section*{Relevante Arbeiten}
 
 Da die Applikation mehrere Gebiete vereint als etwas bestehendes weiterzuentwickeln, gibt es direkt keine relevanten Arbeiten. Jedoch ist es nützlich bestehendes in den einzelnen Gebieten zu untersuchen.
 
-\subsection{Social Media Walls}
+\subsection*{Social Media Walls}
 
 Eine sehr gute Auflisting verschiedener \textit{social media wall}-Applikationen bietet \citep{hofram}. Die Homogenität dieser Angebote ist erstaunlich, würde man die Produkte zweier verscheidener Anbieter nebeneinander sehen wäre der größte Unterschied kleinere stylistische Unterschiede wie benutzte Farben oder ähnliches. Leider sind die wenigsten Produkte in einer Demo zu testen, da die Lösungen meistens zugeschnitten werden für den Kunden, welcher diese meistens auf großen Veranstaltungen wie Konzerten verwendet. \\
 
@@ -259,7 +259,7 @@ Eine sehr gute Auflisting verschiedener \textit{social media wall}-Applikationen
 
 Insofern sind diese Angebote für diese Arbeit nicht wirklich lohnenswert weiter zu analysieren und werden als grobe Inspiration für das Design benutzt.
 
-\subsection {Gamification}
+\subsection* {Gamification}
 
 Es gibt einige Seiten die ähnliche Inhalte anzeigen und erfolgreich Gamification implementiert haben. Einen sehr schwachen aber effektiven Ansatz verfolgt die Social-News-Seite \textit{reddit}\footnote{\url{http://reddit.com}}. Jegliche Inhalte (eingereichte Links, Kommentare) der Seite können binär bewertet werden (im reddit-jargon wird hier vom \textit{upvote} und \textit{downvote}) gesprochen. Reicht man nun selbst etwas ein, wird die Differenz aus \textit{upvotes} und \textit{downvotes} einem als \textit{Karma} gutgeschrieben. Jedoch besitzt Karma ähnlich wie die erreichte in Videospielen keinen Wert in dem Sinne, dass mit diesem nichts weiter gemacht werden kann als den Wert mit den von anderen zu vergleichen.
 Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von \textit{reddit} bzw. dem Erfolg von \textit{reddit} welcher für sich spricht\footnote{laut Alexa ist \textit{reddit} die 29 meist besuchte Webseite der Welt, in den USA ist sie sogar Platz 10.}.
@@ -271,11 +271,11 @@ Ein Problem das sich auftat bei DAIKnow war dass häufige Benutzer alle verfügb
 
 \chapter{Umsetzung}
 
-\section{Design}
+\section*{Design}
 
 Der wichtigste Aspekt für den Benutzer ist eine attraktive Darstellung und angenehme Bedienung der Applikation, natürlich neben dem Aspekt das es technisch an nichts mangelt d.h. es gibt keine Programmfehler und die nötigen Funktionen sind vorhanden. Im folgenden werden die einzelnen Aspekte der Darstellung dargestellt um die Findung der endgültigen Darstellung zu erklären.
 
-\subsection{Layout}
+\subsection*{Layout}
 
 Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http://pinterest.com}} oder gar Microsoft mit ihrem metro-Design es gezeigt haben ist die aktuell beste Darstellung für Medieninhalte verschiedener Art ein Layout basierend auf Kacheln. Bei dem Anordnen gibt es verschiedene Ansätze:
 
@@ -323,7 +323,7 @@ Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http:/
     \item unterschiedliche Darstellungsformen können unübersichtlich wirken
   \end{itemize}
 
-  \subsection{Probleme beim Flow-Verhalten}
+  \subsection*{Probleme beim Flow-Verhalten}
   Das Flow-Verhalten beim einfügen neuer Inhalte ist bei einem grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex, im ersten Schritt müsste das Behälterproblem\footnote{} gelöst werden und im zweiten Schritt müssten die Elemente mittels anhand ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblem darauf hin zu optimieren das der optische Fluss der Elemente minimiert wird scheint mir eine nicht einfache Aufgabe zu sein, weshalb man sich mit den \textit{schlechten} Lösungen zufrieden geben muss. Die JavaScript-Bibliothek \textit{packery} implementiert den ersten Schritt und ordnet die Element anhand einer Lösung des Behälterproblems, bei deren \textit{prepend}-Methode kann sehr gut erahnt werden wie \textit{wild} der Fluss bei jedem neuen Element wäre\footnote{\url{http://packery.metafizzy.co/methods.html\#prepended}}.
 
   \begin{figure}[H]
@@ -336,7 +336,7 @@ Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http:/
 
 \end{itemize}
 
-\subsection{Animationen}
+\subsection*{Animationen}
 
 Eines meiner Ziele waren Animationen die neben dem rein ästhetischen Aspekt einen Vorteil im Verständnis des Datenflusses der Applikation ermöglicht.
 
@@ -348,15 +348,46 @@ Eines meiner Ziele waren Animationen die neben dem rein ästhetischen Aspekt ein
 
 Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da der \textit{reflow} bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann wie die Kacheln sich bewegen und welchen Gesetzenmässigkeiten sie unterliegen.
 
-\subsection{Kacheln}
+\subsection*{Kacheln}
 
+Das Design der Kacheln ist neben derer Anordnung die wichtigste Design-Entscheidung. Neben dem rein funktionalen Aspekt ist auch das Aussehen wichtig um z.B. die einzelnen Inhalte gut voneinander zu unterscheiden und den Benutzer nicht zu überfordern.
 
+Rein funktional besitzt eine Kachel folgende Anforderung:
+
+\begin{itemize}
+  \item Anzeige des gefundenen Inhalts und Möglichkeit diesen zu öffnen. Die Anzeige des Inhalts kann variieren.
+  \item Benutzer können den Inhalt favorisieren (speichern) und bewerten.
+  \item Es werden Metainformationen wie der Typ des Inhalts (PDF, Kontakt, ...) angezeigt.
+  \item Kacheln können schnell zu dem Suchbegriff zugeordnet werden von dem Sie stammen.
+\end{itemize}
+
+Obwohl die Kacheln je nach dargestellten Inhalt stark variieren können ist es ratsam ein einheitliches Benutzerinterface für die Benutzerinteraktionen zu bieten. Auch sollten die Metainformationen gleich angezeigt werden.
+Mit diesen Anforderungen kann eine funktionale Kachel konzipiert wie unten konzipiert werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/tiles.eps}
+    \caption{Eine prototyp-Kachel mit rein funktionalen Aspekten.}
+    \label{fig:awesome_image}
+\end{figure}
+
+Menschen sind äußerst gut darin Farben und unterschiedliche Formen schnell zu gruppieren, da nach aktuellem Kenntnisstand, dies Teile der ersten Verarbeitungsstufe von visuellen Informationen ist \citep{treisman1987merkmale}. Da für uns die schnelle Assoziation von Suchbegriff und Kachel äußerst wichtig ist, wurde die Hintergrundfarbe der Kachel dafür benutzt. Dies schränkt das Design aber insofern ein dass bis auf Grautöne und Abstufungen der verwendeten Hintergrundfarbe keine anderen Farben möglich sind (man könnte z.B. das Symbol zum Favorisieren nicht überall rot anzeigen), doch waren das dadurch erzielte Design so überzeugend, dass dies in Kauf genommen wurde.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/tiles_real.eps}
+    \caption{Ein erstes echtes Design dass verschiedene Darstellungsformen für unterschiedliche Typen von Informationen benutzt.}
+    \label{fig:awesome_image}
+\end{figure}
+
+\section{Gamification}
 
 \chapter{Technische Umsetzung} 
 
-\section{Frontend}
+Im Kapitel Umsetzung wurde die Applikation soweit geplant, dass die Technische Umsetzung erfolgen kann - d.h. das geplante System wird soweit realisiert das es benutzt werden kann. Aspekte warum eine Technologie genutzt wurde und nicht eine andere, wie die Architektur der Applikation ist und warum sie so ist und alles was sonst noch anfällt wenn man eine Applikation schreibt.
+Die Technische Umsetzung wird sich fast ausschließlich mit dem Frontend beschäftigen da dies Teil der Bachelorarbeit war. Das Backend wird nur kurz wegen der Vollständigkeit behandelt.
 
-\subsubsection{Wahl der Technologie}
+\section*{Wahl der Technologie}
 
 Die Wahl der zu verwendeten Technologie ist ein wichtiger Punkt der die darauffolgende Entwicklung und spätere Wartung beeinflusst. Es wird versucht auf folgende Punkte einzugehen:
 
@@ -392,11 +423,46 @@ Die Ergebnisse zeigen, dass ganze $1.86s$ zum Übertragen und etwa $600ms$ zum a
 
 Aufgrund dessen wurde neben dem Versuch möglichst wenige Bibliotheken oder Frameworks zu benutzen (z.B. wenn nur eine Funktion einer großen Bibliothek benutzt wurde, wurde diese Funktion durch eine minimalere Bibliothek ersetzt oder selbst geschrieben bzw. kopiert.) auch diverse Techniken zum minimieren des Quelltextes genutzt.
 
-\subsubsection{Facebook React}
 
-Facebooks React\footnote{\url{https://github.com/facebook/react}} ist eine JavaScript-Bibliothek die seit ihrem erscheinen im Jahr 2013 viel Beifall und viele Anhänger finden konnte. Zum Zeitpunkt dieser Arbeit wird sie produktiv von vielen Firmen benutzt wie \textit{Khan Academy\footnote{\url{http://joelburget.com/backbone-to-react/}}}, \textit{Netflix\footnote{\url{http://conf.reactjs.com/schedule.html\#beyond-the-dom-how-netflix-plans-to-enhance-your-television-experience}}}, \textit{Yahoo!\footnote{\url{http://www.slideshare.net/mobile/rmsguhan/react-meetup-mailonreact}}}, \textit{Sony\footnote{\url{https://medium.com/code-stories/dev-chats-spike-brehm-of-airbnb-87e155f3475d}}} und anderen. Facebook benutzt sie selbst für ihre größten Produkte Facebook und Instagram.
 
-\section{Backend}
+\section*{Facebook React und die Flux Architektur}
+
+Facebooks React\footnote{\url{https://github.com/facebook/react}} ist eine JavaScript-Bibliothek die seit ihrem erscheinen im Jahr 2013 viel Beifall und viele Anhänger finden konnte. Zum Zeitpunkt dieser Arbeit wird sie produktiv von vielen Firmen benutzt wie \textit{Khan Academy\footnote{\url{http://joelburget.com/backbone-to-react/}}}, \textit{Netflix\footnote{\url{http://conf.reactjs.com/schedule.html\#beyond-the-dom-how-netflix-plans-to-enhance-your-television-experience}}}, \textit{Yahoo!\footnote{\url{http://www.slideshare.net/mobile/rmsguhan/react-meetup-mailonreact}}}, \textit{Sony\footnote{\url{https://medium.com/code-stories/dev-chats-spike-brehm-of-airbnb-87e155f3475d}}} und anderen. Facebook benutzt sie selbst für ihre größten Produkte Facebook und Instagram (\textit{Google} benutzt ihr Framework \textit{AngularJS} z.B. nicht für das Flagschiff \textit{Google Mail}).
+
+React ist jedoch kein Framework wie AngularJS oder Ember, es gibt keine Directives, Controllers, Templates oder Models. Das einzige was React bietet sind \textit{Components}, welche ähnlich wie der kommende Standard der \textit{Web Components}\footnote{\url{https://developer.mozilla.org/en-US/docs/Web/Web_Components}} wiederverwendbare Interface-Widgets darstellen indem Sie HTML/CSS und JavaScript koppeln und vom Rest des System separieren.
+
+Dabei folgt React nicht den \textit{best-practices} die in den letzten Jahren in Webentwicklung entstanden sind und sich in MVC-Frameworks widerspiegeln. Klassisch gibt es ein Template, dass in HTML oder einem ähnlichen Sprache wie YAML geschrieben ist und Platzhalter enthält die später gefüllt werden - dies ist das V in MVC.
+Dazu kommt ein Controller der diese Templates mit Daten füllt, auf welche Art ist nicht relevant. Kommuniziert der Controller mit einem Server um Daten zu übertragen wie die eines Benutzers stellt dies das M da, also nicht die Kommunikation selbst sondern die Datenstrukturen auf beiden Seiten die den Benutzer darstellen.
+Applikationen auf diese Weise zu erstellen hat sich bewährt was jedoch nicht heißt es gibt keine Kritik.
+
+\subsection*{Virtual DOM}
+
+Wie weit muss ich hier den DOM beschreiben? Muss ich ihn beschreiben?
+
+Einer der innovativsten Aspekte von React ist die virtuelle Repräsentation des DOMs\footnote{\url{http://de.wikipedia.org/wiki/Document_Object_Model}}. Die normale Interaktion mit dem DOM ist langsam und kompliziert, es ist sehr schwer den aktuellen Status der Applikation darüber abzubilden - so geschieht das häufig über CSS-Klassen oder speziellen Attributen.
+Eine Lösung dieses Problems ist es seine Applikation so zu schreiben, dass der ganze DOM bei jeder Veränderung des Zustands neu gerendert wird. (Vergleich hier zu Server-seitigem Rendern wo genau dies gemacht wird.) Natürlich wäre die Applikation bei so einem Vorgehen langsam (wegen des rendern durch den Browser) und Dinge wie Fokus auf Eingabe-Feldern würde verloren gehen was der Benutzer nicht gerade toll finden würde.
+
+Mittels eines virtuellen DOMs kann dies deutlich effizienter und Benutzerfreundlicher gestaltet werden. Bei jeder Zustandsänderung wird ein neuer virtueller DOM erstellt und mit dem alten virtuellen verglichen wodurch die minimalen Änderungen erfasst werden können um den derzeitigen DOM zum Zustand des neuen zu bringen. Dies macht Frameworks die einen virtual DOM benutzen deutlich schneller als welche die die Hauptarbeit auf dem richtigen DOM verrichten. Das ganze Konzept ist skalierbar im Gegensatz zu Technologien wie dem \textit{dirty checking} von AngularJS welches eine Komplexität von $O(n^2)$ bis $O(n^10)$ (Ab 10 Iterationen wird abgebrochen) besitzt und bei dies bei jeder Änderung einer Variablen durchführen muss auf die ein \textit{listener} gesetzt ist (So ziemlich alles was dynamisch im Template ist).
+Der von Facebook verwendete Algorithmus besitzt eine Komplexität von $O(n)$\footnote{\url{https://facebook.github.io/react/docs/reconciliation.html}} wobei $n$ die Anzahl der DOM-Element ist.
+Ein Geschwindikeitsvergleich von Frameworks die einen virtuellen DOM benutzen zeigt diese Grafik vom Elm\footnote{\url{http://en.wikipedia.org/wiki/Elm_programming_language}}-Entwickler.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/virtual_dom.png}
+    \caption{Geschwindigkeitsvergleich von TodoMVC-Implentierungen mit verschiedenen Frameworks.}
+    \label{fig:awesome_image}
+\end{figure}
+
+Es ist zu sehen, dass Ember und AngularJS am langsamsten sind. Backbone ist in diesem Benchmark schneller als React, wobei die verwendete Implemtierung der React-App nicht optimiert ist - \textit{Om}\footnote{\url{https://github.com/omcljs/om}} kann als optimierte React-Version betrachtet werden, da Om im Grunde React mit nicht veränderbaren Datenstrukturen\footnote{Durch nicht veränderbare Datenstrukturen kann das diffing noch effizienter gestaltet werden, da viele Teilbäume nicht betrachtet werden müssen.} (immutable data-structures) ist. Backbone wie aber auch JQuery oder Dojo können theoretisch so schnell gemacht werden wie es möglich ist, dies ist aber so komplex, dass es nie gemacht wird und Wartbarkeit und Fehlervermeidung über Performance gestellt wird.
+Die beiden schnellsten Frameworks benutzen ebenso eine virtual-DOM Implementierung und wie \textit{Om} auch nicht veränderbare Datenstrukturen.
+
+
+Ein weiterer Vorteil der virtuellen Darstellung ist die Unabhängigkeit des Browsers um die Applikation zu rendern, dass schlussendliche rendern des virtuellen DOMs in den richtigen DOM ist nicht zwingend. Es ist z.B. möglich den virtuellen DOM in ein Canvas-Element zu rendern\footnote{\url{https://github.com/Flipboard/react-canvas}} oder ganz einfach in einen String. Durch das simple rendern zum String, was ganz ohne Browser möglich ist, beherrscht React isomorphes Rendering, d.h. die Inhalte können auf dem Server und im Client gerendert werden. So wird z.B. bei Instagram der erste Seitenaufruf auf dem Server alles weitere vom Clienten gerendert. Erste Versuche zeigen auch, dass man dies komplett agnostisch machen kann und alles kann auf Server/Client gerendert werden ohne das der Benutzer einen Unterschied merkt. So ist es denkbar das schwache Geräte mehr auf dem Server rendern und somit komplexe Inhalte vergleichsweise schnell darstellen können.
+
+\subsection{Flux Architektur}
+
+
+\section*{Backend}
 
 Im Verlaufe der Arbeit wurde entschieden, dass eine weitere Server-Applikation ungünstig wäre und die Arbeiten im Frontend ausreichend waren für den Rahmen einer Bachelor-Arbeit.
 Zur Vollständigkeit halber werden die verwendeten Technologien aufgezählt.
