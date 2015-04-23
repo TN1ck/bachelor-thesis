@@ -8,7 +8,7 @@
 \documentclass[12pt,twoside]{book}
 %\usepackage{extsizes}
 \usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+\geometry{a4paper}                   % ... or a4paper or a5paper or ...
 %\geometry{landscape}                % Activate for for rotated page geometry
 %\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
 \geometry{left=3cm}
@@ -19,7 +19,7 @@
 \usepackage{amssymb}
 
 \usepackage{polyglossia}
-\usepackage[babel]{csquotes} 
+\usepackage[babel]{csquotes}
 \setdefaultlanguage{german}
 
 \usepackage{titlesec}
@@ -120,7 +120,7 @@
 
 \usepackage{capt-of}
 
-\usepackage[hang,flushmargin,bottom]{footmisc} 
+\usepackage[hang,flushmargin,bottom]{footmisc}
 
 \newenvironment{absolutelynopagebreak}
   {\par\nobreak\vfil\penalty0\vfilneg
@@ -219,7 +219,34 @@ Wenn man sich jedoch auf eine Teilmenge der verfügbaren Informationen beschrän
 
 Diese Arbeit zielt auf einen Spezialfall der Darstellungsformen verschiedener Inhalte ab, die der \textit{social media wall} was eine populäre Form für Inhalte mit kurzen Texten und oder Bildern ist\footnote{Natürlich sind auch Inhalte anderer Art möglich, jedoch sind die Elemente solcher Wände in jeglichem Aspekt daraufhin optimiert.}.
 
+\section{Anforderungen}
+
+Die Anforderungen der Applikation waren von vornerein nicht vollständig geklärt, viel mehr gab es ein grobes Gerüst was die Anwendung liefern sollte. Die komplette Ausarbeitung ist während der Entwicklung geschehen.
+
+\subsection{Darstellung von Daten}
+
+  Einer der Hauptanforderungen ist die Darstellung von Datenpunkten (im zukünftigen Verlauf des Textes wird die Darstellung dieser Datenpunkte als \textit{Kacheln} bezeichnet) im Stil einer \textit{Social Media Wall}. Daraus folgen weiterhin die Anforderungen dass es unterschiedliche \textit{Kacheln} gibt - also für verschiedene Daten verschiedene Darstellungen z.B. könnten Suchergebnisse für Kontakte und Webseiten ganz unterschiedlich aufgebaut sein. Die dargestellten Inhalte sind weiterhin dynamisch, während des Betriebes können Kacheln hinzukommen/entfert werden und auch die Interaktion mit den Kacheln kann das Layout ändern.
+
+\subsection{Benutzung mehrerer Datenquellen}
+  Die angezeigten Daten können aus mehreren Datenuellen kommen, d.h. die gleichzeitige Darstellung von Daten von z.B. Facebook mit denen von Twitter. Hier war es wieder besonders wichtig, dass man einfach neue Datenquellen hinzufügen kann. Auch das während des Betriebes vorhandene Quellen mit anderen Parametern (wie einer Suchanfrage) neu hinzugefügt werden kann.
+
+\subsection{Authentifizierungssystem}
+  Das DAI stellt aus gutem Grund ihre Datenquellen nur intern zu Verfügung bzw. nur nach einer Authentizieferung mittels Benutzername/Passwort, somit muss die Applikation in der Lage sein diese Authentfizierung auszuführen und sicherzustellen dass niemals \textit{zuviel} unauthentifizierten Benutzern angezeigt wird.
+
+\subsection{Single Page Application}
+  Es soll eine sogenannte \textit{Single Page Application} werden, d.h. eine Webapplikation bei der JavaScript abseits des initialen Seitenaufrufes alles rendert, im Gegensatz zur klassischen Methodik bei der jede Interaktion zu einer komplett neuen Seite die vom Server gerendert wird resultiert.
+
+\subsection{Gamification}
+  Um die Benutzung der Seite zu animieren sollen Gamification-Methoden eingeführt werden wie z.B. Punkte für das tägliche einloggen bis hinzu erweiterten Methoden wie eines Compulsion Loop.
+
+\subsection{Konfiguration}
+  Es muss möglich sein viele Parameter anzupassen, einige davon auch als Benutzerinterface für den Benutzer andere wiederum als simple Konfigurationsdatei für verwendete URLs und ähnliches.
+
 \section{Relevante Arbeiten}
+
+Da die Applikation mehrere Gebiete vereint als etwas bestehendes weiterzuentwickeln, gibt es direkt keine relevanten Arbeiten. Jedoch ist es nützlich bestehendes in den einzelnen Gebieten zu untersuchen.
+
+\subsection{Social Media Walls}
 
 Eine sehr gute Auflisting verschiedener \textit{social media wall}-Applikationen bietet \citep{hofram}. Die Homogenität dieser Angebote ist erstaunlich, würde man die Produkte zweier verscheidener Anbieter nebeneinander sehen wäre der größte Unterschied kleinere stylistische Unterschiede wie benutzte Farben oder ähnliches. Leider sind die wenigsten Produkte in einer Demo zu testen, da die Lösungen meistens zugeschnitten werden für den Kunden, welcher diese meistens auf großen Veranstaltungen wie Konzerten verwendet. \\
 
@@ -232,6 +259,16 @@ Eine sehr gute Auflisting verschiedener \textit{social media wall}-Applikationen
 
 Insofern sind diese Angebote für diese Arbeit nicht wirklich lohnenswert weiter zu analysieren und werden als grobe Inspiration für das Design benutzt.
 
+\subsection {Gamification}
+
+Es gibt einige Seiten die ähnliche Inhalte anzeigen und erfolgreich Gamification implementiert haben. Einen sehr schwachen aber effektiven Ansatz verfolgt die Social-News-Seite \textit{reddit}\footnote{\url{http://reddit.com}}. Jegliche Inhalte (eingereichte Links, Kommentare) der Seite können binär bewertet werden (im reddit-jargon wird hier vom \textit{upvote} und \textit{downvote}) gesprochen. Reicht man nun selbst etwas ein, wird die Differenz aus \textit{upvotes} und \textit{downvotes} einem als \textit{Karma} gutgeschrieben. Jedoch besitzt Karma ähnlich wie die erreichte in Videospielen keinen Wert in dem Sinne, dass mit diesem nichts weiter gemacht werden kann als den Wert mit den von anderen zu vergleichen.
+Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von \textit{reddit} bzw. dem Erfolg von \textit{reddit} welcher für sich spricht\footnote{laut Alexa ist \textit{reddit} die 29 meist besuchte Webseite der Welt, in den USA ist sie sogar Platz 10.}.
+Eine ausführliche Untersuchung von \citep{richterichkarma} zeigt die Tragweite von \textit{reddits} Karma-System. Es dient demnach vorzüglich als Bewertung des eingereichten Inhalts durch andere bzw. die daraus resultierende Selbstbestätigung wenn das eigene Karma eröht wird.
+Benutzer \textit{reddits} werden dadurch jedoch darauf gepolt ihre eingereichen Beiträge nach der Anzahl an Karma, welches der Beitrag liefern wird auszusuchen.
+
+DAIKnow\citep{meder2014daiknow} ist eine Bookmarking Seite ähnlich zu \textit{delicous.com} bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Trophäen und von Bestenlisten wird die Benutzung der Seite durch die Benutzer gesteigert. Im Gegensatz zu \textit{reddit} ist dieses System jedoch weitaus komplexer, so bekommet man z.B. Punkte für den täglichen Aufruf, Punkte für das einrechen eines Links oder das jemand anderes seinen Link kopiert hat.
+Ein Problem das sich auftat bei DAIKnow war dass häufige Benutzer alle verfügbaren Trophäen freischalteten und damit der Gamification-Aspekt damit kein Grund mehr ist die Applikation weiter zu benutzen.
+
 \chapter{Umsetzung}
 
 \section{Design}
@@ -240,7 +277,7 @@ Der wichtigste Aspekt für den Benutzer ist eine attraktive Darstellung und ange
 
 \subsection{Layout}
 
-Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http://pinterest.com}} oder gar Microsoft mit ihrem metro-Design es gezeigt haben ist die aktuell beste Darstellung für Medioninhalte verschiedener Art ein Layout basierend auf Kacheln. Bei dem Anordnen gibt es verschiedene Ansätze:
+Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http://pinterest.com}} oder gar Microsoft mit ihrem metro-Design es gezeigt haben ist die aktuell beste Darstellung für Medieninhalte verschiedener Art ein Layout basierend auf Kacheln. Bei dem Anordnen gibt es verschiedene Ansätze:
 
 \begin{itemize}
   \item \textbf{Spaltenbasierte Anordnung} \\
@@ -269,7 +306,7 @@ Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http:/
     \caption{links: Das Raster des Grids, rechts: eine zufällige Benutzung des Grids}
     \label{fig:awesome_image}
   \end{figure}
-  
+
   \textbf{Vorteile} \\
   \begin{itemize}
     \item Ansprechendes Aussehen
@@ -286,28 +323,52 @@ Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http:/
     \item unterschiedliche Darstellungsformen können unübersichtlich wirken
   \end{itemize}
 
+  \subsection{Probleme beim Flow-Verhalten}
+  Das Flow-Verhalten beim einfügen neuer Inhalte ist bei einem grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex, im ersten Schritt müsste das Behälterproblem\footnote{} gelöst werden und im zweiten Schritt müssten die Elemente mittels anhand ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblem darauf hin zu optimieren das der optische Fluss der Elemente minimiert wird scheint mir eine nicht einfache Aufgabe zu sein, weshalb man sich mit den \textit{schlechten} Lösungen zufrieden geben muss. Die JavaScript-Bibliothek \textit{packery} implementiert den ersten Schritt und ordnet die Element anhand einer Lösung des Behälterproblems, bei deren \textit{prepend}-Methode kann sehr gut erahnt werden wie \textit{wild} der Fluss bei jedem neuen Element wäre\footnote{\url{http://packery.metafizzy.co/methods.html\#prepended}}.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/grid_flow.png}
+    \caption{Zu dem Grid links wurden die Elemente 1, 2 und 3 hinzugefügt. Das resultierende neue Layout ist rechts zu sehen. Dies ist ein praktisches Beispiel welches mithilfe von packery gemacht wurde.}
+    \label{fig:awesome_image}
+  \end{figure}
+
+
 \end{itemize}
 
+\subsection{Animationen}
+
+Eines meiner Ziele waren Animationen die neben dem rein ästhetischen Aspekt einen Vorteil im Verständnis des Datenflusses der Applikation ermöglicht.
+
+\begin{enumerate}
+  \item Neue Kacheln sollen von \textit{oben} kommen um einerseits zu zeigen dass es neue Inhalte gibt und andererseits um das vertraute Konzept zu benutzen dass neue Dinge meistens von oben kommen\footnote{Siehe z.B. Börsenticker, Nachrichtenseiten oder die Abfahrttafeln am Bahnhöfen} und nicht überraschend irgendwo auftauchen.\footnote{Vergleich zu Googles Material Design bei dem sehr viel Wert darauf gelegt wird sinnvolle Animationen zu machen, die den Benutzer unterstützen und nicht verwirren}
+  \item Die neuen Kacheln ordnen sich an ihrem Platz ein (ein Algorithmus benutzt verschiedene Werte um das zu bestimmen), alte Kacheln machen dementsprechend Platz.
+  \item Die Anzahl an Bewegungen soll minimal sein um nicht unnötig vom eigentlichen Inhalt abzulenken.
+\end{enumerate}
+
+Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da der \textit{reflow} bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann wie die Kacheln sich bewegen und welchen Gesetzenmässigkeiten sie unterliegen.
+
+\subsection{Kacheln}
 
 
 
+\chapter{Technische Umsetzung} 
 
-\chapter{Technische Umsetzung}
+\section{Frontend}
 
-\section{Wahl der Technologie}
+\subsubsection{Wahl der Technologie}
 
 Die Wahl der zu verwendeten Technologie ist ein wichtiger Punkt der die darauffolgende Entwicklung und spätere Wartung beeinflusst. Es wird versucht auf folgende Punkte einzugehen:
 
 \begin{itemize}
   \item Technologie ist \textit{erwachsen} \\
-  Die verwendete Bibilothek oder ähnliches ist nicht Brandneu und hat sich in vielen Applikationen bewährt, sie ist soweit ausgereift das workarounds oder bugfixes nur in den seltensten Fällen nötig sein sollten.
+  Die verwendete Bibilothek oder ähnliches ist nicht allzu neu und hat sich in vielen Applikationen bewährt, sie ist soweit ausgereift das workarounds oder bugfixes nur in den seltensten Fällen nötig sein sollten.
   \item Die Technologie hat keine große Einstiegsbarriere \\
   Es wird versucht nicht allzu viele Frameworks zu benutzen und wenn, dann welche die weitesgehend bekannt sind und oder in dem DAI-Labor viel benutzt werden. Wenn Bibliotheken verwendet werden, wird darauf geachtet das sie einfach zu lernen sind und intuitiv in der Benutzung.
   \item Die Technologie ist zukunftsicher \\
   Es ist immer schwer ab zu schätzen welche Technologie länger überleben wird, doch wird versucht anhand von Faktoren wie Popularität, Aktivität der Entwicklung und Einsatz bei großen Firmen dies so gut wie möglich zu garantieren.
 \end{itemize}
 
-\subsection{Frontend}
 
 Eine sehr gepflegte Liste der derzeit verfügbaren Technologien im Bereich Frontend ist verfügbar auf github\footnote{https://github.com/dypsilon/frontend-dev-bookmarks}.
 
@@ -329,12 +390,16 @@ Die Anwendung ist auf github zu finden\footnote{\url{http://jkneb.github.io/embe
 \end{figure}
 Die Ergebnisse zeigen, dass ganze $1.86s$ zum Übertragen und etwa $600ms$ zum ausführen den Anwendung benötigt wurden.
 
+Aufgrund dessen wurde neben dem Versuch möglichst wenige Bibliotheken oder Frameworks zu benutzen (z.B. wenn nur eine Funktion einer großen Bibliothek benutzt wurde, wurde diese Funktion durch eine minimalere Bibliothek ersetzt oder selbst geschrieben bzw. kopiert.) auch diverse Techniken zum minimieren des Quelltextes genutzt.
 
+\subsubsection{Facebook React}
 
+Facebooks React\footnote{\url{https://github.com/facebook/react}} ist eine JavaScript-Bibliothek die seit ihrem erscheinen im Jahr 2013 viel Beifall und viele Anhänger finden konnte. Zum Zeitpunkt dieser Arbeit wird sie produktiv von vielen Firmen benutzt wie \textit{Khan Academy\footnote{\url{http://joelburget.com/backbone-to-react/}}}, \textit{Netflix\footnote{\url{http://conf.reactjs.com/schedule.html\#beyond-the-dom-how-netflix-plans-to-enhance-your-television-experience}}}, \textit{Yahoo!\footnote{\url{http://www.slideshare.net/mobile/rmsguhan/react-meetup-mailonreact}}}, \textit{Sony\footnote{\url{https://medium.com/code-stories/dev-chats-spike-brehm-of-airbnb-87e155f3475d}}} und anderen. Facebook benutzt sie selbst für ihre größten Produkte Facebook und Instagram.
 
-\subsection{Backend}
+\section{Backend}
 
-% One of the key-difficulties is the problem of 
+Im Verlaufe der Arbeit wurde entschieden, dass eine weitere Server-Applikation ungünstig wäre und die Arbeiten im Frontend ausreichend waren für den Rahmen einer Bachelor-Arbeit.
+Zur Vollständigkeit halber werden die verwendeten Technologien aufgezählt.
 
 \chapter{Andere Arbeiten}
 
@@ -351,7 +416,4 @@ Die Ergebnisse zeigen, dass ganze $1.86s$ zum Übertragen und etwa $600ms$ zum a
 \cleardoublepage
 \phantomsection
 
-\end{document}  
-
-
-
+\end{document}
