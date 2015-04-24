@@ -175,7 +175,7 @@
 \vspace{1cm}
 \hrule
 \vspace{0.3cm}
-{\Huge \textsc{\title{}}\par}
+{\Huge \textsc{\title{Enterprise Infoboard - Intelligente Visualisierung und Austausch von heterogenen Informationen im Unternehmen}}\par}
 ~\\[0.1cm]
 {\Large Supervisor: Prof. Albayrak}\\[0.1cm]
 {\Large Advisors: -}\\[0.3cm]
@@ -266,7 +266,7 @@ Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von \textit{r
 Eine ausführliche Untersuchung von \citep{richterichkarma} zeigt die Tragweite von \textit{reddits} Karma-System. Es dient demnach vorzüglich als Bewertung des eingereichten Inhalts durch andere bzw. die daraus resultierende Selbstbestätigung wenn das eigene Karma eröht wird.
 Benutzer \textit{reddits} werden dadurch jedoch darauf gepolt ihre eingereichen Beiträge nach der Anzahl an Karma, welches der Beitrag liefern wird auszusuchen.
 
-DAIKnow\citep{meder2014daiknow} ist eine Bookmarking Seite ähnlich zu \textit{delicous.com} bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Trophäen und von Bestenlisten wird die Benutzung der Seite durch die Benutzer gesteigert. Im Gegensatz zu \textit{reddit} ist dieses System jedoch weitaus komplexer, so bekommet man z.B. Punkte für den täglichen Aufruf, Punkte für das einrechen eines Links oder das jemand anderes seinen Link kopiert hat.
+DAIKnow \citep{meder2014daiknow} ist eine Bookmarking Seite ähnlich zu \textit{delicous.com} bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Trophäen und von Bestenlisten wird die Benutzung der Seite durch die Benutzer gesteigert. Im Gegensatz zu \textit{reddit} ist dieses System jedoch weitaus komplexer, so bekommet man z.B. Punkte für den täglichen Aufruf, Punkte für das einrechen eines Links oder das jemand anderes seinen Link kopiert hat.
 Ein Problem das sich auftat bei DAIKnow war dass häufige Benutzer alle verfügbaren Trophäen freischalteten und damit der Gamification-Aspekt damit kein Grund mehr ist die Applikation weiter zu benutzen.
 
 \chapter{Umsetzung}
@@ -376,11 +376,36 @@ Menschen sind äußerst gut darin Farben und unterschiedliche Formen schnell zu 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/tiles_real.eps}
-    \caption{Ein erstes echtes Design dass verschiedene Darstellungsformen für unterschiedliche Typen von Informationen benutzt.}
+    \caption{Ein erstes Design dass verschiedene Darstellungsformen für unterschiedliche Typen von Informationen benutzt.}
     \label{fig:awesome_image}
 \end{figure}
 
 \section{Gamification}
+
+Wie sehr muss ich Gamification erklären?
+
+Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um Benutzer zu binden. Es ist schwer neue Technologien im Unternehmensfeld einzuführen, vor allem wenn sie freiwillig benutzt werden können - so wie das hier entwickelte Enterprise Dashboard. Ziel ist es also durch die Gamification der Benutzung die Benutzer dazu zu motivieren die Anwendung gewohnheitsmäßig zu benutzen.
+
+Die Grundlage jeder verspielisierung ist der \textit{Compulsion Loop} welcher eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden um eine neurochemische Belohnung zu erhalten.
+
+Diese modellierte Kette besteht aus 3 Schritten:
+
+\begin{enumerate}
+  \item \textbf{Anerkennung der Leistung} Die Ausführung der Aktionen wird belohnt, der Benutzer bekommt etwas was er gerne möchte. Die Herausforderung hierbei ist es etwas zu erschaffen, dass der Benutzer möchte und die Belohnung so einzuteilen das er gerade soviel bekommt dass es eine Belohnung darstellt. Am Beispiel des Rollenspieles wäre eine Belohnung z.B. die verbesserte Rüstung mit der der gespielte Charakter widerstandsfähiger wird und neue bisher verschlossene Abenteuer bestreiten kann.
+  \item \textbf{Belohnung einer Aktion} Jede Aktion die der Benutzer ausführt hat eine direkte Belohnung zur Folge, diese ist jedoch so klein, dass sie direkt keine Glücksgefühle auslöst sondern erst eine Anhäufung der Belohnungen führt dazu dass der Benutzer die eigentliche \textbf{Belohnung der Leistung} erhält. Es ist zu beachten dass diese direkten Belohnungen nicht allzu schnell die Möglichkeit freischalten sie gegen dass einzutauschen wonach der Benutzer strebt. Dies könnte im Rollenspiel das Gold sein, dass benötigt wird um eine neue Rüstung zu kaufen.
+  \item \textbf{Aktion} Die Aktion ist die Grundlage, diese sind die Aspekte der Anwendung die der Benutzer ausführen soll. Im Rollenspiel könnte dies z.B. das lösen von Aufträgen sein.
+\end{enumerate}
+
+Das Enterprise Dashboard besitzt wenige Aktionen, sodass eigentlich alle Teil der Aktionen sein können die eine Belohnung geben.
+
+\begin{itemize}
+  \item Bewertung der Suchergebnisse
+  \item Favorisieren von Suchergebnissen
+  \item Eingabe und Löschung von Suchbegriffen
+  \item Anmeldung und Abmeldung
+\end{itemize}
+
+
 
 \chapter{Technische Umsetzung} 
 
@@ -425,7 +450,7 @@ Aufgrund dessen wurde neben dem Versuch möglichst wenige Bibliotheken oder Fram
 
 
 
-\section*{Facebook React und die Flux Architektur}
+\subsection*{Facebook React und die Flux Architektur}
 
 Facebooks React\footnote{\url{https://github.com/facebook/react}} ist eine JavaScript-Bibliothek die seit ihrem erscheinen im Jahr 2013 viel Beifall und viele Anhänger finden konnte. Zum Zeitpunkt dieser Arbeit wird sie produktiv von vielen Firmen benutzt wie \textit{Khan Academy\footnote{\url{http://joelburget.com/backbone-to-react/}}}, \textit{Netflix\footnote{\url{http://conf.reactjs.com/schedule.html\#beyond-the-dom-how-netflix-plans-to-enhance-your-television-experience}}}, \textit{Yahoo!\footnote{\url{http://www.slideshare.net/mobile/rmsguhan/react-meetup-mailonreact}}}, \textit{Sony\footnote{\url{https://medium.com/code-stories/dev-chats-spike-brehm-of-airbnb-87e155f3475d}}} und anderen. Facebook benutzt sie selbst für ihre größten Produkte Facebook und Instagram (\textit{Google} benutzt ihr Framework \textit{AngularJS} z.B. nicht für das Flagschiff \textit{Google Mail}).
 
@@ -435,14 +460,14 @@ Dabei folgt React nicht den \textit{best-practices} die in den letzten Jahren in
 Dazu kommt ein Controller der diese Templates mit Daten füllt, auf welche Art ist nicht relevant. Kommuniziert der Controller mit einem Server um Daten zu übertragen wie die eines Benutzers stellt dies das M da, also nicht die Kommunikation selbst sondern die Datenstrukturen auf beiden Seiten die den Benutzer darstellen.
 Applikationen auf diese Weise zu erstellen hat sich bewährt was jedoch nicht heißt es gibt keine Kritik.
 
-\subsection*{Virtual DOM}
+\subsubsection*{Virtual DOM}
 
 Wie weit muss ich hier den DOM beschreiben? Muss ich ihn beschreiben?
 
 Einer der innovativsten Aspekte von React ist die virtuelle Repräsentation des DOMs\footnote{\url{http://de.wikipedia.org/wiki/Document_Object_Model}}. Die normale Interaktion mit dem DOM ist langsam und kompliziert, es ist sehr schwer den aktuellen Status der Applikation darüber abzubilden - so geschieht das häufig über CSS-Klassen oder speziellen Attributen.
-Eine Lösung dieses Problems ist es seine Applikation so zu schreiben, dass der ganze DOM bei jeder Veränderung des Zustands neu gerendert wird. (Vergleich hier zu Server-seitigem Rendern wo genau dies gemacht wird.) Natürlich wäre die Applikation bei so einem Vorgehen langsam (wegen des rendern durch den Browser) und Dinge wie Fokus auf Eingabe-Feldern würde verloren gehen was der Benutzer nicht gerade toll finden würde.
+Eine Lösung dieses Problems ist es die Applikation so zu schreiben, dass der ganze DOM bei jeder Veränderung des Zustands neu gerendert wird. (Vergleich hier zu Server-seitigem Rendern wo genau dies gemacht wird.) Natürlich wäre die Applikation bei so einem Vorgehen langsam (wegen des rendern durch den Browser) und Dinge wie Fokus auf Eingabe-Feldern würde verloren gehen was der Benutzer nicht gerade toll finden würde.
 
-Mittels eines virtuellen DOMs kann dies deutlich effizienter und Benutzerfreundlicher gestaltet werden. Bei jeder Zustandsänderung wird ein neuer virtueller DOM erstellt und mit dem alten virtuellen verglichen wodurch die minimalen Änderungen erfasst werden können um den derzeitigen DOM zum Zustand des neuen zu bringen. Dies macht Frameworks die einen virtual DOM benutzen deutlich schneller als welche die die Hauptarbeit auf dem richtigen DOM verrichten. Das ganze Konzept ist skalierbar im Gegensatz zu Technologien wie dem \textit{dirty checking} von AngularJS welches eine Komplexität von $O(n^2)$ bis $O(n^10)$ (Ab 10 Iterationen wird abgebrochen) besitzt und bei dies bei jeder Änderung einer Variablen durchführen muss auf die ein \textit{listener} gesetzt ist (So ziemlich alles was dynamisch im Template ist).
+Mittels eines virtuellen DOMs kann dies deutlich effizienter und Benutzerfreundlicher gestaltet werden. Bei jeder Zustandsänderung wird ein neuer virtueller DOM erstellt und mit dem alten virtuellen verglichen wodurch die minimalen Änderungen erfasst werden können um den derzeitigen DOM zum Zustand des neuen zu bringen. Dies macht Frameworks die einen virtual DOM benutzen deutlich schneller als welche die die Hauptarbeit auf dem richtigen DOM verrichten. Das ganze Konzept ist skalierbar im Gegensatz zu Technologien wie dem \textit{dirty checking} von AngularJS welches eine Komplexität von $O(n^2)$ bis $O(n^10)$ (Ab 10 Iterationen wird abgebrochen) besitzt, wobei $n$ die Anzahl der veränderbaren Inhalte ist.
 Der von Facebook verwendete Algorithmus besitzt eine Komplexität von $O(n)$\footnote{\url{https://facebook.github.io/react/docs/reconciliation.html}} wobei $n$ die Anzahl der DOM-Element ist.
 Ein Geschwindikeitsvergleich von Frameworks die einen virtuellen DOM benutzen zeigt diese Grafik vom Elm\footnote{\url{http://en.wikipedia.org/wiki/Elm_programming_language}}-Entwickler.
 
@@ -459,7 +484,35 @@ Die beiden schnellsten Frameworks benutzen ebenso eine virtual-DOM Implementieru
 
 Ein weiterer Vorteil der virtuellen Darstellung ist die Unabhängigkeit des Browsers um die Applikation zu rendern, dass schlussendliche rendern des virtuellen DOMs in den richtigen DOM ist nicht zwingend. Es ist z.B. möglich den virtuellen DOM in ein Canvas-Element zu rendern\footnote{\url{https://github.com/Flipboard/react-canvas}} oder ganz einfach in einen String. Durch das simple rendern zum String, was ganz ohne Browser möglich ist, beherrscht React isomorphes Rendering, d.h. die Inhalte können auf dem Server und im Client gerendert werden. So wird z.B. bei Instagram der erste Seitenaufruf auf dem Server alles weitere vom Clienten gerendert. Erste Versuche zeigen auch, dass man dies komplett agnostisch machen kann und alles kann auf Server/Client gerendert werden ohne das der Benutzer einen Unterschied merkt. So ist es denkbar das schwache Geräte mehr auf dem Server rendern und somit komplexe Inhalte vergleichsweise schnell darstellen können.
 
-\subsection{Flux Architektur}
+\subsubsection*{Flux Architektur}
+
+Flux\footnote{\url{https://facebook.github.io/flux/docs/overview.html}} ist die Applikations-Architektur die Facebook für ihre Frontend-Applikationen benutzt, es ergänzt React insoweit dass es einen unidirektionellen Datenfluss ermöglicht. Es ist wie eine alternative zu MVC zu verstehen und ist mehr ein Muster um Applikationen zu schreiben als ein Framework das einem rigoros die Struktur vorschreibt. Im Allgemeinen benutzt Flux das Paradigma der Datenfluss Programierung\footnote{\url{http://en.wikipedia.org/wiki/Dataflow_programming}}, bei welchem ein Programm als gerichter Graph modelliert wird. Typisch für das Paradigma ist die Benutzung eines Beobachter-Entwursfmuster\footnote{http://en.wikipedia.org/wiki/Observer\_pattern} wie z.B. eines pub/sub-System\footnote{Eine kleine Auflistung und eine Bewertung typischer Muster ist hier zu finden \url{https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations}}. Bei Flux wird für letzteres eine Abwandlung eines pub/sub-Systems benutzt.
+
+Flux besitzt drei große Bestandteile: \textit{dispatcher}, \textit{stores}, \textit{views (React components)}. Desweiteren gibt es \textit{actions}, dies sind Hilfsmethoden vom \textit{dispatcher} und werden benutzt um eine semantische API zu unterstützen die alle Veränderungen die möglich sind in der Applikation beschreibt.
+
+Das wichtigste Designziel von Flux ist der unidirektionale Datenfluss, wodurch die Logik deutlich verständlicher und nachvollziehbar wird.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/flux.png}
+    \caption{Dispatcher, Stores und Wiews sind unabhängige Knoten mit unterschiedlichen Ein und Ausgaben. Die Aktionen sind einfache Objekte die die neuen Daten enthalten und den Typ der Daten.}
+    \label{fig:awesome_image}
+\end{figure}
+
+Diesem Schaubild zufolge ist es jedoch unmöglich dass eine \textit{Component} den Zustand der Applikation verändern kann, was jedoch so gut wie immer nötig ist. Hier für werden die \textit{actions} benutzt, diese können von den \textit{Components} benutzte werden um neue Daten an den Dispatcher zu schicken, welcher diese dann an den Store weiterleitet - welche dann die Darstellung der \textit{Component} beeinflussen kann.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/flux_actions.png}
+    \caption{Mithilfe von \textit{actions} ist die View in der Lage den Zustand der Applikation zu verändern.}
+    \label{fig:awesome_image}
+\end{figure}
+
+Allem in allem ist die Facebook-Flux Architektur in Kombination mit React ein äußerst fortschrittlicher und zukunftssicherer Weg eine Webapplikation zu schreiben, womit die Anwendung dieser für die Erstellung der Enterprise-Wall eine gute Wahl erscheint.
+
+\section*{Architektur der Applikation}
+
+Wie im vorherigen Abschnitt beschrieben wurde mittels React und der Flux-Architektur realisiert. Anstelle der Flux-Bibliothek von Facebook wurde jedoch \textit{reflux} benutzt, dies war jedoch nur reine Präferenz. Der Funktionsinhalt der verschiedenen Flux-Bibliotheken ist mehr oder minder gleich, somit könnte \textit{reflux} mit Leichtigkeit ausgetauscht werden, wenn es denn nötig wäre.
 
 
 \section*{Backend}
