@@ -1,11 +1,13 @@
 import React from 'react/addons';
 
 import actions from '../actions.js';
-import Layout from '../layout.js';
 import {hashCode, colors, colorLuminance} from '../utils.js';
+
+var PureRenderMixin = React.addons.PureRenderMixin;
 
 var ReactImageTile = React.createClass({
     displayName: 'ImageTile',
+    mixins: [PureRenderMixin],
     render: function () {
         return (
             <div className="tile__content tile__image">
@@ -25,6 +27,7 @@ var ReactImageTile = React.createClass({
 
 var ReactLinkTile = React.createClass({
     displayName: 'LinkTile',
+    mixins: [PureRenderMixin],
     render: function () {
         return (
             <div className="tile__content tile__link">
@@ -38,10 +41,8 @@ var ReactLinkTile = React.createClass({
 
 var ReactPiaTile = React.createClass({
     displayName: 'PiaTile',
+    mixins: [PureRenderMixin],
     render: function () {
-        var lis = this.props.tile.get('content').map((d) => {
-            return <li dangerouslySetInnerHTML={{__html: d}}></li>
-        });
 
         var html = this.props.tile.get('title') || '';
 
@@ -77,12 +78,10 @@ var tileTypes = {
 
 export var ReactTile = React.createClass({
     displayName: 'tile',
+    mixins: [PureRenderMixin],
     componentDidMount: function () {
         var dom = this.getDOMNode();
-        Layout.addTile(dom, this.props.tile);
-    },
-    componentWillUnmount: function () {
-        Layout.removeTile(this.props.tile);
+        actions.addDomElement(this.props.tile, dom);
     },
     handleUpvote: function (e) {
         e.preventDefault;
@@ -96,34 +95,29 @@ export var ReactTile = React.createClass({
         e.preventDefault;
         actions.favouriteItem(this.props.tile);
     },
-    shouldComponentUpdate: function (props) {
-        // the sole reason we are using immutable data structures
-        var score = (props.tile.get('score') !== this.props.tile.get('score'));
-        var favourite = (props.tile.get('favourite') !== this.props.tile.get('favourite'));
-        return score || favourite;
-
-    },
-    componentWillUpdate: function (props) {
-        Layout.layout(true, true);
-    },
     render: function () {
 
-        var tile = React.createElement(tileTypes[this.props.tile.get('type')], {tile: this.props.tile});
-        // precalculate the left offset of the tile so the animation starts at the correct position
+        var type = this.props.tile.get('type');
 
-        var style = Layout.getStyle(this.props.tile);
+        if (!tileTypes[type]) {
+            console.error('No tile for type ', type);
+            return;
+        }
+
+        var tile = React.createElement(tileTypes[type], {tile: this.props.tile});
+        
+        // precalculate the left offset of the tile so the animation starts at the correct position
+        var style = this.props.tile.get('css').toJS();
+        var cssClass = this.props.tile.get('class');
         var color = this.props.tile.get('color');
-        var colorLight = color;
-        var colorDark = color;
+        style['background-color'] = color;
 
         var favourited = this.props.tile.get('favourite') ? 'favourite' : 'unfavourite';
 
-        style.css['background-color'] = color;
-
         return (
-            <article className={`tile white ${style.class} tile--${this.props.tile.get('type')}`} style={style.css}>
-                <header className='tile__header' style={{'background-color': colorDark, color: 'white'}}>
-                    <div className='tile__header__upvote' style={{'background-color': colorLight}}>
+            <article className={`tile white ${cssClass} tile--${this.props.tile.get('type')}`} style={style}>
+                <header className='tile__header' style={{'background-color': color, color: 'white'}}>
+                    <div className='tile__header__upvote' style={{'background-color': color}}>
                         {this.props.tile.get('score')}
                     </div>
                     <div className='tile__header__buttons'>
@@ -133,7 +127,7 @@ export var ReactTile = React.createClass({
                     </div>
                 </header>
                 {tile}
-                <footer className="tile__footer" style={{'background-color': colorDark}}>
+                <footer className="tile__footer" style={{'background-color': color}}>
                     <div className="tile__footer__domain">
                         {this.props.tile.get('domain')}
                     </div>

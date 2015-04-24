@@ -4,7 +4,7 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 
 import actions from '../actions.js';
-import {dataStore} from '../stores.js';
+import {dataStore} from '../stores/data.js';
 import {camelCaseToBar, hashCode, colors} from '../utils.js';
 
 export var ReactQuery = React.createClass({

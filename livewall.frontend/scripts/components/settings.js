@@ -4,7 +4,7 @@ import React from 'react/addons';
 
 import actions from '../actions.js';
 import {SETTINGS} from '../settings.js';
-import {dataStore} from '../stores.js';
+import {dataStore} from '../stores/data.js';
 import {camelCaseToBar} from '../utils.js';
 import {user, requireAuth} from '../auth.js';
 

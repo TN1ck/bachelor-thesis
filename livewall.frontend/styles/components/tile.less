@@ -12,11 +12,10 @@
     box-sizing: border-box;
     position: relative;
     float: left;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    // box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3); // costs to much
     width: 100%;
     transition-duration: 0.8s;
     transition-timing-function: ease;
-    // transition-timing-function: cubic-bezier(.6,0,.4,1);
     position: absolute;
     transform: translate3D(0, 0, 0);
 
@@ -61,8 +60,6 @@
 
 .tile__content {
     box-sizing: border-box;
-    // border-left: solid 2px;
-    // border-right: solid 2px;
     border-color: inherit;
     float: left;
     padding-bottom: 20px;
@@ -202,10 +199,8 @@
     height: @font-size * 3.25;
 
     .tile__header__upvote {
-        .stopselect();
 
         color: inherit;
-        cursor: pointer;
         float: left;
         padding-left: @tile-padding * 2.3;
         padding-top: @tile-padding / 2;
@@ -223,6 +218,7 @@
 
         .tile__header__upvote-button {
 
+            cursor: pointer;
             color: @white;
             position: absolute;
             top: 0;
@@ -247,6 +243,7 @@
 
         .tile__header__downvote-button {
 
+            cursor: pointer;
             color: @white;
             padding: 0 @font-size;
             position: absolute;

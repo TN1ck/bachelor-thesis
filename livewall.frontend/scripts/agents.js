@@ -116,7 +116,7 @@ class Pia {
         };
 
         json.results.forEach((results) => {
-            var type = types[results.type] || results.type;
+            var type = types[results.type] || 'pia-pdf';
             docs = docs.concat(results.solr.response.docs.map(item => {
                 item.type = type;
                 return item;
@@ -129,18 +129,6 @@ class Pia {
 
         docs.forEach((d) => {
 
-            var content = d.file_content;
-            var lines = content;
-
-            if (typeof content === 'string') {
-                lines = content.split('...');
-                lines = lines.filter(d => {
-                    return d.length > 2;
-                }).map(d => {
-                    return d + '...';
-                });
-            }
-
             var item = {
                 color: color,
                 query: this.query,
@@ -148,7 +136,7 @@ class Pia {
                 author: d.result_type,
                 created: d.file_lastModification,
                 title: d.xmp_title,
-                content: lines,
+                content: d.file_content,
                 url: d.file_URI,
                 domain: d.host || getDomain(d.file_URI),
                 type: d.type,

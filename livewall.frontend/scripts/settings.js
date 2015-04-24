@@ -18,6 +18,11 @@ defaults.QUERIES = [
     // 'whatever'
 ];
 
+defaults.FILTER = {
+	'content': ['dai', 'kiel'],
+	'title': ['no title']
+};
+
 
 
 // // check if there are settings set

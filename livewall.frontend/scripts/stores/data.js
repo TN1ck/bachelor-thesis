@@ -5,16 +5,16 @@ import Reflux from 'reflux';
 import Immutable from 'immutable';
 import jquery from 'jquery';
 
-import {Reddit, PiaZentral, PiaHaus} from './agents.js';
-import actions from './actions.js';
-import {user} from './auth.js';
-import {SETTINGS} from './settings.js';
+import {Reddit, PiaZentral, PiaHaus} from '../agents.js';
+import actions from '../actions.js';
+import {user} from '../auth.js';
+import {SETTINGS} from '../settings.js';
 
 export var dataStore = Reflux.createStore({
 
     init: function () {
 
-        this.items = Immutable.List();
+        this.items = Immutable.OrderedMap();
 
         this.cache = {};
         this.queries = {};
@@ -98,10 +98,6 @@ export var dataStore = Reflux.createStore({
 
         this.items = this.items.filter((item) => {
             var result = item.get('query') !== queryTerm;
-            // remove it from the cache
-            if (!result) {
-                delete this.cache[item.get('uuid')];
-            }
             return result;
         });
         actions.changedQueries(this.queries);
@@ -170,6 +166,15 @@ export var dataStore = Reflux.createStore({
         });
     },
 
+    filterItem: function (item) {
+        return _.some(SETTINGS.FILTER, (v, k) => {
+            return _.some(v, (filter) => {
+                var contentToBeFiltered = JSON.stringify(item.get(k));
+                return contentToBeFiltered.toLowerCase().indexOf(filter.toLowerCase()) > -1;
+            })
+        })
+    },
+
     loadItems: function () {
 
         _.values(this.queries).forEach(query => {
@@ -198,22 +203,18 @@ export var dataStore = Reflux.createStore({
     },
 
     reset: function () {
-        this.items = Immutable.List();
-        this.cache = {};
+        this.items = Immutable.OrderedMap();
     },
 
     addItem: function (item, trigger = true) {
 
-        var uuid = item.get('uuid');
-
-        if (this.cache[uuid]) {
-            var index = this.getIndexByUUID(uuid);
-            this.items = this.items.set(index, item);
-        } else {
-            this.items = this.items.push(item);
+        if (this.filterItem(item)) {
+            console.log('filtered item ', item.toJS());
+            return;
         }
 
-        this.cache[uuid] = item;
+        var uuid = item.get('uuid');
+        this.items = this.items.set(uuid, item);
 
         if (trigger) {
             this.triggerState.bind(this)();
@@ -222,9 +223,8 @@ export var dataStore = Reflux.createStore({
     },
 
     removeItem: function (item) {
-        var index = this.getIndexByUUID(item.get('uuid'));
-        this.items = this.items.delete(index);
-        delete this.cache[item.get('uuid')];
+        var uuid = item.get('uuid');
+        this.items = this.items.delete(uuid);
     },
 
     triggerState: function () {
@@ -233,26 +233,23 @@ export var dataStore = Reflux.createStore({
     },
 
     upvoteItem: function (item) {
-        var index = this.getIndexByUUID(item.get('uuid'));
         item = item.update('score', x => { return x + 1; });
-        this.items = this.items.set(index, item);
+        this.items = this.items.set(item.get('uuid'), item);
         this.triggerState.bind(this)(this.items);
     },
 
     downvoteItem: function (item) {
-        var index = this.getIndexByUUID(item.get('uuid'));
         item = item.update('score', x => { return x - 1; });
-        this.items = this.items.set(index, item);
+        this.items = this.items.set(item.get('uuid'), item);
         this.triggerState.bind(this)(this.items);
     },
 
     favouriteItem: function (item) {
-        var index = this.getIndexByUUID(item.get('uuid'));
         var favourite = item.get('favourite');
 
         var successCallback = () => {
             var itemNew = item.set('favourite', !favourite);
-            this.items = this.items.set(index, itemNew);
+            this.items = this.items.set(item.get('uuid'), itemNew);
             this.loadProfile();
         };
 

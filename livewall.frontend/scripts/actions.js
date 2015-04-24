@@ -1,6 +1,7 @@
 import Reflux from 'reflux';
 
 var actions = Reflux.createActions([
+	'changeSort',
     'addItem',
     'loadItems',
     'upvoteItem',
@@ -8,7 +9,8 @@ var actions = Reflux.createActions([
     'favouriteItem',
     'addQuery',
     'removeQuery',
-    'changedQueries'
+    'changedQueries',
+    'addDomElement'
 ]);
 
 export default actions;

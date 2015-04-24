@@ -48,6 +48,14 @@ export var colorLuminance = function (hex, lum) {
 	return rgb;
 };
 
+export var compareStrings = function (a, b) {
+    if (a === b) {
+        return 0;
+    } else {
+        return a > b ? 1 : -1;
+    }
+};
+
 
 // export var colors = ['#D65B3C', '#D77F47', '#D9AA5A', '#2980b9', '#19806E', '#AE8EA7'];
 export var colors = ['#248EE6', '#F5A623', '#96bf48', '#ec663c', '#47bbb3', '#9c4274'];

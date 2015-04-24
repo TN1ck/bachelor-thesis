@@ -4,7 +4,7 @@ import React from 'react/addons';
 import {Link, Route, RouteHandler} from 'react-router';
 
 import actions from '../actions.js';
-import {dataStore} from '../stores.js';
+import {dataStore} from '../stores/data.js';
 import {user} from '../auth.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
