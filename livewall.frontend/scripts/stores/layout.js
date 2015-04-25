@@ -147,13 +147,13 @@ export var layoutStore  = Reflux.createStore({
 
         this.calculateColumns();
 
-        this.items.forEach((item) => {
+        this.items = this.items.map((item) => {
             var newItem = item.merge({
                 height: item.get('dom').offsetHeight,
                 relayout: true
             });
 
-            this.items = this.items.set(item.get('uuid'), newItem);
+            return newItem;
         });
 
         this.layout(transition);
@@ -189,45 +189,37 @@ export var layoutStore  = Reflux.createStore({
                     return;
                 }
 
-                // check if css was already set
-                if (item.getIn(['position', 'top']) !== top ||
-                    item.get('relayout') ||
-                    item.getIn(['position', 'column']) !== j) {
+                var left = (this.columnWidth + this.margin) * j + this.margin / 2;
+                // round width and height so that everythig is pixel-perfect
+                // this is normally not important, but in combination with translate3D it can lead to blurry elements
+                var translate = `translate3D(${Math.round(left)}px, ${Math.round(top)}px, 0)`;
+                
+                var css = {
+                    transform: translate,
+                    '-webkit-transform': translate,
+                    opacity: 1
+                };
 
-                    // round width and height so that everythig is pixel-perfect
-                    // this is normally not important, but in combination with translate3D it can lead to blurry elements
-                    var left = (this.columnWidth + this.margin) * j + this.margin / 2;
-                    var translate = `translate3D(${Math.round(left)}px, ${Math.round(top)}px, 0)`;
-                    
-                    var css = {
-                        transform: translate,
-                        '-webkit-transform': translate,
-                        opacity: 1
-                    };
+                var cssClass = transition ? 'animate-opacity-transform' : 'animate-opacity';
 
-                    var cssClass = transition ? 'animate-opacity-transform' : 'animate-opacity';
-
-                    item = item.merge({
-                        class: cssClass,
-                        css: css,
-                        position: Immutable.Map({
-                            left: left,
-                            top: top,
-                            column: j
-                        }),
-                        relayout: false
-                    });
-                    
-                    this.items = this.items.set(item.get('uuid'), item);
-
-                }
+                item = item.merge({
+                    class: cssClass,
+                    css: css,
+                    position: Immutable.Map({
+                        left: left,
+                        top: top,
+                        column: j
+                    }),
+                    relayout: false
+                });
+                
+                this.items = this.items.set(item.get('uuid'), item);
 
                 top += item.get('height') + this.margin;
 
             });
 
         });
-    
 
         this.trigger(this.items);
 
