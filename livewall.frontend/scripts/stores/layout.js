@@ -105,8 +105,7 @@ export var layoutStore  = Reflux.createStore({
             return newTile
 
         });
-        
-        console.log('layout trigger');
+
         this.layout(true);
     },
     calculateColumns: function () {
@@ -185,6 +184,7 @@ export var layoutStore  = Reflux.createStore({
             var top = 0;
             column.forEach((item, i) => {
 
+                // if the element isn't mounted yet by react we skip it
                 if (!item.get('dom')) {
                     return;
                 }
@@ -220,14 +220,14 @@ export var layoutStore  = Reflux.createStore({
             });
 
         });
-
+    
+        console.log('layout trigger');
         this.trigger(this.items);
 
     },
-    addDomElement: function (tile, dom) {
+    addDomElement: function (uuid, dom) {
         var height = dom.offsetHeight;
 
-        var uuid = tile.get('uuid');
         var tile = this.items.get(uuid).merge({
             dom: dom,
             height: height
@@ -240,6 +240,6 @@ export var layoutStore  = Reflux.createStore({
     },
     changeSort: function(sort) {
         this.sortFunction = this.sortFunctions[sort];
-        this.relayout();
+        this.layout();
     }
 });

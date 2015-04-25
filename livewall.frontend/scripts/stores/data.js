@@ -232,20 +232,20 @@ export var dataStore = Reflux.createStore({
         this.trigger(this.items);
     },
 
-    upvoteItem: function (item) {
-        item = item.update('score', x => { return x + 1; });
+    upvoteItem: function (uuid) {
+        var item = this.items.get(uuid).update('score', x => { return x + 1; });
         this.items = this.items.set(item.get('uuid'), item);
         this.triggerState.bind(this)(this.items);
     },
 
-    downvoteItem: function (item) {
-        item = item.update('score', x => { return x - 1; });
+    downvoteItem: function (uuid) {
+        var item = this.items.get(uuid).update('score', x => { return x - 1; });
         this.items = this.items.set(item.get('uuid'), item);
         this.triggerState.bind(this)(this.items);
     },
 
-    favouriteItem: function (item) {
-        var favourite = item.get('favourite');
+    favouriteItem: function (uuid) {
+        var favourite = this.items.get(uuid).get('favourite');
 
         var successCallback = () => {
             var itemNew = item.set('favourite', !favourite);

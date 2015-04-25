@@ -81,19 +81,19 @@ export var ReactTile = React.createClass({
     mixins: [PureRenderMixin],
     componentDidMount: function () {
         var dom = this.getDOMNode();
-        actions.addDomElement(this.props.tile, dom);
+        actions.addDomElement(this.props.tile.get('uuid'), dom);
     },
     handleUpvote: function (e) {
         e.preventDefault;
-        actions.upvoteItem(this.props.tile);
+        actions.upvoteItem(this.props.tile.get('uuid'));
     },
     handleDownvote: function (e) {
         e.preventDefault;
-        actions.downvoteItem(this.props.tile);
+        actions.downvoteItem(this.props.tile.get('uuid'));
     },
     handleFavourite: function (e) {
         e.preventDefault;
-        actions.favouriteItem(this.props.tile);
+        actions.favouriteItem(this.props.tile.get('uuid'));
     },
     render: function () {
 
