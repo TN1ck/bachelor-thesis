@@ -2,7 +2,7 @@
   "name": "my-gulp-livereload",
   "private": true,
   "dependencies": {
-    "font-awesome": "~4.3.0",
+    "font-awesome": "~4.3.0"
   },
   "devDependencies": {}
 }
