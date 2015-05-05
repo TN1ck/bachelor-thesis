@@ -227,6 +227,10 @@ Die Anforderungen der Applikation waren von vornerein nicht vollständig geklär
 
   Einer der Hauptanforderungen ist die Darstellung von Datenpunkten (im zukünftigen Verlauf des Textes wird die Darstellung dieser Datenpunkte als \textit{Kacheln} bezeichnet) im Stil einer \textit{Social Media Wall}. Daraus folgen weiterhin die Anforderungen dass es unterschiedliche \textit{Kacheln} gibt - also für verschiedene Daten verschiedene Darstellungen z.B. könnten Suchergebnisse für Kontakte und Webseiten ganz unterschiedlich aufgebaut sein. Die dargestellten Inhalte sind weiterhin dynamisch, während des Betriebes können Kacheln hinzukommen/entfert werden und auch die Interaktion mit den Kacheln kann das Layout ändern.
 
+\subsection*{Bewertungssystem}
+
+  Der Benutzer soll in der Lage sein angezeigte Suchergebnisse zu bewerten und dadurch zukünftige Anfragen für \textbf{alle} Benutzer zu verändern.
+
 \subsection*{Benutzung mehrerer Datenquellen}
   Die angezeigten Daten können aus mehreren Datenuellen kommen, d.h. die gleichzeitige Darstellung von Daten von z.B. Facebook mit denen von Twitter. Hier war es wieder besonders wichtig, dass man einfach neue Datenquellen hinzufügen kann. Auch das während des Betriebes vorhandene Quellen mit anderen Parametern (wie einer Suchanfrage) neu hinzugefügt werden kann.
 
@@ -396,6 +400,7 @@ Diese modellierte Kette besteht aus 3 Schritten:
   \item \textbf{Aktion} Die Aktion ist die Grundlage, diese sind die Aspekte der Anwendung die der Benutzer ausführen soll. Im Rollenspiel könnte dies z.B. das lösen von Aufträgen sein.
 \end{enumerate}
 
+
 Das Enterprise Dashboard besitzt wenige Aktionen, sodass eigentlich alle Teil der Aktionen sein können die eine Belohnung geben.
 
 \begin{itemize}
@@ -405,6 +410,7 @@ Das Enterprise Dashboard besitzt wenige Aktionen, sodass eigentlich alle Teil de
   \item Anmeldung und Abmeldung
 \end{itemize}
 
+Durch einige dieser Aktionen wird der User Punkte bekommen, z.B. ist es häufig üblich für das tägliche Besuchen der Seite dem Benutzer Punkte gutzuschreiben. 
 
 
 \chapter{Technische Umsetzung} 
@@ -469,7 +475,7 @@ Eine Lösung dieses Problems ist es die Applikation so zu schreiben, dass der ga
 
 Mittels eines virtuellen DOMs kann dies deutlich effizienter und Benutzerfreundlicher gestaltet werden. Bei jeder Zustandsänderung wird ein neuer virtueller DOM erstellt und mit dem alten virtuellen verglichen wodurch die minimalen Änderungen erfasst werden können um den derzeitigen DOM zum Zustand des neuen zu bringen. Dies macht Frameworks die einen virtual DOM benutzen deutlich schneller als welche die die Hauptarbeit auf dem richtigen DOM verrichten. Das ganze Konzept ist skalierbar im Gegensatz zu Technologien wie dem \textit{dirty checking} von AngularJS welches eine Komplexität von $O(n^2)$ bis $O(n^10)$ (Ab 10 Iterationen wird abgebrochen) besitzt, wobei $n$ die Anzahl der veränderbaren Inhalte ist.
 Der von Facebook verwendete Algorithmus besitzt eine Komplexität von $O(n)$\footnote{\url{https://facebook.github.io/react/docs/reconciliation.html}} wobei $n$ die Anzahl der DOM-Element ist.
-Ein Geschwindikeitsvergleich von Frameworks die einen virtuellen DOM benutzen zeigt diese Grafik vom Elm\footnote{\url{http://en.wikipedia.org/wiki/Elm_programming_language}}-Entwickler.
+Ein Geschwindikeitsvergleich von Frameworks die einen virtuellen DOM benutzen zeigt diese Grafik vom Elm\footnote{\url{http://en.wikipedia.org/wiki/Elm_programming_language}}-Entwickler bei der die verschiedenen Frameworks anhand ihrer TodoMVC\footnote{Der TodoMVC ist ein Versuch die schiere Anzahl an Webframeworks anhand eines realen Beispiels zu vergleichen. \url{http://todomvc.com/}}-Implementierung verglichen werden.
 
 \begin{figure}[H]
     \centering
@@ -486,7 +492,7 @@ Ein weiterer Vorteil der virtuellen Darstellung ist die Unabhängigkeit des Brow
 
 \subsubsection*{Flux Architektur}
 
-Flux\footnote{\url{https://facebook.github.io/flux/docs/overview.html}} ist die Applikations-Architektur die Facebook für ihre Frontend-Applikationen benutzt, es ergänzt React insoweit dass es einen unidirektionellen Datenfluss ermöglicht. Es ist wie eine alternative zu MVC zu verstehen und ist mehr ein Muster um Applikationen zu schreiben als ein Framework das einem rigoros die Struktur vorschreibt. Im Allgemeinen benutzt Flux das Paradigma der Datenfluss Programierung\footnote{\url{http://en.wikipedia.org/wiki/Dataflow_programming}}, bei welchem ein Programm als gerichter Graph modelliert wird. Typisch für das Paradigma ist die Benutzung eines Beobachter-Entwursfmuster\footnote{http://en.wikipedia.org/wiki/Observer\_pattern} wie z.B. eines pub/sub-System\footnote{Eine kleine Auflistung und eine Bewertung typischer Muster ist hier zu finden \url{https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations}}. Bei Flux wird für letzteres eine Abwandlung eines pub/sub-Systems benutzt.
+Flux\footnote{\url{https://facebook.github.io/flux/docs/overview.html}} ist die Applikations-Architektur die Facebook für ihre Frontend-Applikationen benutzt, es ergänzt React insoweit dass es einen unidirektionellen Datenfluss ermöglicht. Es ist wie eine alternative zu MVC zu verstehen und ist mehr ein Muster um Applikationen zu schreiben als ein Framework das einem rigoros die Struktur vorschreibt. Im Allgemeinen benutzt Flux das Paradigma der Datenfluss Programierung\footnote{\url{http://en.wikipedia.org/wiki/Dataflow_programming}}, bei welchem ein Programm als gerichter Graph modelliert wird. Typisch für das Paradigma ist die Benutzung eines Beobachter-Entwursfmuster\footnote{\url{http://en.wikipedia.org/wiki/Observer_pattern}} wie z.B. eines pub/sub-System\footnote{Eine kleine Auflistung und eine Bewertung typischer Muster ist hier zu finden \url{https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations}}. Bei Flux wird für letzteres eine Abwandlung eines pub/sub-Systems benutzt.
 
 Flux besitzt drei große Bestandteile: \textit{dispatcher}, \textit{stores}, \textit{views (React components)}. Desweiteren gibt es \textit{actions}, dies sind Hilfsmethoden vom \textit{dispatcher} und werden benutzt um eine semantische API zu unterstützen die alle Veränderungen die möglich sind in der Applikation beschreibt.
 
@@ -512,15 +518,40 @@ Allem in allem ist die Facebook-Flux Architektur in Kombination mit React ein ä
 
 \section*{Architektur der Applikation}
 
-Wie im vorherigen Abschnitt beschrieben wurde mittels React und der Flux-Architektur realisiert. Anstelle der Flux-Bibliothek von Facebook wurde jedoch \textit{reflux} benutzt, dies war jedoch nur reine Präferenz. Der Funktionsinhalt der verschiedenen Flux-Bibliotheken ist mehr oder minder gleich, somit könnte \textit{reflux} mit Leichtigkeit ausgetauscht werden, wenn es denn nötig wäre.
+Wie im vorherigen Abschnitt beschrieben wurde mittels React und der Flux-Architektur realisiert. Anstelle der Flux-Bibliothek von Facebook wurde jedoch \textit{reflux} benutzt, \textit{reflux} vereinfacht Flux insofern als das es keinen einzelnen Dispatcher benutzte, jede Action ist ihr eigener Dispatcher mit dem Ziel Flux eben mehr zu vereinfachen und unnötigen Quelltext (sogennanten Boilerplate) zu reduzieren. Eine Vollständige Erklärung für \textit{reflux} ist auf dem Blog des Autors zu finden\footnote{\url{http://spoike.ghost.io/deconstructing-reactjss-flux/}}. \textit{reflux} ist nicht der einzige Versuch eine alternative bereitzustellen, mittlerweile gibt es über 10 verschiedene Flux-Bibliotheken\footnote{Ein Vergleich dieser ist hier zu finden \url{https://github.com/voronianski/flux-comparison}} - mit teilweise großen Communities dahinter oder Firmen wie z.B. \textit{Fluxible} von \textit{Yahoo}. Der Funktionsinhalt der verschiedenen Flux-Bibliotheken ist mehr oder minder gleich, somit könnte \textit{reflux} mit Leichtigkeit ausgetauscht werden, wenn es denn nötig wäre.
+
+\subsection*{Überblick}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/architecture.pdf}
+    \caption{Die wichtigsten Bestandteile der Applikation.}
+    \label{fig:awesome_image}
+\end{figure}
+
+Die Architektur wurde bewusst nicht in einem Klassendiagramm dargestellt da die Applikation keinen Strengen Objektorienterten Stil verfolgt und das Schaubild nicht sonderlich zum Verständnis beitragen würde. Es ist auch kein komplettes Schaubild der Applikation, jegliche Aspekte die zum Verständnis nicht sonderlich beitragen würden wurden rausgelassen.
+
+Wie zu sehen kann die Applikation in drei Teile eingeteilt werden.
+
+\begin{enumerate}
+  \item \textbf{Agenten} \\
+  Die Agenten stellen die Kommunikation mit den jeweiligen Brokern da, sie implementieren alle eine Funktion \textsc{getData} die eine Suchanfrage  nimmt und eine einheitliche Datenstruktur mit den Ergebnissen zurückliefert. Broker die eine Authentifizierung benötigen liefern einen Fehler sobald so Benutzer-Objekt mit gültigen Token benutzt werden.
+  \item \textbf{User - Authentifizierung}
+  Der User beinhaltet neben seines Profils in welchem Favoriten, Punktestand und bewertete Suchergebnisse gespeichert werden die komplette Authentifizierung im System. Im aktuellen Zustand wird jeder Nutzer gezwungen sich zu authentifizieren um das System zu nutzen.
+  \item \textbf{Flux - Actions, Stores und View}
+  Dies ist der wichtigste, komplizierteste und größte Teil der Applikation. Hier geschieht alles was mit dem Darstellen und der Interaktion mit den Inhalten zu tun hat. In den Stores werden die Daten der Agenten soweit verarbeitet dass sie an die View weitergegeben können wo sie als interaktive Kacheln dargestellt werden. Interaktionen geschehen über die Aktionen. Es ist gut zu sehen dass der Datenfluss Unidirektionell ist, wodurch das urteilen über Applikation vereinfacht wird.
+
+\end{enumerate}
+
+Im folgenden werde ich genauer auf die einzelnen Aspekte eingehen.
+
+
 
 
 \section*{Backend}
 
 Im Verlaufe der Arbeit wurde entschieden, dass eine weitere Server-Applikation ungünstig wäre und die Arbeiten im Frontend ausreichend waren für den Rahmen einer Bachelor-Arbeit.
 Zur Vollständigkeit halber werden die verwendeten Technologien aufgezählt.
-
-\chapter{Andere Arbeiten}
 
 
 \chapter{Ausblick}
