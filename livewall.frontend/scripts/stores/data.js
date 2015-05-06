@@ -16,7 +16,6 @@ export var dataStore = Reflux.createStore({
 
         this.items = Immutable.OrderedMap();
 
-        this.cache = {};
         this.queries = {};
 
         this.profile = {
@@ -29,7 +28,6 @@ export var dataStore = Reflux.createStore({
             PiaZentral
         ];
 
-        this.listenTo(actions.addItem, this.addItem);
         this.listenTo(actions.upvoteItem, this.upvoteItem);
         this.listenTo(actions.downvoteItem, this.downvoteItem);
         this.listenTo(actions.favouriteItem, this.favouriteItem);

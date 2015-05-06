@@ -5,9 +5,9 @@ import _ from 'lodash';
 // DEFAULTS
 var defaults = {};
 
-defaults.LOGIN_URL = 'http://pia-gesis.dai-labor.de/login/';
-defaults.PROFILE_URL = 'http://pia-gesis.dai-labor.de/haus';
-defaults.PIA_URL   = 'http://pia-gesis.dai-labor.de';
+defaults.LOGIN_URL = 'http://pia-intern.dai-labor.de/login/';
+defaults.PROFILE_URL = 'http://pia-intern.dai-labor.de/service';
+defaults.PIA_URL   = 'http://pia-intern.dai-labor.de';
 
 defaults.QUERIES = [
     'politics',

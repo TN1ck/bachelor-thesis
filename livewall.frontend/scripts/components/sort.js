@@ -6,13 +6,13 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 
 import actions from '../actions.js';
-import {layoutStore} from '../stores/layout.js';
+import {sorters} from '../stores/layout.js';
 
 export var ReactSort = React.createClass({
     displayName: 'sort',
     getInitialState: function () {
         return {
-            sorters: layoutStore.sortFunctions,
+            sorters: sorters,
             selected: 'score'
         }
     },

@@ -192,7 +192,7 @@ export class PiaZentral extends Pia {
     constructor (query, filter) {
         super(query, filter);
         this.broker = {
-            name: 'zentral',
+            name: 'service',
             public: true
         };
     }
@@ -202,7 +202,7 @@ export class PiaHaus extends Pia {
     constructor (query, filter) {
         super(query, filter);
         this.broker = {
-            name: 'haus',
+            name: 'service',
             public: false
         };
     }

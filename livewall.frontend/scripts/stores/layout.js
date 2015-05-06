@@ -7,33 +7,33 @@ import {dataStore} from './data.js';
 import actions from '../actions.js';
 import {compareStrings} from '../utils.js';
 
+export var sorters = {
+    score: (a, b) => {
+        var result = -(a.get('score') - b.get('score'));
+        if (result === 0) {
+          result = a.get('uuid') > b.get('uuid') ? 1 : -1;
+        }
+        return result;
+    },
+    created: (a, b) => {
+        return compareStrings(a.get('created'), b.get('created'));
+    },
+    domain: (a, b) => {
+        return compareStrings(a.get('domain'), b.get('domain'));
+    },
+    query: (a, b) => {
+        return compareStrings(a.get('query'), b.get('query'));
+    },
+    type: (a, b) => {
+        return compareStrings(a.get('type'), b.get('type'));
+    }
+};
+
 export var layoutStore  = Reflux.createStore({
     init: function () {
         this.items = Immutable.OrderedMap();
         this.margin = 8 * 2;
-        this.sortFunctions = {
-            score: (a, b) => {
-                var result = -(a.get('score') - b.get('score'));
-                if (result === 0) {
-                  result = a.get('uuid') > b.get('uuid') ? 1 : -1;
-                }
-                return result;
-            },
-            created: (a, b) => {
-                return compareStrings(a.get('created'), b.get('created'));
-            },
-            domain: (a, b) => {
-                return compareStrings(a.get('domain'), b.get('domain'));
-            },
-            query: (a, b) => {
-                return compareStrings(a.get('query'), b.get('query'));
-            },
-            type: (a, b) => {
-                return compareStrings(a.get('type'), b.get('type'));
-            }
-        };
-
-        this.sortFunction = this.sortFunctions.score;
+        this.sortFunction = sorters.score;
         
         this.calculateColumns();
         
@@ -69,6 +69,8 @@ export var layoutStore  = Reflux.createStore({
     },
     onStoreChange: function (items) {
 
+        var tempArray = dataStore.items.sort(this.sortFunction).toArray();
+
         this.items = items.map((tile) => {
             
             var uuid = tile.get('uuid');
@@ -77,7 +79,7 @@ export var layoutStore  = Reflux.createStore({
             var newTile;
             if (!oldTile) {
 
-                var columnIndex = dataStore.items.toArray().indexOf(tile) % this.numberOfColumns;
+                var columnIndex = tempArray.indexOf(tile) % this.numberOfColumns;
                 var left = (this.columnWidth + this.margin) * columnIndex + this.margin / 2;
                 
                 var translate = `translate3D(${left}px , 0px, 0)` 
@@ -177,7 +179,7 @@ export var layoutStore  = Reflux.createStore({
 
     layout: function (transition = true) {
 
-        var columns = this.group(this.items);
+        var columns = this.group(this.items.sort(this.sortFunction));
 
         columns.forEach((column, j) => {
 
@@ -239,7 +241,7 @@ export var layoutStore  = Reflux.createStore({
 
     },
     changeSort: function(sort) {
-        this.sortFunction = this.sortFunctions[sort];
+        this.sortFunction = sorters[sort];
         this.layout();
     }
 });
