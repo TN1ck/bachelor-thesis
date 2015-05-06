@@ -28,6 +28,7 @@
 \usepackage{enumitem}
 
 \usepackage{wasysym}
+\usepackage{minted}
 
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -64,6 +65,9 @@
 \setmainfont[Mapping=tex-text]{\romanFont}
 %\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Gill Sans}
 %\setmonofont[Scale=MatchLowercase]{Andale Mono}
+% \setmonofont[Mapping=tex-text,%
+%     ItalicFont=Source Code Pro ExtraLight,%
+%     BoldFont=Source Code Pro]{Source Code Pro Light}
 
 %\newcommand{\HRule}{\rule{\linewidth}{0.1pt}}
 %\newcommand{\logoheight}{2.5cm}
@@ -159,6 +163,8 @@
     \thispagestyle{empty}%
     \addtocounter{page}{-1}%
     \newpage}
+
+\usepackage{listings}
 
 
 
@@ -471,7 +477,7 @@ Applikationen auf diese Weise zu erstellen hat sich bewährt was jedoch nicht he
 Wie weit muss ich hier den DOM beschreiben? Muss ich ihn beschreiben?
 
 Einer der innovativsten Aspekte von React ist die virtuelle Repräsentation des DOMs\footnote{\url{http://de.wikipedia.org/wiki/Document_Object_Model}}. Die normale Interaktion mit dem DOM ist langsam und kompliziert, es ist sehr schwer den aktuellen Status der Applikation darüber abzubilden - so geschieht das häufig über CSS-Klassen oder speziellen Attributen.
-Eine Lösung dieses Problems ist es die Applikation so zu schreiben, dass der ganze DOM bei jeder Veränderung des Zustands neu gerendert wird. (Vergleich hier zu Server-seitigem Rendern wo genau dies gemacht wird.) Natürlich wäre die Applikation bei so einem Vorgehen langsam (wegen des rendern durch den Browser) und Dinge wie Fokus auf Eingabe-Feldern würde verloren gehen was der Benutzer nicht gerade toll finden würde.
+Eine Lösung dieses Problems ist es die Applikation so zu schreiben, dass der ganze DOM bei jeder Veränderung des Zustands neu gerendert wird. (Vergleich hier zu Server-seitigem Rendern wo genau dies gemacht wird.) Natürlich wäre die Applikation bei so einem Vorgehen langsam (wegen des rendern durch den Browser) und Dinge wie Fokus auf Eingabe-Feldern würde verloren gehen was der Benutzer nicht gerade angenehm finden würde.
 
 Mittels eines virtuellen DOMs kann dies deutlich effizienter und Benutzerfreundlicher gestaltet werden. Bei jeder Zustandsänderung wird ein neuer virtueller DOM erstellt und mit dem alten virtuellen verglichen wodurch die minimalen Änderungen erfasst werden können um den derzeitigen DOM zum Zustand des neuen zu bringen. Dies macht Frameworks die einen virtual DOM benutzen deutlich schneller als welche die die Hauptarbeit auf dem richtigen DOM verrichten. Das ganze Konzept ist skalierbar im Gegensatz zu Technologien wie dem \textit{dirty checking} von AngularJS welches eine Komplexität von $O(n^2)$ bis $O(n^10)$ (Ab 10 Iterationen wird abgebrochen) besitzt, wobei $n$ die Anzahl der veränderbaren Inhalte ist.
 Der von Facebook verwendete Algorithmus besitzt eine Komplexität von $O(n)$\footnote{\url{https://facebook.github.io/react/docs/reconciliation.html}} wobei $n$ die Anzahl der DOM-Element ist.
@@ -535,7 +541,7 @@ Wie zu sehen kann die Applikation in drei Teile eingeteilt werden.
 
 \begin{enumerate}
   \item \textbf{Agenten} \\
-  Die Agenten stellen die Kommunikation mit den jeweiligen Brokern da, sie implementieren alle eine Funktion \textsc{getData} die eine Suchanfrage  nimmt und eine einheitliche Datenstruktur mit den Ergebnissen zurückliefert. Broker die eine Authentifizierung benötigen liefern einen Fehler sobald so Benutzer-Objekt mit gültigen Token benutzt werden.
+  Die Agenten stellen die Kommunikation mit den jeweiligen Brokern da, sie implementieren alle eine Funktion \texttt{getData} die eine Suchanfrage  nimmt und eine einheitliche Datenstruktur mit den Ergebnissen zurückliefert. Broker die eine Authentifizierung benötigen liefern einen Fehler sobald so Benutzer-Objekt mit gültigen Token benutzt werden.
   \item \textbf{User - Authentifizierung}
   Der User beinhaltet neben seines Profils in welchem Favoriten, Punktestand und bewertete Suchergebnisse gespeichert werden die komplette Authentifizierung im System. Im aktuellen Zustand wird jeder Nutzer gezwungen sich zu authentifizieren um das System zu nutzen.
   \item \textbf{Flux - Actions, Stores und View}
@@ -543,7 +549,48 @@ Wie zu sehen kann die Applikation in drei Teile eingeteilt werden.
 
 \end{enumerate}
 
-Im folgenden werde ich genauer auf die einzelnen Aspekte eingehen.
+Im folgenden werde ich genauer auf den Flux-Teil eingehen.
+
+\subsection{Stores - Data}
+
+Der DataStore stellt alle Daten bereit die für die Darstellung benötigt werden, dies sind die Suchergbnisse die mit dem Profil des Benutzers gemixt werden um anzuzeigen welche Ergebnisse bewertet/favorisiert wurden und die Suchanfragen, die zur Laufzeit verändert werden können. Herausforderungen hier waren es Duplikate in den Suchergebnissen auszuschließen, Anfragen an die Broker zu minimieren und die Interaktion mit den Suchergebnissen.
+
+Eine Besonderheit ist die Benutzung einer nicht veränderbaren OrderedMap in welcher die Suchergbnisse mit ihrer \textit{url} als Schlüssel gespeichert sind. Die Suchergbnisse werden in der Applikation noch viel weitergereicht weswegen viele Fehler vorgebeugt werden da nur der DataStore selbst die Suchergebnisse verändern kann.
+
+\subsection{Stores - Layout}
+
+Im Design-Abschnitt wurde lange darauf eingegangen was die Layouting-Engine alles können muss, leider konnte keine der OpenSource-Bibliotheken allen Anforderungen gerecht werden. Deswegen wurde extra für die Darstellung eine eigene Layouting-Engine erstellt.
+Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist notwendig um Animationen zu ermöglichen. Es gibt verschiedene Arten DOM-Elemente mittels css zu positionieren:
+
+\begin{itemize}
+  \item Mithilfe von \texttt{top/left}.\\
+  \begin{minted}{css}
+  .position-top-left {
+      position: absolute; /* or relative/fixed */
+      top:  50px;
+      left: 50px;
+  }
+  \end{minted}
+  \item Mithilfe von \texttt{transform: translate(x, y)}. Dies ist allgemein anerkannt schneller als zu sein und hat den Vorteil das subpixel-animationen möglich sind was im Allgemeinen flüssigere Animationen erlaubt. \\
+  \begin{minted}{css}
+  .position-translate {
+      position: absolute; /* or relative/fixed */
+      transform:         translate(50px, 50px);
+      -webkit-transform: translate(50px, 50px);
+  }
+  \end{minted}
+  \item Mithilfe von \texttt{transform: translate3D(x, y, z)}. Dies ist mit Abstand das schnellste. Hierbei werden die Elemente zu Texturen gerendert und mit Einsatz des Grafikprozessors animiert. Dadurch ist es sogar möglich auf mobilen Endgeräten flüssige Animationen zu haben, da diese meist dedidizierte Grafikprozessoren haben.
+  \begin{minted}{css}
+  .position-translate3D {
+      position: absolute; /* or relative/fixed */
+      transform:         translate3D(50px, 50px);
+      -webkit-transform: translate3D(50px, 50px);
+  }
+  \end{minted}
+  \texttt{transform3D} wird von allen aktuellen Browsern soweit unterstützt das unser Szenario möglich ist\footnote{\url{http://caniuse.com/\#feat=transforms3d}}. Was weiterhin zu beachten ist, dass am Ende immer gerundete Pixelwerte innerhalb von \textsc{translate3D(x, y, z)} benutzt werden sollten. Da Ansonsten die Elemente unscharf sind.
+
+\end{itemize}
+
 
 
 
