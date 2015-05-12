@@ -10,16 +10,29 @@ export var ReactHeader = React.createClass({
     render: function () {
 
         var links = [
-            'wall',
-            'settings',
-            'logout'
+            {
+                name: 'wall',
+                link: 'wall'
+            },
+            {
+                name: 'settings',
+                link: 'settings'
+            },
+            {
+                name: <i style={{'lineHeight': 0}}className='fa fa-trophy'></i>,
+                link: 'trophies'
+            },
+            {
+                name: 'logout',
+                link: 'logout'
+            }
         ];
         var nav = links.map((link, i) => {
             var seperator = '|';
             if (i === links.length - 1) {
                 seperator = '';
             }
-            return <span> <Link to={link}>{link}</Link> {seperator}</span>;
+            return <span> <Link to={link.link}>{link.name}</Link> {seperator}</span>;
         });
 
         return (

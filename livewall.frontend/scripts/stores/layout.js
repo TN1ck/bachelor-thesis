@@ -160,7 +160,7 @@ export var layoutStore  = Reflux.createStore({
         this.layout(transition);
 
     },
-    group: function (items) {
+    groupIntoColumns: function (items) {
 
         var chunks = _.range(this.numberOfColumns).map(() => { return []; });
 
@@ -179,7 +179,7 @@ export var layoutStore  = Reflux.createStore({
 
     layout: function (transition = true) {
 
-        var columns = this.group(this.items.sort(this.sortFunction));
+        var columns = this.groupIntoColumns(this.items.sort(this.sortFunction));
 
         columns.forEach((column, j) => {
 

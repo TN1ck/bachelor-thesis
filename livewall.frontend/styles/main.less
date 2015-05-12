@@ -14,6 +14,9 @@
 @import "./components/logout";
 @import "./components/sort.less";
 
+@import "settings";
+@import "trophies";
+
 body {
 	color: @white;
 	font-family: 'Lato', sans-serif;
@@ -22,4 +25,18 @@ body {
 	-webkit-font-smoothing: subpixel-antialiased;
 	background-color: @black;
 
+}
+
+
+.container {
+	width: calc(~"100% - " 40px);
+	float: left;
+	background: @white;
+	color: @black;
+	padding: 20px;
+	margin-bottom: 7px;
+}
+
+.text-center {
+	text-align: center;
 }

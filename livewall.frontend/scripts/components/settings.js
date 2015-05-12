@@ -30,7 +30,7 @@ export var ReactSettings = React.createClass({
         // });
 
         return (
-            <div className='wall-settings fullpage'>
+            <div className='container'>
                 <h1>Settings</h1>
                 <p>Hier können Sie permanente Einstellungen an der DAI-wall vornehmen.
                 Klicken Sie auf speichern um die Änderungen zu übernehmen.</p>
