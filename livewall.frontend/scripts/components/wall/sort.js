@@ -5,8 +5,8 @@ import _ from 'lodash';
 import React from 'react/addons';
 import Reflux from 'reflux';
 
-import actions from '../actions.js';
-import {sorters} from '../stores/layout.js';
+import actions from '../../actions.js';
+import {sorters} from '../../stores/layout.js';
 
 export var ReactSort = React.createClass({
     displayName: 'sort',

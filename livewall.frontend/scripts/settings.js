@@ -15,7 +15,14 @@ defaults.QUERIES = [
     // 'dai',
     // 'test',
     // 'wurst',
-    // 'whatever'
+    // 'hamburg',
+    // 'münchen',
+    // 'berlin',
+    // 'münster',
+    // 'systeme',
+    // 'tastatur',
+    // 'apple',
+    // 'gamification'
 ];
 
 defaults.FILTER = {

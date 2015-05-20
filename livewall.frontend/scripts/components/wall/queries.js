@@ -3,9 +3,9 @@
 import React from 'react/addons';
 import Reflux from 'reflux';
 
-import actions from '../actions.js';
-import {dataStore} from '../stores/data.js';
-import {camelCaseToBar, hashCode, colors} from '../utils.js';
+import actions from '../../actions.js';
+import {dataStore} from '../../stores/data.js';
+import {colorStore} from '../../stores/color.js';
 
 export var ReactQuery = React.createClass({
     displayName: 'query',
@@ -20,21 +20,14 @@ export var ReactQuery = React.createClass({
             loaded += agent.loaded ? 1 : 0;
         });
 
-        var loading = <span> {loaded}/{numberOfAgents} <span className="fa-gear fa-spin"></span></span>;
-        var remove = <span className="fa-remove"></span>;
-
-        var error;
-        if (errors > 0) {
-            // error = <div className='querie-query querie-query__error'>{errors}/{numberOfAgents} Anfragen fehlerhaft</div>
-        }
-        var hash = hashCode(this.props.query.name)
-        var color = colors[hash % colors.length];
+        var loading = <span className="fa-gear fa-spin"></span>;
+        var remove  = <span className="fa-remove"></span>;
+        var color   = colorStore.getColor(this.props.query.name);
 
         return (
             <li style={{'background-color': color, 'border-color': color}} className='query__element'>
                 <div className='query__container'>
                     <div className='query__term'>{this.props.query.name}</div>
-                    {error}
                     <div className='query__button' onClick={this.props.removeQuery}>{((loaded === numberOfAgents) || errors > 0)? remove : loading}</div>
                 </div>
             </li>
@@ -83,7 +76,7 @@ export var ReactQueries = React.createClass({
         actions.removeQuery(query);
     },
     submitCallback: function (result) {
-        actions.addQuery(result);
+        actions.addQuery(result, true);
     },
     render: function () {
         var queryNames = _.map(this.state.queries, (s, k) => <ReactQuery removeQuery={this.removeQuery.bind(this, k)} key={k} query={s}/>);

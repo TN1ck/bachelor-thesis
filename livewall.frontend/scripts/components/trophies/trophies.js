@@ -4,11 +4,11 @@ import React from 'react/addons';
 
 import _ from 'lodash';
 
-import actions from '../actions.js';
-import {SETTINGS} from '../settings.js';
-import {dataStore} from '../stores/data.js';
-import {camelCaseToBar} from '../utils.js';
-import {user, requireAuth} from '../auth.js';
+import actions from '../../actions.js';
+import {SETTINGS} from '../../settings.js';
+import {dataStore} from '../../stores/data.js';
+import {camelCaseToBar} from '../../utils.js';
+import {user, requireAuth} from '../../auth.js';
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 

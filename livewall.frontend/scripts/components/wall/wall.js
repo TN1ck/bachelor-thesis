@@ -4,11 +4,11 @@ import React from 'react/addons';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
 
-import {layoutStore} from '../stores/layout.js';
-import {dataStore} from '../stores/data.js';
+import {layoutStore} from '../../stores/layout.js';
+import {dataStore} from '../../stores/data.js';
 
-import {user, requireAuth} from '../auth.js';
-import actions from '../actions.js';
+import {user, requireAuth} from '../../auth.js';
+import actions from '../../actions.js';
 
 import {ReactTile} from './tiles.js';
 import {ReactQueries} from './queries.js';
@@ -44,7 +44,6 @@ export var ReactWall = React.createClass({
         if (tiles.length === 0) {
             loading = <i className="fa fa-gear fa-spin white fa-5x"></i>;
         }
-
 
         return (
             <div>

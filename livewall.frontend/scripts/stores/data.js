@@ -9,6 +9,7 @@ import {Reddit, PiaZentral, PiaHaus} from '../agents.js';
 import actions from '../actions.js';
 import {user} from '../auth.js';
 import {SETTINGS} from '../settings.js';
+import {colorStore} from './color.js';
 
 export var dataStore = Reflux.createStore({
 
@@ -35,32 +36,24 @@ export var dataStore = Reflux.createStore({
 
         this.listenTo(actions.addQuery, this.addQuery);
         this.listenTo(actions.removeQuery, this.removeQuery);
+        this.listenTo(colorStore, this.colorStoreUpdate);
 
-        SETTINGS.QUERIES.forEach(queryTerm => {
-            var agents = this.availableSources.map(source => {
-                var queryAgent = new source(queryTerm);
-                return {
-                    agent: queryAgent,
-                    loaded: false,
-                    polling: false,
-                };
-            })
+        SETTINGS.QUERIES.forEach(queryTerm => actions.addQuery(queryTerm, false));
 
-            this.queries[queryTerm] = {
-                loaded: false,
-                agents: agents,
-                name: queryTerm
-            };
+    },
 
+    colorStoreUpdate: function (colors) {
+        this.items.map((item) => {
+            var itemNew = item.set('color', colors.get(item.get('query')));
+            return itemNew;
         });
-
     },
 
     getIndexByUUID: function (uuid) {
         return this.items.findIndex(item => item.get('uuid') === uuid);
     },
 
-    addQuery: function (queryTerm) {
+    addQuery: function (queryTerm, loadData) {
 
         if (this.queries[queryTerm]) {
             return;
@@ -75,9 +68,12 @@ export var dataStore = Reflux.createStore({
                 polling: false
             };
 
-            this.loadData(querieAgent);
+            if (loadData) {
+                this.loadData(querieAgent);
+            }
 
-            return querieAgent
+            return querieAgent;
+
         });
 
         this.queries[queryTerm] = {
@@ -126,6 +122,7 @@ export var dataStore = Reflux.createStore({
                     } else {
                         this.addItem(dIm, false);
                     }
+
                 });
 
                 agent.loaded = true;
@@ -210,6 +207,9 @@ export var dataStore = Reflux.createStore({
             console.log('filtered item ', item.toJS());
             return;
         }
+
+        // set color
+        item = item.set('color', colorStore.getColor(item.get('query')));
 
         var uuid = item.get('uuid');
         this.items = this.items.set(uuid, item);

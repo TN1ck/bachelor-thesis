@@ -2,7 +2,6 @@ import $ from 'jquery';
 
 import {getDomain} from './utils.js';
 import {SETTINGS} from './settings.js';
-import {hashCode, colors} from './utils.js';
 
 // The options you can give a source should not change their returned json, i.e. this is how we seperate them
 // Due to this, we have a PiaSource for every broker it can can use
@@ -30,8 +29,6 @@ export class Reddit {
             return (lastIndex !== -1) && (lastIndex + term.length === str.length);
         }
 
-        var color = colors[hashCode(this.query) % colors.length];
-
         var items = json.data.children.map((d, i) => {
             d = d.data;
             var type = 'link';
@@ -46,7 +43,6 @@ export class Reddit {
             }
 
             return {
-                color: color,
                 query: this.query,
                 uuid: d.permalink,
                 author: d.author,
@@ -125,12 +121,9 @@ class Pia {
 
         var items = [];
 
-        var color = colors[hashCode(this.query) % colors.length];
-
         docs.forEach((d) => {
 
             var item = {
-                color: color,
                 query: this.query,
                 uuid: d.file_URI || d.source,
                 author: d.result_type,
@@ -193,7 +186,7 @@ export class PiaZentral extends Pia {
         super(query, filter);
         this.broker = {
             name: 'service',
-            public: true
+            public: false
         };
     }
 }

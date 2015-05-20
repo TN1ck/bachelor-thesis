@@ -22,10 +22,11 @@ class User {
         });
     }
 
-    checkLogin (token) {
+    checkLogin (token, username) {
         return $.ajax({
             url: SETTINGS.PROFILE_URL,
             data: {
+                username: username,
                 token: token,
                 action: 'ACTION_CHECK_LOGIN',
             },
@@ -215,7 +216,7 @@ class User {
         var token = cookies.get('token');
 
         if (token) {
-            this.loginPromise = this.checkLogin(token).then((result) => {
+            this.loginPromise = this.checkLogin(token, username).then((result) => {
                 if (result) {
                     this.token = token;
                     this.username = username;

@@ -11,17 +11,6 @@ import {ReactHeader} from './header.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-export var ReactAdmin = React.createClass({
-    mixins: [requireAuth],
-    render: function () {
-        return (
-            <div className='wall'>
-                <RouteHandler />
-            </div>
-        );
-    }
-})
-
 export var ReactApp = React.createClass({
     displayName: 'app',
     contextTypes: {

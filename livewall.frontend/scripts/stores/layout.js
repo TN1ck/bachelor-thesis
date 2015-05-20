@@ -34,9 +34,9 @@ export var layoutStore  = Reflux.createStore({
         this.items = Immutable.OrderedMap();
         this.margin = 8 * 2;
         this.sortFunction = sorters.score;
-        
+
         this.calculateColumns();
-        
+
         this.listenTo(dataStore, this.onStoreChange);
         this.listenTo(actions.addDomElement, this.addDomElement);
         this.listenTo(actions.changeSort, this.changeSort);
@@ -72,7 +72,7 @@ export var layoutStore  = Reflux.createStore({
         var tempArray = dataStore.items.sort(this.sortFunction).toArray();
 
         this.items = items.map((tile) => {
-            
+
             var uuid = tile.get('uuid');
             var oldTile = this.items.get(uuid);
 
@@ -81,8 +81,8 @@ export var layoutStore  = Reflux.createStore({
 
                 var columnIndex = tempArray.indexOf(tile) % this.numberOfColumns;
                 var left = (this.columnWidth + this.margin) * columnIndex + this.margin / 2;
-                
-                var translate = `translate3D(${left}px , 0px, 0)` 
+
+                var translate = `translate3D(${left}px , 0px, 0)`
                 var css = {
                     transform: translate,
                     '-webkit-transform': translate
@@ -93,7 +93,7 @@ export var layoutStore  = Reflux.createStore({
                     position: Immutable.Map({
                         left: left,
                         top: 0,
-                        column: columnIndex 
+                        column: columnIndex
                     }),
                     relayout: true,
                     css: css,
@@ -103,7 +103,7 @@ export var layoutStore  = Reflux.createStore({
             } else {
                 newTile = oldTile.merge(tile);
             }
-            
+
             return newTile
 
         });
@@ -195,7 +195,7 @@ export var layoutStore  = Reflux.createStore({
                 // round width and height so that everythig is pixel-perfect
                 // this is normally not important, but in combination with translate3D it can lead to blurry elements
                 var translate = `translate3D(${Math.round(left)}px, ${Math.round(top)}px, 0)`;
-                
+
                 var css = {
                     transform: translate,
                     '-webkit-transform': translate,
@@ -214,7 +214,7 @@ export var layoutStore  = Reflux.createStore({
                     }),
                     relayout: false
                 });
-                
+
                 this.items = this.items.set(item.get('uuid'), item);
 
                 top += item.get('height') + this.margin;
@@ -222,7 +222,7 @@ export var layoutStore  = Reflux.createStore({
             });
 
         });
-    
+
         console.log('layout trigger');
         this.trigger(this.items);
 

@@ -1,12 +1,14 @@
 import React from 'react';
-var Router = require('react-router');
-var { Route, RouteHandler, Link, DefaultRoute} = Router;
+import Router from 'react-router';
+var { Route, RouteHandler, Link, DefaultRoute } = Router;
 
-import {ReactAdmin, ReactApp} from './components/app.js';
-import {ReactWall} from './components/wall.js';
-import {ReactLogin, ReactLogout} from './components/auth.js';
+import {ReactApp}      from './components/app.js';
+import {ReactAdmin}    from './components/admin.js';
+import {ReactWall}     from './components/wall/wall.js';
+import {ReactLogin}    from './components/auth/login.js';
+import {ReactLogout}   from './components/auth/logout.js';
 import {ReactSettings} from './components/settings.js';
-import {ReactTrophies} from './components/trophies.js';
+import {ReactTrophies} from './components/trophies/trophies.js';
 
 import '../styles/main.less';
 
@@ -28,7 +30,5 @@ var routes = (
 );
 
 Router.run(routes, function (Handler) {
-  React.render(<Handler/>, document.getElementById('react'));
+    React.render(<Handler/>, document.getElementById('react'));
 });
-
-// React.render(<ReactApp/>, document.getElementById('react'));
