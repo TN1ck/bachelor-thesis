@@ -236,8 +236,10 @@ export var layoutStore  = Reflux.createStore({
         });
 
         this.items = this.items.set(uuid, tile);
-
-        this.layout(true);
+        // or requestanimationframe
+        _.debounce(() => {
+            window.requestanimationframe(() => this.layout(true));
+        }, 50);
 
     },
     changeSort: function(sort) {

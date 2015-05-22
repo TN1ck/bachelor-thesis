@@ -173,7 +173,11 @@ export var dataStore = Reflux.createStore({
     loadItems: function () {
 
         _.values(this.queries).forEach(query => {
-            query.agents.forEach(this.loadData);
+            query.agents.forEach((agent) => {
+                if (!agent.loaded) {
+                    this.loadData(agent);
+                }
+            });
         });
 
         this.loadProfile();

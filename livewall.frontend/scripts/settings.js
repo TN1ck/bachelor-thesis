@@ -11,18 +11,18 @@ defaults.PIA_URL   = 'http://pia-intern.dai-labor.de';
 
 defaults.QUERIES = [
     'politics',
-    // 'machine',
-    // 'dai',
-    // 'test',
-    // 'wurst',
-    // 'hamburg',
-    // 'münchen',
-    // 'berlin',
-    // 'münster',
-    // 'systeme',
-    // 'tastatur',
-    // 'apple',
-    // 'gamification'
+    'machine',
+    'dai',
+    'test',
+    'wurst',
+    'hamburg',
+    'münchen',
+    'berlin',
+    'münster',
+    'systeme',
+    'tastatur',
+    'apple',
+    'gamification'
 ];
 
 defaults.FILTER = {

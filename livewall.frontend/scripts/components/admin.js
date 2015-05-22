@@ -14,7 +14,6 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 export var ReactAdmin = React.createClass({
     mixins: [requireAuth],
     render: function () {
-        console.log('helloooo');
         return (
             <div className='wall'>
                 <RouteHandler />

@@ -149,10 +149,19 @@ export var gameStore = Reflux.createStore({
         this.listenTo(actions.upvoteItem, this.upvoteItem);
         this.listenTo(actions.downvoteItem, this.downvoteItem);
         this.listenTo(actions.favouriteItem, this.favouriteItem);
+        this.listenTo(actions.addQuery, this.addQuery);
+        this.listenTo(actions.removeQuery, this.removeQuery);
 
         this.state = {
             points: 500,
-            badges: ['login_1', 'login_3', 'login_7', 'login_15', 'favourites_10'];
+            badges: ['login_1', 'login_3', 'login_7', 'login_15', 'favourites_10'],
+            searches: 8,
+            favourites: 10,
+            upvotes: 100,
+            downvotes: 100,
+            searches: 100,
+            number_of_logins: 20,
+            consecutive_logins: 15
         };
 
         this.listenTo(actions.changedQueries);
