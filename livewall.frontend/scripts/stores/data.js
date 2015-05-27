@@ -247,7 +247,8 @@ export var dataStore = Reflux.createStore({
     },
 
     favouriteItem: function (uuid) {
-        var favourite = this.items.get(uuid).get('favourite');
+        var item = this.items.get(uuid);
+        var favourite = item.get('favourite');
 
         var successCallback = () => {
             var itemNew = item.set('favourite', !favourite);
@@ -263,7 +264,6 @@ export var dataStore = Reflux.createStore({
         user[fn](item)
             .then(successCallback)
             .fail(failCallback);
-
 
     }
 
