@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import {SETTINGS} from './settings.js';
 import cookies from 'cookies-js';
+import {initUser} from './owa.js';
 
 class User {
 
@@ -184,6 +185,7 @@ class User {
 
         return this.loginRequest().then(data => {
             this.token = data.token;
+            initUser(this.username);
             if (keep) {
                 this.setCookie();
             }
@@ -220,6 +222,7 @@ class User {
                 if (result) {
                     this.token = token;
                     this.username = username;
+                    initUser(this.username);
                 }
                 this.loginPromise = false;
                 return result;

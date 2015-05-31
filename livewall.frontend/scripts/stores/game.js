@@ -4,6 +4,7 @@ import _ from 'lodash';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
 import jquery from 'jquery';
+import moment from 'moment';
 
 import actions from '../actions.js';
 import {user} from '../auth.js';
@@ -164,12 +165,116 @@ export var gameStore = Reflux.createStore({
             consecutive_logins: 15
         };
 
-        // this.listenTo(actions.changedQueries);
+        // get the data after the user logs in
+        user.isLogedIn(() => {
+            this.getMonthlyData.bind(this)();
+            this.getAllTimeData.bind(this)();
+        });
 
     },
 
-    addQuery: function (queryTerm) {
-        track('search', queryTerm, 'add');
+    getAllTimeData: function () {
+        var startDate = moment().subtract(10, 'years');
+        var endDate   = moment();
+        this.getData(startDate, endDate).then(json => {
+            this.state.allTimeData = this.processData(json.rows);
+            console.log(this.state);
+        });
+    },
+
+    getMonthlyData: function () {
+        var startDate = moment().subtract(1, 'month');
+        var endDate   = moment();
+        this.getData(startDate, endDate).then(json => {
+            this.state.monthlyData = this.processData(json.rows);
+            console.log(this.state);
+        });
+    },
+
+    getData: function (startDate, endDate) {
+        var constraints = {
+        };
+        var dimensions = [
+            'date',
+            'actionGroup',
+            'actionName',
+            'actionLabel',
+            'customVarName2',
+            'customVarValue2'
+        ];
+        return api(constraints, dimensions, startDate, endDate);
+    },
+
+    processData: function (data = []) {
+        /* every row looks like this:
+
+            date: "20150530",
+            actionGroup: "search",
+            actionName: "aussiehst",
+            actionLabel: "add",
+            customVarName2: "username",
+            customVarValue2: "nick",
+            actions: "1"
+
+        */
+
+        /* group by user/actionGroup/actionLabel, resulting data structure looks like this:
+        {
+            user1: {
+                actionGroup1: {
+                    actionLabel1: {
+                        count: ...,
+                        uniqueCount: ...,
+                        data: all the rows,
+                        group: ...,
+                        user: ...
+                    },
+                    ...
+                },
+                ...
+            },
+            user2: ...
+        }
+
+        */
+        var groupedData = _.chain(data)
+            .filter(x => x.customVarValue2 !== '(not set)')
+            .groupBy(x => x.customVarValue2)
+            .mapValues(
+                byUser => {
+                    return _.chain(byUser)
+                        .groupBy(x => x.actionGroup)
+                        .mapValues(byGroup => {
+                            return _.chain(byGroup)
+                                .groupBy(x => x.actionLabel)
+                                .mapValues(byLabel => {
+                                    var first = _.first(byLabel);
+                                    return {
+                                        count: _.sum(byLabel, x => _.parseInt(x.actions)),
+                                        uniqueCount: byLabel.length,
+                                        data: byLabel,
+                                        label: first.actionLabel,
+                                        group: first.actionGroup,
+                                        user: first.customVarValue2
+                                    };
+                                })
+                                .value()
+                        })
+                        .value();
+                }
+            )
+            .value();
+        console.log(data, this.state, groupedData);
+
+        return groupedData;
+
+
+    },
+
+    addQuery: function (queryTerm, load, _track) {
+        if (_track) {
+            track('search', queryTerm, 'add');
+        }
     },
     removeQuery: function (queryTerm) {
         track('search', queryTerm, 'remove');

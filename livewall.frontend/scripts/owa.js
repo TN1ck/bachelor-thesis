@@ -1,9 +1,13 @@
 import $ from 'jquery';
+import _ from 'lodash';
+import moment from 'moment';
+
+import {SETTINGS} from './settings.js';
 
 /* important settings for our owa instance */
-var owa_baseUrl = 'http://ia.dailab.de/owa/';
-var siteId = '87a70ce46ea04de7c28dd1e4da31904c';
-var apiKey = '1cd6f4568986197d6a0c0c179930f382';
+var owa_baseUrl = SETTINGS.OWA.owa_baseUrl;
+var siteId = SETTINGS.OWA.siteId;
+var apiKey = SETTINGS.OWA.apiKey;
 
 /* make owa visible */
 var owa_cmds = window.owa_cmds || [];
@@ -14,9 +18,9 @@ window.owa_baseUrl = owa_baseUrl;
  * initial events - siteID and which events we automatically we want to capture
  */
 owa_cmds.push(['setSiteId', siteId]);
-owa_cmds.push(['trackPageView']);
-owa_cmds.push(['trackClicks']);
-owa_cmds.push(['trackDomStream']);
+// owa_cmds.push(['trackPageView']);
+// owa_cmds.push(['trackClicks']);
+// owa_cmds.push(['trackDomStream']);
 
 /**
  * append the script tag to the dom, this will download and execute the owa-client-library
@@ -36,6 +40,12 @@ appendToDom();
 //
 // low level apis
 //
+//
+
+export var initUser = function(username) {
+    console.log('setCustomVar2', username);
+    window.owa_cmds.push(['setCustomVar', '2', 'username', username, 'session']);
+};
 
 /**
  * convience methods for tracking
@@ -45,6 +55,7 @@ appendToDom();
  * @param {number} rank The rank of the action (?)
  */
 export var track = function (group, action, label = '', rank = 0) {
+    console.log('track', group, action, label, rank);
     window.owa_cmds.push(['trackAction', group, action, label, rank]);
 };
 
@@ -54,18 +65,38 @@ export var track = function (group, action, label = '', rank = 0) {
  * @param {string[]} dimensions A list of all the dimensions
  * @returns {Promise} A promise that returns the result of the http-call if resolved
  */
-export var api = function (constraints, dimensions) {
+export var api = function (
+    _constraints,
+    _dimensions,
+    _startDate = moment().subtract(1, 'month'),
+    _endDate = moment()) {
+
+
+    var dimensions  = _dimensions.join(',');
+    var constraints = _.pairs(_constraints).map(pair => {
+        return pair.join('==');
+    }).join(',');
+
+    var format = 'YYYYMMDD';
+
+    console.log(constraints, dimensions);
+
+    var data = _.pairs({
+        'owa_do':             'getResultSet',
+        'owa_siteId':         siteId,
+        'owa_apiKey':         apiKey,
+        'owa_format':         'json',
+        'owa_metrics':        'actions',
+        'owa_endDate':        _endDate.format(format),
+        'owa_startDate':      _startDate.format(format),
+        'owa_dimensions':     dimensions,
+        'owa_constraints':    constraints,
+        'owa_resultsPerPage': Number.MAX_SAFE_INTEGER
+    }).map(pair => pair.join('=')).join('&');
+
     return $.ajax({
-        url: `${owa_baseUrl}api.php`,
-        data: {
-            owa_apiKey: apiKey,
-            owa_constraints: constraints,
-            owa_dimensions: dimensions,
-            owa_do: 'getResultSet',
-            owa_format: 'json',
-            owa_metrics: 'actions',
-            owa_siteId: siteId
-        },
-        type: 'GET'
+        url: `http://localhost:4000/api.php?${data}`,
+        type: 'GET',
+        dataType: 'json'
     });
 };

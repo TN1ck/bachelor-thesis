@@ -38,7 +38,8 @@ export var dataStore = Reflux.createStore({
         this.listenTo(actions.removeQuery, this.removeQuery);
         this.listenTo(colorStore, this.colorStoreUpdate);
 
-        SETTINGS.QUERIES.forEach(queryTerm => actions.addQuery(queryTerm, false));
+        // do not track these
+        SETTINGS.QUERIES.forEach(queryTerm => actions.addQuery(queryTerm, false, false));
 
     },
 

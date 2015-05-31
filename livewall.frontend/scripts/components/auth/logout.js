@@ -3,8 +3,8 @@
 import React from 'react/addons';
 import {Link} from 'react-router';
 
-import {dataStore} from '../../stores/data.js';
 import {user} from '../../auth.js';
+import {dataStore} from '../../stores/data.js';
 
 export var ReactLogout = React.createClass({
     componentDidMount: function () {

@@ -76,7 +76,7 @@ export var ReactQueries = React.createClass({
         actions.removeQuery(query);
     },
     submitCallback: function (result) {
-        actions.addQuery(result, true);
+        actions.addQuery(result, true, true);
     },
     render: function () {
         var queryNames = _.map(this.state.queries, (s, k) => <ReactQuery removeQuery={this.removeQuery.bind(this, k)} key={k} query={s}/>);
