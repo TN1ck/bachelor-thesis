@@ -6,6 +6,8 @@ import {Link} from 'react-router';
 import {user} from '../../auth.js';
 import {dataStore} from '../../stores/data.js';
 
+import { Grid, Row, Col, Input, Button, Jumbotron, Alert, PageHeader } from 'react-bootstrap';
+
 export var ReactLogout = React.createClass({
     componentDidMount: function () {
         user.logout();
@@ -13,21 +15,22 @@ export var ReactLogout = React.createClass({
     },
     render: function () {
         return (
-            <div className='wall__login'>
-                <div className="wall__login__header">
-                    Sie haben sich erfolgreich ausgeloggt.
-                </div>
-                <div className="wall__login__content">
-                    <div className='center'>
-                        <i className="fa fa-5x fa-check olive"></i>
-                    </div>
-                    <div className='center'>
-                        <Link to="login">
-                            <button>Anmelden</button>
-                        </Link>
-                    </div>
-                </div>
-            </div>
+            <Grid>
+                <Row>
+                    <Col xs={12} md={6} mdOffset={3}>
+                        <PageHeader>
+                            <h1>Sie haben sich erfolgreich ausgeloggt.</h1>
+                            <hr/>
+                        </PageHeader>
+                      <h4>Melden Sie sich an um wieder die Enterprise-Wall wieder zu benutzen</h4>
+                      <Link to="login">
+                          <Button bsStyle='success'>
+                          Anmelden
+                          </Button>
+                      </Link>
+                    </Col>
+                </Row>
+            </Grid>
         );
     }
 });

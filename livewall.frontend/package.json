@@ -6,6 +6,7 @@
     "build": "NODE_ENV=production webpack -p --progress scripts/index.js bundle.js"
   },
   "dependencies": {
+    "bootstrap": "^3.3.4",
     "cookies": "^0.5.0",
     "cookies-js": "^1.2.1",
     "d3": "^3.5.5",
@@ -16,6 +17,7 @@
     "lodash": "^3.9.3",
     "moment": "^2.10.3",
     "react": "^0.13.0",
+    "react-bootstrap": "^0.23.0",
     "react-router": "^0.13.2",
     "reflux": "^0.2.7",
     "store.js": "^1.0.4"

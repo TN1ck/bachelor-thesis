@@ -40,6 +40,7 @@ export var layoutStore  = Reflux.createStore({
         this.listenTo(dataStore, this.onStoreChange);
         this.listenTo(actions.addDomElement, this.addDomElement);
         this.listenTo(actions.changeSort, this.changeSort);
+        this.listenTo(actions.relayout, () => this.layout(false));
 
         var resizeCallback;
 

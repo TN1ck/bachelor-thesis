@@ -29,9 +29,7 @@ export var ReactApp = React.createClass({
         return (
             <div>
                 <ReactHeader/>
-                <ReactCSSTransitionGroup transitionName="from-above" transitionAppear={true}>
-                    <RouteHandler key={router.getCurrentPath()} />
-                </ReactCSSTransitionGroup>
+                <RouteHandler key={router.getCurrentPath()} />
             </div>
         );
     }

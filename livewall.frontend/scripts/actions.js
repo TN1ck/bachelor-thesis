@@ -2,6 +2,7 @@ import Reflux from 'reflux';
 
 var actions = Reflux.createActions([
 	'changeSort',
+	'relayout',
     'addItem',
     'loadItems',
     'upvoteItem',

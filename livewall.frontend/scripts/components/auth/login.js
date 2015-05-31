@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react/addons';
+import { Grid, Row, Col, Input, Button, PageHeader, Alert } from 'react-bootstrap';
 import {Link, Route, RouteHandler} from 'react-router';
 
 
@@ -17,7 +18,8 @@ export var ReactLogin = React.createClass({
         return {
             remember: true,
             loading: false,
-            error: false
+            error: false,
+            isLogedIn: false
         };
     },
     handleSubmit: function (e) {
@@ -27,22 +29,28 @@ export var ReactLogin = React.createClass({
         var router = this.context.router;
         var nextPath = router.getCurrentQuery().nextPath;
 
-        var username = this.refs.username.getDOMNode().value;
-        var password = this.refs.password.getDOMNode().value;
+        var username = this.refs.username.getValue();
+        var password = this.refs.password.getValue();
 
+        this.setState({loading: true});
         user.login(username, password, this.state.remember).then(() => {
             if (!user.isLogedIn())
-                return this.setState({ error: true });
+                return this.setState({ error: true, loading: false });
             if (nextPath) {
                 router.replaceWith(nextPath);
             } else {
                 router.replaceWith('/');
             }
         }).fail(() => {
-            this.setState({error: true});
+            this.setState({error: true, loading: false});
         });
 
 
+    },
+    componentWillMount: function () {
+        user.isLogedIn(() => {
+            this.setState({isLogedIn: true});
+        });
     },
     handleChange: function (e) {
         this.setState({
@@ -53,57 +61,80 @@ export var ReactLogin = React.createClass({
 
         var loading = <i className="fa fa-spinner fa-pulse"></i>;
 
-        var userStatus = user.isLogedIn();
-
         var text = {
-            notLoged: 'Melden Sie sich an um die DAI-Wall zu benutzen.',
+            notLoged: 'Anmelden',
             Loged: 'Sie sind bereits angemeldet, wollen sie sich abmelden?',
             error: 'Ein Fehler ist aufgetreten, bitte stellen Sie sicher das ihr Benutzername und das zugehörige Passwort korrekt sind.'
         };
 
         var error;
         if (this.state.error) {
-            error = <div className='error'>
-                <b>Oh nein... </b>
+            error = <Alert bsStyle='danger'>
+                <h4>Oh nein... </h4>
                 <p>{text.error}</p>
-            </div>
+            </Alert>
         };
 
+        var bsStyle = this.state.error ? 'error' : '';
+
         var loginForm = <form onSubmit={this.handleSubmit}>
-            <div className="labelgroup">
-                <label htmlFor="username">Benutzername</label>
-                <input disabled={this.state.loading} ref="username" id="username" placeholder="Benutzername" required autofocus/>
-            </div>
-            <div className="labelgroup">
-                <label htmlFor="password">Password</label>
-                <input ref="password" id="password" type="password" placeholder="Password" required/>
-            </div>
-            <label htmlFor="remember">
-                <input checked={this.state.remember} onChange={this.handleChange} ref="remember" id="remember" type="checkbox" /> Eingeloggt bleiben
-            </label>
-            <div className='center'>
-                <button disabled={this.state.loading}>
-                    Anmelden {this.state.loading ? loading : ''}
-                </button>
-            </div>
+            <Input
+                disabled={this.state.loading}
+                bsStyle={bsStyle}
+                type='text'
+                autofocus
+                placeholder='Benutzername'
+                hasFeedback
+                label='Benutzername'
+                ref='username'
+            />
+            <Input
+                disabled={this.state.loading}
+                bsStyle={bsStyle}
+                type='password'
+                placeholder='Passwort'
+                hasFeedback
+                label='Passwort'
+                ref='password'
+            />
+            <Input
+                disabled={this.state.loading}
+                onChange={this.handleChange}
+                value={this.state.remember}
+                type='checkbox'
+                hasFeedback
+                label='Angemeldet bleiben'
+                ref='remember'
+            />
+            <Button
+                disabled={this.state.loading}
+                bsStyle='primary' type='submit'
+                onSubmit={this.handelSubmit}>
+                Anmelden {this.state.loading ? loading : ''}
+            </Button>
         </form>;
 
         var logoutForm = <div className='center'>
             <Link to="logout">
-                <button>Abmelden</button>
+                <Button bsStyle='primary'>Abmelden</Button>
             </Link>
         </div>;
 
         return (
-            <div className='wall__login'>
-                <div className="wall__login__header">
-                    {userStatus ? text.Loged : text.notLoged}
-                </div>
-                <div className="wall__login__content">
-                    {error}
-                    {userStatus ? logoutForm : loginForm}
-                </div>
-            </div>
+            <Grid>
+                <Row>
+                    <Col xs={12} md={6} mdOffset={3}>
+                    <PageHeader>
+                        <h1>{this.state.isLogedIn ? text.Loged : text.notLoged}</h1>
+                        <hr/>
+                    </PageHeader>
+                    <div className="wall__login__content">
+                        {error}
+                        {this.state.isLogedIn ? logoutForm : loginForm}
+                    </div>
+                    </Col>
+                </Row>
+            </Grid>
         );
     }
 });

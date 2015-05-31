@@ -17,6 +17,21 @@
 	animation: moveIn 0.65s ease forwards;
 }
 
+.animate-rotate {
+	webkit-animation: rotate 1s linear infinite;
+    animation: rotate 1s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+	0% { transform: rotate(0turn); }
+	100% {transform: rotate(1turn); }
+}
+
+@keyframes rotate {
+	0% { transform: rotate(0turn); }
+	100% {transform: rotate(1turn); }
+}
+
 @-webkit-keyframes fadeIn {
 	0% { opacity: 0; }
 	100% { opacity: 1; }

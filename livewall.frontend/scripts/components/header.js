@@ -23,8 +23,8 @@ export var ReactHeader = React.createClass({
                 link: 'trophies'
             },
             {
-                name: 'logout',
-                link: 'logout'
+                name: user.isLogedIn() ? 'logout' : 'login',
+                link: user.isLogedIn() ? 'logout' : 'login'
             }
         ];
         var nav = links.map((link, i) => {

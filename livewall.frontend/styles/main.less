@@ -1,6 +1,12 @@
+// font awesome
 @import "variables";
 @import "../bower_components/font-awesome/less/font-awesome";
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+
+// bootstrap
+@import "./bootstrap/_bootstrap.less";
+
 
 @import "animations";
 @import "responsive";
@@ -13,6 +19,7 @@
 @import "./components/login";
 @import "./components/logout";
 @import "./components/sort.less";
+@import "./components/sort.less";
 
 @import "settings";
 @import "trophies";
@@ -24,19 +31,17 @@ body {
 	word-spacing: 1px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	background-color: @black;
-
-}
-
-
-.container {
-	width: calc(~"100% - " 40px);
-	float: left;
-	background: @white;
-	color: @black;
-	padding: 20px;
-	margin-bottom: 7px;
+	margin: 8px;
 }
 
 .text-center {
 	text-align: center;
+}
+
+hr {
+  background-color: @brand-primary;
+  border: 0;
+  height: 2px;
+  margin: 1em 0;
+  width: 72px;
 }

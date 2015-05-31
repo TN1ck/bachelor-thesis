@@ -64,6 +64,11 @@ var tileTypes = {
 export var ReactTile = React.createClass({
     displayName: 'tile',
     mixins: [PureRenderMixin],
+    getInitialState: function () {
+        return {
+            loadingFavourite: false
+        };
+    },
     componentDidMount: function () {
         var dom = this.getDOMNode();
         actions.addDomElement(this.props.tile.get('uuid'), dom);
@@ -78,7 +83,11 @@ export var ReactTile = React.createClass({
     },
     handleFavourite: function (e) {
         e.preventDefault;
+        this.setState({loadingFavourite: true});
         actions.favouriteItem(this.props.tile.get('uuid'));
+    },
+    componentWillReceiveProps: function (props) {
+        this.setState({loadingFavourite: false});
     },
     render: function () {
 
@@ -98,6 +107,7 @@ export var ReactTile = React.createClass({
         style['background-color'] = color;
 
         var favourited = this.props.tile.get('favourite') ? 'favourite' : 'unfavourite';
+        var loadingFavourite = this.state.loadingFavourite;
 
         return (
             <article className={`tile white ${cssClass} tile--${this.props.tile.get('type')}`} style={style}>
@@ -108,7 +118,12 @@ export var ReactTile = React.createClass({
                     <div className='tile__header__buttons'>
                         <div className='tile__header__upvote-button' onClick={this.handleUpvote}></div>
                         <div className='tile__header__downvote-button' onClick={this.handleDownvote}></div>
-                        <div className={`tile__header__favourite-button ${favourited}`} onClick={this.handleFavourite}></div>
+                        <div
+                            className={`tile__header__favourite-button
+                                        ${favourited}
+                                        ${loadingFavourite ? 'animate-rotate': ''}`}
+                            onClick={this.handleFavourite}>
+                        </div>
                     </div>
                 </header>
                 {tile}

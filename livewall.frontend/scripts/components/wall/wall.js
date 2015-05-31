@@ -27,12 +27,13 @@ export var ReactWall = React.createClass({
     },
     getInitialState: function () {
         return {
-            items: Immutable.List(),
+            items: layoutStore.items,
             loading: true
         }
     },
     componentDidMount: function() {
         actions.loadItems();
+        actions.relayout();
     },
     render: function () {
 

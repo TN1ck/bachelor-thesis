@@ -178,7 +178,6 @@ export var gameStore = Reflux.createStore({
         var endDate   = moment();
         this.getData(startDate, endDate).then(json => {
             this.state.allTimeData = this.processData(json.rows);
-            console.log(this.state);
         });
     },
 
@@ -187,7 +186,6 @@ export var gameStore = Reflux.createStore({
         var endDate   = moment();
         this.getData(startDate, endDate).then(json => {
             this.state.monthlyData = this.processData(json.rows);
-            console.log(this.state);
         });
     },
 
@@ -264,7 +262,6 @@ export var gameStore = Reflux.createStore({
                 }
             )
             .value();
-        console.log(data, this.state, groupedData);
 
         return groupedData;
 

@@ -10,6 +10,8 @@ import {gameStore} from '../../stores/game.js';
 import {camelCaseToBar} from '../../utils.js';
 import {user, requireAuth} from '../../auth.js';
 
+import { Grid, Row, Col, Input, Button, Jumbotron, Alert, PageHeader } from 'react-bootstrap';
+
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 
 import {Badge} from './badges.js';
@@ -142,33 +144,29 @@ export var ReactTrophies = React.createClass({
             }
         ].map(x => {
             return (
-                <div className="trophies__trophy">
+                <Col xs={4} sm={3} md={2} lg={2} className='trophies__trophy'>
                     <Badge image={x.image} text={x.name} number={x.number} type={x.type} fill={x.fill}/>
-                </div>
-                );
+                </Col>
+            );
         });
 
         return (
-            <div className='container'>
-                <div className='trophies__banner'><Banner text="Trophäen"/></div>
-                <div className='text-center'>
-                    <p>Hier Findest du alle Trophäen die du bekommen hast, durch jede Trophäe werden dir Punkte auf deinen Punktestand gutgeschrieben.</p>
-                </div>
-                {badges}
-                <div className='trophies__banner'><Banner text="Punkte"/></div>
-                <div>
-                    <div className='tropies__points'>
-                        <div className='trophies__points__points'>500000</div>
-                        <div className='trophies__points__splitted__container'>
-                            <div className='trophies__points__splitted'>
-                                <span className='trophies__points__splitted__points'>5000 Punkte</span>
-                                <span className='trophies__points__splitted__text'> durch 20 tägliche Anmeldungen</span>
-                            </div>
-                            {randomPoints}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Grid>
+                <Row>
+                    <Col xs={12}>
+                        <PageHeader>
+                            <h1>Trophäen</h1>
+                            <hr/>
+                            <p>Hier Findest du alle Trophäen die du bekommen hast, durch jede Trophäe werden dir Punkte auf deinen Punktestand gutgeschrieben.</p>
+                        </PageHeader>
+                    </Col>
+                    {badges}
+                    <Col xs={12}>
+                        <h1> Punkte </h1>
+                        <hr/>
+                    </Col>
+                </Row>
+            </Grid>
         );
     }
 });
