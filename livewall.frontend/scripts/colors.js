@@ -1,5 +1,3 @@
-'use strict';
-
 import {hashCode} from './utils.js';
 import d3 from 'd3';
 import _ from 'lodash';
@@ -54,4 +52,14 @@ export var getColorByString = function (str) {
     var hash = hashCode(str);
     return selectedColorFunction(hash);
 
+};
+
+// names of the colors accourding to: http://chir.ag/projects/name-that-color/
+export var colors = {
+    vinrouge:     '#9c4274',
+    buttercup:    '#F5A623',
+    sushi:        '#96bf48',
+    burnt_sienna: '#EC663C',
+    puerto_rico:  '#47BBB3',
+    curious_blue: '#248EE6'
 };

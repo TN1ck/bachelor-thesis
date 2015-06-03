@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react/addons';
 import Reflux from 'reflux';
 import {RouteHandler} from 'react-router';

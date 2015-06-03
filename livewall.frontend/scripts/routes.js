@@ -19,12 +19,12 @@ if (typeof window !== 'undefined') {
 
 var routes = (
     <Route handler={ReactApp}>
-        <Route name='login' handler={ReactLogin}/>
-        <Route name='settings' handler={ReactSettings}/>
-        <Route name='trophies' handler={ReactTrophies}/>
-        <Route name='logout' handler={ReactLogout}/>
+        <Route name='login'          handler={ReactLogin}/>
         <Route name='admin' path='/' handler={ReactAdmin}>
-            <DefaultRoute name='wall' handler={ReactWall}/>
+            <Route        name='logout'   handler={ReactLogout}/>
+            <Route        name='settings' handler={ReactSettings}/>
+            <Route        name='trophies' handler={ReactTrophies}/>
+            <DefaultRoute name='wall'     handler={ReactWall}/>
         </Route>
     </Route>
 );

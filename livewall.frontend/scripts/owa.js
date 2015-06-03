@@ -45,6 +45,7 @@ appendToDom();
 export var initUser = function(username) {
     console.log('setCustomVar2', username);
     window.owa_cmds.push(['setCustomVar', '2', 'username', username, 'session']);
+    track('auth', username, 'login', 0);
 };
 
 /**

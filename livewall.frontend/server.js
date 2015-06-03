@@ -1,8 +1,8 @@
 var express = require('express');
-var cors = require('cors');
-var http = require('http');
-var app = express();
-var port = 4000;
+var cors    = require('cors');
+var http    = require('http');
+var app     = express();
+var port    = 4000;
 
 app.get('/api.php*', cors(), function(req, res) {
 

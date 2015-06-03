@@ -1,6 +1,5 @@
-'use strict';
-
 import React from 'react/addons';
+import { Grid, Row, Col, Input, Button, Jumbotron, Alert, PageHeader, Badge } from 'react-bootstrap';
 
 import _ from 'lodash';
 
@@ -10,11 +9,11 @@ import {gameStore} from '../../stores/game.js';
 import {camelCaseToBar} from '../../utils.js';
 import {user, requireAuth} from '../../auth.js';
 
-import { Grid, Row, Col, Input, Button, Jumbotron, Alert, PageHeader } from 'react-bootstrap';
+import { badges } from '../../badges.js';
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 
-import {Badge} from './badges.js';
+import { Award } from './awards.js';
 import {Banner} from './banner.js';
 
 export var ReactTrophies = React.createClass({
@@ -29,123 +28,22 @@ export var ReactTrophies = React.createClass({
             </div>;
         });
 
-        var badges = [
-            {
-                name: 'ANMELDUNG',
-                number: '1',
-                type: 'none',
-                fill: '#9c4274',
-                image: '/assets/key.png',
-            },
-            {
-                name: 'TAGE IN FOLGE',
-                number: '3',
-                type: 'none',
-                fill: '#F5A623',
-                image: '/assets/repeat.png',
-            },
-            {
-                name: 'TAGE IN FOLGE',
-                number: '7',
-                type: 'king',
-                fill: '#F5A623',
-                image: '/assets/repeat.png',
-            },
-            {
-                name: 'TAGE IN FOLGE',
-                number: '15',
-                type: 'emperor',
-                fill: '#F5A623',
-                image: '/assets/repeat.png',
-            },
-            {
-                name: 'UPVOTES',
-                number: '10',
-                type: 'none',
-                fill: '#96bf48',
-                image: '/assets/upvote.png',
-            },
-            {
-                name: 'UPVOTES',
-                number: '100',
-                type: 'king',
-                fill: '#96bf48',
-                image: '/assets/upvote.png',
-            },
-            {
-                name: 'UPVOTES',
-                number: '1000',
-                type: 'emperor',
-                fill: '#96bf48',
-                image: '/assets/upvote.png',
-            },
-            {
-                name: 'DOWNVOTES',
-                number: '10',
-                type: 'none',
-                fill: '#ec663c',
-                image: '/assets/downvote.png',
-            },
-            {
-                name: 'DOWNVOTES',
-                number: '100',
-                type: 'king',
-                fill: '#ec663c',
-                image: '/assets/downvote.png',
-            },
-            {
-                name: 'DOWNVOTES',
-                number: '1000',
-                type: 'emperor',
-                fill: '#ec663c',
-                image: '/assets/downvote.png',
-            },
-            {
-                name: 'SUCHEN',
-                number: '100',
-                type: 'none',
-                fill: '#47bbb3',
-                image: '/assets/search.png',
-            },
-            {
-                name: 'SUCHEN',
-                number: '1000',
-                type: 'king',
-                fill: '#47bbb3',
-                image: '/assets/search.png',
-            },
-            {
-                name: 'SUCHEN',
-                number: '10000',
-                type: 'emperor',
-                fill: '#47bbb3',
-                image: '/assets/search.png',
-            },
-            {
-                name: 'FAVORITEN',
-                number: '10',
-                type: 'none',
-                fill: '#248EE6',
-                image: '/assets/star.png',
-            },
-            {
-                name: 'FAVORITEN',
-                number: '100',
-                type: 'king',
-                fill: '#248EE6',
-                image: '/assets/star.png',
-            },
-            {
-                name: 'FAVORITEN',
-                number: '1000',
-                type: 'emperor',
-                fill: '#248EE6',
-                image: '/assets/star.png',
-            }
-        ].map(x => {
+        var badgeComponents = badges.map(x => {
             return (
-                <Col xs={4} sm={3} md={2} lg={2} className='trophies__trophy'>
-                    <Badge image={x.image} text={x.name} number={x.number} type={x.type} fill={x.fill}/>
+                <Col xs={12} md={12}>
+                    <div className='trophies__trophy__container'>
+                        <div className='trophies__trophy__svg-container'>
+                            <Award image={x.image} text={x.name} number={x.number} type={x.type} fill={x.fill}/>
+                        </div>
+                        <div className='trophies__trophy__text-container'>
+                            <h5>
+                                {x.number} {x.name}
+                            </h5>
+                            <hr />
+                            <p>{x.text}</p>
+                            <p><strong>56.6%</strong> besitzen diese Trophäe.</p>
+                        </div>
+                    </div>
                 </Col>
             );
         });
@@ -160,7 +58,7 @@ export var ReactTrophies = React.createClass({
                             <p>Hier Findest du alle Trophäen die du bekommen hast, durch jede Trophäe werden dir Punkte auf deinen Punktestand gutgeschrieben.</p>
                         </PageHeader>
                     </Col>
-                    {badges}
+                    {badgeComponents}
                     <Col xs={12}>
                         <h1> Punkte </h1>
                         <hr/>

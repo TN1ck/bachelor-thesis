@@ -1,7 +1,5 @@
-'use strict';
-
 import React from 'react/addons';
-import { Grid, Row, Col, Input, Button, PageHeader, Alert } from 'react-bootstrap';
+import { Grid, Row, Col, Input, Button, PageHeader, Alert, ButtonGroup } from 'react-bootstrap';
 import {Link, Route, RouteHandler} from 'react-router';
 
 
@@ -19,7 +17,12 @@ export var ReactLogin = React.createClass({
             remember: true,
             loading: false,
             error: false,
-            isLogedIn: false
+            isLogedIn: 'loading',
+            text: {
+                notLoged: 'Anmelden',
+                Loged: 'Sie sind bereits angemeldet, wollen sie sich abmelden?',
+                error: 'Ein Fehler ist aufgetreten, bitte stellen Sie sicher das ihr Benutzername und das zugehörige Passwort korrekt sind.'
+            }
         };
     },
     handleSubmit: function (e) {
@@ -48,8 +51,8 @@ export var ReactLogin = React.createClass({
 
     },
     componentWillMount: function () {
-        user.isLogedIn(() => {
-            this.setState({isLogedIn: true});
+        user.isLogedIn((result) => {
+            this.setState({isLogedIn: result});
         });
     },
     handleChange: function (e) {
@@ -62,12 +65,10 @@ export var ReactLogin = React.createClass({
         var loading = <i className="fa fa-spinner fa-pulse"></i>;
 
         var text = {
-            notLoged: 'Anmelden',
-            Loged: 'Sie sind bereits angemeldet, wollen sie sich abmelden?',
-            error: 'Ein Fehler ist aufgetreten, bitte stellen Sie sicher das ihr Benutzername und das zugehörige Passwort korrekt sind.'
         };
 
         var error;
+
         if (this.state.error) {
             error = <Alert bsStyle='danger'>
                 <h4>Oh nein... </h4>
@@ -114,24 +115,30 @@ export var ReactLogin = React.createClass({
             </Button>
         </form>;
 
-        var logoutForm = <div className='center'>
-            <Link to="logout">
-                <Button bsStyle='primary'>Abmelden</Button>
-            </Link>
+        var logoutForm = <div>
+            <ButtonGroup justified>
+                <Button href="#/logout" bsStyle='danger'>Abmelden</Button>
+                <Button href="#/wall" bsStyle='primary'>Zur DAI-Wall</Button>
+            </ButtonGroup>
         </div>;
+
+        console.log('is loged in', this.state.isLogedIn)
+
+        var headerText = {
+            true: this.state.text.Loged,
+            false: this.state.text.notLoged
+        }[this.state.isLogedIn];
 
         return (
             <Grid>
                 <Row>
                     <Col xs={12} md={6} mdOffset={3}>
-                    <PageHeader>
-                        <h1>{this.state.isLogedIn ? text.Loged : text.notLoged}</h1>
-                        <hr/>
-                    </PageHeader>
-                    <div className="wall__login__content">
+                        <PageHeader>
+                            <h1>{headerText}</h1>
+                            <hr/>
+                        </PageHeader>
                         {error}
                         {this.state.isLogedIn ? logoutForm : loginForm}
-                    </div>
                     </Col>
                 </Row>
             </Grid>

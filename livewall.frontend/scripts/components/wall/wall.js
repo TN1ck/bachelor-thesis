@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react/addons';
 import Reflux from 'reflux';
 import Immutable from 'immutable';

@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react/addons';
 import d3 from 'd3';
 import _ from 'lodash';
@@ -11,8 +9,8 @@ import {user, requireAuth} from '../../auth.js';
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 
-export var Badge = React.createClass({
-    displayName: 'badges',
+export var Award = React.createClass({
+    displayName: 'award',
     getDefaultProps: function() {
         return {
             image: '/assets/search.png',
@@ -110,31 +108,39 @@ export var Badge = React.createClass({
         }/>;
 
         var crown;
+        var translateY = -60;
 
         if (this.props.type === 'king') {
+            translateY = -40;
             crown = kingCrown;
         }
 
         if (this.props.type === 'emperor') {
+            translateY = 0;
             crown = emperorCrown;
         }
 
+        // <rect id="Rectangle-1" fill={fillColor.toString()} x="49" y="326" width="200" height="110"></rect>
+        // <text x="145" y="382" textAnchor="middle" id="10" fontFamily="Lato" fontSize="50" font-weight="normal" fill="#FFFFFF">
+        //     {this.props.number}
+        // </text>
+        // <text id="BEWERTUNGEN" fontFamily="Lato" fontSize="18" textAnchor="middle" font-weight="normal" fill="#FFFFFF">
+        //     <tspan x="145" y="415">{this.props.text}</tspan>
+        // </text>
+        //
+
+
+
+
         return (
-            <svg width="251px" height="436px" viewBox="0 0 251 436">
+            <svg width="251px" height="340px" viewBox="0 40 251 280">
                 <defs>
                     {filter}
                     {colorFilter}
                 </defs>
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" >
-                    <g id="first-login-copy" transform="translate(-24.000000, 0.000000)">
+                    <g id="first-login-copy" transform={`translate(-24.00, ${translateY})`}>
                         <circle id="Oval-1" fill={this.props.fill} cx="150" cy="250" r="100"></circle>
-                        <rect id="Rectangle-1" fill={fillColor.toString()} x="49" y="326" width="200" height="110"></rect>
-                        <text x="145" y="382" textAnchor="middle" id="10" fontFamily="Lato" fontSize="50" font-weight="normal" fill="#FFFFFF">
-                            {this.props.number}
-                        </text>
-                        <text id="BEWERTUNGEN" fontFamily="Lato" fontSize="18" textAnchor="middle" font-weight="normal" fill="#FFFFFF">
-                            <tspan x="145" y="415">{this.props.text}</tspan>
-                        </text>
                         {crown}
                         <g>
                             {image}

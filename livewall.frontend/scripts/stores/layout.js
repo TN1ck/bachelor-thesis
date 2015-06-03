@@ -1,5 +1,3 @@
-'use strict';
-
 import _ from 'lodash';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
@@ -7,11 +5,18 @@ import {dataStore} from './data.js';
 import actions from '../actions.js';
 import {compareStrings} from '../utils.js';
 
+var sortResolver = (a, b) => {
+    var _a = (a.get('query') + a.get('uuid'));
+    var _b = (b.get('query') + b.get('uuid'));
+
+    return _a > _b ? 1 : -1;
+};
+
 export var sorters = {
     score: (a, b) => {
         var result = -(a.get('score') - b.get('score'));
         if (result === 0) {
-          result = a.get('uuid') > b.get('uuid') ? 1 : -1;
+          return sortResolver(a, b);
         }
         return result;
     },
@@ -41,6 +46,8 @@ export var layoutStore  = Reflux.createStore({
         this.listenTo(actions.addDomElement, this.addDomElement);
         this.listenTo(actions.changeSort, this.changeSort);
         this.listenTo(actions.relayout, () => this.layout(false));
+
+        this.queued = [];
 
         var resizeCallback;
 
@@ -77,11 +84,12 @@ export var layoutStore  = Reflux.createStore({
             var uuid = tile.get('uuid');
             var oldTile = this.items.get(uuid);
 
+            var columnIndex = tempArray.indexOf(tile) % this.numberOfColumns;
+            var left = (this.columnWidth + this.margin) * columnIndex + this.margin / 2;
+
             var newTile;
             if (!oldTile) {
 
-                var columnIndex = tempArray.indexOf(tile) % this.numberOfColumns;
-                var left = (this.columnWidth + this.margin) * columnIndex + this.margin / 2;
 
                 var translate = `translate3D(${left}px , 0px, 0)`
                 var css = {
@@ -102,7 +110,8 @@ export var layoutStore  = Reflux.createStore({
                 });
 
             } else {
-                newTile = oldTile.merge(tile);
+                var updatedTile = tile.updateIn(['position', 'left'], left, () => left);
+                newTile = oldTile.merge(updatedTile);
             }
 
             return newTile
@@ -238,9 +247,10 @@ export var layoutStore  = Reflux.createStore({
 
         this.items = this.items.set(uuid, tile);
         // or requestanimationframe
-        _.debounce(() => {
-            window.requestanimationframe(() => this.layout(true));
-        }, 50);
+        if (this.items.filter(x => x.get('dom')).count() === this.items.count()) {
+            console.log('layout!!!!');
+            this.layout(true);
+        }
 
     },
     changeSort: function(sort) {

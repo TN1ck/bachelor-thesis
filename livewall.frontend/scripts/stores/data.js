@@ -1,5 +1,3 @@
-'use strict';
-
 import _ from 'lodash';
 import Reflux from 'reflux';
 import Immutable from 'immutable';
@@ -70,7 +68,10 @@ export var dataStore = Reflux.createStore({
             };
 
             if (loadData) {
-                this.loadData(querieAgent);
+                this.loadData(querieAgent).then(() => {
+                    actions.changedQueries(this.queries);
+                    this.triggerState.bind(this)();
+                });
             }
 
             return querieAgent;
@@ -104,7 +105,7 @@ export var dataStore = Reflux.createStore({
         agent.loaded = false;
         actions.changedQueries(this.queries);
 
-        var result = jquery.Deferred();
+        var result = jquery.when();
         try {
             result = agent.agent.getData(user).then(data => {
 
@@ -127,8 +128,6 @@ export var dataStore = Reflux.createStore({
                 });
 
                 agent.loaded = true;
-                actions.changedQueries(this.queries);
-                this.triggerState.bind(this)();
 
             }).fail(() => {
                 console.log('failed...');
@@ -173,12 +172,21 @@ export var dataStore = Reflux.createStore({
 
     loadItems: function () {
 
+        var promises = [];
+
         _.values(this.queries).forEach(query => {
-            query.agents.forEach((agent) => {
+            promises = promises.concat(query.agents.map((agent) => {
                 if (!agent.loaded) {
-                    this.loadData(agent);
+                    return this.loadData(agent);
                 }
-            });
+                return jquery.when();
+            }))
+        });
+
+        _.spread(jquery.when)(promises).done(() => {
+            console.log('all queries done!');
+            actions.changedQueries(this.queries);
+            this.triggerState.bind(this)();
         });
 
         this.loadProfile();
