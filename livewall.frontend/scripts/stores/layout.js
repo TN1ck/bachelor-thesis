@@ -279,7 +279,6 @@ export default Reflux.createStore({
 
         });
 
-        console.log('layout trigger');
         this.trigger(this.items);
 
     },
@@ -294,7 +293,6 @@ export default Reflux.createStore({
         this.items = this.items.set(uuid, tile);
         // or requestanimationframe
         if (this.items.filter(x => x.get('dom')).count() === this.items.count()) {
-            console.log('layout!!!!');
             this.layout(true);
         }
 

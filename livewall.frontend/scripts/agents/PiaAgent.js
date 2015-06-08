@@ -30,6 +30,10 @@ export default class Pia {
         this.request.abort();
     }
 
+    get status () {
+        return this.promise ? this.promise.state() : 'pending';
+    }
+
     processJSON (json) {
 
         if (json.status && json.status.code !== 200) {
@@ -116,6 +120,8 @@ export default class Pia {
         }).fail(() => {
             return [];
         });
+
+        this.promise = promise;
 
         this.request = request;
 

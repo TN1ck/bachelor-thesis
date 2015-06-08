@@ -1,5 +1,6 @@
 import React      from 'react/addons';
 import Reflux     from 'reflux';
+import _          from 'lodash';
 
 import actions    from '../../actions.js';
 import dataStore  from '../../stores/data.js';
@@ -9,24 +10,24 @@ export var ReactQuery = React.createClass({
     displayName: 'query',
     render: function () {
 
-        var errors  = 0;
-        var loaded = 0;
-        var numberOfAgents = this.props.query.agents.length;
+        var query = this.props.query;
 
-        this.props.query.agents.forEach(agent => {
-            errors += agent.error ? 1 : 0;
-            loaded += agent.loaded ? 1 : 0;
-        });
+        var loading = _.some(query.agents, agent => {
+            return agent.status === 'pending';
+        })
 
-        var loading = <span className="fa-gear fa-spin"></span>;
-        var remove  = <span className="fa-remove"></span>;
-        var color   = this.props.query.color;
+        var loadingComponent = <span className="fa-gear fa-spin"></span>;
+        var removeComponent  = <span className="fa-remove"></span>;
+        var color            = query.color;
 
         return (
             <li style={{'background-color': color, 'border-color': color}} className='query__element'>
                 <div className='query__container'>
-                    <div className='query__term'>{this.props.query.term}</div>
-                    <div className='query__button' onClick={this.props.removeQuery}>{((loaded === numberOfAgents) || errors > 0)? remove : loading}</div>
+                    <div className='query__term'>{query.term}</div>
+                    <div className='query__button'
+                        onClick={this.props.removeQuery}>
+                        {loading ? loadingComponent : removeComponent}
+                    </div>
                 </div>
             </li>
         );

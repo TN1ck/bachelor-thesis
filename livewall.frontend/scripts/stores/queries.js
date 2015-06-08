@@ -57,6 +57,8 @@ export default Reflux.createStore({
 
                 return _items;
 
+                this.trigger(this.queries);
+
             });
 
         });
