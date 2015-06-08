@@ -1,10 +1,13 @@
-import React from 'react/addons';
-import {Link} from 'react-router';
+import React     from 'react/addons';
+import {Link}    from 'react-router';
 
-import {user} from '../../auth.js';
-import {dataStore} from '../../stores/data.js';
+import {user}    from '../../auth.js';
+import dataStore from '../../stores/data.js';
 
-import { Grid, Row, Col, Input, Button, Jumbotron, Alert, PageHeader } from 'react-bootstrap';
+import {
+    Grid, Row, Col, Input,
+    Button, Jumbotron, Alert, PageHeader
+} from 'react-bootstrap';
 
 export var ReactLogout = React.createClass({
     componentDidMount: function () {

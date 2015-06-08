@@ -1,24 +1,22 @@
-import React from 'react/addons';
-import Reflux from 'reflux';
-import Immutable from 'immutable';
+import React          from 'react/addons';
+import Reflux         from 'reflux';
+import Immutable      from 'immutable';
 
-import {layoutStore} from '../../stores/layout.js';
-import {dataStore} from '../../stores/data.js';
+import layoutStore    from '../../stores/layout.js';
+import dataStore      from '../../stores/data.js';
 
-import {user, requireAuth} from '../../auth.js';
-import actions from '../../actions.js';
+import actions        from '../../actions.js';
 
-import {ReactTile} from './tiles.js';
+import {ReactTile}    from './tiles.js';
 import {ReactQueries} from './queries.js';
-import {ReactSort} from './sort.js';
+import {ReactSort}    from './sort.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 export var ReactWall = React.createClass({
     displayName: 'wall',
     mixins: [
-        Reflux.listenTo(layoutStore, "onStoreChange"),
-        requireAuth
+        Reflux.listenTo(layoutStore, "onStoreChange")
     ],
     onStoreChange: function(items) {
         this.setState({items: items});
@@ -30,7 +28,6 @@ export var ReactWall = React.createClass({
         }
     },
     componentDidMount: function() {
-        actions.loadItems();
         actions.relayout();
     },
     render: function () {

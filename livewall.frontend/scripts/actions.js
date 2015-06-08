@@ -11,7 +11,9 @@ var actions = Reflux.createActions([
     'addQuery',
     'removeQuery',
     'changedQueries',
-    'addDomElement'
+    'addDomElement',
+
+	'addItems'
 ]);
 
 export default actions;

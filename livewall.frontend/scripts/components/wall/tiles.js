@@ -1,7 +1,9 @@
-import React from 'react/addons';
-
+import React   from 'react/addons';
 import actions from '../../actions.js';
-import {hashCode, colors, colorLuminance} from '../../utils.js';
+
+import {
+    hashCode, colors, colorLuminance
+} from '../../utils.js';
 
 var PureRenderMixin = React.addons.PureRenderMixin;
 
@@ -103,7 +105,7 @@ export var ReactTile = React.createClass({
         // precalculate the left offset of the tile so the animation starts at the correct position
         var style = this.props.tile.get('css').toJS();
         var cssClass = this.props.tile.get('class');
-        var color = this.props.tile.get('color');
+        var color = this.props.tile.get('query').color;
         style['background-color'] = color;
 
         var favourited = this.props.tile.get('favourite') ? 'favourite' : 'unfavourite';

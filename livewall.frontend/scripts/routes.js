@@ -1,6 +1,5 @@
-import React from 'react';
-import Router from 'react-router';
-var { Route, RouteHandler, Link, DefaultRoute } = Router;
+import React           from 'react';
+import Router          from 'react-router';
 
 import {ReactApp}      from './components/app.js';
 import {ReactAdmin}    from './components/admin.js';
@@ -11,6 +10,8 @@ import {ReactSettings} from './components/settings.js';
 import {ReactTrophies} from './components/trophies/trophies.js';
 
 import '../styles/main.less';
+
+var { Route, RouteHandler, Link, DefaultRoute } = Router;
 
 // React dev tools
 if (typeof window !== 'undefined') {

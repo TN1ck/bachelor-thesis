@@ -1,16 +1,20 @@
-import _ from 'lodash';
-import Reflux from 'reflux';
-import Immutable from 'immutable';
-import jquery from 'jquery';
-import moment from 'moment';
+import _                    from 'lodash';
+import Reflux               from 'reflux';
+import Immutable            from 'immutable';
+import jquery               from 'jquery';
+import moment               from 'moment';
 
-import actions from '../actions.js';
-import {user} from '../auth.js';
-import {SETTINGS} from '../settings.js';
-import {track, api} from '../owa.js';
+import actions              from '../actions.js';
+import {user}               from '../auth.js';
+import {SETTINGS}           from '../settings.js';
+import {track, api}         from '../owa.js';
 import { trophieFunctions } from '../badges.js';
 
-export var gameStore = Reflux.createStore({
+//
+// GAME STORE
+//
+
+export default Reflux.createStore({
 
     init: function () {
 
@@ -23,14 +27,28 @@ export var gameStore = Reflux.createStore({
         this.listenTo(actions.removeQuery,   this.removeQuery);
 
         this.state = {
-            points: 500,
-            badges: ['login_1', 'login_3', 'login_7', 'login_15', 'favourites_10'],
-            favourites: 10,
-            upvotes: 100,
-            downvotes: 100,
-            searches: 100,
-            number_of_logins: 20,
-            consecutive_logins: 15
+            monthly: {
+                user: {
+                    trophies: [],
+                    results: {
+
+                    }
+                },
+                users: [
+
+                ]
+            },
+            alltime: {
+                user: {
+                    trophies: [],
+                    results: {
+
+                    }
+                },
+                users: [
+
+                ]
+            }
         };
 
         // get the data after the user logs in
@@ -51,13 +69,23 @@ export var gameStore = Reflux.createStore({
                     this.state.monthlyData = processedData;
                     return processedData;
                 }).then(data => {
-                    this.leaderboard = _.map(data, (d, user) => {
+
+                    var alltimeData = _.map(data, (d, user) => {
                         return {
                             user: user,
                             trophies: this.calcTrophies(d, user)
                         };
                     });
-                    console.log(this.leaderboard);
+                    var userData = _.find(alltimeData, {
+                        user: user.username
+                    });
+
+                    this.state.alltime = {
+                        user: userData,
+                        users: alltimeData
+                    };
+
+                    this.triggerState(this.state);
 
                 });
 
@@ -150,7 +178,7 @@ export var gameStore = Reflux.createStore({
                 }
             )
             .value();
-        console.log(groupedData);
+
         return groupedData;
 
 

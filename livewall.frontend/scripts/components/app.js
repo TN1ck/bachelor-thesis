@@ -1,13 +1,13 @@
-import React from 'react/addons';
-import Reflux from 'reflux';
-import {RouteHandler} from 'react-router';
+import React               from 'react/addons';
+import Reflux              from 'reflux';
+import {RouteHandler}      from 'react-router';
 
-import actions from '../actions.js';
-import {SETTINGS} from '../settings.js';
+import actions             from '../actions.js';
+import {SETTINGS}          from '../settings.js';
 import {user, requireAuth} from '../auth.js';
-import {gameStore} from '../stores/game.js';
+import gameStore           from '../stores/game.js';
 
-import {ReactHeader} from './header.js';
+import {ReactHeader}       from './header.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 

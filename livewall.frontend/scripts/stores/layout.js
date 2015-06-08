@@ -1,9 +1,11 @@
-import _ from 'lodash';
-import Reflux from 'reflux';
-import Immutable from 'immutable';
-import {dataStore} from './data.js';
-import actions from '../actions.js';
+import _                from 'lodash';
+import Reflux           from 'reflux';
+import Immutable        from 'immutable';
+
+import actions          from '../actions.js';
 import {compareStrings} from '../utils.js';
+import dataStore        from './data.js';
+
 
 var sortResolver = (a, b) => {
     var _a = (a.get('query') + a.get('uuid'));
@@ -34,11 +36,62 @@ export var sorters = {
     }
 };
 
-export var layoutStore  = Reflux.createStore({
+export var groupers = {
+    queryAdded: (items, numberOfColumns, sortFunction) => {
+        var chunks = _.range(numberOfColumns).map(() => { return []; });
+
+        items
+        .toList()
+        .groupBy((_item, i) => {
+            return _item.get('query');
+        })
+        .entrySeq().sort((entryA, entryB) => {
+            return entryA[0].date - entryB[0].date;
+        })
+        .map(entry => {
+            return entry[1];
+        })
+        .toList()
+        .forEach((_items, i) => {
+            var index = i % numberOfColumns;
+            chunks[index] = chunks[index].concat(_items.toArray());
+        });
+
+        var columns = chunks.map(chunk => {
+            chunk.sort(sortFunction);
+            return chunk;
+        });
+
+        return columns;
+    },
+    none: (items, numberOfColumns, sortFunction) => {
+
+        var chunks = _.range(numberOfColumns).map(() => { return []; });
+
+        items.toList().forEach((_item, i) => {
+            var columnIndex = i % numberOfColumns;
+            chunks[columnIndex].push(_item);
+        });
+
+        var columns = chunks.map( (chunk) => {
+            chunk.sort(sortFunction);
+            return chunk;
+        });
+
+        return columns;
+    }
+};
+
+//
+// LAYOT STORE
+//
+
+export default Reflux.createStore({
     init: function () {
-        this.items = Immutable.OrderedMap();
+        this.items = Immutable.Map();
         this.margin = 8 * 2;
         this.sortFunction = sorters.score;
+        this.groupFunction = groupers.queryAdded;
 
         this.calculateColumns();
 
@@ -77,14 +130,19 @@ export var layoutStore  = Reflux.createStore({
     },
     onStoreChange: function (items) {
 
-        var tempArray = dataStore.items.sort(this.sortFunction).toArray();
+        var groupedItems = this.groupFunction(dataStore.items, this.numberOfColumns, this.sortFunction);
 
         this.items = items.map((tile) => {
 
             var uuid = tile.get('uuid');
             var oldTile = this.items.get(uuid);
 
-            var columnIndex = tempArray.indexOf(tile) % this.numberOfColumns;
+            var columnIndex = _.findIndex(groupedItems, _items => {
+                return _.find(_items, _item => {
+                    return _item.get('uuid') === uuid;
+                });
+            });
+
             var left = (this.columnWidth + this.margin) * columnIndex + this.margin / 2;
 
             var newTile;
@@ -170,26 +228,14 @@ export var layoutStore  = Reflux.createStore({
         this.layout(transition);
 
     },
-    groupIntoColumns: function (items) {
-
-        var chunks = _.range(this.numberOfColumns).map(() => { return []; });
-
-        items.toList().forEach((_item, i) => {
-            var columnIndex = i % this.numberOfColumns;
-            chunks[columnIndex].push(_item);
-        });
-
-        var columns = chunks.map( (chunk) => {
-            chunk.sort(this.sortFunction);
-            return chunk;
-        });
-
-        return columns;
-    },
 
     layout: function (transition = true) {
 
-        var columns = this.groupIntoColumns(this.items.sort(this.sortFunction));
+        var columns = this.groupFunction(
+            this.items.sort(this.sortFunction),
+            this.numberOfColumns,
+            this.sortFunction
+        );
 
         columns.forEach((column, j) => {
 

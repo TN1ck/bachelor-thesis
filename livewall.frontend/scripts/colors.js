@@ -1,6 +1,6 @@
 import {hashCode} from './utils.js';
-import d3 from 'd3';
-import _ from 'lodash';
+import d3         from 'd3';
+import _          from 'lodash';
 
 var colorFunctions = {
     pastel: (hash) => {

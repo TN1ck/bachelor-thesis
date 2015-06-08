@@ -1,11 +1,15 @@
 import React from 'react/addons';
-import { Grid, Row, Col, Input, Button, PageHeader, Alert, ButtonGroup } from 'react-bootstrap';
+import {
+    Grid, Row, Col, Input, Button,
+    PageHeader, Alert, ButtonGroup
+} from 'react-bootstrap';
+
 import {Link, Route, RouteHandler} from 'react-router';
 
 
-import actions from '../../actions.js';
-import {user} from '../../auth.js';
-import {dataStore} from '../../stores/data.js';
+import actions   from '../../actions.js';
+import {user}    from '../../auth.js';
+import dataStore from '../../stores/data.js';
 
 export var ReactLogin = React.createClass({
     displayName: 'login',

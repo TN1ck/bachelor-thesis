@@ -1,156 +1,48 @@
-import _ from 'lodash';
-import Reflux from 'reflux';
-import Immutable from 'immutable';
-import jquery from 'jquery';
+import _          from 'lodash';
+import Reflux     from 'reflux';
+import Immutable  from 'immutable';
+import jquery     from 'jquery';
+import moment     from 'moment';
 
-import {Reddit, PiaZentral, PiaHaus} from '../agents.js';
-import actions from '../actions.js';
-import {user} from '../auth.js';
+import actions    from '../actions.js';
+import {user}     from '../auth.js';
 import {SETTINGS} from '../settings.js';
-import {colorStore} from './color.js';
 
-export var dataStore = Reflux.createStore({
+
+//
+// ITEM STORE
+//
+
+export default Reflux.createStore({
 
     init: function () {
 
         this.items = Immutable.OrderedMap();
-
-        this.queries = {};
 
         this.profile = {
             queries: {},
             favourites: {}
         };
 
-        this.availableSources = [
-            PiaHaus,
-            PiaZentral
-        ];
+        this.listenTo(actions.addItems, this.addItems);
 
-        this.listenTo(actions.upvoteItem, this.upvoteItem);
+        this.listenTo(actions.upvoteItem,   this.upvoteItem);
         this.listenTo(actions.downvoteItem, this.downvoteItem);
+
         this.listenTo(actions.favouriteItem, this.favouriteItem);
-        this.listenTo(actions.loadItems, this.loadItems);
-
-        this.listenTo(actions.addQuery, this.addQuery);
-        this.listenTo(actions.removeQuery, this.removeQuery);
-        this.listenTo(colorStore, this.colorStoreUpdate);
-
-        // do not track these
-        SETTINGS.QUERIES.forEach(queryTerm => actions.addQuery(queryTerm, false, false));
-
-    },
-
-    colorStoreUpdate: function (colors) {
-        this.items.map((item) => {
-            var itemNew = item.set('color', colors.get(item.get('query')));
-            return itemNew;
-        });
-    },
-
-    getIndexByUUID: function (uuid) {
-        return this.items.findIndex(item => item.get('uuid') === uuid);
-    },
-
-    addQuery: function (queryTerm, loadData) {
-
-        if (this.queries[queryTerm]) {
-            return;
-        }
+        this.listenTo(actions.removeQuery,   this.removeQuery);
 
 
-        var agents = this.availableSources.map(source => {
-
-            var querieAgent = {
-                agent: new source(queryTerm),
-                loaded: false,
-                polling: false
-            };
-
-            if (loadData) {
-                this.loadData(querieAgent).then(() => {
-                    actions.changedQueries(this.queries);
-                    this.triggerState.bind(this)();
-                });
-            }
-
-            return querieAgent;
-
-        });
-
-        this.queries[queryTerm] = {
-            loaded: false,
-            agents: agents,
-            name: queryTerm
-        };
-
-        actions.changedQueries(this.queries);
-
-
-    },
-    removeQuery: function (queryTerm) {
-
-        delete this.queries[queryTerm];
-
-        this.items = this.items.filter((item) => {
-            var result = item.get('query') !== queryTerm;
-            return result;
-        });
-        actions.changedQueries(this.queries);
-        this.triggerState.bind(this)();
-    },
-
-    loadData: function (agent) {
-
-        agent.loaded = false;
-        actions.changedQueries(this.queries);
-
-        var result = jquery.when();
-        try {
-            result = agent.agent.getData(user).then(data => {
-
-                data.data.forEach((d, i) => {
-
-                    d.agent = agent.agent.key;
-                    var dIm = Immutable.Map(d);
-
-                    // append tile when image finishes loading
-                    if (d.type === 'image') {
-                        var img = new Image;
-                        img.src = d.url;
-                        img.onload = () => {
-                            this.addItem(dIm);
-                        };
-                    } else {
-                        this.addItem(dIm, false);
-                    }
-
-                });
-
-                agent.loaded = true;
-
-            }).fail(() => {
-                console.log('failed...');
-                agent.loaded = false;
-                agent.error = true;
-                actions.changedQueries(this.queries);
-            });
-        } catch (e) {
-            console.log('error while loading data.');
-            console.error(e);
-        }
-
-        return result;
     },
 
     matchFavourites: function () {
-            this.items = this.items.map((item) => {
-                var uuid = item.get('uuid')
-                if (this.profile.favourites[uuid]) {
-                    item = item.set('favourite', true);
-                }
-                return item;
-            });
+        this.items = this.items.map((item) => {
+            var uuid = item.get('uuid')
+            if (this.profile.favourites[uuid]) {
+                item = item.set('favourite', true);
+            }
+            return item;
+        });
     },
 
     loadProfile: function () {
@@ -170,78 +62,46 @@ export var dataStore = Reflux.createStore({
         })
     },
 
-    loadItems: function () {
-
-        var promises = [];
-
-        _.values(this.queries).forEach(query => {
-            promises = promises.concat(query.agents.map((agent) => {
-                if (!agent.loaded) {
-                    return this.loadData(agent);
-                }
-                return jquery.when();
-            }))
-        });
-
-        _.spread(jquery.when)(promises).done(() => {
-            console.log('all queries done!');
-            actions.changedQueries(this.queries);
-            this.triggerState.bind(this)();
-        });
-
-        this.loadProfile();
-
-        // polling
-        // _.values(this.queries).forEach(s => {
-        //     if (s.polling) {
-        //         var callback = () => {
-        //             console.log('polling...');
-        //             this.loadData(s);
-        //             setTimeout(function() {
-        //                 callback();
-        //             }, s.polling * 1000);
-        //         };
-        //
-        //         setTimeout(function() {
-        //             callback();
-        //         }, s.polling * 1000);
-        //
-        //     }
-        // });
-    },
-
-    reset: function () {
-        this.items = Immutable.OrderedMap();
-    },
-
-    addItem: function (item, trigger = true) {
-
-        if (this.filterItem(item)) {
-            console.log('filtered item ', item.toJS());
-            return;
-        }
-
-        // set color
-        item = item.set('color', colorStore.getColor(item.get('query')));
-
-        var uuid = item.get('uuid');
-        this.items = this.items.set(uuid, item);
-
-        if (trigger) {
-            this.triggerState.bind(this)();
-        }
-
-    },
-
-    removeItem: function (item) {
-        var uuid = item.get('uuid');
-        this.items = this.items.delete(uuid);
-    },
-
     triggerState: function () {
         this.matchFavourites();
         this.trigger(this.items);
     },
+
+    //
+    // TILE HANDLING
+    //
+
+    addItems: function (items) {
+
+        items.forEach(item => {
+            if (this.filterItem(item)) {
+                console.log('filtered item ', item.toJS());
+                return;
+            }
+
+            this.items = this.items.set(item.get('uuid'), item);
+        });
+
+        this.triggerState();
+    },
+
+    //
+    // REMOVE QUERY
+    //
+
+    removeQuery: function (queryTerm) {
+
+        this.items = this.items.filter((item) => {
+            var result = item.get('query').term !== queryTerm;
+            return result;
+        });
+
+        this.triggerState();
+    },
+
+    //
+    // UPVOTE & DOWNVOTES
+    //
 
     upvoteItem: function (uuid) {
         var item = this.items.get(uuid).update('score', x => { return x + 1; });
@@ -254,6 +114,10 @@ export var dataStore = Reflux.createStore({
         this.items = this.items.set(item.get('uuid'), item);
         this.triggerState.bind(this)(this.items);
     },
+
+    //
+    // FAVOURITE
+    //
 
     favouriteItem: function (uuid) {
         var item = this.items.get(uuid);

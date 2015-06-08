@@ -1,82 +1,12 @@
 import $ from 'jquery';
 
-import {getDomain} from './utils.js';
-import {SETTINGS} from './settings.js';
+import {getDomain} from '../utils.js';
+import {SETTINGS}  from '../settings.js';
 
 // The options you can give a source should not change their returned json, i.e. this is how we seperate them
 // Due to this, we have a PiaSource for every broker it can can use
 
-
-export class Reddit {
-
-    constructor (query) {
-        this.query = query;
-    }
-
-    get key () {
-        return `${this.name} - ${this.query || 'frontpage'}`;
-    }
-
-    get name () {
-        return 'reddit';
-    }
-
-    processJSON (json) {
-
-        var endsWith = function(str, term)
-        {
-            var lastIndex = str.lastIndexOf(term);
-            return (lastIndex !== -1) && (lastIndex + term.length === str.length);
-        }
-
-        var items = json.data.children.map((d, i) => {
-            d = d.data;
-            var type = 'link';
-
-            if (d.domain.indexOf('imgur.com') > -1 && !(d.url.indexOf('/a/') > -1)
-                && !endsWith(d.url, '.gifv') || endsWith(d.url, '.jpg')) {
-
-                type = 'image';
-                if (!(endsWith(d.url, '.jpg') || endsWith(d.url, '.png'))) {
-                    d.url = 'http://firesize.com/x/500x500/g_none/' + d.url + '.jpg';
-                }
-            }
-
-            return {
-                query: this.query,
-                uuid: d.permalink,
-                author: d.author,
-                created: d.created,
-                title: d.title,
-                url: d.url,
-                score: Math.round(d.score / 100),
-                domain: d.domain,
-                type: type,
-                // score: _.random(0, 10)
-            };
-        });
-        return {
-            data: items
-        };
-    }
-
-    getData () {
-
-        var url = 'https://www.reddit.com';
-
-        if (this.query) {
-            url += '/r/' + this.query;
-        }
-
-        url += '/.json';
-
-        return $.getJSON(url).promise().then(json => {
-            return this.processJSON(json);
-        });
-    }
-}
-
-class Pia {
+export default class Pia {
 
     constructor(query, filter) {
         this.sourceName = 'pia';
@@ -96,11 +26,15 @@ class Pia {
         return `${this.sourceName}|${this.broker.name}`;
     }
 
+    abort () {
+        this.request.abort();
+    }
+
     processJSON (json) {
 
         if (json.status && json.status.code !== 200) {
             console.error('Authentication failed');
-            return {data: []};
+            return [];
         }
 
         var docs = [];
@@ -139,7 +73,7 @@ class Pia {
             items.push(item);
         });
 
-        return {data: items};
+        return items;
 
     }
 
@@ -168,35 +102,23 @@ class Pia {
             params.token = user.token;
         }
 
-        return $.ajax({
+        var request = $.ajax({
             type: 'GET',
             url: url,  // Send the login info to this page
             data: params,
             dataType: 'jsonp',
             jsonp: 'json.wrf',
 
-        }).promise().then(json => {
+        })
+
+        var promise = request.then(json => {
             return this.processJSON(json);
+        }).fail(() => {
+            return [];
         });
-    }
-}
 
-export class PiaZentral extends Pia {
-    constructor (query, filter) {
-        super(query, filter);
-        this.broker = {
-            name: 'service',
-            public: false
-        };
-    }
-}
+        this.request = request;
 
-export class PiaHaus extends Pia {
-    constructor (query, filter) {
-        super(query, filter);
-        this.broker = {
-            name: 'service',
-            public: false
-        };
+        return promise;
     }
 }

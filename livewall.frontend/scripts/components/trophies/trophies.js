@@ -1,12 +1,16 @@
-import React from 'react/addons';
-import { Grid, Row, Col, Input, Button, Jumbotron, Alert, PageHeader, Badge } from 'react-bootstrap';
+import React  from 'react/addons';
+import _      from 'lodash';
+import Reflux from 'reflux';
+import {
+    Grid, Row, Col, Input, Button,
+    Jumbotron, Alert, PageHeader, Badge
+} from 'react-bootstrap';
 
-import _ from 'lodash';
 
-import actions from '../../actions.js';
-import {SETTINGS} from '../../settings.js';
-import {gameStore} from '../../stores/game.js';
-import {camelCaseToBar} from '../../utils.js';
+import actions             from '../../actions.js';
+import {SETTINGS}          from '../../settings.js';
+import gameStore           from '../../stores/game.js';
+import {camelCaseToBar}    from '../../utils.js';
 import {user, requireAuth} from '../../auth.js';
 
 import { badges } from '../../badges.js';
@@ -18,6 +22,12 @@ import {Banner} from './banner.js';
 
 export var ReactTrophies = React.createClass({
     displayName: 'badges',
+    mixins: [
+        Reflux.listenTo(gameStore, "onStoreChange"),
+    ],
+    onStoreChange: function () {
+
+    },
     render: function () {
 
         var randomPoints = _.range(15).map(d => {
@@ -40,8 +50,12 @@ export var ReactTrophies = React.createClass({
                                 {x.number} {x.name}
                             </h5>
                             <hr />
-                            <p>{x.text}</p>
-                            <p><strong>56.6%</strong> besitzen diese Trophäe.</p>
+                            <p>
+                            {x.text}
+                            <br/>
+                            Du hast Für diese Trophäe <strong>{x.points}</strong> Punkte erhalten.
+                            </p>
+                            <p><strong>56.6%</strong> aller Benutzer besitzen diese Trophäe.</p>
                         </div>
                     </div>
                 </Col>
@@ -52,6 +66,10 @@ export var ReactTrophies = React.createClass({
             <Grid>
                 <Row>
                     <Col xs={12}>
+                        <h1> Punkte </h1>
+                        <hr/>
+                    </Col>
+                    <Col xs={12}>
                         <PageHeader>
                             <h1>Trophäen</h1>
                             <hr/>
@@ -59,10 +77,6 @@ export var ReactTrophies = React.createClass({
                         </PageHeader>
                     </Col>
                     {badgeComponents}
-                    <Col xs={12}>
-                        <h1> Punkte </h1>
-                        <hr/>
-                    </Col>
                 </Row>
             </Grid>
         );

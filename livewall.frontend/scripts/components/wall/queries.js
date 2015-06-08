@@ -1,9 +1,9 @@
-import React from 'react/addons';
-import Reflux from 'reflux';
+import React      from 'react/addons';
+import Reflux     from 'reflux';
 
-import actions from '../../actions.js';
-import {dataStore} from '../../stores/data.js';
-import {colorStore} from '../../stores/color.js';
+import actions    from '../../actions.js';
+import dataStore  from '../../stores/data.js';
+import queryStore from '../../stores/queries.js';
 
 export var ReactQuery = React.createClass({
     displayName: 'query',
@@ -20,12 +20,12 @@ export var ReactQuery = React.createClass({
 
         var loading = <span className="fa-gear fa-spin"></span>;
         var remove  = <span className="fa-remove"></span>;
-        var color   = colorStore.getColor(this.props.query.name);
+        var color   = this.props.query.color;
 
         return (
             <li style={{'background-color': color, 'border-color': color}} className='query__element'>
                 <div className='query__container'>
-                    <div className='query__term'>{this.props.query.name}</div>
+                    <div className='query__term'>{this.props.query.term}</div>
                     <div className='query__button' onClick={this.props.removeQuery}>{((loaded === numberOfAgents) || errors > 0)? remove : loading}</div>
                 </div>
             </li>
@@ -38,7 +38,7 @@ export var ReactAddQuery = React.createClass({
     handleSubmit: function (e) {
 
         e.preventDefault();
-        var query         = this.refs.query.getDOMNode().value;
+        var query = this.refs.query.getDOMNode().value;
         this.props.submitCallback(query);
 
     },
@@ -59,16 +59,16 @@ export var ReactAddQuery = React.createClass({
 
 export var ReactQueries = React.createClass({
     displayName: 'queries',
-    mixins: [Reflux.listenTo(actions.changedQueries, 'onQueryChange')],
-    getInitialState: function () {
-        return {
-            queries: dataStore.queries,
-        }
-    },
-    onQueryChange: function (queries) {
+    mixins: [Reflux.listenTo(queryStore, 'onStoreChange')],
+    onStoreChange: function (queries) {
         this.setState({
             queries: queries
         })
+    },
+    getInitialState: function () {
+        return {
+            queries: []
+        };
     },
     removeQuery: function (query) {
         actions.removeQuery(query);
@@ -77,7 +77,12 @@ export var ReactQueries = React.createClass({
         actions.addQuery(result, true, true);
     },
     render: function () {
-        var queryNames = _.map(this.state.queries, (s, k) => <ReactQuery removeQuery={this.removeQuery.bind(this, k)} key={k} query={s}/>);
+        var queryNames = _.map(this.state.queries, (s, k) => {
+            return <ReactQuery
+                removeQuery={this.removeQuery.bind(this, k)}
+                key={k}
+                query={s}/>;
+        });
         return (
             <div className='queries'>
                 <ul className='queries--list'>

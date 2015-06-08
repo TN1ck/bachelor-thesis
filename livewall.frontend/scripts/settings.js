@@ -3,9 +3,9 @@ import _ from 'lodash';
 // DEFAULTS
 var defaults = {};
 
-defaults.LOGIN_URL = 'http://pia-intern.dai-labor.de/login/';
+defaults.LOGIN_URL   = 'http://pia-intern.dai-labor.de/login/';
 defaults.PROFILE_URL = 'http://pia-intern.dai-labor.de/service';
-defaults.PIA_URL   = 'http://pia-intern.dai-labor.de';
+defaults.PIA_URL     = 'http://pia-intern.dai-labor.de';
 
 defaults.OWA = {
     owa_baseUrl: 'http://ia.dailab.de/owa/',

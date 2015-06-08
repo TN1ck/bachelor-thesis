@@ -1,8 +1,9 @@
-import $ from 'jquery';
-import _ from 'lodash';
-import moment from 'moment';
+import $          from 'jquery';
+import _          from 'lodash';
+import moment     from 'moment';
 
 import {SETTINGS} from './settings.js';
+import {user}     from './auth.js';
 
 /* important settings for our owa instance */
 var owa_baseUrl = SETTINGS.OWA.owa_baseUrl;
@@ -42,11 +43,13 @@ appendToDom();
 //
 //
 
-export var initUser = function(username) {
+var initUser = function(username) {
     console.log('setCustomVar2', username);
     window.owa_cmds.push(['setCustomVar', '2', 'username', username, 'session']);
     track('auth', username, 'login', 0);
 };
+
+user.whenLogedIn(initUser);
 
 /**
  * convience methods for tracking

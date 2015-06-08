@@ -1,12 +1,15 @@
-import React from 'react/addons';
+import React               from 'react/addons';
 
-import actions from '../actions.js';
-import {SETTINGS} from '../settings.js';
-import {dataStore} from '../stores/data.js';
-import {camelCaseToBar} from '../utils.js';
+import actions             from '../actions.js';
+import {SETTINGS}          from '../settings.js';
+import {dataStore}         from '../stores/data.js';
+import {camelCaseToBar}    from '../utils.js';
 import {user, requireAuth} from '../auth.js';
 
-import { Grid, Row, Col, Input, Button, Jumbotron, Alert, PageHeader } from 'react-bootstrap';
+import {
+    Grid, Row, Col, Input, Button,
+    Jumbotron, Alert, PageHeader
+} from 'react-bootstrap';
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 

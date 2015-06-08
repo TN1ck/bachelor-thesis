@@ -1,10 +1,10 @@
-import React from 'react/addons';
-import d3 from 'd3';
-import _ from 'lodash';
+import React               from 'react/addons';
+import d3                  from 'd3';
+import _                   from 'lodash';
 
-import actions from '../../actions.js';
-import {SETTINGS} from '../../settings.js';
-import {dataStore} from '../../stores/data.js';
+import actions             from '../../actions.js';
+import {SETTINGS}          from '../../settings.js';
+import {dataStore}         from '../../stores/data.js';
 import {user, requireAuth} from '../../auth.js';
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
@@ -119,17 +119,6 @@ export var Award = React.createClass({
             translateY = 0;
             crown = emperorCrown;
         }
-
-        // <rect id="Rectangle-1" fill={fillColor.toString()} x="49" y="326" width="200" height="110"></rect>
-        // <text x="145" y="382" textAnchor="middle" id="10" fontFamily="Lato" fontSize="50" font-weight="normal" fill="#FFFFFF">
-        //     {this.props.number}
-        // </text>
-        // <text id="BEWERTUNGEN" fontFamily="Lato" fontSize="18" textAnchor="middle" font-weight="normal" fill="#FFFFFF">
-        //     <tspan x="145" y="415">{this.props.text}</tspan>
-        // </text>
-        //
-
-
 
 
         return (
