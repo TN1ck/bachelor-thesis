@@ -149,6 +149,7 @@ export var badges = [
     {
         id: 'queries_10',
         name: 'SUCHEN',
+        text: 'Suche mindestens nach 10 Suchbegriffen um diese Trophäe zu erhalten',
         number: '10',
         type: 'none',
         fill: colors.puerto_rico,
@@ -158,6 +159,7 @@ export var badges = [
     {
         id: 'queries_100',
         name: 'SUCHEN',
+        text: 'Suche mindestens nach 100 Suchbegriffen um diese Trophäe zu erhalten',
         number: '100',
         type: 'king',
         fill: colors.puerto_rico,
@@ -167,6 +169,7 @@ export var badges = [
     {
         id: 'queries_1000',
         name: 'SUCHEN',
+        text: 'Suche mindestens nach 1000 Suchbegriffen um diese Trophäe zu erhalten',
         number: '1000',
         type: 'emperor',
         fill: colors.puerto_rico,
@@ -179,6 +182,7 @@ export var badges = [
     {
         id: 'favourites_10',
         name: 'FAVORITEN',
+        text: 'Favorisiere mindestens nach 10 Suchergebnisse um diese Trophäe zu erhalten',
         number: '10',
         type: 'none',
         fill: colors.curious_blue,
@@ -188,6 +192,7 @@ export var badges = [
     {
         id: 'favourites_50',
         name: 'FAVORITEN',
+        text: 'Favorisiere mindestens nach 50 Suchergebnisse um diese Trophäe zu erhalten',
         number: '50',
         type: 'king',
         fill: colors.curious_blue,
@@ -197,6 +202,7 @@ export var badges = [
     {
         id: 'favourites_100',
         name: 'FAVORITEN',
+        text: 'Favorisiere mindestens nach 100 Suchergebnisse um diese Trophäe zu erhalten',
         number: '100',
         type: 'emperor',
         fill: colors.curious_blue,

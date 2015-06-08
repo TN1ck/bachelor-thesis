@@ -222,7 +222,7 @@ export default class User {
             this.loginPromise = this.checkLogin(token, username).then((data) => {
                 this.loginPromise = false;
                 return data;
-            }).fail(() => {
+            }).fail((result) => {
                 this.loginPromise = false;
                 return result;
             });

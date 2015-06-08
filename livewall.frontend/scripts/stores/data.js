@@ -24,10 +24,10 @@ export default Reflux.createStore({
             favourites: {}
         };
 
-        this.listenTo(actions.addItems, this.addItems);
+        this.listenTo(actions.addItems,      this.addItems);
 
-        this.listenTo(actions.upvoteItem,   this.upvoteItem);
-        this.listenTo(actions.downvoteItem, this.downvoteItem);
+        this.listenTo(actions.upvoteItem,    this.upvoteItem);
+        this.listenTo(actions.downvoteItem,  this.downvoteItem);
 
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.removeQuery,   this.removeQuery);

@@ -20,23 +20,40 @@ import { badges } from '../../badges.js';
 import { Award } from './awards.js';
 import {Banner} from './banner.js';
 
+var LeaderBoard = React.createClass({
+    render: function () {
+        var users = this.props.users;
+
+        var list = users.sort((a, b) => {
+            return b.trophies.points - a.trophies.points;
+        }).map((user, i) => {
+            var {results, trophies, points} = user.trophies;
+            var name = user.user;
+
+            return <li><span>#{i}</span> - {name} - {points}</li>;
+        });
+
+        return (
+            <ul>
+                {list}
+            </ul>
+        );
+    }
+});
+
 export var ReactTrophies = React.createClass({
     displayName: 'badges',
     mixins: [
-        Reflux.listenTo(gameStore, "onStoreChange"),
+        Reflux.connect(gameStore),
     ],
-    onStoreChange: function () {
-
+    onStoreChange: function (state) {
+        console.log(state);
+        this.setState({
+            monthly: state.monthly,
+            alltime: state.alltime
+        })
     },
     render: function () {
-
-        var randomPoints = _.range(15).map(d => {
-            var points = _.random(100, 20000);
-            return <div className='trophies__points__splitted'>
-                <span className='trophies__points__splitted__points'>{points} Punkte</span>
-                <span className='trophies__points__splitted__text'> durch {Math.round(points/100)} Aktionen</span>
-            </div>;
-        });
 
         var badgeComponents = badges.map(x => {
             return (
@@ -66,8 +83,16 @@ export var ReactTrophies = React.createClass({
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <h1> Punkte </h1>
+                        <h1>Bestenliste</h1>
                         <hr/>
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <h3>Aller Zeiten</h3>
+                        <LeaderBoard users={this.state.alltime.users} user={this.state.alltime.user}/>
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <h3>Letzter Monat</h3>
+                        <LeaderBoard users={this.state.monthly.users} user={this.state.monthly.user}/>
                     </Col>
                     <Col xs={12}>
                         <PageHeader>

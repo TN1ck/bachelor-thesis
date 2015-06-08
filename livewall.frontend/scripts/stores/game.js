@@ -8,7 +8,26 @@ import actions              from '../actions.js';
 import {user}               from '../auth.js';
 import {SETTINGS}           from '../settings.js';
 import {track, api}         from '../owa.js';
-import { trophieFunctions } from '../badges.js';
+import { trophieFunctions, badges } from '../badges.js';
+
+// SETTINGS FOR POINTS
+
+var pointsForActions = {
+    vote: {
+        up: 10,
+        down: 10
+    },
+    search: {
+        add: 20,
+        remove: 20
+    },
+    auth: {
+        login: 30
+    },
+    favourite: {
+        toggle: 50
+    }
+};
 
 //
 // GAME STORE
@@ -52,15 +71,29 @@ export default Reflux.createStore({
         };
 
         // get the data after the user logs in
-        user.isLogedIn(() => {
-
+        user.whenLogedIn(() => {
             this.getMonthlyData().then(
                 json => {
                     var processedData = this.processData(json.rows);
                     this.state.allTimeData = processedData;
                     return processedData;
                 }).then(data => {
+                    var monthlyData = _.map(data, (d, user) => {
+                        return {
+                            user: user,
+                            trophies: this.calcTrophies(d, user)
+                        };
+                    });
+                    var userData = _.find(monthlyData, {
+                        user: user.username
+                    });
 
+                    this.state.monthly = {
+                        user: userData,
+                        users: monthlyData
+                    };
+
+                    this.trigger(this.state);
                 });
 
             this.getAllTimeData().then(
@@ -76,6 +109,7 @@ export default Reflux.createStore({
                             trophies: this.calcTrophies(d, user)
                         };
                     });
+
                     var userData = _.find(alltimeData, {
                         user: user.username
                     });
@@ -85,12 +119,16 @@ export default Reflux.createStore({
                         users: alltimeData
                     };
 
-                    this.triggerState(this.state);
+                    this.trigger(this.state);
 
                 });
 
         });
 
+    },
+
+    getInitialState: function () {
+        return this.state;
     },
 
     getAllTimeData: function () {
@@ -164,12 +202,12 @@ export default Reflux.createStore({
                                 .mapValues(byLabel => {
                                     var first = _.first(byLabel);
                                     return {
-                                        count: _.sum(byLabel, x => _.parseInt(x.actions)),
+                                        count:       _.sum(byLabel, x => _.parseInt(x.actions)),
                                         uniqueCount: byLabel.length,
-                                        rows: _.sortBy(byLabel, 'date'),
-                                        label: first.actionLabel,
-                                        group: first.actionGroup,
-                                        user: first.customVarValue2
+                                        rows:        _.sortBy(byLabel, 'date'),
+                                        label:       first.actionLabel,
+                                        group:       first.actionGroup,
+                                        user:        first.customVarValue2
                                     };
                                 })
                                 .value()
@@ -203,7 +241,40 @@ export default Reflux.createStore({
         var trophies = _.chain(trophieResults).map(x => x.trophies).flatten().value();
         var results  = _.spread(_.merge)(trophieResults.map(x => x.results));
 
+        // add default values
+        results = _.extend({
+            numberOfUpvotes:    0,
+            numberOfDownvotes:  0,
+            numberOfFavourites: 0,
+            numberOfLogins:     0,
+            numberOfQueries:    0
+        }, results);
+
+        //
+        // calculate the resulting points
+        //
+
+        var points = 0;
+
+        // for the trophies
+
+        var pointsForTrophies = trophies.reduce((prev, curr) => {
+            var p = _.find(badges, x => x.id === curr).points;
+            return prev + p;
+        }, 0);
+
+        // for the actions
+
+        var _pointsForActions =
+            results.numberOfDownvotes  * pointsForActions.vote.down        +
+            results.numberOfUpvotes    * pointsForActions.vote.up          +
+            results.numberOfFavourites * pointsForActions.favourite.toggle +
+            results.numberOfLogins     * pointsForActions.auth.login       +
+            results.numberOfQueries    * pointsForActions.search.add;
+
+
         return {
+            points: _pointsForActions + pointsForTrophies,
             trophies: trophies,
             results: results
         };

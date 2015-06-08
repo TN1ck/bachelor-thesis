@@ -6,7 +6,7 @@ export var getDomain = function (url) {
     if (!url) {
         return 'not found';
     }
-    var matches = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+    var matches = url.match(/\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     var domain = (matches && matches[1]) || 'not found';
     return domain;
 };
