@@ -68,7 +68,7 @@ export var ReactQueries = React.createClass({
     },
     getInitialState: function () {
         return {
-            queries: []
+            queries: queryStore.queries
         };
     },
     removeQuery: function (query) {

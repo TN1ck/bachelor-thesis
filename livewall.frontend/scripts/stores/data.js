@@ -32,6 +32,8 @@ export default Reflux.createStore({
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.removeQuery,   this.removeQuery);
 
+        user.whenLogedIn(() => this.loadProfile());
+
 
     },
 
