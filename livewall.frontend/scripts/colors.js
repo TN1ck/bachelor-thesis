@@ -2,7 +2,7 @@ import {hashCode} from './utils.js';
 import d3         from 'd3';
 import _          from 'lodash';
 
-var colorFunctions = {
+export var colorFunctions = {
     pastel: (hash) => {
         var hslStarts = [
             {s: 0.4, l: 0.5},
@@ -23,13 +23,43 @@ var colorFunctions = {
 
         var hslStarts = [
             {h: 207, s: 0.8, l: 0.5},
-            {h: 240, s: 0.5, l: 0.5},
-            {h: 270, s: 0.5, l: 0.5}
+            {h: 240, s: 0.5, l: 0.4},
+            {h: 270, s: 0.5, l: 0.6},
+            {h: 260, s: 0.5, l: 0.4},
         ];
 
         var s = sScale((hash / 1000) % 1.0);
         var hsl = hslStarts[hash % hslStarts.length];
         var color = d3.hsl(hsl.h, s, hsl.l);
+        return color.toString();
+    },
+    green: (hash) => {
+
+        var sScale = d3.scale.linear().domain([0, 1]).range([0.2, 0.8]);
+
+        var hslStarts = [
+            {h: 80, s: 0.8,  l: 0.5},
+            {h: 90, s: 0.5,  l: 0.3},
+            {h: 100, s: 0.5, l: 0.4},
+            {h: 140, s: 0.5, l: 0.4},
+        ];
+
+        var s = sScale((hash / 1000) % 1.0);
+        var hsl = hslStarts[hash % hslStarts.length];
+        var color = d3.hsl(hsl.h, s, hsl.l);
+        return color.toString();
+    },
+    gray: (hash) => {
+
+        var lScale = d3.scale.linear().domain([0, 1]).range([0, 0.6]);
+
+        var hslStarts = [
+            {h: 207, s: 0, l: 0.5},
+        ];
+
+        var l = lScale((hash / 1000) % 1.0);
+        var hsl = hslStarts[hash % hslStarts.length];
+        var color = d3.hsl(hsl.h, hsl.s, l);
         return color.toString();
     },
     nice: (hash) => {

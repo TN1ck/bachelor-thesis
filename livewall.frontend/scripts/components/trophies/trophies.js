@@ -4,7 +4,7 @@ import Reflux from 'reflux';
 import {
     Grid, Row, Col, Input, Button,
     Jumbotron, Alert, PageHeader, Badge,
-    Table
+    Table, Well
 } from 'react-bootstrap';
 
 
@@ -34,7 +34,6 @@ var LeaderBoard = React.createClass({
         //
 
         users = users.filter(x => {
-            console.log(x.user, user.username);
             return x.user !== user.username;
         });
 
@@ -51,8 +50,8 @@ var LeaderBoard = React.createClass({
             return b.trophies.points - a.trophies.points;
         })
 
-        var list = users.map((_user, i) => {
-            var {results, trophies, points} = _user.trophies;
+        var list = users.map(_user => {
+            var {results, trophies, points, place} = _user.trophies;
 
             trophies = _.chain(trophies).map(x => {
                 return _.find(badges, {id: x});
@@ -81,7 +80,7 @@ var LeaderBoard = React.createClass({
             }
 
             return <tr className={trClass}>
-                <td className='vert-align trophies__leaderboard__place'    xs={3}>#{i + 1}</td>
+                <td className='vert-align trophies__leaderboard__place'    xs={3}>#{_user.place}</td>
                 <td className='vert-align trophies__leaderboard__name'     xs={3}>{name}</td>
                 <td className='vert-align trophies__leaderboard__points'   xs={3}>{points}</td>
                 <td className='vert-align trophies__leaderboard__trophies' xs={3}>{_trophies}</td>
@@ -111,13 +110,6 @@ export var ReactTrophies = React.createClass({
     mixins: [
         Reflux.connect(gameStore),
     ],
-    onStoreChange: function (state) {
-        console.log(state);
-        this.setState({
-            monthly: state.monthly,
-            alltime: state.alltime
-        })
-    },
     render: function () {
 
         var badgeComponents = badges.map(x => {
@@ -137,7 +129,6 @@ export var ReactTrophies = React.createClass({
                             <br/>
                             Du hast Für diese Trophäe <strong>{x.points}</strong> Punkte erhalten.
                             </p>
-                            <p><strong>56.6%</strong> aller Benutzer besitzen diese Trophäe.</p>
                         </div>
                     </div>
                 </Col>
@@ -148,16 +139,22 @@ export var ReactTrophies = React.createClass({
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <h1>Bestenliste</h1>
-                        <hr/>
+                        <PageHeader>
+                            <h1>Bestenliste</h1>
+                            <hr/>
+                        </PageHeader>
                     </Col>
-                    <Col xs={12} md={6}>
-                        <h3>Aller Zeiten</h3>
-                        <LeaderBoard users={this.state.alltime.users} user={this.state.alltime.user}/>
-                    </Col>
-                    <Col xs={12} md={6}>
-                        <h3>Letzter Monat</h3>
-                        <LeaderBoard users={this.state.monthly.users} user={this.state.monthly.user}/>
+                    <Col xs={12}>
+                        <Row>
+                            <Col xs={12} md={6}>
+                                <h3>Aller Zeiten</h3>
+                                <LeaderBoard users={this.state.alltime.users} user={this.state.alltime.user}/>
+                            </Col>
+                            <Col xs={12} md={6}>
+                                <h3>Letzter Monat</h3>
+                                <LeaderBoard users={this.state.monthly.users} user={this.state.monthly.user}/>
+                            </Col>
+                        </Row>
                     </Col>
                     <Col xs={12}>
                         <PageHeader>

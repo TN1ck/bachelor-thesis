@@ -7,6 +7,7 @@ import {ReactWall}     from './components/wall/wall.js';
 import {ReactLogin}    from './components/auth/login.js';
 import {ReactLogout}   from './components/auth/logout.js';
 import {ReactSettings} from './components/settings.js';
+import ReactRewards    from './components/rewards.js';
 import {ReactTrophies} from './components/trophies/trophies.js';
 
 import '../styles/main.less';
@@ -24,6 +25,7 @@ var routes = (
         <Route name='admin' path='/' handler={ReactAdmin}>
             <Route        name='logout'   handler={ReactLogout}/>
             <Route        name='settings' handler={ReactSettings}/>
+            <Route        name='rewards'  handler={ReactRewards}/>
             <Route        name='trophies' handler={ReactTrophies}/>
             <DefaultRoute name='wall'     handler={ReactWall}/>
         </Route>

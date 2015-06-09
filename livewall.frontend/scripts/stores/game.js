@@ -81,9 +81,16 @@ export default Reflux.createStore({
                     var monthlyData = _.map(data, (d, user) => {
                         return {
                             user: user,
-                            trophies: this.calcTrophies(d, user)
+                            trophies: this.calcTrophies(d, user),
+                            rewards: this.calcRewards(d, user)
                         };
+                    }).sort((a, b) => {
+                        return a.points - b.points;
+                    }).map((user, i) => {
+                        user.place = i + 1;
+                        return user;
                     });
+
                     var userData = _.find(monthlyData, {
                         user: user.username
                     });
@@ -106,8 +113,14 @@ export default Reflux.createStore({
                     var alltimeData = _.map(data, (d, user) => {
                         return {
                             user: user,
-                            trophies: this.calcTrophies(d, user)
+                            trophies: this.calcTrophies(d, user),
+                            rewards: this.calcRewards(d, user)
                         };
+                    }).sort((a, b) => {
+                        return a.points - b.points;
+                    }).map((user, i) => {
+                        user.place = i + 1;
+                        return user;
                     });
 
                     var userData = _.find(alltimeData, {
@@ -118,6 +131,8 @@ export default Reflux.createStore({
                         user: userData,
                         users: alltimeData
                     };
+
+                    console.log(this.state);
 
                     this.trigger(this.state);
 
@@ -222,6 +237,20 @@ export default Reflux.createStore({
 
     },
 
+    calcRewards: function (data, user) {
+
+        // rewards the user always has
+
+        var rewards = ['color_pastel'];
+
+        if (data.reward) {
+            rewards = rewards.concat(_.keys(data.reward));
+        }
+
+        return rewards;
+
+    },
+
     calcTrophies: function (data, user, group, label) {
 
         if (group && label) {
@@ -237,7 +266,6 @@ export default Reflux.createStore({
         var flatFunctions = _.chain(trophieFunctions).map(x => _.values(x)).merge().values().flatten().value();
 
         var trophieResults = flatFunctions.map(fn => fn(data));
-        console.log(trophieResults, user);
         var trophies = _.chain(trophieResults).map(x => x.trophies).flatten().value();
         var results  = _.spread(_.merge)(trophieResults.map(x => x.results));
 
@@ -270,8 +298,8 @@ export default Reflux.createStore({
             results.numberOfUpvotes    * pointsForActions.vote.up          +
             results.numberOfFavourites * pointsForActions.favourite.toggle +
             results.numberOfLogins     * pointsForActions.auth.login       +
-            results.numberOfQueries    * pointsForActions.search.add;
-
+            results.numberOfQueries    * pointsForActions.search.add       +
+            results.numberOfQueries    * pointsForActions.search.remove;
 
         return {
             points: _pointsForActions + pointsForTrophies,
@@ -282,24 +310,36 @@ export default Reflux.createStore({
     },
 
     addQuery: function (queryTerm, load, _track) {
-        if (_track) {
-            track('search', queryTerm, 'add');
-        }
+        track('search', queryTerm, 'add');
+        this.state.alltime.user.trophies.points += pointsForActions.search.add;
+        this.trigger(this.state);
     },
     removeQuery: function (queryTerm) {
         track('search', queryTerm, 'remove');
+        this.state.alltime.user.trophies.points += pointsForActions.search.remove;
+        this.trigger(this.state);
     },
 
     upvoteItem: function (uuid) {
         track('vote', uuid, 'up');
+        this.state.alltime.user.trophies.points += pointsForActions.vote.up;
+        this.trigger(this.state);
     },
 
     downvoteItem: function (uuid) {
         track('vote', uuid, 'down');
+        this.state.alltime.user.trophies.points += pointsForActions.vote.down;
+        this.trigger(this.state);
     },
 
     favouriteItem: function (uuid) {
         track('favourite', uuid, 'toggle');
+        this.state.alltime.user.trophies.points += pointsForActions.favourite.toggle;
+        this.trigger(this.state);
+    },
+
+    addReward: function (id) {
+        track('reward', '', id);
     }
 
 });
