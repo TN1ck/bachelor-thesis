@@ -3,7 +3,8 @@ import _      from 'lodash';
 import Reflux from 'reflux';
 import {
     Grid, Row, Col, Input, Button,
-    Jumbotron, Alert, PageHeader, Badge
+    Jumbotron, Alert, PageHeader, Badge,
+    Table
 } from 'react-bootstrap';
 
 
@@ -23,20 +24,84 @@ import {Banner} from './banner.js';
 var LeaderBoard = React.createClass({
     render: function () {
         var users = this.props.users;
+        var _user = this.props.user;
 
-        var list = users.sort((a, b) => {
+        //
+        // remove user, sort and take only the 50 best, add the user again
+        //
+
+        // remove user
+        //
+
+        users = users.filter(x => {
+            console.log(x.user, user.username);
+            return x.user !== user.username;
+        });
+
+        var sortFn = (a, b) => b.trophies.points - a.trophies.points;
+
+        // sort and take best 20
+
+        users = users.sort(sortFn).slice(0, 20);
+
+        // add user
+        users = users.concat([_user]).sort(sortFn);
+
+        users.sort((a, b) => {
             return b.trophies.points - a.trophies.points;
-        }).map((user, i) => {
-            var {results, trophies, points} = user.trophies;
-            var name = user.user;
+        })
 
-            return <li><span>#{i}</span> - {name} - {points}</li>;
+        var list = users.map((_user, i) => {
+            var {results, trophies, points} = _user.trophies;
+
+            trophies = _.chain(trophies).map(x => {
+                return _.find(badges, {id: x});
+            }).sortBy(x => -x.points).value();
+
+            var name = _user.user;
+
+            var _trophies = trophies.map(x => {
+                return <div className='trophies__leaderboard__trophies__container'>
+                    <Award
+                        center={true}
+                        image={x.image}
+                        text={x.name}
+                        number={x.number}
+                        type={x.type}
+                        fill={x.fill}/>
+                    </div>;
+            });
+
+            _trophies = trophies.length;
+
+            var trClass = ''
+
+            if (name === user.username) {
+                trClass = 'active';
+            }
+
+            return <tr className={trClass}>
+                <td className='vert-align trophies__leaderboard__place'    xs={3}>#{i + 1}</td>
+                <td className='vert-align trophies__leaderboard__name'     xs={3}>{name}</td>
+                <td className='vert-align trophies__leaderboard__points'   xs={3}>{points}</td>
+                <td className='vert-align trophies__leaderboard__trophies' xs={3}>{_trophies}</td>
+            </tr>;
         });
 
         return (
-            <ul>
+            <Table className='trophies__leaderboard' hover striped>
+                <thead>
+                    <tr>
+                        <th>Platz</th>
+                        <th>Name</th>
+                        <th>Punkte</th>
+                        <th>Trophäen</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {list}
-            </ul>
+                </tbody>
+            </Table>
         );
     }
 });

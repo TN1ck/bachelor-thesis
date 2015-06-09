@@ -109,6 +109,7 @@ export var Award = React.createClass({
 
         var crown;
         var translateY = -60;
+        var viewBoxY = 280;
 
         if (this.props.type === 'king') {
             translateY = -40;
@@ -120,9 +121,14 @@ export var Award = React.createClass({
             crown = emperorCrown;
         }
 
+        if (this.props.center) {
+            translateY = 0;
+            viewBoxY = 350;
+        }
+
 
         return (
-            <svg width="251px" height="340px" viewBox="0 40 251 280">
+            <svg width="251px" height="340px" viewBox={`0 40 251 ${viewBoxY}`}>
                 <defs>
                     {filter}
                     {colorFilter}
