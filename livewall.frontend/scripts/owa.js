@@ -99,7 +99,7 @@ export var api = function (
     }).map(pair => pair.join('=')).join('&');
 
     return $.ajax({
-        url: `http://localhost:4000/api.php?${data}`,
+        url: `${owa_baseUrl}api.php?${data}`,
         type: 'GET',
         dataType: 'json'
     });
