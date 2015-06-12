@@ -24,11 +24,10 @@ export default Reflux.createStore({
         this.listenTo(actions.removeQuery, this.removeQuery);
         this.listenTo(actions.loadItems,   this.loadItems);
 
-        user.whenLogedIn(() => {
-            SETTINGS.QUERIES
-                .forEach(term => {
-                    actions.addQuery(term);
-                });
+        user.whenProfileIsLoaded((profile) => {
+            _.each(profile.queries, query => {
+                actions.addQuery(query.name);
+            });
         });
 
     },

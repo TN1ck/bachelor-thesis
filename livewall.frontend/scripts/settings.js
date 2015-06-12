@@ -40,8 +40,8 @@ defaults.broker = [
 ];
 
 defaults.QUERIES = [
-    'politics',
-    'machine',
+    // 'politics',
+    // 'machine',
     // 'dai',
     // 'test',
     // 'wurst',

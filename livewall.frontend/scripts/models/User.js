@@ -10,6 +10,7 @@ export default class User {
         this.token = '';
         this.loginViaCookie();
         this.whenLogedInPromise = $.Deferred();
+        this.whenProfileIsLoadedPromise = $.Deferred();
     }
 
     initUser (data) {
@@ -17,6 +18,10 @@ export default class User {
         this.username = data.username;
         this.setCookie();
         this.whenLogedInPromise.resolve(this.username);
+        this.profile().then(result => {
+            this.whenProfileIsLoadedPromise.resolve(result);
+            return result;
+        });
     }
 
     //
@@ -42,6 +47,10 @@ export default class User {
             return this.processProfile(json);
         });
 
+    }
+
+    whenProfileIsLoaded (cb) {
+        return this.whenProfileIsLoadedPromise.then(cb);
     }
 
     processProfile (json) {
@@ -70,6 +79,8 @@ export default class User {
 
         extract(this.profileRoots.favourites, favourites);
         extract(this.profileRoots.queries, queries);
+
+        console.log(queries, 'QUERIES');
 
         this.queries = queries;
         this.favourites = favourites;

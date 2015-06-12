@@ -32,8 +32,7 @@ export default Reflux.createStore({
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.removeQuery,   this.removeQuery);
 
-        user.whenLogedIn(() => this.loadProfile());
-
+        user.whenProfileIsLoaded(this.setProfile.bind(this));
 
     },
 
@@ -47,12 +46,10 @@ export default Reflux.createStore({
         });
     },
 
-    loadProfile: function () {
-        user.profile().then((result) => {
-            this.profile.queries = result.queries;
-            this.profile.favourites = result.favourites;
-            this.triggerState();
-        });
+    setProfile: function (profile) {
+        this.profile.queries = profile.queries;
+        this.profile.favourites = profile.favourites;
+        this.triggerState();
     },
 
     filterItem: function (item) {
@@ -128,7 +125,7 @@ export default Reflux.createStore({
         var successCallback = () => {
             var itemNew = item.set('favourite', !favourite);
             this.items = this.items.set(item.get('uuid'), itemNew);
-            this.loadProfile();
+            this.profile().then(this.setProfile.bind(this));
         };
 
         var failCallback = () => {
