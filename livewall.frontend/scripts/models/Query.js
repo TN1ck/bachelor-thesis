@@ -1,7 +1,11 @@
 import moment             from 'moment';
+import store              from 'store';
+import _                  from 'lodash';
+import $                  from 'jquery';
+
 import {user}             from '../auth.js';
 import {getColorByString} from '../colors.js';
-import Broker     from './Broker.js';
+import Broker             from './Broker.js';
 
 export default class Query {
 
@@ -30,14 +34,26 @@ export default class Query {
         });
     }
 
+    readData () {
+        return store.get(`query-${this.term}`) || [];
+    }
+
     loadData () {
 
-        var promises = this.broker.map(agent => {
-            return agent.getData(user);
+        var promises = this.broker.map(b => {
+            return b.getData(user);
+        });
+
+        $.when(...promises).then((...results) => {
+            this.saveData(_.flatten(results));
         });
 
         return promises;
 
+    }
+
+    saveData (items) {
+        store.set(`query-${this.term}`, items);
     }
 
     valueOf () {

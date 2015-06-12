@@ -56,7 +56,10 @@ defaults.QUERIES = [
 ];
 
 defaults.FILTER = {
-	'content': ['dai', 'kiel'],
+	'content': [
+        // 'dai',
+        'kiel'
+    ],
 	'title': ['no title']
 };
 

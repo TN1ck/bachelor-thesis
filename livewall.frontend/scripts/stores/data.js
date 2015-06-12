@@ -55,7 +55,7 @@ export default Reflux.createStore({
     filterItem: function (item) {
         return _.some(SETTINGS.FILTER, (v, k) => {
             return _.some(v, (filter) => {
-                var contentToBeFiltered = JSON.stringify(item.get(k));
+                var contentToBeFiltered = JSON.stringify(item.get(k)) || item.get(k) || '';
                 return contentToBeFiltered.toLowerCase().indexOf(filter.toLowerCase()) > -1;
             })
         })

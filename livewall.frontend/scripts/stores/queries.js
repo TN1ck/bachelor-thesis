@@ -22,7 +22,6 @@ export default Reflux.createStore({
 
         this.listenTo(actions.addQuery,    this.addQuery);
         this.listenTo(actions.removeQuery, this.removeQuery);
-        this.listenTo(actions.loadItems,   this.loadItems);
 
         user.whenProfileIsLoaded((profile) => {
             _.each(profile.queries, query => {
@@ -40,24 +39,32 @@ export default Reflux.createStore({
 
         var query = new Query(term, SETTINGS.broker);
 
-        query.loadData().forEach(promise => {
-            promise.then(items => {
+        var processItems = items => {
 
-                var _items = items.map((d, i) => {
-                    d.query = query;
-                    var dIm = Immutable.Map(d);
+            var _items = items.map((d, i) => {
+                d.query = query;
+                var dIm = Immutable.Map(d);
 
-                    return dIm;
-
-                });
-
-                actions.addItems(_items);
-
-                return _items;
-
-                this.trigger(this.queries);
+                return dIm;
 
             });
+
+            actions.addItems(_items);
+
+            return _items;
+
+            this.trigger(this.queries);
+
+        };
+
+        // first get the items from localstorage
+        var savedItems = query.readData();
+        console.log('saved items', savedItems);
+        processItems(savedItems);
+
+        // make the real request
+        query.loadData().forEach(promise => {
+            promise.then(processItems);
 
         });
 

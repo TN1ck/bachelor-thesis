@@ -12,8 +12,8 @@ export var ReactQuery = React.createClass({
 
         var query = this.props.query;
 
-        var loading = _.some(query.agents, agent => {
-            return agent.status === 'pending';
+        var loading = _.some(query.broker, b => {
+            return b.status === 'pending';
         })
 
         var loadingComponent = <span className="fa-gear fa-spin"></span>;
