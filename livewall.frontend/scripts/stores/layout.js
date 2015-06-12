@@ -91,7 +91,7 @@ export default Reflux.createStore({
         this.items = Immutable.Map();
         this.margin = 8 * 2;
         this.sortFunction = sorters.score;
-        this.groupFunction = groupers.queryAdded;
+        this.groupFunction = groupers.none;
 
         this.calculateColumns();
 

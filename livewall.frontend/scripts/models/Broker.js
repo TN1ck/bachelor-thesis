@@ -1,29 +1,30 @@
 import $ from 'jquery';
 
 import {getDomain} from '../utils.js';
-import {SETTINGS}  from '../settings.js';
 
 // The options you can give a source should not change their returned json, i.e. this is how we seperate them
 // Due to this, we have a PiaSource for every broker it can can use
 
 export default class Pia {
 
-    constructor(query, filter) {
-        this.sourceName = 'pia';
-        this.broker = {
-            name: '',
-            public: true
-        };
+    constructor(broker = {
+            url:          '',
+            name:         '',
+            restricted:   false,
+            action:       'ACTION_SOLR',
+            autocomplete: false,
+        }, query, filter) {
+        this.broker = broker;
         this.query = query;
         this.filter = filter;
     }
 
     get key () {
-        return `${this.sourceName} - ${this.broker.name} - ${this.query}`;
+        return `${this.name} - ${this.broker.name} - ${this.query}`;
     }
 
     get name () {
-        return `${this.sourceName}|${this.broker.name}`;
+        return `${this.name}|${this.broker.name}`;
     }
 
     abort () {
@@ -62,17 +63,17 @@ export default class Pia {
         docs.forEach((d) => {
 
             var item = {
-                query: this.query,
-                uuid: d.file_URI || d.source,
-                author: d.result_type,
+                query:   this.query,
+                uuid:    d.file_URI || d.source,
+                author:  d.result_type,
                 created: d.file_lastModification,
-                title: d.xmp_title,
+                title:   d.xmp_title,
                 content: d.file_content,
-                url: d.file_URI,
-                domain: d.host || getDomain(d.file_URI),
-                type: d.type,
-                score: Math.round(d.normalized_score),
-                raw: d
+                url:     d.file_URI,
+                domain:  d.host || getDomain(d.file_URI),
+                type:    d.type,
+                score:   Math.round(d.normalized_score),
+                raw:     d
             };
             items.push(item);
         });
@@ -88,30 +89,31 @@ export default class Pia {
             return;
         }
 
-        var url = SETTINGS.PIA_URL + '/' + this.broker.name;
+        var url = this.broker.url;
 
         var params = {
-            query: this.query,
-            start: 0,
-            num: 10,
-            username: user.username,
-            action: 'ACTION_SOLR'
+            query:        this.query,
+            start:        0,
+            num:          10,
+            autocomplete: this.broker.autocomplete,
+            username:     user.username,
+            action:       this.broker.action
         };
 
         if (this.filter) {
             params.filter = this.filter;
         }
 
-        if (!this.broker.public) {
+        if (this.broker.restricted) {
             params.token = user.token;
         }
 
         var request = $.ajax({
-            type: 'GET',
-            url: url,  // Send the login info to this page
-            data: params,
+            type:     'GET',
+            url:      url,  // Send the login info to this page
+            data:     params,
             dataType: 'jsonp',
-            jsonp: 'json.wrf',
+            jsonp:    'json.wrf',
 
         })
 

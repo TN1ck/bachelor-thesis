@@ -1,9 +1,7 @@
 import React   from 'react/addons';
 import actions from '../../actions.js';
 
-import {
-    hashCode, colors, colorLuminance
-} from '../../utils.js';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 var PureRenderMixin = React.addons.PureRenderMixin;
 
@@ -111,6 +109,21 @@ export var ReactTile = React.createClass({
         var favourited = this.props.tile.get('favourite') ? 'favourite' : 'unfavourite';
         var loadingFavourite = this.state.loadingFavourite;
 
+        var favouriteText = {
+            unfavourite: 'Speichere dieses Element in deinen PIA-Favoriten.',
+            favourite: 'Lösche dieses Element aus deinen PIA-Favoriten'
+        }[favourited];
+
+        var favouriteTooltip = <Tooltip>
+            {favouriteText}
+        </Tooltip>;
+
+        var voteText = 'Bewerte dieses Suchergebnis um die Sichtbarkeit des Suchergebnisses zu beeinflussen. Die Suchergebnisse aller Benutzer werden dadurch durch deine Meinung beeinflusst.'
+
+        var voteTooltip = <Tooltip>
+            {voteText}
+        </Tooltip>
+
         return (
             <article className={`tile white ${cssClass} tile--${this.props.tile.get('type')}`} style={style}>
                 <header className='tile__header' style={{color: 'white'}}>
@@ -118,14 +131,20 @@ export var ReactTile = React.createClass({
                         {this.props.tile.get('score')}
                     </div>
                     <div className='tile__header__buttons'>
-                        <div className='tile__header__upvote-button' onClick={this.handleUpvote}></div>
-                        <div className='tile__header__downvote-button' onClick={this.handleDownvote}></div>
-                        <div
-                            className={`tile__header__favourite-button
-                                        ${favourited}
-                                        ${loadingFavourite ? 'animate-rotate': ''}`}
-                            onClick={this.handleFavourite}>
-                        </div>
+                        <OverlayTrigger placement='top' overlay={voteTooltip} delayShow={500} delayHide={150}>
+                            <div className='tile__header__upvote-button' onClick={this.handleUpvote}></div>
+                        </OverlayTrigger>
+                        <OverlayTrigger placement='top' overlay={voteTooltip} delayShow={500} delayHide={150}>
+                            <div className='tile__header__downvote-button' onClick={this.handleDownvote}></div>
+                        </OverlayTrigger>
+                        <OverlayTrigger placement='top' overlay={favouriteTooltip} delayShow={300} delayHide={150}>
+                            <div
+                                className={`tile__header__favourite-button
+                                            ${favourited}
+                                            ${loadingFavourite ? 'animate-rotate': ''}`}
+                                onClick={this.handleFavourite}>
+                            </div>
+                        </OverlayTrigger>
                     </div>
                 </header>
                 {tile}

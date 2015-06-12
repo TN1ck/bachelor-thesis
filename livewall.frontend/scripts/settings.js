@@ -14,6 +14,31 @@ defaults.OWA = {
     apiKey: '1cd6f4568986197d6a0c0c179930f382'
 };
 
+defaults.broker = [
+    {
+        url:          "http://pia-dev-intern.dai-labor.de/service",
+        brokerName:   "PIA_Dev_intern_BrokerBean",
+        action:       "ACTION_SOLR",
+        restricted:   true,
+        autocomplete: true
+    },
+    {
+        url:          "http://pia-dev.dai-labor.de/service",
+        brokerName:   "PIA_Dev_BrokerBean",
+        action:       "ACTION_SOLR",
+        filter:       "dai-labor",
+        restricted:   false,
+        autocomplete: true
+    }
+    // {
+    //     url:          "http://localhost:8083/jiac/",
+    //     action:       "ACTION_LOCAL_SEARCH",
+    //     brokerName:   "LocalBroker",
+    //     restricted:   false,
+    //     autocomplete: false
+    // }
+];
+
 defaults.QUERIES = [
     'politics',
     'machine',

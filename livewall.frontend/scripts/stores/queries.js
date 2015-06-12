@@ -7,7 +7,6 @@ import moment     from 'moment';
 import actions    from '../actions.js';
 import {user}     from '../auth.js';
 import {SETTINGS} from '../settings.js';
-import agents     from '../agents/agents.js';
 
 import Query      from '../models/Query.js';
 
@@ -23,7 +22,7 @@ export default Reflux.createStore({
 
         this.listenTo(actions.addQuery,    this.addQuery);
         this.listenTo(actions.removeQuery, this.removeQuery);
-        this.listenTo(actions.loadItems, this.loadItems);
+        this.listenTo(actions.loadItems,   this.loadItems);
 
         user.whenLogedIn(() => {
             SETTINGS.QUERIES
@@ -40,7 +39,7 @@ export default Reflux.createStore({
             return;
         }
 
-        var query = new Query(term, agents);
+        var query = new Query(term, SETTINGS.broker);
 
         query.loadData().forEach(promise => {
             promise.then(items => {
