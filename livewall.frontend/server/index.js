@@ -14,9 +14,13 @@ Vote.belongsTo(User);
 Vote.belongsTo(Item);
 
 Action.belongsTo(User);
+Action.belongsTo(Item);
 
 Item.hasMany(Vote);
 Item.hasMany(Action);
+
+User.hasMany(Vote);
+User.hasMany(Action);
 
 var app     = express();
 var port    = 4000;
@@ -61,7 +65,7 @@ router.post('/user/:username/action', cors(), function (req, res) {
 
 });
 
-router.post('/user/:username/vote', cors(), function (req, res) {
+router.post('/user/vote', cors(), function (req, res) {
     // get params and body
     var username = req.body.user;
     var item     = req.body.item;
@@ -87,7 +91,7 @@ router.post('/user/:username/vote', cors(), function (req, res) {
 
                 // update vote with new value
                 var _vote = vote[0];
-                _vote.value = body.value;
+                _vote.value = _.parseInt(body.value);
                 _vote.setUser(user);
                 _vote.setItem(item);
 
@@ -102,12 +106,18 @@ router.post('/user/:username/vote', cors(), function (req, res) {
 
 });
 
-router.get('/items', function (req, res) {
+router.get('/items', cors(), function (req, res) {
     var ids = req.query.items.split(',');
     console.log(ids);
     Item.findAll({
         where: { uuid: ids},
-        include: [Vote]
+        include: [ {
+            model: Vote,
+            include: [User]
+        }, {
+            model: Action,
+            include: [User]
+        } ]
     }).then(function(result) {
         var rows = result.map(function(d) {
             return d.dataValues;
@@ -115,13 +125,15 @@ router.get('/items', function (req, res) {
 
         // aggregate votes
         var rows = rows.map(function(row) {
-            row.Votes = _.sum(row.Votes, function (vote) {
+            row.votes = _.sum(row.Votes, function (vote) {
                 return vote.value;
             });
             return row;
         });
 
-        res.json(rows);
+        res.json({
+            items: rows
+        });
     });
 });
 

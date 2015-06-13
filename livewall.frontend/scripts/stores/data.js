@@ -1,7 +1,7 @@
 import _          from 'lodash';
 import Reflux     from 'reflux';
 import Immutable  from 'immutable';
-import jquery     from 'jquery';
+import $          from 'jquery';
 import moment     from 'moment';
 
 import actions    from '../actions/actions.js';
@@ -32,8 +32,13 @@ export default Reflux.createStore({
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.removeQuery,   this.removeQuery);
 
+
+
         user.whenProfileIsLoaded(this.setProfile.bind(this));
 
+    },
+
+    matchUpvotes: function () {
     },
 
     matchFavourites: function () {
@@ -72,16 +77,36 @@ export default Reflux.createStore({
 
     addItems: function (items) {
 
+
+        var tempItems = {};
+
         items.forEach(item => {
             if (this.filterItem(item)) {
                 // console.log('filtered item ', item.toJS());
                 return;
             }
 
-            this.items = this.items.set(item.get('uuid'), item);
+            tempItems[item.get('uuid')] = item;
         });
 
-        this.triggerState();
+        var uuids = _.keys(tempItems).join(',');
+
+        // get upvotes
+        $.get(`${SETTINGS.SERVER_URL}/api/items?items=${uuids}`).then(result => {
+
+            result.items.forEach(item => {
+                var _item = tempItems[item.uuid];
+                if (_item) {
+                    _item.set('upvotes', _item.votes);
+                }
+                return;
+            });
+
+            this.items = this.items.merge(tempItems);
+
+            this.triggerState();
+        });
+
     },
 
     //
@@ -103,9 +128,17 @@ export default Reflux.createStore({
     //
 
     upvoteItem: function (uuid) {
-        var item = this.items.get(uuid).update('score', x => { return x + 1; });
-        this.items = this.items.set(item.get('uuid'), item);
-        this.triggerState.bind(this)(this.items);
+        $.post(`${SETTINGS.SERVER_URL}/api/user/vote`, {
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            username: user.username,
+            item: uuid,
+            value: 1
+        }).then(result => {
+            var item = this.items.get(uuid).update('score', x => x += result.value);
+            this.items = this.items.set(item.get('uuid'), item);
+            this.triggerState.bind(this)(this.items);
+        });
     },
 
     downvoteItem: function (uuid) {

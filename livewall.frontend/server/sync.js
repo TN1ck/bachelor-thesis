@@ -14,9 +14,13 @@ Vote.belongsTo(User);
 Vote.belongsTo(Item);
 
 Action.belongsTo(User);
+Action.belongsTo(Item);
 
 Item.hasMany(Vote);
 Item.hasMany(Action);
+
+User.hasMany(Vote);
+User.hasMany(Action);
 
 // ATTENTION!
 sequelize.sync({force: true});
