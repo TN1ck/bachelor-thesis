@@ -5,11 +5,11 @@ import _          from 'lodash';
 export var colorFunctions = {
     pastel: (hash) => {
         var hslStarts = [
-            {s: 0.4, l: 0.5},
-            {s: 0.3, l: 0.5},
-            {s: 0.5, l: 0.5},
-            {s: 0.5, l: 0.4},
-            {s: 0.6, l: 0.4},
+            {s: 0.4, l: 0.4},
+            {s: 0.3, l: 0.4},
+            {s: 0.4, l: 0.4},
+            {s: 0.5, l: 0.3},
+            {s: 0.6, l: 0.3},
         ];
 
         var h = hash % 255;

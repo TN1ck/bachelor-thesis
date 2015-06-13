@@ -26,8 +26,7 @@ export default Reflux.createStore({
 
         this.listenTo(actions.addItems,      this.addItems);
 
-        this.listenTo(actions.upvoteItem,    this.upvoteItem);
-        this.listenTo(actions.downvoteItem,  this.downvoteItem);
+        this.listenTo(actions.voteItem,      this.voteItem);
 
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.removeQuery,   this.removeQuery);
@@ -91,13 +90,26 @@ export default Reflux.createStore({
 
         var uuids = _.keys(tempItems).join(',');
 
+        //
         // get upvotes
+        //
+
         $.get(`${SETTINGS.SERVER_URL}/api/items?items=${uuids}`).then(result => {
 
             result.items.forEach(item => {
                 var _item = tempItems[item.uuid];
                 if (_item) {
-                    tempItems[item.uuid] = _item.set('votes', item.votes);
+
+                    var votes = item.votes;
+
+                    var ownVote = _.find(item.Votes, vote => {
+                        return vote.User.username === user.username;
+                    });
+
+                    tempItems[item.uuid] = _item.merge({
+                        votes: votes,
+                        ownVote: ownVote.value
+                    });
                 }
                 return;
             });
@@ -106,6 +118,7 @@ export default Reflux.createStore({
 
             this.triggerState();
         });
+
 
     },
 
@@ -127,25 +140,41 @@ export default Reflux.createStore({
     // UPVOTE & DOWNVOTES
     //
 
-    upvoteItem: function (uuid) {
+    voteItem: function (uuid, voteValue) {
+
+        // optimistically change the score
+
+        var item = this.items.get(uuid);
+        var votes   = item.get('votes') || 0;
+        var ownVote = item.get('ownVote') || 0;
+
+        item = item.merge({
+            votes: votes - ownVote + voteValue,
+            ownVote: voteValue
+        });
+
+        console.log(ownVote, item);
+
+        this.items = this.items.set(uuid, item);
+        this.triggerState.bind(this)(this.items);
+
+        // make the real request
+
         $.post(`${SETTINGS.SERVER_URL}/api/user/vote`, {
+
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             username: user.username,
             item: uuid,
-            value: 1
+            value: voteValue
+
         }).then(result => {
-            var item = this.items.get(uuid).update('score', x => x += result.value);
-            this.items = this.items.set(item.get('uuid'), item);
-            this.triggerState.bind(this)(this.items);
+
+
         });
+
     },
 
-    downvoteItem: function (uuid) {
-        var item = this.items.get(uuid).update('score', x => { return x - 1; });
-        this.items = this.items.set(item.get('uuid'), item);
-        this.triggerState.bind(this)(this.items);
-    },
 
     //
     // FAVOURITE

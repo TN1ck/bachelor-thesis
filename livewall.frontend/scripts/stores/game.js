@@ -21,8 +21,7 @@ export default Reflux.createStore({
 
         this.items = Immutable.OrderedMap();
 
-        this.listenTo(actions.upvoteItem,    this.upvoteItem);
-        this.listenTo(actions.downvoteItem,  this.downvoteItem);
+        this.listenTo(actions.voteItem,      this.voteItem);
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.addQuery,      this.addQuery);
         this.listenTo(actions.removeQuery,   this.removeQuery);
@@ -101,14 +100,16 @@ export default Reflux.createStore({
         this.updatePoints('search', 'remove');
     },
 
-    upvoteItem: function (uuid) {
-        owa.track('vote', uuid, 'up');
-        this.updatePoints('vote', 'up');
-    },
+    voteItem: function (uuid, value) {
+        if (value > 0) {
+            owa.track('vote', uuid, 'up');
+            this.updatePoints('vote', 'up');
+        }
 
-    downvoteItem: function (uuid) {
-        owa.track('vote', uuid, 'down');
-        this.updatePoints('vote', 'down');
+        if (value < 0) {
+            owa.track('vote', uuid, 'down');
+            this.updatePoints('vote', 'down');
+        }
     },
 
     favouriteItem: function (uuid) {

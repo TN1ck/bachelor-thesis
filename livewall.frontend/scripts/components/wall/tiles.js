@@ -75,11 +75,11 @@ export var ReactTile = React.createClass({
     },
     handleUpvote: function (e) {
         e.preventDefault;
-        actions.upvoteItem(this.props.tile.get('uuid'));
+        actions.voteItem(this.props.tile.get('uuid'), 1);
     },
     handleDownvote: function (e) {
         e.preventDefault;
-        actions.downvoteItem(this.props.tile.get('uuid'));
+        actions.voteItem(this.props.tile.get('uuid'), -1);
     },
     handleFavourite: function (e) {
         e.preventDefault;
@@ -125,6 +125,17 @@ export var ReactTile = React.createClass({
         </Tooltip>
 
         var score = Math.round(this.props.tile.get('score') + (this.props.tile.get('votes') || 0));
+        var ownVote = this.props.tile.get('ownVote');
+
+        var downvoteClass, upvoteClass;
+
+        if (ownVote === -1) {
+            downvoteClass = 'tile__header__downvote-button--active';
+        }
+
+        if (ownVote === 1) {
+            upvoteClass = 'tile__header__upvote-button--active';
+        }
 
         return (
             <article className={`tile white ${cssClass} tile--${this.props.tile.get('type')}`} style={style}>
@@ -133,12 +144,8 @@ export var ReactTile = React.createClass({
                         {score}
                     </div>
                     <div className='tile__header__buttons'>
-                        <OverlayTrigger placement='top' overlay={voteTooltip} delayShow={500} delayHide={150}>
-                            <div className='tile__header__upvote-button' onClick={this.handleUpvote}></div>
-                        </OverlayTrigger>
-                        <OverlayTrigger placement='top' overlay={voteTooltip} delayShow={500} delayHide={150}>
-                            <div className='tile__header__downvote-button' onClick={this.handleDownvote}></div>
-                        </OverlayTrigger>
+                        <div className={`tile__header__upvote-button ${upvoteClass}`} onClick={this.handleUpvote}></div>
+                        <div className={`tile__header__downvote-button ${downvoteClass}`} onClick={this.handleDownvote}></div>
                         <OverlayTrigger placement='top' overlay={favouriteTooltip} delayShow={300} delayHide={150}>
                             <div
                                 className={`tile__header__favourite-button

@@ -222,7 +222,7 @@
             line-height: @font-size;
             font-weight: 300;
             opacity: 0.7;
-            transition: color 0.65s ease;
+            transition: all 0.1s ease;
 
             &:after {
                 font-family: 'FontAwesome';
@@ -230,8 +230,14 @@
             }
 
             &:hover {
+                transform: scale(1.5);
                 cursor: pointer;
-                color: @green;
+            }
+
+            &--active {
+                pointer-events: none;
+                transform: scale(1.5);
+                opacity: 1;
             }
         }
 
@@ -257,8 +263,14 @@
             }
 
             &:hover {
+                transform: scale(1.5);
                 cursor: pointer;
-                color: @red;
+            }
+
+            &--active {
+                pointer-events: none;
+                transform: scale(1.5);
+                opacity: 1;
             }
 
         }
