@@ -48,7 +48,12 @@ export default Reflux.createStore({
         this.state = {
             monthly: {
                 user: {
-                    trophies: [],
+                    trophies: {
+                        trophies: [],
+                        points: {
+                            all: 0
+                        }
+                    },
                     results: {
 
                     }
@@ -59,7 +64,12 @@ export default Reflux.createStore({
             },
             alltime: {
                 user: {
-                    trophies: [],
+                    trophies: {
+                        trophies: [],
+                        points: {
+                            all: 0
+                        }
+                    },
                     results: {
 
                     }
@@ -282,8 +292,6 @@ export default Reflux.createStore({
         // calculate the resulting points
         //
 
-        var points = 0;
-
         // for the trophies
 
         var pointsForTrophies = trophies.reduce((prev, curr) => {
@@ -293,48 +301,55 @@ export default Reflux.createStore({
 
         // for the actions
 
-        var _pointsForActions =
-            results.numberOfDownvotes  * pointsForActions.vote.down        +
-            results.numberOfUpvotes    * pointsForActions.vote.up          +
-            results.numberOfFavourites * pointsForActions.favourite.toggle +
-            results.numberOfLogins     * pointsForActions.auth.login       +
-            results.numberOfQueries    * pointsForActions.search.add       +
-            results.numberOfQueries    * pointsForActions.search.remove;
+        var points = {
+            vote: results.numberOfDownvotes  * pointsForActions.vote.down +
+                  results.numberOfUpvotes    * pointsForActions.vote.up,
+            favourites: results.numberOfFavourites * pointsForActions.favourite.toggle,
+            auth: results.numberOfLogins     * pointsForActions.auth.login,
+            search: results.numberOfQueries    * pointsForActions.search.add +
+                    results.numberOfQueries    * pointsForActions.search.remove,
+            trophies: pointsForTrophies
+        };
+
+        points.all = _.sum(_.values(points));
 
         return {
-            points: _pointsForActions + pointsForTrophies,
+            points: points,
             trophies: trophies,
             results: results
         };
 
     },
 
-    addQuery: function (queryTerm, load, _track) {
-        track('search', queryTerm, 'add');
-        this.state.alltime.user.trophies.points += pointsForActions.search.add;
-        this.trigger(this.state);
+    addQuery: function (queryTerm, _track) {
+        // we do not want to track the queries that are added when the wall is started
+        if (_track) {
+            track('search', queryTerm, 'add');
+            this.state.alltime.user.trophies.points.all += pointsForActions.search.add;
+            this.trigger(this.state);
+        }
     },
     removeQuery: function (queryTerm) {
         track('search', queryTerm, 'remove');
-        this.state.alltime.user.trophies.points += pointsForActions.search.remove;
+        this.state.alltime.user.trophies.points.all += pointsForActions.search.remove;
         this.trigger(this.state);
     },
 
     upvoteItem: function (uuid) {
         track('vote', uuid, 'up');
-        this.state.alltime.user.trophies.points += pointsForActions.vote.up;
+        this.state.alltime.user.trophies.points.all += pointsForActions.vote.up;
         this.trigger(this.state);
     },
 
     downvoteItem: function (uuid) {
         track('vote', uuid, 'down');
-        this.state.alltime.user.trophies.points += pointsForActions.vote.down;
+        this.state.alltime.user.trophies.points.all += pointsForActions.vote.down;
         this.trigger(this.state);
     },
 
     favouriteItem: function (uuid) {
         track('favourite', uuid, 'toggle');
-        this.state.alltime.user.trophies.points += pointsForActions.favourite.toggle;
+        this.state.alltime.user.trophies.points.all += pointsForActions.favourite.toggle;
         this.trigger(this.state);
     },
 

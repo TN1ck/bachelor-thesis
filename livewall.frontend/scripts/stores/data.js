@@ -74,7 +74,7 @@ export default Reflux.createStore({
 
         items.forEach(item => {
             if (this.filterItem(item)) {
-                console.log('filtered item ', item.toJS());
+                // console.log('filtered item ', item.toJS());
                 return;
             }
 

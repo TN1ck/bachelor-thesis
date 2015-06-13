@@ -25,7 +25,7 @@ export default Reflux.createStore({
 
         user.whenProfileIsLoaded((profile) => {
             _.each(profile.queries, query => {
-                actions.addQuery(query.name);
+                actions.addQuery(query.name, false);
             });
         });
 

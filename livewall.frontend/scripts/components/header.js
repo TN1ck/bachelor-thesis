@@ -45,6 +45,7 @@ export var ReactHeader = React.createClass({
 
         var monthly = this.state.monthly.user;
         var alltime = this.state.alltime.user;
+        console.log(alltime, alltime.trophies.points.all);
 
         return (
             <div className='wall__header'>
@@ -52,7 +53,7 @@ export var ReactHeader = React.createClass({
                     <div className='wall__header__info'>
                         <span>Angemeldet als {user.username} </span>
                         <a href="#/trophies">
-                            {alltime.trophies.points} Punkte
+                            {alltime.trophies.points.all} Punkte
                         </a>
                         <span> </span>
                         <a href="#/trophies">

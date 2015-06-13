@@ -16,6 +16,8 @@ import {user, requireAuth} from '../../auth.js';
 
 import { badges } from '../../badges.js';
 
+import BarChart from '../charts/barChart.js';
+
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 
 import { Award } from './awards.js';
@@ -47,7 +49,7 @@ var LeaderBoard = React.createClass({
         users = users.concat([_user]).sort(sortFn);
 
         users.sort((a, b) => {
-            return b.trophies.points - a.trophies.points;
+            return b.trophies.points.all - a.trophies.points.all;
         })
 
         var list = users.map(_user => {
@@ -55,7 +57,7 @@ var LeaderBoard = React.createClass({
 
             trophies = _.chain(trophies).map(x => {
                 return _.find(badges, {id: x});
-            }).sortBy(x => -x.points).value();
+            }).sortBy(x => -x.points.all).value();
 
             var name = _user.user;
 
@@ -82,7 +84,7 @@ var LeaderBoard = React.createClass({
             return <tr className={trClass}>
                 <td className='vert-align trophies__leaderboard__place'    xs={3}>#{_user.place}</td>
                 <td className='vert-align trophies__leaderboard__name'     xs={3}>{name}</td>
-                <td className='vert-align trophies__leaderboard__points'   xs={3}>{points}</td>
+                <td className='vert-align trophies__leaderboard__points'   xs={3}>{points.all}</td>
                 <td className='vert-align trophies__leaderboard__trophies' xs={3}>{_trophies}</td>
             </tr>;
         });
@@ -135,14 +137,48 @@ export var ReactTrophies = React.createClass({
             );
         });
 
+        console.log(this.state.alltime.user);
+
+        var points = this.state.alltime.user.trophies.points || {};
+
+        var data = [
+            {
+                y: 'bewerten',
+                x: points.vote || 0
+            },
+
+            {
+                y: 'favorisieren',
+                x: points.favourites || 0
+            },
+
+            {
+                y: 'einloggen',
+                x: points.auth || 0
+            },
+
+            {
+                y: 'suchen',
+                x: points.search || 0
+            },
+            {
+                y: 'Trophäen',
+                x: points.trophies || 0
+            }
+
+        ].sort((a, b) => b.x - a.x);
+
         return (
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <PageHeader>
-                            <h1>Bestenliste</h1>
-                            <hr/>
-                        </PageHeader>
+                        <h1>{this.state.alltime.user.trophies.points.all} Punkte</h1>
+                        <BarChart data={data}/>
+                        <hr/>
+                    </Col>
+                    <Col xs={12}>
+                        <h1>Bestenliste</h1>
+                        <hr/>
                     </Col>
                     <Col xs={12}>
                         <Row>
