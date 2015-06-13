@@ -284,9 +284,12 @@ export default Reflux.createStore({
     },
     addDomElement: function (uuid, dom) {
 
+
+
         // This case only happens when we switch to another site and back to
         // the wall-site, we save some computation time with this
-        if (this.items.get(uuid).get('dom')) {
+
+        if (!uuid || !this.items.get(uuid) || this.items.get(uuid).get('dom')) {
             return;
         }
 

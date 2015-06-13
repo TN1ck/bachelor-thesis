@@ -124,11 +124,13 @@ export var ReactTile = React.createClass({
             {voteText}
         </Tooltip>
 
+        var score = Math.round(this.props.tile.get('score') + (this.props.tile.get('votes') || 0));
+
         return (
             <article className={`tile white ${cssClass} tile--${this.props.tile.get('type')}`} style={style}>
                 <header className='tile__header' style={{color: 'white'}}>
                     <div className='tile__header__upvote'>
-                        {this.props.tile.get('score')}
+                        {score}
                     </div>
                     <div className='tile__header__buttons'>
                         <OverlayTrigger placement='top' overlay={voteTooltip} delayShow={500} delayHide={150}>

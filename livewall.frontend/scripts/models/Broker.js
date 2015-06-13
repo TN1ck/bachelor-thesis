@@ -72,7 +72,7 @@ export default class Pia {
                 url:     d.file_URI,
                 domain:  d.host || getDomain(d.file_URI),
                 type:    d.type,
-                score:   Math.round(d.normalized_score),
+                score:   d.normalized_score,
                 raw:     d
             };
             items.push(item);

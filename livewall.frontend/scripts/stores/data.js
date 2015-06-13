@@ -97,7 +97,7 @@ export default Reflux.createStore({
             result.items.forEach(item => {
                 var _item = tempItems[item.uuid];
                 if (_item) {
-                    _item.set('upvotes', _item.votes);
+                    tempItems[item.uuid] = _item.set('votes', item.votes);
                 }
                 return;
             });

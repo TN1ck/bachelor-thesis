@@ -67,11 +67,11 @@ router.post('/user/:username/action', cors(), function (req, res) {
 
 router.post('/user/vote', cors(), function (req, res) {
     // get params and body
-    var username = req.body.user;
+    var username = req.body.username;
     var item     = req.body.item;
     var body     = req.body;
 
-    console.log(body, username, item);
+    console.log(username, item);
 
     // get or create user
     User.findOrCreate({where: {username: username}}).then(function(_user) {
@@ -81,8 +81,6 @@ router.post('/user/vote', cors(), function (req, res) {
         // get or create item
         Item.findOrCreate({where: {uuid: item}}).then(function(_item) {
             var item = _item[0];
-
-            console.log(user, item, user.id);
 
             Vote.findOrCreate({where: {
                 UserId: user.id,
@@ -108,7 +106,6 @@ router.post('/user/vote', cors(), function (req, res) {
 
 router.get('/items', cors(), function (req, res) {
     var ids = req.query.items.split(',');
-    console.log(ids);
     Item.findAll({
         where: { uuid: ids},
         include: [ {
