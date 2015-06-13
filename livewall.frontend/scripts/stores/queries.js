@@ -4,7 +4,7 @@ import Immutable  from 'immutable';
 import jquery     from 'jquery';
 import moment     from 'moment';
 
-import actions    from '../actions.js';
+import actions    from '../actions/actions.js';
 import {user}     from '../auth.js';
 import {SETTINGS} from '../settings.js';
 

@@ -1,5 +1,5 @@
 import React   from 'react/addons';
-import actions from '../../actions.js';
+import actions from '../../actions/actions.js';
 
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 

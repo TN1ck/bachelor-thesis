@@ -1,12 +1,13 @@
 import React               from 'react/addons';
 
-import actions             from '../actions.js';
 import {SETTINGS}          from '../settings.js';
-import {dataStore}         from '../stores/data.js';
-import {camelCaseToBar}    from '../utils.js';
 import {user, requireAuth} from '../auth.js';
-import { hashCode }        from '../utils.js';
-import rewards             from '../rewards.js';
+
+import {dataStore}         from '../stores/data.js';
+import actions             from '../actions/actions.js';
+import {camelCaseToBar}    from '../util/utils.js';
+import { hashCode }        from '../util/utils.js';
+import rewards             from '../gamification/rewards.js';
 
 import {
     Grid, Row, Col, Input, Button,

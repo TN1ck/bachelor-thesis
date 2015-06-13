@@ -1,7 +1,6 @@
 import React               from 'react/addons';
 import {RouteHandler}      from 'react-router';
 
-import actions             from '../actions.js';
 import {SETTINGS}          from '../settings.js';
 import {user, requireAuth} from '../auth.js';
 

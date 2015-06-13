@@ -104,3 +104,107 @@ export var api = function (
         dataType: 'json'
     });
 };
+
+//
+// aggregation functions
+//
+
+var _aggregateUserData = function (data = []) {
+    /* every row looks like this:
+
+        date: "20150530",
+        actionGroup: "search",
+        actionName: "aussiehst",
+        actionLabel: "add",
+        customVarName2: "username",
+        customVarValue2: "nick",
+        actions: "1"
+
+    */
+
+    /* group by user/actionGroup/actionLabel, resulting data structure looks like this:
+    {
+        user1: {
+            actionGroup1: {
+                actionLabel1: {
+                    count: ...,
+                    uniqueCount: ...,
+                    data: all the rows,
+                    group: ...,
+                    user: ...
+                },
+                ...
+            },
+            ...
+        },
+        user2: ...
+    }
+
+    */
+    var groupedData = _.chain(data)
+        .filter(x => x.customVarValue2 !== '(not set)')
+        .groupBy(x => x.customVarValue2)
+        .mapValues(
+            byUser => {
+                return _.chain(byUser)
+                    .groupBy(x => x.actionGroup)
+                    .mapValues(byGroup => {
+                        return _.chain(byGroup)
+                            .groupBy(x => x.actionLabel)
+                            .mapValues(byLabel => {
+                                var first = _.first(byLabel);
+                                return {
+                                    count:       _.sum(byLabel, x => _.parseInt(x.actions)),
+                                    uniqueCount: byLabel.length,
+                                    rows:        _.sortBy(byLabel, 'date'),
+                                    label:       first.actionLabel,
+                                    group:       first.actionGroup,
+                                    user:        first.customVarValue2
+                                };
+                            })
+                            .value()
+                    })
+                    .value();
+            }
+        )
+        .value();
+
+    return groupedData;
+
+};
+
+//
+// high level aggregation
+//
+
+// userdata
+
+export var getAllTimeUserData = function () {
+    var startDate = moment().subtract(10, 'years');
+    var endDate   = moment();
+    return getUserDataForTimeRange(startDate, endDate);
+};
+
+export var getMonthlyUserData = function () {
+    var startDate = moment().subtract(1, 'month');
+    var endDate   = moment();
+    return getUserDataForTimeRange(startDate, endDate);
+};
+
+export var getUserDataForTimeRange = function (startDate, endDate) {
+    var constraints = {
+    };
+    var dimensions = [
+        'date',
+        'actionGroup',
+        'actionName',
+        'actionLabel',
+        'customVarName2',
+        'customVarValue2'
+    ];
+    return api(constraints, dimensions, startDate, endDate).then((result) => _aggregateUserData(result.rows));
+};
+
+export var processTileData = function () {
+
+};

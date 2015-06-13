@@ -1,4 +1,4 @@
-import { colors } from './colors.js';
+import { colors } from '../util/colors.js';
 
 var icons = {
     key:      '/assets/key.png',

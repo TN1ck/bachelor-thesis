@@ -3,9 +3,8 @@ import Reflux         from 'reflux';
 import Immutable      from 'immutable';
 
 import layoutStore    from '../../stores/layout.js';
-import dataStore      from '../../stores/data.js';
 
-import actions        from '../../actions.js';
+import actions        from '../../actions/actions.js';
 
 import {ReactTile}    from './tiles.js';
 import {ReactQueries} from './queries.js';

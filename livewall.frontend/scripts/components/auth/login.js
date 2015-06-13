@@ -6,10 +6,7 @@ import {
 
 import {Link, Route, RouteHandler} from 'react-router';
 
-
-import actions   from '../../actions.js';
 import {user}    from '../../auth.js';
-import dataStore from '../../stores/data.js';
 
 export var ReactLogin = React.createClass({
     displayName: 'login',
@@ -122,7 +119,7 @@ export var ReactLogin = React.createClass({
         var logoutForm = <div>
             <ButtonGroup justified>
                 <Button href="#/logout" bsStyle='danger'>Abmelden</Button>
-                <Button href="#/wall" bsStyle='primary'>Zur DAI-Wall</Button>
+                <Button href="#/" bsStyle='primary'>Zur DAI-Wall</Button>
             </ButtonGroup>
         </div>;
 

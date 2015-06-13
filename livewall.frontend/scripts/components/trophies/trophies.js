@@ -8,13 +8,12 @@ import {
 } from 'react-bootstrap';
 
 
-import actions             from '../../actions.js';
 import {SETTINGS}          from '../../settings.js';
 import gameStore           from '../../stores/game.js';
-import {camelCaseToBar}    from '../../utils.js';
+import {camelCaseToBar}    from '../../util/utils.js';
 import {user, requireAuth} from '../../auth.js';
 
-import { badges } from '../../badges.js';
+import { badges }          from '../../gamification/badges.js';
 
 import BarChart from '../charts/barChart.js';
 

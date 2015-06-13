@@ -2,7 +2,7 @@ import React      from 'react/addons';
 import Reflux     from 'reflux';
 import _          from 'lodash';
 
-import actions    from '../../actions.js';
+import actions    from '../../actions/actions.js';
 import dataStore  from '../../stores/data.js';
 import queryStore from '../../stores/queries.js';
 

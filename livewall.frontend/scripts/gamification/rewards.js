@@ -1,5 +1,5 @@
-import { colorFunctions } from './colors.js';
-import { hashCode } from './utils.js';
+import { colorFunctions } from '../util/colors.js';
+import { hashCode }       from '../util/utils.js';
 
 export default {
     colors: [

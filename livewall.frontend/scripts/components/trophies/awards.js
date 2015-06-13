@@ -1,11 +1,5 @@
 import React               from 'react/addons';
 import d3                  from 'd3';
-import _                   from 'lodash';
-
-import actions             from '../../actions.js';
-import {SETTINGS}          from '../../settings.js';
-import {dataStore}         from '../../stores/data.js';
-import {user, requireAuth} from '../../auth.js';
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 

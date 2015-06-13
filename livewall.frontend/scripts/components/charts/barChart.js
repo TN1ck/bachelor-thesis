@@ -3,7 +3,7 @@ import d3 from 'd3';
 import $  from 'jquery';
 import _ from 'lodash';
 
-import { colors } from '../../colors.js';
+import { colors } from '../../util/colors.js';
 
 class BarChart {
     constructor(root) {

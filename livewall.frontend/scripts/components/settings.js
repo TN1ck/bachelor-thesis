@@ -1,15 +1,14 @@
 import React               from 'react/addons';
-
-import actions             from '../actions.js';
-import {SETTINGS}          from '../settings.js';
-import {dataStore}         from '../stores/data.js';
-import {camelCaseToBar}    from '../utils.js';
-import {user, requireAuth} from '../auth.js';
-
 import {
     Grid, Row, Col, Input, Button,
     Jumbotron, Alert, PageHeader
 } from 'react-bootstrap';
+
+import {SETTINGS}          from '../settings.js';
+import {user, requireAuth} from '../auth.js';
+import actions             from '../actions/actions.js';
+import {dataStore}         from '../stores/data.js';
+
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 
@@ -21,16 +20,6 @@ export var ReactSettings = React.createClass({
         }
     },
     render: function () {
-        // var sources = this.state.settings.SOURCES.map(source => {
-        //     var sourceHydrated = {
-        //         source: {
-        //             name: camelCaseToBar(source.name),
-        //             search: source.search
-        //         },
-        //         loaded: true
-        //     };
-        //     return <ReactSource source={sourceHydrated}/>
-        // });
 
         return (
             <Grid>

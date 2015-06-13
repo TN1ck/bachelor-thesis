@@ -3,8 +3,8 @@ import store              from 'store';
 import _                  from 'lodash';
 import $                  from 'jquery';
 
+import {getColorByString} from '../util/colors.js';
 import {user}             from '../auth.js';
-import {getColorByString} from '../colors.js';
 import Broker             from './Broker.js';
 
 export default class Query {
