@@ -148,7 +148,7 @@ export var ReactTrophies = React.createClass({
 
             {
                 y: 'favorisieren',
-                x: points.favourites || 0
+                x: points.favourite || 0
             },
 
             {

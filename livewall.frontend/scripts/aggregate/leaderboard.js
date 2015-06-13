@@ -80,7 +80,7 @@ var calcTrophies = function (data, group, label) {
     var points = {
         vote: results.numberOfDownvotes  * pointsForActions.vote.down +
               results.numberOfUpvotes    * pointsForActions.vote.up,
-        favourites: results.numberOfFavourites * pointsForActions.favourite.toggle,
+        favourite: results.numberOfFavourites * pointsForActions.favourite.toggle,
         auth: results.numberOfLogins     * pointsForActions.auth.login,
         search: results.numberOfQueries    * pointsForActions.search.add +
                 results.numberOfQueries    * pointsForActions.search.remove,

@@ -80,36 +80,40 @@ export default Reflux.createStore({
         return this.state;
     },
 
+    updatePoints: function (group, action) {
+        var pointsAdded = pointsForActions[group][action];
+        this.state.alltime.user.trophies.points.all    += pointsAdded;
+        this.state.alltime.user.trophies.points[group] += pointsAdded;
+        this.state.monthly.user.trophies.points.all    += pointsAdded;
+        this.state.monthly.user.trophies.points[group] += pointsAdded;
+        this.trigger(this.state);
+    },
+
     addQuery: function (queryTerm, track) {
         // we do not want to track the queries that are added when the wall is started
         if (track) {
             owa.track('search', queryTerm, 'add');
-            this.state.alltime.user.trophies.points.all += pointsForActions.search.add;
-            this.trigger(this.state);
+            this.updatePoints('search', 'add');
         }
     },
     removeQuery: function (queryTerm) {
         owa.track('search', queryTerm, 'remove');
-        this.state.alltime.user.trophies.points.all += pointsForActions.search.remove;
-        this.trigger(this.state);
+        this.updatePoints('search', 'remove');
     },
 
     upvoteItem: function (uuid) {
         owa.track('vote', uuid, 'up');
-        this.state.alltime.user.trophies.points.all += pointsForActions.vote.up;
-        this.trigger(this.state);
+        this.updatePoints('vote', 'up');
     },
 
     downvoteItem: function (uuid) {
         owa.track('vote', uuid, 'down');
-        this.state.alltime.user.trophies.points.all += pointsForActions.vote.down;
-        this.trigger(this.state);
+        this.updatePoints('vote', 'down');
     },
 
     favouriteItem: function (uuid) {
         owa.track('favourite', uuid, 'toggle');
-        this.state.alltime.user.trophies.points.all += pointsForActions.favourite.toggle;
-        this.trigger(this.state);
+        this.updatePoints('favourite', 'toggle');
     },
 
     addReward: function (id) {
