@@ -125,7 +125,7 @@ export default Reflux.createStore({
         var successCallback = () => {
             var itemNew = item.set('favourite', !favourite);
             this.items = this.items.set(item.get('uuid'), itemNew);
-            this.profile().then(this.setProfile.bind(this));
+            user.profile().then(this.setProfile.bind(this));
         };
 
         var failCallback = () => {
