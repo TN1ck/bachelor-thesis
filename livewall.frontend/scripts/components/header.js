@@ -4,6 +4,7 @@ import {Link} from 'react-router';
 
 import {user} from '../auth.js';
 import gameStore from '../stores/game.js';
+import {SETTINGS} from '../settings.js';
 
 export var ReactHeader = React.createClass({
     displayName: 'header',
@@ -47,19 +48,25 @@ export var ReactHeader = React.createClass({
         var alltime = this.state.alltime.user;
         console.log(alltime, alltime.trophies.points.all);
 
+        var userComponent;
+
+        if (!SETTINGS.HIDE_HEADER) {
+            userComponent = <div className='wall__header__info'>
+                <span>Angemeldet als {user.username} </span>
+                <a href="#/trophies">
+                    {alltime.trophies.points.all} Punkte
+                </a>
+                <span> </span>
+                <a href="#/trophies">
+                    #{monthly.place} diesen Monat - #{alltime.place} Gesamt
+                </a>
+            </div>;
+        }
+
         return (
             <div className='wall__header'>
                 <div className='wall__header__topbar'>
-                    <div className='wall__header__info'>
-                        <span>Angemeldet als {user.username} </span>
-                        <a href="#/trophies">
-                            {alltime.trophies.points.all} Punkte
-                        </a>
-                        <span> </span>
-                        <a href="#/trophies">
-                            #{monthly.place} diesen Monat - #{alltime.place} Gesamt
-                        </a>
-                    </div>
+                    {userComponent}
                     <div className='wall__header__settings'>
                         {nav}
                     </div>

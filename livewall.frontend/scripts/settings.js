@@ -16,6 +16,8 @@ defaults.OWA = {
     apiKey: '1cd6f4568986197d6a0c0c179930f382'
 };
 
+defaults.HIDE_HEADER = false;
+
 defaults.broker = [
     {
         url:          "http://pia-dev-intern.dai-labor.de/service",

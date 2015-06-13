@@ -3,7 +3,7 @@ import d3                  from 'd3';
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 
-export var Award = React.createClass({
+export default React.createClass({
     displayName: 'award',
     getDefaultProps: function() {
         return {
