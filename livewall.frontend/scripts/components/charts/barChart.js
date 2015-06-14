@@ -13,7 +13,7 @@ class BarChart {
             top: 20,
             bottom: 20,
             left: 20,
-            right: 20
+            right: 0
         };
 
         this.bars = this.root.append('g').attr('class', 'bars');
@@ -57,7 +57,7 @@ class BarChart {
             .domain([0, this.data.length])
             .range(this.dimensions.y);
 
-        this.barMargin = 5;
+        this.barMargin = 10;
 
     }
 
@@ -79,8 +79,6 @@ class BarChart {
                 height: barHeight,
                 fill: (d, i) => this.colors[i % this.colors.length]
             });
-
-        console.log(selection);
 
         this.bars.selectAll('.bar')
             .transition()

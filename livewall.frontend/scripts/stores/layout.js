@@ -291,19 +291,25 @@ export default Reflux.createStore({
 
         // This case only happens when we switch to another site and back to
         // the wall-site, we save some computation time with this
+        //
 
-        if (!uuid || !this.items.get(uuid) || this.items.get(uuid).get('dom')) {
+        var item = this.items.get(uuid);
+
+        // if it has the dom property, only update it and do nothing else
+        if (item.get('dom')) {
+            item = item.set('dom', dom);
+            this.items = this.items.set(uuid, item);
             return;
         }
 
         var height = dom.offsetHeight;
 
-        var tile = this.items.get(uuid).merge({
+        item = item.merge({
             dom: dom,
             height: height
         });
 
-        this.items = this.items.set(uuid, tile);
+        this.items = this.items.set(uuid, item);
         // or requestanimationframe
         if (this.items.filter(x => x.get('dom')).count() === this.items.count()) {
             this.layout(true);

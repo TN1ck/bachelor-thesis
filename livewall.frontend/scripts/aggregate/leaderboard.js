@@ -21,7 +21,7 @@ var hydrateData = (data) => {
             rewards: calcRewards(d, user)
         };
     }).sort((a, b) => {
-        return a.points - b.points;
+        return b.trophies.points.all - a.trophies.points.all;
     }).map((user, i) => {
         user.place = i + 1;
         return user;
