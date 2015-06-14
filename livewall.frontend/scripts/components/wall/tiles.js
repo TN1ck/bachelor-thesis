@@ -144,8 +144,12 @@ export var ReactTile = React.createClass({
                         {score}
                     </div>
                     <div className='tile__header__buttons'>
-                        <div className={`tile__header__upvote-button ${upvoteClass}`} onClick={this.handleUpvote}></div>
-                        <div className={`tile__header__downvote-button ${downvoteClass}`} onClick={this.handleDownvote}></div>
+                        <div className={`tile__header__upvote-button ${upvoteClass}`} onClick={this.handleUpvote}>
+                            <i className='fa fa-caret-up'></i>
+                        </div>
+                        <div className={`tile__header__downvote-button ${downvoteClass}`} onClick={this.handleDownvote}>
+                            <i className='fa fa-caret-down'></i>
+                        </div>
                         <OverlayTrigger placement='top' overlay={favouriteTooltip} delayShow={300} delayHide={150}>
                             <div
                                 className={`tile__header__favourite-button

@@ -1,6 +1,7 @@
-@tile-margin: 8px;
-@tile-padding: 16px;
-@font-size: 14px;
+@tile-margin:  8/@em;
+@tile-padding: 15/@em;
+@tile-font-size:    14/@em;
+@tile-content-icon: 30/@em;
 
 .tile {
 
@@ -38,7 +39,7 @@
     float: left;
     width: 100%;
     font-weight: 300;
-    font-size: @font-size * 0.8;
+    font-size: @tile-font-size * 0.8;
     padding-bottom: @tile-margin;
     opacity: 0.8;
     color: @white;
@@ -58,7 +59,8 @@
     box-sizing: border-box;
     border-color: inherit;
     float: left;
-    padding-bottom: 20px;
+    padding-bottom: @tile-padding;
+    position: relative;
     width: 100%;
     color: inherit;
 
@@ -71,57 +73,33 @@
         }
     }
 
-    &.tile--link {
-
-        padding: @tile-padding;
-        padding-top: 0;
-        box-sizing: border-box;
-
-
-        .tile__content__title {
-            width: 100%;
-            word-wrap: break-word;
-            float: left;
-            font-size: @font-size;
-            font-weight: 300;
-
-        }
-
-        .tile__content__domain {
-            position: absolute;
-            bottom: @tile-margin;
-            right: @tile-margin;
-        }
-
-    }
-
     &.tile--pia {
 
         box-sizing: border-box;
-        padding: @tile-padding;
-        padding-top: 5px;
+        padding:     @tile-padding;
+        padding-top: @tile-padding / 2;;
 
         .tile__content__icon {
             opacity: 0.5;
-            width: 30px;
-            height: 30px;
             float: left;
-            font-size: 30px;
+            font-size: @tile-content-icon;
+            line-height: @tile-font-size * 1.2;
         }
 
 
 
         .tile__content__title {
+
             width: 100%;
             word-wrap: break-word;
             float: left;
-            font-size: @font-size;
+            font-size: @tile-font-size;
             font-weight: 300;
 
             p {
                 margin: 0;
-                margin-left: 35px;
                 padding: 0;
+                margin-left: @tile-content-icon + @tile-padding / 4;
             }
 
         }
@@ -130,13 +108,13 @@
             width: 100%;
             word-wrap: break-word;
             float: left;
-            font-size: @font-size;
+            font-size: @tile-font-size;
             font-weight: 300;
 
         }
 
         .tile__content__domain {
-            font-size: @font-size * 0.8;
+            font-size: @tile-font-size * 0.8;
             position: absolute;
             bottom: @tile-margin;
             right: @tile-margin;
@@ -144,132 +122,91 @@
 
     }
 
-    &.tile--image {
-
-        float: left;
-        position: relative;
-
-        .tile__content__title {
-            font-weight: 300;
-            padding: @tile-padding;
-            font-size: 10pt;
-
-            a {
-                color: inherit;
-                text-decoration: none;
-
-                &:hover {
-                    color: @black;
-                }
-            }
-        }
-
-        .tile__content__domain {
-            font-size: @font-size * 0.8;
-            position: absolute;
-            right: @tile-padding / 2;
-            bottom: @tile-padding / 2;
-        }
-
-        .tile__content__image {
-            position: relative;
-
-            img {
-                display:block;
-                width: 100%;
-            }
-
-        }
-
-    }
-
-
 }
 
 .tile__header {
+
     color: inherit;
-    float: left;
     width: 100%;
-    position: relative;
-    height: @font-size * 3.25;
+    height: @tile-font-size * 2.5;
 
     .tile__header__upvote {
 
+        position: relative;
+        top: @tile-padding / 1.5;
+        padding-left: @tile-padding + @tile-content-icon / 8;
+        line-height: 0;
         color: inherit;
-        float: left;
-        padding-left: @tile-padding * 2.3;
-        font-size: @font-size * 2.0;
+        font-size: @tile-font-size * 2.0;
         font-weight: 300;
         opacity: 0.7;
-        text-align: center;
 
     }
 
     .tile__header__buttons {
+
         position: relative;
         left: @tile-padding;
-        top: @tile-padding / 1.75;
+        top:  0;
 
         .tile__header__upvote-button {
 
-            cursor: pointer;
-            color: @white;
-            position: absolute;
-            top: 0;
-            left: -@font-size;
-            padding: 0 @font-size;
-            font-size: @font-size * 1.5;
-            line-height: @font-size;
+            position:    absolute;
+            cursor:      pointer;
             font-weight: 300;
-            opacity: 0.7;
-            transition: all 0.1s ease;
+            transition:  all 0.3s ease;
+            color:       @white;
+            opacity:     0.6;
+            line-height: 0;
 
-            &:after {
-                font-family: 'FontAwesome';
-                content: "";
+            height: 0;
+
+            top:           0;
+            padding:     @tile-font-size / 3 @tile-padding / 2;
+            left:          -@tile-padding / 2;
+            font-size:     @tile-font-size * 2;
+
+            .fa {
+                transform: translateY(-@tile-font-size / 3);
             }
 
             &:hover {
-                transform: scale(1.5);
+                opacity: 1;
                 cursor: pointer;
             }
 
             &--active {
                 pointer-events: none;
-                transform: scale(1.5);
                 opacity: 1;
             }
         }
 
         .tile__header__downvote-button {
-
-            cursor: pointer;
-            color: @white;
-            padding: 0 @font-size;
-            position: absolute;
-            top: @font-size * 1.2;
-            left: -@font-size;
-            font-size: @font-size * 1.5;
-            line-height: @font-size;
+            position:    absolute;
+            cursor:      pointer;
             font-weight: 300;
-            opacity: 0.7;
-            transition: color 0.3s ease;
+            transition:  all 0.3s ease;
+            color:       @white;
+            opacity:     0.6;
+            line-height: 0;
+            height: 0;
 
-            &:after {
-                width: @tile-padding;
-                height: @tile-padding;
-                font-family: 'FontAwesome';
-                content: "";
+            padding:     @tile-font-size / 3 @tile-padding / 2;
+            top:         @tile-font-size / 2 + @tile-font-size / 4;
+            left:        -@tile-padding / 2;
+            font-size:   @tile-font-size * 2;
+
+            .fa {
+                transform: translateY(-@tile-font-size / 3 - @tile-font-size / 4);
             }
 
             &:hover {
-                transform: scale(1.5);
+                opacity: 1;
                 cursor: pointer;
             }
 
             &--active {
                 pointer-events: none;
-                transform: scale(1.5);
                 opacity: 1;
             }
 
@@ -277,15 +214,14 @@
 
         .tile__header__favourite-button {
 
-            color: @white;
-            padding: 0 @font-size;
-            position: absolute;
-            top: @tile-padding / 2;
-            right: @tile-padding;
-            font-size: @font-size * 1.5;
-            line-height: @font-size;
+            color:       @white;
+            position:    absolute;
+            top:         @tile-font-size * 0.5 + @tile-padding / 4;
+            right:       @tile-padding;
+            font-size:   @tile-font-size * 1.5;
+            line-height: 0;
             font-weight: 300;
-            opacity: 0.2;
+            opacity:     0.2;
             transition: opacity 0.3s ease;
 
                 &.favourite {
@@ -293,8 +229,6 @@
                     opacity: 1.0;
 
                     &:after {
-                        width: @tile-padding;
-                        height: @tile-padding;
                         font-family: 'FontAwesome';
                         content: "";
 
@@ -304,8 +238,6 @@
                 &.unfavourite {
 
                     &:after {
-                        width: @tile-padding;
-                        height: @tile-padding;
                         font-family: 'FontAwesome';
                         content: "";
                     }
@@ -328,7 +260,7 @@
     .tile__header__info {
         // margin-top: 2px;
         font-weight: 300;
-        font-size: @font-size * 0.8;
+        font-size: @tile-font-size * 0.8;
         // width: calc(~"100% - "@tile-padding);
         padding-left: @tile-padding;
         padding-top: @tile-padding;

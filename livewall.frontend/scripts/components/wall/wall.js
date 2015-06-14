@@ -8,7 +8,6 @@ import actions        from '../../actions/actions.js';
 
 import {ReactTile}    from './tiles.js';
 import {ReactQueries} from './queries.js';
-import {ReactSort}    from './sort.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -43,7 +42,6 @@ export var ReactWall = React.createClass({
         return (
             <div>
                 <ReactQueries />
-                <ReactSort />
                 <div className='tiles'>
                     <ReactCSSTransitionGroup transitionName="fade" transitionAppear={false} transitionEnter={false}>
                         {tiles}

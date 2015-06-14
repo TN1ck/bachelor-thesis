@@ -217,6 +217,11 @@ export default Reflux.createStore({
         this.calculateColumns();
 
         this.items = this.items.map((item) => {
+
+            if (!item || !item.get('dom')) {
+                return;
+            }
+
             var newItem = item.merge({
                 height: item.get('dom').offsetHeight,
                 relayout: true
@@ -283,8 +288,6 @@ export default Reflux.createStore({
 
     },
     addDomElement: function (uuid, dom) {
-
-
 
         // This case only happens when we switch to another site and back to
         // the wall-site, we save some computation time with this

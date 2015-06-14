@@ -10,13 +10,15 @@
 @import "animations";
 @import "responsive";
 @import "utils";
-@import "./components/header";
-@import "./components/tile";
-@import "./components/wall";
-@import "./components/querie";
-@import "./components/sort.less";
 
-@import "trophies";
+@import "./components/_header";
+@import "./components/_tile";
+@import "./components/_wall";
+@import "./components/_querie";
+@import "./components/_trophies";
+
+@font-size: 12;
+@em: @font-size * 1em;
 
 body {
 	color: @white;
@@ -26,6 +28,7 @@ body {
 	-webkit-font-smoothing: subpixel-antialiased;
 	background-color: @black;
 	margin: 8px;
+	font-size: 18px;
 }
 
 .text-center {
@@ -37,5 +40,5 @@ hr {
   border: 0;
   height: 2px;
   margin: 1em 0;
-  width: 72px;
+  width: 72/@em;
 }
