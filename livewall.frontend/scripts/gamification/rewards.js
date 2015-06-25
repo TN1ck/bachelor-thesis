@@ -10,22 +10,30 @@ export default {
             schema: colorFunctions.pastel
         },
         {
-            points: 2000,
+            points: 5000,
             id: 'color_blue',
             name: 'Flieder',
             schema: colorFunctions.blue
         },
         {
-            points: 2000,
+            points: 10000,
             id: 'color_gray',
             name: 'Grau',
             schema: colorFunctions.gray
         },
         {
-            points: 2000,
+            points: 20000,
             id: 'color_green',
             name: 'Grün',
             schema: colorFunctions.green
         }
-    ]
+    ],
+    // background: [
+    //     {
+    //         points: 0,
+    //         id: 'darg_gray',
+    //         name: 'Grau',
+    //
+    //     }
+    // ]
 };

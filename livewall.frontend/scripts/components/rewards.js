@@ -1,41 +1,25 @@
 import React               from 'react/addons';
+import Reflux              from 'reflux';
 
 import {SETTINGS}          from '../settings.js';
 import {user, requireAuth} from '../auth.js';
 
-import {dataStore}         from '../stores/data.js';
+import gameStore           from '../stores/game.js';
 import actions             from '../actions/actions.js';
 import {camelCaseToBar}    from '../util/utils.js';
 import { hashCode }        from '../util/utils.js';
 import rewards             from '../gamification/rewards.js';
 
 import {
-    Grid, Row, Col, Input, Button,
+    Grid, Row, Col, Input, Button, Badge,
     Jumbotron, Alert, PageHeader, Label, Well, Panel
 } from 'react-bootstrap';
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
+//
 
-export default React.createClass({
-    displayName: 'rewards',
-    getInitialState: function () {
-        return {
-            settings: SETTINGS
-        }
-    },
+var ColorSchema = React.createClass({
     render: function () {
-        // var sources = this.state.settings.SOURCES.map(source => {
-        //     var sourceHydrated = {
-        //         source: {
-        //             name: camelCaseToBar(source.name),
-        //             search: source.search
-        //         },
-        //         loaded: true
-        //     };
-        //     return <ReactSource source={sourceHydrated}/>
-        // });
-        //
-        //
 
         var words = [
             'politics',
@@ -53,46 +37,70 @@ export default React.createClass({
             'gamification'
         ];
 
-        var colorSchemas = rewards.colors.map(colorSchema => {
-            var {schema, id, name, points} = colorSchema;
+        var {schema, id, name, points} = this.props.schema;
 
-            var coloredWords = words.map(word => {
-                var color = schema(hashCode(word));
-                return <span><Label style={{backgroundColor: color}}>{word}</Label> </span>;
-            });
+        var coloredWords = words.map(word => {
+            var color = schema(hashCode(word));
+            return <span><Label style={{backgroundColor: color}}>{word}</Label> </span>;
+        });
 
-            return <Col md={6} xs={12}>
-                <Panel>
-                    <h5>{name}</h5>
-                    {coloredWords}
-                    <br/>
-                    <br/>
-                    <Button bsStyle='primary'>
-                        Für <strong>{points}</strong> freischalten
-                    </Button>
-                </Panel>
-            </Col>;
+        var label;
 
+
+
+        return <Col md={6} xs={12}>
+            <Panel>
+                <h5>{name}</h5>
+                {coloredWords}
+                <br/>
+                <Label bsStyle='success' className='pull-right'>freigeschaltet</Label>
+            </Panel>
+        </Col>;
+    }
+});
+
+export default React.createClass({
+    displayName: 'rewards',
+    getInitialState: function () {
+        return {
+            settings: SETTINGS
+        }
+    },
+    mixins: [
+        Reflux.connect(gameStore),
+    ],
+    render: function () {
+        // var sources = this.state.settings.SOURCES.map(source => {
+        //     var sourceHydrated = {
+        //         source: {
+        //             name: camelCaseToBar(source.name),
+        //             search: source.search
+        //         },
+        //         loaded: true
+        //     };
+        //     return <ReactSource source={sourceHydrated}/>
+        // });
+        //
+        //
+
+        var colorSchemas = rewards.colors.map(schema => {
+            return <ColorSchema schema={schema}/>
         });
 
         return (
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <PageHeader>
-                            <h1>Belohnungen</h1>
-                            <hr/>
-                            <p>
-                                Hier können Sie ihre gesammelten Punkte gegen Belohnungen eintauschen.
-                                Dies verringert jedoch nicht ihren offiziellen Punktestand,
-                                Ihre Platzierung nimmt somit nicht ab wenn sie die Punkte ausgeben.
-                            </p>
-                        </PageHeader>
+                        <h1>Freigeschaltete Features</h1>
+                        <hr/>
+                        <p>
+                            Erreichen Sie eine bestimmte Punktzahl werden hier automatisch Features freigeschaltet.
+                        </p>
                     </Col>
                     <Col xs={12}>
                         <h3>Farbschemas</h3>
                         Mittels der Farbschema können Sie die Farben der Suchergebnisse variieren. Unter den Einstellungen können Sie das Farbschema anpassen.
-                        In den Einstellungen können Sie die zwischen den erworbenen Schemas wechseln.
+                        In den Einstellungen können Sie die zwischen den erhaltenen Schemas wechseln.
                         <hr />
                         <Row>
                         {colorSchemas}

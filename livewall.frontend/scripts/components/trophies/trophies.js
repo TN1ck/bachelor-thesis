@@ -29,9 +29,13 @@ export var ReactTrophies = React.createClass({
     ],
     render: function () {
 
-        var badgeComponents = badges.map(x => {
+        var userBadges = this.state.alltime.user.trophies.trophies.map(t => {
+            return _.find(badges, {id : t});
+        });;
+
+        var badgeComponents = userBadges.map(x => {
             return (
-                <Col xs={12} md={12}>
+                <Col xs={12} md={6}>
                     <div className='trophies__trophy__container'>
                         <div className='trophies__trophy__svg-container'>
                             <Award image={x.image} text={x.name} number={x.number} type={x.type} fill={x.fill}/>
@@ -89,7 +93,6 @@ export var ReactTrophies = React.createClass({
                     <Col xs={12}>
                         <h1>{this.state.alltime.user.trophies.points.all} Punkte</h1>
                         <BarChart data={data}/>
-                        <hr/>
                     </Col>
                     <Col xs={12}>
                         <h1>Bestenliste</h1>
@@ -111,7 +114,11 @@ export var ReactTrophies = React.createClass({
                         <PageHeader>
                             <h1>Trophäen</h1>
                             <hr/>
-                            <p>Hier Findest du alle Trophäen die du bekommen hast, durch jede Trophäe werden dir Punkte auf deinen Punktestand gutgeschrieben.</p>
+                            <p>
+                                Hier Findest du alle Trophäen die du bekommen hast, durch jede Trophäe werden dir Punkte auf deinen Punktestand gutgeschrieben.
+                                <br/>
+                                Du hast bisher <strong>{userBadges.length}</strong> gesammelt.
+                            </p>
                         </PageHeader>
                     </Col>
                     {badgeComponents}

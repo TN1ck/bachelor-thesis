@@ -78,13 +78,13 @@ var calcTrophies = function (data, group, label) {
     // for the actions
 
     var points = {
-        vote: results.numberOfDownvotes  * pointsForActions.vote.down +
-              results.numberOfUpvotes    * pointsForActions.vote.up,
+        vote:      results.numberOfDownvotes  * pointsForActions.vote.down +
+                   results.numberOfUpvotes    * pointsForActions.vote.up,
         favourite: results.numberOfFavourites * pointsForActions.favourite.toggle,
-        auth: results.numberOfLogins     * pointsForActions.auth.login,
-        search: results.numberOfQueries    * pointsForActions.search.add +
-                results.numberOfQueries    * pointsForActions.search.remove,
-        trophies: pointsForTrophies
+        auth:      results.numberOfLogins     * pointsForActions.auth.login,
+        search:    results.numberOfQueries    * pointsForActions.search.add +
+                   results.numberOfQueries    * pointsForActions.search.remove,
+        trophies: pointsForTrophies,
     };
 
     points.all = _.sum(_.values(points));

@@ -50,18 +50,43 @@ router.post('/user/:username/action', cors(), function (req, res) {
         var label = body.label;
         var value = JSON.stringify(body.value);
 
-        // create action
-        var action = Action.create({
+        var createActionAndAnswer = function (props) {
+            return Action.create(actionProps).then(function (action) {
+                // action sucessfully created
+                res.json(action);
+            });
+        };
+
+        var actionProps = {
             group: group,
             label: label,
             value: value,
-            user_id: _user.id,
-        }).then(function (action) {
-            // action sucessfully created
-            res.json(action);
-        });
+            userId: _user.id,
+        };
+
+        // if the action has an item-uuid ad it to the action props
+        if (body.item) {
+            promise = Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
+                var item = _item[0];
+                Action.create(actionProps).then(function(action) {
+                    action.setItem(item);
+
+                    action.save().then(function(action) {
+                        res.json(action);
+                    });
+
+                });
+            });
+        } else {
+            return Action.create(actionProps).then(function (action) {
+                res.json(action);
+            });
+        }
 
     });
+
+
+
 
 });
 
@@ -108,13 +133,16 @@ router.get('/items', cors(), function (req, res) {
     var ids = req.query.items.split(',');
     Item.findAll({
         where: { uuid: ids},
-        include: [ {
-            model: Vote,
-            include: [User]
-        }, {
-            model: Action,
-            include: [User]
-        } ]
+        include: [
+            {
+                model: Vote,
+                include: [User]
+            },
+            {
+                model: Action,
+                include: [User]
+            }
+        ]
     }).then(function(result) {
         var rows = result.map(function(d) {
             return d.dataValues;
