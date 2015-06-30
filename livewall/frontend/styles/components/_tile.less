@@ -1,0 +1,279 @@
+@tile-margin:  8/@em;
+@tile-padding: 15/@em;
+@tile-font-size:    14/@em;
+@tile-content-icon: 30/@em;
+
+.tile {
+
+    opacity: 0;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    // box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3); // costs to much
+    width: 100%;
+    transition-duration: 1.8s;
+    transition-timing-function: ease;
+    position: absolute;
+    transform: translate3D(0, 0, 0);
+
+    // it is possible to do this via width in javascript, but it won't work as good as when it's done here
+    width: calc(~"100% - " @tile-margin * 2);
+
+    @media @phone {
+        width: calc(~"50% - " @tile-margin * 2);
+    }
+
+    @media @tablet {
+        width: calc(~"25% - " @tile-margin * 2);
+    }
+
+    @media @desktop {
+        width: calc(~"20% - " @tile-margin * 2);
+    }
+
+}
+
+.tile__footer {
+
+    color: inherit;
+    float: left;
+    width: 100%;
+    font-weight: 300;
+    font-size: @tile-font-size * 0.8;
+    padding-bottom: @tile-margin;
+    opacity: 0.8;
+    color: @white;
+
+    &__domain {
+        float: right;
+        padding-right: @tile-padding;
+    }
+
+    &__author {
+        float: left;
+        padding-left: @tile-padding;
+    }
+
+    &__action {
+        float: left;
+        text-align: right;
+        padding-top: @tile-padding / 4;
+        margin-top: @tile-padding / 4;
+        border-top: 1px solid white;
+        width: calc(~"100% - " @tile-padding * 2);
+        margin-left: @tile-padding;
+    }
+}
+
+.tile__content {
+    box-sizing: border-box;
+    border-color: inherit;
+    float: left;
+    padding-bottom: @tile-padding;
+    position: relative;
+    width: 100%;
+    color: inherit;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &.tile--pia {
+
+        box-sizing: border-box;
+        padding:     @tile-padding;
+        padding-top: @tile-padding / 2;;
+
+        .tile__content__icon {
+            opacity: 0.5;
+            float: left;
+            font-size: @tile-content-icon;
+            line-height: @tile-font-size * 1.2;
+        }
+
+
+
+        .tile__content__title {
+
+            width: 100%;
+            word-wrap: break-word;
+            float: left;
+            font-size: @tile-font-size;
+            font-weight: 300;
+
+            p {
+                margin: 0;
+                padding: 0;
+                margin-left: @tile-content-icon + @tile-padding / 4;
+            }
+
+        }
+
+        .tile__content__content {
+            width: 100%;
+            word-wrap: break-word;
+            float: left;
+            font-size: @tile-font-size;
+            font-weight: 300;
+
+        }
+
+        .tile__content__domain {
+            font-size: @tile-font-size * 0.8;
+            position: absolute;
+            bottom: @tile-margin;
+            right: @tile-margin;
+        }
+
+    }
+
+}
+
+.tile__header {
+
+    color: inherit;
+    width: 100%;
+    height: @tile-font-size * 2.5;
+
+    .tile__header__upvote {
+
+        position: relative;
+        top: @tile-padding / 1.5;
+        padding-left: @tile-padding + @tile-content-icon / 8;
+        line-height: 0;
+        color: inherit;
+        font-size: @tile-font-size * 2.0;
+        font-weight: 300;
+        opacity: 0.7;
+
+    }
+
+    .tile__header__buttons {
+
+        position: relative;
+        left: @tile-padding;
+        top:  0;
+
+        .tile__header__upvote-button {
+
+            position:    absolute;
+            cursor:      pointer;
+            font-weight: 300;
+            transition:  all 0.3s ease;
+            color:       @white;
+            opacity:     0.6;
+            line-height: 0;
+
+            height: 0;
+
+            top:           0;
+            padding:     @tile-font-size / 3 @tile-padding / 2;
+            left:          -@tile-padding / 2;
+            font-size:     @tile-font-size * 2;
+
+            .fa {
+                transform: translateY(-@tile-font-size / 3);
+            }
+
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+            }
+
+            &--active {
+                pointer-events: none;
+                opacity: 1;
+            }
+        }
+
+        .tile__header__downvote-button {
+            position:    absolute;
+            cursor:      pointer;
+            font-weight: 300;
+            transition:  all 0.3s ease;
+            color:       @white;
+            opacity:     0.6;
+            line-height: 0;
+            height: 0;
+
+            padding:     @tile-font-size / 3 @tile-padding / 2;
+            top:         @tile-font-size / 2 + @tile-font-size / 4;
+            left:        -@tile-padding / 2;
+            font-size:   @tile-font-size * 2;
+
+            .fa {
+                transform: translateY(-@tile-font-size / 3 - @tile-font-size / 4);
+            }
+
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+            }
+
+            &--active {
+                pointer-events: none;
+                opacity: 1;
+            }
+
+        }
+
+        .tile__header__favourite-button {
+
+            color:       @white;
+            position:    absolute;
+            top:         @tile-font-size * 0.5 + @tile-padding / 4;
+            right:       @tile-padding;
+            font-size:   @tile-font-size * 1.5;
+            line-height: 0;
+            font-weight: 300;
+            opacity:     0.2;
+            transition: opacity 0.3s ease;
+
+                &.favourite {
+
+                    opacity: 1.0;
+
+                    &:after {
+                        font-family: 'FontAwesome';
+                        content: "";
+
+                    }
+                }
+
+                &.unfavourite {
+
+                    &:after {
+                        font-family: 'FontAwesome';
+                        content: "";
+                    }
+                }
+
+                &:hover {
+                    opacity: 1.0;
+                    cursor: pointer;
+                    color: @white;
+                }
+
+        }
+
+    }
+
+
+    .tile__header__score {
+    }
+
+    .tile__header__info {
+        // margin-top: 2px;
+        font-weight: 300;
+        font-size: @tile-font-size * 0.8;
+        // width: calc(~"100% - "@tile-padding);
+        padding-left: @tile-padding;
+        padding-top: @tile-padding;
+        float: left;
+    }
+}

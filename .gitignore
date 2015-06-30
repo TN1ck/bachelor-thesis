@@ -6,6 +6,8 @@
 *.run.xml
 *.out
 *.toc
-livewall.frontend/bower_components/
-livewall.frontend/dist/
-livewall.frontend/node_modules/
+
+
+bower_components
+build
+node_modules

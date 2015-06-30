@@ -1,0 +1,45 @@
+{
+  "name": "livewall-frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node webpack-server.js",
+    "build": "NODE_ENV=production webpack -p --progress scripts/index.js bundle.js"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.4",
+    "cookies": "^0.5.0",
+    "cookies-js": "^1.2.1",
+    "d3": "^3.5.5",
+    "immutable": "^3.7.3",
+    "jquery": "^2.1.3",
+    "less": "^2.4.0",
+    "less-loader": "^2.1.0",
+    "lodash": "^3.9.3",
+    "moment": "^2.10.3",
+    "react": "^0.13.0",
+    "react-bootstrap": "^0.23.0",
+    "react-router": "^0.13.3",
+    "reflux": "^0.2.7",
+    "store": "^1.3.17",
+    "store.js": "^1.0.4"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^1.1.0",
+    "babel": "^4.7.8",
+    "babel-core": "^4.0.1",
+    "babel-eslint": "^3.1.9",
+    "babel-loader": "^4.0.0",
+    "babel-plugin-react": "^0.1.2",
+    "css-loader": "^0.9.1",
+    "eslint": "^0.17.1",
+    "eslint-plugin-react": "^1.5.0",
+    "extract-text-webpack-plugin": "^0.5.0",
+    "jsx-loader": "^0.12.2",
+    "normalize.css": "^3.0.2",
+    "react-hot-loader": "^1.1.1",
+    "sass-loader": "^0.4.2",
+    "style-loader": "^0.8.3",
+    "webpack": "^1.5.1",
+    "webpack-dev-server": "1.6.4"
+  }
+}
