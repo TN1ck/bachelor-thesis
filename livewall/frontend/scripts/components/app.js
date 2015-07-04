@@ -2,15 +2,15 @@ import React               from 'react/addons';
 import Reflux              from 'reflux';
 import {RouteHandler}      from 'react-router';
 
-import {SETTINGS}          from '../settings.js';
+import SETTINGS            from '../settings.js';
 import {user, requireAuth} from '../auth.js';
 import gameStore           from '../stores/game.js';
 
-import {ReactHeader}       from './header.js';
+import Header              from './header.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-export var ReactApp = React.createClass({
+export default React.createClass({
     displayName: 'app',
     mixins: [
         Reflux.listenTo(gameStore, 'onStoreChange')
@@ -25,7 +25,7 @@ export var ReactApp = React.createClass({
         var router = this.context.router;
         return (
             <div>
-                <ReactHeader/>
+                <Header/>
                 <RouteHandler key={router.getCurrentPath()} />
             </div>
         );

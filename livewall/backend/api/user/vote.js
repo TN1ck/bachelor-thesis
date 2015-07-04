@@ -1,5 +1,5 @@
-var models = require('../../models');
 var _       = require('lodash');
+var models = require('../../models');
 
 var User = models.User;
 var Action = models.Action;

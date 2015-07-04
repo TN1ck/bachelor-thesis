@@ -4,21 +4,18 @@ import {
     Jumbotron, Alert, PageHeader
 } from 'react-bootstrap';
 
-import {SETTINGS}          from '../settings.js';
+import SETTINGS            from '../settings.js';
 import {user, requireAuth} from '../auth.js';
 import actions             from '../actions/actions.js';
 import {dataStore}         from '../stores/data.js';
 
+import t from '../../shared/translations/translation.js';
+
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 
-export var ReactSettings = React.createClass({
+export default React.createClass({
     displayName: 'settings',
-    getInitialState: function () {
-        return {
-            settings: SETTINGS
-        }
-    },
     render: function () {
 
         return (
@@ -26,11 +23,9 @@ export var ReactSettings = React.createClass({
                 <Row>
                     <Col xs={12}>
                         <PageHeader>
-                            <h1>Einstellungen</h1>
+                            <h1>{t.settings.header}</h1>
                             <hr/>
-                            <p>Hier können Sie permanente Einstellungen an der DAI-wall vornehmen.
-                            Klicken Sie auf speichern um die Änderungen zu übernehmen.</p>
-                            <h2>Quellen</h2>
+                            <p>{t.settings.subHeader}</p>
                         </PageHeader>
                     </Col>
                 </Row>

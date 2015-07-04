@@ -2,8 +2,8 @@ import _                from 'lodash';
 import Reflux           from 'reflux';
 import Immutable        from 'immutable';
 
+import {compareStrings} from '../../shared/util/utils.js';
 import actions          from '../actions/actions.js';
-import {compareStrings} from '../util/utils.js';
 import dataStore        from './data.js';
 
 

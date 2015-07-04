@@ -3,17 +3,17 @@ import store              from 'store';
 import _                  from 'lodash';
 import $                  from 'jquery';
 
-import {getColorByString} from '../util/colors.js';
+import {getColorByString} from '../../shared/util/colors.js';
 import {user}             from '../auth.js';
 import Broker             from './Broker.js';
 
 export default class Query {
 
-    constructor (term, brokerSettings) {
+    constructor (term, broker) {
         this.term = term;
         this.date = moment();
         this.color = getColorByString(term);
-        this.brokerSettings = brokerSettings;
+        this.brokerSettings = broker;
 
         this.initBroker();
 

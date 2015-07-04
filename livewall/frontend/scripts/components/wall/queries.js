@@ -6,7 +6,7 @@ import actions    from '../../actions/actions.js';
 import dataStore  from '../../stores/data.js';
 import queryStore from '../../stores/queries.js';
 
-export var ReactQuery = React.createClass({
+var ReactQuery = React.createClass({
     displayName: 'query',
     render: function () {
 
@@ -34,7 +34,7 @@ export var ReactQuery = React.createClass({
     }
 });
 
-export var ReactAddQuery = React.createClass({
+var ReactAddQuery = React.createClass({
     displayName: 'add-query',
     handleSubmit: function (e) {
 
@@ -58,7 +58,7 @@ export var ReactAddQuery = React.createClass({
     }
 });
 
-export var ReactQueries = React.createClass({
+export default React.createClass({
     displayName: 'queries',
     mixins: [Reflux.listenTo(queryStore, 'onStoreChange')],
     onStoreChange: function (queries) {

@@ -1,8 +1,8 @@
-export var camelCaseToBar = function (str) {
+var camelCaseToBar = function (str) {
     return str[0].toLowerCase() + str.slice(1, str.length).replace(/([A-Z])/g, function($1){return '|'+$1.toLowerCase();});
 };
 
-export var getDomain = function (url) {
+var getDomain = function (url) {
     if (!url) {
         return 'not found';
     }
@@ -12,7 +12,7 @@ export var getDomain = function (url) {
 };
 
 
-export var hashCode = function (str) {
+var hashCode = function (str) {
     var hash = 0;
     if (str.length === 0) {
         return hash;
@@ -26,7 +26,7 @@ export var hashCode = function (str) {
     return hash < 0 ? hash * -1 : hash;
 };
 
-export var parseColor = function (hex) {
+var parseColor = function (hex) {
     hex = String(hex).replace(/[^0-9a-f]/gi, '');
     if (hex.length < 6) {
         hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
@@ -44,7 +44,7 @@ export var parseColor = function (hex) {
     };
 };
 
-export var colorLuminance = function (hex, lum) {
+var colorLuminance = function (hex, lum) {
 
     // validate hex string
     hex = String(hex).replace(/[^0-9a-f]/gi, '');
@@ -64,10 +64,19 @@ export var colorLuminance = function (hex, lum) {
     return rgb;
 };
 
-export var compareStrings = function (a, b) {
+var compareStrings = function (a, b) {
     if (a === b) {
         return 0;
     } else {
         return a > b ? 1 : -1;
     }
+};
+
+module.exports = {
+    camelCaseToBar: camelCaseToBar,
+    getDomain:      getDomain,
+    hashCode:       hashCode,
+    parseColor:     parseColor,
+    colorLuminance: colorLuminance,
+    compareStrings: compareStrings
 };

@@ -1,14 +1,15 @@
 import React               from 'react/addons';
 import Reflux              from 'reflux';
 
-import {SETTINGS}          from '../settings.js';
+import SETTINGS            from '../settings.js';
 import {user, requireAuth} from '../auth.js';
 
 import gameStore           from '../stores/game.js';
 import actions             from '../actions/actions.js';
-import {camelCaseToBar}    from '../util/utils.js';
-import { hashCode }        from '../util/utils.js';
-import rewards             from '../gamification/rewards.js';
+import {camelCaseToBar, hashCode}    from '../../shared/util/utils.js';
+import rewards             from '../../shared/gamification/rewards.js';
+
+import t from '../../shared/translations/translation.js';
 
 import {
     Grid, Row, Col, Input, Button, Badge,
@@ -61,61 +62,42 @@ var ColorSchema = React.createClass({
 
 export default React.createClass({
     displayName: 'rewards',
-    getInitialState: function () {
-        return {
-            settings: SETTINGS
-        }
-    },
     mixins: [
         Reflux.connect(gameStore),
     ],
     render: function () {
-        // var sources = this.state.settings.SOURCES.map(source => {
-        //     var sourceHydrated = {
-        //         source: {
-        //             name: camelCaseToBar(source.name),
-        //             search: source.search
-        //         },
-        //         loaded: true
-        //     };
-        //     return <ReactSource source={sourceHydrated}/>
-        // });
-        //
-        //
 
-        var colorSchemas = rewards.colors.map(schema => {
+        var colorSchemas = rewards.map(schema => {
             return <ColorSchema schema={schema}/>
         });
+
+
 
         return (
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <h1>Freigeschaltete Features</h1>
+                        <h1>{t.rewards.header}</h1>
                         <hr/>
-                        <p>
-                            Erreichen Sie eine bestimmte Punktzahl werden hier automatisch Features freigeschaltet.
-                        </p>
+                        <p>{t.rewards.subHeader}</p>
                     </Col>
                     <Col xs={12}>
-                        <h3>Farbschemas</h3>
-                        Mittels der Farbschema können Sie die Farben der Suchergebnisse variieren. Unter den Einstellungen können Sie das Farbschema anpassen.
-                        In den Einstellungen können Sie die zwischen den erhaltenen Schemas wechseln.
-                        <hr />
+                        <h3>{t.rewards.colors.header}</h3>
+                        <p>{t.rewards.colors.subHeader}</p>
+                        <hr/>
                         <Row>
                         {colorSchemas}
                         </Row>
                     </Col>
                     <Col xs={12}>
-                        <h3>Hintergrundbilder und Farben</h3>
-                        Mittels der der Hintergrundbilder können Sie den global genutzten Hintergrund anpassen.
+                        <h3>{t.rewards.backgrounds.header}</h3>
+                        <p>{t.rewards.backgrounds.subHeader}</p>
                         <hr />
                     </Col>
                     <Col xs={12}>
-                        <h3>Erweiterte Funktionen</h3>
-                        Durch Erweiterte Funktionen erhalten Sie mehr Macht in der Darstellung der Suchergebnissen,
-                        sei es die Art der Gruppierung oder die Prioriesierung der Broker.
-                        <hr />
+                        <h3>{t.rewards.advanced.header}</h3>
+                        <p>{t.rewards.advanced.subHeader}</p>
+                        <hr/>
                     </Col>
                 </Row>
             </Grid>

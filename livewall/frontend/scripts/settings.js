@@ -69,9 +69,9 @@ defaults.FILTER = {
 
 
 
-// // check if there are settings set
-// var setFromLocal = function(settings) {
-//     _.each(settings, (v, k) => {
+// // check if there are import SETTINGS set
+// var setFromLocal = function(import SETTINGS) {
+//     _.each(import SETTINGS, (v, k) => {
 //         var value = store.get(k);
 //         if (value) {
 //             defaults[k] = value;
@@ -81,10 +81,10 @@ defaults.FILTER = {
 //
 // setFromLocal(defaults);
 
-export var SETTINGS = defaults;
-
-export var save = function () {
-    _.each(SETTINGS, (v, k) => {
-        store.save(k, v);
-    });
-};
+export default defaults;
+//
+// export var save = function () {
+//     _.each(import SETTINGS, (v, k) => {
+//         store.save(k, v);
+//     });
+// };

@@ -1,12 +1,14 @@
-import React  from 'react/addons';
-import Reflux from 'reflux';
-import {Link} from 'react-router';
+import React     from 'react/addons';
+import Reflux    from 'reflux';
+import {Link}    from 'react-router';
 
-import {user} from '../auth.js';
+import {user}    from '../auth.js';
 import gameStore from '../stores/game.js';
-import {SETTINGS} from '../settings.js';
+import SETTINGS  from '../settings.js';
 
-export var ReactHeader = React.createClass({
+import t from '../../shared/translations/translation.js';
+
+export default React.createClass({
     displayName: 'header',
     mixins: [
         Reflux.connect(gameStore)
@@ -48,21 +50,22 @@ export var ReactHeader = React.createClass({
             return <span> <Link to={link.link}>{link.name}</Link> {seperator}</span>;
         });
 
+        console.log(this.state);
+
         var monthly = this.state.monthly.user;
         var alltime = this.state.alltime.user;
-        console.log(alltime, alltime.trophies.points.all);
 
         var userComponent;
 
         if (!SETTINGS.HIDE_HEADER) {
             userComponent = <div className='wall__header__info'>
-                <span>Angemeldet als {user.username} </span>
+                <span>{t.header.label.loginAs} {user.username} </span>
                 <a href="#/trophies">
-                    {alltime.trophies.points.all} Punkte
+                    {alltime.points.all} {t.header.label.points}
                 </a>
                 <span> </span>
                 <a href="#/trophies">
-                    #{monthly.place} diesen Monat - #{alltime.place} Gesamt
+                    #{monthly.place} {t.header.label.alltime} - #{alltime.place} {t.header.label.month}
                 </a>
             </div>;
         }

@@ -6,9 +6,11 @@ import {
 
 import {Link, Route, RouteHandler} from 'react-router';
 
-import {user}    from '../../auth.js';
+import {user} from '../../auth.js';
 
-export var ReactLogin = React.createClass({
+import t from '../../../shared/translations/translation.js';
+
+export default React.createClass({
     displayName: 'login',
     contextTypes: {
         router: React.PropTypes.func.isRequired
@@ -18,12 +20,7 @@ export var ReactLogin = React.createClass({
             remember: true,
             loading: false,
             error: false,
-            isLogedIn: 'loading',
-            text: {
-                notLoged: 'Anmelden',
-                Loged: 'Sie sind bereits angemeldet, wollen sie sich abmelden?',
-                error: 'Ein Fehler ist aufgetreten, bitte stellen Sie sicher das ihr Benutzername und das zugehörige Passwort korrekt sind.'
-            }
+            isLogedIn: 'loading'
         };
     },
     handleSubmit: function (e) {
@@ -65,15 +62,12 @@ export var ReactLogin = React.createClass({
 
         var loading = <i className="fa fa-spinner fa-pulse"></i>;
 
-        var text = {
-        };
-
         var error;
 
         if (this.state.error) {
             error = <Alert bsStyle='danger'>
-                <h4>Oh nein... </h4>
-                <p>{text.error}</p>
+                <h4>{t.auth.login.error.header}</h4>
+                <p>{t.auth.login.error.text}</p>
             </Alert>
         };
 
@@ -85,18 +79,18 @@ export var ReactLogin = React.createClass({
                 bsStyle={bsStyle}
                 type='text'
                 autofocus
-                placeholder='Benutzername'
+                placeholder={t.auth.label.username}
                 hasFeedback
-                label='Benutzername'
+                label={t.auth.label.username}
                 ref='username'
             />
             <Input
                 disabled={this.state.loading}
                 bsStyle={bsStyle}
                 type='password'
-                placeholder='Passwort'
+                placeholder={t.auth.label.password}
                 hasFeedback
-                label='Passwort'
+                label={t.auth.label.password}
                 ref='password'
             />
             <Input
@@ -105,29 +99,27 @@ export var ReactLogin = React.createClass({
                 value={this.state.remember}
                 type='checkbox'
                 hasFeedback
-                label='Angemeldet bleiben'
+                label={t.auth.label.remember}
                 ref='remember'
             />
             <Button
                 disabled={this.state.loading}
                 bsStyle='primary' type='submit'
                 onSubmit={this.handelSubmit}>
-                Anmelden {this.state.loading ? loading : ''}
+                {t.auth.label.login} {this.state.loading ? loading : ''}
             </Button>
         </form>;
 
         var logoutForm = <div>
             <ButtonGroup justified>
-                <Button href="#/logout" bsStyle='danger'>Abmelden</Button>
-                <Button href="#/" bsStyle='primary'>Zur DAI-Wall</Button>
+                <Button href="#/logout" bsStyle='danger'>{t.auth.label.logout}</Button>
+                <Button href="#/" bsStyle='primary'>{t.auth.label.wall}</Button>
             </ButtonGroup>
         </div>;
 
-        console.log('is loged in', this.state.isLogedIn)
-
         var headerText = {
-            true: this.state.text.Loged,
-            false: this.state.text.notLoged
+            true: t.auth.login.already,
+            false: t.auth.label.login
         }[this.state.isLogedIn];
 
         return (

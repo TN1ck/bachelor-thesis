@@ -1,9 +1,9 @@
-import React from 'react/addons';
-import d3 from 'd3';
-import $  from 'jquery';
-import _ from 'lodash';
+import React      from 'react/addons';
+import d3         from 'd3';
+import $          from 'jquery';
+import _          from 'lodash';
 
-import { colors } from '../../util/colors.js';
+import { colors } from '../../../shared/util/colors.js';
 
 class BarChart {
     constructor(root) {

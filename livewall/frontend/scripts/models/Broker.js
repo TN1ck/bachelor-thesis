@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import {getDomain} from '../util/utils.js';
+import {getDomain} from '../../shared/util/utils.js';
 
 // The options you can give a source should not change their returned json, i.e. this is how we seperate them
 // Due to this, we have a PiaSource for every broker it can can use
@@ -97,7 +97,8 @@ export default class Pia {
             num:          10,
             autocomplete: this.broker.autocomplete,
             username:     user.username,
-            action:       this.broker.action
+            action:       this.broker.action,
+            sort:         'xmp_date desc'
         };
 
         if (this.filter) {

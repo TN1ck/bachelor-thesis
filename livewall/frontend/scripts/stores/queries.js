@@ -6,7 +6,7 @@ import moment     from 'moment';
 
 import actions    from '../actions/actions.js';
 import {user}     from '../auth.js';
-import {SETTINGS} from '../settings.js';
+import SETTINGS   from '../settings.js';
 
 import Query      from '../models/Query.js';
 
@@ -59,7 +59,6 @@ export default Reflux.createStore({
 
         // first get the items from localstorage
         var savedItems = query.readData();
-        console.log('saved items', savedItems);
         processItems(savedItems);
 
         // make the real request

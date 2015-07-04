@@ -1,17 +1,29 @@
 module.exports = {
     database: 'livewall',
     username: 'test',
-    password: '',
+    password: 'testpassword',
     config: {
-        dialect: 'sqlite',
+        // dialect: 'sqlite',
+        // dialect: 'postgres',
+        dialect: 'mysql',
         pool: {
             max: 5,
             min: 0,
             idle: 10000
         },
         // sqlite only
-        storage: './database.sqlite'
+        // storage: './database.sqlite',
+
+        // THERE IS A BUG WITH POSTGRES AND A GROUP-BY QUERY. sqlite and mysql are working fine
         // postgres et al
-        // url: 'postgres://user:pass@example.com:5432/dbname'
+
+        // port: 5432,
+        // host: '127.0.0.1'
+
+        // mysql
+
+        host: '127.0.0.1',
+        port: 3306
+
     }
 };

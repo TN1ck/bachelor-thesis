@@ -9,24 +9,27 @@ import {
     Button, Jumbotron, Alert, PageHeader
 } from 'react-bootstrap';
 
-export var ReactLogout = React.createClass({
+import t from '../../../shared/translations/translation.js';
+
+export default React.createClass({
     componentDidMount: function () {
         user.logout();
         dataStore.reset();
     },
     render: function () {
+
         return (
             <Grid>
                 <Row>
                     <Col xs={12} md={6} mdOffset={3}>
                         <PageHeader>
-                            <h1>Sie haben sich erfolgreich ausgeloggt.</h1>
+                            <h1>{t.auth.logout.success}</h1>
                             <hr/>
                         </PageHeader>
-                      <h4>Melden Sie sich an um wieder die Enterprise-Wall wieder zu benutzen</h4>
+                      <h4>{t.auth.logout.again}</h4>
                       <Link to="login">
                           <Button bsStyle='success'>
-                          Anmelden
+                          {t.auth.label.login}
                           </Button>
                       </Link>
                     </Col>

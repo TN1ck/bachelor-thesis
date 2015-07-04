@@ -1,4 +1,4 @@
-export var pointsForActions = {
+module.exports = {
     vote: {
         up: 10,
         down: 10

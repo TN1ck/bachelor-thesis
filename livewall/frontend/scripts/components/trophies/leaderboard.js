@@ -6,6 +6,8 @@ import {
     Table, Well
 } from 'react-bootstrap';
 
+import t from '../../../shared/translations/translation.js';
+
 export default React.createClass({
     render: function () {
         var users = this.props.users;
@@ -20,12 +22,12 @@ export default React.createClass({
 
         if (highlightUser) {
             users = users.filter(x => {
-                return x.user !== highlightUser.user;
+                return x.username !== highlightUser.username;
             });
         }
 
 
-        var sortFn = (a, b) => b.trophies.points - a.trophies.points;
+        var sortFn = (a, b) => b.points.all - a.points.all;
 
         // sort and take best 20
 
@@ -36,36 +38,17 @@ export default React.createClass({
             users = users.concat([highlightUser]).sort(sortFn);
         }
 
-        users.sort((a, b) => {
-            return b.trophies.points.all - a.trophies.points.all;
-        })
+        users = users.sort(sortFn);
 
         var list = users.map(_user => {
-            var {results, trophies, points, place} = _user.trophies;
-            var name = _user.user;
+            var {points, badges, actions} = _user;
+            var name = _user.username;
 
-            // trophies = _.chain(trophies).map(x => {
-            //     return _.find(badges, {id: x});
-            // }).sortBy(x => -x.points.all).value();
-            //
-            //
-            // var _trophies = trophies.map(x => {
-            //     return <div className='trophies__leaderboard__trophies__container'>
-            //         <Award
-            //             center={true}
-            //             image={x.image}
-            //             text={x.name}
-            //             number={x.number}
-            //             type={x.type}
-            //             fill={x.fill}/>
-            //         </div>;
-            // });
-
-            var _trophies = trophies.length;
+            var _badges = badges.length;
 
             var trClass = ''
 
-            if (highlightUser && name === highlightUser.user) {
+            if (highlightUser && name === highlightUser.username) {
                 trClass = 'active';
             }
 
@@ -73,7 +56,7 @@ export default React.createClass({
                 <td className='vert-align trophies__leaderboard__place'    xs={3}>#{_user.place}</td>
                 <td className='vert-align trophies__leaderboard__name'     xs={3}>{name}</td>
                 <td className='vert-align trophies__leaderboard__points'   xs={3}>{points.all}</td>
-                <td className='vert-align trophies__leaderboard__trophies' xs={3}>{_trophies}</td>
+                <td className='vert-align trophies__leaderboard__trophies' xs={3}>{_badges}</td>
             </tr>;
         });
 
@@ -81,10 +64,10 @@ export default React.createClass({
             <Table className='trophies__leaderboard' hover striped>
                 <thead>
                     <tr>
-                        <th>Platz</th>
-                        <th>Name</th>
-                        <th>Punkte</th>
-                        <th>Trophäen</th>
+                        <th>{t.leaderboard.place}</th>
+                        <th>{t.leaderboard.name}</th>
+                        <th>{t.leaderboard.points}</th>
+                        <th>{t.leaderboard.badges}</th>
                     </tr>
                 </thead>
                 <tbody>

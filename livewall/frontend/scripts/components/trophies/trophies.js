@@ -1,37 +1,38 @@
-import React  from 'react/addons';
-import _      from 'lodash';
-import Reflux from 'reflux';
+import React                from 'react/addons';
+import _                    from 'lodash';
+import Reflux               from 'reflux';
 import {
     Grid, Row, Col, Input, Button,
     Jumbotron, Alert, PageHeader, Badge,
     Table, Well
-} from 'react-bootstrap';
+}                           from 'react-bootstrap';
 
 
-import {SETTINGS}          from '../../settings.js';
-import gameStore           from '../../stores/game.js';
-import {camelCaseToBar}    from '../../util/utils.js';
-import {user, requireAuth} from '../../auth.js';
+import SETTINGS             from '../../settings.js';
+import gameStore            from '../../stores/game.js';
+import {user, requireAuth}  from '../../auth.js';
 
-import { badges }          from '../../gamification/badges.js';
 
-import BarChart from '../charts/barChart.js';
+import BarChart             from '../charts/barChart.js';
 
-// import {ReactSourceSelect, ReactSource} from './sources.js';
+import Award                from './awards.js';
+import LeaderBoard          from './leaderboard.js';
 
-import Award       from './awards.js';
-import LeaderBoard from './leaderboard.js';
+import badges               from '../../../shared/gamification/badges.js';
+import {camelCaseToBar}     from '../../../shared/util/utils.js';
 
-export var ReactTrophies = React.createClass({
+import t                    from '../../../shared/translations/translation.js';
+
+export default React.createClass({
     displayName: 'badges',
     mixins: [
         Reflux.connect(gameStore),
     ],
     render: function () {
 
-        var userBadges = this.state.alltime.user.trophies.trophies.map(t => {
+        var userBadges = this.state.alltime.user.badges.map(t => {
             return _.find(badges, {id : t});
-        });;
+        });
 
         var badgeComponents = userBadges.map(x => {
             return (
@@ -48,7 +49,7 @@ export var ReactTrophies = React.createClass({
                             <p>
                             {x.text}
                             <br/>
-                            Du hast Für diese Trophäe <strong>{x.points}</strong> Punkte erhalten.
+                            <strong>{x.points}</strong> {t.badgesPage.badge}
                             </p>
                         </div>
                     </div>
@@ -56,68 +57,73 @@ export var ReactTrophies = React.createClass({
             );
         });
 
-        console.log(this.state.alltime.user);
+        var user = this.state.alltime.user;
 
-        var points = this.state.alltime.user.trophies.points || {};
+        var getActionPoints = (actions, group, label) => {
+            return (_.find(actions, {group: group, label: label}) || {points: 0}).points;
+        };
 
         var data = [
             {
-                y: 'bewerten',
-                x: points.vote || 0
+                y: t.badgesPage.label.vote,
+                x: getActionPoints(user.actions, 'vote', 'down') +
+                   getActionPoints(user.actions, 'vote', 'up')
             },
 
             {
-                y: 'favorisieren',
-                x: points.favourite || 0
+                y: t.badgesPage.label.favourite,
+                x: getActionPoints(user.actions, 'favourite', 'toggle')
             },
 
             {
-                y: 'einloggen',
-                x: points.auth || 0
+                y: t.badgesPage.label.login,
+                x: getActionPoints(user.actions, 'auth', 'login')
             },
 
             {
-                y: 'suchen',
-                x: points.search || 0
+                y: t.badgesPage.label.search,
+                x: getActionPoints(user.actions, 'search', 'add')
             },
             {
-                y: 'Trophäen',
-                x: points.trophies || 0
+                y: t.badgesPage.label.badge,
+                x: user.points.badges
             }
 
         ].sort((a, b) => b.x - a.x);
+
+        console.log(t, t.badgesPage, 'aouoeu');
 
         return (
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <h1>{this.state.alltime.user.trophies.points.all} Punkte</h1>
+                        <h1>{this.state.alltime.user.points.all} Punkte</h1>
                         <BarChart data={data}/>
                     </Col>
                     <Col xs={12}>
-                        <h1>Bestenliste</h1>
+                        <h1>{t.badgesPage.leaderboard.header}</h1>
                         <hr/>
                     </Col>
                     <Col xs={12}>
                         <Row>
                             <Col xs={12} md={6}>
-                                <h3>Aller Zeiten</h3>
+                                <h3>{t.badgesPage.leaderboard.alltime}</h3>
                                 <LeaderBoard users={this.state.alltime.users} user={this.state.alltime.user}/>
                             </Col>
                             <Col xs={12} md={6}>
-                                <h3>Letzter Monat</h3>
+                                <h3>{t.badgesPage.leaderboard.monthly}</h3>
                                 <LeaderBoard users={this.state.monthly.users} user={this.state.monthly.user}/>
                             </Col>
                         </Row>
                     </Col>
                     <Col xs={12}>
                         <PageHeader>
-                            <h1>Trophäen</h1>
+                            <h1>{t.badgesPage.badges.header}</h1>
                             <hr/>
                             <p>
-                                Hier Findest du alle Trophäen die du bekommen hast, durch jede Trophäe werden dir Punkte auf deinen Punktestand gutgeschrieben.
+                                {t.badgesPage.badges.subHeader}
                                 <br/>
-                                Du hast bisher <strong>{userBadges.length}</strong> gesammelt.
+                                <strong>{userBadges.length}</strong> {t.badgesPage.badges.collected}
                             </p>
                         </PageHeader>
                     </Col>

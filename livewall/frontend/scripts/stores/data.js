@@ -6,8 +6,12 @@ import moment     from 'moment';
 
 import actions    from '../actions/actions.js';
 import {user}     from '../auth.js';
-import {SETTINGS} from '../settings.js';
+import SETTINGS   from '../settings.js';
 
+import {
+    postVote,
+    getItems
+}                 from '../api/api.js';
 
 //
 // ITEM STORE
@@ -25,9 +29,7 @@ export default Reflux.createStore({
         };
 
         this.listenTo(actions.addItems,      this.addItems);
-
         this.listenTo(actions.voteItem,      this.voteItem);
-
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.removeQuery,   this.removeQuery);
 
@@ -94,7 +96,7 @@ export default Reflux.createStore({
         // get upvotes and actions of the tiles
         //
 
-        $.get(`${SETTINGS.SERVER_URL}/api/items?items=${uuids}`).then(result => {
+        getItems(uuids).then(result => {
 
             result.items.forEach(item => {
                 var _item = tempItems[item.uuid];
@@ -104,7 +106,9 @@ export default Reflux.createStore({
 
                     var ownVote = _.find(item.Votes, vote => {
                         return vote.User.username === user.username;
-                    }) || {value: 0};
+                    }) || {
+                        value: 0
+                    };
 
                     tempItems[item.uuid] = _item.merge({
                         votes: votes,
@@ -146,7 +150,8 @@ export default Reflux.createStore({
         // optimistically change the score
 
         var item = this.items.get(uuid);
-        var votes   = item.get('votes') || 0;
+
+        var votes   = item.get('votes')   || 0;
         var ownVote = item.get('ownVote') || 0;
 
         item = item.merge({
@@ -154,24 +159,15 @@ export default Reflux.createStore({
             ownVote: voteValue
         });
 
-        console.log(ownVote, item);
 
         this.items = this.items.set(uuid, item);
         this.triggerState.bind(this)(this.items);
 
         // make the real request
 
-        $.post(`${SETTINGS.SERVER_URL}/api/user/vote`, {
-
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
-            username: user.username,
+        postVote({
             item: uuid,
             value: voteValue
-
-        }).then(result => {
-
-
         });
 
     },

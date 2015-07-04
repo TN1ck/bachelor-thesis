@@ -1,41 +1,43 @@
-import React from 'react';
-import Reflux from 'reflux';
+import React       from 'react';
+import Reflux      from 'reflux';
 import {
     Grid, Row, Col, Input, Button,
     Jumbotron, Alert, PageHeader
-} from 'react-bootstrap';
+}                  from 'react-bootstrap';
 
-import gameStore from '../../stores/game.js';
-import BarChart from '../charts/barChart.js';
+import gameStore   from '../../stores/game.js';
+import BarChart    from '../charts/barChart.js';
 import LeaderBoard from '../trophies/leaderboard.js';
 
-module.exports = React.createClass({
+import t from '../../../shared/translations/translation.js';
+
+export default React.createClass({
     mixins: [
         Reflux.connect(gameStore),
     ],
     render: function () {
-
+        console.log(t, t.badgesPage, 'BADGESPAGE');
         return (
             <Row>
-                <Col md={4}>
-                    <h1>Bestenlisten</h1>
+                <Col xs={12} sm={12} md={4}>
+                    <h1>{t.badgesPage.leaderboard.header}</h1>
                     <hr/>
                     <Row>
-                        <Col xs={12} md={6}>
-                            <h3>Aller Zeiten</h3>
+                        <Col md={12} lg={6}>
+                            <h3>{t.badgesPage.leaderboard.alltime}</h3>
                             <LeaderBoard users={this.state.alltime.users}/>
                         </Col>
-                        <Col xs={12} md={6}>
-                            <h3>Letzter Monat</h3>
+                        <Col md={12} lg={6}>
+                            <h3>{t.badgesPage.leaderboard.monthly}</h3>
                             <LeaderBoard users={this.state.monthly.users}/>
                         </Col>
                     </Row>
                 </Col>
-                <Col md={4}>
+                <Col xs={12} sm={12} md={4}>
                     <h1>Punkte</h1>
                     <hr/>
                 </Col>
-                <Col md={4}>
+                <Col xs={12} sm={12} md={4}>
                     <h1>Aktionen</h1>
                     <hr/>
                 </Col>

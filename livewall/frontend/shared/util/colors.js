@@ -1,9 +1,9 @@
-import {hashCode} from './utils.js';
-import d3         from 'd3';
-import _          from 'lodash';
+var hashCode = require('./utils.js').hashCode;
+var d3       = require('d3');
+var _        = require('lodash');
 
-export var colorFunctions = {
-    pastel: (hash) => {
+var colorFunctions = {
+    pastel: function (hash) {
         var hslStarts = [
             {s: 0.4, l: 0.4},
             {s: 0.3, l: 0.4},
@@ -17,7 +17,7 @@ export var colorFunctions = {
         var hsl = d3.hsl(h, sl.s, sl.l);
         return hsl.toString();
     },
-    blue: (hash) => {
+    blue: function (hash) {
 
         var sScale = d3.scale.linear().domain([0, 1]).range([0.2, 0.8]);
 
@@ -33,7 +33,7 @@ export var colorFunctions = {
         var color = d3.hsl(hsl.h, s, hsl.l);
         return color.toString();
     },
-    green: (hash) => {
+    green: function (hash) {
 
         var sScale = d3.scale.linear().domain([0, 1]).range([0.2, 0.8]);
 
@@ -49,7 +49,7 @@ export var colorFunctions = {
         var color = d3.hsl(hsl.h, s, hsl.l);
         return color.toString();
     },
-    gray: (hash) => {
+    gray: function (hash) {
 
         var lScale = d3.scale.linear().domain([0, 1]).range([0, 0.6]);
 
@@ -62,7 +62,7 @@ export var colorFunctions = {
         var color = d3.hsl(hsl.h, hsl.s, l);
         return color.toString();
     },
-    nice: (hash) => {
+    nice: function (hash) {
         var colors = [
             '#248EE6',
             '#F5A623',
@@ -75,9 +75,9 @@ export var colorFunctions = {
     }
 };
 
-var selectedColorFunction = colorFunctions.pastel;
+var selectedColorFunction = colorFunctions.gray;
 
-export var getColorByString = function (str) {
+var getColorByString = function (str) {
 
     var hash = hashCode(str);
     return selectedColorFunction(hash);
@@ -85,11 +85,17 @@ export var getColorByString = function (str) {
 };
 
 // names of the colors accourding to: http://chir.ag/projects/name-that-color/
-export var colors = {
+var colors = {
     vinrouge:     '#9c4274',
     buttercup:    '#F5A623',
     sushi:        '#96bf48',
     burnt_sienna: '#EC663C',
     puerto_rico:  '#47BBB3',
     curious_blue: '#248EE6'
+};
+
+module.exports = {
+    colors: colors,
+    getColorByString: getColorByString,
+    colorFunctions: colorFunctions
 };

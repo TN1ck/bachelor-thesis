@@ -1,17 +1,17 @@
-import React          from 'react/addons';
-import Reflux         from 'reflux';
-import Immutable      from 'immutable';
+import React        from 'react/addons';
+import Reflux       from 'reflux';
+import Immutable    from 'immutable';
 
-import layoutStore    from '../../stores/layout.js';
+import layoutStore  from '../../stores/layout.js';
 
-import actions        from '../../actions/actions.js';
+import actions      from '../../actions/actions.js';
 
-import {ReactTile}    from './tiles.js';
-import {ReactQueries} from './queries.js';
+import Tile         from './tiles.js';
+import Queries      from './queries.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-export var ReactWall = React.createClass({
+export default React.createClass({
     displayName: 'wall',
     mixins: [
         Reflux.listenTo(layoutStore, "onStoreChange")
@@ -31,7 +31,7 @@ export var ReactWall = React.createClass({
     render: function () {
 
         var tiles = this.state.items.toArray().map((tile) => {
-            return <ReactTile tile={tile} key={tile.get('uuid')}/>;
+            return <Tile tile={tile} key={tile.get('uuid')}/>;
         });
 
         var loading;
@@ -41,7 +41,7 @@ export var ReactWall = React.createClass({
 
         return (
             <div>
-                <ReactQueries />
+                <Queries />
                 <div className='tiles'>
                     <ReactCSSTransitionGroup transitionName="fade" transitionAppear={false} transitionEnter={false}>
                         {tiles}

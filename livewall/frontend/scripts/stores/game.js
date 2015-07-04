@@ -6,10 +6,11 @@ import moment             from 'moment';
 
 import actions            from '../actions/actions.js';
 import {user}             from '../auth.js';
-import {SETTINGS}         from '../settings.js';
+import SETTINGS           from '../settings.js';
 import * as owa           from '../owa.js';
-import * as leaderboard   from '../aggregate/leaderboard.js';
-import {pointsForActions} from '../gamification/points.js';
+import * as pointApi      from '../api/points.js';
+import {postAction}       from '../api/api.js';
+import {pointsForActions} from '../../shared/gamification/points.js';
 
 //
 // GAME STORE
@@ -29,13 +30,9 @@ export default Reflux.createStore({
         this.state = {
             monthly: {
                 user: {
-                    trophies: {
-                        trophies: [],
-                        points: {
-                            all: 0
-                        }
-                    },
-                    results: {
+                    badges: [],
+                    actions: [],
+                    points: {
 
                     }
                 },
@@ -45,13 +42,9 @@ export default Reflux.createStore({
             },
             alltime: {
                 user: {
-                    trophies: {
-                        trophies: [],
-                        points: {
-                            all: 0
-                        }
-                    },
-                    results: {
+                    badges: [],
+                    actions: [],
+                    points: {
 
                     }
                 },
@@ -63,11 +56,17 @@ export default Reflux.createStore({
 
         // get the data after the user logs in
         user.whenLogedIn(() => {
-            leaderboard.getMonthlyLeaderBoard().then(result => {
+
+            postAction({
+                group: 'auth',
+                label: 'login'
+            });
+
+            pointApi.getMonthlyPoints().then(result => {
                 this.state.monthly = result;
                 this.trigger(this.state);
             });
-            leaderboard.getAllTimeLeaderBoard().then(result => {
+            pointApi.getAllTimePoints().then(result => {
                 this.state.alltime = result;
                 this.trigger(this.state);
             });
@@ -80,12 +79,16 @@ export default Reflux.createStore({
     },
 
     updatePoints: function (group, action) {
+
         var pointsAdded = pointsForActions[group][action];
-        this.state.alltime.user.trophies.points.all    += pointsAdded;
-        this.state.alltime.user.trophies.points[group] += pointsAdded;
-        this.state.monthly.user.trophies.points.all    += pointsAdded;
-        this.state.monthly.user.trophies.points[group] += pointsAdded;
+
+        this.state.alltime.user.points.all    += pointsAdded;
+        this.state.alltime.user.points[group] += pointsAdded;
+        this.state.monthly.user.points.all    += pointsAdded;
+        this.state.monthly.user.points[group] += pointsAdded;
+
         this.trigger(this.state);
+
     },
 
     addQuery: function (queryTerm, track) {
@@ -94,15 +97,11 @@ export default Reflux.createStore({
             owa.track('search', queryTerm, 'add');
             this.updatePoints('search', 'add');
 
-            $.post(`${SETTINGS.SERVER_URL}/api/user/action`, {
-
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                username: user.username,
+            postAction({
                 group: 'search',
                 label: 'add',
-                value: queryTerm
-
+                item: uuid,
+                value: uuid
             });
 
         }
@@ -111,15 +110,11 @@ export default Reflux.createStore({
         owa.track('search', queryTerm, 'remove');
         this.updatePoints('search', 'remove');
 
-        $.post(`${SETTINGS.SERVER_URL}/api/user/action`, {
-
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
+        postAction({
             group: 'search',
             label: 'remove',
-            username: user.username,
-            value: queryTerm
-
+            item: uuid,
+            value: uuid
         });
     },
 
@@ -128,34 +123,24 @@ export default Reflux.createStore({
             owa.track('vote', uuid, 'up');
             this.updatePoints('vote', 'up');
 
-            $.post(`${SETTINGS.SERVER_URL}/api/user/action`, {
-
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
+            postAction({
                 group: 'vote',
                 label: 'up',
                 item: uuid,
-                username: user.username,
-                value: value
-
-            })
+                value: uuid
+            });
         }
 
         if (value < 0) {
             owa.track('vote', uuid, 'down');
             this.updatePoints('vote', 'down');
 
-            $.post(`${SETTINGS.SERVER_URL}/api/user/action`, {
-
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
+            postAction({
                 group: 'vote',
                 label: 'down',
                 item: uuid,
-                username: user.username,
                 value: value
-
-            })
+            });
         }
     },
 
@@ -163,17 +148,12 @@ export default Reflux.createStore({
         owa.track('favourite', uuid, 'toggle');
         this.updatePoints('favourite', 'toggle');
 
-        $.post(`${SETTINGS.SERVER_URL}/api/user/action`, {
-
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
+        postAction({
             group: 'favourite',
             label: 'toggle',
-            username: user.username,
             item: uuid,
             value: uuid
-
-        })
+        });
 
     },
 

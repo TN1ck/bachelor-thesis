@@ -2,11 +2,13 @@ import React   from 'react/addons';
 import _       from 'lodash';
 import actions from '../../actions/actions.js';
 
+import t from '../../../shared/translations/translation.js';
+
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 var PureRenderMixin = React.addons.PureRenderMixin;
 
-var ReactImageTile = React.createClass({
+var ImageTile = React.createClass({
     displayName: 'ImageTile',
     mixins: [PureRenderMixin],
     render: function () {
@@ -26,7 +28,7 @@ var ReactImageTile = React.createClass({
     }
 });
 
-var ReactPiaTile = React.createClass({
+var PiaTile = React.createClass({
     displayName: 'PiaTile',
     mixins: [PureRenderMixin],
     render: function () {
@@ -56,13 +58,13 @@ var ReactPiaTile = React.createClass({
 });
 
 var tileTypes = {
-    image: ReactImageTile,
-    'pia-pdf': ReactPiaTile,
-    'pia-web': ReactPiaTile,
-    'pia-contact': ReactPiaTile,
+    image: ImageTile,
+    'pia-pdf': PiaTile,
+    'pia-web': PiaTile,
+    'pia-contact': PiaTile,
 };
 
-export var ReactTile = React.createClass({
+export default React.createClass({
     displayName: 'tile',
     mixins: [PureRenderMixin],
     getInitialState: function () {
@@ -110,19 +112,14 @@ export var ReactTile = React.createClass({
         var favourited = this.props.tile.get('favourite') ? 'favourite' : 'unfavourite';
         var loadingFavourite = this.state.loadingFavourite;
 
-        var favouriteText = {
-            unfavourite: 'Speichere dieses Element in deinen PIA-Favoriten.',
-            favourite: 'Lösche dieses Element aus deinen PIA-Favoriten'
-        }[favourited];
+        var favouriteText = t.tile.tooltip.favourite[favourited];
 
         var favouriteTooltip = <Tooltip>
             {favouriteText}
         </Tooltip>;
 
-        var voteText = 'Bewerte dieses Suchergebnis um die Sichtbarkeit des Suchergebnisses zu beeinflussen. Die Suchergebnisse aller Benutzer werden dadurch durch deine Meinung beeinflusst.'
-
         var voteTooltip = <Tooltip>
-            {voteText}
+            {t.tile.tooltip.vote}
         </Tooltip>
 
         var score = Math.round(this.props.tile.get('score') + (this.props.tile.get('votes') || 0));
@@ -152,17 +149,7 @@ export var ReactTile = React.createClass({
             var group = lastAction.group;
             var label = lastAction.label;
 
-            var texts = {
-                vote: {
-                    up: `${username} berwertete dies positiv.`,
-                    down: `${username} berwertete dies negativ.`,
-                },
-                favourite: {
-                    toggle: `${username} favorisierte dies.`,
-                }
-            };
-
-            var text = _.get(texts, [group, label]);
+            var text = `${username} ${_.get(t.tile.actions, [group, label], group + ' ' + label)}`;
 
             _action = (
                 <div className='tile__footer__action'>

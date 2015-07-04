@@ -2,7 +2,7 @@ import $          from 'jquery';
 import _          from 'lodash';
 import moment     from 'moment';
 
-import {SETTINGS} from './settings.js';
+import SETTINGS   from './settings.js';
 import {user}     from './auth.js';
 
 /* important settings for our owa instance */

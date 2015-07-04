@@ -1,14 +1,10 @@
 import React               from 'react/addons';
 import {RouteHandler}      from 'react-router';
 
-import {SETTINGS}          from '../settings.js';
+import SETTINGS            from '../settings.js';
 import {user, requireAuth} from '../auth.js';
 
-import {ReactHeader}       from './header.js';
-
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
-export var ReactAdmin = React.createClass({
+export default React.createClass({
     mixins: [requireAuth],
     render: function () {
         return (
@@ -17,4 +13,4 @@ export var ReactAdmin = React.createClass({
             </div>
         );
     }
-})
+});

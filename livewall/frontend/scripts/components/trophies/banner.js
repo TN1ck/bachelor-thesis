@@ -1,6 +1,6 @@
-import React                        from 'react/addons';
+import React from 'react/addons';
 
-export var Banner = React.createClass({
+export default React.createClass({
     displayName: 'badges',
     getDefaultProps: function() {
         return {
