@@ -102,14 +102,17 @@ module.exports = function (req, res) {
             }
         };
 
-        // if the action has an item-uuid ad it to the action props
+        // if the action has an item-uuid add it to the action props
         if (body.item) {
             promise = Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
                 var item = _item[0];
                 Action.create(actionProps).then(function(action) {
                     action.setItem(item);
                     action.setUser(user);
-                    action.save().then(calcBadges);
+                    action.save().then(function (a) {
+                        item.setActions([a]);
+                        calcBadges(a);
+                    });
                 });
             });
         } else {

@@ -1,6 +1,6 @@
 var Item = function(sequelize, DataTypes) {
     return sequelize.define('Item', {
-        uuid: DataTypes.STRING,
+        uuid: DataTypes.STRING
     }, {
         freezeTableName: true
     });

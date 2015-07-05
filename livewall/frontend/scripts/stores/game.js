@@ -10,7 +10,7 @@ import SETTINGS           from '../settings.js';
 import * as owa           from '../owa.js';
 import * as pointApi      from '../api/points.js';
 import {postAction}       from '../api/api.js';
-import {pointsForActions} from '../../shared/gamification/points.js';
+import pointsForActions   from '../../shared/gamification/points.js';
 
 //
 // GAME STORE
@@ -80,12 +80,18 @@ export default Reflux.createStore({
 
     updatePoints: function (group, action) {
 
-        var pointsAdded = pointsForActions[group][action];
+        var pointsToAdd = _.get(pointsForActions, [group, action], 0);
 
-        this.state.alltime.user.points.all    += pointsAdded;
-        this.state.alltime.user.points[group] += pointsAdded;
-        this.state.monthly.user.points.all    += pointsAdded;
-        this.state.monthly.user.points[group] += pointsAdded;
+        this.state.alltime.user.points.all    += pointsToAdd;
+        this.state.monthly.user.points.all    += pointsToAdd;
+
+        // add to group object of alltime
+        var points = _.get(this.state.alltime.user, ['actions', group, action], 0);
+        _.set(this.state.alltime.user, ['actions', group, action], points + pointsToAdd);
+
+        // add to group object of monthly
+        points = _.get(this.state.monthly.user, ['actions', group, action], 0);
+        _.set(this.state.monthly.user, ['actions', group, action], points + pointsToAdd);
 
         this.trigger(this.state);
 
@@ -100,8 +106,7 @@ export default Reflux.createStore({
             postAction({
                 group: 'search',
                 label: 'add',
-                item: uuid,
-                value: uuid
+                value: queryTerm
             });
 
         }
@@ -113,8 +118,7 @@ export default Reflux.createStore({
         postAction({
             group: 'search',
             label: 'remove',
-            item: uuid,
-            value: uuid
+            value: queryTerm
         });
     },
 

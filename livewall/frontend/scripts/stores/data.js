@@ -113,6 +113,7 @@ export default Reflux.createStore({
                     tempItems[item.uuid] = _item.merge({
                         votes: votes,
                         ownVote: ownVote.value,
+                        // for the moment we only query one action
                         actions: item.Actions
                     });
                 }
