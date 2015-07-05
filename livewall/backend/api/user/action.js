@@ -116,7 +116,10 @@ module.exports = function (req, res) {
                 });
             });
         } else {
-            return Action.create(actionProps).then(calcBadges);
+            return Action.create(actionProps).then(function(action) {
+                action.setUser(user);
+                action.save().then(calcBadges);
+            });
         }
 
     });

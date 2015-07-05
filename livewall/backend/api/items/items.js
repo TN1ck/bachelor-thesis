@@ -8,36 +8,54 @@ var Item = models.Item;
 
 module.exports = function (req, res) {
     var ids = req.query.items.split(',');
-    Item.findAll({
-        where: { uuid: ids},
-        include: [
-            {
-                model: Vote,
-                include: [User]
-            },
-            {
-                model: Action,
-                include: [User]
-            }
-        ],
-        order: [
-            [Action, 'updatedAt', 'DESC']
-        ]
-    }).then(function(result) {
-        var rows = result.map(function(d) {
-            return d.dataValues;
-        });
+    var username = req.query.username;
 
-        // aggregate votes
-        var rows = rows.map(function(row) {
-            row.votes = _.sum(row.Votes, function (vote) {
-                return vote.value;
+    User.findOrCreate({
+        where: {username: username},
+        include: {
+            model: Vote
+        }
+    }).then(function(_user) {
+        var user = _user[0].get({plain: true});
+        Item.findAll({
+            where: { uuid: ids},
+            include: [
+                {
+                    model: Vote,
+                    attributes: [
+                        [models.sequelize.fn('sum', models.sequelize.col('Votes.value')), 'sum'],
+                        [models.sequelize.fn('count', models.sequelize.col('Votes.id')), 'count']
+                    ]
+                },
+                {
+                    model: Action,
+                    include: [User]
+                }
+            ],
+            order: [
+                [Action, 'updatedAt', 'DESC']
+            ],
+            group: ['Actions.id']
+        }).then(function(items) {
+
+
+            // add user to the results
+            items = items.map(function(item) {
+                item = item.get({plain: true});
+                item.userVote = _.find(user.Votes, {ItemId: item.id}) || {
+                    value: 0
+                };
+                item.votes = item.Votes[0] || {
+                    sum: 0,
+                    count: 0
+                };
+                return item;
             });
-            return row;
-        });
 
-        res.json({
-            items: rows
+            res.json({
+                items: items
+            });
         });
     });
+
 };

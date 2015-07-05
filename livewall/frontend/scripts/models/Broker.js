@@ -64,7 +64,7 @@ export default class Pia {
 
             var item = {
                 query:   this.query,
-                uuid:    d.file_URI || d.source,
+                uuid:    d.file_URI || d.source || d.file_content || d.xmp_title,
                 author:  d.result_type,
                 created: d.file_lastModification,
                 title:   d.xmp_title,

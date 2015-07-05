@@ -1,5 +1,6 @@
 var models = require('../models');
 var _       = require('lodash');
+var moment  = require('moment');
 
 var User = models.User;
 var Action = models.Action;
@@ -7,26 +8,112 @@ var Vote = models.Vote;
 var Item = models.Item;
 
 var authLoginTrophies = function (user) {
-    return user.getActions({where: {group: 'auth', label: 'login'}}).then(function(actions) {
-        console.log(actions);
+    return user.getActions({
+        where: {group: 'auth', label: 'login'},
+        order: [['createdAt', 'DESC']]
+    }).then(function(actions) {
+        var badges = [];
+
+        var format = 'YYYY-MM-DD';
+
+        // plain objects
+        actions = actions.map(function(action) {
+            var plain = action.get({plain: true});
+            plain.createdAt = moment(plain.createdAt);
+            return plain;
+        });
+
+        // remave date duplicates, day-precision
+        actions = _.unique(actions, true, function (action) {
+            return action.createdAt.format(format);
+        });
+
+        // iterate over the sorted array and if consecutive rows are 1 day apart
+        // the logins are also consecutive
+        var maxConsecutiveLogins = 1;
+        var current = 1;
+
+        var last = _.first(actions);
+
+        _.rest(actions).forEach(function (action) {
+
+            var lastDate = last.createdAt;
+            var date     = action.createdAt;
+
+            var nextDay = moment(lastDate).add(1, 'day');
+
+            if (nextDay.format(format) === date.format(format)) {
+                current += 1;
+            } else {
+                maxConsecutiveLogins = Math.max(current, maxConsecutiveLogins);
+                current = 1;
+            }
+
+            last = action;
+
+        });
+
+        maxConsecutiveLogins = Math.max(current, maxConsecutiveLogins);
+
+        var numberOfLogins = actions.length;
+
+        if (numberOfLogins >= 1) {
+            badges.push('login_1');
+        }
+
+        if (numberOfLogins >= 50) {
+            badges.push('login_50');
+        }
+
+        if (numberOfLogins >= 50) {
+            badges.push('login_100');
+        }
+
+
+        if (maxConsecutiveLogins >= 3) {
+            badges.push('login_3_c');
+        }
+        if (maxConsecutiveLogins >= 7) {
+            badges.push('login_7_c');
+        }
+        if (maxConsecutiveLogins >= 15) {
+            badges.push('login_15_c');
+        }
+
         return {
             stats: {
-
+                maxConsecutiveLogins: maxConsecutiveLogins,
+                numberOfLogins: numberOfLogins
             },
-            badges: []
-        }
+            badges: badges
+        };
     });
 };
 
 var addQuerieTrophies = function (user) {
     return user.getActions({where: {group: 'queries', label: 'add'}}).then(function(actions) {
-        console.log(actions);
+        var badges = [];
+
+        var count = actions.length;
+
+        if (count >= 10) {
+            badges.push('queries_10');
+        }
+
+        if (count >= 100) {
+            badges.push('queries_100');
+        }
+
+        if (count >= 1000) {
+            badges.push('queries_1000');
+        }
+
         return {
             stats: {
-
+                numberOfUpvotes: count
             },
-            badges: []
-        }
+            badges: badges
+        };
     });
 };
 
@@ -87,13 +174,28 @@ var voteDownTrophies = function (user) {
 
 var toggleFavouriteTrophies = function (user) {
     return user.getActions({where: {group: 'favourite', label: 'toggle'}}).then(function(actions) {
-        console.log(actions);
+        var badges = [];
+
+        var count = actions.length;
+
+        if (count >= 10) {
+            badges.push('favourites_10');
+        }
+
+        if (count >= 50) {
+            badges.push('favourites_50');
+        }
+
+        if (count >= 100) {
+            badges.push('favourites_100');
+        }
+
         return {
             stats: {
-
+                numberOfFavourites: count
             },
-            badges: []
-        }
+            badges: badges
+        };
     });
 };
 

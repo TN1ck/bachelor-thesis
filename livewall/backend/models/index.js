@@ -23,7 +23,7 @@ models.forEach(function(model) {
   m.Action.belongsTo(m.Item);
 
   m.Item.hasMany(m.Vote);
-  m.Item.belongsToMany(m.Action, {through: 'ItemAction'});
+  m.Item.hasMany(m.Action);
 
   m.Badge.belongsTo(m.User);
 
