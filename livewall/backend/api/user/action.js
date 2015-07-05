@@ -1,4 +1,5 @@
 var _               = require('lodash');
+var io              = require('../socket.js');
 var models          = require('../../models');
 var calculateBadges = require('../../gamification/calculateBadges');
 var points          = require('../../../frontend/shared/gamification/points');
@@ -105,6 +106,13 @@ module.exports = function (req, res) {
             promise = Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
                 var item = _item[0];
                 Action.create(actionProps).then(function(action) {
+
+                    io.emit('action_created', {
+                        user: user,
+                        action: action,
+                        item: item
+                    });
+
                     action.setItem(item);
                     action.setUser(user);
                     action.save().then(function (a) {
@@ -117,6 +125,13 @@ module.exports = function (req, res) {
             return Action.create(actionProps).then(function(action) {
                 action.setUser(user);
                 action.save().then(calcBadges);
+
+                io.emit('action_created', {
+                    user: user,
+                    action: action,
+                    item: {}
+                });
+
             });
         }
 

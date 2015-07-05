@@ -8,6 +8,7 @@ defaults.PROFILE_URL = 'http://pia-intern.dai-labor.de/service';
 defaults.PIA_URL     = 'http://pia-intern.dai-labor.de';
 
 defaults.SERVER_URL  = 'http://localhost:4000';
+defaults.SOCKET_URL  = 'http://localhost:4001';
 
 defaults.OWA = {
     owa_baseUrl: 'http://ia.dailab.de/owa/',

@@ -15,6 +15,10 @@ export var getItems = (uuids) => {
     return $.get(`${SETTINGS.SERVER_URL}/api/items?items=${uuids}&username=${user.username}`);
 };
 
+export var getActions = (limit) => {
+    return $.get(`${SETTINGS.SERVER_URL}/api/actions?${limit || 50}`);
+};
+
 export var postVote = (data) => {
     return $.post(`${SETTINGS.SERVER_URL}/api/user/vote`, _.extend({
         dataType: 'json',

@@ -11,6 +11,17 @@ import LeaderBoard from '../trophies/leaderboard.js';
 
 import t from '../../../shared/translations/translation.js';
 
+var Action = React.createClass({
+    render: function () {
+        var {action, user, item} = this.props.action;
+        return (
+            <Col  xs={12}>
+                {user.username} - {action.group} - {action.label}
+            </Col>
+        );
+    }
+});
+
 export default React.createClass({
     mixins: [
         Reflux.connect(gameStore),
@@ -19,8 +30,7 @@ export default React.createClass({
 
         var alltime = this.state.alltime;
         var monthly = this.state.monthly;
-
-        console.log(alltime);
+        var actions = this.state.actions;
 
         var data = [
             {
@@ -50,6 +60,14 @@ export default React.createClass({
 
         ].sort((a, b) => b.x - a.x);
 
+        var _actions = actions.map(action => {
+            return (
+                <Row>
+                    <Action action={action} />
+                </Row>
+            );
+        });
+
         return (
             <Row>
                 <Col xs={12} sm={12} md={6}>
@@ -74,6 +92,7 @@ export default React.createClass({
                 <Col xs={12} sm={12} md={3}>
                     <h1>Aktionen</h1>
                     <hr/>
+                    {_actions}
                 </Col>
             </Row>
         );
