@@ -8,8 +8,6 @@ import gameStore           from '../stores/game.js';
 
 import Header              from './header.js';
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
 export default React.createClass({
     displayName: 'app',
     mixins: [

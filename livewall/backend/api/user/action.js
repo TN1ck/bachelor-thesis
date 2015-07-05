@@ -69,10 +69,8 @@ module.exports = function (req, res) {
                             // the user got new badges!
                             if (result.length !== badges.length) {
 
-                                console.log(result);
-
                                 var filteredBadges = badges.filter(function (b) {
-                                    return !_.find(result, {name: b.id});
+                                    return !_.find(result, {name: b});
                                 });
 
                                 // insert them into the db but not wait for it to finish

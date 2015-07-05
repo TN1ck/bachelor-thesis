@@ -54,8 +54,8 @@ module.exports = {
     tile: {
         tooltip: {
             favourite: {
-                favourited: 'Speichere dieses Element in deinen PIA-Favoriten.',
-                uvfavourite: 'Lösche dieses Element aus deinen PIA-Favoriten'
+                favourite: 'Speichere dieses Element in deinen PIA-Favoriten.',
+                unfavourite: 'Lösche dieses Element aus deinen PIA-Favoriten'
             },
             vote: 'Bewerte dieses Suchergebnis um die Sichtbarkeit des Suchergebnisses zu beeinflussen. Die Suchergebnisse aller Benutzer werden dadurch durch deine Meinung beeinflusst.'
         },

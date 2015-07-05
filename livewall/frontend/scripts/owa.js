@@ -44,7 +44,6 @@ appendToDom();
 //
 
 var initUser = function(username) {
-    console.log('setCustomVar2', username);
     window.owa_cmds.push(['setCustomVar', '2', 'username', username, 'session']);
     track('auth', username, 'login', 0);
 };
@@ -59,7 +58,6 @@ user.whenLogedIn(initUser);
  * @param {number} rank The rank of the action (?)
  */
 export var track = function (group, action, label = '', rank = 0) {
-    console.log('track', group, action, label, rank);
     window.owa_cmds.push(['trackAction', group, action, label, rank]);
 };
 

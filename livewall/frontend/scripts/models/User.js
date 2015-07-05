@@ -80,8 +80,6 @@ export default class User {
         extract(this.profileRoots.favourites, favourites);
         extract(this.profileRoots.queries, queries);
 
-        console.log(queries, 'QUERIES');
-
         this.queries = queries;
         this.favourites = favourites;
 

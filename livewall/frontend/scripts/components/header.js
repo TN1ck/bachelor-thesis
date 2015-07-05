@@ -50,8 +50,6 @@ export default React.createClass({
             return <span> <Link to={link.link}>{link.name}</Link> {seperator}</span>;
         });
 
-        console.log(this.state);
-
         var monthly = this.state.monthly.user;
         var alltime = this.state.alltime.user;
 

@@ -12,8 +12,6 @@ module.exports = function (req, res) {
     var item     = req.body.item;
     var body     = req.body;
 
-    console.log(username, item);
-
     // get or create user
     User.findOrCreate({where: {username: username}}).then(function(_user) {
         var user = _user[0];

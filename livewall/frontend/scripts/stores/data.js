@@ -39,9 +39,6 @@ export default Reflux.createStore({
 
     },
 
-    matchUpvotes: function () {
-    },
-
     matchFavourites: function () {
         this.items = this.items.map((item) => {
             var uuid = item.get('uuid')

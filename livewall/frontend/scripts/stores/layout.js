@@ -16,7 +16,10 @@ var sortResolver = (a, b) => {
 
 export var sorters = {
     score: (a, b) => {
-        var result = -((a.get('score') + a.get('votes')) - (b.get('score') + b.get('votes')));
+        var result = -(
+            (a.get('score') + (a.get('votes') || 0)) -
+            (b.get('score') + (b.get('votes') || 0))
+        );
         if (result === 0) {
           return sortResolver(a, b);
         }
@@ -147,7 +150,6 @@ export default Reflux.createStore({
 
             var newTile;
             if (!oldTile) {
-
 
                 var translate = `translate3D(${left}px , 0px, 0)`
                 var css = {
@@ -299,12 +301,15 @@ export default Reflux.createStore({
             return;
         }
 
-        // if it has the dom property, only update it and do nothing else
-        if (item.get('dom')) {
-            item = item.set('dom', dom);
-            this.items = this.items.set(uuid, item);
-            return;
-        }
+        // this code can be used to optimize switching back to the wall,
+        // but it is not reliable: resize events can change the size without
+        // this function noticing
+
+        // if (item.get('dom')) {
+        //     item = item.set('dom', dom);
+        //     this.items = this.items.set(uuid, item);
+        //     return;
+        // }
 
         var height = dom.offsetHeight;
 

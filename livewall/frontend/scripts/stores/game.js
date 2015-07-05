@@ -33,12 +33,14 @@ export default Reflux.createStore({
                     badges: [],
                     actions: [],
                     points: {
-
                     }
                 },
                 users: [
 
-                ]
+                ],
+                points: 0,
+                badges: {all: 0},
+                actions: {}
             },
             alltime: {
                 user: {
@@ -50,7 +52,10 @@ export default Reflux.createStore({
                 },
                 users: [
 
-                ]
+                ],
+                points: 0,
+                badges: {all: 0},
+                actions: {}
             }
         };
 

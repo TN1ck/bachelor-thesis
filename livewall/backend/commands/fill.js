@@ -26,7 +26,7 @@ var berlin = ['https://daiknow.dai-labor.de/DAIKnowWebGui/items/details/2152', '
 
 var ITEMS = _.range(300).concat(wurst, gamification, test, berlin);
 
-var users = 50;
+var users          = 5;
 var actionsPerUser = 500;
 var votesPerUser   = 50;
 var items          = 100;

@@ -31,7 +31,9 @@ export default React.createClass({
     render: function () {
 
         var tiles = this.state.items.toArray().map((tile) => {
-            return <Tile tile={tile} key={tile.get('uuid')}/>;
+            if (tile) {
+                return <Tile tile={tile} key={tile.get('uuid')}/>;
+            }
         });
 
         var loading;
@@ -43,9 +45,7 @@ export default React.createClass({
             <div>
                 <Queries />
                 <div className='tiles'>
-                    <ReactCSSTransitionGroup transitionName="fade" transitionAppear={false} transitionEnter={false}>
-                        {tiles}
-                    </ReactCSSTransitionGroup>
+                    {tiles}
                     <div className="wall__loader">
                         {loading}
                     </div>

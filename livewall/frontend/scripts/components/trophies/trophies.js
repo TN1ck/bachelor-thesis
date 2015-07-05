@@ -63,8 +63,6 @@ export default React.createClass({
             return (_.find(actions, {group: group, label: label}) || {points: 0}).points;
         };
 
-        console.log('ACTIONS', user.actions);
-
         var data = [
             {
                 y: t.badgesPage.label.vote,
