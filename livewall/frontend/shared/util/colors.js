@@ -75,7 +75,7 @@ var colorFunctions = {
     }
 };
 
-var selectedColorFunction = colorFunctions.gray;
+var selectedColorFunction = colorFunctions.pastel;
 
 var getColorByString = function (str) {
 

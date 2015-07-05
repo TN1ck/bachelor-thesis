@@ -16,7 +16,7 @@ var sortResolver = (a, b) => {
 
 export var sorters = {
     score: (a, b) => {
-        var result = -(a.get('score') - b.get('score'));
+        var result = -((a.get('score') + a.get('votes')) - (b.get('score') + b.get('votes')));
         if (result === 0) {
           return sortResolver(a, b);
         }
@@ -294,6 +294,10 @@ export default Reflux.createStore({
         //
 
         var item = this.items.get(uuid);
+
+        if (!item) {
+            return;
+        }
 
         // if it has the dom property, only update it and do nothing else
         if (item.get('dom')) {

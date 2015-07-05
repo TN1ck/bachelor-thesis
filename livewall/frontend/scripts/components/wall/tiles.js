@@ -143,7 +143,6 @@ export default React.createClass({
         var _action;
 
         if (lastAction) {
-            console.log(lastAction);
 
             var username = lastAction.User.username;
             var group = lastAction.group;

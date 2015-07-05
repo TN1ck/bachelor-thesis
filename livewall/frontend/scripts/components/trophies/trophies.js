@@ -31,7 +31,7 @@ export default React.createClass({
     render: function () {
 
         var userBadges = this.state.alltime.user.badges.map(t => {
-            return _.find(badges, {id : t});
+            return _.find(badges, {id : t.name});
         });
 
         var badgeComponents = userBadges.map(x => {
@@ -63,6 +63,8 @@ export default React.createClass({
             return (_.find(actions, {group: group, label: label}) || {points: 0}).points;
         };
 
+        console.log('ACTIONS', user.actions);
+
         var data = [
             {
                 y: t.badgesPage.label.vote,
@@ -90,8 +92,6 @@ export default React.createClass({
             }
 
         ].sort((a, b) => b.x - a.x);
-
-        console.log(t, t.badgesPage, 'aouoeu');
 
         return (
             <Grid>

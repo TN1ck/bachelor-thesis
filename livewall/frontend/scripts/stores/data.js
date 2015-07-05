@@ -104,14 +104,10 @@ export default Reflux.createStore({
 
                     var votes = item.votes;
 
-                    var ownVote = _.find(item.Votes, vote => {
-                        return vote.User.username === user.username;
-                    }) || {
-                        value: 0
-                    };
+                    var ownVote = item.userVote;
 
                     tempItems[item.uuid] = _item.merge({
-                        votes: votes,
+                        votes: votes.sum,
                         ownVote: ownVote.value,
                         // for the moment we only query one action
                         actions: item.Actions

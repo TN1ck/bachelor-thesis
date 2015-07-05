@@ -12,7 +12,7 @@ export var postAction = (data) => {
 };
 
 export var getItems = (uuids) => {
-    return $.get(`${SETTINGS.SERVER_URL}/api/items?items=${uuids}`);
+    return $.get(`${SETTINGS.SERVER_URL}/api/items?items=${uuids}&username=${user.username}`);
 };
 
 export var postVote = (data) => {
