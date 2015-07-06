@@ -3,9 +3,9 @@ import _ from 'lodash';
 // DEFAULTS
 var defaults = {};
 
-defaults.LOGIN_URL   = 'http://pia-intern.dai-labor.de/login/';
-defaults.PROFILE_URL = 'http://pia-intern.dai-labor.de/service';
-defaults.PIA_URL     = 'http://pia-intern.dai-labor.de';
+defaults.LOGIN_URL   = 'http://pia-dev-intern.dai-labor.de/login/';
+defaults.PROFILE_URL = 'http://pia-dev-intern.dai-labor.de/service';
+defaults.PIA_URL     = 'http://pia-dev-intern.dai-labor.de';
 
 defaults.SERVER_URL  = 'http://localhost:4000';
 defaults.SOCKET_URL  = 'http://localhost:4001';

@@ -4,7 +4,7 @@
 * Leaderboard sichtbar anzeigen                                                              changed
 * Tooltips für Sternchen                                                                     done
 * Punkte - woher kommen Sie?                                                                 done
-* Broker-Array in import SETTINGS                                                                   done
+* Broker-Array in import SETTINGS                                                            done
 * Rewards benutzbar machen
 * upvote Funktionalität über OWA implementieren                                              changed/done
 * Speicherung der Inhalte für die Suchbegriffe um die Dauer des requests zu vertuschen       done
@@ -44,9 +44,9 @@
 
 ## Statistiken
 
-* Activity-log about all users
-* Statistics about the collected data
-* Leaderboard
+* Activity-log about all users                                                               in progress
+* Statistics about the collected data                                                        done
+* Leaderboard                                                                                done
 
 * Make a setting to show points                                                              done
 * Mechanismus und mutwillige Punktesammlung zu verhindern <- nicht allzu wichtig
