@@ -24,13 +24,14 @@ app.use(bodyParser.json());
 
 var router = express.Router();
 
-router.post('/user/action', cors(), require('./api/user/action.js'));
-router.post('/user/vote',   cors(), require('./api/user/vote.js'));
+router.post('/user/action',  cors(), require('./api/user/action.js'));
+router.post('/user/vote',    cors(), require('./api/user/vote.js'));
+router.post('/user/booster', cors(), require('./api/user/booster.js'));
 
-router.get('/items',        cors(), require('./api/items/items.js'));
-router.get('/points',       cors(), require('./api/points/points.js'));
+router.get('/items',         cors(), require('./api/items/items.js'));
+router.get('/points',        cors(), require('./api/points/points.js'));
 
-router.get('/actions',      cors(), require('./api/actions/actions.js'));
+router.get('/actions',       cors(), require('./api/actions/actions.js'));
 
 app.use('/api', router);
 

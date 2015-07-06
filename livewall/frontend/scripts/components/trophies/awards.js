@@ -18,8 +18,6 @@ export default React.createClass({
             x: 105,
             y: 205,
             fill: "#F6A623",
-            text: 'BEWERTUNGEN',
-            number: '10'
         }
     },
     render: function () {

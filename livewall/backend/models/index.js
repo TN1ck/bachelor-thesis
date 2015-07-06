@@ -7,7 +7,8 @@ var models = [
   'Item',
   'Action',
   'Vote',
-  'Badge'
+  'Badge',
+  'Booster'
 ];
 
 models.forEach(function(model) {
@@ -27,9 +28,12 @@ models.forEach(function(model) {
 
   m.Badge.belongsTo(m.User);
 
+  m.Booster.belongsTo(m.User);
+
   m.User.hasMany(m.Vote);
   m.User.hasMany(m.Action);
   m.User.hasMany(m.Badge);
+  m.User.hasMany(m.Booster);
 
 })(module.exports);
 

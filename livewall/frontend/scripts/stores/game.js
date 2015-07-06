@@ -28,6 +28,7 @@ export default Reflux.createStore({
             actions: [],
             monthly: {
                 user: {
+                    booster: [],
                     badges: [],
                     actions: [],
                     points: {
@@ -42,6 +43,7 @@ export default Reflux.createStore({
             },
             alltime: {
                 user: {
+                    booster: [],
                     badges: [],
                     actions: [],
                     points: {
@@ -92,6 +94,7 @@ export default Reflux.createStore({
                 this.state.monthly = result;
                 this.trigger(this.state);
             });
+
             pointApi.getAllTimePoints().then(result => {
                 this.state.alltime = result;
                 this.trigger(this.state);

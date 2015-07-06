@@ -7,7 +7,7 @@ import Wall     from './components/wall/wall.js';
 import Login    from './components/auth/login.js';
 import Logout   from './components/auth/logout.js';
 import Settings from './components/settings.js';
-import Rewards  from './components/rewards.js';
+import Booster  from './components/booster.js';
 import Trophies from './components/trophies/trophies.js';
 import Social   from './components/social/social.js';
 
@@ -26,7 +26,7 @@ var routes = (
         <Route name='admin' path='/'      handler={Admin}>
             <Route        name='logout'   handler={Logout}/>
             <Route        name='settings' handler={Settings}/>
-            <Route        name='rewards'  handler={Rewards}/>
+            <Route        name='booster'  handler={Booster}/>
             <Route        name='trophies' handler={Trophies}/>
             <Route        name='social'   handler={Social}/>
             <DefaultRoute name='wall'     handler={Wall}/>

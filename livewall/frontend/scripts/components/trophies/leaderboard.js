@@ -52,12 +52,14 @@ export default React.createClass({
                 trClass = 'active';
             }
 
-            return <tr className={trClass}>
-                <td className='vert-align trophies__leaderboard__place'    xs={3}>#{_user.place}</td>
-                <td className='vert-align trophies__leaderboard__name'     xs={3}>{name}</td>
-                <td className='vert-align trophies__leaderboard__points'   xs={3}>{points.all}</td>
-                <td className='vert-align trophies__leaderboard__trophies' xs={3}>{_badges}</td>
-            </tr>;
+            return (
+                <tr className={trClass}>
+                    <td className='vert-align trophies__leaderboard__place'    xs={3}>#{_user.place}</td>
+                    <td className='vert-align trophies__leaderboard__name'     xs={3}>{name}</td>
+                    <td className='vert-align trophies__leaderboard__points'   xs={3}>{points.all}</td>
+                    <td className='vert-align trophies__leaderboard__trophies' xs={3}>{_badges}</td>
+                </tr>
+            );
         });
 
         return (

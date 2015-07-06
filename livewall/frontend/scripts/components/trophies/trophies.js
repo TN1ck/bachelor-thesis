@@ -17,11 +17,47 @@ import BarChart             from '../charts/barChart.js';
 
 import Award                from './awards.js';
 import LeaderBoard          from './leaderboard.js';
+import IconCard             from '../utility/iconcard.js';
 
 import badges               from '../../../shared/gamification/badges.js';
 import {camelCaseToBar}     from '../../../shared/util/utils.js';
 
 import t                    from '../../../shared/translations/translation.js';
+
+var BadgeComponent = React.createClass({
+    render: function () {
+        var {
+            number, name, text,
+            points, image, name,
+            type, fill, image
+        } = this.props.badge;
+
+        var body = (
+            <span>
+                <h5>{number} {name}</h5>
+                <hr />
+                <p>
+                    {text}
+                    <br/>
+                    <strong>{points}</strong> {t.badgesPage.badges.points}
+                </p>
+            </span>
+        );
+
+        var icon = (
+            <Award
+                image={image}
+                type={type}
+                fill={fill}
+            />
+        );
+
+        return (
+            <IconCard body={body} icon={icon}/>
+        );
+
+    }
+});
 
 export default React.createClass({
     displayName: 'badges',
@@ -34,28 +70,7 @@ export default React.createClass({
             return _.find(badges, {id : t.name});
         });
 
-        var badgeComponents = userBadges.map(x => {
-            return (
-                <Col xs={12} md={6}>
-                    <div className='trophies__trophy__container'>
-                        <div className='trophies__trophy__svg-container'>
-                            <Award image={x.image} text={x.name} number={x.number} type={x.type} fill={x.fill}/>
-                        </div>
-                        <div className='trophies__trophy__text-container'>
-                            <h5>
-                                {x.number} {x.name}
-                            </h5>
-                            <hr />
-                            <p>
-                            {x.text}
-                            <br/>
-                            <strong>{x.points}</strong> {t.badgesPage.badge}
-                            </p>
-                        </div>
-                    </div>
-                </Col>
-            );
-        });
+        var badgeComponents = userBadges.map(x => <BadgeComponent badge={x}/>);
 
         var user = this.state.alltime.user;
 

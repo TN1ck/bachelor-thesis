@@ -1,29 +1,11 @@
-@trophie-width:  50/@em;
-@trophie-height: 50/@em;
 @trophie-font-size: 20/@em;
-@trophie-padding: 10/@em;
-@trophie-spacing: 10/@em;
+
 
 .trophies {
 
 	float: left;
 
 	&__leaderboard {
-
-		&__trophies {
-
-			height: @trophie-height;
-
-			&__container {
-				width: @trophie-width;
-				float: left;
-			}
-
-			svg {
-				width: 100%;
-				height: 100%;
-			}
-		}
 
 		&__place {
 			font-size: @trophie-font-size;
@@ -43,48 +25,4 @@
 	// 	width: 100%;
 	// }
 
-	&__trophy__container {
-		padding-top: @trophie-padding / 2;
-		padding-left: @trophie-width * 2 + @trophie-padding;
-		width: 100%;
-		border: 1px solid gray;
-		margin-bottom: @trophie-spacing;
-		float: left;
-
-	}
-
-	&__trophy__percentage {
-		float: right;
-	}
-
-	&__trophy__svg-container {
-		position: absolute;
-		top: 50%;
-		margin-top: -(@trophie-height + @trophie-padding * 2.5);
-		left: @trophie-width / 2 - @trophie-padding / 2;
-		height: @trophie-height * 2 + (@trophie-padding * 4);
-		width: @trophie-width * 2;
-		padding: 0 @trophie-padding;
-
-		svg {
-			width: 100%;
-			height: 100%;
-		}
-	}
-
-	&__trophy__text-container {
-		border-left: solid gray 1px;
-		min-height: @trophie-height * 2;
-		padding-left: @trophie-padding * 2;
-		padding-right: @trophie-padding;
-
-		strong {
-			color: @brand-primary;
-		}
-
-		h5 {
-			font-size: 16/@em;
-			font-weight: lighter;
-		}
-	}
 }

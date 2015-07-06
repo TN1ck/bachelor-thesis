@@ -30,7 +30,7 @@ export default React.createClass({
             },
             {
                 name: <i style={{'lineHeight': 0}} className='fa fa-dollar'></i>,
-                link: 'rewards'
+                link: 'booster'
             },
             {
                 name: <i style={{lineHeight: 0}} className='fa fa-users'></i>,

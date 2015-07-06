@@ -27,3 +27,12 @@ export var postVote = (data) => {
         username: user.username
     }, data));
 };
+
+export var postBooster = (booster) => {
+    return $.post(`${SETTINGS.SERVER_URL}/api/user/booster`, {
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        username: user.username,
+        booster: booster
+    });
+};

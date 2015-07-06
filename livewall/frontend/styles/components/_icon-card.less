@@ -1,0 +1,47 @@
+@card-width:   50/@em;
+@card-height:  50/@em;
+@card-padding: 10/@em;
+@card-spacing: 10/@em;
+
+.icon-card {
+    &__container {
+        padding-top: @card-padding / 2;
+        padding-left: @card-width * 2 + @card-padding;
+        width: 100%;
+        border: 1px solid gray;
+        margin-bottom: @card-spacing;
+        float: left;
+
+    }
+
+    &__svg-container {
+        position: absolute;
+        top: 50%;
+        margin-top: -(@card-height + @card-padding * 2.5);
+        left: @card-width / 2 - @card-padding / 2;
+        height: @card-height * 2 + (@card-padding * 4);
+        width: @card-width * 2;
+        padding: 0 @card-padding;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__text-container {
+        border-left: solid gray 1px;
+        min-height: @card-height * 2;
+        padding-left: @card-padding * 2;
+        padding-right: @card-padding;
+
+        strong {
+            color: @brand-primary;
+        }
+
+        h5 {
+            font-size: 16/@em;
+            font-weight: lighter;
+        }
+    }
+}

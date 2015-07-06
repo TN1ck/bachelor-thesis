@@ -10,6 +10,7 @@ var Action = models.Action;
 var Vote = models.Vote;
 var Item = models.Item;
 var Badge = models.Badge;
+var Booster = models.Booster;
 var sequelize = models.sequelize;
 
 module.exports = function (req, res) {
@@ -44,8 +45,14 @@ module.exports = function (req, res) {
                 ],
             },
             {
+                model: Booster,
+            },
+            {
                 model: Badge,
             }
+        ],
+        order: [
+            [Booster, 'createdAt', 'DESC']
         ],
         group: [
             'Actions.label',
@@ -60,17 +67,22 @@ module.exports = function (req, res) {
 
         // hydrate users with their accumulated actions and badges
         users = users.map(function (user) {
+
             var actions = user.Actions;
             var badges  = user.Badges;
+            var booster = user.Boosters || [];
+
             var actionsPoints = _.sum(actions, 'points');
             var badgesPoints  = _.sum(badges,  'points');
+            var boosterPoints = _.sum(booster, 'points');
 
-            var all = actionsPoints + badgesPoints;
+            var all = actionsPoints + badgesPoints - boosterPoints;
 
             var points = {
                 all: all,
                 badges: badgesPoints,
                 actions: actionsPoints,
+                booster: boosterPoints
             };
 
             return {
@@ -78,6 +90,7 @@ module.exports = function (req, res) {
                 id: user.id,
                 badges: badges,
                 actions: actions,
+                booster: booster,
                 points: points
             };
         });
@@ -107,6 +120,11 @@ module.exports = function (req, res) {
             count: 0
         };
 
+        var boosterAccAll = {
+            points: 0,
+            count: 0
+        };
+
         users.forEach(function(user) {
 
             badgesAccAll.points  += user.points.badges;
@@ -126,6 +144,9 @@ module.exports = function (req, res) {
                 badgesAcc[badge.name].count  += 1;
             });
 
+            boosterAccAll.points += _.get(user, '.points.booster', 0);
+            boosterAccAll.count  += _.get(user, '.booster.length', 0);
+
         });
 
         badgesAcc.all = badgesAccAll;
@@ -141,10 +162,11 @@ module.exports = function (req, res) {
 
         res.json({
             users: users,
-            points: badgesAccAll.points + actionsAccAll.points,
-            count:  badgesAccAll.count  + actionsAccAll.count,
+            points: badgesAccAll.points + actionsAccAll.points - boosterAccAll.points,
+            count:  badgesAccAll.count  + actionsAccAll.count + boosterAccAll.count,
             actions: actionsAcc,
-            badges: badgesAcc
+            badges: badgesAcc,
+            booster: boosterAccAll
         });
     });
 };

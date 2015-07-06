@@ -2,7 +2,7 @@ var _               = require('lodash');
 var io              = require('../socket.js');
 var models          = require('../../models');
 var calculateBadges = require('../../gamification/calculateBadges');
-var points          = require('../../../frontend/shared/gamification/points');
+var POINTS          = require('../../../frontend/shared/gamification/points');
 var badgesList      = require('../../../frontend/shared/gamification/badges');
 
 var User = models.User;
@@ -10,6 +10,7 @@ var Action = models.Action;
 var Vote = models.Vote;
 var Item = models.Item;
 var Badge = models.Badge;
+var Booster = models.Booster;
 
 module.exports = function (req, res) {
 
@@ -24,117 +25,131 @@ module.exports = function (req, res) {
     var user = User.findOrCreate({
         where: {username: username}
     }).then(_.first).then(function(user) {
+        user.getBoosters({
+            where: {
+                validUntil: {
+                    $gt: new Date()
+                }
+            }
+        }).then(function (booster) {
+            var createActionAndAnswer = function (props) {
+                return Action.create(actionProps).then(function (action) {
+                    // action sucessfully created
+                    res.json(action);
+                });
+            };
 
-        var createActionAndAnswer = function (props) {
-            return Action.create(actionProps).then(function (action) {
-                // action sucessfully created
-                res.json(action);
-            });
-        };
+            var points = _.get(POINTS, [group, label], 0);
 
-        var actionProps = {
-            group: group,
-            label: label,
-            value: value,
-            points: _.get(points, [group, label], 0)
-        };
+            if (booster) {
+                // there should always be only one Booster
+                points = points * _.get(booster, '[0].multiplicator', 1);
+            }
 
-        var answer = function (badges, stats, action) {
-            res.json({
-                badges: badges,
-                stats: stats,
-                action: action
-            });
-        };
+            console.log(points, user);
 
-        var calcBadges = function(action) {
+            var actionProps = {
+                group: group,
+                label: label,
+                value: value,
+                points: points
+            };
 
-            var badges = [];
-            var stats = {};
+            var answer = function (badges, stats, action) {
+                res.json({
+                    badges: badges,
+                    stats: stats,
+                    action: action
+                });
+            };
 
-            // recalculate the badges and points
-            var result = calculateBadges(action, user);
+            var calcBadges = function(action) {
 
-            if (result && result.then) {
-                result.then(function (data) {
+                var badges = [];
+                var stats = {};
 
-                    // check which one the user already has
-                    if (data && data.badges && data.badges.length > 0) {
+                // recalculate the badges and points
+                var result = calculateBadges(action, user);
 
-                        badges = data.badges;
-                        stats  = data.stats;
+                if (result && result.then) {
+                    result.then(function (data) {
 
-                        user.getBadges({where: {name: badges}}).then(function(result) {
+                        // check which one the user already has
+                        if (data && data.badges && data.badges.length > 0) {
 
-                            result = result.map(function(x) { return x.get({plain: true})});
-                            // the user got new badges!
-                            if (result.length !== badges.length) {
+                            badges = data.badges;
+                            stats  = data.stats;
 
-                                var filteredBadges = badges.filter(function (b) {
-                                    return !_.find(result, {name: b});
-                                });
+                            user.getBadges({where: {name: badges}}).then(function(result) {
 
-                                // insert them into the db but not wait for it to finish
-                                filteredBadges.forEach(function(badge) {
-                                    var _badge = _.find(badgesList, {id: badge});
-                                    Badge.create({
-                                        type: _badge.type,
-                                        name: _badge.id,
-                                        points: _badge.points
-                                    }).then(function (b) {
-                                        b.setUser(user);
+                                result = result.map(function(x) { return x.get({plain: true})});
+                                // the user got new badges!
+                                if (result.length !== badges.length) {
+
+                                    var filteredBadges = badges.filter(function (b) {
+                                        return !_.find(result, {name: b});
                                     });
-                                });
 
-                                return answer(badges, stats, action);
+                                    // insert them into the db but not wait for it to finish
+                                    filteredBadges.forEach(function(badge) {
+                                        var _badge = _.find(badgesList, {id: badge});
+                                        Badge.create({
+                                            type: _badge.type,
+                                            name: _badge.id,
+                                            points: _badge.points
+                                        }).then(function (b) {
+                                            b.setUser(user);
+                                        });
+                                    });
 
-                            } else {
-                                return answer([], stats, action);
-                            }
+                                    return answer(badges, stats, action);
+
+                                } else {
+                                    return answer([], stats, action);
+                                }
+                            });
+                        } else {
+                            return answer([], data ? data.stats : {}, action);
+                        }
+                    });
+                } else {
+                    return answer(badges, stats, action);
+                }
+            };
+
+            // if the action has an item-uuid add it to the action props
+            if (body.item) {
+                promise = Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
+                    var item = _item[0];
+                    Action.create(actionProps).then(function(action) {
+
+                        io.emit('action_created', {
+                            user: user,
+                            action: action,
+                            item: item
                         });
-                    } else {
-                        return answer([], data ? data.stats : {}, action);
-                    }
+
+                        action.setItem(item);
+                        action.setUser(user);
+                        action.save().then(function (a) {
+                            item.setActions([a]);
+                            calcBadges(a);
+                        });
+                    });
                 });
             } else {
-                return answer(badges, stats, action);
-            }
-        };
-
-        // if the action has an item-uuid add it to the action props
-        if (body.item) {
-            promise = Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
-                var item = _item[0];
-                Action.create(actionProps).then(function(action) {
+                return Action.create(actionProps).then(function(action) {
+                    action.setUser(user);
+                    action.save().then(calcBadges);
 
                     io.emit('action_created', {
                         user: user,
                         action: action,
-                        item: item
+                        item: {}
                     });
 
-                    action.setItem(item);
-                    action.setUser(user);
-                    action.save().then(function (a) {
-                        item.setActions([a]);
-                        calcBadges(a);
-                    });
                 });
-            });
-        } else {
-            return Action.create(actionProps).then(function(action) {
-                action.setUser(user);
-                action.save().then(calcBadges);
-
-                io.emit('action_created', {
-                    user: user,
-                    action: action,
-                    item: {}
-                });
-
-            });
-        }
-
+            }
+        });
     });
-
 };
