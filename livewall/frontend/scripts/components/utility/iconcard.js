@@ -17,7 +17,7 @@ export default React.createClass({
 
         return (
             <Col xs={p.xs} md={p.md}>
-                <div className='icon-card__container'>
+                <div className={`icon-card__container ${p.active ? 'icon-card__container--active' : ''}`}>
                     <div className='icon-card__svg-container'>
                         {icon}
                     </div>

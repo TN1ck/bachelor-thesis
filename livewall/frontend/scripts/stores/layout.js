@@ -105,31 +105,21 @@ export default Reflux.createStore({
 
         this.queued = [];
 
-        var resizeCallback;
-
-        window.addEventListener('resize', () => {
-
+    },
+    getResizeCallback: function () {
+        /* Animations cause weird behaviour with the resize event, it is not guarenteed that
+           the height of the element is correctly calculated when the animations are on.
+           A workaraund is to wait some time to call the relayout, but this is not reliable
+           and the value is quite high like 600ms
+        */
+        return _.debounce(() => {
             var width = window.innerWidth;
-
             if (this.width === width) {
                 return;
             }
-
             this.width = width;
-            clearTimeout(resizeCallback);
-
-            resizeCallback = setTimeout(() => {
-                /* Animations cause weird behaviour with the resize event, it is not guarenteed that
-                   the height of the element is correctly calculated when the animations are on.
-                   A workaraund is to wait some time to call the relayout, but this is not reliable
-                   and the value is quite high like 600ms
-                */
-                this.relayout(false);
-                resizeCallback = false;
-            }, 100);
-
+            this.relayout(false);
         });
-
     },
     onStoreChange: function (items) {
 

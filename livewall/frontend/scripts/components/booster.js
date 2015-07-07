@@ -1,6 +1,8 @@
 import React               from 'react/addons';
 import Reflux              from 'reflux';
 import moment              from 'moment';
+import durationFormat      from 'moment-duration-format';
+
 
 import SETTINGS            from '../settings.js';
 import {user, requireAuth} from '../auth.js';
@@ -76,7 +78,7 @@ var BoosterComponent = React.createClass({
         );
 
         return (
-            <IconCard md={12} body={body} icon={icon}/>
+            <IconCard active={this.props.active} md={12} body={body} icon={icon}/>
         );
 
     }
@@ -85,20 +87,28 @@ var BoosterComponent = React.createClass({
 export default React.createClass({
     displayName: 'booster',
     mixins: [
-        Reflux.connect(gameStore),
+        Reflux.listenTo(gameStore, 'onStoreChange')
     ],
-    createBooster: function (_booster) {
-        return booster.map(b => <BoosterComponent disable={_booster.isActive} booster={b}/>)
+    getInitialState: function () {
+        return _.extend({}, gameStore.state, {
+            booster: {},
+            left: moment.duration(0, 'minutes')
+        });
     },
-    render: function () {
-
-        var _booster;
+    onStoreChange: function (state) {
+        var booster = this.calcBooster(state)
+        this.setState(_.extend(state, {
+            booster: booster,
+            left: this.calcTimeLeft(booster)
+        }));
+    },
+    calcBooster: function (state) {
 
         var b = {
             isActive: false
         };
 
-        var userBooster = this.state.alltime.user.booster;
+        var userBooster = state.alltime.user.booster;
         var lastBooster = _.sortBy(userBooster, '-validUntil')[0];
 
         if (lastBooster) {
@@ -109,10 +119,36 @@ export default React.createClass({
             b.last = lastBooster;
         }
 
-        if (b.isActive) {
-            var hours = moment(b.validUntil).subtract(moment()).hours();
+        return b;
+    },
+    calcTimeLeft: function (booster) {
+        var left = moment.duration(moment(booster.validUntil).diff(moment()));
+        return left;
+    },
+    createBooster: function () {
+        return booster.map(b => {
+            var active = _.get(this.state.booster, '.last.name') === b.id;
+            return <BoosterComponent disable={this.state.booster.isActive} active={active} booster={b}/>
+        })
+    },
+    componentDidMount: function () {
+        this.interval = setInterval(() => {
+            var left = this.calcTimeLeft(this.state.booster);
+            this.setState({
+                left: left
+            });
+        }, 500);
+    },
+    componentWillUnmount: function () {
+        clearInterval(this.interval);
+    },
+    render: function () {
+
+        var _booster;
+
+        if (this.state.booster.isActive) {
             _booster = (
-                <strong><h3>Booster aktiv, noch {hours} Stunden verbleibend.</h3></strong>
+                <strong><h3>Booster aktiv, verbleibende Zeit: {this.state.left.format('hh:mm:ss')}</h3></strong>
             );
         }
 
@@ -126,7 +162,7 @@ export default React.createClass({
                         <p>Bisher hast du {this.state.alltime.user.booster.length} Power-Ups gekauft</p>
                         {_booster}
                     </Col>
-                    {this.createBooster(b)}
+                    {this.createBooster()}
                 </Row>
             </Grid>
         );

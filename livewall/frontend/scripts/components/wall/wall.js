@@ -26,7 +26,13 @@ export default React.createClass({
         }
     },
     componentDidMount: function() {
+        var dom = this.refs.wall.getDOMNode();
+        this.resize = layoutStore.getResizeCallback();
+        window.addEventListener('resize', this.resize);
         actions.relayout();
+    },
+    componentWillUnmount: function () {
+        window.removeEventListener('resize', this.resize);
     },
     render: function () {
 
@@ -42,7 +48,7 @@ export default React.createClass({
         }
 
         return (
-            <div>
+            <div ref='wall'>
                 <Queries />
                 <div className='tiles'>
                     {tiles}

@@ -47,7 +47,6 @@ export default Reflux.createStore({
                     badges: [],
                     actions: [],
                     points: {
-
                     }
                 },
                 users: [
