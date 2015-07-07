@@ -1,5 +1,3 @@
-import { trophieFunctions, badges } from '../../shared/gamification/badges.js';
-import {pointsForActions}           from '../../shared/gamification/points.js';
 import moment                       from 'moment';
 import _                            from 'lodash';
 import $                            from 'jquery';

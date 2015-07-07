@@ -14,13 +14,47 @@ import SETTINGS   from '../settings.js';
 export default Reflux.createStore({
 
     init: function () {
-        this.messages = [];
+        this.duration = 10;
+        this.isRunnig = false;
+        this.state = {
+            messages: []
+        };
         this.listenTo(actions.addFlashMessage, this.addFlashMessage);
 
     },
 
+    getInitialState: function () {
+        return this.state;
+    },
+
+    triggerState: function () {
+        this.trigger({
+            messages: this.state.messages.slice(0, 1)
+        });
+    },
+
     addFlashMessage: function (message) {
-        this.messages.push(message);
+        message.duration = this.duration;
+        this.state.messages.push(message);
+        if (!this.isRunning) {
+            this.showAndDestroy();
+        }
+    },
+
+    showAndDestroy: function () {
+        this.isRunning = true;
+        this.triggerState();
+        setTimeout(() => {
+            this.state.messages.shift();
+            if (this.state.messages.length !== 0) {
+                setTimeout(() => {
+                    this.showAndDestroy();
+                }, 500)
+            } else {
+                this.triggerState();
+                this.isRunning = false;
+            }
+        }, this.duration * 1000);
     }
 
 });

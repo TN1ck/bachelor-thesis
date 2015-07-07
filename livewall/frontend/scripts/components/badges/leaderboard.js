@@ -54,16 +54,16 @@ export default React.createClass({
 
             return (
                 <tr className={trClass}>
-                    <td className='vert-align trophies__leaderboard__place'    xs={3}>#{_user.place}</td>
-                    <td className='vert-align trophies__leaderboard__name'     xs={3}>{name}</td>
-                    <td className='vert-align trophies__leaderboard__points'   xs={3}>{points.all}</td>
-                    <td className='vert-align trophies__leaderboard__trophies' xs={3}>{_badges}</td>
+                    <td className='vert-align leaderboard__place'    xs={3}>#{_user.place}</td>
+                    <td className='vert-align leaderboard__name'     xs={3}>{name}</td>
+                    <td className='vert-align leaderboard__points'   xs={3}>{points.all}</td>
+                    <td className='vert-align leaderboard__badges'   xs={3}>{_badges}</td>
                 </tr>
             );
         });
 
         return (
-            <Table className='trophies__leaderboard' hover striped>
+            <Table className='leaderboard' hover striped>
                 <thead>
                     <tr>
                         <th>{t.leaderboard.place}</th>

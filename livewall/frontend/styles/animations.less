@@ -139,23 +139,19 @@
 
 
 .fade {
+
 	&-enter, &-appear {
-		opacity: 0;
 		&.fade-enter-active, &.fade-appear-active {
-			transition: all .5s ease;
-			-webkit-transition: all .5s ease;
-			opacity: 1;
+			-webkit-animation: fadeIn 0.65s ease forwards;
+			animation: fadeIn 0.65s ease forwards;
 		}
 	}
 
 	&-leave {
 
-		opacity: 1;
-
 		&.fade-leave-active {
-			transition: all .5s ease;
-			-webkit-transition: all .5s ease;
-			opacity: 0;
+			-webkit-animation: fadeOut 0.65s ease forwards;
+			animation: fadeOut 0.65s ease forwards;
 		}
 	}
 }

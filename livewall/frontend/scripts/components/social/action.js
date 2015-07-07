@@ -4,7 +4,7 @@ import t from '../../../shared/translations/translation.js';
 import {colors} from '../../../shared/util/colors.js';
 
 import IconCard from '../utility/iconcard.js';
-import Award    from '../trophies/awards.js';
+import Icon     from '../utility/icon.js';
 
 export default React.createClass({
     render: function () {
@@ -65,7 +65,7 @@ export default React.createClass({
         );
 
         var icon = (
-            <Award
+            <Icon
                 image={a.icon}
                 type='none'
                 fill={a.fill}

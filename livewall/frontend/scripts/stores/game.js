@@ -10,10 +10,7 @@ import {user}             from '../auth.js';
 import SETTINGS           from '../settings.js';
 import * as owa           from '../owa.js';
 import * as pointApi      from '../api/points.js';
-import {
-    postAction,
-    getActions
-}                         from '../api/api.js';
+import * as api           from '../api/api.js';
 import pointsForActions   from '../../shared/gamification/points.js';
 
 //
@@ -24,38 +21,26 @@ export default Reflux.createStore({
 
     init: function () {
 
+        var initialState = {
+            user: {
+                booster: [],
+                badges: [],
+                actions: [],
+                points: {
+                }
+            },
+            users: [
+
+            ],
+            points: 0,
+            badges: {all: 0},
+            actions: {}
+        };
+
         this.state = {
             actions: [],
-            monthly: {
-                user: {
-                    booster: [],
-                    badges: [],
-                    actions: [],
-                    points: {
-                    }
-                },
-                users: [
-
-                ],
-                points: 0,
-                badges: {all: 0},
-                actions: {}
-            },
-            alltime: {
-                user: {
-                    booster: [],
-                    badges: [],
-                    actions: [],
-                    points: {
-                    }
-                },
-                users: [
-
-                ],
-                points: 0,
-                badges: {all: 0},
-                actions: {}
-            }
+            monthly: initialState,
+            alltime: initialState
         };
 
         // WEBSOCKET
@@ -64,8 +49,9 @@ export default Reflux.createStore({
             console.log('connection is working!');
         });
 
-        this.socket.on('action_created', (msg) => {
-            this.state.actions.unshift(msg);
+        this.socket.on('action_created', (action) => {
+            this.state.actions.unshift(action);
+            this.updateGlobalPoints(action);
             this.trigger(this.state);
         });
 
@@ -79,12 +65,9 @@ export default Reflux.createStore({
         // get the data after the user logs in
         user.whenLogedIn(() => {
 
-            postAction({
-                group: 'auth',
-                label: 'login'
-            });
+            this.postAction('auth', 'login');
 
-            getActions().then(result => {
+            api.getActions().then(result => {
                 this.state.actions = result.actions;
                 this.trigger(this.state);
             });
@@ -107,20 +90,54 @@ export default Reflux.createStore({
         return this.state;
     },
 
-    updatePoints: function (group, action) {
+    postAction: function (group, label, _dict) {
 
-        var pointsToAdd = _.get(pointsForActions, [group, action], 0);
+        var dict = {
+            group: group,
+            label: label
+        };
 
-        this.state.alltime.user.points.all    += pointsToAdd;
-        this.state.monthly.user.points.all    += pointsToAdd;
+        if (_dict) {
+            dict = _.extend(dict, _dict);
+        }
 
-        // add to group object of alltime
-        var points = _.get(this.state.alltime.user, ['actions', group, action], 0);
-        _.set(this.state.alltime.user, ['actions', group, action], points + pointsToAdd);
+        api.postAction(dict).then((answer) => {
+            var {action, badges} = answer;
+            if (badges.length > 0) {
+                badges.forEach((badge) => {
+                    actions.addFlashMessage({
+                        type: 'badge',
+                        content: badge
+                    });
+                });
+            }
 
-        // add to group object of monthly
-        points = _.get(this.state.monthly.user, ['actions', group, action], 0);
-        _.set(this.state.monthly.user, ['actions', group, action], points + pointsToAdd);
+            this.updateUserPoints(answer);
+
+        });
+    },
+
+    updateGlobalPoints: function (answer) {
+        var {action, badges, states} = answer;
+        var {
+            group, label, points
+        } = action;
+    },
+
+    updateUserPoints: function (answer) {
+
+        var {action, badges, stats} = answer;
+
+        var {
+            group, label, points
+        } = action;
+
+        [this.state.alltime.user, this.state.monthly.user].forEach((state) => {
+            state.points.all += points;
+            var oldPoints = _.get(state, ['actions', group, label], 0);
+            _.set(state, ['actions', group, label], points + oldPoints);
+
+        });
 
         this.trigger(this.state);
 
@@ -130,68 +147,42 @@ export default Reflux.createStore({
         // we do not want to track the queries that are added when the wall is started
         if (track) {
             owa.track('search', queryTerm, 'add');
-            this.updatePoints('search', 'add');
-
-            postAction({
-                group: 'search',
-                label: 'add',
-                value: queryTerm
-            });
+            this.postAction('search', 'add', queryTerm);
 
         }
     },
     removeQuery: function (queryTerm) {
         owa.track('search', queryTerm, 'remove');
-        this.updatePoints('search', 'remove');
-
-        postAction({
-            group: 'search',
-            label: 'remove',
-            value: queryTerm
-        });
+        this.postAction('search', 'remove', {value: queryTerm});
     },
 
     voteItem: function (uuid, value) {
-        if (value > 0) {
-            owa.track('vote', uuid, 'up');
-            this.updatePoints('vote', 'up');
-
-            postAction({
-                group: 'vote',
-                label: 'up',
-                item: uuid,
-                value: uuid
-            });
-        }
-
-        if (value < 0) {
-            owa.track('vote', uuid, 'down');
-            this.updatePoints('vote', 'down');
-
-            postAction({
-                group: 'vote',
-                label: 'down',
-                item: uuid,
-                value: value
-            });
-        }
+        var label = value > 0 ? 'up' : 'down';
+        owa.track('vote', uuid, label);
+        this.postAction('vote', label, {
+            item: uuid,
+            value: uuid
+        });
     },
 
     favouriteItem: function (uuid) {
         owa.track('favourite', uuid, 'toggle');
-        this.updatePoints('favourite', 'toggle');
-
-        postAction({
-            group: 'favourite',
-            label: 'toggle',
+        this.postAction('favourite', 'toggle', {
             item: uuid,
             value: uuid
         });
 
     },
 
-    addReward: function (id) {
-        owa.track('reward', '', id);
+    buyBooster: function (id) {
+        postBooster(id).then((booster) => {
+            actions.addFlashMessage({
+                type: 'booster',
+                content: booster
+            });
+            this.alltime.user.booster.push(booster);
+            this.trigger(this.state);
+        });
     }
 
 });

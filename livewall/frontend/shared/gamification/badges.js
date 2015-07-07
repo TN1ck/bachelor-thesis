@@ -148,9 +148,9 @@ module.exports = [
         NUMBER OF QUERIES
     */
     {
-        id: 'queries_10',
-        name: t.badges['queries_10'].header,
-        text: t.badges['queries_10'].text,
+        id: 'searches_add_10',
+        name: t.badges['searches_add_10'].header,
+        text: t.badges['searches_add_10'].text,
         number: '10',
         type: 'none',
         fill: colors.puerto_rico,
@@ -158,9 +158,9 @@ module.exports = [
         points: 50
     },
     {
-        id: 'queries_100',
-        name: t.badges['queries_100'].header,
-        text: t.badges['queries_100'].text,
+        id: 'searches_add_100',
+        name: t.badges['searches_add_100'].header,
+        text: t.badges['searches_add_100'].text,
         number: '100',
         type: 'king',
         fill: colors.puerto_rico,
@@ -168,9 +168,9 @@ module.exports = [
         points: 300
     },
     {
-        id: 'queries_1000',
-        name: t.badges['queries_1000'].header,
-        text: t.badges['queries_1000'].text,
+        id: 'searches_add_1000',
+        name: t.badges['searches_add_1000'].header,
+        text: t.badges['searches_add_1000'].text,
         number: '1000',
         type: 'emperor',
         fill: colors.puerto_rico,

@@ -11,7 +11,7 @@ import gameStore           from '../../stores/game.js';
 import actions             from '../../actions/actions.js';
 
 import IconCard            from '../utility/iconcard.js';
-import Award               from '../trophies/awards.js';
+import Icon                from '../utility/icon.js';
 
 import t                   from '../../../shared/translations/translation.js';
 
@@ -37,11 +37,12 @@ var BoosterComponent = React.createClass({
         this.setState({
             loading: true
         });
-        postBooster(this.props.booster.id).then((booster) => {
-            this.setState({
-                loading: false
-            });
-        });
+        actions.buyBooster(this.prosp.booster.id);
+    },
+    componentWillReceiveProps: function () {
+        this.setState({
+            loading: false
+        });;
     },
     render: function () {
         var {
@@ -76,7 +77,7 @@ var BoosterComponent = React.createClass({
         );
 
         var icon = (
-            <Award
+            <Icon
                 image={image}
                 type={type}
                 fill={fill}

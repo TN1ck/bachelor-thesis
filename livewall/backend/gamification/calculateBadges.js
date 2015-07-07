@@ -7,7 +7,7 @@ var Action = models.Action;
 var Vote = models.Vote;
 var Item = models.Item;
 
-var authLoginTrophies = function (user) {
+var authLoginBadges = function (user) {
     return user.getActions({
         where: {group: 'auth', label: 'login'},
         order: [['createdAt', 'DESC']]
@@ -90,22 +90,22 @@ var authLoginTrophies = function (user) {
     });
 };
 
-var addQuerieTrophies = function (user) {
-    return user.getActions({where: {group: 'queries', label: 'add'}}).then(function(actions) {
+var addSearchBadges = function (user) {
+    return user.getActions({where: {group: 'search', label: 'add'}}).then(function(actions) {
         var badges = [];
 
         var count = actions.length;
 
         if (count >= 10) {
-            badges.push('queries_10');
+            badges.push('searches_add_10');
         }
 
         if (count >= 100) {
-            badges.push('queries_100');
+            badges.push('searches_add_100');
         }
 
         if (count >= 1000) {
-            badges.push('queries_1000');
+            badges.push('searches_add_1000');
         }
 
         return {
@@ -117,7 +117,7 @@ var addQuerieTrophies = function (user) {
     });
 };
 
-var voteUpTrophies = function (user) {
+var voteUpBadges = function (user) {
     return user.getActions({where: {group: 'vote', label: 'up'}}).then(function(actions) {
 
         var badges = [];
@@ -145,7 +145,7 @@ var voteUpTrophies = function (user) {
     });
 };
 
-var voteDownTrophies = function (user) {
+var voteDownBadges = function (user) {
     return user.getActions({where: {group: 'vote', label: 'down'}}).then(function(actions) {
         var badges = [];
 
@@ -172,7 +172,7 @@ var voteDownTrophies = function (user) {
     });
 };
 
-var toggleFavouriteTrophies = function (user) {
+var toggleFavouriteBadges = function (user) {
     return user.getActions({where: {group: 'favourite', label: 'toggle'}}).then(function(actions) {
         var badges = [];
 
@@ -202,17 +202,17 @@ var toggleFavouriteTrophies = function (user) {
 
 var calcBadges = {
     favourite: {
-        toggle: toggleFavouriteTrophies
+        toggle: toggleFavouriteBadges
     },
-    queries: {
-        add: addQuerieTrophies
+    search: {
+        add: addSearchBadges
     },
     vote: {
-        up: voteUpTrophies,
-        down: voteDownTrophies
+        up: voteUpBadges,
+        down: voteDownBadges
     },
     auth: {
-        login: authLoginTrophies
+        login: authLoginBadges
     }
 };
 

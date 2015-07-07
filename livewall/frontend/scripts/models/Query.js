@@ -53,7 +53,11 @@ export default class Query {
     }
 
     saveData (items) {
-        store.set(`query-${this.term}`, items);
+        try {
+            store.set(`query-${this.term}`, items);
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     valueOf () {

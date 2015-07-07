@@ -12,7 +12,9 @@ var actions = Reflux.createActions([
     'changedQueries',
     'addDomElement',
 
-	'addItems'
+	'addItems',
+
+	'addFlashMessage'
 ]);
 
 export default actions;

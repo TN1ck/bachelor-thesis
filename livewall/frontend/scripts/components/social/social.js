@@ -8,7 +8,7 @@ import {
 
 import gameStore   from '../../stores/game.js';
 import BarChart    from '../charts/barChart.js';
-import LeaderBoard from '../trophies/leaderboard.js';
+import LeaderBoard from '../badges/leaderboard.js';
 
 import t from '../../../shared/translations/translation.js';
 import {colors} from '../../../shared/util/colors.js';

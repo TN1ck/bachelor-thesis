@@ -7,22 +7,18 @@ import {
     Table, Well
 }                           from 'react-bootstrap';
 
-
-import SETTINGS             from '../../settings.js';
 import gameStore            from '../../stores/game.js';
 import {user, requireAuth}  from '../../auth.js';
 
+import BADGES               from '../../../shared/gamification/badges.js';
+import t                    from '../../../shared/translations/translation.js';
 
 import BarChart             from '../charts/barChart.js';
-
-import Award                from './awards.js';
-import LeaderBoard          from './leaderboard.js';
+import Icon                 from '../utility/icon.js';
 import IconCard             from '../utility/iconcard.js';
 
-import badges               from '../../../shared/gamification/badges.js';
-import {camelCaseToBar}     from '../../../shared/util/utils.js';
+import LeaderBoard          from './leaderboard.js';
 
-import t                    from '../../../shared/translations/translation.js';
 
 var BadgeComponent = React.createClass({
     render: function () {
@@ -45,7 +41,7 @@ var BadgeComponent = React.createClass({
         );
 
         var icon = (
-            <Award
+            <Icon
                 image={image}
                 type={type}
                 fill={fill}
@@ -67,10 +63,11 @@ export default React.createClass({
     render: function () {
 
         var userBadges = this.state.alltime.user.badges.map(t => {
-            return _.find(badges, {id : t.name});
+            return _.find(BADGES, {id : t.name});
         });
 
-        var badgeComponents = userBadges.map(x => <BadgeComponent badge={x}/>);
+        var badgeComponents = _.sortBy(userBadges, 'fill')
+            .map(x => <BadgeComponent badge={x}/>);
 
         var user = this.state.alltime.user;
 

@@ -26,7 +26,7 @@ export default React.createClass({
             },
             {
                 name: <i style={{'lineHeight': 0}} className='fa fa-trophy'></i>,
-                link: 'trophies'
+                link: 'badges'
             },
             {
                 name: <i style={{'lineHeight': 0}} className='fa fa-dollar'></i>,
@@ -58,11 +58,11 @@ export default React.createClass({
         if (!SETTINGS.HIDE_HEADER) {
             userComponent = <div className='wall__header__info'>
                 <span>{t.header.label.loginAs} {user.username} </span>
-                <a href="#/trophies">
+                <a href="#/badges">
                     {alltime.points.all} {t.header.label.points}
                 </a>
                 <span> </span>
-                <a href="#/trophies">
+                <a href="#/badges">
                     #{monthly.place} {t.header.label.alltime} - #{alltime.place} {t.header.label.month}
                 </a>
             </div>;

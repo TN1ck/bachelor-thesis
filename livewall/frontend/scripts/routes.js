@@ -8,7 +8,7 @@ import Login    from './components/auth/login.js';
 import Logout   from './components/auth/logout.js';
 import Settings from './components/settings/settings.js';
 import Booster  from './components/booster/booster.js';
-import Trophies from './components/trophies/trophies.js';
+import Badges   from './components/badges/badges.js';
 import Social   from './components/social/social.js';
 
 import '../styles/main.less';
@@ -27,7 +27,7 @@ var routes = (
             <Route        name='logout'   handler={Logout}/>
             <Route        name='settings' handler={Settings}/>
             <Route        name='booster'  handler={Booster}/>
-            <Route        name='trophies' handler={Trophies}/>
+            <Route        name='badges'   handler={Badges}/>
             <Route        name='social'   handler={Social}/>
             <DefaultRoute name='wall'     handler={Wall}/>
         </Route>

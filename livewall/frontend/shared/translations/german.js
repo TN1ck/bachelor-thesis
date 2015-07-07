@@ -162,17 +162,17 @@ module.exports = {
             text: 'Bewerte mindestens 1000 Suchergebnisse negativ um diese Trophäe zu erhalten.',
         },
 
-        'queries_10': {
+        'searches_add_10': {
             header: 'SUCHEN',
             text: 'Suche mindestens nach 10 Suchbegriffen um diese Trophäe zu erhalten',
         },
 
-        'queries_100': {
+        'searches_add_100': {
             header: 'SUCHEN',
             text: 'Suche mindestens nach 100 Suchbegriffen um diese Trophäe zu erhalten',
         },
 
-        'queries_1000': {
+        'searches_add_1000': {
             header: 'SUCHEN',
             text: 'Suche mindestens nach 1000 Suchbegriffen um diese Trophäe zu erhalten',
         },
