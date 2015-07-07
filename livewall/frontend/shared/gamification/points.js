@@ -1,16 +1,16 @@
 module.exports = {
     vote: {
-        up: 10,
-        down: 10
+        up: 1,
+        down: 1
     },
     search: {
-        add: 20,
-        remove: 20
+        add: 1,
+        remove: 1
     },
     auth: {
-        login: 30
+        login: 5
     },
     favourite: {
-        toggle: 50
+        toggle: 2
     }
 };

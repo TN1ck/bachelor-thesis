@@ -97,10 +97,12 @@
 		opacity: 0;
 		transform: translateY(-200px);
 		-webkit-transform: translateY(-200px);
-
 		&.from-above-enter-active, &.from-above-appear-active {
-			-webkit-animation: moveIn 0.65s ease forwards;
-			animation: moveIn 0.65s ease forwards;
+			transition: all .5s ease;
+			-webkit-transition: all .5s ease;
+			opacity: 1;
+			transform: translateY(0px);
+			-webkit-transform: translateY(0px);
 		}
 	}
 
@@ -111,8 +113,11 @@
 		-webkit-transform: translateY(0);
 
 		&.from-above-leave-active {
-			-webkit-animation: moveOut 0.65s ease forwards;
-			animation: moveOut 0.65s ease forwards;
+			transition: all .5s ease;
+			-webkit-transition: all .5s ease;
+			opacity: 0;
+			transform: translateY(0px);
+			-webkit-transform: translateY(0px);
 		}
 	}
 }
@@ -134,19 +139,23 @@
 
 
 .fade {
-
 	&-enter, &-appear {
+		opacity: 0;
 		&.fade-enter-active, &.fade-appear-active {
-			-webkit-animation: fadeIn 0.65s ease forwards;
-			animation: fadeIn 0.65s ease forwards;
+			transition: all .5s ease;
+			-webkit-transition: all .5s ease;
+			opacity: 1;
 		}
 	}
 
 	&-leave {
 
+		opacity: 1;
+
 		&.fade-leave-active {
-			-webkit-animation: fadeOut 0.65s ease forwards;
-			animation: fadeOut 0.65s ease forwards;
+			transition: all .5s ease;
+			-webkit-transition: all .5s ease;
+			opacity: 0;
 		}
 	}
 }

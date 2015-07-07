@@ -1,5 +1,6 @@
 import React       from 'react';
 import Reflux      from 'reflux';
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 import {
     Grid, Row, Col, Input, Button,
     Jumbotron, Alert, PageHeader
@@ -10,17 +11,9 @@ import BarChart    from '../charts/barChart.js';
 import LeaderBoard from '../trophies/leaderboard.js';
 
 import t from '../../../shared/translations/translation.js';
+import {colors} from '../../../shared/util/colors.js';
 
-var Action = React.createClass({
-    render: function () {
-        var {action, user, item} = this.props.action;
-        return (
-            <Col  xs={12}>
-                {user.username} - {action.group} - {action.label}
-            </Col>
-        );
-    }
-});
+import Action from './action.js';
 
 export default React.createClass({
     mixins: [
@@ -62,7 +55,7 @@ export default React.createClass({
 
         var _actions = actions.map(action => {
             return (
-                <Row>
+                <Row key={action.action.id}>
                     <Action action={action} />
                 </Row>
             );
@@ -92,7 +85,9 @@ export default React.createClass({
                 <Col xs={12} sm={12} md={3}>
                     <h1>Aktionen</h1>
                     <hr/>
-                    {_actions}
+                    <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionEnter={true}>
+                        {_actions}
+                    </ReactCSSTransitionGroup>
                 </Col>
             </Row>
         );

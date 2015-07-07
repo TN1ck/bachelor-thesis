@@ -1,15 +1,14 @@
 import React               from 'react/addons';
 import Reflux              from 'reflux';
 
-import SETTINGS            from '../settings.js';
-import {user, requireAuth} from '../auth.js';
+import SETTINGS            from '../../settings.js';
 
-import gameStore           from '../stores/game.js';
-import actions             from '../actions/actions.js';
-import {camelCaseToBar, hashCode}    from '../../shared/util/utils.js';
-import rewards             from '../../shared/gamification/rewards.js';
+import gameStore           from '../../stores/game.js';
+import actions             from '../../actions/actions.js';
+import {camelCaseToBar, hashCode}    from '../../../shared/util/utils.js';
+import rewards             from '../../../shared/gamification/rewards.js';
 
-import t from '../../shared/translations/translation.js';
+import t from '../../../shared/translations/translation.js';
 
 import {
     Grid, Row, Col, Input, Button, Badge,

@@ -16,7 +16,13 @@ export var getMonthlyPoints = () => {
         to: moment().toString()
     }).then(result => {
         return _.extend(result, {
-            user: _.find(result.users, {username: user.username})  || result.users[0]
+            user: _.find(result.users, {username: user.username})  || {
+                points: 0,
+                badges: [],
+                actions: {
+
+                }
+            }
         });
     });
 };
@@ -27,7 +33,9 @@ export var getAllTimePoints = () => {
         contentType: 'application/json; charset=utf-8'
     }).then(result => {
         return _.extend(result, {
-            user: _.find(result.users, {username: user.username}) || result.users[0]
+            user: _.find(result.users, {username: user.username}) || {
+                points: 0
+            }
         });
     });
 };

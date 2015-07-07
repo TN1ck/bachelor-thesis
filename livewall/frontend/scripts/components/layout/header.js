@@ -2,11 +2,11 @@ import React     from 'react/addons';
 import Reflux    from 'reflux';
 import {Link}    from 'react-router';
 
-import {user}    from '../auth.js';
-import gameStore from '../stores/game.js';
-import SETTINGS  from '../settings.js';
+import {user}    from '../../auth.js';
+import gameStore from '../../stores/game.js';
+import SETTINGS  from '../../settings.js';
 
-import t from '../../shared/translations/translation.js';
+import t from '../../../shared/translations/translation.js';
 
 export default React.createClass({
     displayName: 'header',

@@ -6,7 +6,7 @@ import SETTINGS            from '../settings.js';
 import {user, requireAuth} from '../auth.js';
 import gameStore           from '../stores/game.js';
 
-import Header              from './header.js';
+import Header              from './layout/header.js';
 
 export default React.createClass({
     displayName: 'app',

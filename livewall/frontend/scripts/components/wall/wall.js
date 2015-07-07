@@ -51,7 +51,9 @@ export default React.createClass({
             <div ref='wall'>
                 <Queries />
                 <div className='tiles'>
-                    {tiles}
+                    <ReactCSSTransitionGroup transitionName="fade" transitionAppear={false} transitionEnter={false}>
+                        {tiles}
+                    </ReactCSSTransitionGroup>
                     <div className="wall__loader">
                         {loading}
                     </div>

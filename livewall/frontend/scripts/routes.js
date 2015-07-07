@@ -2,12 +2,12 @@ import React           from 'react';
 import Router          from 'react-router';
 
 import App      from './components/app.js';
-import Admin    from './components/admin.js';
+import Admin    from './components/auth/admin.js';
 import Wall     from './components/wall/wall.js';
 import Login    from './components/auth/login.js';
 import Logout   from './components/auth/logout.js';
-import Settings from './components/settings.js';
-import Booster  from './components/booster.js';
+import Settings from './components/settings/settings.js';
+import Booster  from './components/booster/booster.js';
 import Trophies from './components/trophies/trophies.js';
 import Social   from './components/social/social.js';
 

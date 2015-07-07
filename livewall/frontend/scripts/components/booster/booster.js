@@ -4,25 +4,25 @@ import moment              from 'moment';
 import durationFormat      from 'moment-duration-format';
 
 
-import SETTINGS            from '../settings.js';
-import {user, requireAuth} from '../auth.js';
+import SETTINGS            from '../../settings.js';
+import {user, requireAuth} from '../../auth.js';
 
-import gameStore           from '../stores/game.js';
-import actions             from '../actions/actions.js';
+import gameStore           from '../../stores/game.js';
+import actions             from '../../actions/actions.js';
 
-import IconCard from './utility/iconcard.js';
-import Award from './trophies/awards.js';
+import IconCard            from '../utility/iconcard.js';
+import Award               from '../trophies/awards.js';
 
-import t from '../../shared/translations/translation.js';
+import t                   from '../../../shared/translations/translation.js';
 
-import booster from '../../shared/gamification/booster.js';
+import booster             from '../../../shared/gamification/booster.js';
 
-import {postBooster} from '../api/api.js';
+import {postBooster}       from '../../api/api.js';
 
 import {
     Grid, Row, Col, Input, Button, Badge,
     Jumbotron, Alert, PageHeader, Label, Well, Panel
-} from 'react-bootstrap';
+}                          from 'react-bootstrap';
 
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 //
@@ -38,7 +38,6 @@ var BoosterComponent = React.createClass({
             loading: true
         });
         postBooster(this.props.booster.id).then((booster) => {
-            console.log(booster);
             this.setState({
                 loading: false
             });
@@ -52,8 +51,14 @@ var BoosterComponent = React.createClass({
 
         var buttonText = {
             false: <span>Für <strong>{points}</strong> kaufen</span>,
-            true: <span>Sie haben einen Booster aktiv</span>
+            true: <span>Booster aktiv</span>
         }[this.props.disable];
+
+        var _active;
+
+        if (this.props.active) {
+            _active = <strong>Dieser Booster ist im Moment aktiv.</strong>;
+        }
 
         var body = (
             <span>
@@ -62,6 +67,7 @@ var BoosterComponent = React.createClass({
                 <p>
                     {text}
                     <br/>
+                    {_active}
                     <Button className='pull-right' onClick={this.buyBooster}>
                         {buttonText}
                     </Button>
@@ -90,9 +96,11 @@ export default React.createClass({
         Reflux.listenTo(gameStore, 'onStoreChange')
     ],
     getInitialState: function () {
+        var state = gameStore.state;
+        var booster = this.calcBooster(state)
         return _.extend({}, gameStore.state, {
-            booster: {},
-            left: moment.duration(0, 'minutes')
+            booster: booster,
+            left: this.calcTimeLeft(booster)
         });
     },
     onStoreChange: function (state) {
@@ -156,10 +164,10 @@ export default React.createClass({
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <h1>Power-Ups kaufen</h1>
+                        <h1>Booster kaufen</h1>
                         <hr/>
-                        <p>Mittels von Power-Ups können Sie schneller Punkte sammeln, sie kosten jedoch Punkte und die Dauer ist begrenzt.</p>
-                        <p>Bisher hast du {this.state.alltime.user.booster.length} Power-Ups gekauft</p>
+                        <p>Mittels von Booster können Sie schneller Punkte sammeln, sie kosten jedoch Punkte und die Dauer ist begrenzt.</p>
+                        <p>Bisher hast du {this.state.alltime.user.booster.length} Booster gekauft</p>
                         {_booster}
                     </Col>
                     {this.createBooster()}
