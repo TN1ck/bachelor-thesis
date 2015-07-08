@@ -1,25 +1,31 @@
-import _ from 'lodash';
+import _     from 'lodash';
+import store from 'store';
 
 // DEFAULTS
-var defaults = {};
+var settings = {};
 
-defaults.LOGIN_URL   = 'http://pia-dev-intern.dai-labor.de/login/';
-defaults.PROFILE_URL = 'http://pia-dev-intern.dai-labor.de/service';
-defaults.PIA_URL     = 'http://pia-dev-intern.dai-labor.de';
+settings.save = (id, value) => {
+    settings[id] = value;
+    store.set(id, value);
+};
 
-defaults.SERVER_URL  = 'http://localhost:4000';
-defaults.SOCKET_URL  = 'http://localhost:4001';
+settings.LOGIN_URL   = 'http://pia-dev-intern.dai-labor.de/login/';
+settings.PROFILE_URL = 'http://pia-dev-intern.dai-labor.de/service';
+settings.PIA_URL     = 'http://pia-dev-intern.dai-labor.de';
 
-defaults.OWA = {
+settings.SERVER_URL  = 'http://localhost:4000';
+settings.SOCKET_URL  = 'http://localhost:4001';
+
+settings.OWA = {
     owa_baseUrl: 'http://ia.dailab.de/owa/',
     // owa_baseUrl: 'http://localhost:4000/',
     siteId: '87a70ce46ea04de7c28dd1e4da31904c',
     apiKey: '1cd6f4568986197d6a0c0c179930f382'
 };
 
-defaults.HIDE_HEADER = false;
+settings.HIDE_HEADER = false;
 
-defaults.broker = [
+settings.broker = [
     {
         url:          "http://pia-dev-intern.dai-labor.de/service",
         brokerName:   "PIA_Dev_intern_BrokerBean",
@@ -44,7 +50,9 @@ defaults.broker = [
     // }
 ];
 
-defaults.QUERIES = [
+settings.color_scheme = 'color_pastel';
+
+settings.QUERIES = [
     // 'politics',
     // 'machine',
     // 'dai',
@@ -60,7 +68,7 @@ defaults.QUERIES = [
     // 'gamification'
 ];
 
-defaults.FILTER = {
+settings.FILTER = {
 	'content': [
         // 'dai',
         'kiel'
@@ -68,24 +76,16 @@ defaults.FILTER = {
 	'title': ['no title']
 };
 
-
-
 // // check if there are import SETTINGS set
-// var setFromLocal = function(import SETTINGS) {
-//     _.each(import SETTINGS, (v, k) => {
-//         var value = store.get(k);
-//         if (value) {
-//             defaults[k] = value;
-//         }
-//     });
-// };
-//
-// setFromLocal(defaults);
+var setFromLocal = function () {
+    _.each(settings, (v, k) => {
+        var value = store.get(k);
+        if (value) {
+            settings[k] = value;
+        }
+    });
+};
 
-export default defaults;
-//
-// export var save = function () {
-//     _.each(import SETTINGS, (v, k) => {
-//         store.save(k, v);
-//     });
-// };
+setFromLocal(settings);
+
+export default settings;

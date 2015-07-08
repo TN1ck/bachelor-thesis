@@ -7,6 +7,7 @@ import gameStore           from '../../stores/game.js';
 import actions             from '../../actions/actions.js';
 import {camelCaseToBar, hashCode}    from '../../../shared/util/utils.js';
 import rewards             from '../../../shared/gamification/rewards.js';
+import LEVELS              from '../../../shared/gamification/levels.js';
 
 import t from '../../../shared/translations/translation.js';
 
@@ -37,41 +38,71 @@ var ColorSchema = React.createClass({
             'gamification'
         ];
 
-        var {schema, id, name, points} = this.props.schema;
+        var {schema, id, name, level} = this.props.schema;
 
         var coloredWords = words.map(word => {
             var color = schema(hashCode(word));
             return <span><Label style={{backgroundColor: color}}>{word}</Label> </span>;
         });
 
-        var label;
+        var isAllowedToUse = level <= this.props.level;
 
+        var buttonText = {
+            false: `Dir fehlen ${level - this.props.level} level`,
+            true: `Benutzen`
+        }[isAllowedToUse];
 
+        var active = this.props.active;
 
-        return <Col md={6} xs={12}>
-            <Panel>
+        if (active) {
+            buttonText = 'Aktuell ausgewählt';
+        }
+
+        return <Col xs={12}>
+            <Panel bsStyle={active ? 'primary' : 'default'}>
                 <h5>{name}</h5>
                 {coloredWords}
                 <br/>
-                <Label bsStyle='success' className='pull-right'>freigeschaltet</Label>
+                <div className='pull-right'>
+                    <Button onClick={() => this.props.onClick('color_scheme', id)} active={true} disabled={!isAllowedToUse}>
+                        {buttonText}
+                    </Button>
+                </div>
             </Panel>
         </Col>;
     }
 });
 
 export default React.createClass({
-    displayName: 'rewards',
+    displayName: 'setings',
     mixins: [
         Reflux.connect(gameStore),
     ],
-    render: function () {
-
-        var colorSchemas = rewards.map(schema => {
-            return <ColorSchema schema={schema}/>
+    getDefaultProps: function () {
+        return {
+            settings: SETTINGS
+        };
+    },
+    save: function (id, value) {
+        SETTINGS.save(id, value);
+        this.setState({
+            settings: SETTINGS
         });
+    },
+    createColorSchemes: function () {
 
+        var currentlySelected = SETTINGS.color_scheme;
+        var level = this.state.level;
+        var points = this.state.alltime.user.points.all;
 
-
+        return rewards.filter(r => {
+            return r.type === 'color_scheme';
+        }).map(schema => {
+            var active = schema.id === currentlySelected;
+            return <ColorSchema onClick={this.save} active={active} level={level} points={points} schema={schema}/>
+        });
+    },
+    render: function () {
         return (
             <Grid>
                 <Row>
@@ -85,18 +116,8 @@ export default React.createClass({
                         <p>{t.rewards.colors.subHeader}</p>
                         <hr/>
                         <Row>
-                        {colorSchemas}
+                            {this.createColorSchemes()}
                         </Row>
-                    </Col>
-                    <Col xs={12}>
-                        <h3>{t.rewards.backgrounds.header}</h3>
-                        <p>{t.rewards.backgrounds.subHeader}</p>
-                        <hr />
-                    </Col>
-                    <Col xs={12}>
-                        <h3>{t.rewards.advanced.header}</h3>
-                        <p>{t.rewards.advanced.subHeader}</p>
-                        <hr/>
                     </Col>
                 </Row>
             </Grid>

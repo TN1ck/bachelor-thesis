@@ -89,7 +89,7 @@ module.exports = {
         subHeader: 'Erreichen Sie eine bestimmte Punktzahl werden hier automatisch Features freigeschaltet.',
         colors: {
             header: 'Farbschemas',
-            subHeader: 'Mittels der Farbschema können Sie die Farben der Suchergebnisse variieren. Unter den Einstellungen können Sie das Farbschema anpassen. In den Einstellungen können Sie die zwischen den erhaltenen Schemas wechseln.',
+            subHeader: 'Mittels der Farbschema können Sie die Farben der Suchergebnisse variieren. Sie müsen die Seite neu laden um das Schema anzuwenden.',
         },
         backgrounds: {
             header: 'Hintergrundbilder und Farben',

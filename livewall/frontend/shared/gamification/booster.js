@@ -22,7 +22,7 @@ module.exports = [
         type: 'none',
         fill: colors.vinrouge,
         image: icons.key,
-        points: 5000,
+        points: 200,
         multiplicator: 2,
         duration: 1
     },
@@ -33,7 +33,7 @@ module.exports = [
         type: 'none',
         fill: colors.vinrouge,
         image: icons.key,
-        points: 9000,
+        points: 400,
         multiplicator: 2,
         duration: 2
     },
@@ -44,7 +44,7 @@ module.exports = [
         type: 'none',
         fill: colors.buttercup,
         image: icons.key,
-        points: 15000,
+        points: 600,
         multiplicator: 3,
         duration: 1
     },
@@ -55,7 +55,7 @@ module.exports = [
         type: 'none',
         fill: colors.buttercup,
         image: icons.key,
-        points: 25000,
+        points: 1000,
         multiplicator: 3,
         duration: 1
     }

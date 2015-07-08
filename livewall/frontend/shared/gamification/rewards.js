@@ -2,27 +2,31 @@ var schemas = require('../util/colors.js').colorFunctions
 
 module.exports = [
     {
-        points: 0,
+        level: 1,
+        type: 'color_scheme',
         id: 'color_pastel',
         name: 'Pastel',
-        schema: schemas.pastel
+        schema: schemas.color_pastel
     },
     {
-        points: 5000,
+        level: 2,
+        type: 'color_scheme',
         id: 'color_blue',
         name: 'Flieder',
-        schema: schemas.blue
+        schema: schemas.color_blue
     },
     {
-        points: 10000,
+        level: 3,
+        type: 'color_scheme',
         id: 'color_gray',
         name: 'Grau',
-        schema: schemas.gray
+        schema: schemas.color_gray
     },
     {
-        points: 20000,
+        level: 4,
+        type: 'color_scheme',
         id: 'color_green',
         name: 'Grün',
-        schema: schemas.green
+        schema: schemas.color_green
     }
 ];

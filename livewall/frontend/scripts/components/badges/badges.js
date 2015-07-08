@@ -11,6 +11,7 @@ import gameStore            from '../../stores/game.js';
 import {user, requireAuth}  from '../../auth.js';
 
 import BADGES               from '../../../shared/gamification/badges.js';
+import LEVELS               from '../../../shared/gamification/levels.js';
 import t                    from '../../../shared/translations/translation.js';
 
 import BarChart             from '../charts/barChart.js';
@@ -101,11 +102,17 @@ export default React.createClass({
 
         ].sort((a, b) => b.x - a.x);
 
+        var points = this.state.alltime.user.points.all;
+        // works because LEVELS is an array and the current level
+        // is the indice for the next one
+        var pointsNeededForNextLevel = LEVELS[this.state.level].points - points;
+
         return (
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <h1>{this.state.alltime.user.points.all} Punkte</h1>
+                        <h1>{points} Punkte / {this.state.level} Level</h1>
+                        <p>{pointsNeededForNextLevel} Punkte benötigst du um das nächste Level zu erreichen.</p>
                         <BarChart data={data}/>
                     </Col>
                     <Col xs={12}>

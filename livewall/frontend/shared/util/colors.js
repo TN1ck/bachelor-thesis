@@ -3,7 +3,7 @@ var d3       = require('d3');
 var _        = require('lodash');
 
 var colorFunctions = {
-    pastel: function (hash) {
+    color_pastel: function (hash) {
         var hslStarts = [
             {s: 0.4, l: 0.4},
             {s: 0.3, l: 0.4},
@@ -17,7 +17,7 @@ var colorFunctions = {
         var hsl = d3.hsl(h, sl.s, sl.l);
         return hsl.toString();
     },
-    blue: function (hash) {
+    color_blue: function (hash) {
 
         var sScale = d3.scale.linear().domain([0, 1]).range([0.2, 0.8]);
 
@@ -33,7 +33,7 @@ var colorFunctions = {
         var color = d3.hsl(hsl.h, s, hsl.l);
         return color.toString();
     },
-    green: function (hash) {
+    color_green: function (hash) {
 
         var sScale = d3.scale.linear().domain([0, 1]).range([0.2, 0.8]);
 
@@ -49,7 +49,7 @@ var colorFunctions = {
         var color = d3.hsl(hsl.h, s, hsl.l);
         return color.toString();
     },
-    gray: function (hash) {
+    color_gray: function (hash) {
 
         var lScale = d3.scale.linear().domain([0, 1]).range([0, 0.6]);
 
@@ -62,7 +62,7 @@ var colorFunctions = {
         var color = d3.hsl(hsl.h, hsl.s, l);
         return color.toString();
     },
-    nice: function (hash) {
+    color_nice: function (hash) {
         var colors = [
             '#248EE6',
             '#F5A623',
@@ -75,23 +75,24 @@ var colorFunctions = {
     }
 };
 
-var selectedColorFunction = colorFunctions.pastel;
+var getColorByString = function (str, scheme) {
 
-var getColorByString = function (str) {
+    console.log(scheme);
 
     var hash = hashCode(str);
-    return selectedColorFunction(hash);
+    return _.get(colorFunctions, scheme, colorFunctions.pastel_color)(hash);
 
 };
 
 // names of the colors accourding to: http://chir.ag/projects/name-that-color/
 var colors = {
-    vinrouge:     '#9c4274',
+    vinrouge:     '#9C4274',
     buttercup:    '#F5A623',
-    sushi:        '#96bf48',
+    sushi:        '#96BF48',
     burnt_sienna: '#EC663C',
     puerto_rico:  '#47BBB3',
-    curious_blue: '#248EE6'
+    curious_blue: '#248EE6',
+    concrete:     '#95A5A6'
 };
 
 module.exports = {

@@ -5,6 +5,7 @@ import $                  from 'jquery';
 
 import {getColorByString} from '../../shared/util/colors.js';
 import {user}             from '../auth.js';
+import SETTINGS           from '../settings.js';
 import Broker             from './Broker.js';
 
 export default class Query {
@@ -12,7 +13,7 @@ export default class Query {
     constructor (term, broker) {
         this.term = term;
         this.date = moment();
-        this.color = getColorByString(term);
+        this.color = getColorByString(term, SETTINGS.color_scheme);
         this.brokerSettings = broker;
 
         this.initBroker();

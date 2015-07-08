@@ -10,8 +10,11 @@ import {
     Nav, Navbar,
     DropdownButton,
     MenuItem,
-    NavItem
+    NavItem,
+    CollapsibleNav,
+    Badge
 } from 'react-bootstrap';
+import {NavItemLink} from 'react-router-bootstrap';
 
 import t from '../../../shared/translations/translation.js';
 
@@ -22,30 +25,34 @@ export default React.createClass({
     ],
     render: function () {
 
+        var style = {lineHeight: 0};
+
         var links = [
             {
                 name: 'DAIWALL',
-                link: ''
+                link: 'wall'
             },
             {
-                name: 'Einstellungen',
+                name: <span>
+                    <i style={style} className='fa fa-gears'></i> Einstellungen
+                    </span>,
                 link: 'settings'
             },
             {
                 name: <span>
-                    <i style={{'lineHeight': 0}} className='fa fa-trophy'></i> Abzeichen
+                    <i style={style} className='fa fa-trophy'></i> Abzeichen
                 </span>,
                 link: 'badges'
             },
             {
                 name: <span>
-                    <i style={{'lineHeight': 0}} className='fa fa-dollar'></i> Punkte einlösen
+                    <i style={style} className='fa fa-dollar'></i> Booster
                 </span>,
                 link: 'booster'
             },
             {
                 name: <span>
-                    <i style={{lineHeight: 0}} className='fa fa-users'></i> Statistik
+                    <i style={style} className='fa fa-bar-chart'></i> Statistik
                 </span>,
                 link: 'social'
             },
@@ -56,34 +63,34 @@ export default React.createClass({
         ];
 
         var nav = links.map((link, i) => {
-            return <NavItem eventKey={{i}} href={`#/${link.link}`}>{link.name}</NavItem>
+            return <NavItemLink to={link.link}>{link.name}</NavItemLink>
         });
 
         var monthly = this.state.monthly.user;
         var alltime = this.state.alltime.user;
+        var level   = this.state.level;
 
         var userComponent;
 
-        if (!SETTINGS.HIDE_HEADER) {
-            userComponent = <div className='wall__header__info'>
-                <span>{t.header.label.loginAs} {user.username} </span>
-                <a href="#/badges">
-                    {alltime.points.all} {t.header.label.points}
-                </a>
-                <span> </span>
-                <a href="#/badges">
-                    #{monthly.place} {t.header.label.alltime} - #{alltime.place} {t.header.label.month}
-                </a>
-            </div>;
+        if (SETTINGS.HIDE_HEADER) {
+            return <span></span>;
         }
 
         var brand = <a href='#/'>DAIWALL</a>
 
         return (
-            <Navbar inverse brand={brand} toggleNavKey={0}>
-                <Nav right eventKey={0}>
-                    {nav}
-                </Nav>
+            <Navbar fluid inverse toggleNavKey={0}>
+                <CollapsibleNav eventKey={0}>
+                    <Nav navbar>
+                        <NavItemLink to='badges' active={false}>
+                            <span>{user.username} - {alltime.points.all} {t.header.label.points}</span>
+                            <span> - #{alltime.place} Platz - {level} Level</span>
+                        </NavItemLink>
+                    </Nav>
+                    <Nav navbar right>
+                        {nav}
+                    </Nav>
+                </CollapsibleNav>
             </Navbar>
         );
     }

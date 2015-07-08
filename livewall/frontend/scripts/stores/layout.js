@@ -171,7 +171,7 @@ export default Reflux.createStore({
 
         // instantly update
         // we only want to debounce when new items are added
-        if (temp.count() === this.items.count()) {
+        if (temp.count() >= this.items.count()) {
             this.layout(true);
         } else {
             this.debouncedLayout();

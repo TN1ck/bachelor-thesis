@@ -11,7 +11,7 @@ import SETTINGS           from '../settings.js';
 import * as owa           from '../owa.js';
 import * as pointApi      from '../api/points.js';
 import * as api           from '../api/api.js';
-import pointsForActions   from '../../shared/gamification/points.js';
+import LEVELS             from '../../shared/gamification/levels.js';
 
 //
 // GAME STORE
@@ -28,7 +28,8 @@ export default Reflux.createStore({
                 actions: [],
                 points: {
                     all: 0,
-                    place: 0
+                    place: 0,
+                    badges: 0,
                 }
             },
             users: [
@@ -41,6 +42,7 @@ export default Reflux.createStore({
 
         this.state = {
             actions: [],
+            level: 0,
             monthly: initialState,
             alltime: initialState
         };
@@ -82,6 +84,7 @@ export default Reflux.createStore({
 
             pointApi.getAllTimePoints().then(result => {
                 this.state.alltime = result;
+                this.calcLevel();
                 this.trigger(this.state);
             });
 
@@ -142,6 +145,7 @@ export default Reflux.createStore({
                     count: 0,
                     points: 0
                 });
+                state.points += b.points;
                 _.set(state, ['badges', 'all', 'count'],  1 + oldBadgesPoints.count);
                 _.set(state, ['badges', 'all', 'points'], b.points + oldBadgesPoints.points);
             });
@@ -170,9 +174,36 @@ export default Reflux.createStore({
 
             state.badges = state.badges.concat(badges || []);
 
-        });
+            badges.forEach(b => {
+                var oldBadgesPoints = _.get(state, ['badges', 'all'], {
+                    count: 0,
+                    points: 0
+                });
+                state.points.all    += b.points;
+                state.points.badges += b.points;
+            });
 
+        });
+        this.calcLevel();
         this.trigger(this.state);
+
+    },
+
+    calcLevel: function () {
+        var current = this.state.level;
+        var level = (_.findLast(LEVELS, (level) => {
+            return level.points <= this.state.alltime.user.points.all;
+        }) || LEVELS[0]);
+
+        // user arrived new level, send message
+        if (current !== 0 && level > current) {
+            actions.addFlashMessage({
+                type: 'level',
+                content: level
+            });
+        }
+
+        this.state.level = level.level;
 
     },
 
