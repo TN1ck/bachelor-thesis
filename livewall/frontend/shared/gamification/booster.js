@@ -1,16 +1,6 @@
 var colors = require('../util/colors.js').colors;
 var t      = require('../translations/translation.js');
 
-var icons = {
-    key:      'key',
-    repeat:   'repeat',
-    upvote:   'upvote',
-    downvote: 'downvote',
-    search:   'search',
-    star:     'star'
-
-};
-
 module.exports = [
     /*
         NUMBER OF LOGINS
@@ -21,7 +11,7 @@ module.exports = [
         text: 'Verdopple deine Punkte für 1 Tag.',
         type: 'none',
         fill: colors.vinrouge,
-        image: icons.key,
+        image: 'rocket',
         points: 200,
         multiplicator: 2,
         duration: 1
@@ -32,7 +22,7 @@ module.exports = [
         text: 'Verdopple deine Punkte für 2 Tage.',
         type: 'none',
         fill: colors.vinrouge,
-        image: icons.key,
+        image: 'rocket',
         points: 400,
         multiplicator: 2,
         duration: 2
@@ -43,7 +33,7 @@ module.exports = [
         text: 'Verdreifache deine Punkte für 1 Tag.',
         type: 'none',
         fill: colors.buttercup,
-        image: icons.key,
+        image: 'rocket',
         points: 600,
         multiplicator: 3,
         duration: 1
@@ -54,7 +44,7 @@ module.exports = [
         text: 'Verdreifache deine Punkte für 2 Tage.',
         type: 'none',
         fill: colors.buttercup,
-        image: icons.key,
+        image: 'rocket',
         points: 1000,
         multiplicator: 3,
         duration: 1

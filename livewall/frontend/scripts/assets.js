@@ -7,6 +7,8 @@ export default {
         crown_king:    require('file!../assets/crown_king.svg'),
         repeat:        require('file!../assets/repeat.png'),
         search:        require('file!../assets/search.png'),
-        star:          require('file!../assets/star.png')
+        star:          require('file!../assets/star.png'),
+        ribbon:        require('file!../assets/ribbon.png'),
+        rocket:        require('file!../assets/rocket.png')
     }
 };

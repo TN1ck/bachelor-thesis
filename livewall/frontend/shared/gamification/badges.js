@@ -1,16 +1,6 @@
 var colors = require('../util/colors.js').colors;
 var t      = require('../translations/translation.js');
 
-var icons = {
-    key:      'key',
-    repeat:   'repeat',
-    upvote:   'upvote',
-    downvote: 'downvote',
-    search:   'search',
-    star:     'star'
-
-};
-
 module.exports = [
     /*
         NUMBER OF LOGINS
@@ -23,7 +13,7 @@ module.exports = [
         number: '1',
         type: 'none',
         fill: colors.vinrouge,
-        image: icons.key,
+        image: 'key',
         points: 50
     },
     {
@@ -34,7 +24,7 @@ module.exports = [
         number: '50',
         type: 'king',
         fill: colors.vinrouge,
-        image: icons.key,
+        image: 'key',
         points: 500
     },
     {
@@ -45,7 +35,7 @@ module.exports = [
         number: '100',
         type: 'emperor',
         fill: colors.vinrouge,
-        image: icons.key,
+        image: 'key',
         points: 1000
     },
     /*
@@ -59,7 +49,7 @@ module.exports = [
         number: '3',
         type: 'none',
         fill: colors.buttercup,
-        image: icons.repeat,
+        image: 'repeat',
         points: 100
      },
     {
@@ -70,7 +60,7 @@ module.exports = [
         number: '7',
         type: 'king',
         fill: colors.buttercup,
-        image: icons.repeat,
+        image: 'repeat',
         points: 500
     },
     {
@@ -81,7 +71,7 @@ module.exports = [
         number: '15',
         type: 'emperor',
         fill: colors.buttercup,
-        image: icons.repeat,
+        image: 'repeat',
         points: 1000
     },
     /*
@@ -95,7 +85,7 @@ module.exports = [
         number: '10',
         type: 'none',
         fill: colors.sushi,
-        image: icons.upvote,
+        image: 'upvote',
         points: 50
     },
     {
@@ -106,7 +96,7 @@ module.exports = [
         number: '100',
         type: 'king',
         fill: colors.sushi,
-        image: icons.upvote,
+        image: 'upvote',
         points: 300
     },
     {
@@ -117,7 +107,7 @@ module.exports = [
         number: '1000',
         type: 'emperor',
         fill: colors.sushi,
-        image: icons.upvote,
+        image: 'upvote',
         points: 100
     },
     /*
@@ -131,7 +121,7 @@ module.exports = [
         number: '10',
         type: 'none',
         fill: colors.burnt_sienna,
-        image: icons.downvote,
+        image: 'downvote',
         points: 50
     },
     {
@@ -142,7 +132,7 @@ module.exports = [
         number: '100',
         type: 'king',
         fill: colors.burnt_sienna,
-        image: icons.downvote,
+        image: 'downvote',
         points: 300
     },
     {
@@ -153,7 +143,7 @@ module.exports = [
         number: '1000',
         type: 'emperor',
         fill: colors.burnt_sienna,
-        image: icons.downvote,
+        image: 'downvote',
         points: 1000
     },
     /*
@@ -167,7 +157,7 @@ module.exports = [
         number: '10',
         type: 'none',
         fill: colors.puerto_rico,
-        image: icons.search,
+        image: 'search',
         points: 50
     },
     {
@@ -178,7 +168,7 @@ module.exports = [
         number: '100',
         type: 'king',
         fill: colors.puerto_rico,
-        image: icons.search,
+        image: 'search',
         points: 300
     },
     {
@@ -189,7 +179,7 @@ module.exports = [
         number: '1000',
         type: 'emperor',
         fill: colors.puerto_rico,
-        image: icons.search,
+        image: 'search',
         points: 1000
     },
     /*
@@ -203,7 +193,7 @@ module.exports = [
         number: '10',
         type: 'none',
         fill: colors.curious_blue,
-        image: icons.star,
+        image: 'star',
         points: 100
     },
     {
@@ -214,7 +204,7 @@ module.exports = [
         number: '50',
         type: 'king',
         fill: colors.curious_blue,
-        image: icons.star,
+        image: 'star',
         points: 300
     },
     {
@@ -225,7 +215,7 @@ module.exports = [
         number: '100',
         type: 'emperor',
         fill: colors.curious_blue,
-        image: icons.star,
+        image: 'star',
         points: 1000
     }
 ];

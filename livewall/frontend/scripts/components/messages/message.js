@@ -26,7 +26,6 @@ export default React.createClass({
 
         if (type === 'badge') {
             var badge = content;
-            console.log(type, content, duration, this.props.message, badge);
 
             body = (
                 <span>
@@ -53,8 +52,25 @@ export default React.createClass({
             );
 
             icon = (
-                <Icon fill={booster.fill} type='none' image={booster.image}/>
+                <Icon fill={level.fill} type='none' image={level.image}/>
             )
+        }
+
+        if (type === 'level') {
+
+            var level = content;
+
+            body = (
+                <span>
+                    <h4>Level {level.level} erreicht!</h4>
+                    <p>Dadurch wurden neue Features freigschaltet, gehen sie zu den
+                    Einstellungen um sie zu benutzen!</p>
+                </span>
+            );
+
+            icon = (
+                <Icon fill={level.fill} type='none' image={level.image}/>
+            );
         }
 
         var style = {

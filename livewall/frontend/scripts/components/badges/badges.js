@@ -97,7 +97,7 @@ export default React.createClass({
             },
             {
                 y: t.badgesPage.label.badge,
-                x: user.points.badges
+                x: _.get(user, '.points.badges', 0)
             }
 
         ].sort((a, b) => b.x - a.x);

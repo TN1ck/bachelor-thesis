@@ -175,12 +175,9 @@ export default Reflux.createStore({
             state.badges = state.badges.concat(badges || []);
 
             badges.forEach(b => {
-                var oldBadgesPoints = _.get(state, ['badges', 'all'], {
-                    count: 0,
-                    points: 0
-                });
+                var oldBadgesPoints = _.get(state, ['points', 'badges'], 0);
                 state.points.all    += b.points;
-                state.points.badges += b.points;
+                state.points.badges = oldBadgesPoints + b.points;
             });
 
         });
@@ -196,7 +193,7 @@ export default Reflux.createStore({
         }) || LEVELS[0]);
 
         // user arrived new level, send message
-        if (current !== 0 && level > current) {
+        if (current !== 0 && level.level > current) {
             actions.addFlashMessage({
                 type: 'level',
                 content: level
