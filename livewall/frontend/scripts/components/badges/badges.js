@@ -19,6 +19,8 @@ import IconCard             from '../utility/iconcard.js';
 
 import LeaderBoard          from './leaderboard.js';
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 
 var BadgeComponent = React.createClass({
     render: function () {
@@ -63,11 +65,11 @@ export default React.createClass({
     render: function () {
 
         var userBadges = this.state.alltime.user.badges.map(t => {
-            return _.find(BADGES, {id : t.name});
+            return _.find(BADGES, {id : t.id});
         });
 
         var badgeComponents = _.sortBy(userBadges, 'fill')
-            .map(x => <BadgeComponent badge={x}/>);
+            .map(x => <BadgeComponent key={x.id} badge={x}/>);
 
         var user = this.state.alltime.user;
 
@@ -107,10 +109,22 @@ export default React.createClass({
                         <BarChart data={data}/>
                     </Col>
                     <Col xs={12}>
+                        <PageHeader>
+                            <h1>{t.badgesPage.badges.header}</h1>
+                            <hr/>
+                            <p>
+                                {t.badgesPage.badges.subHeader}
+                                <br/>
+                                <strong>{userBadges.length}</strong> {t.badgesPage.badges.collected}
+                            </p>
+                        </PageHeader>
+                    </Col>
+                    <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionEnter={true}>
+                        {badgeComponents}
+                    </ReactCSSTransitionGroup>
+                    <Col xs={12}>
                         <h1>{t.badgesPage.leaderboard.header}</h1>
                         <hr/>
-                    </Col>
-                    <Col xs={12}>
                         <Row>
                             <Col xs={12} md={6}>
                                 <h3>{t.badgesPage.leaderboard.alltime}</h3>
@@ -122,18 +136,6 @@ export default React.createClass({
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={12}>
-                        <PageHeader>
-                            <h1>{t.badgesPage.badges.header}</h1>
-                            <hr/>
-                            <p>
-                                {t.badgesPage.badges.subHeader}
-                                <br/>
-                                <strong>{userBadges.length}</strong> {t.badgesPage.badges.collected}
-                            </p>
-                        </PageHeader>
-                    </Col>
-                    {badgeComponents}
                 </Row>
             </Grid>
         );

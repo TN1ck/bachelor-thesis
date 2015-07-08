@@ -6,6 +6,13 @@ import {user}    from '../../auth.js';
 import gameStore from '../../stores/game.js';
 import SETTINGS  from '../../settings.js';
 
+import {
+    Nav, Navbar,
+    DropdownButton,
+    MenuItem,
+    NavItem
+} from 'react-bootstrap';
+
 import t from '../../../shared/translations/translation.js';
 
 export default React.createClass({
@@ -17,23 +24,29 @@ export default React.createClass({
 
         var links = [
             {
-                name: 'wall',
-                link: 'wall'
+                name: 'DAIWALL',
+                link: ''
             },
             {
-                name: 'settings',
+                name: 'Einstellungen',
                 link: 'settings'
             },
             {
-                name: <i style={{'lineHeight': 0}} className='fa fa-trophy'></i>,
+                name: <span>
+                    <i style={{'lineHeight': 0}} className='fa fa-trophy'></i> Abzeichen
+                </span>,
                 link: 'badges'
             },
             {
-                name: <i style={{'lineHeight': 0}} className='fa fa-dollar'></i>,
+                name: <span>
+                    <i style={{'lineHeight': 0}} className='fa fa-dollar'></i> Punkte einlösen
+                </span>,
                 link: 'booster'
             },
             {
-                name: <i style={{lineHeight: 0}} className='fa fa-users'></i>,
+                name: <span>
+                    <i style={{lineHeight: 0}} className='fa fa-users'></i> Statistik
+                </span>,
                 link: 'social'
             },
             {
@@ -43,11 +56,7 @@ export default React.createClass({
         ];
 
         var nav = links.map((link, i) => {
-            var seperator = '|';
-            if (i === links.length - 1) {
-                seperator = '';
-            }
-            return <span> <Link to={link.link}>{link.name}</Link> {seperator}</span>;
+            return <NavItem eventKey={{i}} href={`#/${link.link}`}>{link.name}</NavItem>
         });
 
         var monthly = this.state.monthly.user;
@@ -68,15 +77,14 @@ export default React.createClass({
             </div>;
         }
 
+        var brand = <a href='#/'>DAIWALL</a>
+
         return (
-            <div className='wall__header'>
-                <div className='wall__header__topbar'>
-                    {userComponent}
-                    <div className='wall__header__settings'>
-                        {nav}
-                    </div>
-                </div>
-            </div>
+            <Navbar inverse brand={brand} toggleNavKey={0}>
+                <Nav right eventKey={0}>
+                    {nav}
+                </Nav>
+            </Navbar>
         );
     }
 });

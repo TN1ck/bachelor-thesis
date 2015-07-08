@@ -3,7 +3,7 @@ var io              = require('../socket.js');
 var models          = require('../../models');
 var calculateBadges = require('../../gamification/calculateBadges');
 var POINTS          = require('../../../frontend/shared/gamification/points');
-var badgesList      = require('../../../frontend/shared/gamification/badges');
+var BADGES          = require('../../../frontend/shared/gamification/badges');
 
 var User = models.User;
 var Action = models.Action;
@@ -60,6 +60,12 @@ module.exports = function (req, res) {
                     stats: stats,
                     action: action
                 });
+
+                io.emit('action_created', {
+                    user: user,
+                    action: action,
+                    badges: badges
+                });
             };
 
             // calculate the badges and if there are new ones, add them
@@ -88,21 +94,21 @@ module.exports = function (req, res) {
 
                                     var filteredBadges = badges.filter(function (b) {
                                         return !_.find(result, {name: b});
+                                    }).map(function (b) {
+                                        return _.find(BADGES, {id: b});
                                     });
 
                                     // insert them into the db but not wait for it to finish
                                     filteredBadges.forEach(function(badge) {
-                                        var _badge = _.find(badgesList, {id: badge});
                                         Badge.create({
-                                            type: _badge.type,
-                                            name: _badge.id,
-                                            points: _badge.points
+                                            type: badge.type,
+                                            name: badge.id,
+                                            points: badge.points
                                         }).then(function (b) {
                                             b.setUser(user);
                                         });
                                     });
-
-                                    return answer(badges, stats, action);
+                                    return answer(filteredBadges, stats, action);
 
                                 } else {
                                     return answer([], stats, action);
@@ -122,13 +128,6 @@ module.exports = function (req, res) {
                 promise = Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
                     var item = _item[0];
                     Action.create(actionProps).then(function(action) {
-
-                        io.emit('action_created', {
-                            user: user,
-                            action: action,
-                            item: item
-                        });
-
                         action.setItem(item);
                         action.setUser(user);
                         action.save().then(function (a) {
@@ -141,13 +140,6 @@ module.exports = function (req, res) {
                 return Action.create(actionProps).then(function(action) {
                     action.setUser(user);
                     action.save().then(calcBadges);
-
-                    io.emit('action_created', {
-                        user: user,
-                        action: action,
-                        item: {}
-                    });
-
                 });
             }
         });

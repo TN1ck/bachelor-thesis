@@ -18,6 +18,7 @@ module.exports = [
     {
         id: 'login_1',
         name: t.badges['login_1'].header,
+        why: t.badges['login_1'].why,
         text: t.badges['login_1'].text,
         number: '1',
         type: 'none',
@@ -28,6 +29,7 @@ module.exports = [
     {
         id: 'login_50',
         name: t.badges['login_50'].header,
+        why: t.badges['login_50'].why,
         text: t.badges['login_50'].text,
         number: '50',
         type: 'king',
@@ -38,6 +40,7 @@ module.exports = [
     {
         id: 'login_100',
         name: t.badges['login_100'].header,
+        why: t.badges['login_100'].why,
         text: t.badges['login_100'].text,
         number: '100',
         type: 'emperor',
@@ -51,6 +54,7 @@ module.exports = [
     {
         id: 'login_3_c',
         name: t.badges['login_3_c'].header,
+        why: t.badges['login_3_c'].why,
         text: t.badges['login_3_c'].text,
         number: '3',
         type: 'none',
@@ -61,6 +65,7 @@ module.exports = [
     {
         id: 'login_7_c',
         name: t.badges['login_7_c'].header,
+        why: t.badges['login_7_c'].why,
         text: t.badges['login_7_c'].text,
         number: '7',
         type: 'king',
@@ -71,6 +76,7 @@ module.exports = [
     {
         id: 'repeat_15_c',
         name: t.badges['repeat_15_c'].header,
+        why: t.badges['repeat_15_c'].why,
         text: t.badges['repeat_15_c'].text,
         number: '15',
         type: 'emperor',
@@ -84,6 +90,7 @@ module.exports = [
     {
         id: 'upvotes_10',
         name: t.badges['upvotes_10'].header,
+        why: t.badges['upvotes_10'].why,
         text: t.badges['upvotes_10'].text,
         number: '10',
         type: 'none',
@@ -94,6 +101,7 @@ module.exports = [
     {
         id: 'upvotes_100',
         name: t.badges['upvotes_100'].header,
+        why: t.badges['upvotes_100'].why,
         text: t.badges['upvotes_100'].text,
         number: '100',
         type: 'king',
@@ -104,6 +112,7 @@ module.exports = [
     {
         id: 'upvotes_1000',
         name: t.badges['upvotes_1000'].header,
+        why: t.badges['upvotes_1000'].why,
         text: t.badges['upvotes_1000'].text,
         number: '1000',
         type: 'emperor',
@@ -117,6 +126,7 @@ module.exports = [
     {
         id: 'downvotes_10',
         name: t.badges['downvotes_10'].header,
+        why: t.badges['downvotes_10'].why,
         text: t.badges['downvotes_10'].text,
         number: '10',
         type: 'none',
@@ -127,6 +137,7 @@ module.exports = [
     {
         id: 'downvotes_100',
         name: t.badges['downvotes_100'].header,
+        why: t.badges['downvotes_100'].why,
         text: t.badges['downvotes_100'].text,
         number: '100',
         type: 'king',
@@ -137,6 +148,7 @@ module.exports = [
     {
         id: 'downvotes_1000',
         name: t.badges['downvotes_1000'].header,
+        why: t.badges['downvotes_1000'].why,
         text: t.badges['downvotes_1000'].text,
         number: '1000',
         type: 'emperor',
@@ -150,6 +162,7 @@ module.exports = [
     {
         id: 'searches_add_10',
         name: t.badges['searches_add_10'].header,
+        why: t.badges['searches_add_10'].why,
         text: t.badges['searches_add_10'].text,
         number: '10',
         type: 'none',
@@ -160,6 +173,7 @@ module.exports = [
     {
         id: 'searches_add_100',
         name: t.badges['searches_add_100'].header,
+        why: t.badges['searches_add_100'].why,
         text: t.badges['searches_add_100'].text,
         number: '100',
         type: 'king',
@@ -170,6 +184,7 @@ module.exports = [
     {
         id: 'searches_add_1000',
         name: t.badges['searches_add_1000'].header,
+        why: t.badges['searches_add_1000'].why,
         text: t.badges['searches_add_1000'].text,
         number: '1000',
         type: 'emperor',
@@ -183,6 +198,7 @@ module.exports = [
     {
         id: 'favourites_10',
         name: t.badges['favourites_10'].header,
+        why: t.badges['favourites_10'].why,
         text: t.badges['favourites_10'].text,
         number: '10',
         type: 'none',
@@ -193,6 +209,7 @@ module.exports = [
     {
         id: 'favourites_50',
         name: t.badges['favourites_50'].header,
+        why: t.badges['favourites_50'].why,
         text: t.badges['favourites_50'].text,
         number: '50',
         type: 'king',
@@ -203,6 +220,7 @@ module.exports = [
     {
         id: 'favourites_100',
         name: t.badges['favourites_100'].header,
+        why: t.badges['favourites_100'].why,
         text: t.badges['favourites_100'].text,
         number: '100',
         type: 'emperor',

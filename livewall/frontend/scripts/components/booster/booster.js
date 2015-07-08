@@ -19,6 +19,8 @@ import booster             from '../../../shared/gamification/booster.js';
 
 import {postBooster}       from '../../api/api.js';
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 import {
     Grid, Row, Col, Input, Button, Badge,
     Jumbotron, Alert, PageHeader, Label, Well, Panel
@@ -152,6 +154,7 @@ export default React.createClass({
         return booster.map(b => {
             var active = _.get(this.state.booster, '.last.name') === b.id;
             return <BoosterComponent
+                key={b.id}
                 disable={this.state.booster.isActive}
                 userPoints={this.state.alltime.user.points.all}
                 active={active}
@@ -190,7 +193,9 @@ export default React.createClass({
                         <p>Bisher hast du {this.state.alltime.user.booster.length} Booster gekauft</p>
                         {_booster}
                     </Col>
-                    {this.createBooster()}
+                    <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionEnter={true}>
+                        {this.createBooster()}
+                    </ReactCSSTransitionGroup>
                 </Row>
             </Grid>
         );

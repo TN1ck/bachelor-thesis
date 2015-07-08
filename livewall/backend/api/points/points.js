@@ -69,7 +69,9 @@ module.exports = function (req, res) {
         users = users.map(function (user) {
 
             var actions = user.Actions;
-            var badges  = user.Badges;
+            var badges  = user.Badges.map(function (b) {
+                return _.find(BADGES, {id: b})
+            });
             var booster = user.Boosters || [];
 
             var actionsPoints = 0;
@@ -158,8 +160,8 @@ module.exports = function (req, res) {
 
 
             user.badges.forEach(function (badge) {
-                badgesAcc[badge.name].points += badge.points;
-                badgesAcc[badge.name].count  += 1;
+                badgesAcc[badge.id].points += badge.points;
+                badgesAcc[badge.id].count  += 1;
             });
 
             boosterAccAll.points += _.get(user, '.points.booster', 0);

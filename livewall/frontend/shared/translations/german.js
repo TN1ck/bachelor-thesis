@@ -105,91 +105,109 @@ module.exports = {
         'login_1': {
             header: 'ANMELDUNG',
             text: 'Melde dich einmal an der DAI-Wall an um diese Trophäe zu erhalten.',
+            why: 'Erste Anmeldung and der DAI-Wall.'
         },
 
         'login_50': {
             header: 'ANMELDUNGEN',
-            text: 'Melde dich 50 mal an der DAI-Wall an um diese Trophäe zu erhalten.',
+            text: 'Melde dich 50 mal an verschiedenen Tagen an der DAI-Wall an um diese Trophäe zu erhalten.',
+            why: '50 Anmeldungen an der DAI-Wall zu verschiedenen Tagen.'
         },
 
         'login_100': {
             header: 'ANMELDUNGEN',
-            text: 'Melde dich 100 an der DAI-Wall an um diese Trophäe zu erhalten.',
+            text: 'Melde dich 100 mal an verschiedenen Tagen an der DAI-Wall an um diese Trophäe zu erhalten.',
+            why: '100 Anmeldungen an der DAI-Wall zu verschiedenen Tagen.'
         },
 
         'login_3_c': {
             header: 'TAGE IN FOLGE',
             text: 'Melde dich an 3 aufeinanderfolgenden Tagen an der DAI-Wall an um diese Trophäe zu erhalten',
+            why: '3 Anmeldungen an aufeinanderfolgenden Tagen.'
         },
 
         'login_7_c': {
             header: 'TAGE IN FOLGE',
             text: 'Melde dich an 7 aufeinanderfolgenden Tagen an der DAI-Wall an um diese Trophäe zu erhalten',
+            why: '7 Anmeldungen an aufeinanderfolgenden Tagen.'
         },
 
         'repeat_15_c': {
             header: 'TAGE IN FOLGE',
             text: 'Melde dich an 15 aufeinanderfolgenden Tagen an der DAI-Wall an um diese Trophäe zu erhalten',
+            why: '15 Anmeldungen an aufeinanderfolgenden Tagen.'
         },
 
         'upvotes_10': {
             header: 'UPVOTES',
             text: 'Bewerte mindestens 10 Suchergebnisse positiv um diese Trophäe zu erhalten.',
+            why: '10 Suchergebnisse wurden positiv bewertet.'
         },
 
         'upvotes_100': {
             header: 'UPVOTES',
             text: 'Bewerte mindestens 100 Suchergebnisse positiv um diese Trophäe zu erhalten.',
+            why: '100 Suchergebnisse wurden positiv bewertet.'
         },
 
         'upvotes_1000': {
             header: 'UPVOTES',
             text: 'Bewerte mindestens 1000 Suchergebnisse positiv um diese Trophäe zu erhalten.',
+            why: '1000 Suchergebnisse wurden positiv bewertet.'
         },
 
         'downvotes_10': {
             header: 'DOWNVOTES',
             text: 'Bewerte mindestens 10 Suchergebnisse negativ um diese Trophäe zu erhalten.',
+            why: '10 Suchergebnisse wurden negativ bewertet.'
         },
 
         'downvotes_100': {
             header: 'DOWNVOTES',
             text: 'Bewerte mindestens 100 Suchergebnisse negativ um diese Trophäe zu erhalten.',
+            why: '100 Suchergebnisse wurden negativ bewertet.'
         },
 
         'downvotes_1000': {
             header: 'DOWNVOTES',
             text: 'Bewerte mindestens 1000 Suchergebnisse negativ um diese Trophäe zu erhalten.',
+            why: '1000 Suchergebnisse wurden negativ bewertet.'
         },
 
         'searches_add_10': {
             header: 'SUCHEN',
             text: 'Suche mindestens nach 10 Suchbegriffen um diese Trophäe zu erhalten',
+            why: '10 Begriffe wurden gesucht.'
         },
 
         'searches_add_100': {
             header: 'SUCHEN',
             text: 'Suche mindestens nach 100 Suchbegriffen um diese Trophäe zu erhalten',
+            why: '100 Begriffe wurden gesucht.'
         },
 
         'searches_add_1000': {
             header: 'SUCHEN',
             text: 'Suche mindestens nach 1000 Suchbegriffen um diese Trophäe zu erhalten',
+            why: '1000 Begriffe wurden gesucht.'
         },
 
         'favourites_10': {
             header: 'FAVORITEN',
             text: 'Favorisiere mindestens nach 10 Suchergebnisse um diese Trophäe zu erhalten',
+            why: '10 Suchergebnisse wurden favorisiert.'
         },
 
         'favourites_50': {
             header: 'FAVORITEN',
             text: 'Favorisiere mindestens nach 50 Suchergebnisse um diese Trophäe zu erhalten',
+            why: '50 Suchergebnisse wurden favorisiert.'
         },
 
         'favourites_100': {
             header: 'FAVORITEN',
             text: 'Favorisiere mindestens nach 100 Suchergebnisse um diese Trophäe zu erhalten',
+            why: '100 Suchergebnisse wurden favorisiert.'
         }
     }
 };

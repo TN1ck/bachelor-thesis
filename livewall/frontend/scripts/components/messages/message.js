@@ -25,12 +25,13 @@ export default React.createClass({
         var icon = <Icon fill='#222222' type='none' icon='/assets/search.png'/>;
 
         if (type === 'badge') {
-            var badge = _.find(BADGES, {id: content});
+            var badge = content;
             console.log(type, content, duration, this.props.message, badge);
 
             body = (
                 <span>
                     <h4>Du hast ein Abzeichen erhalten!</h4>
+                    <h5>{badge.why}</h5>
                     <p>Dafür hast du <strong>{badge.points}</strong> Punkte bekommen</p>
                 </span>
             );

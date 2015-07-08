@@ -134,7 +134,17 @@ export default Reflux.createStore({
                 points: 0
             });
             _.set(state, ['actions', group, label, 'points'], points + oldPoints.points);
-            _.set(state, ['actions', group, label, 'count'],  1 + oldPoints.coint);
+            _.set(state, ['actions', group, label, 'count'],  1 + oldPoints.count);
+
+
+            badges.forEach(b => {
+                var oldBadgesPoints = _.get(state, ['badges', 'all'], {
+                    count: 0,
+                    points: 0
+                });
+                _.set(state, ['badges', 'all', 'count'],  1 + oldBadgesPoints.count);
+                _.set(state, ['badges', 'all', 'points'], b.points + oldBadgesPoints.points);
+            });
 
         });
 
@@ -157,6 +167,8 @@ export default Reflux.createStore({
             });
             _.set(state, ['actions', group, label, 'points'], points + oldPoints.points);
             _.set(state, ['actions', group, label, 'count'],  1 + oldPoints.coint);
+
+            state.badges = state.badges.concat(badges || []);
 
         });
 
