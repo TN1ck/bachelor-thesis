@@ -14,7 +14,9 @@ var actions = Reflux.createActions([
 
 	'addItems',
 
-	'addFlashMessage'
+	'addFlashMessage',
+
+	'buyBooster'
 ]);
 
 export default actions;

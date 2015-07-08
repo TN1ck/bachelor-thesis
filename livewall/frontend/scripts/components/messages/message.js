@@ -36,7 +36,7 @@ export default React.createClass({
             );
 
             icon = (
-                <Icon fill={badge.fill} type={badge.type} icon={badge.image}/>
+                <Icon fill={badge.fill} type={badge.type} image={badge.image}/>
             );
         }
 
@@ -52,7 +52,7 @@ export default React.createClass({
             );
 
             icon = (
-                <Icon fill={booster.fill} type='none' icon={booster.image}/>
+                <Icon fill={booster.fill} type='none' image={booster.image}/>
             )
         }
 

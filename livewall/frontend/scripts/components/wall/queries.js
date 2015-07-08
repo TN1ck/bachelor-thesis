@@ -8,18 +8,13 @@ import queryStore from '../../stores/queries.js';
 
 var ReactQuery = React.createClass({
     displayName: 'query',
-    shouldComponentUpdate: function (props) {
-        return this.props.query !== props.query;
-    },
     render: function () {
 
         var query = this.props.query;
 
-        // var loading = _.some(query.broker, b => {
-        //     return b.status === 'pending';
-        // })
-
-        var loading = false;
+        var loading = _.some(query.broker, b => {
+            return b.status === 'pending';
+        });
 
         var loadingComponent = <span className="fa-gear fa-spin"></span>;
         var removeComponent  = <span className="fa-remove"></span>;

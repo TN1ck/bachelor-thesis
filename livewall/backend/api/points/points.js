@@ -72,9 +72,25 @@ module.exports = function (req, res) {
             var badges  = user.Badges;
             var booster = user.Boosters || [];
 
-            var actionsPoints = _.sum(actions, 'points');
+            var actionsPoints = 0;
             var badgesPoints  = _.sum(badges,  'points');
             var boosterPoints = _.sum(booster, 'points');
+
+
+            // bring actions into correct structure
+            actions = _.mapValues(POINTS, function (v, group) {
+                return _.mapValues(v, function (vv, label) {
+                    var res = _.find(actions, {
+                        group: group,
+                        label: label
+                    }) || {
+                        points: 0,
+                        count: 0
+                    };
+                    actionsPoints += res.points;
+                    return _.pick(res, ['points', 'count']);
+                });
+            });
 
             var all = actionsPoints + badgesPoints - boosterPoints;
 
@@ -132,10 +148,12 @@ module.exports = function (req, res) {
 
             actionsAccAll.points += user.points.actions;
 
-            user.actions.forEach(function (action) {
-                actionsAcc[action.group][action.label].points += action.points;
-                actionsAcc[action.group][action.label].count += action.count;
-                actionsAccAll.count  += action.count;
+            _.each(user.actions, function (v, group) {
+                _.each(v, function (vv, label) {
+                    actionsAcc[group][label].points += vv.points;
+                    actionsAcc[group][label].count  += vv.count;
+                    actionsAccAll.count             += vv.count;
+                });
             });
 
 

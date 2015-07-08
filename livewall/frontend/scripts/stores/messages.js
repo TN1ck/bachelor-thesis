@@ -14,7 +14,7 @@ import SETTINGS   from '../settings.js';
 export default Reflux.createStore({
 
     init: function () {
-        this.duration = 10;
+        this.duration = 5;
         this.isRunnig = false;
         this.state = {
             messages: []

@@ -27,6 +27,8 @@ export default Reflux.createStore({
                 badges: [],
                 actions: [],
                 points: {
+                    all: 'lädt...',
+                    place: 'lädt...'
                 }
             },
             users: [
@@ -61,6 +63,7 @@ export default Reflux.createStore({
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.addQuery,      this.addQuery);
         this.listenTo(actions.removeQuery,   this.removeQuery);
+        this.listenTo(actions.buyBooster,   this.buyBooster);
 
         // get the data after the user logs in
         user.whenLogedIn(() => {
@@ -119,9 +122,23 @@ export default Reflux.createStore({
 
     updateGlobalPoints: function (answer) {
         var {action, badges, states} = answer;
+
         var {
             group, label, points
         } = action;
+
+        [this.state.alltime, this.state.monthly].forEach((state) => {
+            state.points += points;
+            var oldPoints = _.get(state, ['actions', group, label], {
+                count: 0,
+                points: 0
+            });
+            _.set(state, ['actions', group, label, 'points'], points + oldPoints.points);
+            _.set(state, ['actions', group, label, 'count'],  1 + oldPoints.coint);
+
+        });
+
+        this.trigger(this.state);
     },
 
     updateUserPoints: function (answer) {
@@ -134,8 +151,12 @@ export default Reflux.createStore({
 
         [this.state.alltime.user, this.state.monthly.user].forEach((state) => {
             state.points.all += points;
-            var oldPoints = _.get(state, ['actions', group, label], 0);
-            _.set(state, ['actions', group, label], points + oldPoints);
+            var oldPoints = _.get(state, ['actions', group, label], {
+                count: 0,
+                points: 0
+            });
+            _.set(state, ['actions', group, label, 'points'], points + oldPoints.points);
+            _.set(state, ['actions', group, label, 'count'],  1 + oldPoints.coint);
 
         });
 
@@ -175,12 +196,13 @@ export default Reflux.createStore({
     },
 
     buyBooster: function (id) {
-        postBooster(id).then((booster) => {
+        api.postBooster(id).then((booster) => {
             actions.addFlashMessage({
                 type: 'booster',
                 content: booster
             });
-            this.alltime.user.booster.push(booster);
+            this.state.alltime.user.booster.push(booster);
+            this.state.monthly.user.booster.push(booster);
             this.trigger(this.state);
         });
     }

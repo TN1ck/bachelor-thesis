@@ -71,30 +71,26 @@ export default React.createClass({
 
         var user = this.state.alltime.user;
 
-        var getActionPoints = (actions, group, label) => {
-            return (_.find(actions, {group: group, label: label}) || {points: 0}).points;
-        };
-
         var data = [
             {
                 y: t.badgesPage.label.vote,
-                x: getActionPoints(user.actions, 'vote', 'down') +
-                   getActionPoints(user.actions, 'vote', 'up')
+                x: _.get(user.actions, ['vote', 'down', 'points'], 0) +
+                   _.get(user.actions, ['vote', 'up', 'points'], 0)
             },
 
             {
                 y: t.badgesPage.label.favourite,
-                x: getActionPoints(user.actions, 'favourite', 'toggle')
+                x: _.get(user.actions, ['favourite', 'toggle', 'points'], 0)
             },
 
             {
                 y: t.badgesPage.label.login,
-                x: getActionPoints(user.actions, 'auth', 'login')
+                x: _.get(user.actions, ['auth', 'login', 'points'], 0)
             },
 
             {
                 y: t.badgesPage.label.search,
-                x: getActionPoints(user.actions, 'search', 'add')
+                x: _.get(user.actions, ['search', 'add', 'points'], 0)
             },
             {
                 y: t.badgesPage.label.badge,

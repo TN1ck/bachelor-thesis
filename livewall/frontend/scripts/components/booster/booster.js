@@ -34,10 +34,11 @@ var BoosterComponent = React.createClass({
         };
     },
     buyBooster: function () {
+        console.log('buy booster');
         this.setState({
             loading: true
         });
-        actions.buyBooster(this.prosp.booster.id);
+        actions.buyBooster(this.props.booster.id);
     },
     componentWillReceiveProps: function () {
         this.setState({
@@ -50,10 +51,17 @@ var BoosterComponent = React.createClass({
             points, type, fill
         } = this.props.booster;
 
+        var userPoints   = this.props.userPoints || 0;
+        var enoughPoints = points <= userPoints;
+
         var buttonText = {
-            false: <span>Für <strong>{points}</strong> kaufen</span>,
+            false: <span>Für {points} kaufen</span>,
             true: <span>Booster aktiv</span>
         }[this.props.disable];
+
+        if (!this.props.disable && !enoughPoints) {
+            buttonText = <span>Es fehlen {points - userPoints} Punkte</span>;
+        }
 
         var _active;
 
@@ -69,9 +77,15 @@ var BoosterComponent = React.createClass({
                     {text}
                     <br/>
                     {_active}
-                    <Button className='pull-right' onClick={this.buyBooster}>
-                        {buttonText}
-                    </Button>
+                    <div className='pull-right'>
+                        <Button
+                            bsStyle={!enoughPoints ? 'alert' : 'success'}
+                            disabled={this.props.disable || !enoughPoints}
+                            onClick={this.buyBooster}
+                            >
+                            {buttonText}
+                        </Button>
+                    </div>
                 </p>
             </span>
         );
@@ -137,7 +151,12 @@ export default React.createClass({
     createBooster: function () {
         return booster.map(b => {
             var active = _.get(this.state.booster, '.last.name') === b.id;
-            return <BoosterComponent disable={this.state.booster.isActive} active={active} booster={b}/>
+            return <BoosterComponent
+                disable={this.state.booster.isActive}
+                userPoints={this.state.alltime.user.points.all}
+                active={active}
+                booster={b}
+            />
         })
     },
     componentDidMount: function () {

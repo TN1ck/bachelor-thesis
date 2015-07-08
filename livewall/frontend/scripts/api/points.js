@@ -15,10 +15,11 @@ export var getMonthlyPoints = () => {
     }).then(result => {
         return _.extend(result, {
             user: _.find(result.users, {username: user.username})  || {
-                points: 0,
+                booster: [],
                 badges: [],
-                actions: {
-
+                actions: [],
+                points: {
+                    all: 0
                 }
             }
         });
@@ -32,7 +33,12 @@ export var getAllTimePoints = () => {
     }).then(result => {
         return _.extend(result, {
             user: _.find(result.users, {username: user.username}) || {
-                points: 0
+                booster: [],
+                badges: [],
+                actions: [],
+                points: {
+                    all: 0
+                }
             }
         });
     });

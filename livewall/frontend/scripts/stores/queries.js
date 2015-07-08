@@ -64,7 +64,6 @@ export default Reflux.createStore({
         // make the real request
         query.loadData().forEach(promise => {
             promise.then(processItems);
-
         });
 
         this.queries[term] = query;

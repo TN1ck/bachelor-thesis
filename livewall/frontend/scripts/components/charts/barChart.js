@@ -129,7 +129,8 @@ class BarChart {
                 y: (d, i) => this.yScale(i) + barHeight / 2 + 5,
                 x: (d, i) => {
                     var x = this.xScale(d.x);
-                    if (i === 0) {
+                    var max = this.xScale.domain()[1];
+                    if ((d.x * 2) >= max) {
                         return  x - 10;
                     }
                     return x + 10;
@@ -138,7 +139,8 @@ class BarChart {
             .style({
                 'text-anchor': (d, i) => {
                     var x = this.xScale(d.x);
-                    if (i === 0) {
+                    var max = this.xScale.domain()[1];
+                    if ((d.x * 2) >= max) {
                         return  'end';
                     } else {
                         return 'start';

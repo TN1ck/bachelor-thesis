@@ -8,10 +8,7 @@ import actions    from '../actions/actions.js';
 import {user}     from '../auth.js';
 import SETTINGS   from '../settings.js';
 
-import {
-    postVote,
-    getItems
-}                 from '../api/api.js';
+import * as api   from '../api/api.js';
 
 //
 // ITEM STORE
@@ -32,8 +29,6 @@ export default Reflux.createStore({
         this.listenTo(actions.voteItem,      this.voteItem);
         this.listenTo(actions.favouriteItem, this.favouriteItem);
         this.listenTo(actions.removeQuery,   this.removeQuery);
-
-
 
         user.whenProfileIsLoaded(this.setProfile.bind(this));
 
@@ -93,7 +88,7 @@ export default Reflux.createStore({
         // get upvotes and actions of the tiles
         //
 
-        getItems(uuids).then(result => {
+        api.getItems(uuids).then(result => {
 
             result.items.forEach(item => {
                 var _item = tempItems[item.uuid];
@@ -159,7 +154,7 @@ export default Reflux.createStore({
 
         // make the real request
 
-        postVote({
+        api.postVote({
             item: uuid,
             value: voteValue
         });

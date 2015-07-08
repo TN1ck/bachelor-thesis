@@ -32,6 +32,7 @@ module.exports = function (req, res) {
                 }
             }
         }).then(function (booster) {
+
             var createActionAndAnswer = function (props) {
                 return Action.create(actionProps).then(function (action) {
                     // action sucessfully created
@@ -45,8 +46,6 @@ module.exports = function (req, res) {
                 // there should always be only one Booster
                 points = points * _.get(booster, '[0].multiplicator', 1);
             }
-
-            console.log(points, user);
 
             var actionProps = {
                 group: group,
@@ -63,6 +62,7 @@ module.exports = function (req, res) {
                 });
             };
 
+            // calculate the badges and if there are new ones, add them
             var calcBadges = function(action) {
 
                 var badges = [];

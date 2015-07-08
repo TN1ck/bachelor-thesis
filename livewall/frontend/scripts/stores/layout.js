@@ -86,21 +86,28 @@ export var groupers = {
 };
 
 //
-// LAYOT STORE
+// LAYOUT STORE
 //
 
 export default Reflux.createStore({
     init: function () {
+
         this.items = Immutable.Map();
+        // This will synchronize multiple search-results
+        // Higher value will result in smoother experience, but it will take longer
+        // to load
+        this.debounceTime = 1500;
+        this.debouncedLayout = _.debounce(() => this.layout(true), this.debounceTime);
+        // needs to be synchronized with the css-variable
         this.margin = 8 * 2;
         this.sortFunction = sorters.score;
         this.groupFunction = groupers.none;
 
         this.calculateColumns();
 
-        this.listenTo(dataStore, this.onStoreChange);
-        this.listenTo(actions.addDomElement, this.addDomElement);
-        this.listenTo(actions.changeSort, this.changeSort);
+        this.listenTo(dataStore,              this.onStoreChange);
+        this.listenTo(actions.addDomElement,  this.addDomElement);
+        this.listenTo(actions.changeSort,     this.changeSort);
         this.listenTo(actions.relayout, () => this.layout(false));
 
         this.queued = [];
@@ -123,20 +130,14 @@ export default Reflux.createStore({
     },
     onStoreChange: function (items) {
 
-        var groupedItems = this.groupFunction(dataStore.items, this.numberOfColumns, this.sortFunction);
-
+        var temp = this.items;
         this.items = items.map((tile) => {
 
             var uuid = tile.get('uuid');
             var oldTile = this.items.get(uuid);
 
-            var columnIndex = _.findIndex(groupedItems, _items => {
-                return _.find(_items, _item => {
-                    return _item.get('uuid') === uuid;
-                });
-            });
-
-            var left = (this.columnWidth + this.margin) * columnIndex + this.margin / 2;
+            var columnIndex = 0;
+            var left = 0;
 
             var newTile;
             if (!oldTile) {
@@ -168,7 +169,13 @@ export default Reflux.createStore({
 
         });
 
-        this.layout(true);
+        // instantly update
+        // we only want to debounce when new items are added
+        if (temp.count() === this.items.count()) {
+            this.layout(true);
+        } else {
+            this.debouncedLayout();
+        }
     },
     calculateColumns: function () {
 
