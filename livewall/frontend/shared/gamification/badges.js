@@ -2,12 +2,12 @@ var colors = require('../util/colors.js').colors;
 var t      = require('../translations/translation.js');
 
 var icons = {
-    key:      '/assets/key.png',
-    repeat:   '/assets/repeat.png',
-    upvote:   '/assets/upvote.png',
-    downvote: '/assets/downvote.png',
-    search:   '/assets/search.png',
-    star:     '/assets/star.png'
+    key:      'key',
+    repeat:   'repeat',
+    upvote:   'upvote',
+    downvote: 'downvote',
+    search:   'search',
+    star:     'star'
 
 };
 

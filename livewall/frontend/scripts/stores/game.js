@@ -27,8 +27,8 @@ export default Reflux.createStore({
                 badges: [],
                 actions: [],
                 points: {
-                    all: 'lädt...',
-                    place: 'lädt...'
+                    all: 0,
+                    place: 0
                 }
             },
             users: [

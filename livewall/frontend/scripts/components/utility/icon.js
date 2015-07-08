@@ -1,13 +1,15 @@
 import React               from 'react/addons';
 import d3                  from 'd3';
 
+import {icons}               from '../../assets.js';
+
 // import {ReactSourceSelect, ReactSource} from './sources.js';
 
 export default React.createClass({
     displayName: 'award',
     getDefaultProps: function() {
         return {
-            image: '/assets/search.png',
+            image: icons.search,
             rotate: 0,
             translate: {
                 x: 0,
@@ -68,7 +70,7 @@ export default React.createClass({
                     filter="url(#white)"
                     style="transform-origin: 50% 50%;
                            transform: scale(${this.props.scale})"
-                    xlink:href="${this.props.image}"
+                    xlink:href="${icons[this.props.image]}"
                     x=${this.props.x} y=${this.props.y}
                     width="90" height="90"/>
                 </image>`
@@ -82,7 +84,7 @@ export default React.createClass({
                     y="44"
                     width="248"
                     height="219"
-                    xlink:href="/assets/crown_1_svg.svg">
+                    xlink:href="${icons.crown_king}">
                 </image>`
             }
         }/>;
@@ -94,7 +96,7 @@ export default React.createClass({
                     y="-14"
                     width="248"
                     height="219"
-                    xlink:href="/assets/crown_2_svg.svg">
+                    xlink:href="${icons.crown_emperor}">
                 </image>`
             }
         }/>;

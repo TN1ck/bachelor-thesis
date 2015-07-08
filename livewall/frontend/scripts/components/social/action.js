@@ -14,38 +14,38 @@ export default React.createClass({
             auth: {
                 login: {
                     text: 'hat sich angemeldet.',
-                    icon: '/assets/key.png',
+                    icon: 'key',
                     fill: colors.vinrouge
                 }
             },
             search: {
                 add: {
                     text: 'hat nach etwas gesucht.',
-                    icon: '/assets/search.png',
+                    icon: 'search',
                     fill: colors.buttercup
                 },
                 remove: {
                     text: 'hat eine Suche entfernt.',
-                    icon: '/assets/search.png',
+                    icon: 'search',
                     fill: colors.buttercup
                 },
             },
             favourite: {
                 toggle: {
                     text: 'hat etwas favorisiert.',
-                    icon: '/assets/star.png',
+                    icon: 'star',
                     fill: colors.curious_blue
                 }
             },
             vote: {
                 up: {
                     text: 'hat etwas positiv bewertet.',
-                    icon: '/assets/upvote.png',
+                    icon: 'upvote',
                     fill: colors.sushi
                 },
                 down: {
                     text: 'hat etwas negativ bewertet.',
-                    icon: '/assets/downvote.png',
+                    icon: 'downvote',
                     fill: colors.burnt_sienna
                 }
             }

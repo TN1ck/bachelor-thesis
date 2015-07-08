@@ -70,7 +70,7 @@ module.exports = function (req, res) {
 
             var actions = user.Actions;
             var badges  = user.Badges.map(function (b) {
-                return _.find(BADGES, {id: b})
+                return _.find(BADGES, {id: b.name})
             });
             var booster = user.Boosters || [];
 
