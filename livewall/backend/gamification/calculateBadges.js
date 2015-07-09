@@ -90,22 +90,22 @@ var authLoginBadges = function (user) {
     });
 };
 
-var addSearchBadges = function (user) {
-    return user.getActions({where: {group: 'search', label: 'add'}}).then(function(actions) {
+var addQueryBadges = function (user) {
+    return user.getActions({where: {group: 'query', label: 'add'}}).then(function(actions) {
         var badges = [];
 
         var count = actions.length;
 
         if (count >= 10) {
-            badges.push('searches_add_10');
+            badges.push('queries_add_10');
         }
 
         if (count >= 100) {
-            badges.push('searches_add_100');
+            badges.push('queries_add_100');
         }
 
         if (count >= 1000) {
-            badges.push('searches_add_1000');
+            badges.push('queries_add_1000');
         }
 
         return {
@@ -204,8 +204,8 @@ var calcBadges = {
     favourite: {
         toggle: toggleFavouriteBadges
     },
-    search: {
-        add: addSearchBadges
+    query: {
+        add: addQueryBadges
     },
     vote: {
         up: voteUpBadges,

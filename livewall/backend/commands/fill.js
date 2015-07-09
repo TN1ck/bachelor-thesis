@@ -86,7 +86,7 @@ User.bulkCreate(usersToInsert).then(function() {
                         _actions.forEach(function(action) {
                             action.setUser(_.sample(_users));
                             var group = action.get('group');
-                            if (['auth', 'search'].indexOf(group) === -1) {
+                            if (['auth', 'query'].indexOf(group) === -1) {
                                 var _item = _.sample(_items);
                                 action.setItem(_item).then(function(_action) {
                                     // _item.setActions([_action]);
