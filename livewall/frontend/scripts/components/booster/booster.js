@@ -36,7 +36,6 @@ var BoosterComponent = React.createClass({
         };
     },
     buyBooster: function () {
-        console.log('buy booster');
         this.setState({
             loading: true
         });
@@ -57,18 +56,18 @@ var BoosterComponent = React.createClass({
         var enoughPoints = points <= userPoints;
 
         var buttonText = {
-            false: <span>Für {points} kaufen</span>,
-            true: <span>Booster aktiv</span>
+            false: <span>{t.boosterPage.buyFor} {points} {t.label.points}</span>,
+            true: <span>{t.label.booster} {t.label.active}</span>
         }[this.props.disable];
 
         if (!this.props.disable && !enoughPoints) {
-            buttonText = <span>Es fehlen {points - userPoints} Punkte</span>;
+            buttonText = <span>{t.boosterPage.missing} {points - userPoints} {t.label.points}</span>;
         }
 
         var _active;
 
         if (this.props.active) {
-            _active = <strong>Dieser Booster ist im Moment aktiv.</strong>;
+            _active = <strong>{t.boosterPage.isActive}</strong>;
         }
 
         var body = (
@@ -179,7 +178,7 @@ export default React.createClass({
 
         if (this.state.booster.isActive) {
             _booster = (
-                <strong><h3>Booster aktiv, verbleibende Zeit: {this.state.left.format('hh:mm:ss')}</h3></strong>
+                <strong><h3>{t.boosterPage.timeLeft} {this.state.left.format('hh:mm:ss')}</h3></strong>
             );
         }
 
@@ -187,10 +186,10 @@ export default React.createClass({
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <h1>Booster kaufen</h1>
+                        <h1>{t.boosterPage.header}</h1>
                         <hr/>
-                        <p>Mittels von Booster können Sie schneller Punkte sammeln, sie kosten jedoch Punkte und die Dauer ist begrenzt.</p>
-                        <p>Bisher hast du {this.state.alltime.user.booster.length} Booster gekauft</p>
+                        <p>{t.boosterPage.subHeader}</p>
+                        <p>{this.state.alltime.user.booster.length} {t.boosterPage.bought}</p>
                         {_booster}
                     </Col>
                     <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionEnter={true}>

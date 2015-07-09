@@ -2,13 +2,10 @@ var colors = require('../util/colors.js').colors;
 var t      = require('../translations/translation.js');
 
 module.exports = [
-    /*
-        NUMBER OF LOGINS
-    */
     {
         id: 'booster_x2_1',
-        name: 'VERDOPPLUNG DER PUNKTE FÜR 1 TAG',
-        text: 'Verdoppel deine Punkte für 1 Tag.',
+        name: t.booster['booster_x2_1'].name,
+        text: t.booster['booster_x2_1'].text,
         type: 'none',
         fill: colors.vinrouge,
         image: 'rocket',
@@ -18,8 +15,8 @@ module.exports = [
     },
     {
         id: 'booster_x2_2',
-        name: 'VERDOPPLUNG DER PUNKTE FÜR 2 TAG',
-        text: 'Verdoppel deine Punkte für 2 Tage.',
+        name: t.booster['booster_x2_2'].name,
+        text: t.booster['booster_x2_2'].text,
         type: 'none',
         fill: colors.vinrouge,
         image: 'rocket',
@@ -29,8 +26,8 @@ module.exports = [
     },
     {
         id: 'booster_x3_1',
-        name: 'VERDREIFACHUNG DER PUNKTE FÜR 1 TAG',
-        text: 'Verdreifache deine Punkte für 1 Tag.',
+        name: t.booster['booster_x3_1'].name,
+        text: t.booster['booster_x3_1'].text,
         type: 'none',
         fill: colors.buttercup,
         image: 'rocket',
@@ -40,8 +37,8 @@ module.exports = [
     },
     {
         id: 'booster_x3_2',
-        name: 'VERDREIFACHUNG DER PUNKTE FÜR 2 TAGE',
-        text: 'Verdreifache deine Punkte für 2 Tage.',
+        name: t.booster['booster_x3_2'].name,
+        text: t.booster['booster_x3_2'].text,
         type: 'none',
         fill: colors.buttercup,
         image: 'rocket',

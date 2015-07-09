@@ -29,35 +29,35 @@ export default React.createClass({
 
         var links = [
             {
-                name: 'DAIWALL',
+                name: t.label.brand,
                 link: 'wall'
             },
             {
                 name: <span>
-                    <i style={style} className='fa fa-gears'></i> Einstellungen
+                    <i style={style} className='fa fa-gears'></i> {t.label.settings}
                     </span>,
                 link: 'settings'
             },
             {
                 name: <span>
-                    <i style={style} className='fa fa-trophy'></i> Abzeichen
+                    <i style={style} className='fa fa-trophy'></i> {t.label.badges}
                 </span>,
                 link: 'badges'
             },
             {
                 name: <span>
-                    <i style={style} className='fa fa-dollar'></i> Booster
+                    <i style={style} className='fa fa-dollar'></i> {t.label.booster}
                 </span>,
                 link: 'booster'
             },
             {
                 name: <span>
-                    <i style={style} className='fa fa-bar-chart'></i> Statistik
+                    <i style={style} className='fa fa-bar-chart'></i> {t.label.stats}
                 </span>,
                 link: 'stats'
             },
             {
-                name: user.isLogedIn() ? 'logout' : 'login',
+                name: user.isLogedIn() ? t.label.logout : t.label.login,
                 link: user.isLogedIn() ? 'logout' : 'login'
             }
         ];
@@ -83,8 +83,8 @@ export default React.createClass({
                 <CollapsibleNav eventKey={0}>
                     <Nav navbar>
                         <NavItemLink to='badges' active={false}>
-                            <span>{user.username} - {alltime.points.all} {t.header.label.points}</span>
-                            <span> - #{alltime.place} Platz - {level} Level</span>
+                            <span>{user.username} - {alltime.points.all} {t.label.points}</span>
+                            <span> - #{alltime.place} {t.label.place} - {level} {t.label.level}</span>
                         </NavItemLink>
                     </Nav>
                     <Nav navbar right>

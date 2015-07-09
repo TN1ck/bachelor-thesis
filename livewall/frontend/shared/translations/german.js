@@ -1,4 +1,56 @@
+var _ = require('lodash');
+
 module.exports = {
+
+    label: {
+        brand: 'DAIWALL',
+        points: 'Punkte',
+        level: 'Level',
+        place: 'Platz',
+        settings: 'Einstellungen',
+        badges: 'Abzeichen',
+        booster: 'Booster',
+        stats: 'Statistik',
+        login: 'Login',
+        logout: 'Logout',
+        vote: 'Bewerten',
+        query: 'Suchen',
+        badge: 'Abzeichen',
+        favourite: 'Favorisieren',
+        name: 'Name',
+        active: 'aktiv',
+        currentlySelected: 'Aktuell ausgewählt',
+        select: 'Benutzen'
+    },
+
+    boosterPage: {
+        header: 'Booster kaufen',
+        subHeader: 'Mittels von Booster können Sie schneller Punkte sammeln, sie kosten jedoch Punkte und die Dauer ist begrenzt.',
+        timeLeft: 'Booster aktiv, verbleibende Zeit:',
+        bought: 'Booster hast du bisher gekauft.',
+        isActive: 'Dieser Booster ist im Moment aktiv.',
+        missing: 'Es fehlen',
+        buyFor: 'Kaufe für'
+    },
+
+    booster: {
+        'booster_x2_1': {
+            name: 'VERDOPPLUNG DER PUNKTE FÜR 1 TAG',
+            text: 'Verdoppel deine Punkte für 1 Tag.'
+        },
+        'booster_x2_2': {
+            name: 'VERDOPPLUNG DER PUNKTE FÜR 2 TAG',
+            text: 'Verdoppel deine Punkte für 2 Tage.'
+        },
+        'booster_x3_1': {
+            name: 'VERDREIFACHUNG DER PUNKTE FÜR 1 TAG',
+            text: 'Verdreifache deine Punkte für 1 Tag.'
+        },
+        'booster_x3_2': {
+            name: 'VERDREIFACHUNG DER PUNKTE FÜR 2 TAGE',
+            text: 'Verdreifache deine Punkte für 2 Tage.'
+        },
+    },
 
     messages: {
         badge: {
@@ -9,7 +61,7 @@ module.exports = {
             header: 'Booster erfolgreich erworben!'
         },
         level: {
-            header: 'Level <%= level =%> erreicht!',
+            header: _.template('Level ${ level } erreicht!'),
             body: 'Dadurch wurden neue Features freigschaltet, gehen zu den Einstellungen um sie zu benutzen!'
         }
     },
@@ -30,8 +82,14 @@ module.exports = {
                 up: 'hat etwas positiv bewertet.',
                 down: 'hat etwas negativ bewertet.'
             },
-            body: 'Dies Aktion wurde um <%= createdAt =%> Uhr ausgeführt. Sie hat <%= username =%> <%= points =%> Punkte erbracht.'
+            body: _.template('Dies Aktion wurde um ${ createdAt } Uhr ausgeführt. Sie hat ${ username } ${ points } Punkte erbracht.')
         },
+    },
+
+    leaderboard: {
+        header: 'Bestenliste',
+        alltime: 'Aller Zeiten',
+        monthly: 'Dieser Monat'
     },
 
     auth: {
@@ -57,31 +115,13 @@ module.exports = {
         }
     },
 
-    leaderboard: {
-        place: 'Platz',
-        name: 'Name',
-        points: 'Punkte',
-        badges: 'Abzeichen'
-    },
-
     badgesPage: {
+        nextLevel: 'Punkte benötigst du um das nächste Level zu erreichen.',
         badges: {
             points: 'hast du für dieses Abzeichen erhalten.',
             header: 'Abzeichen',
             subHeader: 'Hier Findest du alle Trophäen die du bekommen hast, durch jede Trophäe werden dir Punkte auf deinen Punktestand gutgeschrieben.',
             collected: 'hast du bisher gesammelt.'
-        },
-        label: {
-            'login': 'einloggen',
-            'vote': 'bewerten',
-            'query': 'suchen',
-            'badge': 'abzeichen',
-            'favourite': 'favorisieren'
-        },
-        leaderboard: {
-            header: 'Bestenliste',
-            alltime: 'Aller Zeiten',
-            monthly: 'Dieser Monat'
         }
     },
 
@@ -107,7 +147,6 @@ module.exports = {
     header: {
         label: {
             loginAs: 'Angemeldet als',
-            points: 'Punkte',
             month: 'diesen Monat',
             alltime: 'Gesamt'
         }
@@ -115,23 +154,29 @@ module.exports = {
 
     settings: {
         header: 'Einstellungen',
-        subHeader: 'Hier können Sie permanente Einstellungen an der DAI-wall vornehmen. Klicken Sie auf speichern um die Änderungen zu übernehmen.'
+        subHeader: 'Hier können Sie permanente Einstellungen an der DAI-wall vornehmen. Klicken Sie auf speichern um die Änderungen zu übernehmen.',
+        youAreMissing: 'Dir fehlen',
+        rewards: {
+            header: 'Freigeschaltete Features',
+            subHeader: 'Erreichen Sie eine bestimmte Punktzahl werden hier automatisch Features freigeschaltet.',
+            colors: {
+                header: 'Farbschemas',
+                subHeader: 'Mittels der Farbschema können Sie die Farben der Suchergebnisse variieren. Sie müsen die Seite neu laden um das Schema anzuwenden.',
+            },
+            backgrounds: {
+                header: 'Hintergrundbilder und Farben',
+                subHeader: 'Mittels der Hintergrundbilder können Sie den global genutzten Hintergrund anpassen.'
+            },
+            advanced: {
+                header: 'Erweiterte Funktionen',
+                subHeader: 'Durch Erweiterte Funktionen erhalten Sie mehr Macht in der Darstellung der Suchergebnissen, sei es die Art der Gruppierung oder die Prioriesierung der Broker.'
+            }
+        },
     },
 
     rewards: {
-        header: 'Freigeschaltete Features',
-        subHeader: 'Erreichen Sie eine bestimmte Punktzahl werden hier automatisch Features freigeschaltet.',
         colors: {
-            header: 'Farbschemas',
-            subHeader: 'Mittels der Farbschema können Sie die Farben der Suchergebnisse variieren. Sie müsen die Seite neu laden um das Schema anzuwenden.',
-        },
-        backgrounds: {
-            header: 'Hintergrundbilder und Farben',
-            subHeader: 'Mittels der Hintergrundbilder können Sie den global genutzten Hintergrund anpassen.'
-        },
-        advanced: {
-            header: 'Erweiterte Funktionen',
-            subHeader: 'Durch Erweiterte Funktionen erhalten Sie mehr Macht in der Darstellung der Suchergebnissen, sei es die Art der Gruppierung oder die Prioriesierung der Broker.'
+
         }
     },
 

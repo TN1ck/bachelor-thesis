@@ -76,27 +76,27 @@ export default React.createClass({
 
         var data = [
             {
-                y: t.badgesPage.label.vote,
+                y: t.label.vote,
                 x: _.get(user.actions, ['vote', 'down', 'points'], 0) +
                    _.get(user.actions, ['vote', 'up', 'points'], 0)
             },
 
             {
-                y: t.badgesPage.label.favourite,
+                y: t.label.favourite,
                 x: _.get(user.actions, ['favourite', 'toggle', 'points'], 0)
             },
 
             {
-                y: t.badgesPage.label.login,
+                y: t.label.login,
                 x: _.get(user.actions, ['auth', 'login', 'points'], 0)
             },
 
             {
-                y: t.badgesPage.label.query,
+                y: t.label.query,
                 x: _.get(user.actions, ['query', 'add', 'points'], 0)
             },
             {
-                y: t.badgesPage.label.badge,
+                y: t.label.badge,
                 x: _.get(user, '.points.badges', 0)
             }
 
@@ -111,8 +111,8 @@ export default React.createClass({
             <Grid>
                 <Row>
                     <Col xs={12}>
-                        <h1>{points} Punkte / {this.state.level} Level</h1>
-                        <p>{pointsNeededForNextLevel} Punkte benötigst du um das nächste Level zu erreichen.</p>
+                        <h1>{points} {t.label.points} / {this.state.level} {t.label.level}</h1>
+                        <p>{pointsNeededForNextLevel} {t.badgesPage.nextLevel}</p>
                         <BarChart data={data}/>
                     </Col>
                     <Col xs={12}>
@@ -130,15 +130,15 @@ export default React.createClass({
                         {badgeComponents}
                     </ReactCSSTransitionGroup>
                     <Col xs={12}>
-                        <h1>{t.badgesPage.leaderboard.header}</h1>
+                        <h1>{t.leaderboard.header}</h1>
                         <hr/>
                         <Row>
                             <Col xs={12} md={6}>
-                                <h3>{t.badgesPage.leaderboard.alltime}</h3>
+                                <h3>{t.leaderboard.alltime}</h3>
                                 <LeaderBoard users={this.state.alltime.users} user={this.state.alltime.user}/>
                             </Col>
                             <Col xs={12} md={6}>
-                                <h3>{t.badgesPage.leaderboard.monthly}</h3>
+                                <h3>{t.leaderboard.monthly}</h3>
                                 <LeaderBoard users={this.state.monthly.users} user={this.state.monthly.user}/>
                             </Col>
                         </Row>

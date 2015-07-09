@@ -66,10 +66,10 @@ export default React.createClass({
             <Table className='leaderboard' hover striped>
                 <thead>
                     <tr>
-                        <th>{t.leaderboard.place}</th>
-                        <th>{t.leaderboard.name}</th>
-                        <th>{t.leaderboard.points}</th>
-                        <th>{t.leaderboard.badges}</th>
+                        <th>{t.label.place}</th>
+                        <th>{t.label.name}</th>
+                        <th>{t.label.points}</th>
+                        <th>{t.label.badges}</th>
                     </tr>
                 </thead>
                 <tbody>

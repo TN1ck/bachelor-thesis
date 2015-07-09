@@ -48,14 +48,14 @@ var ColorSchema = React.createClass({
         var isAllowedToUse = level <= this.props.level;
 
         var buttonText = {
-            false: `Dir fehlen ${level - this.props.level} level`,
-            true: `Benutzen`
+            false: <span>{t.settings.youAreMissing} {level - this.props.level} {t.label.level}</span>,
+            true: t.label.select
         }[isAllowedToUse];
 
         var active = this.props.active;
 
         if (active) {
-            buttonText = 'Aktuell ausgewählt';
+            buttonText = t.label.currentlySelected;
         }
 
         return <Col xs={12}>
@@ -112,8 +112,8 @@ export default React.createClass({
                         <p>{t.settings.subHeader}</p>
                     </Col>
                     <Col xs={12}>
-                        <h3>{t.rewards.colors.header}</h3>
-                        <p>{t.rewards.colors.subHeader}</p>
+                        <h3>{t.settings.rewards.colors.header}</h3>
+                        <p>{t.settings.rewards.colors.subHeader}</p>
                         <hr/>
                         <Row>
                             {this.createColorSchemes()}

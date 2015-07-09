@@ -57,7 +57,7 @@ export default React.createClass({
             var level = content;
             body = (
                 <span>
-                    <h4_.template(t.messages.level.header, {level: level.level})</h4>
+                    <h4>{t.messages.level.header({level: level.level})}</h4>
                     <p>{t.messages.level.body}</p>
                 </span>
             );

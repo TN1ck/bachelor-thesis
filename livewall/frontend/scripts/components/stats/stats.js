@@ -20,27 +20,27 @@ export default React.createClass({
 
         var data = [
             {
-                y: t.badgesPage.label.vote,
+                y: t.label.vote,
                 x: _.get(alltime.actions, ['vote', 'down', 'points'], 0) +
                    _.get(alltime.actions, ['vote', 'up', 'points'], 0)
             },
 
             {
-                y: t.badgesPage.label.favourite,
+                y: t.label.favourite,
                 x: _.get(alltime.actions, ['favourite', 'toggle', 'points'], 0)
             },
 
             {
-                y: t.badgesPage.label.login,
+                y: t.label.login,
                 x: _.get(alltime.actions, ['auth', 'login', 'points'], 0)
             },
 
             {
-                y: t.badgesPage.label.query,
+                y: t.label.query,
                 x: _.get(alltime.actions, ['query', 'add', 'points'], 0)
             },
             {
-                y: t.badgesPage.label.badge,
+                y: t.label.badge,
                 x: alltime.badges.all.points
             }
 
@@ -62,15 +62,15 @@ export default React.createClass({
 
         return (
             <Col xs={12} sm={12} md={6}>
-                <h1>{t.badgesPage.leaderboard.header}</h1>
+                <h1>{t.leaderboard.header}</h1>
                 <hr/>
                 <Row>
                     <Col md={12} lg={6}>
-                        <h3>{t.badgesPage.leaderboard.alltime}</h3>
+                        <h3>{t.leaderboard.alltime}</h3>
                         <LeaderBoard users={alltime.users}/>
                     </Col>
                     <Col md={12} lg={6}>
-                        <h3>{t.badgesPage.leaderboard.monthly}</h3>
+                        <h3>{t.leaderboard.monthly}</h3>
                         <LeaderBoard users={monthly.users}/>
                     </Col>
                 </Row>
