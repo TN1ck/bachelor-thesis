@@ -20,14 +20,16 @@ export default React.createClass({
     mixins: [
         Reflux.connect(messageStore)
     ],
-    render: function () {
-        var messages = this.state.messages.map(message => {
+    createMessages: function () {
+        return this.state.messages.map(message => {
             return <Message message={message} />
-        })
+        });
+    },
+    render: function () {
         return (
             <div className='messages'>
                 <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionEnter={true}>
-                    {messages}
+                    {this.createMessages()}
                 </ReactCSSTransitionGroup>
             </div>
         );

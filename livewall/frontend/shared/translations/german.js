@@ -1,5 +1,19 @@
 module.exports = {
 
+    messages: {
+        badge: {
+            header: 'Du hast ein Abzeichen erhalten!',
+            body: 'Punkte hast du dafür bekommen.'
+        },
+        booster: {
+            header: 'Booster erfolgreich erworben!'
+        },
+        level: {
+            header: 'Level <%= level =%> erreicht!',
+            body: 'Dadurch wurden neue Features freigschaltet, gehen zu den Einstellungen um sie zu benutzen!'
+        }
+    },
+
     stats: {
         actions: {
             auth: {

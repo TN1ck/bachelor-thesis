@@ -22,16 +22,15 @@ export default React.createClass({
         var {type, content, duration} = this.props.message;
 
         var body = <span></span>;
-        var icon = <Icon fill='#222222' type='none' icon='/assets/query.png'/>;
+        var icon = <Icon fill='#222222' type='none' image='rocket'/>;
 
         if (type === 'badge') {
             var badge = content;
-
             body = (
                 <span>
-                    <h4>Du hast ein Abzeichen erhalten!</h4>
+                    <h4>{t.messages.badge.header}</h4>
                     <h5>{badge.why}</h5>
-                    <p>Dafür hast du <strong>{badge.points}</strong> Punkte bekommen</p>
+                    <p><strong>{badge.points}</strong> {t.messages.badge.body}</p>
                 </span>
             );
 
@@ -41,13 +40,11 @@ export default React.createClass({
         }
 
         if (type === 'booster') {
-
             var booster = _.find(BOOSTER, {id: content.name});
-
             body = (
                 <span>
                     <h4>Booster erfolgreich erworben!</h4>
-                    <p>...</p>
+                    <p>{booster.text}</p>
                 </span>
             );
 
@@ -57,14 +54,11 @@ export default React.createClass({
         }
 
         if (type === 'level') {
-
             var level = content;
-
             body = (
                 <span>
-                    <h4>Level {level.level} erreicht!</h4>
-                    <p>Dadurch wurden neue Features freigschaltet, gehen sie zu den
-                    Einstellungen um sie zu benutzen!</p>
+                    <h4_.template(t.messages.level.header, {level: level.level})</h4>
+                    <p>{t.messages.level.body}</p>
                 </span>
             );
 
@@ -75,7 +69,7 @@ export default React.createClass({
 
         var style = {
             transition: `width ${duration}s ease !important`,
-            width: `${this.state.progress}%`
+            width:      `${this.state.progress}%`
         };
 
         return (

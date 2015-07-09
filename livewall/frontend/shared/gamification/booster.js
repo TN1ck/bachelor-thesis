@@ -8,7 +8,7 @@ module.exports = [
     {
         id: 'booster_x2_1',
         name: 'VERDOPPLUNG DER PUNKTE FÜR 1 TAG',
-        text: 'Verdopple deine Punkte für 1 Tag.',
+        text: 'Verdoppel deine Punkte für 1 Tag.',
         type: 'none',
         fill: colors.vinrouge,
         image: 'rocket',
@@ -19,7 +19,7 @@ module.exports = [
     {
         id: 'booster_x2_2',
         name: 'VERDOPPLUNG DER PUNKTE FÜR 2 TAG',
-        text: 'Verdopple deine Punkte für 2 Tage.',
+        text: 'Verdoppel deine Punkte für 2 Tage.',
         type: 'none',
         fill: colors.vinrouge,
         image: 'rocket',
