@@ -228,30 +228,35 @@ Gamification hat in den letzten Jahren stetig an Zuwachs gewonnen da es ein äu�
 
 \section*{Anforderungen}
 
-Die Anforderungen der Applikation waren von vornerein nicht vollständig geklärt, viel mehr gab es ein grobes Gerüst was die Anwendung liefern sollte. Die komplette Ausarbeitung ist während der Entwicklung geschehen.
+\begin{description}
 
-\subsection*{Darstellung von Daten}
+\item[Darstellung von Daten]
 
   Einer der Hauptanforderungen ist die Darstellung von Datenpunkten (im zukünftigen Verlauf des Textes wird die Darstellung dieser Datenpunkte als \textit{Kacheln} bezeichnet) im Stil einer \textit{Social Media Wall}. Daraus folgen weiterhin die Anforderungen dass es unterschiedliche \textit{Kacheln} gibt - also für verschiedene Daten verschiedene Darstellungen z.B. könnten Suchergebnisse für Kontakte und Webseiten ganz unterschiedlich aufgebaut sein. Die dargestellten Inhalte sind weiterhin dynamisch, während des Betriebes können Kacheln hinzukommen/entfert werden und auch die Interaktion mit den Kacheln kann das Layout ändern.
 
-\subsection*{Bewertungssystem}
+Die Anforderungen der Applikation waren von vornerein nicht vollständig geklärt, viel mehr gab es ein grobes Gerüst was die Anwendung liefern sollte. Die komplette Ausarbeitung ist während der Entwicklung geschehen.
+
+\item[Bewertungssystem]
 
   Der Benutzer soll in der Lage sein angezeigte Suchergebnisse zu bewerten und dadurch zukünftige Anfragen für \textbf{alle} Benutzer zu verändern.
 
-\subsection*{Benutzung mehrerer Datenquellen}
+\item[Benutzung mehrerer Datenquellen]
   Die angezeigten Daten können aus mehreren Datenuellen kommen, d.h. die gleichzeitige Darstellung von Daten von z.B. Facebook mit denen von Twitter. Hier war es wieder besonders wichtig, dass man einfach neue Datenquellen hinzufügen kann. Auch das während des Betriebes vorhandene Quellen mit anderen Parametern (wie einer Suchanfrage) neu hinzugefügt werden kann.
 
-\subsection*{Authentifizierungssystem}
+\item[Authentifizierungssystem]
   Das DAI stellt aus gutem Grund ihre Datenquellen nur intern zu Verfügung bzw. nur nach einer Authentizieferung mittels Benutzername/Passwort, somit muss die Applikation in der Lage sein diese Authentfizierung auszuführen und sicherzustellen dass niemals \textit{zuviel} unauthentifizierten Benutzern angezeigt wird.
 
-\subsection*{Single Page Application}
+\item[Single Page Application]
   Es soll eine sogenannte \textit{Single Page Application} werden, d.h. eine Webapplikation bei der JavaScript abseits des initialen Seitenaufrufes alles rendert, im Gegensatz zur klassischen Methodik bei der jede Interaktion zu einer komplett neuen Seite die vom Server gerendert wird resultiert.
 
-\subsection*{Gamification}
+\item[Gamification]
   Um die Benutzung der Seite zu animieren sollen Gamification-Methoden eingeführt werden wie z.B. Punkte für das tägliche einloggen bis hinzu erweiterten Methoden wie eines Compulsion Loop.
 
-\subsection*{Konfiguration}
+\item[Konfiguration]
   Es muss möglich sein viele Parameter anzupassen, einige davon auch als Benutzerinterface für den Benutzer andere wiederum als simple Konfigurationsdatei für verwendete URLs und ähnliches.
+
+\end{description}
+
 
 \section*{Relevante Arbeiten}
 
@@ -277,8 +282,8 @@ Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von \textit{r
 Eine ausführliche Untersuchung von \citep{richterichkarma} zeigt die Tragweite von \textit{reddits} Karma-System. Es dient demnach vorzüglich als Bewertung des eingereichten Inhalts durch andere bzw. die daraus resultierende Selbstbestätigung wenn das eigene Karma eröht wird.
 Benutzer \textit{reddits} werden dadurch jedoch darauf gepolt ihre eingereichen Beiträge nach der Anzahl an Karma, welches der Beitrag liefern wird auszusuchen.
 
-DAIKnow \citep{meder2014daiknow} ist eine Bookmarking Seite ähnlich zu \textit{delicous.com} bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Trophäen und von Bestenlisten wird die Benutzung der Seite durch die Benutzer gesteigert. Im Gegensatz zu \textit{reddit} ist dieses System jedoch weitaus komplexer, so bekommet man z.B. Punkte für den täglichen Aufruf, Punkte für das einrechen eines Links oder das jemand anderes seinen Link kopiert hat.
-Ein Problem das sich auftat bei DAIKnow war dass häufige Benutzer alle verfügbaren Trophäen freischalteten und damit der Gamification-Aspekt damit kein Grund mehr ist die Applikation weiter zu benutzen.
+DAIKnow \citep{meder2014daiknow} ist eine Bookmarking Seite ähnlich zu \textit{delicous.com} bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Abzeichen und von Bestenlisten wird die Benutzung der Seite durch die Benutzer gesteigert. Im Gegensatz zu \textit{reddit} ist dieses System jedoch weitaus komplexer, so bekommet man z.B. Punkte für den täglichen Aufruf, Punkte für das einrechen eines Links oder das jemand anderes seinen Link kopiert hat.
+Ein Problem das sich auftat bei DAIKnow war dass häufige Benutzer alle verfügbaren Abzeichen freischalteten und damit der Gamification-Aspekt damit kein Grund mehr ist die Applikation weiter zu benutzen.
 
 \chapter{Umsetzung}
 
@@ -357,7 +362,7 @@ Eines meiner Ziele waren Animationen die neben dem rein ästhetischen Aspekt ein
   \item Die Anzahl an Bewegungen soll minimal sein um nicht unnötig vom eigentlichen Inhalt abzulenken.
 \end{enumerate}
 
-Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da der \textit{reflow} bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann wie die Kacheln sich bewegen und welchen Gesetzenmässigkeiten sie unterliegen.
+Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da der \textit{reflow} bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann wie die Kacheln sich bewegen und welchen Gesetzmässigkeiten sie unterliegen.
 
 \subsection*{Kacheln}
 
@@ -370,10 +375,11 @@ Rein funktional besitzt eine Kachel folgende Anforderung:
   \item Benutzer können den Inhalt favorisieren (speichern) und bewerten.
   \item Es werden Metainformationen wie der Typ des Inhalts (PDF, Kontakt, ...) angezeigt.
   \item Kacheln können schnell zu dem Suchbegriff zugeordnet werden von dem Sie stammen.
+  \item Anzeige der letzten Interaktion mit der Komponente um den sozialen Aspekt der Anwendung zu verdeutlichen.
 \end{itemize}
 
 Obwohl die Kacheln je nach dargestellten Inhalt stark variieren können ist es ratsam ein einheitliches Benutzerinterface für die Benutzerinteraktionen zu bieten. Auch sollten die Metainformationen gleich angezeigt werden.
-Mit diesen Anforderungen kann eine funktionale Kachel konzipiert wie unten konzipiert werden.
+Mit diesen Anforderungen kann eine funktionale Kachel konzipiert wie unten gezeigt werden.
 
 \begin{figure}[H]
     \centering
@@ -391,13 +397,34 @@ Menschen sind äußerst gut darin Farben und unterschiedliche Formen schnell zu 
     \label{fig:awesome_image}
 \end{figure}
 
+\subsection{Eindeutige Zuordnung von Farben zu Suchbegriffen}
+
+Da zuvor entschieden wurde die Hintergrundfarbe der Kacheln als Hauptunterscheidungsmerkmal der Suchbegriffe zu verwenden, bleibt zu klären wie eine Farbe zu einem Suchbegriff ausgewählt werden soll.
+Alle angezeigten Farben sollten optisch zueinander gehören und miteinander harmonieren, um dies zu erreichen gibt es verschieden Ansätze, bei allen ist der \textit{erste} Schritt die Konvertierung der Suchbegriffe zu einer Zahl. Diese Funktion sollte die typischen Eigenschaften einer \text{guten} Hash-Funktion mitbringen: gleichmässige Verteilung der Funktionswerte auf den Zielraum und Linkstotalität\footnote{Für jeden Suchbegriff gibt es ein Ergebnis der Funktion.}.
+Die hier verwendete Funktion stammt von Dan Berstein und ist bekannt unter der Bezeichnung \textit{djb2}.
+
+Der erste Ansatz wäre es eine Liste mit zueinander harmonierenden Farben zu verwenden und jeweils eins auszusuchen. Dieser Ansatz kann jedoch nur mit einer sehr langen Liste von Farben funktionieren, auch passiert es bei disere Methode öfter das Suchbegriffe dieselbe Farbe zugewiesen bekommen, was äußerst unerwünscht ist. Man könnte sich nun überlegen ob komplexe Konfliktresolution betrieben werden sollte - dass wenn Suchbegriffe aufeinander kollidieren eine davon eine andere Farbe bekommt.
+Dadurch wird aber verhindert das jeder Suchbegriff Konsistent die gleiche Farbe bekommt.
+
+Der zweite Ansatz besteht darin die Farben prozedual zu erstellen,
+der naivste Ansatz wäre es hierbei den Wertebereich der Hash-Funktion auf $0 - 2^{16})$ einzuschränken, das Ergebniss in Hexadezimal umzurechnen und als RGB-Farbe zu benutzen. Die dadurch entstehenden Farben sind jedoch alles andere als harmonierend oder könnten als \textit{schön} bezeichnet werden, da zu viele dunkle und zu viele helle Farben erstellt werden. Der RGB-Farbraum ist jedoch nicht dazu geeignet die Helligkeit der enstehenden Farben zu kontrollieren, dafür sind Wahrnehmungsorienterte Modelle die Farben durch Helligkeit, Sättigung und Farbton beschreiben deutlich geeigneter wie z.B. HSV oder HSL.
+Probleme von den HSx Farbräumen sind die für den Menschen ungünstige Verteilung der Farben, da wir z.B. besser im Unterscheiden von Blautönen sind als welche mit Grün/Rot-Anteilen, auch variiert z.B. die Helligkeit der Farben bei Änderung des Farbtons zu sehr.
+Abhilfe schaffen hier die dafür erstellen Farbräume LAB bzw. die Weiterentwicklung HCL. Diese sind jedoch nicht einfach zu benutzen, da der valide Wertebereich der Eingabeparameter je nach Kombination der Werte unterschiedlich ist. Dies macht es schwer mit diesen Farbräumen
+Farben zu erstellen. Es gibt im speziellen um den Chroma Wert, dieser kann grob mit der Helligkeit verglichen werden. Der Wertebereich der Sättigung und des Farbtons sind davon abhängig.
+
+Die Wahl des idealen Farbraums ist damit nicht wirklich möglich, mittels HSL ist es einfach eine gute Farbskala prozedual zu erstellen, der Farbbereich ist jedoch ungünstig für den Menschen. LAB/HCL bieten die beste Farbverteilung für die menschliche Wahrnehmung, sind jedoch äußerst schwer zu benutzen. Eine mögliche Kombination der Vorteile beider Farbräume zeigt \citep{husl}, hier wird ein Farbraum mit der Bezeichnung \textit{human-friendly HSL} vorgestellt.
+
+Doch keiner der Farbräume konnte eine \textit{ideale} Farbskala erstellen, es konnten in allen Farbräumen sehr anspruchsvolle Farbskalen mit wenig Kollision erstellt werden. Da Farbenskalen ein subjektives Thema sind wurde die Möglichkeit eingebaut diese in der Applikation zu verändern - dies wurde gleich mit dem Gamification-Aspekt verbunden wodurch man nach und nach neue Freischalten kann und sich die aussuchen kann die einem am besten gefällt.
+
+Zum testen der Farbskalen wurde eine Liste an möglichen Suchbegriffen benutzt, die Ergbnisse sind in der Abbildung zu sehen.
+
+% TODO PICTURE
+
 \section{Gamification}
 
-Wie sehr muss ich Gamification erklären?
+Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um Benutzer zu binden. Es ist schwer neue Technologien im Unternehmensfeld einzuführen, vor allem wenn sie freiwillig benutzt werden können - so wie das hier entwickelte Enterprise Infoboard. Ziel ist es also durch die Gamification der Benutzung die Benutzer dazu zu motivieren die Anwendung gewohnheitsmäßig zu benutzen.
 
-Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um Benutzer zu binden. Es ist schwer neue Technologien im Unternehmensfeld einzuführen, vor allem wenn sie freiwillig benutzt werden können - so wie das hier entwickelte Enterprise Dashboard. Ziel ist es also durch die Gamification der Benutzung die Benutzer dazu zu motivieren die Anwendung gewohnheitsmäßig zu benutzen.
-
-Die Grundlage jeder verspielisierung ist der \textit{Compulsion Loop} welcher eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden um eine neurochemische Belohnung zu erhalten.
+Die Grundlage jeder Gamification ist der \textit{Compulsion Loop} welcher eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden um eine neurochemische Belohnung zu erhalten.
 
 Diese modellierte Kette besteht aus 3 Schritten:
 
@@ -421,17 +448,17 @@ Das Enterprise Dashboard besitzt wenige Aktionen, sodass eigentlich alle Teil de
 
 Durch einige dieser Aktionen wird der User Punkte bekommen, z.B. ist es häufig üblich für das tägliche Besuchen der Seite dem Benutzer Punkte gutzuschreiben.
 
-
 \subsection*{Anerkennung der Leistung}
 
-Als generische Anerkennung haben sich in der Welt der Gamification Trophäen und Bestenlisten etabliert da diese ohne viel Aufwand für die Entwickler einen großen Anreiz für die Benutzer liefern können.
+Als generische Anerkennung haben sich in der Welt der Gamification Bestenlisten etabliert da diese ohne viel Aufwand für die Entwickler einen großen Anreiz für die Benutzer liefern können.
 
-In der Welt der Computerspiele sind diese besonders Wirksam, da eine hohe Punktzahl - und somit einer der besseren Plätze in der Bestenliste - mit rein objektiver Leistung zusammen hängt und offensichtlich zeigt: `Ich bin besser in diesem Spiel als alle unter mir'.
-Auch sind Trophäen Objekte von hoher Prestige da einige nur mit sehr viel Arbeit und Geduld erlangt werden können.
+Letzteres ist in der Welt der Computerspiele sind diese besonders Wirksam, da eine hohe Punktzahl - und somit einer der besseren Plätze in der Bestenliste - mit rein objektiver Leistung zusammen hängt und offensichtlich zeigt: `Ich bin besser in diesem Spiel als alle unter mir'.
 
-Da keine der Aktionen in unserer Applikation technische Expertise verlangt und Punkte anhand von einfachen Aktionen sogar negativ sein könnte (Stellen Sie sich vor, Facebook würde eine Bestenliste ihrer Freunde machen anhand wer am längsten auf der Seite ist.) ist die Vergabe der Punkte leider nicht so trivial um Sie wirklich ansprechend zu machen.
+Die in dieser Applikation verwendeten Aktionen bedarf keiner Expertise, womit jemand mit einer höheren Punktzahl nicht unweigerlich in irgendwas besser sein muss als jemand mit einer niedrigeren. Aber dies heißt nicht das eine Bestenliste ineffektiv ist, im Gegenteil macht auch dies einen gewissen Reiz aus. Jeder kann der Beste sein - wenn er denn nur etwas mehr die Applikation verwendet. Da kompetives Verhalten eine inherente Eigenschaft des Menschen ist und man sich gerne auf den höheren Plätzen bei etwas sieht, wird eine Bestenliste (vor allem bei welcher nur Personen aus seinem sozialen Kreis drauf sind) eine höhere Partizipation erzeugen.
 
-\chapter{Technische Umsetzung} 
+Abzeichen sind ebenfalls eine wirksame Methode um Leistungen anzuerkennen.
+
+\chapter{Technische Umsetzung}
 
 Im Kapitel Umsetzung wurde die Applikation soweit geplant, dass die Technische Umsetzung erfolgen kann - d.h. das geplante System wird soweit realisiert das es benutzt werden kann. Aspekte warum eine Technologie genutzt wurde und nicht eine andere, wie die Architektur der Applikation ist und warum sie so ist und alles was sonst noch anfällt wenn man eine Applikation schreibt.
 Die Technische Umsetzung wird sich fast ausschließlich mit dem Frontend beschäftigen da dies Teil der Bachelorarbeit war. Das Backend wird nur kurz wegen der Vollständigkeit behandelt.
@@ -601,6 +628,13 @@ Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist 
   \end{minted}
   \texttt{transform3D} wird von allen aktuellen Browsern soweit unterstützt das unser Szenario möglich ist\footnote{\url{http://caniuse.com/\#feat=transforms3d}}. Was weiterhin zu beachten ist, dass am Ende immer gerundete Pixelwerte innerhalb von \textsc{translate3D(x, y, z)} benutzt werden sollten. Da Ansonsten die Elemente unscharf sind.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{images/blurry_tiles.png}
+	\caption{Links eine Kachel mit geraden Werten bei \texttt{translate3D}, rechts mit jeweils $.5$ bei $x/y$.}
+	\label{fig:awesome_image}
+\end{figure}
+
 \end{enumerate}
 
 Es ist eine Grundanforderung Geräte mit unterschiedlich Großen Bildschirmen zu unterstützen, was dadurch erzielt wird, dass die die Anzahl der Spalten variabel ist.
@@ -608,7 +642,7 @@ Es gibt zwei Möglichkeiten die Anzahl der Spalten variabel zu machen:
 
 \begin{enumerate}
   \item Berechne die Breite mittels Javascript bevor das Element in den DOM eingefügt wird und setze die Breite mittels css.
-  \item Durch die Benutzung von \textit{Media Queries} können in css verschiedene Darstellungen für unterschiedliche Bildschrimbreiten beschrieben werden. 
+  \item Durch die Benutzung von \textit{Media Queries} können in css verschiedene Darstellungen für unterschiedliche Bildschrimbreiten beschrieben werden.
 \end{enumerate}
 
 Für die Positionierung müssen wir wissen wieviel Spalten zu jedem Zeitpunkt dargestellt werden sollen. Dafür muss die Breite in Javascript berechnet werden, somit liegt 1. nahe. Versuche haben jedoch gezeigt, dass es schneller ist die Breite des Elementes nicht per Javascript zu setzen sondern diese über die Media-Queries zu bestimmen. Zwar bedeuted dies, dass die gleiche Logik an zwei Orten in 2 Sprachen steht, aber da dies nicht mehr als jeweils 10 Zeilen sind ist es für die resultierende bessere Geschwindigkeit hinnehmbar.
@@ -618,9 +652,7 @@ Die Breite aller Elemente ist zu jedem Zeitpunkt gleich, die Höhe ist jedoch va
 
 \section*{Backend}
 
-Im Verlaufe der Arbeit wurde entschieden, dass eine weitere Server-Applikation ungünstig wäre und die Arbeiten im Frontend ausreichend waren für den Rahmen einer Bachelor-Arbeit.
-Zur Vollständigkeit halber werden die verwendeten Technologien aufgezählt.
-
+Im Verlaufe der Arbeit wurde erkannt das eine dedizierte Backend-Applikation nötig ist um den Grad der Interaktion und Dynamik zu ermöglichen die Ich mir als Ziel gesetzt hatte.
 
 \chapter{Ausblick}
 
