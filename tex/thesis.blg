@@ -1,2 +1,17 @@
-[0] 73b5ab1d.pm:320> INFO - This is Biber 1.9
-[0] 73b5ab1d.pm:323> INFO - Logfile is 'thesis.blg'
+[1] Config.pm:320> INFO - This is Biber 1.9
+[1] Config.pm:323> INFO - Logfile is 'thesis.blg'
+[78] biber-darwin:277> INFO - === Thu Jul  9, 2015, 19:32:12
+[82] Biber.pm:333> INFO - Reading 'thesis.bcf'
+[204] Biber.pm:635> INFO - Found 7 citekeys in bib section 0
+[256] Biber.pm:3051> INFO - Processing section 0
+[296] Biber.pm:3189> INFO - Looking for bibtex format file 'bachelorthesis.bib' for section 0
+[298] bibtex.pm:990> INFO - Decoding LaTeX character macros into UTF-8
+[303] bibtex.pm:864> INFO - Found BibTeX data source 'bachelorthesis.bib'
+[315] Utils.pm:144> WARN - I didn't find a database entry for 'richterichkarma' (section 0)
+[429] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[430] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[430] Biber.pm:2928> INFO - Sorting list 'nyt' of type 'entry' with scheme 'nyt' and locale 'de-DE'
+[430] Biber.pm:2932> INFO - No sort tailoring available for locale 'de-DE'
+[456] bbl.pm:517> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[458] bbl.pm:606> INFO - Output to thesis.bbl
+[459] Biber.pm:106> INFO - WARNINGS: 1

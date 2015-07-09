@@ -9,6 +9,27 @@ module.exports = [
         schema: schemas.color_pastel
     },
     {
+        level: 1,
+        type: 'color_scheme',
+        id: 'color_rgb',
+        name: 'Random RGB',
+        schema: schemas.color_rgb
+    },
+    {
+        level: 2,
+        type: 'color_scheme',
+        id: 'color_pastel_husl',
+        name: 'Pastel HUSL',
+        schema: schemas.color_pastel_husl
+    },
+    {
+        level: 2,
+        type: 'color_scheme',
+        id: 'color_pastel_hcl',
+        name: 'Pastel HCL',
+        schema: schemas.color_pastel_hcl
+    },
+    {
         level: 2,
         type: 'color_scheme',
         id: 'color_blue',

@@ -1,21 +1,50 @@
 var hashCode = require('./utils.js').hashCode;
 var d3       = require('d3');
 var _        = require('lodash');
+var husl     = require('husl');
 
 var colorFunctions = {
+    color_rgb: function (hash) {
+        hash = hash % 65535;
+        var rgb = _.parseInt(hash, 16);
+        rgb = _.padLeft(rgb, 6, '0');
+        return '#' + rgb;
+    },
+    color_hsl: function (hash) {
+        var h = (hash / 100) % 360.0;
+        return d3.hsl(h, 0.5, 0.6);
+    },
+    color_pastel_hcl: function (hash) {
+        var h = (hash / 100) % 270.0 + 10;
+        return d3.hcl(h, 70, 45);
+    },
     color_pastel: function (hash) {
         var hslStarts = [
+            {s: 0.5, l: 0.4},
             {s: 0.4, l: 0.4},
-            {s: 0.3, l: 0.4},
-            {s: 0.4, l: 0.4},
-            {s: 0.5, l: 0.3},
+            {s: 0.5, l: 0.4},
             {s: 0.6, l: 0.3},
+            {s: 0.7, l: 0.3},
         ];
 
-        var h = hash % 255;
+        // above 270 we get pink values, do not look good
+        var h = (hash / 100) % 270;
         var sl = hslStarts[hash % hslStarts.length];
         var hsl = d3.hsl(h, sl.s, sl.l);
         return hsl.toString();
+    },
+    color_pastel_husl: function (hash) {
+        var hslStarts = [
+            {s: 0.6, l: 0.4},
+            {s: 0.5, l: 0.4},
+            {s: 0.6, l: 0.4},
+            {s: 0.7, l: 0.3},
+            {s: 0.8, l: 0.3},
+        ];
+
+        var h = hash % 270;
+        var sl = hslStarts[hash % hslStarts.length];
+        return husl.toHex(h, sl.s * 100, sl.l * 100);
     },
     color_blue: function (hash) {
 
@@ -62,13 +91,14 @@ var colorFunctions = {
         var color = d3.hsl(hsl.h, hsl.s, l);
         return color.toString();
     },
-    color_nice: function (hash) {
+    color_flat: function (hash) {
+        // taken fram flatuicolors - https://flatuicolors.com
         var colors = [
-            '#248EE6',
-            '#F5A623',
-            '#96bf48',
-            '#ec663c',
-            '#7b3444'
+            '#1dd2af', '#19b698', '#40d47e', '#2cc36b',
+            '#4aa3df', '#2e8ece', '#a66bbe', '#9b50ba',
+            '#3d566e', '#354b60', '#f2ca27', '#f4a62a',
+            '#e98b39', '#ec5e00', '#ea6153', '#d14233',
+            '#bdc3c7', '#cbd0d3', '#a3b1b2', '#8c989'
         ];
 
         return colors(hash % colors.length);

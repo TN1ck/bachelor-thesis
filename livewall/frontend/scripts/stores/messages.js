@@ -1,6 +1,5 @@
 import _          from 'lodash';
 import Reflux     from 'reflux';
-import jquery     from 'jquery';
 import moment     from 'moment';
 
 import actions    from '../actions/actions.js';

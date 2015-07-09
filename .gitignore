@@ -6,6 +6,7 @@
 *.run.xml
 *.out
 *.toc
+*.sqlite
 
 
 bower_components

@@ -35,7 +35,13 @@ var ColorSchema = React.createClass({
             'systeme',
             'tastatur',
             'apple',
-            'gamification'
+            'gamification',
+            'microsoft',
+            'musik',
+            'hund',
+            'katze',
+            'kiel',
+            'buch'
         ];
 
         var {schema, id, name, level} = this.props.schema;

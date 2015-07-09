@@ -11,20 +11,18 @@ var getDomain = function (url) {
     return domain;
 };
 
-
-var hashCode = function (str) {
-    var hash = 0;
+// An Implementation of djb2 by DAN BERNSTEIN
+var hashCode = function(str) {
+    var hash = 5381;
     if (str.length === 0) {
         return hash;
     }
-
     for (var i = 0; i < str.length; i++) {
-        var char = str.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash; // Convert to 32bit integer
+        var character  = str.charCodeAt(i);
+        hash  = (( hash << 5 ) + hash ) ^ character;
     }
-    return hash < 0 ? hash * -1 : hash;
-};
+    return hash >>> 0; // make it positive
+}
 
 var parseColor = function (hex) {
     hex = String(hex).replace(/[^0-9a-f]/gi, '');

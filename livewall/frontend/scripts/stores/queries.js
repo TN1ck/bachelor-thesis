@@ -1,7 +1,6 @@
 import _          from 'lodash';
 import Reflux     from 'reflux';
 import Immutable  from 'immutable';
-import jquery     from 'jquery';
 import moment     from 'moment';
 
 import actions    from '../actions/actions.js';
