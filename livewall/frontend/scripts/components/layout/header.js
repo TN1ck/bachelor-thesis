@@ -54,7 +54,7 @@ export default React.createClass({
                 name: <span>
                     <i style={style} className='fa fa-bar-chart'></i> Statistik
                 </span>,
-                link: 'social'
+                link: 'stats'
             },
             {
                 name: user.isLogedIn() ? 'logout' : 'login',

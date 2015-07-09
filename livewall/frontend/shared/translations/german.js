@@ -1,5 +1,25 @@
 module.exports = {
 
+    stats: {
+        actions: {
+            auth: {
+                login: 'hat sicht angemeldet.'
+            },
+            query: {
+                add: 'hat nach etwas gesucht.',
+                remove: 'hat eine Suche entfernt.'
+            },
+            favourite: {
+                toggle: 'hat etwas favorisiert.'
+            },
+            vote: {
+                up: 'hat etwas positiv bewertet.',
+                down: 'hat etwas negativ bewertet.'
+            },
+            body: 'Dies Aktion wurde um <%= createdAt =%> Uhr ausgeführt. Sie hat <%= username =%> <%= points =%> Punkte erbracht.'
+        },
+    },
+
     auth: {
         label: {
             login: 'Anmelden',

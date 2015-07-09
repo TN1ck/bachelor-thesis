@@ -1,6 +1,5 @@
 import React       from 'react';
 import moment      from 'moment';
-import _           from 'lodash';
 
 import t           from '../../../shared/translations/translation.js';
 import {colors}    from '../../../shared/util/colors.js';
@@ -11,38 +10,38 @@ import Icon        from '../utility/icon.js';
 var actions = {
     auth: {
         login: {
-            text: t.stats.actions.auth.login,
+            text: 'hat sich angemeldet.',
             icon: 'key',
             fill: colors.vinrouge
         }
     },
     query: {
         add: {
-            text: t.stats.actions.query.add,
+            text: 'hat nach etwas gesucht.',
             icon: 'query',
             fill: colors.buttercup
         },
         remove: {
-            text: t.stats.actions.query.remove,
+            text: 'hat eine Suche entfernt.',
             icon: 'query',
             fill: colors.buttercup
         },
     },
     favourite: {
         toggle: {
-            text: t.stats.actions.query.favourite,
+            text: 'hat etwas favorisiert.',
             icon: 'star',
             fill: colors.curious_blue
         }
     },
     vote: {
         up: {
-            text: t.stats.actions.vote.up,
+            text: 'hat etwas positiv bewertet.',
             icon: 'upvote',
             fill: colors.sushi
         },
         down: {
-            text: t.stats.actions.vote.down,
+            text: 'hat etwas negativ bewertet.',
             icon: 'downvote',
             fill: colors.burnt_sienna
         }
@@ -57,17 +56,14 @@ export default React.createClass({
 
         var createdAt = moment(action.createdAt).format('HH:MM');
 
-        var dict = {
-            username: user.username,
-            createdAt: createdAt,
-            points: action.points
-        };
-
         var body = (
             <span>
                 <h5>{user.username} {a.text}</h5>
                 <hr />
-                <p>_.template(t.stats.actions.body, dict)</p>
+                <p>
+                    Dies Aktion wurde um {createdAt} Uhr ausgeführt.
+                    Sie hat {user.username} {action.points} Punkte erbracht.
+                </p>
             </span>
         );
 
