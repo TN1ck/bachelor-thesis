@@ -1,8 +1,10 @@
-import React   from 'react';
+import React                     from 'react';
 import { Col, Row, ProgressBar } from 'react-bootstrap';
-import Icon                from '../utility/icon.js';
-import BADGES    from '../../../shared/gamification/badges.js';
-import BOOSTER    from '../../../shared/gamification/booster.js';
+
+import t                         from '../../../shared/translations/translation.js';
+import BADGES                    from '../../../shared/gamification/badges.js';
+import BOOSTER                   from '../../../shared/gamification/booster.js';
+import Icon                      from '../utility/icon.js';
 
 export default React.createClass({
     getInitialState: function () {
@@ -49,7 +51,7 @@ export default React.createClass({
             );
 
             icon = (
-                <Icon fill={level.fill} type='none' image={level.image}/>
+                <Icon fill={booster.fill} type='none' image={booster.image}/>
             )
         }
 

@@ -1,22 +1,32 @@
 import Reflux from 'reflux';
 
 var actions = Reflux.createActions([
+	// layoutstore
 	'changeSort',
 	'relayout',
+    'addDomElement',
+
+	// datastore
     'addItem',
+	'addItems',
     'loadItems',
 	'voteItem',
     'favouriteItem',
+
+	// queries
     'addQuery',
     'removeQuery',
     'changedQueries',
-    'addDomElement',
 
-	'addItems',
-
+	// messages
 	'addFlashMessage',
 
-	'buyBooster'
+	// gamification
+	'buyBooster',
+
+	// auth
+	'login',
+	'logout'
 ]);
 
 export default actions;

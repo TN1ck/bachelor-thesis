@@ -5,6 +5,7 @@ import {
 } from 'react-bootstrap';
 
 import {Link, Route, RouteHandler} from 'react-router';
+import actions from '../../actions/actions.js';
 
 import {user} from '../../auth.js';
 
@@ -20,7 +21,7 @@ export default React.createClass({
             remember: true,
             loading: false,
             error: false,
-            isLogedIn: 'loading'
+            isLoggedIn: 'loading'
         };
     },
     handleSubmit: function (e) {
@@ -34,23 +35,24 @@ export default React.createClass({
         var password = this.refs.password.getValue();
 
         this.setState({loading: true});
-        user.login(username, password, this.state.remember).then(() => {
-            if (!user.isLogedIn())
+
+        actions.login(username, password, this.state.remember, () => {
+            if (!user.isLoggedIn())
                 return this.setState({ error: true, loading: false });
             if (nextPath) {
                 router.replaceWith(nextPath);
             } else {
                 router.replaceWith('/');
             }
-        }).fail(() => {
+        }, () => {
             this.setState({error: true, loading: false});
         });
 
 
     },
     componentWillMount: function () {
-        user.isLogedIn((result) => {
-            this.setState({isLogedIn: result});
+        user.isLoggedIn((result) => {
+            this.setState({isLoggedIn: result});
         });
     },
     handleChange: function (e) {
@@ -120,7 +122,7 @@ export default React.createClass({
         var headerText = {
             true: t.auth.login.already,
             false: t.auth.label.login
-        }[this.state.isLogedIn];
+        }[this.state.isLoggedIn];
 
         return (
             <Grid>
@@ -131,7 +133,7 @@ export default React.createClass({
                             <hr/>
                         </PageHeader>
                         {error}
-                        {this.state.isLogedIn ? logoutForm : loginForm}
+                        {this.state.isLoggedIn ? logoutForm : loginForm}
                     </Col>
                 </Row>
             </Grid>

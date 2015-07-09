@@ -157,7 +157,7 @@ var Footer = React.createClass({
 
             text = <strong>{`${username} ${_.get(t.tile.actions, [group, label], group + ' ' + label)}`}</strong>;
         } else {
-            text = 'keine Interaktionen bisher.'
+            text = t.tile.noInteractions;
         }
 
         return (

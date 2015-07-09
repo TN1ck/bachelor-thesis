@@ -77,8 +77,6 @@ var colorFunctions = {
 
 var getColorByString = function (str, scheme) {
 
-    console.log(scheme);
-
     var hash = hashCode(str);
     return _.get(colorFunctions, scheme, colorFunctions.pastel_color)(hash);
 

@@ -1,8 +1,7 @@
 import React     from 'react/addons';
 import {Link}    from 'react-router';
-
-import {user}    from '../../auth.js';
 import dataStore from '../../stores/data.js';
+import actions   from '../../actions/actions.js';
 
 import {
     Grid, Row, Col, Input,
@@ -12,9 +11,8 @@ import {
 import t from '../../../shared/translations/translation.js';
 
 export default React.createClass({
-    componentDidMount: function () {
-        user.logout();
-        dataStore.reset();
+    componentWillMount: function () {
+        actions.logout();
     },
     render: function () {
 

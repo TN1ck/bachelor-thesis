@@ -5,7 +5,7 @@ export var user = new User();
 export var requireAuth = {
     statics: {
         willTransitionTo: function (transition, params, query, callback) {
-            user.isLogedIn((result) => {
+            user.isLoggedIn((result) => {
                 if (!result) {
                     transition.redirect('/login', {}, {'nextPath' : transition.path});
                 }

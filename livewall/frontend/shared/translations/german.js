@@ -126,6 +126,7 @@ module.exports = {
     },
 
     tile: {
+        noInteraction: 'keine Interaktionen bisher.',
         tooltip: {
             favourite: {
                 favourite: 'Speichere dieses Element in deinen PIA-Favoriten.',

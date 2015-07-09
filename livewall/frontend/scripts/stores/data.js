@@ -25,6 +25,11 @@ export default Reflux.createStore({
             favourites: {}
         };
 
+        // elements will take longer to load, but it will increase the smoothness
+        // will only be used for addItems
+        // will group mulitple results into one trigger
+        this.debouncedTriggerState = _.debounce(this.triggerState, 500);
+
         this.listenTo(actions.addItems,      this.addItems);
         this.listenTo(actions.voteItem,      this.voteItem);
         this.listenTo(actions.favouriteItem, this.favouriteItem);
@@ -110,7 +115,7 @@ export default Reflux.createStore({
 
             this.items = this.items.merge(tempItems);
 
-            this.triggerState();
+            this.debouncedTriggerState();
         });
 
 

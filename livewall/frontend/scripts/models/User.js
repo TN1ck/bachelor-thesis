@@ -174,17 +174,6 @@ export default class User {
         this.username = username;
         this.password = password;
 
-        // DEV MODE
-        console.warn('DEV MODE IS STILL HERE');
-        if (username === 'nickdev') {
-            return $.Deferred().resolve({
-                username: 'nickdev',
-                token: 'abcdefgh'
-            }).then(data => {
-                this.initUser(data);
-            });
-        }
-
         return this.loginRequest().then(data => {
             this.initUser(data);
         });
@@ -251,7 +240,7 @@ export default class User {
         return false;
     }
 
-    isLogedIn (cb) {
+    isLoggedIn (cb) {
 
         // check if a login-request is running and call the callback with the result
         if (this.loginPromise && cb) {
@@ -270,11 +259,12 @@ export default class User {
         return !!this.token;
     }
 
-    logout () {
+    logout (cb) {
         this.username = 'Gast';
         this.password = '';
         this.token = '';
         this.deleteCookie();
+        cb();
     }
 
     //
