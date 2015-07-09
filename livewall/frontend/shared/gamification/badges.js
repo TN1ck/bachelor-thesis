@@ -150,36 +150,36 @@ module.exports = [
         NUMBER OF QUERIES
     */
     {
-        id: 'searches_add_10',
-        name: t.badges['searches_add_10'].header,
-        why: t.badges['searches_add_10'].why,
-        text: t.badges['searches_add_10'].text,
+        id: 'queries_add_10',
+        name: t.badges['queries_add_10'].header,
+        why: t.badges['queries_add_10'].why,
+        text: t.badges['queries_add_10'].text,
         number: '10',
         type: 'none',
         fill: colors.puerto_rico,
-        image: 'search',
+        image: 'query',
         points: 50
     },
     {
-        id: 'searches_add_100',
-        name: t.badges['searches_add_100'].header,
-        why: t.badges['searches_add_100'].why,
-        text: t.badges['searches_add_100'].text,
+        id: 'queries_add_100',
+        name: t.badges['queries_add_100'].header,
+        why: t.badges['queries_add_100'].why,
+        text: t.badges['queries_add_100'].text,
         number: '100',
         type: 'king',
         fill: colors.puerto_rico,
-        image: 'search',
+        image: 'query',
         points: 300
     },
     {
-        id: 'searches_add_1000',
-        name: t.badges['searches_add_1000'].header,
-        why: t.badges['searches_add_1000'].why,
-        text: t.badges['searches_add_1000'].text,
+        id: 'queries_add_1000',
+        name: t.badges['queries_add_1000'].header,
+        why: t.badges['queries_add_1000'].why,
+        text: t.badges['queries_add_1000'].text,
         number: '1000',
         type: 'emperor',
         fill: colors.puerto_rico,
-        image: 'search',
+        image: 'query',
         points: 1000
     },
     /*

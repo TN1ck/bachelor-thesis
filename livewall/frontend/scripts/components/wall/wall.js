@@ -29,33 +29,34 @@ export default React.createClass({
         var dom = this.refs.wall.getDOMNode();
         this.resize = layoutStore.getResizeCallback();
         window.addEventListener('resize', this.resize);
+        this.resize();
         actions.relayout();
     },
     componentWillUnmount: function () {
         window.removeEventListener('resize', this.resize);
     },
-    render: function () {
-
-        var tiles = this.state.items.toArray().map((tile) => {
+    createLoader: function () {
+        if (this.state.items.count() === 0) {
+            return <i className="fa fa-gear fa-spin white fa-5x"></i>;
+        }
+    },
+    createTiles: function () {
+        return this.state.items.toArray().map((tile) => {
             if (tile) {
                 return <Tile tile={tile} key={tile.get('uuid')}/>;
             }
         });
-
-        var loading;
-        if (tiles.length === 0) {
-            loading = <i className="fa fa-gear fa-spin white fa-5x"></i>;
-        }
-
+    },
+    render: function () {
         return (
             <div ref='wall'>
                 <Queries />
                 <div className='tiles'>
                     <ReactCSSTransitionGroup transitionName="fade" transitionAppear={false} transitionEnter={false}>
-                        {tiles}
+                        {this.createTiles()}
                     </ReactCSSTransitionGroup>
                     <div className="wall__loader">
-                        {loading}
+                        {this.createLoader()}
                     </div>
                 </div>
             </div>

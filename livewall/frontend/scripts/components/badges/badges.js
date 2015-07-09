@@ -92,8 +92,8 @@ export default React.createClass({
             },
 
             {
-                y: t.badgesPage.label.search,
-                x: _.get(user.actions, ['search', 'add', 'points'], 0)
+                y: t.badgesPage.label.query,
+                x: _.get(user.actions, ['query', 'add', 'points'], 0)
             },
             {
                 y: t.badgesPage.label.badge,

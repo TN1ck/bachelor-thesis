@@ -214,10 +214,6 @@ export default React.createClass({
 
         var lastAction = _.last(actions);
 
-        // var author = <div className='tile__footer__author'>
-        //     von {this.props.tile.get('author')}
-        // </div>;
-
         var domain = this.props.tile.get('domain');
 
         var component = (

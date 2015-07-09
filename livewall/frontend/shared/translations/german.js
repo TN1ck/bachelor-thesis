@@ -40,7 +40,7 @@ module.exports = {
         label: {
             'login': 'einloggen',
             'vote': 'bewerten',
-            'search': 'suchen',
+            'query': 'suchen',
             'badge': 'abzeichen',
             'favourite': 'favorisieren'
         },
@@ -174,19 +174,19 @@ module.exports = {
             why: '1000 Suchergebnisse wurden negativ bewertet.'
         },
 
-        'searches_add_10': {
+        'queries_add_10': {
             header: 'SUCHEN',
             text: 'Suche mindestens nach 10 Suchbegriffen um diese Trophäe zu erhalten',
             why: '10 Begriffe wurden gesucht.'
         },
 
-        'searches_add_100': {
+        'queries_add_100': {
             header: 'SUCHEN',
             text: 'Suche mindestens nach 100 Suchbegriffen um diese Trophäe zu erhalten',
             why: '100 Begriffe wurden gesucht.'
         },
 
-        'searches_add_1000': {
+        'queries_add_1000': {
             header: 'SUCHEN',
             text: 'Suche mindestens nach 1000 Suchbegriffen um diese Trophäe zu erhalten',
             why: '1000 Begriffe wurden gesucht.'

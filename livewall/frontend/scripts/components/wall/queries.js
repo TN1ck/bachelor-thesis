@@ -6,27 +6,31 @@ import actions    from '../../actions/actions.js';
 import dataStore  from '../../stores/data.js';
 import queryStore from '../../stores/queries.js';
 
-var ReactQuery = React.createClass({
+var Query = React.createClass({
     displayName: 'query',
-    render: function () {
-
-        var query = this.props.query;
-
-        var loading = _.some(query.broker, b => {
+    createIcon: function () {
+        var loading = _.some(this.props.query.broker, b => {
             return b.status === 'pending';
         });
 
-        var loadingComponent = <span className="fa-gear fa-spin"></span>;
-        var removeComponent  = <span className="fa-remove"></span>;
-        var color            = query.color;
+        if (loading) {
+            return <span className="fa-gear fa-spin"></span>;
+        } else {
+            return <span className="fa-remove"></span>;
+        }
+    },
+    render: function () {
+
+        var query = this.props.query;
+        var color = query.color;
 
         return (
-            <li style={{'background-color': color, 'border-color': color}} className='query__element'>
+            <li style={{backgroundColor: color, borderColor: color}} className='query__element'>
                 <div className='query__container'>
                     <div className='query__term'>{query.term}</div>
                     <div className='query__button'
                         onClick={this.props.removeQuery}>
-                        {loading ? loadingComponent : removeComponent}
+                        {this.createIcon()}
                     </div>
                 </div>
             </li>
@@ -34,7 +38,7 @@ var ReactQuery = React.createClass({
     }
 });
 
-var ReactAddQuery = React.createClass({
+var AddQuery = React.createClass({
     displayName: 'add-query',
     shouldComponentUpdate: function () {
         return false;
@@ -80,19 +84,21 @@ export default React.createClass({
     submitCallback: function (result) {
         actions.addQuery(result, true, true);
     },
-    render: function () {
-        var queryNames = _.map(this.state.queries, (s, k) => {
-            return <ReactQuery
+    createQueries: function () {
+        return _.map(this.state.queries, (s, k) => {
+            return <Query
                 removeQuery={this.removeQuery.bind(this, k)}
                 key={k}
                 query={s}/>;
         });
+    },
+    render: function () {
         return (
             <div className='queries'>
                 <ul className='queries--list'>
-                    {queryNames}
+                    {this.createQueries()}
                 </ul>
-                <ReactAddQuery submitCallback={this.submitCallback}></ReactAddQuery>
+                <AddQuery submitCallback={this.submitCallback}/>
             </div>
         );
     }

@@ -18,15 +18,15 @@ export default React.createClass({
                     fill: colors.vinrouge
                 }
             },
-            search: {
+            query: {
                 add: {
                     text: 'hat nach etwas gesucht.',
-                    icon: 'search',
+                    icon: 'query',
                     fill: colors.buttercup
                 },
                 remove: {
                     text: 'hat eine Suche entfernt.',
-                    icon: 'search',
+                    icon: 'query',
                     fill: colors.buttercup
                 },
             },

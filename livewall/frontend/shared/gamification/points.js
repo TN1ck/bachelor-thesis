@@ -3,7 +3,7 @@ module.exports = {
         up: 1,
         down: 1
     },
-    search: {
+    query: {
         add: 1,
         remove: 1
     },

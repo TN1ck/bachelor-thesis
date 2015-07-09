@@ -207,14 +207,14 @@ export default Reflux.createStore({
     addQuery: function (queryTerm, track) {
         // we do not want to track the queries that are added when the wall is started
         if (track) {
-            owa.track('search', queryTerm, 'add');
-            this.postAction('search', 'add', queryTerm);
+            owa.track('query', queryTerm, 'add');
+            this.postAction('query', 'add', queryTerm);
 
         }
     },
     removeQuery: function (queryTerm) {
-        owa.track('search', queryTerm, 'remove');
-        this.postAction('search', 'remove', {value: queryTerm});
+        owa.track('query', queryTerm, 'remove');
+        this.postAction('query', 'remove', {value: queryTerm});
     },
 
     voteItem: function (uuid, value) {

@@ -9,7 +9,7 @@ export default React.createClass({
     displayName: 'award',
     getDefaultProps: function() {
         return {
-            image: icons.search,
+            image: icons.query,
             rotate: 0,
             translate: {
                 x: 0,

@@ -111,7 +111,7 @@ var _aggregateUserData = function (data = []) {
     /* every row looks like this:
 
         date: "20150530",
-        actionGroup: "search",
+        actionGroup: "query",
         actionName: "aussiehst",
         actionLabel: "add",
         customVarName2: "username",

@@ -22,7 +22,7 @@ export default React.createClass({
         var {type, content, duration} = this.props.message;
 
         var body = <span></span>;
-        var icon = <Icon fill='#222222' type='none' icon='/assets/search.png'/>;
+        var icon = <Icon fill='#222222' type='none' icon='/assets/query.png'/>;
 
         if (type === 'badge') {
             var badge = content;

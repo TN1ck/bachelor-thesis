@@ -93,7 +93,7 @@ export default Reflux.createStore({
     init: function () {
 
         this.items = Immutable.Map();
-        // This will synchronize multiple search-results
+        // This will synchronize multiple query-results
         // Higher value will result in smoother experience, but it will take longer
         // to load
         this.debounceTime = 1500;
@@ -302,11 +302,11 @@ export default Reflux.createStore({
         // but it is not reliable: resize events can change the size without
         // this function noticing
 
-        // if (item.get('dom')) {
-        //     item = item.set('dom', dom);
-        //     this.items = this.items.set(uuid, item);
-        //     return;
-        // }
+        if (item.get('dom')) {
+            item = item.set('dom', dom);
+            this.items = this.items.set(uuid, item);
+            return;
+        }
 
         var height = dom.offsetHeight;
 
