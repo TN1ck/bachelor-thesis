@@ -72,7 +72,7 @@
 %\newcommand{\HRule}{\rule{\linewidth}{0.1pt}}
 %\newcommand{\logoheight}{2.5cm}
 
-\renewcommand{\title}{DAI Infoboard}
+\renewcommand{\title}{Enterprise Infoboard - Intelligente Visualisierung und Austausch von heterogenen Informationen im Unternehmen}
 \renewcommand{\author}{Tom Nick}
 %\date{}                                           % Activate to display a given date or no date
 
@@ -181,7 +181,7 @@
 \vspace{1cm}
 \hrule
 \vspace{0.3cm}
-{\Huge \textsc{\title{Enterprise Infoboard - Intelligente Visualisierung und Austausch von heterogenen Informationen im Unternehmen}}\par}
+{\Huge \textsc{\title{}}\par}
 ~\\[0.1cm]
 {\Large Supervisor: Prof. Albayrak}\\[0.1cm]
 {\Large Advisors: -}\\[0.3cm]
@@ -423,11 +423,20 @@ Zum testen der Farbskalen wurde eine Liste an möglichen Suchbegriffen benutzt, 
 
 \section{Gamification}
 
-Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um Benutzer zu binden. Es ist schwer neue Technologien im Unternehmensfeld einzuführen, vor allem wenn sie freiwillig benutzt werden können - so wie das hier entwickelte Enterprise Infoboard. Ziel ist es also durch die Gamification der Benutzung die Benutzer dazu zu motivieren die Anwendung gewohnheitsmäßig zu benutzen.
+Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um das sogenannnte \textit{Engagement} von Benutzer zu erhöhen, allein durch Gamification konnte z.B. die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep{zichermann2011gamification}. Doch was ist Gamification eigentlich? Der Begriff entstand erst 2008 und hat seitdem viele Bedeutungen erlangt, \citep{deterding2011game} bemühten sich eine einheitliche Definition zu finden, die auch im folgenden Kontext verwendet wird.
 
-Die Grundlage jeder Gamification ist der \textit{Compulsion Loop} welcher eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden um eine neurochemische Belohnung zu erhalten.
+\begin{quote}
+	``Gamification'' is the use of game design elements in non-game contexts.
+\end{quote}
 
-Diese modellierte Kette besteht aus 3 Schritten:
+Das Infoboard dient als Interface für Unternehmensinterne Suchmaschinen, welches zu besserem Wissensaustausch führen soll. Dies ist offensichtlich ein nicht-Spiele-Kontext der durch erhöhtes \textit{Engagement} positive Effekte für ein Unternehmen erzielen kann.
+Mit dem Einsatz von Gamification-Elementen werden von uns zwei Ziele verfolgt, einerseits soll durch die Verspielisierung der Applikationsmechaniken deren Benutzung erhöht werden bzw. soll ein konstanteres \textit{Engangement} mit der Applikation vom Benutzer erzielt werden, andererseits sollen die Mechaniken zur Bewertung der Suchergebnisse gefördert werden wodurch diese noch besser werden.
+
+% Es ist schwer neue Technologien im Unternehmensfeld einzuführen, vor allem wenn sie freiwillig benutzt werden können - so wie das hier entwickelte Enterprise Infoboard. Ziel ist es also durch die Gamification der Benutzung die Benutzer dazu zu motivieren die Anwendung gewohnheitsmäßig zu benutzen.
+
+Die Grundlage jedes Spieledesigns ist der \textit{Compulsion Loop} welcher eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden um eine neurochemische Belohnung zu erhalten.
+
+Nach \citep{gamasutra} besteht diese modellierte Kette aus 3 Schritten:
 
 \begin{enumerate}
   \item \textbf{Anerkennung der Leistung} Die Ausführung der Aktionen wird belohnt, der Benutzer bekommt etwas was er gerne möchte. Die Herausforderung hierbei ist es etwas zu erschaffen, dass der Benutzer möchte und die Belohnung so einzuteilen das er gerade soviel bekommt dass es eine Belohnung darstellt. Am Beispiel des Rollenspieles wäre eine Belohnung z.B. die verbesserte Rüstung mit der der gespielte Charakter widerstandsfähiger wird und neue bisher verschlossene Abenteuer bestreiten kann.
@@ -435,10 +444,11 @@ Diese modellierte Kette besteht aus 3 Schritten:
   \item \textbf{Aktion} Die Aktion ist die Grundlage, diese sind die Aspekte der Anwendung die der Benutzer ausführen soll. Im Rollenspiel könnte dies z.B. das lösen von Aufträgen sein.
 \end{enumerate}
 
+Im folgenden wird für die Gamification des Infoboard ahnand dieser Schritten modeliert.
 
 \subsection{Aktionen und deren Belohnung}
 
-Das Enterprise Infoboard besitzt wenige Aktionen, sodass eigentlich alle Teil der Aktionen sein können die eine Belohnung geben.
+Das Enterprise Infoboard besitzt wenige Aktionen, sodass alle Teil der Aktionen sein können die eine Belohnung geben.
 
 \begin{itemize}
   \item Bewertung der Suchergebnisse
@@ -447,21 +457,55 @@ Das Enterprise Infoboard besitzt wenige Aktionen, sodass eigentlich alle Teil de
   \item Anmeldung und Abmeldung
 \end{itemize}
 
-Durch einige dieser Aktionen wird der User Punkte bekommen, z.B. ist es häufig üblich für das tägliche Besuchen der Seite dem Benutzer Punkte gutzuschreiben.
+Durch einige dieser Aktionen wird der User Punkte bekommen, z.B. ist es häufig üblich für das tägliche Besuchen der Seite dem Benutzer Punkte gutzuschreiben. Wichtig für uns ist es, dass die Bewertung der Suchergebnisse besonders gefördert wird, womit es denkbar ist hier eine größere Punktzahl im Vergleich zu den anderen Aktionen vergeben wird.
 
 \subsection{Anerkennung der Leistung}
 
-Als generische Anerkennung haben sich in der Welt der Gamification Bestenlisten etabliert da diese ohne viel Aufwand für die Entwickler einen großen Anreiz für die Benutzer liefern können.
+Die Leistung des Benutzers muss annerkannt werden, im folgenden werden verschiedene Ansätze für Punkte/Bestenlisten und Abzeichen gezeigt und erklärt warum wir uns für den einen oder anderen Ansatz entschieden haben.
 
-Letzteres ist in der Welt der Computerspiele besonders Wirksam, da eine hohe Punktzahl - und somit einer der besseren Plätze in der Bestenliste - mit rein objektiver Leistung zusammenhängt und offensichtlich zeigt: `Ich bin besser in diesem Spiel als alle unter mir'.
+\subsubsection{Punkte}
+Punkte sind unerlässlich im Spielekontext, auch wenn die Punkte für den Benutzer nicht mal sichtbar gemacht werden sind sie wichtig um dem Spieledesigner die Möglichkeit zu geben das System zu evalieren und daraufhin zu verändern (\citep{zichermann2011gamification}). Punktesysteme können dementsprechend von nahezu unsichtbar zu der Hautpkomponente des Systems gemacht werden. Nach \citep{zichermann2011gamification} unterscheidet man erhaltene Punkte in folgende Kategorien.
 
-Die in dieser Applikation verwendeten Aktionen bedarfen keiner Expertise, womit jemand mit einer höheren Punktzahl nicht unweigerlich in irgendwas besser sein muss als jemand mit einer niedrigeren. Aber dies heißt nicht das eine Bestenliste ineffektiv ist, im Gegenteil macht auch dies einen gewissen Reiz aus. Jeder kann der Beste sein - wenn er denn nur etwas mehr die Applikation verwendet. Da kompetives Verhalten eine inherente Eigenschaft des Menschen ist und man sich gerne auf den höheren Plätzen bei etwas sieht, wird eine Bestenliste (vor allem bei welcher nur Personen aus seinem sozialen Kreis drauf sind) eine höhere Partizipation erzeugen.
+\begin{itemize}
+	\item Erfahrungspunkte
+    \item Eintauschbare Punkte
+    \item Fähigkeitspunkte
+    \item Karmapunkte
+    \item Ansehenspunkte
+\end{itemize}
 
-Abzeichen sind ebenfalls eine wirksame Methode um Leistungen anzuerkennen. Sie sind besonders nützlich
-um den Benutzer anfangs zu engagieren, meistens ist auch die Frequenz in der er Abzeichen bekommt hier am größten.
-Dies wird ganz bewusst gemacht, da er zumeist eine so niedrige Punktzahl besitzt das ihn ein Blick auf die Bestenliste nicht gerade motiviert. Es geht hier nicht darum um sich mit anderen zu vergleichen sondern die simple Anerkennung das etwas vollbracht wurde.
 
-Punkte, Bestenlisten und Abzeichen besitzen keinen echten Wert in dem Sinne dass man irgendetwas für seine Leistung bekommt.
+Anstelle eines komplexen Spielesystems wo verschiedene Punktesysteme benutzt werden, wurde hier entschieden nur eine Art von Punkten zu benutzen,
+welche größtenteils auf den Erfahrungspunkten aufbaut. Erfahrungspunkte stellen die wichtigste Kategorie von Punkten dar, jede Interaktion des Benutzers wird mittels Erfahrungspunkte festgehalten (\citep{zichermann2011gamification}) und geben bei einer bedachten Punktevergabe  eine gute Quantifizierung der Leistung des Benutzers womit man Erfahrungspunkte gleichzeitig für eine Bestenliste benutzen kann - und damit als eine Art Ansehenspunkte. Um den Punktemechanismus noch etwas spannender zu gestalten, kann man sie für sogenannte \textit{Booster} eintauschen durch welche jeder Erhalt von Punkten für einen gewissen Zeitraum mit einem Multiplikator erhöht wird z.B. erhält der Benutzer für einen Tag die doppelte Anzahl an Punkten.
+Die Punkte sind für den Benutzer immer sichtbar und aktualisieren sich in Echtzeit sobald der Benutzer eine Aktion ausführt die Punkte bringt. Zudem erden sie auf der Abzeichenseite nochmals angezeigt wobei eine Balkendiagramm eine genauer Kategorisierung anzeigt also woher der Benutzer diese Punkte überhaupt hat, die Kategorien sind: Einloggen, Suchen, Favorisieren, Bewerten und Abzeichen.
+
+TODO BILDER DER PUNKTE
+
+Zusammengefasst benutzen wir \textbf{Erfahrungspunkte} die für alle Aktionen vergeben werden, für \textit{Booster} ausgegeben werden können und für Bestenlisten benutzt wird.
+
+\subsubsection{Bestenliste}
+
+Der Sinn von Bestenlisten ist es einen einfachen Vergleich von Dingen (in unserem Fall Benutzern) zu bieten. Bestenlisten sind so zu einem integralen Bestandteil unseren alltäglichen Lebens geworden, dass wir sofort eine erkennen wenn wir eine sehen. Beispiele für Bestenlisten im echten Leben umfassen die Ergebnisse der Stiftung Warentest, Klausurnotenaushänge oder die Bundesligatabellen.
+
+Nach \citep{zichermann2011gamification} kann man zwischen zwei Arten von Bestenlisten unterscheiden, die \textit{lass-dich-nicht-entmutigen} und die \textit{undendliche} Bestenliste. Bei ersterer wird der Benutzer, egal welchen Platz er in der Bestenliste inne hat, immer direkt in die Mitte getan. Hierbei ist es irrelevant ob er Platz 43 oder 40000 ist, er sieht sich selbst immer in der Mitte der Liste. Wenn der Benutzer auf einen der Top 10/20/30 Plätze kommt sollte sich dieses Verhalten jedoch ändern und er sollte die \textit{korrekte} Liste sehen.
+Bei der \textit{undendlichen} Bestenliste werden alle Benutzer angezeigt, es gibt jedoch meistens die Möglichkeit die Anzahl der Benutzer zu verrignern, so hat z.B. das Spiel \textit{Doodle Jump} 3 Arten des Leaderboards: Lokal, Freunde und Global.
+
+Ein weiterer Aspekt ist der Zeitraum der angezeigt wird. Vor allem bei Applikationen bei denen die Punktzahl immer weiter akkumuliert werden kann und demnach unendlich Punkte zulassen, kann eine Bestenliste die auf dem kompletten verfügbaren Zeitraum aufbaut für Neuanfänger entmuntigend wirken da sie es wohl nie schaffen werden einen höheren Platz zu erreichen wenn jeder doch gleich viele Punkte pro Tag erzielen kann.
+Eine offensichtliche Lösung wäre es den Zeitraum auf z.B. die letzte Woche zu beschränken, was dann aber einen ähnlich negativen Effekt auf die dauerhaften Nutzer haben würde: Sie könnten ihre Vormachtsstellung nicht demonstrieren.
+
+Wir haben uns deswegen entschieden immer 2 Bestenlisten anzuzeigen: Allerzeiten und die letzten 30 Tage. Dadurch ist es möglich beide Parteien zufrieden zu stellen ohne Kompromisse eingehen zu müssen. Es werden ebenfalls beide Arten der Bestenliste benutzt: Im persönlichen Dashboard wird die \textit{lass-dich-nicht-entmutigen}-Bestenliste und in den globales Statistiken wird eine \textit{unendlichen} Bestenliste benutzt.
+
+TODO BILDER DER BESTENLISTE
+
+\subsection{Abzeichen}
+
+Abzeichen bzw. Badges sind ein etabliertes Element der Gamification. Nach \citep{zichermann2011gamification} nutzen sie viele Eigenschaften der menschlichen Natur um begehrenswert zu sein: das menschliche Sammelverhalten, die plötzliche (positive) Überraschung wenn ein unerwartetes Abzeichen erhalten wurde, Sozialer Status (ähnlich zu Punkten), Pure Ästhetik der Abzeichen und das Aufgabenziel das hinter jedem Abzeichen steckt.
+
+% Abzeichen sind ebenfalls eine wirksame Methode um Leistungen anzuerkennen. Sie sind besonders nützlich
+% um den Benutzer anfangs zu engagieren, meistens ist auch die Frequenz in der er Abzeichen bekommt hier am größten.
+% Dies wird ganz bewusst gemacht, da er zumeist eine so niedrige Punktzahl besitzt das ihn ein Blick auf die Bestenliste nicht gerade motiviert. Es geht hier nicht darum um sich mit anderen zu vergleichen sondern die simple Anerkennung das etwas vollbracht wurde.
+%
+% Punkte, Bestenlisten und Abzeichen besitzen keinen echten Wert in dem Sinne dass man irgendetwas für seine Leistung bekommt.
 
 \chapter{Technische Umsetzung}
 
