@@ -520,25 +520,28 @@ Damit das Abzeichensammeln nicht langweilig und obsolet wird, sollten immer mal 
 
 \chapter{Technische Umsetzung}
 
-Im Kapitel Umsetzung wurde die Applikation soweit geplant, dass die Technische Umsetzung erfolgen kann - d.h. das geplante System wird soweit realisiert das es benutzt werden kann. Aspekte warum eine Technologie genutzt wurde und nicht eine andere, wie die Architektur der Applikation ist und warum sie so ist und alles was sonst noch anfällt wenn man eine Applikation schreibt.
-Die Technische Umsetzung wird sich größtenteils mit dem Frontend beschäftigen da dies der größte Teil der Applikation darstellt.
+Im Kapitel Umsetzung wurde die Applikation soweit geplant, dass die Technische Umsetzung erfolgen kann, dies geschieht in diesem Kapitel, dabei werden Themen behandelt wie warum eine Technologie genutzt wurde und nicht eine andere, wie die Architektur der Applikation ist und warum sie so ist und viele weitere Sachen die mir relevant erschienen.
+Die Technische Umsetzung wird sich größtenteils mit dem Frontend beschäftigen da dies den größten und auch interessantesten Teil der Applikation darstellt.
+
+
+\section{Wahl der Technologie}
+
+Die erste Frage die sich bei der Umsetzung stellt, ist welche Technologie verwendet werden soll.
 
 Die Wahl der zu verwendeten Technologie ist ein wichtiger Punkt der die darauffolgende Entwicklung und spätere Wartung beeinflusst. Es wird versucht auf folgende Punkte einzugehen:
 
 \begin{itemize}
   \item Technologie ist \textit{erwachsen} \\
-  Die verwendete Bibilothek oder ähnliches ist nicht allzu neu und hat sich in vielen Applikationen bewährt, sie ist soweit ausgereift das workarounds oder bugfixes nur in den seltensten Fällen nötig sein sollten.
+  Die verwendete Bibliothek oder ähnliches ist nicht allzu neu und hat sich in vielen Applikationen bewährt, sie ist soweit ausgereift das Umgehungslösungen oder Fehlerbehebung nur in den seltensten Fällen nötig sein sollten.
   \item Die Technologie hat keine große Einstiegsbarriere \\
-  Es wird versucht nicht allzu viele Frameworks zu benutzen und wenn, dann welche die weitesgehend bekannt sind und/oder in dem DAI-Labor viel benutzt werden. Wenn Bibliotheken verwendet werden, wird darauf geachtet das sie einfach zu lernen sind und intuitiv in der Benutzung.
-  \item Die Technologie ist zukunftsicher \\
+  Es wird versucht nicht allzu viele Frameworks zu benutzen und wenn, dann welche die weitestgehend bekannt sind und/oder in dem DAI-Labor viel benutzt werden. Wenn Bibliotheken verwendet werden, wird darauf geachtet das sie einfach zu lernen sind und intuitiv in der Benutzung.
+  \item Die Technologie ist zukunftssicher \\
   Es ist immer schwer ab zu schätzen welche Technologie länger überleben wird, doch wird versucht anhand von Faktoren wie Popularität, Aktivität der Entwicklung und Einsatz bei großen Firmen dies so gut wie möglich zu garantieren.
 \end{itemize}
 
-Eine sehr gepflegte Liste der derzeit verfügbaren Technologien im Bereich Frontend ist verfügbar auf github\footnote{https://github.com/dypsilon/frontend-dev-bookmarks}.
+\subsection{Ladezeiten}
 
-Für das Frontend ist erstmal die Frage zu klären ob ein Framework a la AngularJs oder EmberJS verwendet werden soll. Dagegen spricht wie oben schon gennante die initiale Lernkurve, was es schwer machen könnte das System einfach wartbar zu machen, auch stellen Frameworks oft bei Applikationen die etwas ausgefeilteres machen als die breite Masse ein Problem da, da die Abstraktion des Frameworks oft etwas verbirgt was benötigt wird.
-
-Ein großer Faktor der in anderen Umgebungen lange Zeit keine Rolle mehr spielt ist die größe des Quelltextes der verwendeten Bibliotheken/Frameworks. Bevor bei Javascript irgendeine Bibliothek benutzt werden kann muss sie zuerst beim Benutzer heruntergeladen und ausgeführt werden, was bei langsamen Computern mit nicht perfekter Internetverbindung ein enormer Bestandteil ist. Um den Punkt nochmal zu verdeutlichen wurde ein kleiner Test gemacht. Dazu wurde eine Ember-Demoapplikation ausgeführt\footnote{Auf einem Macbook Air mid 2013 in minimal Konfiguration und dem Chrome Browser in Version 41, die vorhandene Internetverbindung hatte eine Übertragungsrate von $50000 \frac{\text{bit}}{s}$} die sehr wenig \textit{business-logic} besitzt, sodass sehr gut zu zeigen ist wieviel das herunterladen und ausführen nur der Bibliotheken ausmachen.
+Ein großer Faktor der in anderen Umgebungen lange Zeit keine Rolle mehr spielt ist die größe des Quelltextes. Bevor bei Javascript irgendeine Bibliothek benutzt werden kann muss sie zuerst beim Benutzer heruntergeladen und ausgeführt werden, was bei langsamen Computern mit nicht perfekter Internetverbindung ein enormer Bestandteil ist. Um den Punkt nochmal zu verdeutlichen wurde ein kleiner Test gemacht. Dazu wurde eine EmberJS-Demoapplikation ausgeführt\footnote{Auf einem Macbook Air mid 2013 in minimal Konfiguration und dem Chrome Browser in Version 41, die vorhandene Internetverbindung hatte eine Übertragungsrate von $50000 \frac{\text{bit}}{s}$} die sehr wenig wirkliche Logik besitzt, sodass gut zu zeigen ist wie viel das Herunterladen und Ausführen nur der Bibliotheken ausmachen.
 Die Anwendung ist auf github zu finden\footnote{\url{http://jkneb.github.io/ember-crud/unstyled/\#/users}}.
 \begin{figure}[H]
     \centering
@@ -556,29 +559,57 @@ Die Ergebnisse zeigen, dass ganze $1.86s$ zum Übertragen und etwa $600ms$ zum a
 
 Aufgrund dessen wurde neben dem Versuch möglichst wenige Bibliotheken oder Frameworks zu benutzen (z.B. wenn nur eine Funktion einer großen Bibliothek benutzt wurde, wurde diese Funktion durch eine minimalere Bibliothek ersetzt oder selbst geschrieben bzw. kopiert.) auch diverse Techniken zum minimieren des Quelltextes genutzt.
 
+\subsection{Programmiersprache}
+
+Die wichtigste Wahl ist die Wahl der Programmiersprache, im Frontend wird diese Entscheidung größtenteils dadurch abgenommen das Browser die Ausführung von JavaScript beherrschen, andere Sprachen sind nur über Plugins (Flash, Java) verfügbar deren Relevanz in den letzten Jahrzehnten soweit abgenommen hat dass sie keine gute Wahl mehr darstellen.
+
+JavaScript ist jedoch nicht die beliebteste Sprache, die Tatsache das die Sprache in ca. 10 Tagen geschrieben wurde mag dies erklären \citep{severance2012javascript}, so kam es dass JavaScript ist in den letzten Jahren immer mehr zu einem Kompilierungsziel geworden ist, d.h. andere Programmiersprachen kompilieren zu validem JavaScript-Code. Diese Praxis ist mittlerweile so populär geworden, dass JavaScript auch als \textit{Assembly of the Web}\footnote{Hier sogar vom JavaScript-Erfinder persönlich: \url{https://brendaneich.com/2015/06/from-asm-js-to-webassembly/}} bezeichnet wird. Die populärsten Programmiersprachen die zu JavaScript kompilieren sind vermutlich CofeeScript, TypeScript und Java (mittels GWT). Die Liste der Sprachen ist jedoch endlos mit über 300-Sprachen die zu JavaScript kompilieren\footnote{Eine Auflistung dieser ist auf dem github-repository von CoffeeScript zu finden \url{https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js}}.
+
+\citep{zakai2011emscripten} veröffentlichten mit \textit{emscripten} das mit Abstand aufwändigste Projekt in diesem Bereich. Dies ist ein LLVM-zu-JavaScript-Kompilierer mit dem es unter anderem möglich ist C++-Quelltext zu JavaScript zu kompilieren, wodurch z.B. TeX-Compiler im Browser ausgeführt werden konnten\footnote{\url{https://github.com/manuels/texlive.js/}}.
+
+Die Nutzung dieser Sprachen, vor allem der populärsten hat viele Vorteile von vereinfachter Syntax (CoffeeScript) hin zu statischer Typisierung (GWT), so bleibt die Frage ob es überhaupt noch zukunftsicher bzw. praktikabel ist reines JavaScript zu benutzen.
+Die Frage kann mit einem klaren Ja beantworten werden, wenn eine Prämisse für die Ausführungsumgebung gesetzt werden: Sie unterstützt JavaScript in der Version 6, bzw. formal bekannt als ECMAScript 6 (Im nachfolgenden mit ESx abgekürzt).
+Die für JavaScript zuständige Organisation ECMA investierte nämlich viel Arbeit darein die Tatsache dass JavaScript nur in 10 Tagen geschrieben wurde etwas weniger offensichtlich zu machen und mit ECMAScript 6 zeigt diese am deutlichsten Früchte. Kaum ein Merkmal dass man von High-Level-Sprachen wie Ruby oder Python kennt muss man hier missen.
+
+Die aktuellen Browser unterstützen bisher jedoch nur einen Bruchteil der ES6 Spezifikation\footnote{Eine komplette Übersicht ist hier zu finden \url{http://kangax.github.io/compat-table/es5/}} und vermutlich wird es noch bis in 2017 andauern bis alle aktuellen Browser ES6 ausreichend unterstützen.
+
+Doch sind die Vorteile so überwiegend im Vergleich zu ES5, dass eine Nutzung von ES6 äußerst wünschenswert ist.
+Die Lösung das Problems wurde im Grunde schon erwähnt: Man kompiliert JavaScript zu JavaScript bzw. ES6 zu ES5.
+So absurd dies auch klingen mag, die Tatsache das JavaScript heutzutage immer im Zusammenhang mit build-tools benutzt wird die z.B. den Quelltext verkleinern oder ihn unlesbarer machen, bedeutet dass der Entwickler nur minimalen Aufwand betreiben muss damit er ES6 auch in ES5 Umgebungen benutzen kann.
+
+So wurde für diese Arbeit entschieden, dass ES6 die beste Wahl für eine Programmiersprache ist. Alle Browser werden ES6 in Zukunft unterstützen womit ES6 keinesfalls eine obsolete Sprache werden wird. Außerdem ist im Vergleich zu den richtigen Kompilier-zu-JavaScript-Sprachen, ES6 die geringste Hürde für neue Entwickler die JavaScript kennen: ES6 ist abwärtskompatibel und die neuen Funktionalitäten können in ein paar wenigen Stunden gelernt werden, wenn dies überhaupt nötig ist.
+
+\subsection{Frameworks und Bibliotheken}
+
+Das Entwickeln von Webanwendungen wurde schon etliche male gemacht und somit gibt es kaum ein Problem das noch nicht gelöst wurde. Es gibt etliche Bibliotheken und Frameworks die einem das Leben einfacher machen sollen, ein klarer Platzhirsch ist jedoch nur für Subkategorien wie Datenvisualisierung zu finden, so ist die Wahl der Frameworks/Bibliotheken keinesfalls so trivial wie etwa in Java, wo Spring/Hibernate der Stanard ist wenn man eine Webanwendung schreiben will.
+
+Es ist schwer in der Welt der Webanwendungen mit der Geschwindigkeit ,in der neue (und auch praktikable) Bibliotheken und Frameworks veröffentlicht werden, mitzuhalten. Der nachfolgende Abschnitt befasst sich deshalb ausführlicher mit dem Entscheidungsfindungsprozess in diesem Bereich und zeigt auf welche Dinge alles geachtet werden muss.
+
+Die einflussreichste Entscheidung hierbei ist die Entscheidung für ein Framework a la Dojo, AngularJS oder EmberJS.
+Es gibt viele Vorteile die für die Benutzung eines Frameworks sprechen: Große Benutzergemeinde, eine immense Anzahl an vorgefertigten Lösungen für häufige Probleme/Aufgaben, eine klare Projektstruktur und viel vorgefertigte Komponenten.
+
+Die Benutzung eines Frameworks spart also Zeit und beschleunigt die Entwicklung, doch gibt es auch Gründe warum immer mehr Leute sich den großen Frameworks abwenden.
+Alle Frameworks besitzen eine große Lernkurve, jeder Entwickler ist gezwungen das Framework zu lernen um produktiv mitzuarbeiten da ein Framework jeden Aspekt der Anwendung berührt. Frameworks veralten gerne und auch bei aktiver Entwicklung sind ständige API-Änderungen der Standard. Dem Entwickler bleibt nichts anderes übrig als sich mit dem Framework zu bewegen. Die vom Framework bereitgestellten Abstraktionen sind oft nicht optimal und verbergen zu viel oder sind auf einen bestimmten Benutzungszweck hin optimiert, womit sie mehr ein Hindernis darstellen können sobald etwas gemacht werden muss dass die Entwickler vergessen haben zu beachten.
+Weiterhin ist jede vom Framework erschaffene Abstraktion mehr ausgeführter Quelltext und wenn diese nicht gerade direkt der Geschwindigkeit der Applikation zu gute kommen, verlangsamen sie die Applikation. Dies ist normalerweise nicht so sonderlich wichtig, jedoch sind Webandwendungen Benutzerinterfaces bei der die Geschwindigkeit einen erheblichen Teil der Benutzererfahrung ausmacht, im ersten Abschnitt ging ich auf die Ladezeiten ein die durch die Benutzung eines Frameworks immer größer sind.
+
+Allen Vorteilen zu trotz wurde für diese Arbeit entschieden das die Benutzung eines Frameworks nicht die optimale Lösung ist, da z.B. die Visualisierung so aufwändig ist, dass hier von vornherein klar war das die gegebenen Abstraktionen nicht ausreichen würden\footnote{Ich habe viel Erfahrung mit der Benutzung einigen großen Frameworks wie AngularJS und EmberJS.}.
+
+Es wurde entschieden eine Ansammlung von Bibliotheken zu benutzen, die sich für ihren Bereich bewährt haben. Dadurch wird garantiert dass die bestmögliche Benutzererfahrung möglich ist, da sobald eine Bibliothek nicht ausreicht ersätzt oder ergänzt werden kann.
+
 Es wurden am Ende folgende Bibliotheken verwendet
 
 \begin{description}
-	\item[react]
-		\texttt{react} wird für die komplette Darstellung der Applikation benutzt. Im nächsten Abschnitt gehe ich auf \texttt{react.js} noch genauer ein, da es viele Innovationen in diesen Bereich bringt.
-	\item[react-router]
-		\texttt{react-router}\footnote{\url{https://github.com/rackt/react-router}} ist eine routing-Bibliothek für react und macht es sehr einfach URLs zu einer View zuzuordnen.
-	\item[reflux]
-		\texttt{reflux}\footnote{https://github.com/spoike/refluxjs} ist eine kleine Bibliothek für eine unidirektionelle-Datenfluss Architektur, mehr dazu im nächsten Abschnitt.
-	\item[bootstrap]
-		\texttt{Bootstrap}\footnote{\url{http://getbootstrap.com/}} ist das meist benutzte CSS-Framkework und vereinfacht das erstellen von responsiven Applikationen. Weiterhin stellt es einige nützliche Komponenten wie z.B. eine Navigationsleiste bereit.
-	\item[react-bootstrap und react-router-bootstrap]
-		\texttt{react-bootstrap}\footnote{\url{http://react-bootstrap.github.io/}} bietet für alle verfügbaren bootstrap-Komponenten die entsprechenden react-Komponenten. \texttt{react-router-bootstrap}\footnote{\url{https://github.com/react-bootstrap/react-router-bootstrap}} verbindet \texttt{react-bootstrap}-Komponentent mit \texttt{react-router} womit z.B. ein \texttt{ButtonLink}.
-	\item[d3.js]
-		\texttt{d3.js}\footnote{\url{http://d3js.org/}} ist die berühmteste Bibliothek für Visualisierungen. Hiermit wurde das animierte Säulendiagramm geschrieben, aber auch vieles der Farberzeugung enstand mithilfe von \texttt{d3.js}.
-	\item[immutable.js]
-		\texttt{immutable.js}\footnote{\url{https://facebook.github.io/immutable-js/}} bringt nicht veränderbare Datenstrukturen in die Welt von JavaScript. Sie wurde bei der Verarbeitung der Suchergbnisse bis hin zu deren Darstellung benutzt, der Vorteil wird unten noch genauer betrachtet.
-	\item[lodash]
-		\texttt{lodash}\footnote{\url{https://lodash.com/}} ist eine utility-Bibliothek mit einem starken Fokus auf funktionaler Programmierung. Sie wurde so ziemlich überall in der Applikation benutzt wo Daten verarbeitet werden mussten.
-	\item[cookies-js / store.js]
-		\texttt{cookies-js}\footnote{\url{https://github.com/ScottHamper/Cookies}} und \texttt{store.js}\footnote{https://github.com/marcuswestin/store.js/} sind mini-Bibliotheken die das arbeiten mit \textit{cookies} und \textit{localstorage} vereinfachen. \textit{cookies} werden benutzt um den Benutzer eingeloggt zu lassen und \textit{localstorage} um Suchergebnisse zu cachen.
-	\item[moment.js und  moment-duration-format]
-		\texttt{moment.js}\footnote{\url{http://momentjs.com/}} vereinfacht den Umgang mit Datums-Objekten und bietet Funktionen wie \texttt{add(1, \'day\')} und erweiterte Formattierungsmöglichkeiten. In der aktuellen Version ist es mit \texttt{moment} nicht möglich deren eigene \textit{duration} Objekte zu formatieren, dafür wurde das plugin \texttt{moment-duration-format}\footnote{\url{https://github.com/jsmreese/moment-duration-format}} benutzt welche womöglich auch bald zu \texttt{moment} gehören wird.
+	\item[react] wird für die komplette Darstellung der Applikation benutzt. Im nächsten Abschnitt gehe ich auf \texttt{react.js} noch genauer ein, da es viele Innovationen in diesen Bereich bringt.
+	\item[react-router\footnote{\url{https://github.com/rackt/react-router}}] ist eine routing-Bibliothek für react und macht es sehr einfach URLs zu einer View zuzuordnen.
+	\item[reflux\footnote{https://github.com/spoike/refluxjs}] ist eine kleine Bibliothek für eine unidirektionelle-Datenfluss Architektur, mehr dazu im nächsten Abschnitt.
+	\item[bootstrap \footnote{\url{http://getbootstrap.com/}}] ist das meist benutzte CSS-Framkework und vereinfacht das erstellen von responsiven Applikationen. Weiterhin stellt es einige nützliche Komponenten wie z.B. eine Navigationsleiste bereit.
+	\item[react-bootstrap\footnote{\url{http://react-bootstrap.github.io/}}] bietet für alle verfügbaren bootstrap-Komponenten die entsprechenden react-Komponenten.
+	\item [react-router-bootstrap\footnote{\url{https://github.com/react-bootstrap/react-router-bootstrap}}] verbindet \texttt{react-bootstrap}-Komponentent mit \texttt{react-router}.
+	\item[d3.js\footnote{\url{http://d3js.org/}}] ist die berühmteste Bibliothek für Visualisierungen. Hiermit wurde das animierte Säulendiagramm geschrieben, aber auch vieles der Farberzeugung entstand mithilfe von \texttt{d3.js}.
+	\item[immutable.js\footnote{\url{https://facebook.github.io/immutable-js/}}] bringt nicht veränderbare Datenstrukturen in die Welt von JavaScript. Sie wurde bei der Verarbeitung der Suchergbnisse bis hin zu deren Darstellung benutzt, der Vorteil wird unten noch genauer betrachtet.
+	\item[lodash\footnote{\url{https://lodash.com/}}] ist eine utility-Bibliothek mit einem starken Fokus auf funktionaler Programmierung. Sie wurde so ziemlich überall in der Applikation benutzt wo Daten verarbeitet werden mussten.
+	\item[cookies-js\footnote{\url{https://github.com/ScottHamper/Cookies}} / store.js\footnote{https://github.com/marcuswestin/store.js/}]sind mini-Bibliotheken die das arbeiten mit \textit{cookies} und \textit{localstorage} vereinfachen. \textit{cookies} werden benutzt um den Benutzer eingeloggt zu lassen und \textit{localstorage} um Suchergebnisse zu cachen.
+	\item[moment.js\footnote{\url{http://momentjs.com/}}] vereinfacht den Umgang mit Datums-Objekten und bietet Funktionen wie \texttt{add(1, \'day\')} und erweiterte Formattierungsmöglichkeiten. In der aktuellen Version ist es mit \texttt{moment} nicht möglich deren eigene \textit{duration} Objekte zu formatieren, dafür wurde das plugin \texttt{moment-duration-format}\footnote{\url{https://github.com/jsmreese/moment-duration-format}} benutzt welche womöglich auch bald zu \texttt{moment} gehören wird.
 \end{description}
 
 
