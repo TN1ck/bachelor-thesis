@@ -183,8 +183,8 @@
 \vspace{0.3cm}
 {\Huge \textsc{\title{}}\par}
 ~\\[0.1cm]
-{\Large Supervisor: Prof. Albayrak}\\[0.1cm]
-{\Large Advisors: -}\\[0.3cm]
+{\Large Supervisor: Prof. Dr. Dr. h.c. Albayrak}\\[0.1cm]
+{\Large Advisors: Dipl.-Inform. Michael Meder}\\[0.3cm]
 {\Large Written by \author{}}\\[0.1cm]
 {\Large \today}
 \vspace{0.55cm}
@@ -222,13 +222,13 @@ Berlin, \today\\
 \section{Motivation}
 
 Die gemeinsame Darstellung von Inhalten verschiedener Quellen ist ein interessantes und weit erforschtes Thema. Die grundsätzliche Idee ist dem Benutzer die Benutzung bzw. die Konsumierung von Inhalten angenehmer zu gestalten indem ein einheitliches Interface für Inhalte geschaffen wird. Bevor der \textit{digitalen Revolution} war dies ein immens aufwendiges und kostspieliges Unterfangen, als Beispiel sei die frühen Enzyklopädien genannt\footnote{Enzyklopädien sind insofern eine einheitliche Aggregierung des Inhalts, das sie versucht haben sämtliches Wissen in einer Quelle bereitzustellen die homogen in Sprache und Darstellung ist.}. Durch die momentan verfügbaren Technologien ist das erstellen einer einheitlichen Datenquelle für verschiedene Inhalte deutlich einfacher geworden, wobei die Schwierigkeit einer guten Zusammenführung dennoch weiterhin besteht und Produkte die dies gut machen sehr erfolgreich sind - wie z.B. die Suchmaschine von Google.
-Wenn man sich jedoch auf eine Teilmenge der verfügbaren Informationen beschränkt wie z.B. Nachrichten die per RSS\footnote{Ein weit verbreitetes Dateiformat im Internet \url{http://de.wikipedia.org/wiki/RSS}} verfügbar sind ist es deutlich einfacher eine angemessene Zusammenführung der Inhalte zu gestalten, prominente Beispiele für eine Anwendung dieser Art ist z.B. die Nachrichten-Applikation \textit{pulse}\footnote{\url{https://www.pulse.me/}} die auf Basis von RSS ein angenehmes und sehr attraktives Interface für die gleichzeitige Konsumierung mehrerer Nachrichtenseiten anbietet, der Erfolg von \textit{pulse} spricht für sich\footnote{ca. 22 Millionen Downloads auf dem Android-System}. Diese Arbeit zielt auf einen Spezialfall der Darstellungsformen verschiedener Inhalte ab, die der \textit{social media wall} was eine populäre Form für Inhalte mit kurzen Texten und oder Bildern ist\footnote{Natürlich sind auch Inhalte anderer Art möglich, jedoch sind die Elemente solcher Wände in jeglichem Aspekt daraufhin optimiert.}.
+Wenn man sich jedoch auf eine Teilmenge der verfügbaren Informationen beschränkt wie z.B. Nachrichten die per RSS\footnote{Ein weit verbreitetes Dateiformat im Internet \url{http://de.wikipedia.org/wiki/RSS}} verfügbar sind ist es deutlich einfacher eine angemessene Zusammenführung der Inhalte zu gestalten, prominente Beispiele für eine Anwendung dieser Art ist z.B. die Nachrichten-Applikation \textit{pulse}\footnote{\url{https://www.pulse.me/}} die auf Basis von RSS ein angenehmes und attraktives Interface für die gleichzeitige Konsumierung mehrerer Nachrichtenseiten anbietet, der Erfolg von \textit{pulse} spricht für sich\footnote{ca. 22 Millionen Downloads auf dem Android-System}. Diese Arbeit zielt auf einen Spezialfall der Darstellungsformen verschiedener Inhalte ab, die der \textit{Social Media Wall} was eine populäre Form für Inhalte mit kurzen Texten und oder Bildern ist\footnote{Natürlich sind auch Inhalte anderer Art möglich, jedoch sind die Elemente solcher Wände in jeglichem Aspekt daraufhin optimiert.}.
 
 Gamification hat in den letzten Jahren stetig an Zuwachs gewonnen da es ein äußerst effektives Mittel ist um Benutzer zu binden, was bei der immer größer werdenden Konkurrenz bei digitalen Produkten immer schwerer wird. Die Benutzung von Gamification im Enterprise-Bereich bzw. in kleinen sozialen Kreises ist jedoch bisher noch nicht allzu populär, die prominentesten Beispiele sind Sport-Apps bei denen Freunde sich miteinander vergleichen können. Eine Integration von Gamification stellt damit in diesem Bereich eine interessante Herausforderung da, dessen Potential bisher noch nicht geklärt ist.
 
 \section{Anforderungen}
 
-Die Anforderungen der Applikation waren von vornerein nicht vollständig geklärt, viel mehr gab es ein grobes Gerüst was die Anwendung liefern sollte. Die komplette Ausarbeitung ist während der Entwicklung geschehen.
+Die Anforderungen der Applikation waren von vornherein nicht vollständig geklärt, viel mehr gab es ein grobes Gerüst was die Anwendung liefern sollte. Die komplette Ausarbeitung ist während der Entwicklung geschehen.
 
 \begin{description}
 
@@ -241,7 +241,7 @@ Die Anforderungen der Applikation waren von vornerein nicht vollständig geklär
   Der Benutzer soll in der Lage sein angezeigte Suchergebnisse zu bewerten und dadurch zukünftige Anfragen für \textbf{alle} Benutzer zu verändern.
 
 \item[Benutzung mehrerer Datenquellen]
-  Die angezeigten Daten können aus mehreren Datenuellen kommen, d.h. die gleichzeitige Darstellung von Daten von z.B. Facebook mit denen von Twitter. Hier war es wieder besonders wichtig, dass man einfach neue Datenquellen hinzufügen kann. Auch das während des Betriebes vorhandene Quellen mit anderen Parametern (wie einer Suchanfrage) neu hinzugefügt werden k\"onnen.
+  Die angezeigten Daten können aus mehreren Datenquellen kommen, d.h. die gleichzeitige Darstellung von Daten von z.B. Facebook mit denen von Twitter. Hier war es wieder besonders wichtig, dass man einfach neue Datenquellen hinzufügen kann. Auch das während des Betriebes vorhandene Quellen mit anderen Parametern (wie einer Suchanfrage) neu hinzugefügt werden können.
 
 \item[Authentifizierungssystem]
 	Zur Benutzung der Gamification-Elemente und der Suchanfrage bedarf es einer Authentifizierung. Es muss sichergestellt werden, dass kein Benutzer der nicht aunthentifiziert ist Zugriff auf die Applikation hat.
@@ -263,36 +263,36 @@ Da die Applikation mehrere Gebiete vereint als etwas bestehendes weiterzuentwick
 
 \subsection{Social Media Walls}
 
-Eine sehr gute Auflisting verschiedener \textit{social media wall}-Applikationen bietet \citep{hofram}. Die Homogenität dieser Angebote ist erstaunlich, würde man die Produkte zweier verscheidener Anbieter nebeneinander sehen wäre der größte Unterschied kleinere stylistische Unterschiede wie benutzte Farben oder ähnliches. Leider sind die wenigsten Produkte in einer Demo zu testen, da die Lösungen meistens zugeschnitten werden für den Kunden, welcher diese meistens auf großen Veranstaltungen wie Konzerten verwendet. \\
+Eine sehr gute Auflistung verschiedener \textit{Social Media Wall}-Applikationen bietet \citep{hofram}. Die Homogenität dieser Angebote ist erstaunlich, würde man die Produkte zweier verschiedener Anbieter nebeneinander sehen wären die größten Unterschiede stilistische Unterschiede wie benutzte Farben oder ähnliches. Leider sind die wenigsten Produkte in einer Demo zu testen, da die Lösungen meistens zugeschnitten werden für den Kunden, welcher diese meistens auf großen Veranstaltungen wie Konzerten verwendet. In \ref{fig:socialwall} kann eine der Implementierungen gesehen werden.\\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Starbucks.png}
-    \caption{Eine \textit{social media wall} vom Anbieter walls.io}
-    \label{fig:awesome_image}
+    \caption{Eine \textit{Social Media Wall} vom Anbieter walls.io}
+    \label{fig:socialwall}
 \end{figure}
 
 Insofern sind diese Angebote für diese Arbeit nicht wirklich lohnenswert weiter zu analysieren und werden als grobe Inspiration für das Design benutzt.
 
 \subsection {Gamification}
 
-Es gibt einige Seiten die ähnliche Inhalte anzeigen und erfolgreich Gamification implementiert haben. Einen sehr schwachen aber effektiven Ansatz verfolgt die Social-News-Seite \textit{reddit}\footnote{\url{http://reddit.com}}. Jegliche Inhalte (eingereichte Links, Kommentare) der Seite können binär bewertet werden (im reddit-jargon wird hier vom \textit{upvote} und \textit{downvote}) gesprochen. Reicht man nun selbst etwas ein, wird die Differenz aus \textit{upvotes} und \textit{downvotes} einem als \textit{Karma} gutgeschrieben. Jedoch besitzt Karma ähnlich wie die erreichte in Videospielen keinen Wert in dem Sinne, dass mit diesem nichts weiter gemacht werden kann als den Wert mit den von anderen zu vergleichen.
-Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von \textit{reddit} bzw. dem Erfolg von \textit{reddit} welcher für sich spricht\footnote{laut Alexa ist \textit{reddit} die 29 meist besuchte Webseite der Welt, in den USA ist sie sogar Platz 10.}.
-Eine ausführliche Untersuchung von \citep{richterichkarma} zeigt die Tragweite von \textit{reddits} Karma-System. Es dient demnach vorzüglich als Bewertung des eingereichten Inhalts durch andere bzw. die daraus resultierende Selbstbestätigung wenn das eigene Karma eröht wird.
-Benutzer \textit{reddits} werden dadurch jedoch darauf gepolt ihre eingereichen Beiträge nach der Anzahl an Karma, welches der Beitrag liefern wird auszusuchen.
+Es gibt einige Seiten die ähnliche Inhalte anzeigen und erfolgreich Gamification implementiert haben. Einen sehr schwachen aber effektiven Ansatz verfolgt die Social-News-Seite \textit{reddit}\footnote{\url{http://reddit.com}}. Jegliche Inhalte (eingereichte Links, Kommentare) der Seite können binär bewertet werden (im reddit-jargon wird hier vom \textit{upvote} und \textit{downvote}) gesprochen. Reicht man nun selbst etwas ein, wird die Differenz aus \textit{upvotes} und \textit{downvotes} einem als \textit{Karma} gutgeschrieben. Jedoch besitzt Karma ähnlich wie die in Videospielen erreichte Punktzahl keinen Wert in dem Sinne, dass mit ihr nichts weiter gemacht werden kann als den Wert mit den von anderen zu vergleichen.
+Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von \textit{reddit} bzw. dem Erfolg von \textit{reddit} welcher beachtlich ist\footnote{laut Alexa ist \textit{reddit} die 29 meist besuchte Webseite der Welt, in den USA ist sie sogar Platz 10.}.
+Eine ausführliche Untersuchung von \citep{richterichkarma} zeigt die Tragweite von \textit{reddits} Karma-System. Es dient demnach vorzüglich als Bewertung des eingereichten Inhalts durch andere bzw. die daraus resultierende Selbstbestätigung wenn das eigene Karma erhöht wird.
+Benutzer \textit{reddits} werden dadurch jedoch darauf gepolt ihre eingereichten Beiträge nach der Anzahl an Karma, welches der Beitrag liefern wird, auszusuchen.
 
 DAIKnow \citep{meder2014daiknow} ist eine Bookmarking Seite ähnlich zu \textit{delicous.com} bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Abzeichen und von Bestenlisten wird die Benutzung der Seite durch die Benutzer gesteigert. Im Gegensatz zu \textit{reddit} ist dieses System jedoch weitaus komplexer, so bekommet man z.B. Punkte für den täglichen Aufruf, Punkte für das Einrechen eines Links oder das jemand anderes seinen Link kopiert hat.
 Ein Problem das sich auftat bei DAIKnow war dass häufige Benutzer alle verfügbaren Abzeichen freischalteten und damit der Gamification-Aspekt damit kein Grund mehr ist die Applikation weiter zu benutzen.
 
-\chapter{Umsetzung}
+\chapter{Konzeptuelle Umsetzung}
 
-\section{Design}
+\section{Visualisierung der Suchergebnisse}
 
 Der wichtigste Aspekt für den Benutzer ist eine attraktive Darstellung und angenehme Bedienung der Applikation, natürlich neben dem Aspekt das es technisch an nichts mangelt d.h. es gibt keine Programmfehler und die nötigen Funktionen sind vorhanden. Im folgenden werden die einzelnen Aspekte der Darstellung dargestellt um die Findung der endgültigen Darstellung zu erklären.
 
 \subsection{Layout}
 
-Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http://pinterest.com}} oder gar Microsoft mit ihrem metro-Design es gezeigt haben ist aktuell eine der besten Darstellung für Medieninhalte verschiedener Art ein Layout basierend auf Kacheln. Es gibt oft eine Regel nach welchem Muster die Kacheln angeordnet werden sollen, z.B. sollten die neuesten Kacheln auch an oberster Stelle gezeigt werden oder auch \textit{wichtigere} Kacheln prominenter dargestellt werden. Die Kacheln für das Infoboard unterliegen der Regel das sie anhand ihrer Wertung angeordnet werden müssen weswegen die folgende Analyse viel Wert darauf legt wie sich das Layout verhält wenn neue Kacheln hinzukommen und damit neu sortiert werden muss. Im folgenden werden zwei der bekanntesten Arten zur Darstellung näher untersucht.
+Wie \textit{Social Media Walls} oder Websiten wie pinterest\footnote{\url{http://pinterest.com}} oder gar Microsoft mit ihrem metro-Design es gezeigt haben ist aktuell eine der besten Darstellung für Medieninhalte verschiedener Art ein Layout basierend auf Kacheln. Es gibt oft eine Regel nach welchem Muster die Kacheln angeordnet werden sollen, z.B. sollten die neuesten Kacheln auch an oberster Stelle gezeigt werden oder auch \textit{wichtigere} Kacheln prominenter dargestellt werden. Die Kacheln für das Infoboard unterliegen der Regel das sie anhand ihrer Wertung angeordnet werden müssen weswegen die folgende Analyse viel Wert darauf legt wie sich das Layout verhält wenn neue Kacheln hinzukommen und damit neu sortiert werden muss. Im folgenden werden zwei der bekanntesten Arten zur Darstellung näher untersucht.
 
 \begin{itemize}
   \item \textbf{Spaltenbasierte Anordnung} \\
@@ -306,11 +306,11 @@ Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http:/
   \end{figure}
 
   \textbf{Vorteile} \\
-  Die Vorteile liegen in der Simplizität der Implementierung und der Intuivität des \textit{content-flows} d.h. neuer Inhalt wird oben eingefügt und alter rutscht nach unten, wobei jeweils nur eine Spalte \textit{verrutscht} je neuem Datenpunkt.
+  Die Vorteile liegen in der Simplizität der Implementierung und der Intuitivität des Inhalt-Flusses d.h. neuer Inhalt wird oben eingefügt und alter rutscht nach unten, wobei jeweils nur eine Spalte \textit{verrutscht} je neuem Datenpunkt.
   Weiterhin ermöglicht die Variable Höhe viel Flexibilität bei dem Anzeigen des Inhalts - z.B. könnten lange Texte angemessen gut angezeigt werden ohne die Zeichenanzahl zu limitieren oder ähnliches.
 
   \textbf{Nachteile}\\
-  Der größte Nachteil ist die Starre des Layouts, da alle Objekte die gleiche Breite haben ist man stark limitiert wie man die Inhalte darstellt. Abstriche m\"ussen auch gemacht werden bei der Sortierung der Inhalte: Sobald die angezeigten Inhalte sortiert werden m\"ussen kann der Inhaltsfluss nicht optimal funktionieren (das der Fluss nur nach unten geht), man kann ihn nur behalten indem man die Sortierung nur Spaltenweise macht indem man die Kacheln mittels modulo oder anderem auf eine bestimmte Spalte festsetzt. Dies kann aber zu verwirrenden Ergebnissen führen, auch wenn es ästhetisch die beste Variante ist.
+  Der größte Nachteil ist die Starrheit des Layouts, da alle Objekte die gleiche Breite haben ist man stark limitiert wie man die Inhalte darstellt. Abstriche müssen auch gemacht werden bei der Sortierung der Inhalte: Sobald die angezeigten Inhalte sortiert werden müssen kann der Inhaltsfluss nicht optimal funktionieren (das der Fluss nur nach unten geht), man kann ihn nur behalten indem man die Sortierung nur Spaltenweise macht indem man die Kacheln mittels modulo oder anderem auf eine bestimmte Spalte festsetzt. Dies kann aber zu verwirrenden Ergebnissen führen, auch wenn es ästhetisch die beste Variante ist.
 
   \item \textbf{Rasterbasierte Anordnung}
   Bei dieser Form werden die einzelnen Datenpunkte in einem einheitlichen Raster dargestellet, d.h. die darstellende Fläche wird in einem Raster der Größe $(a, b)$ unterteilt, die Kacheln können nun die Größe $(x, y)$ mit $ x \in \{1, \dots, a, y \in 1, \dots, b$ besitzen.
@@ -325,7 +325,7 @@ Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http:/
   \textbf{Vorteile} \\
   \begin{itemize}
     \item Ansprechendes Aussehen
-    \item Wichtigkeit kann durch größe der Kachel dargestellt werden
+    \item Wichtigkeit kann durch die Größe der Kachel dargestellt werden
     \item Unterschiede in der Darstellung gleicher Datenpunkte durch unterschiedliche Größe
     \item Vorteilhaft bei der Anzeige ohne Interaktion, da es keine abgeschnittenen Inhalte gibt wie bei dem Spaltendesign
   \end{itemize}
@@ -334,12 +334,12 @@ Wie \textit{social media walls} oder Websiten wie pinterest\footnote{\url{http:/
   \begin{itemize}
     \item komplexes flow-Verhalten bei neuem Inhalt
     \item Es müssen komplexere Methoden benutzt werden um Löcher zu verhindern
-    \item Es müssen Design für die verschiedenen Kachelgrößen erstellt werden
+    \item Es müssen Designs für die verschiedenen Kachelgrößen erstellt werden
     \item unterschiedliche Darstellungsformen können unübersichtlich wirken
   \end{itemize}
 
   \subsection{Probleme beim Flow-Verhalten}
-  Das Flow-Verhalten beim einfügen neuer Inhalte ist bei einem grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex, im ersten Schritt müsste das Behälterproblem gelöst werden und im zweiten Schritt müssten die Elemente anhard ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblem darauf hin zu optimieren das der optische Fluss der Elemente minimiert wird scheint mir eine nicht einfache Aufgabe zu sein, weshalb man sich mit den \textit{schlechten} Lösungen zufrieden geben muss. Die JavaScript-Bibliothek \textit{packery} implementiert den ersten Schritt und ordnet die Element anhand einer Lösung des Behälterproblems, bei deren \textit{prepend}-Methode kann sehr gut erahnt werden wie \textit{wild} der Fluss bei jedem neuen Element wäre\footnote{\url{http://packery.metafizzy.co/methods.html\#prepended}}.
+  Das Flow-Verhalten beim einfügen neuer Inhalte ist bei einem grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex, im ersten Schritt müsste das Behälterproblem gelöst werden und im zweiten Schritt müssten die Elemente anhand ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblem darauf hin zu optimieren das der optische Fluss der Elemente minimiert wird scheint mir eine nicht triviale Aufgabe zu sein, weshalb man sich mit den \textit{schlechten} Lösungen zufrieden geben muss. Die JavaScript-Bibliothek \textit{packery} implementiert den ersten Schritt und ordnet die Element anhand einer Lösung des Behälterproblems, bei deren \textit{prepend}-Methode kann sehr gut erahnt werden wie \textit{wild} der Fluss bei jedem neuen Element wäre\footnote{\url{http://packery.metafizzy.co/methods.html\#prepended}}.
 
   \begin{figure}[H]
     \centering
@@ -361,7 +361,7 @@ Eines meiner Ziele waren Animationen die neben dem rein ästhetischen Aspekt ein
   \item Die Anzahl an Bewegungen soll minimal sein um nicht unnötig vom eigentlichen Inhalt abzulenken.
 \end{enumerate}
 
-Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da die Neuberechnung des Layouts bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann wie die Kacheln sich bewegen und welchen Gesetzmässigkeiten sie unterliegen.
+Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da die Neuberechnung des Layouts bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann wie die Kacheln sich bewegen und welchen Gesetzmäßigkeiten sie unterliegen.
 
 \subsection{Kacheln}
 
@@ -405,25 +405,23 @@ Die hier verwendete Funktion stammt von Dan Berstein und ist bekannt unter der B
 Der erste Ansatz wäre es eine Liste mit zueinander harmonierenden Farben zu verwenden und jeweils eins auszusuchen. Dieser Ansatz kann jedoch nur mit einer sehr langen Liste von Farben funktionieren, auch passiert es bei disere Methode öfter das Suchbegriffe dieselbe Farbe zugewiesen bekommen, was äußerst unerwünscht ist. Man könnte sich nun überlegen ob komplexe Konfliktresolution betrieben werden sollte - dass wenn Suchbegriffe aufeinander kollidieren eine davon eine andere Farbe bekommt.
 Dadurch wird aber verhindert das jeder Suchbegriff Konsistent die gleiche Farbe bekommt.
 
-Der zweite Ansatz besteht darin die Farben prozedual zu erstellen,
-der naivste Ansatz wäre es hierbei den Wertebereich der Hash-Funktion auf $0 - 2^{16})$ einzuschränken, das Ergebniss in Hexadezimal umzurechnen und als RGB-Farbe zu benutzen. Die dadurch entstehenden Farben sind jedoch alles andere als harmonierend oder könnten als \textit{schön} bezeichnet werden, da zu viele dunkle und zu viele helle Farben erstellt werden. Der RGB-Farbraum ist jedoch nicht dazu geeignet die Helligkeit der enstehenden Farben zu kontrollieren, dafür sind Wahrnehmungsorienterte Modelle die Farben durch Helligkeit, Sättigung und Farbton beschreiben deutlich geeigneter wie z.B. HSV oder HSL.
+Der zweite Ansatz besteht darin die Farben prozedural zu erstellen,
+der naivste Ansatz wäre es hierbei den Wertebereich der Hash-Funktion auf $0 - 2^{16})$ einzuschränken, das Ergebnis in Hexadezimal umzurechnen und als RGB-Farbe zu benutzen. Die dadurch entstehenden Farben sind jedoch alles andere als harmonierend oder könnten als \textit{schön} bezeichnet werden, da zu viele dunkle und zu viele helle Farben erstellt werden. Der RGB-Farbraum ist jedoch nicht dazu geeignet die Helligkeit der entstehenden Farben zu kontrollieren, dafür sind Wahrnehmungsorientierte Modelle die Farben durch Helligkeit, Sättigung und Farbton beschreiben deutlich geeigneter wie z.B. HSV oder HSL.
 Probleme von den HSx Farbräumen sind die für den Menschen ungünstige Verteilung der Farben, da wir z.B. besser im Unterscheiden von Blautönen sind als welche mit Grün/Rot-Anteilen, auch variiert z.B. die Helligkeit der Farben bei Änderung des Farbtons zu sehr.
 Abhilfe schaffen hier die dafür erstellen Farbräume LAB bzw. die Weiterentwicklung HCL. Diese sind jedoch nicht einfach zu benutzen, da der valide Wertebereich der Eingabeparameter je nach Kombination der Werte unterschiedlich ist. Dies macht es schwer mit diesen Farbräumen
 Farben zu erstellen. Es gibt im speziellen um den Chroma Wert, dieser kann grob mit der Helligkeit verglichen werden. Der Wertebereich der Sättigung und des Farbtons sind davon abhängig.
 
-Die Wahl des idealen Farbraums ist damit nicht wirklich möglich, mittels HSL ist es einfach eine gute Farbskala prozedual zu erstellen, der Farbbereich ist jedoch ungünstig für den Menschen. LAB/HCL bieten die beste Farbverteilung für die menschliche Wahrnehmung, sind jedoch äußerst schwer zu benutzen. Eine mögliche Kombination der Vorteile beider Farbräume zeigt \citep{husl}, hier wird ein Farbraum mit der Bezeichnung \textit{human-friendly HSL} vorgestellt.
+Die Wahl des idealen Farbraums ist damit nicht wirklich möglich, mittels HSL ist es einfach eine gute Farbskala prozedural zu erstellen, der Farbbereich ist jedoch ungünstig für den Menschen. LAB/HCL bieten die beste Farbverteilung für die menschliche Wahrnehmung, sind jedoch äußerst schwer zu benutzen. Eine mögliche Kombination der Vorteile beider Farbräume zeigt \citep{husl}, hier wird ein Farbraum mit der Bezeichnung \textit{human-friendly HSL} vorgestellt.
 
 Doch keiner der Farbräume konnte eine \textit{ideale} Farbskala erstellen, es konnten in allen Farbräumen sehr anspruchsvolle Farbskalen mit wenig Kollision erstellt werden. Da Farbenskalen ein subjektives Thema sind wurde die Möglichkeit eingebaut diese in der Applikation zu verändern - dies wurde gleich mit dem Gamification-Aspekt verbunden wodurch man nach und nach neue Freischalten kann und sich die aussuchen kann die einem am besten gefällt.
 
-Zum testen der Farbskalen wurde eine Liste an möglichen Suchbegriffen benutzt, die Ergbnisse sind in der Abbildung zu sehen.
+Zum testen der Farbskalen wurde eine Liste an möglichen Suchbegriffen benutzt, die Ergebnisse sind in \ref{fig:colors} zu sehen.
 
-% TODO PICTURE
-
-\section{Abzeichen}
+TODO PICTURE
 
 \section{Gamification}
 
-Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um das sogenannnte \textit{Engagement} von Benutzer zu erhöhen, allein durch Gamification konnte z.B. die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep{zichermann2011gamification}. Zahlreiche Start-ups feiern große Erfolge mit dem hinzufügen von Gamification zu anstrengenden bzw. langweiligen Aufgaben, wie z.B. das Lernen einer Sprache (Duolingo\footnote{https://de.duolingo.com/}) oder Programmieren Lernen (Codecademy\footnote{http://www.codecademy.com/}).
+Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um das sogenannte \textit{Engagement} von Benutzer zu erhöhen, allein durch Gamification konnte z.B. die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep{zichermann2011gamification}. Zahlreiche StartUps feiern große Erfolge mit dem hinzufügen von Gamification zu anstrengenden bzw. langweiligen Aufgaben, wie z.B. das Lernen einer Sprache (Duolingo\footnote{https://de.duolingo.com/}) oder Programmieren Lernen (Codecademy\footnote{http://www.codecademy.com/}).
 
 Doch was ist Gamification eigentlich? Der Begriff entstand erst 2008 und hat seitdem viele Bedeutungen erlangt, \citep{deterding2011game} bemühten sich eine einheitliche Definition zu finden, die auch im folgenden Kontext verwendet wird.
 
@@ -446,7 +444,7 @@ Nach \citep{gamasutra} besteht diese modellierte Kette aus 3 Schritten:
   \item \textbf{Aktion} Die Aktion ist die Grundlage, diese sind die Aspekte der Anwendung die der Benutzer ausführen soll. Im Rollenspiel könnte dies z.B. das lösen von Aufträgen sein.
 \end{enumerate}
 
-Im folgenden wird für die Gamification des Infoboard ahnand dieser Schritten modeliert.
+Im folgenden wird für die Gamification des Infoboard anhand dieser Schritten modelliert.
 
 \subsection{Aktionen und deren Belohnung}
 
@@ -466,7 +464,7 @@ Durch einige dieser Aktionen wird der User Punkte bekommen, z.B. ist es häufig 
 Die Leistung des Benutzers muss anerkannt werden, im folgenden werden verschiedene Ansätze für Punkte/Bestenlisten und Abzeichen gezeigt und erklärt warum wir uns für den einen oder anderen Ansatz entschieden haben.
 
 \subsubsection{Punkte}
-Punkte sind unerlässlich im Spielekontext, auch wenn die Punkte für den Benutzer nicht mal sichtbar gemacht werden sind sie wichtig um dem Spieledesigner die Möglichkeit zu geben das System zu evalieren und daraufhin zu verändern (\citep{zichermann2011gamification}). Punktesysteme können dementsprechend von nahezu unsichtbar zu der Hauptkomponente des Systems gemacht werden. Nach \citep{zichermann2011gamification} unterscheidet man erhaltene Punkte in folgende Kategorien.
+Punkte sind unerlässlich im Spielekontext, auch wenn die Punkte für den Benutzer nicht mal sichtbar gemacht werden sind sie wichtig um dem Spieledesigner die Möglichkeit zu geben das System zu evaluieren und daraufhin zu verändern (\citep{zichermann2011gamification}). Punktesysteme können dementsprechend von nahezu unsichtbar zu der Hauptkomponente des Systems gemacht werden. Nach \citep{zichermann2011gamification} unterscheidet man erhaltene Punkte in folgende Kategorien.
 
 \begin{itemize}
 	\item Erfahrungspunkte
@@ -579,6 +577,19 @@ So absurd dies auch klingen mag, die Tatsache das JavaScript heutzutage immer im
 
 So wurde für diese Arbeit entschieden, dass ES6 die beste Wahl für eine Programmiersprache ist. Alle Browser werden ES6 in Zukunft unterstützen womit ES6 keinesfalls eine obsolete Sprache werden wird. Außerdem ist im Vergleich zu den richtigen Kompilier-zu-JavaScript-Sprachen, ES6 die geringste Hürde für neue Entwickler die JavaScript kennen: ES6 ist abwärtskompatibel und die neuen Funktionalitäten können in ein paar wenigen Stunden gelernt werden, wenn dies überhaupt nötig ist.
 
+Neben reinem ES6 benutzen wir jedoch auch noch eine von Facebook entwickelte Erweiterung namens JSX, diese Erweitert JavaScript mit der Möglichkeit UI-Komponenten mit einer HTML-Syntax zu beschreiben. Dies wäre z.B. valides JSX:
+
+\begin{minted}{javascript}
+	var header = <h1>Überschrift</h1>;
+\end{minted}
+
+Es mag merwürdig erscheinen HTML-markup direkt in JavaScript zu schreiben, doch wird dadurch die Benutzung von der hier verwendeten Interface-Bibliothek \textit{React} deutlich vereinfacht.
+Bisher ist JSX ein Vorschlag von Facebook an ECMA, doch ist die Benutzung von JSX mittlerweile so verbreitet\footnote{eslint - \url{http://eslint.org/} unterstützt JSX wie auch der ES6-ES5-Kompilierer Babel - \url{https://babeljs.io/}} dass eine Integration etwas JSX-ähnlichem ziemlich wahrscheinlich ist.
+Mittels ES6-templatestrings ist es möglich DSLs\footnote{Domain Specific Languages} zu schreiben, so gibt es mittlerweile auch ein proof-of-concept JSX rein in ES6 zu schreiben\footnote{\url{http://www.2ality.com/2014/07/jsx-template-strings.html}}.
+
+Neben JavaScript muss auch CSS-geschrieben werden, da CSS ebenfalls viele Mängel hat gibt es auch Projekte wie \textit{less}\footnote{http://lesscss.org/} oder \textit{sass}\footnote{http://sass-lang.com/}, die CSS z.B. mit Variablen erweitern. Es hat sich bewährt less oder sass zu benutzen, so wurde auch für diese Applikation entschieden \textit{less} zu benutzen, da damit auch Bootstrap geschrieben wurde - das hier verwendete CSS-Framework.
+Das Ausmaß dieser Entscheidung ist jedoch kein Vergleich zu der Programmiersprachen-Entscheidung, weswegen es nicht lohnt die Kosten/Nutzen genauer zu betrachten.
+
 \subsection{Frameworks und Bibliotheken}
 
 Das Entwickeln von Webanwendungen wurde schon etliche male gemacht und somit gibt es kaum ein Problem das noch nicht gelöst wurde. Es gibt etliche Bibliotheken und Frameworks die einem das Leben einfacher machen sollen, ein klarer Platzhirsch ist jedoch nur für Subkategorien wie Datenvisualisierung zu finden, so ist die Wahl der Frameworks/Bibliotheken keinesfalls so trivial wie etwa in Java, wo Spring/Hibernate der Stanard ist wenn man eine Webanwendung schreiben will.
@@ -612,8 +623,30 @@ Es wurden am Ende folgende Bibliotheken verwendet
 	\item[moment.js\footnote{\url{http://momentjs.com/}}] vereinfacht den Umgang mit Datums-Objekten und bietet Funktionen wie \texttt{add(1, \'day\')} und erweiterte Formattierungsmöglichkeiten. In der aktuellen Version ist es mit \texttt{moment} nicht möglich deren eigene \textit{duration} Objekte zu formatieren, dafür wurde das plugin \texttt{moment-duration-format}\footnote{\url{https://github.com/jsmreese/moment-duration-format}} benutzt welche womöglich auch bald zu \texttt{moment} gehören wird.
 \end{description}
 
+\subsection{Tooling}
 
-\subsection{Facebook React und die Flux Architektur}
+Das Tooling im Frontend hat sich in den letzten Jahren rasant verändert, kaum jemand schreibt heutzutage noch JavaScript oder CSS ohne das ein Build-Werkzeug diese Dateien nochmals verändern.
+
+Die bekanntesten Build-Werkzeuge sind Gulp\footnote{\url{https://github.com/gulpjs/gulp}}, Grunt\footnote{\url{https://github.com/gruntjs/grunt}}, Webpack\footnote{\url{https://github.com/webpack/webpack}} und Brunch\footnote{\url{https://github.com/brunch/brunch}}.
+
+Webpack stellt eine Ausnahme da, da es im Grunde gar kein Build-Tool ist, sondern ein \textit{module bundler} d.h. es verarbeitet alle in der Entwicklung relevanten JavaScript/CSS/Bild-Dateien und bündelt diese. Durch die Architektur von Webpack ist es möglich so ziemlich jeden Datei-Typ zu verarbeiten den es gibt.
+Da die meisten Build-Systeme eben diesen Output haben, kann Webpack diese meistens komplett ersetzen.
+
+Zwar ist Webpack noch ein junges Projekt es hat sich jedoch schon für große Projekte wie Instagram bewährt dessen Chefentwickler Pete Hunt darauf schwört\footnote{\url{https://github.com/petehunt/webpack-howto}}.
+
+Für dieses Projekt habe ich mich auch für Webpack entschieden, da es von allen Build-Systemen die folgenden Dinge am einfachsten realisieren konnte:
+
+\begin{enumerate}
+	\item Es muss möglich sein JavaScript-Bibliotheken mittels \texttt{npm} zu benutzen.
+	\item ES6-Quelltext muss zu ES5 Quelltext kompiliert und gebündelt werden.
+	\item Wenn der Quelltext \textit{minified} wird, müssen SourceMaps erstellt werden.
+	\item *.less-stylesheets müssen in CSS umgewandelt und gebündelt werden.
+	\item Bei Dateiänderungen sollten erneut kompiliert werden und die Seite aktualisiert werden.
+\end{enumerate}
+
+Die Konfigurationsdatei von Webpack dafür ist keine 50-Zeilen lang und einfach zu lesen, im Vergleich zu äquivalenten Gulp/Grunt oder Brunch-Dateien bei welchen dies deutlich komplizierter wäre.
+
+\subsection{Facebook React und die Flux Architektur}\label{sec:flux}
 
 Facebooks React\footnote{\url{https://github.com/facebook/react}} ist eine JavaScript-Bibliothek die seit ihrem erscheinen im Jahr 2013 viel Beifall geerntet hat. Zum Zeitpunkt dieser Arbeit wird sie produktiv von vielen Firmen benutzt wie z.B. \textit{Khan Academy\footnote{\url{http://joelburget.com/backbone-to-react/}}}, \textit{Netflix\footnote{\url{http://conf.reactjs.com/schedule.html\#beyond-the-dom-how-netflix-plans-to-enhance-your-television-experience}}}, \textit{Yahoo!\footnote{\url{http://www.slideshare.net/mobile/rmsguhan/react-meetup-mailonreact}}}, \textit{Sony\footnote{\url{https://medium.com/code-stories/dev-chats-spike-brehm-of-airbnb-87e155f3475d}}} und anderen. Facebook benutzt sie selbst für ihre größten Produkte Facebook und Instagram (\textit{Google} benutzt ihr Framework \textit{AngularJS} z.B. nicht für das Flagschiff \textit{Google Mail}).
 
@@ -639,10 +672,9 @@ Ein Geschwindikeitsvergleich von Frameworks die einen virtuellen DOM benutzen ze
     \label{fig:awesome_image}
 \end{figure}
 
-Es ist zu sehen, dass Ember und AngularJS am langsamsten sind. Backbone ist in diesem Benchmark schneller als React, wobei die verwendete Implemtierung der React-App nicht optimiert ist - \textit{Om}\footnote{\url{https://github.com/omcljs/om}} kann als optimierte React-Version betrachtet werden, da Om im Grunde React mit nicht veränderbaren Datenstrukturen\footnote{Durch nicht veränderbare Datenstrukturen kann das diffing noch effizienter gestaltet werden, da viele Teilbäume nicht betrachtet werden müssen.} (immutable data-structures) ist. Backbone wie aber auch JQuery oder Dojo können theoretisch so schnell gemacht werden wie es möglich ist, dies ist aber so komplex, dass es nie gemacht wird und Wartbarkeit und Fehlervermeidung über Performance gestellt wird.
+Es ist zu sehen, dass Ember und AngularJS am langsamsten sind. Backbone ist in diesem Benchmark schneller als React, wobei die verwendete Implementierung der React-App nicht optimiert ist - \textit{Om}\footnote{\url{https://github.com/omcljs/om}} kann als optimierte React-Version betrachtet werden, da Om im Grunde React mit nicht veränderbaren Datenstrukturen\footnote{Durch nicht veränderbare Datenstrukturen kann das diffing noch effizienter gestaltet werden, da viele Teilbäume nicht betrachtet werden müssen.} (immutable data-structures) ist. Backbone wie aber auch JQuery oder Dojo können theoretisch so schnell gemacht werden wie es möglich ist, dies ist aber so komplex, dass es nie gemacht wird und Wartbarkeit und Fehlervermeidung über Performance gestellt wird.
 Die beiden schnellsten Frameworks benutzen ebenso eine virtual-DOM Implementierung und wie \textit{Om} auch nicht veränderbare Datenstrukturen.
-Dies ist auch der Grund weswegen Ich \texttt{immutable.js} verwende da dies die render-Geschwindigkeit in den aufwändigsten Teilen verbessern onnte.
-
+Dies ist auch der Grund weswegen Ich \texttt{immutable.js} verwende da dies die render-Geschwindigkeit in den aufwändigsten Teilen verbessern konnte.
 
 Ein weiterer Vorteil der virtuellen Darstellung ist die Unabhängigkeit des Browsers um die Applikation zu rendern, dass schlussendliche rendern des virtuellen DOMs in den richtigen DOM ist nicht zwingend. Es ist z.B. möglich den virtuellen DOM in ein Canvas-Element zu rendern\footnote{\url{https://github.com/Flipboard/react-canvas}} oder ganz einfach in einen String. Durch das simple rendern zum String, was ganz ohne Browser möglich ist, beherrscht React isomorphes Rendering, d.h. die Inhalte können auf dem Server und im Client gerendert werden. So wird z.B. bei Instagram der erste Seitenaufruf auf dem Server alles weitere vom Clienten gerendert. Erste Versuche zeigen auch, dass man dies komplett agnostisch machen kann und alles kann auf Server/Client gerendert werden ohne das der Benutzer einen Unterschied merkt. So ist es denkbar das schwache Geräte mehr auf dem Server rendern und somit komplexe Inhalte vergleichsweise schnell darstellen können.
 
@@ -650,24 +682,24 @@ Ein weiterer Vorteil der virtuellen Darstellung ist die Unabhängigkeit des Brow
 
 Flux\footnote{\url{https://facebook.github.io/flux/docs/overview.html}} ist die Applikations-Architektur die Facebook für ihre Frontend-Applikationen benutzt, es ergänzt React insoweit dass es einen unidirektionellen Datenfluss ermöglicht. Es ist wie eine alternative zu MVC zu verstehen und ist mehr ein Muster um Applikationen zu schreiben als ein Framework das einem rigoros die Struktur vorschreibt. Im Allgemeinen benutzt Flux das Paradigma der Datenfluss Programierung\footnote{\url{http://en.wikipedia.org/wiki/Dataflow_programming}}, bei welchem ein Programm als gerichter Graph modelliert wird. Typisch für das Paradigma ist die Benutzung eines Beobachter-Entwursfmuster\footnote{\url{http://en.wikipedia.org/wiki/Observer_pattern}} wie z.B. eines pub/sub-System\footnote{Eine kleine Auflistung und eine Bewertung typischer Muster ist hier zu finden \url{https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations}}. Bei Flux wird für letzteres eine Abwandlung eines pub/sub-Systems benutzt.
 
-Flux besitzt drei große Bestandteile: \textit{dispatcher}, \textit{stores}, \textit{views (React components)}. Desweiteren gibt es \textit{actions}, dies sind Hilfsmethoden vom \textit{dispatcher} und werden benutzt um eine semantische API zu unterstützen die alle Veränderungen die möglich sind in der Applikation beschreibt.
+Flux besitzt drei große Bestandteile: Einen \textit{Dispatcher}, \textit{Stores} und \textit{Views (React components)}. Desweiteren gibt es \textit{actions}, dies sind Hilfsmethoden vom \textit{dispatcher} und werden benutzt um eine semantische API zu unterstützen die alle Veränderungen die möglich sind in der Applikation beschreibt.
 
-Das wichtigste Designziel von Flux ist der unidirektionale Datenfluss, wodurch die Logik deutlich verständlicher und nachvollziehbar wird.
+Das wichtigste Designziel von Flux ist der unidirektionale Datenfluss, wodurch die Logik deutlich verständlicher und nachvollziehbar wird, siehe \ref{fig:flux}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/flux.png}
     \caption{Dispatcher, Stores und Wiews sind unabhängige Knoten mit unterschiedlichen Ein und Ausgaben. Die Aktionen sind einfache Objekte die die neuen Daten enthalten und den Typ der Daten.}
-    \label{fig:awesome_image}
+    \label{fig:flux}
 \end{figure}
 
-Diesem Schaubild zufolge ist es jedoch unmöglich dass eine \textit{Component} den Zustand der Applikation verändern kann, was jedoch so gut wie immer nötig ist. Hier für werden die \textit{actions} benutzt, diese können von den \textit{Components} benutzte werden um neue Daten an den Dispatcher zu schicken, welcher diese dann an den Store weiterleitet - welche dann die Darstellung der \textit{Component} beeinflussen kann.
+Diesem Schaubild zufolge ist es jedoch unmöglich dass eine \textit{Component} den Zustand der Applikation verändern kann, was jedoch so gut wie immer nötig ist. Hier für werden die \textit{actions} benutzt, diese können von den \textit{Components} benutzte werden um neue Daten an den Dispatcher zu schicken, welcher diese dann an den Store weiterleitet - welche dann die Darstellung der \textit{Component} beeinflussen kann, siehe \ref{fig:flux_actions}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{images/flux_actions.png}
     \caption{Mithilfe von \textit{actions} ist die View in der Lage den Zustand der Applikation zu verändern.}
-    \label{fig:awesome_image}
+    \label{fig:flux_actions}
 \end{figure}
 
 Allem in allem ist die Facebook-Flux Architektur in Kombination mit React ein äußerst fortschrittlicher und zukunftssicherer Weg eine Webapplikation zu schreiben, womit die Anwendung dieser für die Erstellung der Enterprise-Infoboard eine gute Wahl erscheint.
@@ -683,35 +715,45 @@ Die Entwicklung in diesem Bereich ist jedoch äußerst spannend und hat zum Zeit
     \centering
     \includegraphics[width=1.0\textwidth]{images/architecture.pdf}
     \caption{Die wichtigsten Bestandteile der Applikation.}
-    \label{fig:awesome_image}
+    \label{fig:architecture}
 \end{figure}
 
-Die Architektur wurde bewusst nicht in einem Klassendiagramm dargestellt da die Applikation keinen Strengen Objektorienterten Stil verfolgt und das Schaubild nicht sonderlich zum Verständnis beitragen würde. Es ist auch kein komplettes Schaubild der Applikation, jegliche Aspekte die zum Verständnis nicht sonderlich beitragen würden wurden rausgelassen.
+Die Abbildung \ref{fig:architecture} zeigt einen Überblick über die gesamte Architektur, sie wurde bewusst nicht in einem Klassendiagramm dargestellt da die Applikation keinen Strengen Objektorientierten Stil verfolgt und das Schaubild nicht sonderlich zum Verständnis beitragen würde. Dies ist eine grobe Abstraktion, doch reicht diese Abbildung um sich im Queltext zurecht zu finden.
 
-Wie zu sehen kann die Applikation in drei Teile eingeteilt werden.
+Es ist deutlich zu sehen das der komplette Datenfluss bzw. Programmfluss mittels der Flux-Architektur modeliert wurde, was daran zu erkennen ist dass jegliche Interaktionen der View werden mittels \textit{Actions} an die jeweiligen \textit{Stores} weitergegeben wird die dann den neuen Zustand an die View abermals weitergeben.
 
-\begin{enumerate}
-  \item \textbf{Agenten} \\
-  Die Agenten stellen die Kommunikation mit den jeweiligen Brokern da, sie implementieren alle eine Funktion \texttt{getData} die eine Suchanfrage  nimmt und eine einheitliche Datenstruktur mit den Ergebnissen zurückliefert. Broker die eine Authentifizierung benötigen liefern einen Fehler sobald so Benutzer-Objekt mit gültigen Token benutzt werden.
-  \item \textbf{User - Authentifizierung}
-  Der User beinhaltet neben seines Profils in welchem Favoriten, Punktestand und bewertete Suchergebnisse gespeichert werden die komplette Authentifizierung im System. Im aktuellen Zustand wird jeder Nutzer gezwungen sich zu authentifizieren um das System zu nutzen.
-  \item \textbf{Flux - Actions, Stores und View}
-  Dies ist der wichtigste, komplizierteste und größte Teil der Applikation. Hier geschieht alles was mit dem Darstellen und der Interaktion mit den Inhalten zu tun hat. In den Stores werden die Daten der Agenten soweit verarbeitet dass sie an die View weitergegeben können wo sie als interaktive Kacheln dargestellt werden. Interaktionen geschehen über die Aktionen. Es ist gut zu sehen dass der Datenfluss Unidirektionell ist, wodurch das urteilen über Applikation vereinfacht wird.
+Zu Flux gibt es noch drei Klassen die von den jeweiligen Stores benutzt werden, die Auslagerung dieser Logik in eigene Klassen dient der Übersichtlichkeit, verdeutlicht jedoch auch dass alle Komponenten mit denen der Benutzer nicht direkt interagiert nicht Teil des Flux-Datenflusses sein müssen.
 
-\end{enumerate}
+Im folgenden werde ich genauer auf die Stores eingehen.
 
-Im folgenden werde ich genauer auf den Flux-Teil eingehen.
+\subsection{Stores}
 
-\subsection{Stores - Data}
+Die Stores sind zuständig den Datenfluss zu verwalten, insgesamt enthält die Applikation 6 Stores: UserStore, QueryStore, DataStore, LayoutStore, GameStore und MessagesStore.
+Der UserStore und MessagesStore sind jedoch äußerst trivial und sind nur wenige Zeilen lang. Die wichtigsten sind die anderen 4, diese werde ich nun im Detail behandeln.
 
-Der DataStore stellt alle Daten bereit die für die Darstellung benötigt werden, dies sind die Suchergbnisse die mit dem Profil des Benutzers gemixt werden um anzuzeigen welche Ergebnisse bewertet/favorisiert wurden und die Suchanfragen, die zur Laufzeit verändert werden können. Herausforderungen hier waren es Duplikate in den Suchergebnissen auszuschließen, Anfragen an die Broker zu minimieren und die Interaktion mit den Suchergebnissen.
+\subsubsection{QueryStore}
 
-Eine Besonderheit ist die Benutzung einer nicht veränderbaren OrderedMap in welcher die Suchergbnisse mit ihrer \textit{url} als Schlüssel gespeichert sind. Die Suchergbnisse werden in der Applikation noch viel weitergereicht weswegen viele Fehler vorgebeugt werden da nur der DataStore selbst die Suchergebnisse verändern kann.
+Der \texttt{QueryStore} abonniert die Aktionen \texttt{addQuery} und \texttt{removeQuery}, er abstrahiert die Anfrage an die \texttt{Broker} d.h. für jeden Suchbegriff werden alle verfügbaren \texttt{Broker} angefragt, nach jeder Antwort eines Brokers wird die Nachricht \texttt{addItems} mit den Ergebnissen gesendet. Auf diese Nachricht hört der \texttt{DataStore}.
 
-\subsection{Stores - Layout}
+\subsubsection{GameStore}
+
+Der GameStore liefert alles was für die Verspielisierung der Applikation relevant ist - wie die Bereitstellung der Punkte, der Bestenlisten und Trophäen aller Benutzer der Applikation. Weiterhin abonniert er alle Aktionen auf denen Punkte definiert sind wie das bewerten eines Suchergebnisses und sorgt dafür dass diese Aktionen vom Backend verarbeitet werden.
+
+Um den sozialen Faktor zu erhöhen reagiert der GameStore ebenfalls auf alle Aktionen aller anderen Benutzer, dies geschieht quasi in Echtzeit und sorgt dadurch z.B. für eine äußert lebendige Statistikseite (auf dieser werden die Daten aller Benutzer angezeigt).
+Damit das ganze noch effizient bleibt wurden WebSockets verwendet die deutlich weniger Overhead besitzen als normale HTTP-requests.
+
+\subsubsection{DataStore}
+
+Der \texttt{DataStore} stellt alle Daten bereit die für die Darstellung benötigt werden, dies sind die Suchergebnisse die mit dem Profil des Benutzers verbunden werden um anzuzeigen welche Ergebnisse bewertet/favorisiert wurden und die Suchanfragen, die zur Laufzeit verändert werden können. Herausforderungen hier waren es Duplikate in den Suchergebnissen zu verarbeiten und die Interaktion mit den Suchergebnissen.
+
+Hierzu hört er auf die Nachricht \texttt{addItems} welche eine Liste mit Suchergebnissen enthält. Diese Daten sind noch ganz ohne die Bewertungsdaten, welche hier angefragt werden und in die Suchergebnisse integriert werden. Sobald das geschehen ist, wird allen Abonnenten (in dem Fall der \texttt{LayoutStore} mitgeteilt dass der Datensatz sich verändert hat. 
+
+Eine Besonderheit ist die Benutzung einer nicht veränderbaren \texttt{OrderedMap} in welcher die Suchergebnisse mit ihrer URL als Schlüssel gespeichert sind. Die Suchergebnisse werden in der Applikation noch viel weitergereicht weswegen viele Fehler vorgebeugt werden da nur der \texttt{DataStore} selbst die Suchergebnisse verändern kann.
+
+\subsubsection{LayoutStore}
 
 Im Design-Abschnitt wurde lange darauf eingegangen was die Layouting-Engine alles können muss, leider konnte keine der OpenSource-Bibliotheken allen Anforderungen gerecht werden. Deswegen wurde extra für die Darstellung eine eigene Layouting-Engine erstellt.
-Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist notwendig um Animationen zu ermöglichen. Es gibt verschiedene Arten DOM-Elemente mittels css zu positionieren:
+Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist notwendig um Animationen zu ermöglichen. Es gibt verschiedene Arten DOM-Elemente mittels CSS zu positionieren:
 
 \begin{enumerate}
   \item Mithilfe von \texttt{top/left}.\\
@@ -738,18 +780,18 @@ Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist 
       -webkit-transform: translate3D(50px, 50px);
   }
   \end{minted}
-  \texttt{transform3D} wird von allen aktuellen Browsern soweit unterstützt das unser Szenario möglich ist\footnote{\url{http://caniuse.com/\#feat=transforms3d}}. Was weiterhin zu beachten ist, dass am Ende immer gerundete Pixelwerte innerhalb von \textsc{translate3D(x, y, z)} benutzt werden sollten. Da Ansonsten die Elemente unscharf sind.
+  \texttt{transform3D} wird von allen aktuellen Browsern soweit unterstützt das unser Szenario möglich ist\footnote{\url{http://caniuse.com/\#feat=transforms3d}}. Was weiterhin zu beachten ist, dass am Ende immer gerundete Pixelwerte innerhalb von \textsc{translate3D(x, y, z)} benutzt werden sollten. Da Ansonsten die Elemente unscharf sind, siehe \ref{fig:blurry}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{images/blurry_tiles.png}
 	\caption{Links eine Kachel mit geraden Werten bei \texttt{translate3D}, rechts mit jeweils $.5$ bei $x/y$.}
-	\label{fig:awesome_image}
+	\label{fig:blurry}
 \end{figure}
 
 \end{enumerate}
 
-Es ist eine Grundanforderung Geräte mit unterschiedlich Großen Bildschirmen zu unterstützen, was dadurch erzielt wird, dass die die Anzahl der Spalten variabel ist.
+Es ist eine Grundanforderung Geräte mit unterschiedlich großen Bildschirmen zu unterstützen, was dadurch erzielt wird, dass die die Anzahl der Spalten variabel ist.
 Es gibt zwei Möglichkeiten die Anzahl der Spalten variabel zu machen:
 
 \begin{enumerate}
@@ -757,20 +799,167 @@ Es gibt zwei Möglichkeiten die Anzahl der Spalten variabel zu machen:
   \item Durch die Benutzung von \textit{Media Queries} können in css verschiedene Darstellungen für unterschiedliche Bildschrimbreiten beschrieben werden.
 \end{enumerate}
 
-Für die Positionierung müssen wir wissen wieviel Spalten zu jedem Zeitpunkt dargestellt werden sollen. Dafür muss die Breite in Javascript berechnet werden, somit liegt 1. nahe. Versuche haben jedoch gezeigt, dass es schneller ist die Breite des Elementes nicht per Javascript zu setzen sondern diese über die Media-Queries zu bestimmen. Zwar bedeuted dies, dass die gleiche Logik an zwei Orten in 2 Sprachen steht, aber da dies nicht mehr als jeweils 10 Zeilen sind ist es für die resultierende bessere Geschwindigkeit hinnehmbar.
+Für die Positionierung müssen wir wissen wie viele Spalten zu jedem Zeitpunkt dargestellt werden sollen. Dafür muss die Breite in Javascript berechnet werden, somit liegt 1. nahe. Versuche haben jedoch gezeigt, dass es schneller ist die Breite des Elementes nicht per Javascript zu setzen sondern diese über die Media-Queries zu bestimmen. Zwar bedeutet dies, dass die gleiche Logik an zwei Orten in 2 Sprachen steht, aber da dies nicht mehr als jeweils 10 Zeilen sind ist es für die resultierende bessere Geschwindigkeit hinnehmbar.
 
-Die Breite aller Elemente ist zu jedem Zeitpunkt gleich, die Höhe ist jedoch variabel. Da es unmöglich ist die Höhe auszurechnen ohne eine komplette Browser-Engine zu implementieren, muss das Element in den DOM eingefügt werden bevor wir dessen korrekte y-Position berechnen können.
+Die Breite aller Elemente ist zu jedem Zeitpunkt gleich, die Höhe ist jedoch variabel. Da es unmöglich ist die Höhe auszurechnen ohne eine komplette Browser-Engine zu implementieren, muss das Element in den DOM eingefügt werden bevor wir dessen korrekte y-Position berechnen können, hierfür existiert die Aktion \texttt{addDOMElement}, welche die gleichnamige Funktion im \texttt{LayoutStore} ausführt. Diese Funktion ist neben der \texttt{relayout}-Funktion der einzige Ort an dem der DOM direkt ausgelesen wird, nämlich die Höhe des Elementes mit \texttt{offsetHeight}. Solange kein \texttt{resize}-Event getriggert wird müssen wir diesen Wert auch nicht ein zweites mal auslesen.
+Wenn zu allen Suchergebnissen eine Kachel angelegt wurde, wird die \texttt{layout}-Funktion aufgerufen und die Kacheln bewegen sich auf dem Bildschirm.
 
-\subsection{Tooling und aufsetzen der Applikation}
+Der vollständige Programmfluss ist komplex, da er sehr auf Geschwindigkeit getrimmt wurde, der Programmteil ist ausführlich kommentiert und beschrieben.
+
+Allgemein hat die Flux-Architektur hier gut funktioniert, der größte Manko entstand beim Abgleichen des LayoutStores mit dem \texttt{DataStore}. Wenn nun ein Element positiv bewertet wird, muss das Layout neu berechnet werden. Der LayoutStore weiß inhärent jedoch nicht welches Element sich verändert hat, es muss durch alle Elemente des \texttt{DataStores} mit den eigenen abgleichen. Dies fühlt sich nicht optimal an, jedoch ist stellt sich die Frage auf ob mit einer anderen Architektur das Problem einfacher wäre.
+
+\subsection{Views}
+
+Als View wird das Interface bezeichnet mit dem der Benutzer schlussendlich interagieren kann. Für jede View wird React und React-Bootstrap verwendet, die Gründe warum React verwendet wird sind in \ref{sec:flux} genauer ausgeführt.
+
+\subsubsection{Responsives Design}
+
+Responsives Webdesign bezeichnet ein Paradigma bei dem Webseiten daraufhin geschrieben werden, dass sie Inhalte auf unterschiedliche Endgeräte optimieren, was praktikabel bedeutet das Inhalte abhängig von der Bildschirmbreite des Gerätes angezeigt werden.
+
+Aktuell wird dies so umgesetzt dass jeglicher Inhalt mit der Benutzung eines \textit{Grid}-Systems dargestellt wird.
+
+\begin{quote}
+	Grid systems are used for creating page layouts through a series of rows and columns that house your content.
+\end{quote}
+
+Damit wird auf der Webseite\footnote{\url{http://getbootstrap.com/css/\#grid}} von Bootstrap das Grid-System erklärt, für mehr Informationen wie genau Grid-Systeme funktionieren siehe die Webseite.
+In dieser Applikation wird das von Bootstrap bereitgestellte Grid intensiv benutzt um auf jedem Endgerät eine möglichst gute Benutzererfahrung zu garantieren. 
+
+\subsubsection{Erstellte React-Komponenten}
+
+Wie auch in anderen Interface-Bibliotheken wird in React das Interface in Komponenten (in anderen Bibliotheken auch \textit{widgets} gennant) unterteilt.
+
+Jede React-Komponente besitzt Lebenszyklus-Methoden\footnote{\url{https://facebook.github.io/react/docs/component-specs.html}}, welche eine Feingranule Benutzung der Komponenten ermöglicht.
+Eine Benutzung dieser ist jedoch komplett optional, die einfachste React-Komponente hat nur einer \texttt{render}-Methode. An dieser Stelle wurde überlegt eine Einführung für React zu schreiben, stattdessen verweise ich auf externe Tutorials wie das offizielle von Facebook\footnote{\url{https://facebook.github.io/react/docs/tutorial.html}}.
+
+Es wurden ca. 30 React-Komponenten erstellt, viele davon wurden an mehreren Stellen der Applikation verwendet. Unterteilt sind sie semantisch nach Aufgabe/Seiten wie z.B. \texttt{settings}, \texttt{stats} oder \texttt{utility}.
+Eine Minimalübersicht findet sich in \ref{fig:architecture}, in welchem Alle Komponenten gezeigt werden die Teil des Flux-Kreises sind, alle restlichen sind statisch und spielen für die Architektur keine Rolle.
+
+\subsubsection{Beispiel einer interaktiven Kompononte}
+
+Ich werde exemplarisch eine Komponente behandeln um aufzuzeigen wie deren Verwendung ist und wie sie erstellt wurde. Ich habe dazu die \texttt{Queries} Komponente ausgewählt, da sie kurz ist jedoch viele Konzepte benutzt. Ich werde sie minimal vereinfachen, damit der Abschnitt nicht allzu lang wird.
+
+Fertig implementiert kann die \texttt{Queries} Komponente in \ref{fig:queries} gesehen werden, ich werde nun Schritt für Schritt deren Implementierung angehen.
+
+\begin{enumerate}
+	\item Die \texttt{Queries} Komponente soll den aktuellen Stand der \texttt{Queries} aufzeigen, dieser wird vom \texttt{QueryStore} verwaltet, weswegen wir auf seine Veränderungen abbonieren, dies wird in \textit{reflux} mittels eines Mixin bewerkstelligt.
+		\begin{minted}{javascript}
+React.createClass({
+  mixins: [Reflux.listenTo(queryStore, 'onStoreChange')],
+    onStoreChange: function (queries) {
+      this.setState({
+        queries: queries
+      })
+    },
+  getInitialState: function () {
+    return {
+      queries: queryStore.queries
+    };
+  },
+  render: function () {
+    return (
+      <div className='queries'></div>
+    );  
+  }
+});
+		\end{minted}
+		Im Detail heißt das, dass die ersten Daten die die Komponente anzeigen wird mittels \texttt{getInitialState} vom \texttt{QueryStore} bezogen werden, bei jeder Veränderung wird der Zustand der Komponente mittels \texttt{this.setState} auf den Zustand des \texttt{QueryStore} aktualisiert. 
+		\texttt{setState} bewirkt dass die Komponente neu gerendert wird.
+	\item Diese Art der Benutzung ist jedoch so häufig, dass \textit{reflux} ihn mittels \texttt{connect} vereinfacht hat:
+	\begin{minted}{javascript}
+React.createClass({
+  mixins: [Reflux.connect(queryStore)],
+  render: function () {
+    return (
+      <div className='queries'></div>
+    )  
+  }
+});
+	\end{minted}
+	\item Als nächstes rendern wir die Queries, dies ist wiederum eine eigenständige Komponente die wir hier nur verwenden werden.
+	\begin{minted}{javascript}
+React.createClass({
+  mixins: [Reflux.connect(queryStore)],
+  createQueries: function () {
+    var queries = this.state.queries.map(s => {
+      return <Query query={s}/>;
+    });
+
+    return (
+      <ul className='queries--list'>
+        {queries}
+      </ul>
+    );
+  },
+  render: function () {
+    return (
+      <div className='queries'>
+        {this.createQueries()}
+      </div>
+    );
+  }
+});
+	\end{minted}
+Die Funktion \texttt{createQueries} benutzt die Liste von Suchbegriffen und erstellt für jeden eine \texttt{Query}-Komponente. In der render-Methode wird sie dann aufgerufen.
+\item Bleibt zuletzt noch das Löschen von Suchbegriffen, wir könnten diese Methode genauso gut auch in die Query-Komponente tun, hier übergeben wir sie jedoch mit einer weiteren \texttt{property} an die \texttt{Query}-Komponente.
+	\begin{minted}{javascript}
+React.createClass({
+  mixins: [Reflux.connect(queryStore)],
+  removeQuery: function (query) {
+    actions.removeQuery(query);
+  },
+  createQueries: function () {
+    var queries = this.state.queries.map(s => {
+      return <Query
+        query={s}
+        removeQuery={() => this.removeQuery(k)}
+      />;
+    });
+
+    return (
+      <ul className='queries--list'>
+        {queries}
+      </ul>
+    );
+  },
+  render: function () {
+    return (
+      <div className='queries'>
+        {this.createQueries()}
+      </div>
+    );
+  }
+});
+	\end{minted}
+		
+	
+\end{enumerate}
 
 
 \section{Backend}
 
-Im Verlaufe der Arbeit wurde erkannt das eine dedizierte Backend-Applikation nötig ist um den Grad der Interaktion und Dynamik zu ermöglichen die Ich mir als Ziel gesetzt hatte. Es gibt einige Frameworks die zur Frage standen, aber ich habe mich schließlich für \texttt{node.js} entschieden, da ich dadurch die Möglichkeit hatte einiges an Code mit dem Frontend zu teilen. Das \texttt{node.js} \textit{non-blocking} ist und \textit{event-driven IO} benutzt macht es Verteilhaft für Applikation die sehr viele requests bekommen. Anders als in klassischen Frameworks wie \texttt{rails} oder \texttt{django} wo bei jedem request ein neuer Thread aufgemacht der solange blockiert ist bis er abgehandelt ist, wird jeder request von einem \textit{event-loop} abgeandelt \citep{tilkov2010node}. Alles in \texttt{node.js} ist asynchron, weswegen diese requests nicht blockieren. Damit ist es mit \texttt{node.js} bis zu 1 Million gleichzeitige Verbindungen zu halten\footnote{Wie hier zu sehen ist: \url{http://blog.caustik.com/category/node-js/}}.
+Im Verlaufe der Arbeit wurde erkannt das eine dedizierte Backend-Applikation nötig ist um den Grad der Interaktion und Dynamik zu ermöglichen die ich mir als Ziel gesetzt hatte. Es gibt einige Frameworks die zur Frage standen, aber ich habe mich schließlich für \texttt{node.js} entschieden, da ich dadurch die Möglichkeit hatte einiges an Code mit dem Frontend zu teilen. Das \texttt{node.js} \textit{non-blocking} ist und \textit{event-driven IO} benutzt macht es Verteilhaft für Applikation die viele requests verarbeiten werden müssen. Anders als in klassischen Frameworks wie \texttt{rails} oder \texttt{django} wo bei jedem request ein neuer Thread aufgemacht der solange blockiert ist bis er abgehandelt ist, wird jeder request von einem \textit{event-loop} abgeandelt \citep{tilkov2010node}. Alles in \texttt{node.js} ist asynchron, weswegen diese requests nicht blockieren. Damit ist es mit \texttt{node.js} möglich bis zu 1 Million gleichzeitige Verbindungen zu halten\footnote{Wie hier zu sehen ist: \url{http://blog.caustik.com/category/node-js/}}.
 
-\subsection{Datenmodell}
+Als Datenbank wurde \textit{mysql} verwendet, die mittels einem ORM\footnote{Object Relationship Mapper, hiermit ist es möglich Datenbanken mittels Klassen und Objekten zu abstrahieren. ORM ist jedoch nur eine einfach Abstraktion und beherrscht nicht alles was SQL kann, jedoch reichen die Fähigkeiten des ORM meistens aus und es kann immer auf rohes-SQL zurückgeriffen werden.} namens \textit{sequelize}\footnote{\url{http://docs.sequelizejs.com/en/latest/}} benutzt wird, so ist es auch möglich das System mit z.B. \textit{sqlite} oder \textit{Postgres} zu benutzen.
 
-\chapter{Ausblick}
+Das verwendete Datenmodell kann in \ref{fig:database} betrachtet werden, es ist komplett mittels \textit{sequelize} beschrieben und ist damit ohne viel Aufwand veränderbar.
+
+Die Kommunikation von Backend und Frontend geschieht per HTTP-Requests, das verwendete Framework ist \textit{express}\footnote{\url{http://expressjs.com/}}.
+
+
+\chapter{Fazit und Ausblick}
+
+In dieser Arbeit wurde vieles gemacht das vor wenigen Jahren noch nicht möglich gewesen wäre, die gewählten Technologien sind größtenteils jung und die Anwendung war, trotz großer Firmen die dahinter stehen, gewagt. Das Entwickeln der Applikation war damit zu einem gewissen Teil eine Fallstudie für neue Technologien in der Webentwicklung.
+Rein technologisch betrachten ist die Arbeit jedoch ein voller Erfolg, sie ist performant, ist ästhetisch anspruchsvoll\footnote{Dies ist natürlich subjektiv.} und die unidirektionale Architektur übersichtlich und erweiterbar.
+Wenn man nach den am Anfang der Arbeit gesetzten Anforderungen geht, erfüllt das Ergebnis diese vollständig.
+
+Doch sind Softwaresysteme schwer nach dem Papier zu beurteilen, gerade wenn es sich um Interface-getriebene Systeme handelt. Das Interface wurde mit bestem Gewissen und viel Liebe zum Detail kreiert, besonders die Darstellung der Suchergebnisse entstand in einem langen Prozess und stellt etwas dar das so vorher noch nicht existiert hat, aber ob diese nun auch eine wirkliche Innovation darstellt muss erst noch herausgefunden werden. Mehr Funktionalität in einem Produkt bedeutet nicht dass es besser ist als das vorherige.
+
+Die Implementierung der Gamification wurde nach aktueller Theorie betrieben und programmtechnisch besitzt sie keine offensichtlichen Mängel, jedoch muss eine wissenschaftliche Analyse betrieben werden um zu zeigen ob diese nun die gewünschten Effekte erzeugt.
+
+Wie jedes Softwaresystem ist auch dieses nicht beendet. Es gibt viele Aspekte wie z.B. die Darstellung der Statistiken, Optimierung der Gamification oder Bereitstellung von neuen Darstellungsformen für die Suchergebnisse die noch behandelt werden können. Allgemein ist das Thema Gamification im Unternehemensbereich um Wissensaustausch zu Fördern ein interessantes Themengebiet das noch viel Potential birgt.
+
+Abschließend sei gesagt, dass ich hoffe, dass meine Arbeit was das Testen von neuen Technologien angeht nicht unbeachtet bleibt und das hier geschriebene Projekt als Beispiel für zukünftige Projekt genommen wird.
 
 \chapter{Appendix}
 
