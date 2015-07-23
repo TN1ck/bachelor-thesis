@@ -7,16 +7,13 @@ var actions = Reflux.createActions([
     'addDomElement',
 
 	// datastore
-    'addItem',
 	'addItems',
-    'loadItems',
 	'voteItem',
     'favouriteItem',
 
 	// queries
     'addQuery',
     'removeQuery',
-    'changedQueries',
 
 	// messages
 	'addFlashMessage',

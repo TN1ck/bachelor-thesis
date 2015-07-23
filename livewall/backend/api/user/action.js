@@ -25,123 +25,116 @@ module.exports = function (req, res) {
     var user = User.findOrCreate({
         where: {username: username}
     }).then(_.first).then(function(user) {
-        user.getBoosters({
+        return user.getBoosters({
             where: {
                 validUntil: {
                     $gt: new Date()
                 }
             }
-        }).then(function (booster) {
+        })
+    }).then(function (booster) {
 
-            var createActionAndAnswer = function (props) {
-                return Action.create(actionProps).then(function (action) {
-                    // action sucessfully created
-                    res.json(action);
-                });
-            };
+        var createActionAndAnswer = function (props) {
+            return Action.create(actionProps).then(function (action) {
+                // action sucessfully created
+                res.json(action);
+            });
+        };
 
-            var points = _.get(POINTS, [group, label], 0);
+        var points = _.get(POINTS, [group, label], 0);
 
-            if (booster) {
-                // there should always be only one Booster
-                points = points * _.get(booster, '[0].multiplicator', 1);
-            }
+        if (booster) {
+            // there should always be only one Booster
+            points = points * _.get(booster, '[0].multiplicator', 1);
+        }
 
-            var actionProps = {
-                group: group,
-                label: label,
-                value: value,
-                points: points
-            };
+        var actionProps = {
+            group: group,
+            label: label,
+            value: value,
+            points: points
+        };
 
-            var answer = function (badges, stats, action) {
-                res.json({
-                    badges: badges,
-                    stats: stats,
-                    action: action
-                });
+        var answer = function (badges, stats, action) {
+            res.json({
+                badges: badges,
+                stats: stats,
+                action: action
+            });
 
-                io.emit('action_created', {
-                    user: user,
-                    action: action,
-                    badges: badges
-                });
-            };
+            io.emit('action_created', {
+                user: user,
+                action: action,
+                badges: badges
+            });
+        };
 
-            // calculate the badges and if there are new ones, add them
-            var calcBadges = function(action) {
+        // calculate the badges and if there are new ones, add them
+        var calcBadges = function(action) {
 
-                var badges = [];
-                var stats = {};
+            var badges = [];
+            var stats = {};
 
-                // recalculate the badges and points
-                var result = calculateBadges(action, user);
+            // recalculate the badges and points
+            var result = calculateBadges(action, user);
 
-                if (result && result.then) {
-                    result.then(function (data) {
+            result.then(function (data) {
 
-                        // check which one the user already has
-                        if (data && data.badges && data.badges.length > 0) {
+                // check which one the user already has
+                if (data && data.badges && data.badges.length > 0) {
 
-                            badges = data.badges;
-                            stats  = data.stats;
+                    badges = data.badges;
+                    stats  = data.stats;
 
-                            user.getBadges({where: {name: badges}}).then(function(result) {
+                    user.getBadges().then(function(result) {
 
-                                result = result.map(function(x) { return x.get({plain: true})});
-                                // the user got new badges!
-                                if (result.length !== badges.length) {
+                        result = result.map(function(x) { return x.get({plain: true})});
 
-                                    var filteredBadges = badges.filter(function (b) {
-                                        return !_.find(result, {name: b});
-                                    }).map(function (b) {
-                                        return _.find(BADGES, {id: b});
-                                    });
+                        var filteredBadges = badges.filter(function (b) {
+                            return !_.find(result, {name: b});
+                        }).map(function (b) {
+                            return _.find(BADGES, {id: b});
+                        });
 
-                                    // insert them into the db but not wait for it to finish
-                                    filteredBadges.forEach(function(badge) {
-                                        Badge.create({
-                                            type: badge.type,
-                                            name: badge.id,
-                                            points: badge.points
-                                        }).then(function (b) {
-                                            b.setUser(user);
-                                        });
-                                    });
-                                    return answer(filteredBadges, stats, action);
-
-                                } else {
-                                    return answer([], stats, action);
-                                }
+                        // insert them into the db but not wait for it to finish
+                        filteredBadges.forEach(function(badge) {
+                            Badge.create({
+                                type: badge.type,
+                                name: badge.id,
+                                points: badge.points
+                            }).then(function (b) {
+                                b.setUser(user);
                             });
-                        } else {
-                            return answer([], data ? data.stats : {}, action);
-                        }
+                        });
+
+                        return answer(filteredBadges, stats, action);
+
                     });
                 } else {
-                    return answer(badges, stats, action);
+                    return answer([], data ? data.stats : {}, action);
                 }
-            };
+            });
 
-            // if the action has an item-uuid add it to the action props
-            if (body.item) {
-                promise = Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
-                    var item = _item[0];
-                    Action.create(actionProps).then(function(action) {
-                        action.setItem(item);
-                        action.setUser(user);
-                        action.save().then(function (a) {
-                            item.setActions([a]);
-                            calcBadges(a);
-                        });
+        };
+
+        // if the action has an item-uuid add it to the action props
+        if (body.item) {
+            promise = Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
+                var item = _item[0];
+                Action.create(actionProps).then(function(action) {
+                    action.setItem(item);
+                    action.setUser(user);
+                    action.save().then(function (a) {
+                        item.setActions([a]);
+                        calcBadges(a);
                     });
                 });
-            } else {
-                return Action.create(actionProps).then(function(action) {
-                    action.setUser(user);
-                    action.save().then(calcBadges);
-                });
-            }
-        });
+            });
+        } else {
+            return Action.create(actionProps).then(function(action) {
+                action.setUser(user);
+                action.save().then(calcBadges);
+            });
+        }
     });
 };

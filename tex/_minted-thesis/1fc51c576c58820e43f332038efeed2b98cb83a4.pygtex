@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{n+nx}{React}\PYGdefault{p}{.}\PYGdefault{n+nx}{createClass}\PYGdefault{p}{(}\PYGdefault{p}{\PYGdefaultZob{}}
+  \PYGdefault{n+nx}{mixins}\PYGdefault{o}{:} \PYGdefault{p}{[}\PYGdefault{n+nx}{Reflux}\PYGdefault{p}{.}\PYGdefault{n+nx}{listenTo}\PYGdefault{p}{(}\PYGdefault{n+nx}{queryStore}\PYGdefault{p}{,} \PYGdefault{l+s+s1}{\PYGdefaultZsq{}onStoreChange\PYGdefaultZsq{}}\PYGdefault{p}{)],}
+    \PYGdefault{n+nx}{onStoreChange}\PYGdefault{o}{:} \PYGdefault{k+kd}{function} \PYGdefault{p}{(}\PYGdefault{n+nx}{queries}\PYGdefault{p}{)} \PYGdefault{p}{\PYGdefaultZob{}}
+      \PYGdefault{k}{this}\PYGdefault{p}{.}\PYGdefault{n+nx}{setState}\PYGdefault{p}{(}\PYGdefault{p}{\PYGdefaultZob{}}
+        \PYGdefault{n+nx}{queries}\PYGdefault{o}{:} \PYGdefault{n+nx}{queries}
+      \PYGdefault{p}{\PYGdefaultZcb{})}
+    \PYGdefault{p}{\PYGdefaultZcb{},}
+  \PYGdefault{n+nx}{getInitialState}\PYGdefault{o}{:} \PYGdefault{k+kd}{function} \PYGdefault{p}{(}\PYGdefault{p}{)} \PYGdefault{p}{\PYGdefaultZob{}}
+    \PYGdefault{k}{return} \PYGdefault{p}{\PYGdefaultZob{}}
+      \PYGdefault{n+nx}{queries}\PYGdefault{o}{:} \PYGdefault{n+nx}{queryStore}\PYGdefault{p}{.}\PYGdefault{n+nx}{queries}
+    \PYGdefault{p}{\PYGdefaultZcb{};}
+  \PYGdefault{p}{\PYGdefaultZcb{},}
+  \PYGdefault{n+nx}{render}\PYGdefault{o}{:} \PYGdefault{k+kd}{function} \PYGdefault{p}{(}\PYGdefault{p}{)} \PYGdefault{p}{\PYGdefaultZob{}}
+    \PYGdefault{k}{return} \PYGdefault{p}{(}
+      \PYGdefault{o}{\PYGdefaultZlt{}}\PYGdefault{n+nx}{div} \PYGdefault{n+nx}{className}\PYGdefault{o}{=}\PYGdefault{l+s+s1}{\PYGdefaultZsq{}queries\PYGdefaultZsq{}}\PYGdefault{o}{\PYGdefaultZgt{}}\PYGdefault{o}{\PYGdefaultZlt{}}\PYGdefault{err}{/div\PYGdefaultZgt{}}
+    \PYGdefault{p}{);}
+  \PYGdefault{p}{\PYGdefaultZcb{}}
+\PYGdefault{p}{\PYGdefaultZcb{});}
+\end{Verbatim}

@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{n+nx}{React}\PYGdefault{p}{.}\PYGdefault{n+nx}{createClass}\PYGdefault{p}{(}\PYGdefault{p}{\PYGdefaultZob{}}
+  \PYGdefault{n+nx}{mixins}\PYGdefault{o}{:} \PYGdefault{p}{[}\PYGdefault{n+nx}{Reflux}\PYGdefault{p}{.}\PYGdefault{n+nx}{connect}\PYGdefault{p}{(}\PYGdefault{n+nx}{queryStore}\PYGdefault{p}{)],}
+  \PYGdefault{n+nx}{render}\PYGdefault{o}{:} \PYGdefault{k+kd}{function} \PYGdefault{p}{(}\PYGdefault{p}{)} \PYGdefault{p}{\PYGdefaultZob{}}
+    \PYGdefault{k}{return} \PYGdefault{p}{(}
+      \PYGdefault{o}{\PYGdefaultZlt{}}\PYGdefault{n+nx}{div} \PYGdefault{n+nx}{className}\PYGdefault{o}{=}\PYGdefault{l+s+s1}{\PYGdefaultZsq{}queries\PYGdefaultZsq{}}\PYGdefault{o}{\PYGdefaultZgt{}}\PYGdefault{o}{\PYGdefaultZlt{}}\PYGdefault{err}{/div\PYGdefaultZgt{}}
+    \PYGdefault{p}{)}
+  \PYGdefault{p}{\PYGdefaultZcb{}}
+\PYGdefault{p}{\PYGdefaultZcb{});}
+\end{Verbatim}

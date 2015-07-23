@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{n+nx}{React}\PYGdefault{p}{.}\PYGdefault{n+nx}{createClass}\PYGdefault{p}{(}\PYGdefault{p}{\PYGdefaultZob{}}
+  \PYGdefault{n+nx}{mixins}\PYGdefault{o}{:} \PYGdefault{p}{[}\PYGdefault{n+nx}{Reflux}\PYGdefault{p}{.}\PYGdefault{n+nx}{connect}\PYGdefault{p}{(}\PYGdefault{n+nx}{queryStore}\PYGdefault{p}{)],}
+  \PYGdefault{n+nx}{removeQuery}\PYGdefault{o}{:} \PYGdefault{k+kd}{function} \PYGdefault{p}{(}\PYGdefault{n+nx}{query}\PYGdefault{p}{)} \PYGdefault{p}{\PYGdefaultZob{}}
+    \PYGdefault{n+nx}{actions}\PYGdefault{p}{.}\PYGdefault{n+nx}{removeQuery}\PYGdefault{p}{(}\PYGdefault{n+nx}{query}\PYGdefault{p}{);}
+  \PYGdefault{p}{\PYGdefaultZcb{},}
+  \PYGdefault{n+nx}{createQueries}\PYGdefault{o}{:} \PYGdefault{k+kd}{function} \PYGdefault{p}{(}\PYGdefault{p}{)} \PYGdefault{p}{\PYGdefaultZob{}}
+    \PYGdefault{k+kd}{var} \PYGdefault{n+nx}{queries} \PYGdefault{o}{=} \PYGdefault{k}{this}\PYGdefault{p}{.}\PYGdefault{n+nx}{state}\PYGdefault{p}{.}\PYGdefault{n+nx}{queries}\PYGdefault{p}{.}\PYGdefault{n+nx}{map}\PYGdefault{p}{(}\PYGdefault{n+nx}{s} \PYGdefault{o}{=}\PYGdefault{o}{\PYGdefaultZgt{}} \PYGdefault{p}{\PYGdefaultZob{}}
+      \PYGdefault{k}{return} \PYGdefault{o}{\PYGdefaultZlt{}}\PYGdefault{n+nx}{Query}
+        \PYGdefault{n+nx}{query}\PYGdefault{o}{=}\PYGdefault{p}{\PYGdefaultZob{}}\PYGdefault{n+nx}{s}\PYGdefault{p}{\PYGdefaultZcb{}}
+        \PYGdefault{n+nx}{removeQuery}\PYGdefault{o}{=}\PYGdefault{p}{\PYGdefaultZob{}}\PYGdefault{p}{(}\PYGdefault{p}{)} \PYGdefault{o}{=}\PYGdefault{o}{\PYGdefaultZgt{}} \PYGdefault{k}{this}\PYGdefault{p}{.}\PYGdefault{n+nx}{removeQuery}\PYGdefault{p}{(}\PYGdefault{n+nx}{k}\PYGdefault{p}{)\PYGdefaultZcb{}}
+      \PYGdefault{o}{/}\PYGdefault{o}{\PYGdefaultZgt{}}\PYGdefault{p}{;}
+    \PYGdefault{p}{\PYGdefaultZcb{});}
+
+    \PYGdefault{k}{return} \PYGdefault{p}{(}
+      \PYGdefault{o}{\PYGdefaultZlt{}}\PYGdefault{n+nx}{ul} \PYGdefault{n+nx}{className}\PYGdefault{o}{=}\PYGdefault{l+s+s1}{\PYGdefaultZsq{}queries\PYGdefaultZhy{}\PYGdefaultZhy{}list\PYGdefaultZsq{}}\PYGdefault{o}{\PYGdefaultZgt{}}
+        \PYGdefault{p}{\PYGdefaultZob{}}\PYGdefault{n+nx}{queries}\PYGdefault{p}{\PYGdefaultZcb{}}
+      \PYGdefault{o}{\PYGdefaultZlt{}}\PYGdefault{err}{/ul\PYGdefaultZgt{}}
+    \PYGdefault{p}{);}
+  \PYGdefault{p}{\PYGdefaultZcb{},}
+  \PYGdefault{n+nx}{render}\PYGdefault{o}{:} \PYGdefault{k+kd}{function} \PYGdefault{p}{(}\PYGdefault{p}{)} \PYGdefault{p}{\PYGdefaultZob{}}
+    \PYGdefault{k}{return} \PYGdefault{p}{(}
+      \PYGdefault{o}{\PYGdefaultZlt{}}\PYGdefault{n+nx}{div} \PYGdefault{n+nx}{className}\PYGdefault{o}{=}\PYGdefault{l+s+s1}{\PYGdefaultZsq{}queries\PYGdefaultZsq{}}\PYGdefault{o}{\PYGdefaultZgt{}}
+        \PYGdefault{p}{\PYGdefaultZob{}}\PYGdefault{k}{this}\PYGdefault{p}{.}\PYGdefault{n+nx}{createQueries}\PYGdefault{p}{(}\PYGdefault{p}{)\PYGdefaultZcb{}}
+      \PYGdefault{o}{\PYGdefaultZlt{}}\PYGdefault{err}{/div\PYGdefaultZgt{}}
+    \PYGdefault{p}{);}
+  \PYGdefault{p}{\PYGdefaultZcb{}}
+\PYGdefault{p}{\PYGdefaultZcb{});}
+\end{Verbatim}

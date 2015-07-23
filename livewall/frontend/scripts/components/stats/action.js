@@ -52,19 +52,20 @@ var actions = {
 export default React.createClass({
     render: function () {
         var {action, user, item} = this.props.action;
+        var username = _.get(user, 'username', '[Gelöscht]');
 
         var a = actions[action.group][action.label];
 
         var createdAt = moment(action.updatedAt).format('HH:MM');
 
         var dict = {
-            username: user.username,
+            username: username,
             createdAt: createdAt,
             points: action.points
         };
         var body = (
             <span>
-                <h5>{user.username} {a.text}</h5>
+                <h5>{username} {a.text}</h5>
                 <hr />
                 <p>{t.stats.actions.body(dict)}</p>
             </span>

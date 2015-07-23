@@ -151,7 +151,7 @@ var Footer = React.createClass({
 
         if (action) {
 
-            var username = action.User.username;
+            var username = _.get(action, '.User.username', '[Gelöscht]');
             var group = action.group;
             var label = action.label;
 

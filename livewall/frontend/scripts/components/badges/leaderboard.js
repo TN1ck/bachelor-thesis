@@ -21,9 +21,10 @@ export default React.createClass({
         //
 
         if (highlightUser) {
-            users = users.filter(x => {
-                return x.username !== highlightUser.username;
-            });
+            var place = highlightUser.place;
+            var length = users.length;
+
+            users = _.slice(users, Math.max(place - 5, 0), (place + 5))
         }
 
 
@@ -32,11 +33,6 @@ export default React.createClass({
         // sort and take best 20
 
         users = users.sort(sortFn).slice(0, 20);
-
-        // add user
-        if (highlightUser) {
-            users = users.concat([highlightUser]).sort(sortFn);
-        }
 
         users = users.sort(sortFn);
 

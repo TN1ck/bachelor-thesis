@@ -81,24 +81,27 @@ export default React.createClass({
     removeQuery: function (query) {
         actions.removeQuery(query);
     },
-    submitCallback: function (result) {
+    addQuery: function (result) {
         actions.addQuery(result, true, true);
     },
     createQueries: function () {
-        return _.map(this.state.queries, (s, k) => {
+        var queries = _.map(this.state.queries, (s, k) => {
             return <Query
-                removeQuery={this.removeQuery.bind(this, k)}
-                key={k}
+                removeQuery={() => this.removeQuery(k)}
                 query={s}/>;
         });
+
+        return (
+            <ul className='queries--list'>
+                {queries}
+            </ul>
+        );
     },
     render: function () {
         return (
             <div className='queries'>
-                <ul className='queries--list'>
-                    {this.createQueries()}
-                </ul>
-                <AddQuery submitCallback={this.submitCallback}/>
+                {this.createQueries()}
+                <AddQuery submitCallback={this.addQuery}/>
             </div>
         );
     }

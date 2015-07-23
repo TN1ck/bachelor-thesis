@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYGdefault{n+nc}{.position\PYGdefaultZhy{}top\PYGdefaultZhy{}left} \PYGdefault{p}{\PYGdefaultZob{}}
+      \PYGdefault{k}{position}\PYGdefault{o}{:} \PYGdefault{k}{absolute}\PYGdefault{p}{;} \PYGdefault{c}{/* or relative/fixed */}
+      \PYGdefault{k}{top}\PYGdefault{o}{:}  \PYGdefault{l+m}{50px}\PYGdefault{p}{;}
+      \PYGdefault{k}{left}\PYGdefault{o}{:} \PYGdefault{l+m}{50px}\PYGdefault{p}{;}
+  \PYGdefault{p}{\PYGdefaultZcb{}}
+\end{Verbatim}

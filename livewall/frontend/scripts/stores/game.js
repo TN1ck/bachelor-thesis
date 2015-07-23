@@ -70,13 +70,6 @@ export default Reflux.createStore({
         // get the data after the user logs in
         user.whenLogedIn(() => {
 
-            this.postAction('auth', 'login');
-
-            api.getActions().then(result => {
-                this.state.actions = result.actions;
-                this.trigger(this.state);
-            });
-
             pointApi.getMonthlyPoints().then(result => {
                 this.state.monthly = result;
                 this.trigger(this.state);
@@ -86,8 +79,14 @@ export default Reflux.createStore({
                 this.state.alltime = result;
                 this.calcLevel();
                 this.trigger(this.state);
+            }).then(() => {
+                this.postAction('auth', 'login');
             });
 
+            api.getActions().then(result => {
+                this.state.actions = result.actions;
+                this.trigger(this.state);
+            });
         });
 
     },
@@ -107,7 +106,7 @@ export default Reflux.createStore({
             dict = _.extend(dict, _dict);
         }
 
-        api.postAction(dict).then((answer) => {
+        return api.postAction(dict).then((answer) => {
             var {action, badges} = answer;
             if (badges.length > 0) {
                 badges.forEach((badge) => {

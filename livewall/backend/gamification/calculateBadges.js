@@ -217,14 +217,16 @@ var calcBadges = {
 };
 
 module.exports = function (action, user) {
-    var group = action.group;
-    var label = action.label;
+    return new Promise(function (resolve) {
+        var group = action.group;
+        var label = action.label;
 
-    var fn = _.get(calcBadges, [group, label]);
+        var fn = _.get(calcBadges, [group, label]);
 
-    if (fn) {
-        return fn(user);
-    } else {
-        return {};
-    }
+        if (fn) {
+            fn(user).then(resolve);
+        } else {
+            return resolve({});
+        }
+    });
 };

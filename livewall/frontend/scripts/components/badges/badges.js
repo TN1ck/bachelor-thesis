@@ -105,7 +105,8 @@ export default React.createClass({
         var points = this.state.alltime.user.points.all;
         // works because LEVELS is an array and the current level
         // is the indice for the next one
-        var pointsNeededForNextLevel = LEVELS[this.state.level].points - points;
+        var pointsNeededForNextLevel = _.get(LEVELS, [this.state.level, 'points']);
+        pointsNeededForNextLevel = pointsNeededForNextLevel ? pointsNeededForNextLevel - points : 0;
 
         return (
             <Grid>
