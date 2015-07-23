@@ -194,10 +194,10 @@
 \vfill
 \begin{center}{\Large\textbf{Abstract}}\end{center}
 
-Das DAI-Labor ist ein Innovationsleiter im Bereich verteilte Suchmaschinen - welche nun nicht mehr reine Forschung sind, sondern wie deren PIA-System von zahlreichen Verwaltungen als Alternative zu privaten Suchmaschinen benutzt wird. Ein interessantes Problem bei Suchmaschinen mit komplett separaten Suchindizes ist es die Ergebnisse dieser zusammen zu führen und dem Endbenutzer zu visualisieren. Diese Arbeit zielt darauf ab eine Visualisierungsform die ähnlich zu einer \textit{Social Media Wall} sein soll, für diese Ergebnisse zu untersuchen und zu erstellen.
-Ein weiteres Themengebiet des DAI-Labors ist die Gamification im Enterprise Bereich, so werden auch diese Mechanismen untersucht und benutzt um die Benutzung der Applikation zu fördern.
-Außerdem wird ausführlich auf die neuen Entwicklungsmethoden im Bereich der Webapplikationen eingegangen und aufgezeigt wie diese die Entwicklung vereinfachen und verbessern können.
-Das Ergebnis dieser Arbeit ist eine voll funktionsfähige und mit neuesten Methoden entwickelte Webapplikation die ein innovatives Interface für Suchergebnisse besitzt deren Benutzung durch nahtlos eingebundene Spielelemente gefördert wird.
+Das DAI-Labor ist eine der führenden Forschungseinrichtungen im Bereich verteilte Suchmaschinen - welche nun nicht mehr reine Forschung sind, sondern wie deren PIA-System von zahlreichen Verwaltungen als Alternative zu privaten Suchmaschinen benutzt wird. Ein interessantes Problem bei Suchmaschinen mit komplett separaten Suchindizes ist es die Ergebnisse dieser zusammen zu führen und dem Endbenutzer zu visualisieren. Diese Arbeit zielt darauf ab eine Visualisierungsform die ähnlich zu einer \textit{Social Media Wall} sein soll, für diese Ergebnisse zu untersuchen und zu erstellen.
+Ein weiteres Themengebiet des DAI-Labors ist die Gamification im Enterprise Bereich, so werden auch diese Mechanismen untersucht und benutzt, um die Benutzung der Applikation zu fördern.
+Außerdem wird ausführlich auf die neuen Entwicklungsmethoden im Bereich der Webapplikationen eingegangen und aufgezeigt, wie diese die Entwicklung vereinfachen und verbessern können.
+Das Ergebnis dieser Arbeit ist eine voll funktionsfähige und mit neuesten Methoden entwickelte Webapplikation, die ein innovatives Interface für Suchergebnisse besitzt und deren Benutzung durch nahtlos eingebundene Spielelemente gefördert wird.
 
 \end{titlepage}
 
@@ -221,39 +221,39 @@ Berlin, \today\\
 
 \chapter{Einleitung}
 
-Die gemeinsame Darstellung von Inhalten aus verschiedenen Quellen ist ein interessantes und weit erforschtes Thema. Die grundsätzliche Idee ist es dem Benutzer die Benutzung bzw. die Konsumierung von Inhalten angenehmer und effizienter zu gestalten, indem ein einheitliches Interface für Inhalte geschaffen wird. Bevor der \textit{digitalen Revolution} war dies ein äußerst aufwendiges und kostspieliges Unterfangen, als Beispiel seien die frühen Enzyklopädien genannt, da diese versuchen sämtliches Wissen an einem Ort in homogener in Sprache und Darstellung bereitzustellen. Durch die momentan verfügbaren Technologien ist das Erstellen einer einheitlichen Datenquelle für verschiedene Inhalte deutlich einfacher geworden, wobei die Schwierigkeit einer guten Zusammenführung dennoch weiterhin besteht und Produkte die dies gut machen sehr erfolgreich sind - wie z.B. die Zusammenführung sozialer Aktivitäten bei Facebook.
-Wenn man sich jedoch auf eine Teilmenge der verfügbaren Informationen beschränkt wie Nachrichten die per RSS verfügbar sind, ist es deutlich einfacher eine angemessene Zusammenführung der Inhalte zu gestalten. Prominente Beispiele für eine Anwendung dieser Art ist die Nachrichten-Applikation pulse \cite{pulse}, die auf Basis von RSS ein angenehmes und attraktives Interface für die gleichzeitige Konsumierung mehrerer Nachrichtenseiten anbietet, der Erfolg von \textit{pulse} spricht für sich mit ca. 22 Millionen Downloads auf dem Android-System.
-Eine der komplexesten Zusammenführungen von Informationen unterschiedlichster Art stellen Suchmaschinen da, da hier eine Reduzierung der benutzten Informationen eine sofortige Verschlechterung der Suchergebnisse bewirkt - die ideale Suchmaschine würde jede Datenquelle und jedes Dateiformat indizieren.
-Suchmaschinen der jetzigen Zeit versuchen sich diesem Optimum immer weiter zu nähern und können mittlerweile eine Vielzahl an Datenformate und Datenquellen benutzen.
-Trotz der unendlichen Diversität der indizierten Daten ist die Darstellung der Suchergebnisse meistens über eine einfache Auflistung in Textform, da jedes Dateiformat mehr oder minder darauf reduziert werden kann.
+Die gemeinsame Darstellung von Inhalten aus verschiedenen Quellen ist ein interessantes und weit erforschtes Thema. Die grundsätzliche Idee ist es, dem Benutzer die Benutzung bzw. die Konsumierung von Inhalten angenehmer und effizienter zu gestalten, indem ein einheitliches Interface für Inhalte geschaffen wird. Vor der \textit{digitalen Revolution} war das ein äußerst aufwendiges und kostspieliges Unterfangen, als Beispiel seien die frühen Enzyklopädien genannt, da diese versuchen, sämtliches Wissen an einem Ort in homogener Sprache und Darstellung bereitzustellen. Durch die momentan verfügbaren Technologien ist das Erstellen einer einheitlichen Datenquelle für verschiedene Inhalte deutlich einfacher geworden, wobei die Schwierigkeit einer guten Zusammenführung dennoch weiterhin besteht und Produkte, die das gut lösen, sehr erfolgreich sind - wie z.B. die Aggregation sozialer Aktivitäten bei Facebook.
+Wenn man sich jedoch auf eine Teilmenge der verfügbaren Informationen beschränkt, wie Nachrichten die per RSS verfügbar sind, ist es deutlich einfacher eine angemessene Zusammenstellung der Inhalte zu gestalten. Prominentes Beispiel für eine Anwendung dieser Art ist die Nachrichten-Applikation pulse \cite{pulse}, die auf Basis von RSS ein angenehmes und attraktives Interface für die gleichzeitige Konsumierung mehrerer Nachrichtenseiten anbietet. Der Erfolg von \textit{pulse} spricht für sich mit ca. 22 Millionen Downloads auf dem Android-System.
+Eine der komplexesten Zusammenführungen von Informationen unterschiedlichster Art stellen Suchmaschinen da, da hier eine Reduzierung der benutzten Informationen, eine sofortige Verschlechterung der Suchergebnisse bewirkt - die ideale Suchmaschine würde jede mögliche Datenquelle und jedes existierende Dateiformat indizieren.
+Suchmaschinen der jetzigen Zeit versuchen sich diesem Optimum immer weiter zu nähern und können mittlerweile eine Vielzahl an Datenformaten und Datenquellen benutzen.
+Trotz der unendlichen Diversität der indizierten Daten werden die Suchergebnisse meistens über eine einfache Auflistung in Textform dargestellt, weil jedes Dateiformat mehr oder minder auf Text reduziert werden kann.
 Neue Visualisierungsformen für Suchergebnisse sind überraschenderweise bisher wenig untersucht worden, andere Bereiche waren da experimentierfreudiger, wie z.B. die Zusammenführung von Social-Media-Kanälen mithilfe von \textit{Social Media Walls}.
-\textit{Social Media Walls} sind eine Form der Darstellung für Inhalte mit kurzen Texten und Bildern aus verschiedenen sozialen Kanälen, die Besonderheit liegt in der Homogenisierung der Inhalte und die gleichzeitige Darstellung von verschiedenen Kanälen.
-Suchergebnisse besitzen ganz ähnliche Attribute wie die Datenpunkte von Social-Media-Kanälen, womit die Frage nahe liegt ob die Visualisierung von Suchergebnissen verbessert werden kann indem eine ähnliche Darstellung zu der von \textit{Social Media Walls} benutzt wird.
-Diese Arbeit zielt darauf diese Frage zu beantworten und eine neue Visualisierungsform für Suchergebnisse zu finden mit der Inspiration von \textit{Social Medial Walls}.
+Sie sind eine Form der Darstellung für Inhalte mit kurzen Texten und Bildern aus verschiedenen sozialen Kanälen. Die Besonderheit liegt in der Homogenisierung der Inhalte und in der gleichzeitigen Darstellung von verschiedenen Kanälen.
+Suchergebnisse besitzen ganz ähnliche Attribute wie die Datenpunkte von Social-Media-Kanälen, womit die Frage nahe liegt, ob die Visualisierung von Suchergebnissen verbessert werden kann, indem eine ähnliche Darstellung wie der von \textit{Social Media Walls} benutzt wird.
+Diese Arbeit bemüht sich diese Frage zu beantworten und eine neue Visualisierungsform für Suchergebnisse zu finden mit der Inspiration von \textit{Social Medial Walls}.
 
-Gamification hat in den letzten Jahren stetig an Zuwachs gewonnen da es ein äußerst effektives Mittel ist um das Erlebnis des Nutzers zu erhöhen und dadurch seine Interaktionen mit der Seite zu fördern.
-Die Benutzung von Gamification im Enterprise-Bereich bzw. in kleinen sozialen Kreises ist jedoch bisher noch nicht allzu populär, die prominentesten Beispiele sind Sport-Apps bei denen Freunde sich miteinander vergleichen können, wie Strava oder Nike+. Eine Integration von Gamification stellt damit in diesem Bereich eine interessante Herausforderung da, dessen Potential bisher noch nicht geklärt ist.
+Der Einsatz von Gamification hat in den letzten Jahren stetig zugenommen, da es ein äußerst effektives Mittel ist, um das Erlebnis des Nutzers zu erhöhen und dadurch seine Interaktionen mit der Seite zu fördern.
+Die Benutzung von Gamification im Enterprise-Bereich bzw. in kleinen sozialen Kreisen ist jedoch bisher noch nicht allzu populär. Die prominentesten Beispiele sind Sport-Apps, bei denen Freunde sich miteinander vergleichen können, wie Strava \cite{strava} oder Nike+ \cite{nike}. Eine Integration stellt damit in diesem Bereich eine interessante Herausforderung dar, dessen Potential bisher noch nicht vollständig geklärt ist.
 
 
 \section{Anforderungen}
 
-Die Anforderungen der Applikation waren von vornherein nicht vollständig geklärt, viel mehr gab es ein grobes Gerüst was die Anwendung liefern sollte. Die komplette Ausarbeitung ist während der Entwicklung geschehen.
+Die Anforderungen an die Applikation waren anfangs größtenteils noch offen. Die genauen Spezifikationen haben sich während der Ausarbeitung ergeben.
 
 \begin{description}
 
 \item[Darstellung von Daten]
 
-Einer der Hauptanforderungen ist die Darstellung von Suchergebnissen (im zukünftigen Verlauf des Textes wird die Darstellung der Suchergebnisse als Kacheln bezeichnet) im Stil einer \textit{Social Media Wall}. Daraus folgen weiterhin die Anforderungen dass es unterschiedliche Kacheln gibt - also für verschiedene Daten verschiedene Darstellungen. Es könnten z.B. Suchergebnisse für Kontakte und Webseiten ganz unterschiedlich aufgebaut sein. Die dargestellten Inhalte sind weiterhin dynamisch, während des Betriebes können Kacheln hinzukommen, entfernt oder anderen Suchbegriffen zugeordnet werden. Die Kacheln bieten zudem Interaktionsmöglichkeiten, Sie können bewertet und favorisiert werden.
+Einer der Hauptanforderungen ist die Darstellung von Suchergebnissen (im zukünftigen Verlauf des Textes wird sie als Kacheln bezeichnet) im Stil einer \textit{Social Media Wall}. Daraus folgen weitere Anforderungen, z.B. dass es unterschiedliche Kacheln gibt - also für verschiedene Daten verschiedene Darstellungen. Es könnten auch Suchergebnisse für Kontakte und Webseiten ganz unterschiedlich aufgebaut sein. Die dargestellten Inhalte sind weiterhin dynamisch, während des Betriebes können Kacheln hinzukommen, entfernt oder anderen Suchbegriffen zugeordnet werden. Die Kacheln bieten zudem Interaktionsmöglichkeiten, sie können bewertet und favorisiert werden.
 
 \item[Bewertungssystem]
 
-  Der Benutzer soll in der Lage sein angezeigte Suchergebnisse zu bewerten und dadurch die Priorisierung von Suchergebnissen zukünftiger Anfragen für \textbf{alle} Benutzer zu verändern.
+  Der Benutzer soll in der Lage sein, angezeigte Suchergebnisse zu bewerten und dadurch die Priorisierung von Suchergebnissen zukünftiger Anfragen für \textbf{alle} Benutzer zu verändern.
 
 \item[Benutzung mehrerer Datenquellen]
   Die angezeigten Suchergebnisse können aus mehreren Datenquellen kommen, d.h. die gleichzeitige Darstellung von Suchergebnissen von z.B. Facebook mit denen von Twitter. Hier war es wieder besonders wichtig, dass man einfach neue Datenquellen hinzufügen kann.
 
 \item[Authentifizierungssystem]
-	Zur Benutzung der Gamification-Elemente und der Suchanfrage bedarf es einer Authentifizierung. Es muss sichergestellt werden, dass kein Benutzer der nicht authentifiziert ist Zugriff auf die Applikation hat.
+	Zur Benutzung der Gamification-Elemente und der Suchanfrage bedarf es einer Authentifizierung. Es muss sichergestellt werden, dass kein Benutzer der nicht authentifiziert ist, Zugriff auf die Applikation hat.
 
 \item[Single Page Application]
   Es soll eine sogenannte \textit{Single Page Application} erstellt werden, d.h. eine Webapplikation bei der JavaScript abseits des initialen Seitenaufrufes alles rendert. Im Gegensatz zur klassischen Methodik bei der jede Interaktion in einer komplett neuen Seite, die vom Server gerendert wird, resultiert.
@@ -286,7 +286,7 @@ Insofern sind diese Angebote für diese Arbeit nicht wirklich lohnenswert weiter
 \subsection {Gamification}
 
 Es gibt einige gute Beispiele von Seiten die ähnliche Inhalte anzeigen und erfolgreich Gamification implementiert haben. Einen schwachen aber effektiven Ansatz verfolgt die Social-News-Seite reddit \cite{reddit}. Jegliche Inhalte (eingereichte Links, Kommentare) der Seite können binär bewertet werden (im reddit-jargon wird hier von \textit{upvotes} und \textit{downvotes} gesprochen). Reicht man nun selbst etwas ein und andere Benutzer bewerten den eingereichten Inhalt, wird die Differenz aus \textit{upvotes} und \textit{downvotes} einem als Karma gutgeschrieben. Karma besitzt ähnlich wie die in Videospielen erreichte Punktzahl keinen Wert in dem Sinne, dass mit ihr nichts weiter gemacht werden kann als den Wert mit den von anderen zu vergleichen.
-Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von reddit bzw. dem Erfolg von reddit welcher beachtlich ist, laut Alexa ist reddit die 29 meist besuchte Webseite der Welt, in den USA ist sie sogar Platz 10.
+Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von reddit bzw. dem Erfolg von reddit welcher beachtlich ist, laut Alexa ist reddit die 32 meist besuchte Webseite der Welt, in den USA ist sie sogar Platz 10 \cite{alexa}.
 Eine ausführliche Untersuchung von \citep{richerichkarma} zeigt die Tragweite von reddits Karma-System. Es dient demnach vor dienlich als Bewertung des eingereichten Inhalts durch andere bzw. die daraus resultierende Selbstbestätigung wenn das eigene Karma erhöht wird.
 Benutzer reddits werden dadurch jedoch darauf gepolt ihre eingereichten Beiträge nach der Anzahl an Karma, welches der Beitrag liefern wird, auszusuchen.
 
@@ -312,7 +312,7 @@ Wie Pinterest\cite{pinterest} oder das Metro-Design von Microsoft gezeigt haben 
     \label{fig:metro_pinterest}
   \end{figure}
 
-Es gibt oft eine Regel nach welchem Muster die Kacheln angeordnet werden sollen, z.B. sollten die neuesten Kacheln auch an oberster Stelle gezeigt werden oder auch \textit{wichtigere} Kacheln prominenter dargestellt werden. Die Kacheln für das Infoboard unterliegen der Regel das sie anhand ihrer Wertung angeordnet werden müssen. Die folgende Analyse wird deshalb viel Wert darauf legen wie sich das Layout verhält, wenn neue Kacheln hinzukommen und damit neu sortiert werden müssen.
+Es gibt oft eine Regel nach welchem Muster die Kacheln angeordnet werden sollen, z.B. sollten die neuesten Kacheln an oberster Stelle gezeigt werden oder \textit{wichtigere} Kacheln prominenter dargestellt werden. Die Kacheln für das Infoboard unterliegen der Regel das sie anhand ihrer Wertung angeordnet werden müssen. Die folgende Analyse wird deshalb viel Wert darauf legen wie sich das Layout verhält, wenn neue Kacheln hinzukommen und damit neu sortiert werden müssen.
 Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Kacheln verglichen, da diese populäre Darstellungen in diesem Bereich sind, die erfolgreich verwendet wurden.
 
 \begin{itemize}
@@ -340,7 +340,7 @@ Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Ka
     \label{fig:livewall_sort}
   \end{figure}
   
-Man kann den Fluss nur behalten indem man die Sortierung Spaltenweise macht, dazu müssen jedoch die Kacheln auf eine Spalte festgesetzt werden z.B. mittels einer Hash-Funktion oder einem simplen Modulo. Dies kann zu verwirrenden Ergebnissen führen, auch wenn es ästhetisch die beste Variante ist.
+Man kann den optimalen Fluss nur behalten indem man die Sortierung Spaltenweise macht, dazu müssen jedoch die Kacheln auf eine Spalte festgesetzt werden z.B. mittels einer Hash-Funktion oder einem simplen Modulo. Dies kann zu verwirrenden Ergebnissen führen, auch wenn es ästhetisch die beste Variante ist.
 
   \item \textbf{Rasterbasierte Anordnung}
   Bei dieser Form werden die einzelnen Datenpunkte in einem einheitlichen Raster dargestellet, d.h. die darstellende Fläche wird in einem Raster der Größe $(a, b)$ unterteilt, die Kacheln können nun die Größe $(x, y)$ mit $ x \in \{1, \dots, a, y \in 1, \dots, b$ besitzen.
@@ -364,12 +364,12 @@ Man kann den Fluss nur behalten indem man die Sortierung Spaltenweise macht, daz
   \begin{itemize}
     \item komplexes Fluss-Verhalten bei neuem Inhalt.
     \item Es müssen komplexere Methoden benutzt werden um Löcher zu verhindern
-    \item Es müssen Designs für die verschiedenen Kachelgrößen erstellt werden
+    \item Es müssen Darstellungen für die verschiedenen Kachelgrößen erstellt werden
     \item unterschiedliche Darstellungsformen können unübersichtlich wirken
   \end{itemize}
 
   \subsection{Probleme beim Flow-Verhalten}
-  Das Flow-Verhalten beim einfügen neuer Inhalte ist bei einem grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex, im ersten Schritt müsste das Behälterproblem gelöst werden und im zweiten Schritt müssten die Elemente anhand ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblem darauf hin zu optimieren das der optische Fluss der Elemente minimiert wird ist keine triviale Aufgabe, weshalb man sich mit den \textit{schlechten} Lösungen zufrieden geben muss. Die JavaScript-Bibliothek \textit{packery} implementiert den ersten Schritt und ordnet die Element anhand einer Lösung des Behälterproblems, bei deren \textit{prepend}-Methode kann sehr gut erahnt werden wie \textit{vewirred} der Fluss bei jedem neuen Element wäre, siehe \ref{fig:grid_flow}.
+  Das Flow-Verhalten beim einfügen neuer Inhalte ist bei einem grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex, im ersten Schritt müsste das Behälterproblem gelöst werden und im zweiten Schritt müssten die Elemente anhand ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblem darauf hin zu optimieren das der optische Fluss der Elemente minimiert wird ist keine triviale Aufgabe, weshalb man sich mit den \textit{schlechten} Lösungen zufrieden geben muss. Die JavaScript-Bibliothek packery\cite{packery} implementiert den ersten Schritt und ordnet die Elemente anhand einer Lösung des Behälterproblems, bei deren \texttt{prepend}-Methode kann sehr gut erahnt werden wie \textit{verwirrend} der Fluss bei jedem neuen Element wäre, siehe \ref{fig:grid_flow}.
 
   \begin{figure}[H]
     \centering
@@ -383,7 +383,7 @@ Man kann den Fluss nur behalten indem man die Sortierung Spaltenweise macht, daz
 
 \subsection{Animationen}
 
-Sinnvolle Animationen sind in den letzten Jahren immer mehr benutzt worden um die Nutzererfahrung zu verbessern, Vergleich hier zu Googles Material Design bei dem dies ein integraler Bestandteil des neuen Design-Konzeptes seitens Google ist.
+Sinnvolle Animationen sind in den letzten Jahren immer mehr benutzt worden um die Nutzererfahrung zu verbessern, Vergleich hier zu Googles Material Design bei dem dies ein integraler Bestandteil des neuen Design-Konzeptes ist.
 So war es auch hier eines der gesetzten Ziele Animationen zu entwickeln die neben dem rein ästhetischen Aspekt einen Vorteil im Verständnis des Datenflusses der Applikation ermöglichen.
 
 \begin{enumerate}
@@ -431,29 +431,34 @@ Menschen sind äußerst gut darin Farben und unterschiedliche Formen schnell zu 
 \subsection{Eindeutige Zuordnung von Farben zu Suchbegriffen}
 
 Da in \ref{sec:tiles} entschieden wurde die Hintergrundfarbe der Kacheln als Hauptunterscheidungsmerkmal der Suchbegriffe zu verwenden, muss entschieden werden wie eine Farbe zu einem Suchbegriff ausgewählt werden soll.
-Alle angezeigten Farben sollten optisch zueinander gehören und miteinander harmonieren, um dies zu erreichen gibt es verschieden Ansätze, bei allen ist jedoch der \textit{erste} Schritt die Konvertierung der Suchbegriffe zu einer Zahl. Diese Funktion sollte die typischen Eigenschaften einer \text{guten} Hash-Funktion mitbringen: gleichmässige Verteilung der Funktionswerte auf den Zielraum und Linkstotalität.
+Alle angezeigten Farben sollten optisch zueinander gehören und miteinander harmonieren, um dies zu erreichen gibt es verschiedene Ansätze, bei allen ist jedoch der \textit{erste} Schritt die Konvertierung der Suchbegriffe zu einer Zahl. Diese Funktion sollte die typischen Eigenschaften einer \text{guten} Hash-Funktion mitbringen: gleichmässige Verteilung der Funktionswerte auf den Zielraum und Linkstotalität.
 Die hier verwendete Funktion stammt von Dan Berstein und ist bekannt unter der Bezeichnung \textit{djb2}.
 
-Der erste Ansatz wäre es eine Liste mit zueinander harmonierenden Farben zu verwenden und jeweils eine auszusuchen. Dieser Ansatz kann jedoch nur mit einer langen Liste von Farben funktionieren, auch passiert es bei disere Methode öfter das Suchbegriffe dieselbe Farbe zugewiesen bekommen, was äußerst unerwünscht ist. Man könnte sich nun überlegen ob komplexe Konfliktresolution betrieben werden sollte - dass wenn Suchbegriffe aufeinander kollidieren eine davon eine andere Farbe bekommt.
+Der erste Ansatz wäre es eine Liste mit zueinander harmonierenden Farben zu verwenden und jeweils eine auszusuchen. Dieser Ansatz kann jedoch nur mit einer langen Liste von Farben funktionieren, auch passiert es bei dieser Methode öfter das Suchbegriffe dieselbe Farbe zugewiesen bekommen, was äußerst unerwünscht ist. Man könnte sich nun überlegen ob komplexe Konfliktresolution betrieben werden sollte - dass wenn Suchbegriffe aufeinander kollidieren eine davon eine andere Farbe bekommt.
 Dadurch wird aber verhindert das jeder Suchbegriff Konsistent die gleiche Farbe bekommt.
 
 Der zweite Ansatz besteht darin die Farben prozedural zu erstellen,
 der naivste Ansatz wäre es hierbei den Wertebereich der Hash-Funktion auf $0 - 2^{16})$ einzuschränken, das Ergebnis in Hexadezimal umzurechnen und als RGB-Farbe zu benutzen. Die dadurch entstehenden Farben sind jedoch unberechenbar und würden nur per Zufall harmonieren, es gibt auch das Problem das zu viele dunkle und helle Farben erstellt werden.
-Der RGB-Farbraum ist jedoch nicht dazu geeignet die Helligkeit der entstehenden Farben zu kontrollieren, dafür sind Wahrnehmungsorientierte Modelle die Farben durch Helligkeit, Sättigung und Farbton beschreiben deutlich geeigneter wie z.B. HSV oder HSL.
-Probleme von den HSx Farbräumen sind die für den Menschen ungünstige Verteilung der Farben, da wir z.B. besser im Unterscheiden von Blautönen sind als welche mit Grün/Rot-Anteilen, auch variiert die Helligkeit der Farben bei Änderung des Farbtons zu sehr.
+Der RGB-Farbraum ist jedoch nicht dazu geeignet die Helligkeit der entstehenden Farben zu kontrollieren, dafür sind Wahrnehmungsorientierte Modelle  die Farben durch Helligkeit, Sättigung und Farbton beschreiben deutlich geeigneter wie z.B. HSV oder HSL.
+Probleme von den HSx Farbräumen sind die für den Menschen ungünstige Verteilung der Farben, da wir z.B. besser im Unterscheiden von Blautönen besser sind als welche mit Grün/Rot-Anteilen, auch variiert die Helligkeit der Farben bei Änderung des Farbtons zu sehr.
 Abhilfe schaffen hier die dafür erstellen Farbräume LAB bzw. die Weiterentwicklung HCL. Diese sind jedoch nicht einfach zu benutzen, da der valide Wertebereich der Eingabeparameter je nach Kombination der Werte unterschiedlich ist. Dies macht es schwer mit diesen Farbräumen Farben zu erstellen. Es gibt im speziellen um den Chroma-Wert, dieser kann grob mit der Helligkeit verglichen werden. Der Wertebereich der Sättigung und des Farbtons sind vom Chroma-Wert abhängig.
 
 Die Wahl des idealen Farbraums ist damit nicht wirklich möglich, mittels HSL ist es einfach eine gute Farbskala prozedural zu erstellen, der Farbbereich ist jedoch ungünstig für den Menschen. LAB/HCL bieten die beste Farbverteilung für die menschliche Wahrnehmung, sind jedoch äußerst schwer zu benutzen. Eine mögliche Kombination der Vorteile beider Farbräume zeigt \citep{husl}, hier wird ein Farbraum mit der Bezeichnung \textit{human-friendly HSL} vorgestellt.
 
-Doch keiner der Farbräume konnte eine \textit{ideale} Farbskala erstellen, es konnten in allen Farbräumen sehr anspruchsvolle Farbskalen mit wenig Kollision erstellt werden. Da Farbenskalen ein subjektives Thema sind wurde die Möglichkeit eingebaut diese in der Applikation zu verändern - dies wurde gleich mit dem Gamification-Aspekt verbunden wodurch man nach und nach neue Freischalten kann und sich die aussuchen kann die einem am besten gefällt.
+Doch keiner der Farbräume konnte eine \textit{ideale} Farbskala erstellen, es konnten in allen Farbräumen sehr anspruchsvolle Farbskalen mit wenig Kollisionen erstellt werden. Da Farbskalen ein subjektives Thema sind wurde die Möglichkeit eingebaut diese in der Applikation zu verändern - dies wurde gleich mit dem Gamification-Aspekt verbunden wodurch man nach und nach neue Freischalten kann und sich die aussuchen kann die einem am besten gefallen.
 
 Zum testen der Farbskalen wurde eine Liste an möglichen Suchbegriffen benutzt, die Ergebnisse sind in \ref{fig:colors} zu sehen.
 
-TODO PICTURE
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/colors}
+    \caption{Farbskalen die mit verschiedenen Farbrepräsentationen erstellt wurden.}
+    \label{fig:colors}
+\end{figure}
 
 \section{Gamification}
 
-Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um das sogenanntes \textit{User-Engagement} erhöhen, allein durch Gamification konnte z.B. die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep{zichermann2011gamification}. Zahlreiche StartUps feiern große Erfolge mit dem hinzufügen von Gamification zu anstrengenden bzw. langweiligen Aufgaben, wie z.B. das Lernen einer Sprache (Duolingo\footnote{https://de.duolingo.com/}) oder Programmieren Lernen (Codecademy\footnote{http://www.codecademy.com/}).
+Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um das sogenanntes \textit{User-Engagement} erhöhen, allein durch Gamification konnte z.B. die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep{zichermann2011gamification, 17}. Zahlreiche StartUps feiern große Erfolge mit dem hinzufügen von Gamification zu anstrengenden bzw. langweiligen Aufgaben, wie z.B. das Lernen einer Sprache (Duolingo\footnote{https://de.duolingo.com/}) oder Programmieren Lernen (Codecademy\footnote{http://www.codecademy.com/}).
 
 Doch was ist Gamification eigentlich? Der Begriff entstand erst 2008 und hat seitdem viele Bedeutungen erlangt, \citep{deterding2011game} bemühten sich eine einheitliche Definition zu finden, die auch im folgenden Kontext verwendet wird.
 
@@ -480,7 +485,7 @@ Im folgenden wird für die Gamification des Infoboard anhand dieser Schritten mo
 
 \subsection{Aktionen und deren Belohnung}
 
-Das Infoboard besitzt ausgewählte Interaktionsmöglichkeiten, sodass alle Teil der Aktionen sind die eine Belohnung geben. Die Gewichtung ist doch auf die Bewertung der Ergebnisse sortiert, da darin der größte Wert gesehen wurde.
+Das Infoboard besitzt ausgewählte Interaktionsmöglichkeiten die alle Teil der Aktionen sind die eine Belohnung geben.
 
 \begin{itemize}
   \item Bewertung der Suchergebnisse
@@ -496,7 +501,7 @@ Durch einige dieser Aktionen wird der User Punkte bekommen, z.B. ist es häufig 
 Die Leistung des Benutzers muss anerkannt werden, im folgenden werden verschiedene Ansätze für Punkte/Bestenlisten und Abzeichen gezeigt und erklärt warum wir uns für den einen oder anderen Ansatz entschieden haben.
 
 \subsubsection{Punkte}
-Punkte sind unerlässlich im Spielekontext, auch wenn die Punkte für den Benutzer nicht mal sichtbar gemacht werden sind sie wichtig um dem Spieledesigner die Möglichkeit zu geben das System zu evaluieren und daraufhin zu verändern \cite{zichermann2011gamification}. Nach \citep{zichermann2011gamification} unterscheidet man erhaltene Punkte in folgende Kategorien.
+Punkte sind unerlässlich im Spielekontext, auch wenn die Punkte für den Benutzer nicht mal sichtbar gemacht werden sind sie wichtig um dem Spieledesigner die Möglichkeit zu geben das System zu evaluieren und daraufhin zu verändern \cite{zichermann2011gamification, 36}. Nach \citep{zichermann2011gamification, 38} unterscheidet man erhaltene Punkte in folgende Kategorien.
 
 \begin{itemize}
 	\item Erfahrungspunkte
@@ -507,16 +512,15 @@ Punkte sind unerlässlich im Spielekontext, auch wenn die Punkte für den Benutz
 \end{itemize}
 
 
-Anstelle eines komplexen Spielesystems wo verschiedene Punktesysteme benutzt werden, wurde hier entschieden nur eine Art von Punkten zu benutzen,
-welche größtenteils auf den Erfahrungspunkten aufbaut. Erfahrungspunkte stellen die wichtigste Kategorie von Punkten dar, jede Interaktion des Benutzers wird mittels Erfahrungspunkte festgehalten (\citep{zichermann2011gamification}) und geben bei einer bedachten Punktevergabe  eine gute Quantifizierung der Leistung des Benutzers womit man Erfahrungspunkte gleichzeitig für eine Bestenliste benutzen kann - und damit als eine Art Ansehenspunkte. Um den Punktemechanismus noch etwas spannender zu gestalten, kann man sie für sogenannte \textit{Booster} eintauschen durch welche jeder Erhalt von Punkten für einen gewissen Zeitraum mit einem Multiplikator erhöht wird z.B. erhält der Benutzer für einen Tag die doppelte Anzahl an Punkten.
+Anstelle eines komplexen Spielesystems wo verschiedene Punktesysteme benutzt werden, wurde hier entschieden nur eine Art von Punkten zu benutzen, welche größtenteils auf den Erfahrungspunkten aufbaut. Erfahrungspunkte stellen die wichtigste Kategorie von Punkten dar, jede Interaktion des Benutzers wird mittels Erfahrungspunkte festgehalten (\citep{zichermann2011gamification, 38 - 39}) und geben bei einer bedachten Punktevergabe  eine gute Quantifizierung der Leistung des Benutzers womit man Erfahrungspunkte gleichzeitig für eine Bestenliste benutzen kann - und damit als eine Art Ansehenspunkte. Um den Punktemechanismus noch etwas spannender zu gestalten, kann man sie für sogenannte \textit{Booster} eintauschen durch welche jeder Erhalt von Punkten für einen gewissen Zeitraum mit einem Multiplikator erhöht wird z.B. erhält der Benutzer für einen Tag die doppelte Anzahl an Punkten.
 
-Die Idee hinter den Boostern ist es den Compulsion-Loop daraufhin zu unterstützen dass der Nutzer sie kaufen wird um seine Punktzahl noch weiter zu erhöhen. Mit dem Ziel seine Punkte zu erhöhen gekoppelt mit der kurzen Verweildauer wird der Nutzer zwangsläufig seine Nutzung mit dem System erhöhen, da sich der Booster sonst nicht gelohnt hätte.
+Die Idee hinter den Boostern ist es den Compulsion-Loop daraufhin zu unterstützen dass der Nutzer sie kaufen wird um seine Punktzahl noch weiter zu erhöhen. Durch die kurze Verweildauer des Boosters und dem Ziel des Benutzers seine Punkte zu erhöhehn, wird dieser zwangsläufig seine Nutzung mit dem System erhöhen, da sich der Booster sonst nicht gelohnt hätte.
 
-Die Punkte sind für den Benutzer sind immer sichtbar und aktualisieren sich in Echtzeit sobald der Benutzer eine Aktion ausführt die Punkte bringt. Zudem werden sie auf der Abzeichenseite nochmals angezeigt wobei eine Balkendiagramm eine genauer Kategorisierung anzeigt woher der Benutzer diese Punkte überhaupt hat, siehe \ref{fig:points}.
+Die Punkte sind für den Benutzer immer sichtbar und aktualisieren sich in Echtzeit sobald der Benutzer eine Aktion ausführt die Punkte bringt. Zudem werden sie auf der Abzeichenseite nochmals angezeigt, wobei ein Balkendiagramm eine genauer Kategorisierung anzeigt, woher der Benutzer diese Punkte überhaupt hat, siehe \ref{fig:points}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/infoboard_userstats.png}
+    \includegraphics[width=0.8\textwidth]{images/infoboard_userstats.png}
     \caption{Die Punkte des Benutzers aufgeteilt in Kategorien.}
     \label{fig:points}
 \end{figure}
@@ -527,8 +531,8 @@ Zusammengefasst benutzen wir \textbf{Erfahrungspunkte} die für alle Aktionen ve
 
 Der Sinn von Bestenlisten ist es einen einfachen Vergleich von Dingen (in unserem Fall Benutzern) zu bieten. Bestenlisten sind zu so einem integralen Bestandteil unseren alltäglichen Lebens geworden, dass wir sofort eine erkennen wenn wir eine sehen. Beispiele für Bestenlisten im echten Leben umfassen die Ergebnisse der Stiftung Warentest, Klausurnotenhaushänge oder die Bundesligatabellen.
 
-Nach \citep{zichermann2011gamification} kann man zwischen zwei Arten von Bestenlisten unterscheiden, die \textit{lass-dich-nicht-entmutigen} und die \textit{unendliche} Bestenliste. Bei ersterer wird der Benutzer, egal welchen Platz er in der Bestenliste inne hat, immer direkt in die Mitte angezeigt. Hierbei ist es irrelevant ob er Platz 43 oder 40000 ist, er sieht sich selbst immer in der Mitte der Liste, um sich herum sieht er seine direkte Konkurrenz. Wenn der Benutzer auf einen der Top 10/20/30 Plätze kommt sollte sich dieses Verhalten jedoch ändern und er sollte die \textit{korrekte} Liste sehen.
-Bei der \textit{undendlichen} Bestenliste werden alle Benutzer angezeigt, es gibt jedoch meistens die Möglichkeit die Anzahl der Benutzer zu verringern, so hat z.B. das Spiel Doodle Jump 3 Arten des Leaderboards: Lokal, Freunde und Global.
+Nach \citep{zichermann2011gamification, 50 - 51} kann man zwischen zwei Arten von Bestenlisten unterscheiden, die \textit{lass-dich-nicht-entmutigen} und die \textit{unendliche} Bestenliste. Bei ersterer wird der Benutzer, egal welchen Platz er in der Bestenliste inne hat, immer direkt in die Mitte angezeigt. Hierbei ist es irrelevant ob er Platz 43 oder 40000 ist, er sieht sich selbst immer in der Mitte der Liste, um sich herum sieht er seine direkte Konkurrenz. Wenn der Benutzer auf einen der Top 10/20/30 Plätze kommt sollte sich dieses Verhalten jedoch ändern und er sollte die \textit{korrekte} Liste sehen.
+Bei der \textit{unendlichen} Bestenliste werden alle Benutzer angezeigt, es gibt jedoch meistens die Möglichkeit die Anzahl der Benutzer zu verringern, so hat z.B. das Spiel Doodle Jump 3 Arten des Leaderboards: Lokal, Freunde und Global.
 
 Ein weiterer Aspekt ist der Zeitraum der angezeigt wird. Vor allem bei Applikationen bei denen die Punktzahl immer weiter akkumuliert werden kann und demnach unendlich Punkte zulassen, kann eine Bestenliste die auf dem kompletten verfügbaren Zeitraum aufbaut für Neuanfänger entmutigend wirken da sie es wohl nie schaffen werden einen höheren Platz zu erreichen wenn jeder doch gleich viele Punkte pro Tag erzielen kann.
 Eine offensichtliche Lösung wäre es den Zeitraum auf z.B. die letzte Woche zu beschränken, was dann aber einen ähnlich negativen Effekt auf die dauerhaften Nutzer haben würde: Sie könnten ihre Vormachtstellung nicht demonstrieren.
@@ -544,47 +548,39 @@ Wir haben uns deswegen entschieden immer 2 Bestenlisten anzuzeigen: Der komplett
 
 \subsection{Abzeichen}
 
-Abzeichen bzw. Badges sind ein etabliertes Element der Gamification. Nach \citep{zichermann2011gamification} nutzen sie viele Eigenschaften der menschlichen Natur um begehrenswert zu sein: das menschliche Sammelverhalten, die plötzliche (positive) Überraschung wenn ein unerwartetes Abzeichen erhalten wurde, Sozialer Status (ähnlich zu Punkten), Pure Ästhetik der Abzeichen und das Aufgabenziel das hinter jedem Abzeichen steckt.
+Abzeichen bzw. Badges sind ein etabliertes Element der Gamification. Nach \citep{zichermann2011gamification, 55} nutzen sie viele Eigenschaften der menschlichen Natur um begehrenswert zu sein: das menschliche Sammelverhalten, die plötzliche (positive) Überraschung wenn ein unerwartetes Abzeichen erhalten wurde, Sozialer Status (ähnlich zu Punkten), Pure Ästhetik der Abzeichen und das Aufgabenziel das hinter jedem Abzeichen steckt.
 
-In manchen Fällen sind Abzeichen so effektiv eingesetzt dass sie sogar Level ersetzen - z.B. mit speziellen Level-Abzeichen, als Beispiel sei Foursquare gennant bei der der Benutzer das Abzeichen für das erreichen einer bestimmten Anzahl an \textit{check-ins}\footnote{Der Begriff \textit{check-in} wird von vielen sozialen Diensten benutzt um an sich an einem realen Ort ``einzuchecken'' - um dies z.B. seinen Freunden mitzuteilen} erhält. Dies funktioniert bei Foursquare darum gut, da \textit{check-ins} der wichtigste Bestandteil der Applikation sind.  Auch haben \textit{check-ins} keine negative Konnotation da es zumeist als überaus positiv angesehen wird wenn man häufig ausgeht und neue Orte kennen lernt und man damit auch gerne zeigt wie viele \textit{check-ins} man schon hatte.
+In manchen Fällen sind Abzeichen so effektiv eingesetzt dass sie sogar Level ersetzen - z.B. mit speziellen Level-Abzeichen, als Beispiel sei Foursquare gennant bei der der Benutzer das Abzeichen für das erreichen einer bestimmten Anzahl an \textit{check-ins}\footnote{Der Begriff \textit{check-in} wird von vielen sozialen Diensten benutzt um an sich an einem realen Ort ``einzuchecken'' - um dies z.B. seinen Freunden mitzuteilen} erhält. Dies funktioniert bei Foursquare darum gut, da \textit{check-ins} der wichtigste Bestandteil der Applikation sind \citep{zichermann2011gamification, 57}. Auch haben \textit{check-ins} keine negative Konnotation da es zumeist als überaus positiv angesehen wird wenn man häufig ausgeht und neue Orte kennen lernt und man damit auch gerne zeigt wie viele \textit{check-ins} man schon hatte.
 
-Trotz aller positiven Aspekte von Abzeichen sind sie nicht einfach zu benutzen, so benutzt \citep{zichermann2011gamification} den Begriff ``badgenfreude'' für ein Konzept, bei dem zu viele langweilige und sinnlose Abzeichen den Sinn von Abzeichen zunichte machen und negative Folgen für das \textit{User Engagement} haben können.
+Trotz aller positiven Aspekte von Abzeichen sind sie nicht einfach zu benutzen, so benutzt \citep{zichermann2011gamification, 56} den Begriff ``badgenfreude'' für ein Konzept, bei dem zu viele langweilige und sinnlose Abzeichen den Sinn von Abzeichen zunichte machen und negative Folgen für das \textit{User Engagement} haben können.
 
 Es ist sehr wichtig dass die Abzeichen den Benutzer nicht stören, er soll es mögen sie zu bekommen. Aber wann mag es ein Benutzer Abzeichen zu bekommen und wann fangen sie an zu stören?
-Als erstes kann man die Frequenz des Erhalts betrachten, um anfangs den Benutzer zu motivieren gibt man ihm am Anfang meistens relativ viele Abzeichen, so ist es typisch ein Abzeichen für die erste Anmeldung, die erste geschaffene Herausforderung ... etc. zu geben.
+Als erstes kann man die Frequenz des Erhalts betrachten, um anfangs den Benutzer zu motivieren gibt man ihm am Anfang meistens relativ viele Abzeichen, so ist es typisch ein Abzeichen für die erste Anmeldung oder die erste geschaffene Herausforderung zu geben.
 Die Frequenz muss jedoch mit der Zeit nachlassen, damit sie den Benutzer nicht von der eigentlichen Applikation ablenken und damit die Abzeichen weiterhin als wertvoll betrachtet werden.
 Es sollte für den Benutzer weiterhin immer offensichtlich sein wofür er ein Abzeichen bekommen hat und welchen Wert es besitzt. Der Wert des Abzeichens sollte graphisch repräsentiert werden z.B. werden sehr oft die Farben Bronze/Silber/Gold als Analogie zu Medaillen benutzt um den Wert zu symbolisieren.
 Damit der Benutzer weiß welche Abzeichen es noch gibt und wie er sie erhalten kann, sollte es möglich sein alle erhältlichen Abzeichen mit einer jeweiligen Beschreibung wie man es denn erhält einzusehen.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/infoboard_leaderboard_user.png}
+    \includegraphics[width=0.6\textwidth]{images/infoboard_leaderboard_user.png}
     \caption{Die Benutzeransicht für die erhaltenen Abzeichen. Der hier gezeigte Benutzer besitzt die Favoriten-Abzeichen in allen Ausführungen.}
     \label{fig:badges}
 \end{figure}
 
-So hat sich schlussendlich folgendes Schema für die Abzeichen des Infoboards ergeben. Es gibt 3 Kategorien von Abzeichen, die jeweils eine anderen Wert darstellen. Die erste Kategorie sind leicht zu erhaltene Abzeichen, die zweite Kategorie sind mittelmäßig schwer zu erhaltene Abzeichen - wenn man das Abzeichen haben möchte kann man es auch in angemessener Zeit erhalten. Die Abzeichen der letzten Kategorie benötigen ca. 50x mehr Zeit als die der ersten, dadurch sollen auch Vielbenutzer weiterhin durch das Abzeichensystem motiviert werden. Visuell wird der Wert durch eine Krone dargestellt, wobei die der letzten Kategorie am imposantesten aussieht, siehe dazu \ref{fig:badges}.
-Der Erhalt von neuen Abzeichen wird so schnell wie möglich dem Benutzer mitgeteilt werden - jede vom Benutzer ausgeführte Aktion wird an das Backend gesendet, welches \textbf{immer} berechnet ob dieser dafür ein neues Abzeichen bekommet. Ist dies der Fall wird das dem Frontend mitgeteilt und der Benutzer bekommt eine Nachricht angezeigt, siehe \ref{fig:flashmessage}. Dieser Vorgang dauert weniger als eine halbe Sekunde.
-Damit das Abzeichensammeln nicht langweilig und obsolet wird, sollten immer mal wieder neue Abzeichen eingeführt werden, der Quelltext wurde daraufhin optimiert damit dies nicht länger als ein paar Minuten dauert.
+So hat sich schlussendlich folgendes Schema für die Abzeichen des Infoboards ergeben. Es gibt 3 Kategorien von Abzeichen, die jeweils eine anderen Wert darstellen. Die erste Kategorie sind leicht zu erhaltene Abzeichen, die zweite Kategorie sind mittelmäßig schwer zu erhaltene Abzeichen, d.h. wenn man das Abzeichen haben möchte kann man es auch in angemessener Zeit erhalten. Die Abzeichen der letzten Kategorie benötigen ca. 50x mehr Zeit als die der ersten, dadurch sollen auch Vielbenutzer weiterhin durch das Abzeichensystem motiviert werden. Visuell wird der Wert durch eine Krone dargestellt, wobei die der letzten Kategorie am imposantesten aussieht, siehe dazu \ref{fig:badges}.
+Der Erhalt von neuen Abzeichen wird so schnell wie möglich dem Benutzer mitgeteilt werden - jede vom Benutzer ausgeführte Aktion wird an das Backend gesendet, welches \textbf{immer} berechnet ob dieser dafür ein neues Abzeichen bekommt. Ist dies der Fall wird das dem Frontend mitgeteilt und der Benutzer bekommt eine Nachricht angezeigt, siehe \ref{fig:flashmessage}. Dieser Vorgang dauert weniger als eine halbe Sekunde.
+Damit das Abzeichensammeln nicht langweilig und obsolet wird, sollten regelmäßig neue Abzeichen eingeführt werden, der Quelltext wurde daraufhin optimiert damit dies nicht länger als ein paar Minuten dauert.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/infoboard_flashmessage.png}
+    \includegraphics[width=0.8\textwidth]{images/infoboard_flashmessage.png}
     \caption{Eine gezeigte Flashmessage, diese werden benutzt um den Benutzer um ein gerade erreichtes Level oder ein neu erhaltenes Abzeichen zu informieren.}
     \label{fig:infoboard_flashmessage}
 \end{figure}
 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/infoboard_leaderboard_user.png}
-    \caption{Die Benutzerzentrische Bestenliste, hier sieht sich der Benutzer immer in der Mitte der Liste.}
-    \label{fig:leaderboarduser}
-\end{figure}
-
 \chapter{Technische Umsetzung}\label{chap:tech}
 
-In \ref{chap:concept} wurde die Applikation soweit geplant, dass die Technische Umsetzung erfolgen kann, dies geschieht in diesem Kapitel. Viel Wert wurde darauf gelegt die getroffene Technologieentscheidung zu begründen, wie auch die getroffene Architekturentscheidung.
+In \ref{chap:concept} wurde die Applikation soweit geplant, dass die Technische Umsetzung erfolgen kann, dies geschieht in diesem Kapitel. Viel Wert wurde darauf gelegt die getroffene Technologieentscheidungen zu begründen, wie auch die getroffene Architekturentscheidung.
 Die Technische Umsetzung wird sich größtenteils mit dem Frontend beschäftigen, das Backend wird nur kurz in \ref{sec:backend} behandelt.
 
 
@@ -600,38 +596,38 @@ Die Wahl der zu verwendeten Technologie ist ein wichtiger Punkt der die darauffo
   \item Die Technologie hat keine große Einstiegsbarriere \\
   Es wird versucht nicht allzu viele Frameworks zu benutzen und wenn, dann welche die weitestgehend bekannt sind und/oder in dem DAI-Labor viel benutzt werden. Wenn Bibliotheken verwendet werden, wird darauf geachtet das sie einfach zu lernen sind und intuitiv in der Benutzung.
   \item Die Technologie ist zukunftssicher \\
-  Es ist immer schwer ab zu schätzen welche Technologie länger überleben wird, doch wird versucht anhand von Faktoren wie Popularität, Aktivität der Entwicklung und Einsatz bei großen Firmen dies so gut wie möglich zu garantieren.
+  Es ist immer schwer abzuschätzen welche Technologie länger überleben wird, doch wird versucht anhand von Faktoren wie Popularität, Aktivität der Entwicklung und Einsatz bei großen Firmen dies so gut wie möglich zu garantieren.
 \end{itemize}
 
 \subsection{Programmiersprache}
 
-Die wichtigste Wahl ist die Wahl der Programmiersprache, im Frontend wird diese Entscheidung größtenteils dadurch abgenommen das Browser exklusiv die Ausführung von JavaScript beherrschen, andere Sprachen sind nur über Plugins (Flash, Java) verfügbar deren Relevanz in den letzten Jahrzehnten soweit abgenommen hat, dass sie keine Option mehr darstellen.
+Die wichtigste Wahl ist die Wahl der Programmiersprache, im Frontend wird diese Entscheidung größtenteils dadurch abgenommen das Browser exklusiv die Ausführung von JavaScript beherrschen, andere Sprachen sind nur über Erweiterungen (Flash, Java) verfügbar deren Relevanz in den letzten Jahrzehnten soweit abgenommen hat, dass sie keine Option mehr darstellen.
 
-JavaScript ist jedoch nicht die beliebteste Sprache, die Tatsache das die Sprache in ca. 10 Tagen geschrieben wurde mag dies erklären \citep{severance2012javascript}, so kam es dass JavaScript ist in den letzten Jahren immer mehr zu einem Kompilierungsziel geworden ist, d.h. andere Programmiersprachen kompilieren zu validem JavaScript-Code. Diese Praxis ist mittlerweile so populär geworden, dass JavaScript auch als \textit{Assembly of the Web}\footnote{Hier sogar vom JavaScript-Erfinder persönlich: \url{https://brendaneich.com/2015/06/from-asm-js-to-webassembly/}} bezeichnet wird. Die populärsten Programmiersprachen die zu JavaScript kompilieren sind vermutlich CoffeeScript, TypeScript und Java (mittels GWT). Die Liste der Sprachen ist jedoch endlos mit über 300-Sprachen die zu JavaScript kompilieren\footnote{Eine Auflistung dieser ist auf dem github-repository von CoffeeScript zu finden \url{https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js}}.
+JavaScript ist jedoch nicht die beliebteste Sprache, die Tatsache das die Sprache in ca. 10 Tagen geschrieben wurde mag dies erklären \citep{severance2012javascript}, so kam es dass JavaScript in den letzten Jahren immer mehr zu einem Kompilierungsziel geworden ist, d.h. andere Programmiersprachen kompilieren zu validem JavaScript-Code. Diese Praxis ist mittlerweile so populär geworden, dass JavaScript auch als \textit{Assembly of the Web} \cite{webassembly} bezeichnet wird. Die populärsten Programmiersprachen die zu JavaScript kompilieren sind vermutlich CoffeeScript, TypeScript und Java (mittels GWT). Die Liste der Sprachen ist jedoch endlos mit über 300-Sprachen die zu JavaScript kompilieren. Eine Auflistung dieser ist auf dem Github-repository von CoffeeScript zu finden \cite{javascriptcompile}.
 
-\citep{zakai2011emscripten} veröffentlichten mit \textit{emscripten} das mit Abstand aufwändigste Projekt in diesem Bereich. Dies ist ein LLVM-zu-JavaScript-Kompilierer mit dem es unter anderem möglich ist C++-Quelltext zu JavaScript zu kompilieren, wodurch z.B. TeX-Compiler im Browser ausgeführt werden konnten\footnote{\url{https://github.com/manuels/texlive.js/}}.
+\citep{zakai2011emscripten} veröffentlichten mit \textit{emscripten} das mit Abstand aufwändigste Projekt in diesem Bereich. Dies ist ein LLVM-zu-JavaScript-Kompilierer mit dem es unter anderem möglich ist C++-Quelltext zu JavaScript zu kompilieren, wodurch z.B. TeX-Compiler im Browser ausgeführt werden konnten \cite{texlive}.
 
 Die Nutzung dieser Sprachen, vor allem der populärsten hat viele Vorteile von vereinfachter Syntax (CoffeeScript) hin zu statischer Typisierung (GWT), so bleibt die Frage ob es überhaupt noch zukunftssicher bzw. praktikabel ist reines JavaScript zu benutzen.
-Die Frage kann mit einem klaren Ja beantworten werden, wenn eine Prämisse für die Ausführungsumgebung gesetzt wird: Sie unterstützt JavaScript in der Version 6, bzw. ECMAScript 6 (Im nachfolgenden mit ESx abgekürzt).
-Die für JavaScript zuständige Organisation ECMA investierte nämlich viel Arbeit darein die Tatsache dass JavaScript nur in 10 Tagen geschrieben wurde etwas weniger offensichtlich zu machen und mit ECMAScript 6 zeigt diese am deutlichsten Früchte. Kaum ein Merkmal dass man von modernen Sprachen wie Ruby oder Python kennt muss man hier missen.
+Die Frage kann mit einem klaren Ja beantworten werden, wenn eine Prämisse an die Ausführungsumgebung gesetzt wird: Sie unterstützt JavaScript in der Version 6, bzw. ECMAScript 6 (Im nachfolgenden mit ESx abgekürzt).
+Die für JavaScript zuständige Organisation ECMA investierte viel Arbeit darein, die Tatsache dass JavaScript nur in 10 Tagen geschrieben wurde etwas weniger offensichtlich zu machen. Mit ECMAScript 6 \cite{es6} zeigt diese Arbeit am deutlichsten Früchte. Funktionalitäten wie Destructuring, Generators , Modules, Template Strings oder Promises lassen ES6 zu einer modernen Sprache werden.
 
-Die aktuellen Browser unterstützen bisher jedoch nur einen Bruchteil der ES6 Spezifikation, eine komplette Übersicht ist hier zu finden \url{http://kangax.github.io/compat-table/es5/}. Es wird vermutlich noch bis in 2017 andauern bis alle aktuellen Browser ES6 ausreichend unterstützen.
+Die aktuellen Browser unterstützen bisher jedoch nur einen Bruchteil der ES6 Spezifikation, eine komplette Übersicht ist unter \cite{es6features} zu finden. Es wird vermutlich noch bis in 2017 andauern bis alle aktuellen Browser ES6 ausreichend unterstützen.
 
 Doch sind die Vorteile so überwiegend im Vergleich zu ES5, dass eine Nutzung von ES6 äußerst wünschenswert ist.
-Die Lösung das Problems wurde im Grunde schon erwähnt: Man kompiliert JavaScript zu JavaScript bzw. ES6 zu ES5.
+Die Lösung des Problems wurde im Grunde schon erwähnt: Man kompiliert JavaScript zu JavaScript bzw. ES6 zu ES5.
 So absurd dies auch klingen mag, die Tatsache das JavaScript heutzutage immer im Zusammenhang mit Build-Tools benutzt wird die z.B. den Quelltext verkleinern oder ihn unlesbarer machen, bedeutet dass der Entwickler nur minimalen Aufwand betreiben muss damit er ES6 auch in ES5 Umgebungen benutzen kann.
 
-So wurde für diese Arbeit entschieden, dass ES6 die beste Wahl für eine Programmiersprache ist. Alle Browser werden ES6 in Zukunft unterstützen womit ES6 keinesfalls eine obsolete Sprache werden wird. Außerdem ist im Vergleich zu den richtigen Kompilier-zu-JavaScript-Sprachen, ES6 die geringste Hürde für neue Entwickler die JavaScript kennen: ES6 ist abwärtskompatibel und die neuen Funktionalitäten können in ein paar wenigen Stunden gelernt werden, wenn dies überhaupt nötig ist.
+So wurde für diese Arbeit entschieden, dass ES6 die beste Wahl für die Programmiersprache ist. Alle Browser werden ES6 in Zukunft unterstützen, womit ES6 keinesfalls eine obsolete Sprache werden wird. Außerdem ist im Vergleich zu den richtigen Kompilier-zu-JavaScript-Sprachen, ES6 die geringste Hürde für neue Entwickler die JavaScript schon kennen: ES6 ist abwärtskompatibel und die neuen Funktionalitäten können in ein paar wenigen Stunden gelernt werden, wenn dies überhaupt nötig ist.
 
-Neben reinem ES6 benutzen wir jedoch auch noch eine von Facebook entwickelte Erweiterung namens JSX, diese Erweitert JavaScript mit der Möglichkeit UI-Komponenten mit einer HTML-Syntax zu beschreiben. Dies wäre z.B. valides JSX:
+Neben reinem ES6 benutzen wir jedoch auch noch eine von Facebook entwickelte Erweiterung namens JSX \cite{jsx}, diese Erweitert JavaScript mit der Möglichkeit UI-Komponenten mit einer HTML-Syntax zu beschreiben. Dies wäre z.B. valides JSX:
 
 \begin{minted}{javascript}
 	var header = <h1>Überschrift</h1>;
 \end{minted}
 
 Es mag merkwürdig erscheinen HTML-markup direkt in JavaScript zu schreiben, doch wird dadurch die Benutzung von der hier verwendeten Interface-Bibliothek React.js deutlich vereinfacht.
-Bisher ist JSX ein Vorschlag von Facebook an ECMA, doch ist die Benutzung von JSX mittlerweile so verbreitet, so unterstützt eslint wie auch der ES6-ES5-Kompilierer Babel JSX, dass eine Integration etwas JSX-ähnlichem ziemlich wahrscheinlich ist.
-Mittels ES6-templatestrings ist es möglich \textit{Domain Specific Languages} zu schreiben, so gibt es mittlerweile auch ein proof-of-concept JSX rein in ES6 zu schreiben.
+Bisher ist JSX ein Vorschlag von Facebook an ECMA, doch ist die Benutzung von JSX mittlerweile so verbreitet, so unterstützt eslint \cite{eslint} wie auch der ES6-ES5-Kompilierer Babel JSX \cite{babel}, dass eine Integration etwas JSX-ähnlichem ziemlich wahrscheinlich ist.
+Mittels ES6-templatestrings ist es möglich \textit{Domain Specific Languages} zu schreiben, so gibt es mittlerweile auch ein proof-of-concept JSX rein in ES6 zu schreiben \cite{templatestrings}.
 
 Neben JavaScript muss auch CSS-geschrieben werden, da CSS ebenfalls viele Mängel hat gibt es auch hier Projekte wie less oder sass, die CSS z.B. mit Variablen erweitern. Es hat sich bewährt less oder sass zu benutzen, so wurde auch für diese Applikation entschieden less zu benutzen, da damit auch Bootstrap geschrieben wurde - das hier verwendete CSS-Framework.
 Das Ausmaß dieser Entscheidung ist jedoch kein Vergleich zu der Programmiersprachen-Entscheidung, weswegen es nicht lohnt die Kosten/Nutzen genauer zu betrachten.
@@ -639,7 +635,7 @@ Das Ausmaß dieser Entscheidung ist jedoch kein Vergleich zu der Programmierspra
 \subsection{Ladezeiten}\label{sec:loadingtimes}
 
 Ein großer Faktor der in anderen Umgebungen lange Zeit keine Rolle mehr spielt ist die Größe des Quelltextes. Bevor bei Javascript irgendeine Bibliothek benutzt werden kann muss sie zuerst beim Benutzer heruntergeladen und ausgeführt werden, was bei langsamen Computern mit nicht perfekter Internetverbindung ein enormer Bestandteil ist. Um den Punkt nochmal zu verdeutlichen wurde ein kleiner Test gemacht. Dazu wurde eine EmberJS-Demoapplikation ausgeführt\footnote{Auf einem Macbook Air mid 2013 in minimal Konfiguration und dem Chrome Browser in Version 41, die vorhandene Internetverbindung hatte eine Übertragungsrate von $50000 \frac{\text{bit}}{s}$} die sehr wenig wirkliche Logik besitzt, sodass gut zu zeigen ist wie viel das Herunterladen und Ausführen nur der Bibliotheken ausmachen.
-Die Anwendung ist auf github zu finden\footnote{\url{http://jkneb.github.io/ember-crud/unstyled/\#/users}}.
+Die Anwendung ist auf Github zu finden \cite{embercrud}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/performance_1.png}
@@ -658,7 +654,7 @@ Aufgrund dessen wurde neben dem Versuch möglichst wenige Bibliotheken oder Fram
 
 \subsection{Frameworks und Bibliotheken}
 
-Es wurden schon etliche Webanwendungen entwickelt, somit gibt es kaum ein Problem das noch nicht gelöst wurde. Es gibt tausende JavaScript-Bibliotheken und Frameworks die einem das Leben einfacher machen sollen, ein klarer Platzhirsch ist jedoch nur für Subkategorien wie Datenvisualisierung zu finden, so ist die Wahl der Frameworks/Bibliotheken keinesfalls so trivial wie etwa in Java, wo Spring/Hibernate der Stanard ist wenn man eine Webanwendung schreiben will.
+Es wurden schon etliche Webanwendungen entwickelt, somit gibt es kaum ein Problem das noch nicht gelöst wurde. Es gibt tausende JavaScript-Bibliotheken und Frameworks die einem das Leben einfacher machen sollen, ein klarer Platzhirsch ist jedoch nur für Subkategorien wie Datenvisualisierung zu finden. So ist die Wahl der Frameworks/Bibliotheken keinesfalls so trivial wie etwa in Java, wo Spring/Hibernate der Standard sind wenn man eine Webanwendung schreiben will.
 
 Es ist schwer in der Welt der Webanwendungen mit der Geschwindigkeit, in der neue (und auch praktikable) Bibliotheken und Frameworks veröffentlicht werden, mitzuhalten. Der nachfolgende Abschnitt befasst sich deshalb ausführlicher mit dem Entscheidungsfindungsprozess in diesem Bereich und zeigt auf welche Dinge alles geachtet werden muss.
 
@@ -667,31 +663,30 @@ Es gibt viele Vorteile die für die Benutzung eines Frameworks sprechen: Große 
 
 Die Benutzung eines Frameworks spart also Zeit und beschleunigt die Entwicklung, doch gibt es auch Gründe warum immer mehr Leute sich den großen Frameworks abwenden.
 Alle Frameworks besitzen eine große Lernkurve, jeder Entwickler ist gezwungen das Framework zu lernen um produktiv mitzuarbeiten da ein Framework jeden Aspekt der Anwendung berührt. Frameworks veralten gerne und auch bei aktiver Entwicklung sind ständige API-Änderungen der Standard. Dem Entwickler bleibt nichts anderes übrig als sich mit dem Framework zu bewegen. Die vom Framework bereitgestellten Abstraktionen sind oft nicht optimal und verbergen zu viel oder sind auf einen bestimmten Benutzungszweck hin optimiert, womit sie mehr ein Hindernis darstellen können sobald etwas gemacht werden muss dass die Entwickler vergessen haben zu beachten.
-Weiterhin ist jede vom Framework erschaffene Abstraktion mehr ausgeführter Quelltext und wenn diese nicht gerade direkt der Geschwindigkeit der Applikation zu gute kommen, verlangsamen sie die Applikation. Dies ist normalerweise nicht so sonderlich wichtig, jedoch sind Webandwendungen Benutzerinterfaces bei der die Geschwindigkeit einen erheblichen Teil der Benutzererfahrung ausmacht, siehe dazu auch \ref{sec:loadingtimes} wo gezeigt wird, dass die Größe des Quelltextes einen erheblichen Einfluss auf Ladezeiten hat.
+Weiterhin ist jede vom Framework erschaffene Abstraktion mehr ausgeführter Quelltext und wenn diese nicht gerade direkt der Geschwindigkeit der Applikation zu gute kommen, verlangsamen sie die Applikation. Dies ist normalerweise nicht so sonderlich wichtig, jedoch sind Webanwendungen Benutzerinterfaces bei der die Geschwindigkeit einen erheblichen Teil der Benutzererfahrung ausmacht, siehe dazu auch \ref{sec:loadingtimes} wo gezeigt wird, dass die Größe des Quelltextes einen erheblichen Einfluss auf Ladezeiten hat.
 
-Allen Vorteilen zu trotz wurde für diese Arbeit entschieden das die Benutzung eines Frameworks nicht die optimale Lösung ist, da z.B. die Visualisierung so aufwändig ist, dass hier von vornherein klar war das die gegebenen Abstraktionen nicht ausreichen würden, da wir viel Erfahrung haben mit der Benutzung einiger großer Frameworks wie AngularJS und EmberJS.
+Allen Vorteilen zu trotz wurde für diese Arbeit entschieden das die Benutzung eines Frameworks nicht die optimale Lösung ist, da z.B. die Visualisierung so aufwändig ist, dass unsere Erfahrung mit großen Frameworks es deutlich machten das die gegebenen Abstraktionen derer nicht ausreichen würden.
 
-Es wurde entschieden eine Ansammlung von Bibliotheken zu benutzen, die sich für ihren Bereich bewährt haben. Dadurch wird garantiert dass die bestmögliche Benutzererfahrung möglich ist, da sobald eine Bibliothek nicht ausreicht ersätzt oder ergänzt werden kann.
+Es wurde deshalb entschieden eine Ansammlung von Bibliotheken zu benutzen, die sich für ihren Bereich bewährt haben. Dadurch wird garantiert dass die bestmögliche Benutzererfahrung möglich ist, da sobald eine Bibliothek nicht ausreicht ersetzt oder ergänzt werden kann.
 
 Es wurden am Ende folgende Bibliotheken verwendet
 
 \begin{description}
-	\item[react] wird für die komplette Darstellung der Applikation benutzt. Im nächsten Abschnitt gehe ich auf \texttt{react.js} noch genauer ein, da es viele Innovationen in diesen Bereich bringt.
-	\item[react-router\footnote{\url{https://github.com/rackt/react-router}}] ist eine routing-Bibliothek für react und macht es sehr einfach URLs zu einer View zuzuordnen.
-	\item[reflux\footnote{https://github.com/spoike/refluxjs}] ist eine kleine Bibliothek für eine unidirektionelle-Datenfluss Architektur, mehr dazu im nächsten Abschnitt.
-	\item[bootstrap \footnote{\url{http://getbootstrap.com/}}] ist das meist benutzte CSS-Framkework und vereinfacht das erstellen von responsiven Applikationen. Weiterhin stellt es einige nützliche Komponenten wie z.B. eine Navigationsleiste bereit.
-	\item[react-bootstrap\footnote{\url{http://react-bootstrap.github.io/}}] bietet für alle verfügbaren bootstrap-Komponenten die entsprechenden react-Komponenten.
-	\item [react-router-bootstrap\footnote{\url{https://github.com/react-bootstrap/react-router-bootstrap}}] verbindet \texttt{react-bootstrap}-Komponentent mit \texttt{react-router}.
-	\item[d3.js\footnote{\url{http://d3js.org/}}] ist die berühmteste Bibliothek für Visualisierungen. Hiermit wurde das animierte Säulendiagramm geschrieben, aber auch vieles der Farberzeugung entstand mithilfe von \texttt{d3.js}.
-	\item[immutable.js\footnote{\url{https://facebook.github.io/immutable-js/}}] bringt nicht veränderbare Datenstrukturen in die Welt von JavaScript. Sie wurde bei der Verarbeitung der Suchergbnisse bis hin zu deren Darstellung benutzt, der Vorteil wird unten noch genauer betrachtet.
-	\item[lodash\footnote{\url{https://lodash.com/}}] ist eine utility-Bibliothek mit einem starken Fokus auf funktionaler Programmierung. Sie wurde so ziemlich überall in der Applikation benutzt wo Daten verarbeitet werden mussten.
-	\item[cookies-js\footnote{\url{https://github.com/ScottHamper/Cookies}} / store.js\footnote{https://github.com/marcuswestin/store.js/}]sind mini-Bibliotheken die das arbeiten mit \textit{cookies} und \textit{localstorage} vereinfachen. \textit{cookies} werden benutzt um den Benutzer eingeloggt zu lassen und \textit{localstorage} um Suchergebnisse zu cachen.
-	\item[moment.js\footnote{\url{http://momentjs.com/}}] vereinfacht den Umgang mit Datums-Objekten und bietet Funktionen wie \texttt{add(1, \'day\')} und erweiterte Formattierungsmöglichkeiten. In der aktuellen Version ist es mit \texttt{moment} nicht möglich deren eigene \textit{duration} Objekte zu formatieren, dafür wurde das plugin \texttt{moment-duration-format}\footnote{\url{https://github.com/jsmreese/moment-duration-format}} benutzt welche womöglich auch bald zu \texttt{moment} gehören wird.
+	\item[React.js] wird für die komplette Darstellung der Applikation benutzt. Im nächsten Abschnitt gehe ich auf React.js noch genauer ein, da es viele Innovationen in diesen Bereich bringt.
+	\item[react-router \cite{reactrouter}] ist eine routing-Bibliothek für react und macht es sehr einfach URLs zu einer View zuzuordnen.
+	\item[refluxjs \cite{reflux}] ist eine kleine Bibliothek für eine unidirektionelle-Datenfluss Architektur, mehr dazu im nächsten Abschnitt.
+	\item[bootstrap \cite{bootstrap}] ist das meist benutzte CSS-Framkework und vereinfacht das erstellen von responsiven Applikationen. Weiterhin stellt es einige nützliche Komponenten wie z.B. eine Navigationsleiste bereit.
+	\item[react-bootstrap \cite{reactrouter}] bietet für alle verfügbaren bootstrap-Komponenten die entsprechenden react-Komponenten.
+	\item[d3.js \cite{bostock2011d3}] ist die berühmteste Bibliothek für Visualisierungen. Hiermit wurde das animierte Säulendiagramm geschrieben, aber auch vieles der Farberzeugung entstand mithilfe von d3.js.
+	\item[immutable.js \cite{Immutable}] bringt nicht veränderbare Datenstrukturen in die Welt von JavaScript. Sie wurde bei der Verarbeitung der Suchergbnisse bis hin zu deren Darstellung benutzt, der Vorteil wird unten noch genauer betrachtet.
+	\item[lodash \cite{lodash}] ist eine utility-Bibliothek mit einem starken Fokus auf funktionaler Programmierung. Sie wurde so ziemlich überall in der Applikation benutzt wo Daten verarbeitet werden mussten.
+	\item[cookies-js \cite{cookiesjs} / store.js \cite{storejs}]sind mini-Bibliotheken die das arbeiten mit \texttt{cookies} und \texttt{localstorage} vereinfachen. \texttt{cookies} werden benutzt um den Benutzer eingeloggt zu lassen und \texttt{localstorage} um Suchergebnisse zu cachen.
+	\item[moment.js\cite{momentjs}] vereinfacht den Umgang mit Datums-Objekten und bietet Funktionen wie \texttt{add(1, \'day\')} und erweiterte Formattierungsmöglichkeiten.
 \end{description}
 
 \subsection{Tooling}
 
-Das Tooling im Frontend hat sich in den letzten Jahren rasant verändert, kaum jemand schreibt heutzutage noch JavaScript oder CSS ohne das ein sogennantes Build-Tool diese Dateien nochmals verändern.
+Das Tooling im Frontend hat sich in den letzten Jahren rasant verändert, kaum jemand schreibt heutzutage noch JavaScript oder CSS ohne das ein sogenanntes Build-Tool diese Dateien nochmals verändern.
 
 Die bekanntesten Build-Tools sind Gulp\cite{gulp}, Grunt\cite{grunt}, Webpack\cite{webpack} und Brunch\cite{brunch}.
 

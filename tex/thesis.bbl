@@ -34,6 +34,22 @@
       \field{title}{The Evolution of Flux Frameworks}
       \field{year}{2015}
     \endentry
+    \entry{lodash}{misc}{}
+      \true{moreauthor}
+      \name{author}{1}{}{%
+        {{hash=72eca2a1f02eafce82954fc5148b50c7}{Ashkenas}{A\bibinitperiod}{Jeremy}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{f059c2b6c125f6899a2410920dd75275}
+      \strng{fullhash}{f059c2b6c125f6899a2410920dd75275}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://lodash.com/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{A JavaScript utility library delivering consistency, modularity, performance, and extras.}
+      \field{year}{2009}
+    \endentry
     \entry{grunt}{misc}{}
       \name{author}{2}{}{%
         {{hash=979be4302d31788ab8c75b7c36be4aab}{Bocoup}{B\bibinitperiod}{}{}{}{}{}{}}%
@@ -64,6 +80,29 @@
       \field{note}{[Online; accessed 06-07-2015]}
       \field{title}{HUSL Color Space}
       \field{year}{2015}
+    \endentry
+    \entry{bostock2011d3}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7976650397b66b1dceb144cf6681be6d}{Bostock}{B\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=0a3ecc5e23f1fa4bb83baf3f62399844}{Ogievetsky}{O\bibinitperiod}{Vadim}{V\bibinitperiod}{}{}{}{}}%
+        {{hash=c1fc05b7156dc351ceebcc7f14fe27ee}{Heer}{H\bibinitperiod}{Jeffrey}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{6a25e78a45a3a747991edf5615dd843c}
+      \strng{fullhash}{6a25e78a45a3a747991edf5615dd843c}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Visualization and Computer Graphics, IEEE Transactions on}
+      \field{number}{12}
+      \field{title}{D$^3$ data-driven documents}
+      \field{volume}{17}
+      \field{year}{2011}
+      \field{pages}{2301\bibrangedash 2309}
+      \range{pages}{9}
     \endentry
     \entry{reflux}{misc}{}
       \name{author}{1}{}{%
@@ -141,6 +180,21 @@
       \field{title}{Sequelize - The Node.js / io.js ORM for PostgreSQL, MySQL, SQLite and MSSQL}
       \field{year}{2011}
     \endentry
+    \entry{packery}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e221d6faab77fadd820a955416edd7fe}{DeSandro}{D\bibinitperiod}{David}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{e221d6faab77fadd820a955416edd7fe}
+      \strng{fullhash}{e221d6faab77fadd820a955416edd7fe}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://packery.metafizzy.co/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{The bin-packing layout library}
+      \field{year}{2012}
+    \endentry
     \entry{deterding2011game}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=4ad251c02d478d38f2fe79e126ae6bf1}{Deterding}{D\bibinitperiod}{Sebastian}{S\bibinitperiod}{}{}{}{}}%
@@ -178,6 +232,21 @@
       \field{title}{CSS3 3D Transforms}
       \field{year}{2015}
     \endentry
+    \entry{webassembly}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c669ae39e4262fb31a4df5b29bc678ae}{Eich}{E\bibinitperiod}{Brendan}{B\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{c669ae39e4262fb31a4df5b29bc678ae}
+      \strng{fullhash}{c669ae39e4262fb31a4df5b29bc678ae}
+      \field{sortinit}{E}
+      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://brendaneich.com/2015/06/from-asm-js-to-webassembly/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{From ASM.JS to WebAssembly}
+      \field{year}{2015}
+    \endentry
     \entry{signals}{misc}{}
       \name{author}{1}{}{%
         {{hash=01dccb8d0a14b514cc90dc12508d5931}{Greene}{G\bibinitperiod}{James\bibnamedelima M.}{J\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
@@ -192,6 +261,22 @@
       \field{note}{[Online, accessed 07-19-2015]}
       \field{title}{Comparison between different Observer Pattern implementations}
       \field{year}{2014}
+    \endentry
+    \entry{cookiesjs}{misc}{}
+      \true{moreauthor}
+      \name{author}{1}{}{%
+        {{hash=7fe7bd48bb56f7174085876abcd07464}{Hamper}{H\bibinitperiod}{Scott}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{f430b89d30cca968be5ba571cda237bc}
+      \strng{fullhash}{f430b89d30cca968be5ba571cda237bc}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/ScottHamper/Cookies}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{JavaScript Client-Side Cookie Manipulation Library}
+      \field{year}{2012}
     \endentry
     \entry{haupt2014model}{inproceedings}{}
       \name{author}{4}{}{%
@@ -231,6 +316,22 @@
       \field{title}{AngularJS - HTML enhanced for web apps!}
       \field{year}{2010}
     \endentry
+    \entry{javascriptcompile}{misc}{}
+      \true{moreauthor}
+      \name{author}{1}{}{%
+        {{hash=3ce5fbc1367eff9cf57afde418e69eea}{Horakh}{H\bibinitperiod}{Brian}{B\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{bcc0355c9af832e4e7873aa54ab6f6f7}
+      \strng{fullhash}{bcc0355c9af832e4e7873aa54ab6f6f7}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{List of languages that compile to JS}
+      \field{year}{2015}
+    \endentry
     \entry{petehuntwebpack}{misc}{}
       \name{author}{1}{}{%
         {{hash=690e615737bb4d12a129ffe7472b3821}{Hunt}{H\bibinitperiod}{Pete}{P\bibinitperiod}{}{}{}{}}%
@@ -259,6 +360,21 @@
       \field{howpublished}{\url{https://www.youtube.com/watch?v=eNC0mRYGWgc}}
       \field{note}{[Online, accessed 07-19-2015]}
       \field{title}{Beyond the DOM: How Netflix plans to enhance your teleision experience}
+      \field{year}{2015}
+    \endentry
+    \entry{alexa}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=51e2effce77d04e33468a8c228c54581}{Inc}{I\bibinitperiod}{Alexa\bibnamedelima Internet}{A\bibinitperiod\bibinitdelim I\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{51e2effce77d04e33468a8c228c54581}
+      \strng{fullhash}{51e2effce77d04e33468a8c228c54581}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.alexa.com/siteinfo/reddit.com}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{How popular is reddit.com?}
       \field{year}{2015}
     \endentry
     \entry{lifecycle}{misc}{}
@@ -306,6 +422,51 @@
       \field{title}{Tutorial}
       \field{year}{2014}
     \endentry
+    \entry{jsx}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6a2c4d8b39538e1ab369a0cf62a49e46}{Inc}{I\bibinitperiod}{Facebook}{F\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{6a2c4d8b39538e1ab369a0cf62a49e46}
+      \strng{fullhash}{6a2c4d8b39538e1ab369a0cf62a49e46}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://facebook.github.io/jsx/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{XML-like syntax extension to ECMAScript}
+      \field{year}{2014}
+    \endentry
+    \entry{strava}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=dd99bfb46ede39041e6de68d4451138b}{Inc}{I\bibinitperiod}{Strava}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{dd99bfb46ede39041e6de68d4451138b}
+      \strng{fullhash}{dd99bfb46ede39041e6de68d4451138b}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.strava.com/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Running and Cycling GPS Tracker, Performance Analytics, Maps, Clubs and Competition}
+      \field{year}{2009}
+    \endentry
+    \entry{es6}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e83578898872635ef15c7690819d9c96}{International}{I\bibinitperiod}{Ecma}{E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{e83578898872635ef15c7690819d9c96}
+      \strng{fullhash}{e83578898872635ef15c7690819d9c96}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.ecma-international.org/ecma-262/6.0/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{http://www.ecma-international.org/ecma-262/6.0/}
+      \field{year}{2015}
+    \endentry
     \entry{johnston2004advances}{article}{}
       \name{author}{3}{}{%
         {{hash=70c74f2ebc75c294fe4be085a842a79d}{Johnston}{J\bibinitperiod}{Wesley\bibnamedelima M}{W\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
@@ -343,6 +504,21 @@
       \field{note}{[Online, accessed 06-03-2015]}
       \field{title}{The Compulsion Loop Explained}
       \field{year}{2014}
+    \endentry
+    \entry{embercrud}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=093a53aa50bdf4406de8190157387eff}{Knebel}{K\bibinitperiod}{Julien}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{093a53aa50bdf4406de8190157387eff}
+      \strng{fullhash}{093a53aa50bdf4406de8190157387eff}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/jkneb/ember-crud}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Simple CRUD for Ember.js 1.1.2 with Ember Data 1.0.0beta3}
+      \field{year}{2013}
     \endentry
     \entry{webpack}{misc}{}
       \true{moreauthor}
@@ -396,6 +572,21 @@
       \field{pages}{759\bibrangedash 762}
       \range{pages}{4}
     \endentry
+    \entry{babel}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://babeljs.io/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Babel - The compiler for writing next generation JavaScript}
+      \field{year}{2015}
+    \endentry
     \entry{brunch}{misc}{}
       \name{author}{1}{}{%
         {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
@@ -410,6 +601,21 @@
       \field{note}{[Online, accessed 07-19-2015]}
       \field{title}{Brunch - ultra fast HTML5 build tool}
       \field{year}{2015}
+    \endentry
+    \entry{texlive}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{hhttps://github.com/manuels/texlive.js/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Compiling LaTeX (TeX live) in your browser}
+      \field{year}{2013}
     \endentry
     \entry{dojo}{misc}{}
       \name{author}{1}{}{%
@@ -440,6 +646,51 @@
       \field{note}{[Online, accessed 07-19-2015]}
       \field{title}{Gulp - the streaming build system}
       \field{year}{2015}
+    \endentry
+    \entry{storejs}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/ScottHamper/Cookies}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{localStorage wrapper for all browsers without using cookies or flash.}
+      \field{year}{2010}
+    \endentry
+    \entry{momentjs}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://momentjs.com/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Parse, validate, manipulate, and display dates in JavaScript.}
+      \field{year}{2011}
+    \endentry
+    \entry{reactrouter}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://react-bootstrap.github.io/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{The most popular front-end framework, rebuilt for React.}
+      \field{year}{2014}
     \endentry
     \entry{DOM}{misc}{}
       \name{author}{2}{}{%
@@ -563,6 +814,21 @@
       \field{note}{[Online, accessed 07-19-2015]}
       \field{title}{Socket. IO-the cross-browser WebSocket for realtime apps}
       \field{year}{2013}
+    \endentry
+    \entry{templatestrings}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e233a52ae34baa92533a77e95ab2fd10}{Rauschmayer}{R\bibinitperiod}{Dr.\bibnamedelimi Axel}{D\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{e233a52ae34baa92533a77e95ab2fd10}
+      \strng{fullhash}{e233a52ae34baa92533a77e95ab2fd10}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.2ality.com/2014/07/jsx-template-strings.html}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{React JSX via ECMAScript 6 template strings}
+      \field{year}{2015}
     \endentry
     \entry{reddit}{misc}{}
       \name{author}{1}{}{%
@@ -782,6 +1048,36 @@
       \field{pages}{301\bibrangedash 312}
       \range{pages}{12}
     \endentry
+    \entry{eslint}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=247666522c59c5d84db77d915c83e802}{Zakas}{Z\bibinitperiod}{Nicholas\bibnamedelima C.}{N\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{247666522c59c5d84db77d915c83e802}
+      \strng{fullhash}{247666522c59c5d84db77d915c83e802}
+      \field{sortinit}{Z}
+      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://eslint.org/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{The pluggable linting utility for JavaScript and JSX}
+      \field{year}{2015}
+    \endentry
+    \entry{es6features}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a9ea55ef1626791912e00e486d2db1e9}{Zaytsev}{Z\bibinitperiod}{Juriy\bibnamedelima ``kangax''}{J\bibinitperiod\bibinitdelim `\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{a9ea55ef1626791912e00e486d2db1e9}
+      \strng{fullhash}{a9ea55ef1626791912e00e486d2db1e9}
+      \field{sortinit}{Z}
+      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://kangax.github.io/compat-table/es5/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{The es6 compatibility table}
+      \field{year}{2015}
+    \endentry
     \entry{zichermann2011gamification}{book}{}
       \name{author}{2}{}{%
         {{hash=e4298ecb77a36c0bf44b61fcda638788}{Zichermann}{Z\bibinitperiod}{Gabe}{G\bibinitperiod}{}{}{}{}}%
@@ -800,6 +1096,14 @@
       \field{year}{2011}
     \endentry
   \endsortlist
+  \missing{50 - 51}
+  \missing{38}
+  \missing{36}
+  \missing{38 - 39}
+  \missing{55}
+  \missing{17}
+  \missing{56}
+  \missing{57}
 \endrefsection
 \endinput
 

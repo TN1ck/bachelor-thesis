@@ -1,15 +1,24 @@
 [0] Config.pm:324> INFO - This is Biber 2.1
-[0] Config.pm:327> INFO - Logfile is 'thesis.blg'
-[85] biber-darwin:276> INFO - === Wed Jul 22, 2015, 20:28:00
-[85] Biber.pm:333> INFO - Reading 'thesis.bcf'
-[258] Biber.pm:645> INFO - Found 48 citekeys in bib section 0
-[294] Biber.pm:2977> INFO - Processing section 0
-[322] Biber.pm:3115> INFO - Looking for bibtex format file 'bachelorthesis.bib' for section 0
-[334] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
-[344] bibtex.pm:895> INFO - Found BibTeX data source 'bachelorthesis.bib'
-[1153] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1153] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1154] Biber.pm:2854> INFO - Sorting list 'nty' of type 'entry' with scheme 'nty' and locale 'de-DE'
-[1154] Biber.pm:2858> INFO - No sort tailoring available for locale 'de-DE'
-[1318] bbl.pm:505> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[1324] bbl.pm:596> INFO - Output to thesis.bbl
+[1] Config.pm:327> INFO - Logfile is 'thesis.blg'
+[94] biber-darwin:276> INFO - === Thu Jul 23, 2015, 20:37:22
+[94] Biber.pm:333> INFO - Reading 'thesis.bcf'
+[252] Biber.pm:645> INFO - Found 75 citekeys in bib section 0
+[285] Biber.pm:2977> INFO - Processing section 0
+[309] Biber.pm:3115> INFO - Looking for bibtex format file 'bachelorthesis.bib' for section 0
+[317] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
+[324] bibtex.pm:895> INFO - Found BibTeX data source 'bachelorthesis.bib'
+[406] Utils.pm:146> WARN - I didn't find a database entry for '17' (section 0)
+[406] Utils.pm:146> WARN - I didn't find a database entry for '36' (section 0)
+[406] Utils.pm:146> WARN - I didn't find a database entry for '38' (section 0)
+[407] Utils.pm:146> WARN - I didn't find a database entry for '38 - 39' (section 0)
+[407] Utils.pm:146> WARN - I didn't find a database entry for '50 - 51' (section 0)
+[407] Utils.pm:146> WARN - I didn't find a database entry for '55' (section 0)
+[407] Utils.pm:146> WARN - I didn't find a database entry for '57' (section 0)
+[407] Utils.pm:146> WARN - I didn't find a database entry for '56' (section 0)
+[1194] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1194] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1194] Biber.pm:2854> INFO - Sorting list 'nty' of type 'entry' with scheme 'nty' and locale 'de-DE'
+[1194] Biber.pm:2858> INFO - No sort tailoring available for locale 'de-DE'
+[1393] bbl.pm:505> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[1400] bbl.pm:596> INFO - Output to thesis.bbl
+[1401] Biber.pm:106> INFO - WARNINGS: 8
