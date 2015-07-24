@@ -26,19 +26,26 @@
 
 // Gray Scale
 
-@white:  #fff;
-@silver: #ddd;
-@gray:   #aaa;
-@black:  #444;
+// Paper 3.3.5
+// Variables
+// --------------------------------------------------
 
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+@white:                  #FFF;
+@black:                  #000;
 @gray-base:              #000;
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
 @gray-dark:              #212121;
-@gray:                   #333;
+@gray:                   #666;
 @gray-light:             #bbb;
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         #c69f2b;
+@brand-primary:         @olive;
+@brand-primary-light:   lighten(@brand-primary, 20%);
 @brand-success:         #4CAF50;
 @brand-info:            #9C27B0;
 @brand-warning:         #ff9800;
@@ -47,12 +54,13 @@
 
 //== Scaffolding
 //
-//## import SETTINGS for some of the most global styles.
+//## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               @gray;
+@body-bg:               darken(#fff, 10%);
 //** Global text color on `<body>`.
-@text-color:            #fff;
+@text-color:            @gray;
+@text-color-inverse:    @white;
 
 //** Global textual link color.
 @link-color:            @brand-primary;
@@ -92,7 +100,7 @@
 @headings-font-family:    inherit;
 @headings-font-weight:    400;
 @headings-line-height:    1.1;
-@headings-color:          #fff;
+@headings-color:          #444;
 
 
 //== Iconography
@@ -153,9 +161,9 @@
 //** Default background color used for all tables.
 @table-bg:                      transparent;
 //** Background color used for `.table-striped`.
-@table-bg-accent:               @gray-dark;
+@table-bg-accent:               #f9f9f9;
 //** Background color used for `.table-hover`.
-@table-bg-hover:                @brand-primary;
+@table-bg-hover:                @brand-primary-light;
 @table-bg-active:               @table-bg-hover;
 
 //** Border color for table and cell borders.
@@ -166,11 +174,11 @@
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
 
-@btn-font-weight:                bold;
+@btn-font-weight:                normal;
 
 @btn-default-color:              @text-color;
-@btn-default-bg:                 @gray;
-@btn-default-border:             @gray;
+@btn-default-bg:                 #fff;
+@btn-default-border:             #eee;
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
@@ -194,6 +202,11 @@
 
 @btn-link-disabled-color:        @gray-light;
 
+// Allows for customizing button radius independently from global border radius
+@btn-border-radius-base:         @border-radius-base;
+@btn-border-radius-large:        @border-radius-large;
+@btn-border-radius-small:        @border-radius-small;
+
 
 //== Forms
 //
@@ -205,7 +218,7 @@
 @input-bg-disabled:              transparent;
 
 //** Text color for `<input>`s
-@input-color:                    #fff;
+@input-color:                    @gray;
 //** `<input>` border color
 @input-border:                   transparent;
 
@@ -376,7 +389,7 @@
 //##
 
 // Basics of a navbar
-@navbar-height:                    40px;
+@navbar-height:                    48px;
 @navbar-margin-bottom:             @line-height-computed;
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
@@ -407,15 +420,15 @@
 @navbar-default-toggle-border-color:       transparent;
 
 
-// Inverted navbar
+//=== Inverted navbar
 // Reset inverted navbar basics
-@navbar-inverse-color:                      @white;
-@navbar-inverse-bg:                         @gray-darker;
-@navbar-inverse-border:                     @brand-primary;
+@navbar-inverse-color:                      @text-color-inverse;
+@navbar-inverse-bg:                         @gray-dark;
+@navbar-inverse-border:                     transparent;
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 @white;
-@navbar-inverse-link-hover-color:           @brand-primary;
+@navbar-inverse-link-color:                 @gray-lighter;
+@navbar-inverse-link-hover-color:           #fff;
 @navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
 @navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
@@ -423,13 +436,13 @@
 @navbar-inverse-link-disabled-bg:           transparent;
 
 // Inverted navbar brand label
-@navbar-inverse-brand-color:                @white;
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
 @navbar-inverse-brand-hover-color:          #fff;
 @navbar-inverse-brand-hover-bg:             transparent;
 
 // Inverted navbar toggle\
 @navbar-inverse-toggle-hover-bg:            transparent;
-@navbar-inverse-toggle-icon-bar-bg:         @white;
+@navbar-inverse-toggle-icon-bar-bg:         rgba(0,0,0,0.5);
 @navbar-inverse-toggle-border-color:        transparent;
 
 
@@ -508,6 +521,7 @@
 @jumbotron-bg:                   #f9f9f9;
 @jumbotron-heading-color:        @headings-color;
 @jumbotron-font-size:            ceil((@font-size-base * 1.5));
+@jumbotron-heading-font-size:    ceil((@font-size-base * 4.5));
 
 
 //== Form states and alerts
@@ -720,19 +734,19 @@
 //
 //##
 
-@panel-bg:                    transparent;
+@panel-bg:                    #fff;
 @panel-body-padding:          15px;
 @panel-heading-padding:       10px 15px;
 @panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
 
 //** Border color for elements within panels
-@panel-inner-border:          @gray-light;
-@panel-footer-bg:             darken(@gray, 15%);
+@panel-inner-border:          #ddd;
+@panel-footer-bg:             #f5f5f5;
 
-@panel-default-text:          white;
-@panel-default-border:        @gray-light;
-@panel-default-heading-bg:    transparent;
+@panel-default-text:          @gray-dark;
+@panel-default-border:        #ddd;
+@panel-default-heading-bg:    #f5f5f5;
 
 @panel-primary-text:          #fff;
 @panel-primary-border:        @brand-primary;
@@ -778,7 +792,7 @@
 //
 //##
 
-@well-bg:                     darken(@gray, 25%);
+@well-bg:                     #f9f9f9;
 @well-border:                 transparent;
 
 

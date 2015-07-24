@@ -71,24 +71,25 @@ var BoosterComponent = React.createClass({
         }
 
         var body = (
-            <span>
-                <h5>{name}</h5>
-                <hr />
-                <p>
-                    {text}
-                    <br/>
-                    {_active}
-                    <div className='pull-right'>
-                        <Button
-                            bsStyle={!enoughPoints ? 'alert' : 'success'}
-                            disabled={this.props.disable || !enoughPoints}
-                            onClick={this.buyBooster}
-                            >
-                            {buttonText}
-                        </Button>
-                    </div>
-                </p>
-            </span>
+            <div>
+                <div>
+                    <h5>{name}</h5>
+                    <hr />
+                    <p>
+                        {text} {_active}
+                    </p>
+                </div>
+                <div className='pull-right'>
+                    <Button
+                        bsStyle={!enoughPoints ? 'alert' : 'success'}
+                        disabled={this.props.disable || !enoughPoints}
+                        active={this.props.active}
+                        onClick={this.buyBooster}
+                        >
+                        {buttonText}
+                    </Button>
+                </div>
+            </div>
         );
 
         var icon = (

@@ -67,17 +67,7 @@ var AddQuery = React.createClass({
 
 export default React.createClass({
     displayName: 'queries',
-    mixins: [Reflux.listenTo(queryStore, 'onStoreChange')],
-    onStoreChange: function (queries) {
-        this.setState({
-            queries: queries
-        })
-    },
-    getInitialState: function () {
-        return {
-            queries: queryStore.queries
-        };
-    },
+    mixins: [Reflux.connect(queryStore, 'queries')],
     removeQuery: function (query) {
         actions.removeQuery(query);
     },

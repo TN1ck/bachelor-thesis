@@ -64,7 +64,7 @@ class BarChart {
     update () {
 
         // bars
-        var selection = this.bars.selectAll('.bar')
+        var selection = this.bars.selectAll('.barchart__bar')
             .data(this.data);
 
         var barHeight = ((this.height - (this.margins.left + this.margins.right)) /  this.data.length) - this.barMargin;
@@ -72,7 +72,7 @@ class BarChart {
         selection.enter()
             .append('rect')
             .attr({
-                class: 'bar',
+                class: 'barchart__bar',
                 x: 0,
                 y: (d, i) => this.yScale(i),
                 width: 0,
@@ -80,11 +80,11 @@ class BarChart {
                 fill: (d, i) => this.colors[i % this.colors.length]
             });
 
-        this.bars.selectAll('.bar')
+        this.bars.selectAll('.barchart__bar')
             .transition()
             .duration(1000)
             .attr({
-                class: 'bar',
+                class: 'barchart__bar',
                 x: 0,
                 y: (d, i) => this.yScale(i),
                 width: d => this.xScale(d.x),
@@ -97,18 +97,17 @@ class BarChart {
             .remove();
 
         // text
-        var textSelection = this.text.selectAll('.text').data(this.data);
+        var textSelection = this.text.selectAll('.barchart__text').data(this.data);
 
         // enter
         textSelection.enter()
             .append('text')
             .text(d => `${d.y} - ${d.x}`)
             .attr({
-                class: 'text',
+                class: 'barchart__text',
                 y: (d, i) => this.yScale(i) + barHeight / 2 + 5,
                 x: 10
             }).style({
-                'fill': 'white',
                 'text-anchor': (d, i) => {
                     var x = this.xScale(d.x);
                     if (i === 0) {
@@ -120,12 +119,20 @@ class BarChart {
             });
 
         // update
-        this.text.selectAll('.text')
+        this.text.selectAll('.barchart__text')
             .transition()
             .duration(1000)
             .text(d => `${d.y} - ${d.x}`)
             .attr({
-                class: 'text',
+                class: (d, i) => {
+                    var x = this.xScale(d.x);
+                    var max = this.xScale.domain()[1];
+                    if ((d.x * 2) >= max) {
+                        return  'barchart__text barchart__text--inner';
+                    } else {
+                        return 'barchart__text barchart__text--outer';
+                    }
+                },
                 y: (d, i) => this.yScale(i) + barHeight / 2 + 5,
                 x: (d, i) => {
                     var x = this.xScale(d.x);
@@ -172,7 +179,7 @@ export default React.createClass({
     },
     render: function () {
         return (
-            <div className='bar-chartl' style={{width: '100%'}}>
+            <div className='barchart' style={{width: '100%'}}>
                 <svg style={{
                     height: '300px',
                     width: '100%'

@@ -70,7 +70,10 @@ var ColorSchema = React.createClass({
                 {coloredWords}
                 <br/>
                 <div className='pull-right'>
-                    <Button onClick={() => this.props.onClick('color_scheme', id)} active={true} disabled={!isAllowedToUse}>
+                    <Button
+                        onClick={() => this.props.onClick('color_scheme', id)}
+                        active={active}
+                        disabled={!isAllowedToUse}>
                         {buttonText}
                     </Button>
                 </div>

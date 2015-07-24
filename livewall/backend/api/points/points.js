@@ -51,13 +51,11 @@ module.exports = function (req, res) {
                 model: Badge,
             }
         ],
-        order: [
-            [Booster, 'createdAt', 'DESC']
-        ],
         group: [
             'Actions.label',
             'Badges.id',
-            'User.id'
+            'User.id',
+            'Boosters.id'
         ]
     }).then(function(users) {
 

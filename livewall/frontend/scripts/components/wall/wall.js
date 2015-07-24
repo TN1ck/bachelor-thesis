@@ -14,17 +14,8 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 export default React.createClass({
     displayName: 'wall',
     mixins: [
-        Reflux.listenTo(layoutStore, "onStoreChange")
+        Reflux.connect(layoutStore, 'items')
     ],
-    onStoreChange: function(items) {
-        this.setState({items: items});
-    },
-    getInitialState: function () {
-        return {
-            items: layoutStore.items,
-            loading: true
-        }
-    },
     componentDidMount: function() {
         var dom = this.refs.wall.getDOMNode();
         this.resize = layoutStore.getResizeCallback();
@@ -37,7 +28,7 @@ export default React.createClass({
     },
     createLoader: function () {
         if (this.state.items.count() === 0) {
-            return <i className="fa fa-gear fa-spin white fa-5x"></i>;
+            return <i className="fa fa-gear fa-spin fa-5x"></i>;
         }
     },
     createTiles: function () {

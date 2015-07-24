@@ -437,6 +437,21 @@
       \field{title}{XML-like syntax extension to ECMAScript}
       \field{year}{2014}
     \endentry
+    \entry{nike}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5abfff328a5f924a37e21c730ace3c2e}{Inc}{I\bibinitperiod}{Nike}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{5abfff328a5f924a37e21c730ace3c2e}
+      \strng{fullhash}{5abfff328a5f924a37e21c730ace3c2e}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.nikeplus.com.br/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Nike+}
+      \field{year}{2006}
+    \endentry
     \entry{strava}{misc}{}
       \name{author}{1}{}{%
         {{hash=dd99bfb46ede39041e6de68d4451138b}{Inc}{I\bibinitperiod}{Strava}{S\bibinitperiod}{}{}{}{}}%
@@ -1096,14 +1111,14 @@
       \field{year}{2011}
     \endentry
   \endsortlist
-  \missing{50 - 51}
-  \missing{38}
-  \missing{36}
-  \missing{38 - 39}
-  \missing{55}
   \missing{17}
   \missing{56}
+  \missing{55}
+  \missing{36}
+  \missing{38 - 39}
+  \missing{38}
   \missing{57}
+  \missing{50 - 51}
 \endrefsection
 \endinput
 

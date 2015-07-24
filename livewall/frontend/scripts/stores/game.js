@@ -55,6 +55,7 @@ export default Reflux.createStore({
 
         this.socket.on('action_created', (action) => {
             this.state.actions.unshift(action);
+            this.state.actions.pop();
             this.updateGlobalPoints(action);
             this.trigger(this.state);
         });

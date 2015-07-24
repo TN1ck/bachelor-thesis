@@ -113,6 +113,9 @@ export default Reflux.createStore({
         this.queued = [];
 
     },
+    getInitialState: function () {
+        return this.items;
+    },
     getResizeCallback: function () {
         /* Animations cause weird behaviour with the resize event, it is not guarenteed that
            the height of the element is correctly calculated when the animations are on.

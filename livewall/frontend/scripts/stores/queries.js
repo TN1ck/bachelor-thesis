@@ -30,6 +30,10 @@ export default Reflux.createStore({
 
     },
 
+    getInitialState: function () {
+        return this.queries;
+    },
+
     addQuery: function (term) {
 
         if (this.queries[term]) {
