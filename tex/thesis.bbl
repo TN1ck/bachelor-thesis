@@ -18,167 +18,196 @@
 
 
 \refsection{0}
-  \sortlist{nty}{nty}
-    \entry{redux}{misc}{}
+  \sortlist{none}{none}
+    \entry{pulse}{misc}{}
       \name{author}{1}{}{%
-        {{hash=96ed906d3a763ce2d916fe6037aebffe}{Abramov}{A\bibinitperiod}{Dan}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=ec8374db32bacb4cd9760199ec42819e}{Pulse}{P\bibinitperiod}{}{}{}{}{}{}}%
       }
-      \strng{namehash}{96ed906d3a763ce2d916fe6037aebffe}
-      \strng{fullhash}{96ed906d3a763ce2d916fe6037aebffe}
-      \field{sortinit}{A}
-      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \strng{namehash}{ec8374db32bacb4cd9760199ec42819e}
+      \strng{fullhash}{ec8374db32bacb4cd9760199ec42819e}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://medium.com/@dan_abramov/the-evolution-of-flux-frameworks-6c16ad26bb31}}
-      \field{note}{[Online; accessed 06-07-2015]}
-      \field{title}{The Evolution of Flux Frameworks}
-      \field{year}{2015}
-    \endentry
-    \entry{lodash}{misc}{}
-      \true{moreauthor}
-      \name{author}{1}{}{%
-        {{hash=72eca2a1f02eafce82954fc5148b50c7}{Ashkenas}{A\bibinitperiod}{Jeremy}{J\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{f059c2b6c125f6899a2410920dd75275}
-      \strng{fullhash}{f059c2b6c125f6899a2410920dd75275}
-      \field{sortinit}{A}
-      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://lodash.com/}}
+      \field{howpublished}{\url{https://www.pulse.me/}}
       \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{A JavaScript utility library delivering consistency, modularity, performance, and extras.}
+      \field{title}{Pulse}
+      \field{year}{2013}
+    \endentry
+    \entry{strava}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=dd99bfb46ede39041e6de68d4451138b}{Inc}{I\bibinitperiod}{Strava}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{dd99bfb46ede39041e6de68d4451138b}
+      \strng{fullhash}{dd99bfb46ede39041e6de68d4451138b}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.strava.com/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Running and Cycling GPS Tracker, Performance Analytics, Maps, Clubs and Competition}
       \field{year}{2009}
     \endentry
-    \entry{grunt}{misc}{}
-      \name{author}{2}{}{%
-        {{hash=979be4302d31788ab8c75b7c36be4aab}{Bocoup}{B\bibinitperiod}{}{}{}{}{}{}}%
-        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{80321476ba2dbc14cc2eae7631b98753}
-      \strng{fullhash}{80321476ba2dbc14cc2eae7631b98753}
-      \field{sortinit}{B}
-      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://gruntjs.com/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Grunt - The JavaScript Task Runner}
-      \field{year}{2015}
-    \endentry
-    \entry{husl}{misc}{}
+    \entry{nike}{misc}{}
       \name{author}{1}{}{%
-        {{hash=7a32c7f0daae899af9011fc2bc36a874}{Boronine}{B\bibinitperiod}{Alexei}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=5abfff328a5f924a37e21c730ace3c2e}{Inc}{I\bibinitperiod}{Nike}{N\bibinitperiod}{}{}{}{}}%
       }
-      \strng{namehash}{7a32c7f0daae899af9011fc2bc36a874}
-      \strng{fullhash}{7a32c7f0daae899af9011fc2bc36a874}
-      \field{sortinit}{B}
-      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \strng{namehash}{5abfff328a5f924a37e21c730ace3c2e}
+      \strng{fullhash}{5abfff328a5f924a37e21c730ace3c2e}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://www.husl-colors.org/}}
-      \field{note}{[Online; accessed 06-07-2015]}
-      \field{title}{HUSL Color Space}
+      \field{howpublished}{\url{http://www.nikeplus.com.br/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Nike+}
+      \field{year}{2006}
+    \endentry
+    \entry{hofram}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a9ba54b43f8a5bac7c1a432c2878480c}{Schuster}{S\bibinitperiod}{Clemens\bibnamedelima Maria}{C\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{a9ba54b43f8a5bac7c1a432c2878480c}
+      \strng{fullhash}{a9ba54b43f8a5bac7c1a432c2878480c}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://hofrat.ch/2013/10/social-media-walls-und-twitter-walls-tools-und-anbieter/}}
+      \field{note}{[Online; accessed 06-03-2015]}
+      \field{title}{Social Media Walls und Twitter Walls: Tools und Anbieter}
+      \field{year}{2014}
+    \endentry
+    \entry{wallsio}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5e55960e771ce09c378338cb4662c3b0}{walls.io}{w\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{5e55960e771ce09c378338cb4662c3b0}
+      \strng{fullhash}{5e55960e771ce09c378338cb4662c3b0}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://walls.io/starbucks}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Starbucks}
+      \field{year}{2013}
+    \endentry
+    \entry{reddit}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=b632c55a33530d1433e29ffc09ba1151}{Reddit}{R\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b632c55a33530d1433e29ffc09ba1151}
+      \strng{fullhash}{b632c55a33530d1433e29ffc09ba1151}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://reddit.com}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{The front page of the internet}
       \field{year}{2015}
     \endentry
-    \entry{bostock2011d3}{article}{}
+    \entry{alexa}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=51e2effce77d04e33468a8c228c54581}{Inc}{I\bibinitperiod}{Alexa\bibnamedelima Internet}{A\bibinitperiod\bibinitdelim I\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{51e2effce77d04e33468a8c228c54581}
+      \strng{fullhash}{51e2effce77d04e33468a8c228c54581}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.alexa.com/siteinfo/reddit.com}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{How popular is reddit.com?}
+      \field{year}{2015}
+    \endentry
+    \entry{richerichkarma}{article}{}
+      \name{author}{1}{}{%
+        {{hash=0f8b82ebb815558b4aea598f5ea0a51c}{Richerich}{R\bibinitperiod}{Annika}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{0f8b82ebb815558b4aea598f5ea0a51c}
+      \strng{fullhash}{0f8b82ebb815558b4aea598f5ea0a51c}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2213-5316}
+      \field{journaltitle}{The Journal of Peer Production}
+      \field{title}{‘KARMA, PRECIOUS KARMA!’ KARMAWHORING ON REDDIT AND THE FRONT PAGE’S ECONOMETRISATION}
+      \field{volume}{4}
+      \field{year}{2014}
+      \verb{url}
+      \verb http://peerproduction.net/issues/issue-4-value-and-currency/peer-reviewed-articles/karma-precious-karma/
+      \endverb
+    \endentry
+    \entry{meder2014daiknow}{incollection}{}
       \name{author}{3}{}{%
-        {{hash=7976650397b66b1dceb144cf6681be6d}{Bostock}{B\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
-        {{hash=0a3ecc5e23f1fa4bb83baf3f62399844}{Ogievetsky}{O\bibinitperiod}{Vadim}{V\bibinitperiod}{}{}{}{}}%
-        {{hash=c1fc05b7156dc351ceebcc7f14fe27ee}{Heer}{H\bibinitperiod}{Jeffrey}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=e9b95e21145ad7bb4793c00ecb6c9efb}{Meder}{M\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=1ed293b107b335ffe5026f543d07c094}{Plumbaum}{P\bibinitperiod}{Till}{T\bibinitperiod}{}{}{}{}}%
+        {{hash=f60e61591f711cff62501da0bb24bcd8}{Hopfgartner}{H\bibinitperiod}{Frank}{F\bibinitperiod}{}{}{}{}}%
       }
       \list{publisher}{1}{%
-        {IEEE}%
+        {Springer}%
       }
-      \strng{namehash}{6a25e78a45a3a747991edf5615dd843c}
-      \strng{fullhash}{6a25e78a45a3a747991edf5615dd843c}
-      \field{sortinit}{B}
-      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \strng{namehash}{e846dd3257be0876a12d8128af45bce8}
+      \strng{fullhash}{e846dd3257be0876a12d8128af45bce8}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Visualization and Computer Graphics, IEEE Transactions on}
-      \field{number}{12}
-      \field{title}{D$^3$ data-driven documents}
-      \field{volume}{17}
-      \field{year}{2011}
-      \field{pages}{2301\bibrangedash 2309}
-      \range{pages}{9}
-    \endentry
-    \entry{reflux}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=086d1d4b2e968b8603da80f90e4b0a7e}{Brassman}{B\bibinitperiod}{Mikael}{M\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{086d1d4b2e968b8603da80f90e4b0a7e}
-      \strng{fullhash}{086d1d4b2e968b8603da80f90e4b0a7e}
-      \field{sortinit}{B}
-      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://spoike.ghost.io/deconstructing-reactjss-flux/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Deconstructing ReactJS's Flux}
+      \field{booktitle}{Advances in Information Retrieval}
+      \field{title}{Daiknow: A gamified enterprise bookmarking system}
       \field{year}{2014}
+      \field{pages}{759\bibrangedash 762}
+      \range{pages}{4}
     \endentry
-    \entry{khan}{misc}{}
+    \entry{delicious}{misc}{}
       \name{author}{1}{}{%
-        {{hash=64f204fbfe7985b00e26b7de8ee9d034}{Burget}{B\bibinitperiod}{Joel}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=665a365e5f2f490ea7d2d36deb615043}{Deliccious\bibnamedelima Science}{D\bibinitperiod\bibinitdelim S\bibinitperiod}{LLC}{L\bibinitperiod}{}{}{}{}}%
       }
-      \strng{namehash}{64f204fbfe7985b00e26b7de8ee9d034}
-      \strng{fullhash}{64f204fbfe7985b00e26b7de8ee9d034}
-      \field{sortinit}{B}
-      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \strng{namehash}{665a365e5f2f490ea7d2d36deb615043}
+      \strng{fullhash}{665a365e5f2f490ea7d2d36deb615043}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://joelburget.com/backbone-to-react/}}
+      \field{howpublished}{\url{https://delicious.com/}}
       \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Backbone to React}
-      \field{year}{2014}
+      \field{title}{Delicious}
+      \field{year}{1996}
     \endentry
-    \entry{Immutable}{misc}{}
+    \entry{pinterest}{misc}{}
       \name{author}{1}{}{%
-        {{hash=a59a3b77b97608e929ef151836f90dd5}{Byron}{B\bibinitperiod}{Lee}{L\bibinitperiod}{}{}{}{}}%
+        {{hash=86709a608bd914b28221164e6680ebf7}{Pinterest}{P\bibinitperiod}{}{}{}{}{}{}}%
       }
-      \strng{namehash}{a59a3b77b97608e929ef151836f90dd5}
-      \strng{fullhash}{a59a3b77b97608e929ef151836f90dd5}
-      \field{sortinit}{B}
-      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \strng{namehash}{86709a608bd914b28221164e6680ebf7}
+      \strng{fullhash}{86709a608bd914b28221164e6680ebf7}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://facebook.github.io/immutable-js/}}
+      \field{howpublished}{\url{http://pinterest.com}}
       \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Immutable.js}
-      \field{year}{2014}
+      \field{title}{Kreative Ideen entdecken und speichern}
+      \field{year}{2015}
     \endentry
-    \entry{elm}{misc}{}
+    \entry{metrodesign}{misc}{}
       \name{author}{1}{}{%
-        {{hash=bd0b601d2ea72eeb81587cf33772db14}{Czaplicki}{C\bibinitperiod}{Evan}{E\bibinitperiod}{}{}{}{}}%
+        {{hash=b08aec7b75343dd02a0731c333b7b96d}{Malamed}{M\bibinitperiod}{Connie}{C\bibinitperiod}{}{}{}{}}%
       }
-      \strng{namehash}{bd0b601d2ea72eeb81587cf33772db14}
-      \strng{fullhash}{bd0b601d2ea72eeb81587cf33772db14}
-      \field{sortinit}{C}
-      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \strng{namehash}{b08aec7b75343dd02a0731c333b7b96d}
+      \strng{fullhash}{b08aec7b75343dd02a0731c333b7b96d}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://elm-lang.org/blog/blazing-fast-html}}
+      \field{howpublished}{\url{http://theelearningcoach.com/media/graphics/metro-style-for-elearning/}}
       \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Blazing Fast HTML}
-      \field{year}{2014}
-    \endentry
-    \entry{sequelize}{misc}{}
-      \true{moreauthor}
-      \name{author}{1}{}{%
-        {{hash=e13c5baa9fb8ee7167d1867e6f228b71}{Depold}{D\bibinitperiod}{Sascha}{S\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{d5e1bf78339dc4f8ce3ca7fe9b3a307f}
-      \strng{fullhash}{d5e1bf78339dc4f8ce3ca7fe9b3a307f}
-      \field{sortinit}{D}
-      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://docs.sequelizejs.com/en/latest/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Sequelize - The Node.js / io.js ORM for PostgreSQL, MySQL, SQLite and MSSQL}
-      \field{year}{2011}
+      \field{title}{Create A Metro Style Design For eLearning}
+      \field{year}{2013}
     \endentry
     \entry{packery}{misc}{}
       \name{author}{1}{}{%
@@ -186,14 +215,64 @@
       }
       \strng{namehash}{e221d6faab77fadd820a955416edd7fe}
       \strng{fullhash}{e221d6faab77fadd820a955416edd7fe}
-      \field{sortinit}{D}
-      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://packery.metafizzy.co/}}
       \field{note}{[Online, accessed 07-19-2015]}
       \field{title}{The bin-packing layout library}
       \field{year}{2012}
+    \endentry
+    \entry{treisman1987merkmale}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ff086e991ec43cf244971f33013ac423}{Treisman}{T\bibinitperiod}{Anne}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{ff086e991ec43cf244971f33013ac423}
+      \strng{fullhash}{ff086e991ec43cf244971f33013ac423}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Spektrum der Wissenschaft}
+      \field{number}{1987}
+      \field{title}{Merkmale und Gegenstände in der visuellen Verarbeitung}
+      \field{volume}{1}
+      \field{year}{1987}
+      \field{pages}{72\bibrangedash 82}
+      \range{pages}{11}
+    \endentry
+    \entry{husl}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=7a32c7f0daae899af9011fc2bc36a874}{Boronine}{B\bibinitperiod}{Alexei}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7a32c7f0daae899af9011fc2bc36a874}
+      \strng{fullhash}{7a32c7f0daae899af9011fc2bc36a874}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.husl-colors.org/}}
+      \field{note}{[Online; accessed 06-07-2015]}
+      \field{title}{HUSL Color Space}
+      \field{year}{2015}
+    \endentry
+    \entry{zichermann2011gamification}{book}{}
+      \name{author}{2}{}{%
+        {{hash=e4298ecb77a36c0bf44b61fcda638788}{Zichermann}{Z\bibinitperiod}{Gabe}{G\bibinitperiod}{}{}{}{}}%
+        {{hash=79f8eea005d76ae385a1b5d4aca35566}{Cunningham}{C\bibinitperiod}{Christopher}{C\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {" O'Reilly Media, Inc."}%
+      }
+      \strng{namehash}{efb8037e33469a05e32de14b3a9116c1}
+      \strng{fullhash}{efb8037e33469a05e32de14b3a9116c1}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Gamification by design: Implementing game mechanics in web and mobile apps}
+      \field{year}{2011}
     \endentry
     \entry{deterding2011game}{inproceedings}{}
       \name{author}{4}{}{%
@@ -207,8 +286,8 @@
       }
       \strng{namehash}{74ba12e04f1a6f9417ee0406ccd7ba89}
       \strng{fullhash}{5900b306a627b766e3160b1c23b117f2}
-      \field{sortinit}{D}
-      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 15th International Academic MindTrek Conference: Envisioning Future Media Environments}
@@ -217,20 +296,40 @@
       \field{pages}{9\bibrangedash 15}
       \range{pages}{7}
     \endentry
-    \entry{transform3d}{misc}{}
+    \entry{gamasutra}{misc}{}
       \name{author}{1}{}{%
-        {{hash=16f986747d7616b80bf2a2e8dd39a90b}{Deveria}{D\bibinitperiod}{Alexis}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=0ce38ba7099edf2e79662a1868538330}{Kim}{K\bibinitperiod}{Joseph}{J\bibinitperiod}{}{}{}{}}%
       }
-      \strng{namehash}{16f986747d7616b80bf2a2e8dd39a90b}
-      \strng{fullhash}{16f986747d7616b80bf2a2e8dd39a90b}
-      \field{sortinit}{D}
-      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \strng{namehash}{0ce38ba7099edf2e79662a1868538330}
+      \strng{fullhash}{0ce38ba7099edf2e79662a1868538330}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://caniuse.com/\#feat=transforms3d}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{CSS3 3D Transforms}
-      \field{year}{2015}
+      \field{howpublished}{\url{http://www.gamasutra.com/blogs/JosephKim/20140323/213728/The_Compulsion_Loop_Explained.php}}
+      \field{note}{[Online, accessed 06-03-2015]}
+      \field{title}{The Compulsion Loop Explained}
+      \field{year}{2014}
+    \endentry
+    \entry{severance2012javascript}{article}{}
+      \name{author}{1}{}{%
+        {{hash=2c8b9da4e951b9bddb8adae99ff74aa4}{Severance}{S\bibinitperiod}{Charles}{C\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{2c8b9da4e951b9bddb8adae99ff74aa4}
+      \strng{fullhash}{2c8b9da4e951b9bddb8adae99ff74aa4}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer}
+      \field{number}{2}
+      \field{title}{JavaScript: Designing a language in 10 days}
+      \field{year}{2012}
+      \field{pages}{7\bibrangedash 8}
+      \range{pages}{2}
     \endentry
     \entry{webassembly}{misc}{}
       \name{author}{1}{}{%
@@ -238,8 +337,8 @@
       }
       \strng{namehash}{c669ae39e4262fb31a4df5b29bc678ae}
       \strng{fullhash}{c669ae39e4262fb31a4df5b29bc678ae}
-      \field{sortinit}{E}
-      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://brendaneich.com/2015/06/from-asm-js-to-webassembly/}}
@@ -247,14 +346,588 @@
       \field{title}{From ASM.JS to WebAssembly}
       \field{year}{2015}
     \endentry
+    \entry{javascriptcompile}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=ea0ee2f114d2176ea43832aa49066627}{Rory\bibnamedelima O’Kane}{R\bibinitperiod\bibinitdelim O\bibinitperiod}{Doug\bibnamedelima Holton}{D\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{Brian\bibnamedelima Horakh}{B\bibinitperiod\bibinitdelim H\bibinitperiod}}%
+      }
+      \strng{namehash}{ea0ee2f114d2176ea43832aa49066627}
+      \strng{fullhash}{ea0ee2f114d2176ea43832aa49066627}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{List of languages that compile to JS}
+      \field{year}{2015}
+    \endentry
+    \entry{zakai2011emscripten}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=c4cfe1bc600036ecf862fcbdf7b6d1cf}{Zakai}{Z\bibinitperiod}{Alon}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{c4cfe1bc600036ecf862fcbdf7b6d1cf}
+      \strng{fullhash}{c4cfe1bc600036ecf862fcbdf7b6d1cf}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the ACM international conference companion on Object oriented programming systems languages and applications companion}
+      \field{title}{Emscripten: an LLVM-to-JavaScript compiler}
+      \field{year}{2011}
+      \field{pages}{301\bibrangedash 312}
+      \range{pages}{12}
+    \endentry
+    \entry{texlive}{misc}{}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{hhttps://github.com/manuels/texlive.js/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Compiling LaTeX (TeX live) in your browser}
+      \field{year}{2013}
+    \endentry
+    \entry{es6}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e83578898872635ef15c7690819d9c96}{International}{I\bibinitperiod}{Ecma}{E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{e83578898872635ef15c7690819d9c96}
+      \strng{fullhash}{e83578898872635ef15c7690819d9c96}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.ecma-international.org/ecma-262/6.0/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{http://www.ecma-international.org/ecma-262/6.0/}
+      \field{year}{2015}
+    \endentry
+    \entry{es6features}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a9ea55ef1626791912e00e486d2db1e9}{Zaytsev}{Z\bibinitperiod}{Juriy\bibnamedelima ``kangax''}{J\bibinitperiod\bibinitdelim `\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{a9ea55ef1626791912e00e486d2db1e9}
+      \strng{fullhash}{a9ea55ef1626791912e00e486d2db1e9}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://kangax.github.io/compat-table/es5/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{The es6 compatibility table}
+      \field{year}{2015}
+    \endentry
+    \entry{jsx}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6a2c4d8b39538e1ab369a0cf62a49e46}{Inc}{I\bibinitperiod}{Facebook}{F\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{6a2c4d8b39538e1ab369a0cf62a49e46}
+      \strng{fullhash}{6a2c4d8b39538e1ab369a0cf62a49e46}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://facebook.github.io/jsx/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{XML-like syntax extension to ECMAScript}
+      \field{year}{2014}
+    \endentry
+    \entry{eslint}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=247666522c59c5d84db77d915c83e802}{Zakas}{Z\bibinitperiod}{Nicholas\bibnamedelima C.}{N\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{247666522c59c5d84db77d915c83e802}
+      \strng{fullhash}{247666522c59c5d84db77d915c83e802}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://eslint.org/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{The pluggable linting utility for JavaScript and JSX}
+      \field{year}{2015}
+    \endentry
+    \entry{babel}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=fe0e77e4dbf1a00edffdcd43f1e49631}{Sebastian\bibnamedelima McKenzie}{S\bibinitperiod\bibinitdelim M\bibinitperiod}{James\bibnamedelima Kyle}{J\bibinitperiod\bibinitdelim K\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{fe0e77e4dbf1a00edffdcd43f1e49631}
+      \strng{fullhash}{fe0e77e4dbf1a00edffdcd43f1e49631}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://babeljs.io/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Babel - The compiler for writing next generation JavaScript}
+      \field{year}{2015}
+    \endentry
+    \entry{templatestrings}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e233a52ae34baa92533a77e95ab2fd10}{Rauschmayer}{R\bibinitperiod}{Dr.\bibnamedelimi Axel}{D\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{e233a52ae34baa92533a77e95ab2fd10}
+      \strng{fullhash}{e233a52ae34baa92533a77e95ab2fd10}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.2ality.com/2014/07/jsx-template-strings.html}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{React JSX via ECMAScript 6 template strings}
+      \field{year}{2015}
+    \endentry
+    \entry{embercrud}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=093a53aa50bdf4406de8190157387eff}{Knebel}{K\bibinitperiod}{Julien}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{093a53aa50bdf4406de8190157387eff}
+      \strng{fullhash}{093a53aa50bdf4406de8190157387eff}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/jkneb/ember-crud}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Simple CRUD for Ember.js 1.1.2 with Ember Data 1.0.0beta3}
+      \field{year}{2013}
+    \endentry
+    \entry{dojo}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=2eb6545ccec64d42e38dd89c72e2d905}{Foundation}{F\bibinitperiod}{The\bibnamedelima Dojo}{T\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{2eb6545ccec64d42e38dd89c72e2d905}
+      \strng{fullhash}{2eb6545ccec64d42e38dd89c72e2d905}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://dojotoolkit.org/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Dojo Toolkit}
+      \field{year}{2004}
+    \endentry
+    \entry{angularjs}{misc}{}
+      \true{moreauthor}
+      \name{author}{1}{}{%
+        {{hash=99e90854b3370f24324eda82a9312ce6}{Hevery}{H\bibinitperiod}{Miško}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{97f0e3bc18fc6cc2710d5532a7fd8dca}
+      \strng{fullhash}{97f0e3bc18fc6cc2710d5532a7fd8dca}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://angularjs.org/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{AngularJS - HTML enhanced for web apps!}
+      \field{year}{2010}
+    \endentry
+    \entry{emberjs}{misc}{}
+      \true{moreauthor}
+      \name{author}{1}{}{%
+        {{hash=07dc18cc6f5a3e8ee5f86ef060237f1d}{Wagenet}{W\bibinitperiod}{Peter}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{207b6f5a291e7692ecc1488bebe358aa}
+      \strng{fullhash}{207b6f5a291e7692ecc1488bebe358aa}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://angularjs.org/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{emberJS - a framework for creating ambitious web applications}
+      \field{year}{2011}
+    \endentry
+    \entry{reactrouter}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a111c00b4f0ec8817e24de7b98005986}{Michael\bibnamedelima Jackson}{M\bibinitperiod\bibinitdelim J\bibinitperiod}{Dan\bibnamedelima Abramov}{D\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{Ryan\bibnamedelima Florence}{R\bibinitperiod\bibinitdelim F\bibinitperiod}}%
+      }
+      \strng{namehash}{a111c00b4f0ec8817e24de7b98005986}
+      \strng{fullhash}{a111c00b4f0ec8817e24de7b98005986}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://react-bootstrap.github.io/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{The most popular front-end framework, rebuilt for React.}
+      \field{year}{2014}
+    \endentry
+    \entry{reflux}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=086d1d4b2e968b8603da80f90e4b0a7e}{Brassman}{B\bibinitperiod}{Mikael}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{086d1d4b2e968b8603da80f90e4b0a7e}
+      \strng{fullhash}{086d1d4b2e968b8603da80f90e4b0a7e}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://spoike.ghost.io/deconstructing-reactjss-flux/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Deconstructing ReactJS's Flux}
+      \field{year}{2014}
+    \endentry
+    \entry{bootstrap}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=2491bc9c7d8731e1ae33124093bc7026}{Twitter}{T\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{2491bc9c7d8731e1ae33124093bc7026}
+      \strng{fullhash}{2491bc9c7d8731e1ae33124093bc7026}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://getbootstrap.com/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{The world's most popular mobile-first and responsive front-end framework.}
+      \field{year}{2011}
+    \endentry
+    \entry{bostock2011d3}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7976650397b66b1dceb144cf6681be6d}{Bostock}{B\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=0a3ecc5e23f1fa4bb83baf3f62399844}{Ogievetsky}{O\bibinitperiod}{Vadim}{V\bibinitperiod}{}{}{}{}}%
+        {{hash=c1fc05b7156dc351ceebcc7f14fe27ee}{Heer}{H\bibinitperiod}{Jeffrey}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{6a25e78a45a3a747991edf5615dd843c}
+      \strng{fullhash}{6a25e78a45a3a747991edf5615dd843c}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Visualization and Computer Graphics, IEEE Transactions on}
+      \field{number}{12}
+      \field{title}{D$^3$ data-driven documents}
+      \field{volume}{17}
+      \field{year}{2011}
+      \field{pages}{2301\bibrangedash 2309}
+      \range{pages}{9}
+    \endentry
+    \entry{Immutable}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=a59a3b77b97608e929ef151836f90dd5}{Byron}{B\bibinitperiod}{Lee}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{a59a3b77b97608e929ef151836f90dd5}
+      \strng{fullhash}{a59a3b77b97608e929ef151836f90dd5}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://facebook.github.io/immutable-js/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Immutable.js}
+      \field{year}{2014}
+    \endentry
+    \entry{cookiesjs}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=7fe7bd48bb56f7174085876abcd07464}{Hamper}{H\bibinitperiod}{Scott}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7fe7bd48bb56f7174085876abcd07464}
+      \strng{fullhash}{7fe7bd48bb56f7174085876abcd07464}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/ScottHamper/Cookies}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{JavaScript Client-Side Cookie Manipulation Library}
+      \field{year}{2012}
+    \endentry
+    \entry{storejs}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=b72a6048f37072e3d11a2c91c1e5eee1}{Westin}{W\bibinitperiod}{Marcus}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b72a6048f37072e3d11a2c91c1e5eee1}
+      \strng{fullhash}{b72a6048f37072e3d11a2c91c1e5eee1}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/ScottHamper/Cookies}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{localStorage wrapper for all browsers without using cookies or flash.}
+      \field{year}{2010}
+    \endentry
+    \entry{momentjs}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=ee453cf8aba573e79d4cf8f8007161b6}{Tim\bibnamedelima Wood}{T\bibinitperiod\bibinitdelim W\bibinitperiod}{Isaac\bibnamedelima Cambron}{I\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{Iskren\bibnamedelimb Ivov\bibnamedelima Chernev}{I\bibinitperiod\bibinitdelim I\bibinitperiod\bibinitdelim C\bibinitperiod}}%
+      }
+      \strng{namehash}{ee453cf8aba573e79d4cf8f8007161b6}
+      \strng{fullhash}{ee453cf8aba573e79d4cf8f8007161b6}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://momentjs.com/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Parse, validate, manipulate, and display dates in JavaScript.}
+      \field{year}{2011}
+    \endentry
+    \entry{gulp}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6a451ed843f2238fee40c9f95d54ab05}{Eric\bibnamedelima Schoffstall}{E\bibinitperiod\bibinitdelim S\bibinitperiod}{Rob\bibnamedelima Richardson}{R\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{6a451ed843f2238fee40c9f95d54ab05}
+      \strng{fullhash}{6a451ed843f2238fee40c9f95d54ab05}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://gulpjs.com/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Gulp - the streaming build system}
+      \field{year}{2015}
+    \endentry
+    \entry{grunt}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=2ce275ae039ec1d70b3edabc75dddde9}{Ben\bibnamedelima Alman}{B\bibinitperiod\bibinitdelim A\bibinitperiod}{Kyle\bibnamedelimb Robinson\bibnamedelima Young}{K\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim Y\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{2ce275ae039ec1d70b3edabc75dddde9}
+      \strng{fullhash}{2ce275ae039ec1d70b3edabc75dddde9}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://gruntjs.com/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Grunt - The JavaScript Task Runner}
+      \field{year}{2015}
+    \endentry
+    \entry{webpack}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=b223f1c8fb4b59eb0167ee7300c88da6}{Koppers}{K\bibinitperiod}{Tobias}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b223f1c8fb4b59eb0167ee7300c88da6}
+      \strng{fullhash}{b223f1c8fb4b59eb0167ee7300c88da6}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://webpack.github.io/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{webpack module bundler}
+      \field{year}{2012}
+    \endentry
+    \entry{brunch}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=4e3dcc19651cc7f7cab07118eed1f7be}{Paul\bibnamedelima Miller}{P\bibinitperiod\bibinitdelim M\bibinitperiod}{Thomas\bibnamedelima Schranz}{T\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{Elan\bibnamedelima Shanker}{E\bibinitperiod\bibinitdelim S\bibinitperiod}}%
+      }
+      \strng{namehash}{4e3dcc19651cc7f7cab07118eed1f7be}
+      \strng{fullhash}{4e3dcc19651cc7f7cab07118eed1f7be}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://brunch.io/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Brunch - ultra fast HTML5 build tool}
+      \field{year}{2015}
+    \endentry
+    \entry{petehuntwebpack}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=690e615737bb4d12a129ffe7472b3821}{Hunt}{H\bibinitperiod}{Pete}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{690e615737bb4d12a129ffe7472b3821}
+      \strng{fullhash}{690e615737bb4d12a129ffe7472b3821}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/petehunt/webpack-howto}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{webpack-howto}
+      \field{year}{2015}
+    \endentry
+    \entry{react}{misc}{}
+      \true{moreauthor}
+      \name{author}{1}{}{%
+        {{hash=fe11d6b84cd191b502b08edb7700ade1}{Paul\bibnamedelima O’Shannessy}{P\bibinitperiod\bibinitdelim O\bibinitperiod}{Pete\bibnamedelima Hunt}{P\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{Ben\bibnamedelima Alpert}{B\bibinitperiod\bibinitdelim A\bibinitperiod}}%
+      }
+      \strng{namehash}{711c808e87631dc1b12381daf4f5194c}
+      \strng{fullhash}{711c808e87631dc1b12381daf4f5194c}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://facebook.github.io/react/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{React - a JavaScript library for building user interfaces}
+      \field{year}{2013}
+    \endentry
+    \entry{khan}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=64f204fbfe7985b00e26b7de8ee9d034}{Burget}{B\bibinitperiod}{Joel}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{64f204fbfe7985b00e26b7de8ee9d034}
+      \strng{fullhash}{64f204fbfe7985b00e26b7de8ee9d034}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://joelburget.com/backbone-to-react/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Backbone to React}
+      \field{year}{2014}
+    \endentry
+    \entry{netflix}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=cddd88862d25333434f63e294a45e13a}{Husain}{H\bibinitperiod}{Jafar}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{cddd88862d25333434f63e294a45e13a}
+      \strng{fullhash}{cddd88862d25333434f63e294a45e13a}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.youtube.com/watch?v=eNC0mRYGWgc}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Beyond the DOM: How Netflix plans to enhance your teleision experience}
+      \field{year}{2015}
+    \endentry
+    \entry{airbnb}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6d6b4fd2355ec3e2c2ff6548bb40d8b5}{Wren}{W\bibinitperiod}{Chris}{C\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{6d6b4fd2355ec3e2c2ff6548bb40d8b5}
+      \strng{fullhash}{6d6b4fd2355ec3e2c2ff6548bb40d8b5}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://medium.com/code-stories/dev-chats-spike-brehm-of-airbnb-87e155f3475d}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Dev Chats: Spike Brehm of Airbnb}
+      \field{year}{2014}
+    \endentry
+    \entry{webcomponents}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=db9fa0c2e26681c8c19d56db344506bd}{Network}{N\bibinitperiod}{Mozilla\bibnamedelima Developer}{M\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{hash=4f8318ddaf05312632dfeae506c1f3e2}{contributors}{c\bibinitperiod}{}{}{individual}{i\bibinitperiod}{}{}}%
+      }
+      \strng{namehash}{1f37aa867b54db29d1694c605415587f}
+      \strng{fullhash}{1f37aa867b54db29d1694c605415587f}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://developer.mozilla.org/en-US/docs/Web/Web_Components}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Web Componentst}
+      \field{year}{2014}
+    \endentry
+    \entry{DOM}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=db9fa0c2e26681c8c19d56db344506bd}{Network}{N\bibinitperiod}{Mozilla\bibnamedelima Developer}{M\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{hash=4f8318ddaf05312632dfeae506c1f3e2}{contributors}{c\bibinitperiod}{}{}{individual}{i\bibinitperiod}{}{}}%
+      }
+      \strng{namehash}{1f37aa867b54db29d1694c605415587f}
+      \strng{fullhash}{1f37aa867b54db29d1694c605415587f}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Document Object Model (DOM)}
+      \field{year}{2014}
+    \endentry
+    \entry{dirty}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=78648a031ae90e7f44e37e06514f1155}{Sobrepere}{S\bibinitperiod}{Josep\bibnamedelima M}{J\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{78648a031ae90e7f44e37e06514f1155}
+      \strng{fullhash}{78648a031ae90e7f44e37e06514f1155}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://stackoverflow.com/questions/27109429/what-is-the-time-complexity-for-angularjss-dirty-checking-algorithm}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{What is the time complexity for AngularJS's dirty checking algorithm?}
+      \field{year}{2014}
+    \endentry
+    \entry{reactreconciliation}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bf18e4470288834c9f8c13107fefa7df}{Inc.}{I\bibinitperiod}{Facebook}{F\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{bf18e4470288834c9f8c13107fefa7df}
+      \strng{fullhash}{bf18e4470288834c9f8c13107fefa7df}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://facebook.github.io/react/docs/reconciliation.html }}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Reconciliation}
+      \field{year}{2014}
+    \endentry
+    \entry{elm}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bd0b601d2ea72eeb81587cf33772db14}{Czaplicki}{C\bibinitperiod}{Evan}{E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{bd0b601d2ea72eeb81587cf33772db14}
+      \strng{fullhash}{bd0b601d2ea72eeb81587cf33772db14}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://elm-lang.org/blog/blazing-fast-html}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Blazing Fast HTML}
+      \field{year}{2014}
+    \endentry
+    \entry{om}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=88df249dbb5adc429b169df01829c105}{Nolen}{N\bibinitperiod}{David}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{88df249dbb5adc429b169df01829c105}
+      \strng{fullhash}{88df249dbb5adc429b169df01829c105}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/omcljs/om}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{ClojureScript interface to Facebook's React}
+      \field{year}{2014}
+    \endentry
+    \entry{johnston2004advances}{article}{}
+      \name{author}{3}{}{%
+        {{hash=70c74f2ebc75c294fe4be085a842a79d}{Johnston}{J\bibinitperiod}{Wesley\bibnamedelima M}{W\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{hash=1c3ab064583aee90d315e7a539557c29}{Hanna}{H\bibinitperiod}{JR}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=10f36a3f54de39f61238c2fe25459366}{Millar}{M\bibinitperiod}{Richard\bibnamedelima J}{R\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{c4b4b94575c001e01bc6794518f52909}
+      \strng{fullhash}{c4b4b94575c001e01bc6794518f52909}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM Computing Surveys (CSUR)}
+      \field{number}{1}
+      \field{title}{Advances in dataflow programming languages}
+      \field{volume}{36}
+      \field{year}{2004}
+      \field{pages}{1\bibrangedash 34}
+      \range{pages}{34}
+    \endentry
     \entry{signals}{misc}{}
       \name{author}{1}{}{%
         {{hash=01dccb8d0a14b514cc90dc12508d5931}{Greene}{G\bibinitperiod}{James\bibnamedelima M.}{J\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
       }
       \strng{namehash}{01dccb8d0a14b514cc90dc12508d5931}
       \strng{fullhash}{01dccb8d0a14b514cc90dc12508d5931}
-      \field{sortinit}{G}
-      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations}}
@@ -262,21 +935,117 @@
       \field{title}{Comparison between different Observer Pattern implementations}
       \field{year}{2014}
     \endentry
-    \entry{cookiesjs}{misc}{}
-      \true{moreauthor}
+    \entry{redux}{misc}{}
       \name{author}{1}{}{%
-        {{hash=7fe7bd48bb56f7174085876abcd07464}{Hamper}{H\bibinitperiod}{Scott}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=96ed906d3a763ce2d916fe6037aebffe}{Abramov}{A\bibinitperiod}{Dan}{D\bibinitperiod}{}{}{}{}}%
       }
-      \strng{namehash}{f430b89d30cca968be5ba571cda237bc}
-      \strng{fullhash}{f430b89d30cca968be5ba571cda237bc}
-      \field{sortinit}{H}
-      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \strng{namehash}{96ed906d3a763ce2d916fe6037aebffe}
+      \strng{fullhash}{96ed906d3a763ce2d916fe6037aebffe}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://github.com/ScottHamper/Cookies}}
+      \field{howpublished}{\url{https://medium.com/@dan_abramov/the-evolution-of-flux-frameworks-6c16ad26bb31}}
+      \field{note}{[Online; accessed 06-07-2015]}
+      \field{title}{The Evolution of Flux Frameworks}
+      \field{year}{2015}
+    \endentry
+    \entry{transform3d}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=16f986747d7616b80bf2a2e8dd39a90b}{Deveria}{D\bibinitperiod}{Alexis}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{16f986747d7616b80bf2a2e8dd39a90b}
+      \strng{fullhash}{16f986747d7616b80bf2a2e8dd39a90b}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://caniuse.com/\#feat=transforms3d}}
       \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{JavaScript Client-Side Cookie Manipulation Library}
+      \field{title}{CSS3 3D Transforms}
+      \field{year}{2015}
+    \endentry
+    \entry{lifecycle}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bf18e4470288834c9f8c13107fefa7df}{Inc.}{I\bibinitperiod}{Facebook}{F\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{bf18e4470288834c9f8c13107fefa7df}
+      \strng{fullhash}{bf18e4470288834c9f8c13107fefa7df}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://facebook.github.io/react/docs/component-specs.html}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Component Specs}
+      \field{year}{2014}
+    \endentry
+    \entry{tutorial}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bf18e4470288834c9f8c13107fefa7df}{Inc.}{I\bibinitperiod}{Facebook}{F\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{bf18e4470288834c9f8c13107fefa7df}
+      \strng{fullhash}{bf18e4470288834c9f8c13107fefa7df}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://facebook.github.io/react/docs/tutorial.html}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Tutorial}
+      \field{year}{2014}
+    \endentry
+    \entry{tilkov2010node}{article}{}
+      \name{author}{2}{}{%
+        {{hash=71539e822b9d217e558698b79d84a8f4}{Tilkov}{T\bibinitperiod}{Stefan}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=ec36bb9d2db7215ce32871a7fb8526ee}{Vinoski}{V\bibinitperiod}{Steve}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{07ea5eeb05273c4db5828278c617ab85}
+      \strng{fullhash}{07ea5eeb05273c4db5828278c617ab85}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Internet Computing}
+      \field{number}{6}
+      \field{title}{Node. js: Using JavaScript to build high-performance network programs}
+      \field{year}{2010}
+      \field{pages}{80\bibrangedash 83}
+      \range{pages}{4}
+    \endentry
+    \entry{node1m}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=aab976d7eb2c6790db19d20c14e78c74}{Robinson}{R\bibinitperiod}{Aaron\bibnamedelima “Caustik”}{A\bibinitperiod\bibinitdelim “\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{aab976d7eb2c6790db19d20c14e78c74}
+      \strng{fullhash}{aab976d7eb2c6790db19d20c14e78c74}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://blog.caustik.com/category/node-js/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Node.js w/1M concurrent connections!}
       \field{year}{2012}
+    \endentry
+    \entry{sequelize}{misc}{}
+      \true{moreauthor}
+      \name{author}{1}{}{%
+        {{hash=e13c5baa9fb8ee7167d1867e6f228b71}{Depold}{D\bibinitperiod}{Sascha}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{d5e1bf78339dc4f8ce3ca7fe9b3a307f}
+      \strng{fullhash}{d5e1bf78339dc4f8ce3ca7fe9b3a307f}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://docs.sequelizejs.com/en/latest/}}
+      \field{note}{[Online, accessed 07-19-2015]}
+      \field{title}{Sequelize - The Node.js / io.js ORM for PostgreSQL, MySQL, SQLite and MSSQL}
+      \field{year}{2011}
     \endentry
     \entry{haupt2014model}{inproceedings}{}
       \name{author}{4}{}{%
@@ -290,8 +1059,8 @@
       }
       \strng{namehash}{952ab584909b47d5a499eb4903a58912}
       \strng{fullhash}{61bfa9fcd1deff0308143235d5e7ebcc}
-      \field{sortinit}{H}
-      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Web Services (ICWS), 2014 IEEE International Conference on}
@@ -300,529 +1069,14 @@
       \field{pages}{129\bibrangedash 136}
       \range{pages}{8}
     \endentry
-    \entry{angularjs}{misc}{}
-      \true{moreauthor}
-      \name{author}{1}{}{%
-        {{hash=99e90854b3370f24324eda82a9312ce6}{Hevery}{H\bibinitperiod}{Miško}{M\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{97f0e3bc18fc6cc2710d5532a7fd8dca}
-      \strng{fullhash}{97f0e3bc18fc6cc2710d5532a7fd8dca}
-      \field{sortinit}{H}
-      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://angularjs.org/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{AngularJS - HTML enhanced for web apps!}
-      \field{year}{2010}
-    \endentry
-    \entry{javascriptcompile}{misc}{}
-      \true{moreauthor}
-      \name{author}{1}{}{%
-        {{hash=3ce5fbc1367eff9cf57afde418e69eea}{Horakh}{H\bibinitperiod}{Brian}{B\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{bcc0355c9af832e4e7873aa54ab6f6f7}
-      \strng{fullhash}{bcc0355c9af832e4e7873aa54ab6f6f7}
-      \field{sortinit}{H}
-      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{List of languages that compile to JS}
-      \field{year}{2015}
-    \endentry
-    \entry{petehuntwebpack}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=690e615737bb4d12a129ffe7472b3821}{Hunt}{H\bibinitperiod}{Pete}{P\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{690e615737bb4d12a129ffe7472b3821}
-      \strng{fullhash}{690e615737bb4d12a129ffe7472b3821}
-      \field{sortinit}{H}
-      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://github.com/petehunt/webpack-howto}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{webpack-howto}
-      \field{year}{2015}
-    \endentry
-    \entry{netflix}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=cddd88862d25333434f63e294a45e13a}{Husain}{H\bibinitperiod}{Jafar}{J\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{cddd88862d25333434f63e294a45e13a}
-      \strng{fullhash}{cddd88862d25333434f63e294a45e13a}
-      \field{sortinit}{H}
-      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.youtube.com/watch?v=eNC0mRYGWgc}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Beyond the DOM: How Netflix plans to enhance your teleision experience}
-      \field{year}{2015}
-    \endentry
-    \entry{alexa}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=51e2effce77d04e33468a8c228c54581}{Inc}{I\bibinitperiod}{Alexa\bibnamedelima Internet}{A\bibinitperiod\bibinitdelim I\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{51e2effce77d04e33468a8c228c54581}
-      \strng{fullhash}{51e2effce77d04e33468a8c228c54581}
-      \field{sortinit}{I}
-      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://www.alexa.com/siteinfo/reddit.com}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{How popular is reddit.com?}
-      \field{year}{2015}
-    \endentry
-    \entry{lifecycle}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=bf18e4470288834c9f8c13107fefa7df}{Inc.}{I\bibinitperiod}{Facebook}{F\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{bf18e4470288834c9f8c13107fefa7df}
-      \strng{fullhash}{bf18e4470288834c9f8c13107fefa7df}
-      \field{sortinit}{I}
-      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://facebook.github.io/react/docs/component-specs.html}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Component Specs}
-      \field{year}{2014}
-    \endentry
-    \entry{reactreconciliation}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=bf18e4470288834c9f8c13107fefa7df}{Inc.}{I\bibinitperiod}{Facebook}{F\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{bf18e4470288834c9f8c13107fefa7df}
-      \strng{fullhash}{bf18e4470288834c9f8c13107fefa7df}
-      \field{sortinit}{I}
-      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://facebook.github.io/react/docs/reconciliation.html }}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Reconciliation}
-      \field{year}{2014}
-    \endentry
-    \entry{tutorial}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=bf18e4470288834c9f8c13107fefa7df}{Inc.}{I\bibinitperiod}{Facebook}{F\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{bf18e4470288834c9f8c13107fefa7df}
-      \strng{fullhash}{bf18e4470288834c9f8c13107fefa7df}
-      \field{sortinit}{I}
-      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://facebook.github.io/react/docs/tutorial.html}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Tutorial}
-      \field{year}{2014}
-    \endentry
-    \entry{jsx}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=6a2c4d8b39538e1ab369a0cf62a49e46}{Inc}{I\bibinitperiod}{Facebook}{F\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{6a2c4d8b39538e1ab369a0cf62a49e46}
-      \strng{fullhash}{6a2c4d8b39538e1ab369a0cf62a49e46}
-      \field{sortinit}{I}
-      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://facebook.github.io/jsx/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{XML-like syntax extension to ECMAScript}
-      \field{year}{2014}
-    \endentry
-    \entry{nike}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=5abfff328a5f924a37e21c730ace3c2e}{Inc}{I\bibinitperiod}{Nike}{N\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{5abfff328a5f924a37e21c730ace3c2e}
-      \strng{fullhash}{5abfff328a5f924a37e21c730ace3c2e}
-      \field{sortinit}{I}
-      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://www.nikeplus.com.br/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Nike+}
-      \field{year}{2006}
-    \endentry
-    \entry{strava}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=dd99bfb46ede39041e6de68d4451138b}{Inc}{I\bibinitperiod}{Strava}{S\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{dd99bfb46ede39041e6de68d4451138b}
-      \strng{fullhash}{dd99bfb46ede39041e6de68d4451138b}
-      \field{sortinit}{I}
-      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.strava.com/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Running and Cycling GPS Tracker, Performance Analytics, Maps, Clubs and Competition}
-      \field{year}{2009}
-    \endentry
-    \entry{es6}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=e83578898872635ef15c7690819d9c96}{International}{I\bibinitperiod}{Ecma}{E\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{e83578898872635ef15c7690819d9c96}
-      \strng{fullhash}{e83578898872635ef15c7690819d9c96}
-      \field{sortinit}{I}
-      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://www.ecma-international.org/ecma-262/6.0/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{http://www.ecma-international.org/ecma-262/6.0/}
-      \field{year}{2015}
-    \endentry
-    \entry{johnston2004advances}{article}{}
-      \name{author}{3}{}{%
-        {{hash=70c74f2ebc75c294fe4be085a842a79d}{Johnston}{J\bibinitperiod}{Wesley\bibnamedelima M}{W\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
-        {{hash=1c3ab064583aee90d315e7a539557c29}{Hanna}{H\bibinitperiod}{JR}{J\bibinitperiod}{}{}{}{}}%
-        {{hash=10f36a3f54de39f61238c2fe25459366}{Millar}{M\bibinitperiod}{Richard\bibnamedelima J}{R\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
-      }
-      \list{publisher}{1}{%
-        {ACM}%
-      }
-      \strng{namehash}{c4b4b94575c001e01bc6794518f52909}
-      \strng{fullhash}{c4b4b94575c001e01bc6794518f52909}
-      \field{sortinit}{J}
-      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{ACM Computing Surveys (CSUR)}
-      \field{number}{1}
-      \field{title}{Advances in dataflow programming languages}
-      \field{volume}{36}
-      \field{year}{2004}
-      \field{pages}{1\bibrangedash 34}
-      \range{pages}{34}
-    \endentry
-    \entry{gamasutra}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=0ce38ba7099edf2e79662a1868538330}{Kim}{K\bibinitperiod}{Joseph}{J\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{0ce38ba7099edf2e79662a1868538330}
-      \strng{fullhash}{0ce38ba7099edf2e79662a1868538330}
-      \field{sortinit}{K}
-      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://www.gamasutra.com/blogs/JosephKim/20140323/213728/The_Compulsion_Loop_Explained.php}}
-      \field{note}{[Online, accessed 06-03-2015]}
-      \field{title}{The Compulsion Loop Explained}
-      \field{year}{2014}
-    \endentry
-    \entry{embercrud}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=093a53aa50bdf4406de8190157387eff}{Knebel}{K\bibinitperiod}{Julien}{J\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{093a53aa50bdf4406de8190157387eff}
-      \strng{fullhash}{093a53aa50bdf4406de8190157387eff}
-      \field{sortinit}{K}
-      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://github.com/jkneb/ember-crud}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Simple CRUD for Ember.js 1.1.2 with Ember Data 1.0.0beta3}
-      \field{year}{2013}
-    \endentry
-    \entry{webpack}{misc}{}
-      \true{moreauthor}
-      \name{author}{1}{}{%
-        {{hash=b223f1c8fb4b59eb0167ee7300c88da6}{Koppers}{K\bibinitperiod}{Tobias}{T\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{e14e3fd3fa8b8f023ed41ef82c3dc970}
-      \strng{fullhash}{e14e3fd3fa8b8f023ed41ef82c3dc970}
-      \field{sortinit}{K}
-      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://webpack.github.io/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{webpack module bundler}
-      \field{year}{2012}
-    \endentry
-    \entry{metrodesign}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=b08aec7b75343dd02a0731c333b7b96d}{Malamed}{M\bibinitperiod}{Connie}{C\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{b08aec7b75343dd02a0731c333b7b96d}
-      \strng{fullhash}{b08aec7b75343dd02a0731c333b7b96d}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://theelearningcoach.com/media/graphics/metro-style-for-elearning/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Create A Metro Style Design For eLearning}
-      \field{year}{2013}
-    \endentry
-    \entry{meder2014daiknow}{incollection}{}
-      \name{author}{3}{}{%
-        {{hash=e9b95e21145ad7bb4793c00ecb6c9efb}{Meder}{M\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
-        {{hash=1ed293b107b335ffe5026f543d07c094}{Plumbaum}{P\bibinitperiod}{Till}{T\bibinitperiod}{}{}{}{}}%
-        {{hash=f60e61591f711cff62501da0bb24bcd8}{Hopfgartner}{H\bibinitperiod}{Frank}{F\bibinitperiod}{}{}{}{}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{e846dd3257be0876a12d8128af45bce8}
-      \strng{fullhash}{e846dd3257be0876a12d8128af45bce8}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Advances in Information Retrieval}
-      \field{title}{Daiknow: A gamified enterprise bookmarking system}
-      \field{year}{2014}
-      \field{pages}{759\bibrangedash 762}
-      \range{pages}{4}
-    \endentry
-    \entry{babel}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://babeljs.io/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Babel - The compiler for writing next generation JavaScript}
-      \field{year}{2015}
-    \endentry
-    \entry{brunch}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://brunch.io/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Brunch - ultra fast HTML5 build tool}
-      \field{year}{2015}
-    \endentry
-    \entry{texlive}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{hhttps://github.com/manuels/texlive.js/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Compiling LaTeX (TeX live) in your browser}
-      \field{year}{2013}
-    \endentry
-    \entry{dojo}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://dojotoolkit.org/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Dojo Toolkit}
-      \field{year}{2004}
-    \endentry
-    \entry{gulp}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://gulpjs.com/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Gulp - the streaming build system}
-      \field{year}{2015}
-    \endentry
-    \entry{storejs}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://github.com/ScottHamper/Cookies}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{localStorage wrapper for all browsers without using cookies or flash.}
-      \field{year}{2010}
-    \endentry
-    \entry{momentjs}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://momentjs.com/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Parse, validate, manipulate, and display dates in JavaScript.}
-      \field{year}{2011}
-    \endentry
-    \entry{reactrouter}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a0bf169f2539e893e00d7b1296bc4d8e}{Multiple}{M\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \strng{fullhash}{a0bf169f2539e893e00d7b1296bc4d8e}
-      \field{sortinit}{M}
-      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://react-bootstrap.github.io/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{The most popular front-end framework, rebuilt for React.}
-      \field{year}{2014}
-    \endentry
-    \entry{DOM}{misc}{}
-      \name{author}{2}{}{%
-        {{hash=db9fa0c2e26681c8c19d56db344506bd}{Network}{N\bibinitperiod}{Mozilla\bibnamedelima Developer}{M\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
-        {{hash=4f8318ddaf05312632dfeae506c1f3e2}{contributors}{c\bibinitperiod}{}{}{individual}{i\bibinitperiod}{}{}}%
-      }
-      \strng{namehash}{1f37aa867b54db29d1694c605415587f}
-      \strng{fullhash}{1f37aa867b54db29d1694c605415587f}
-      \field{sortinit}{N}
-      \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Document Object Model (DOM)}
-      \field{year}{2014}
-    \endentry
-    \entry{webcomponents}{misc}{}
-      \name{author}{2}{}{%
-        {{hash=db9fa0c2e26681c8c19d56db344506bd}{Network}{N\bibinitperiod}{Mozilla\bibnamedelima Developer}{M\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
-        {{hash=4f8318ddaf05312632dfeae506c1f3e2}{contributors}{c\bibinitperiod}{}{}{individual}{i\bibinitperiod}{}{}}%
-      }
-      \strng{namehash}{1f37aa867b54db29d1694c605415587f}
-      \strng{fullhash}{1f37aa867b54db29d1694c605415587f}
-      \field{sortinit}{N}
-      \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://developer.mozilla.org/en-US/docs/Web/Web_Components}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Web Componentst}
-      \field{year}{2014}
-    \endentry
-    \entry{om}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=88df249dbb5adc429b169df01829c105}{Nolen}{N\bibinitperiod}{David}{D\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{88df249dbb5adc429b169df01829c105}
-      \strng{fullhash}{88df249dbb5adc429b169df01829c105}
-      \field{sortinit}{N}
-      \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://github.com/omcljs/om}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{ClojureScript interface to Facebook's React}
-      \field{year}{2014}
-    \endentry
-    \entry{react}{misc}{}
-      \true{moreauthor}
-      \name{author}{1}{}{%
-        {{hash=fe11d6b84cd191b502b08edb7700ade1}{Paul\bibnamedelima O’Shannessy}{P\bibinitperiod\bibinitdelim O\bibinitperiod}{Pete\bibnamedelima Hunt}{P\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{Ben\bibnamedelima Alpert}{B\bibinitperiod\bibinitdelim A\bibinitperiod}}%
-      }
-      \strng{namehash}{711c808e87631dc1b12381daf4f5194c}
-      \strng{fullhash}{711c808e87631dc1b12381daf4f5194c}
-      \field{sortinit}{P}
-      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://facebook.github.io/react/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{React - a JavaScript library for building user interfaces}
-      \field{year}{2013}
-    \endentry
-    \entry{pinterest}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=86709a608bd914b28221164e6680ebf7}{Pinterest}{P\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{86709a608bd914b28221164e6680ebf7}
-      \strng{fullhash}{86709a608bd914b28221164e6680ebf7}
-      \field{sortinit}{P}
-      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://pinterest.com}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Kreative Ideen entdecken und speichern}
-      \field{year}{2015}
-    \endentry
-    \entry{delicious}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=ec8374db32bacb4cd9760199ec42819e}{Pulse}{P\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{ec8374db32bacb4cd9760199ec42819e}
-      \strng{fullhash}{ec8374db32bacb4cd9760199ec42819e}
-      \field{sortinit}{P}
-      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://delicious.com/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Delicious}
-      \field{year}{1996}
-    \endentry
-    \entry{pulse}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=ec8374db32bacb4cd9760199ec42819e}{Pulse}{P\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{ec8374db32bacb4cd9760199ec42819e}
-      \strng{fullhash}{ec8374db32bacb4cd9760199ec42819e}
-      \field{sortinit}{P}
-      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.pulse.me/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Pulse}
-      \field{year}{2013}
-    \endentry
     \entry{rauch2013socket}{misc}{}
       \name{author}{1}{}{%
         {{hash=6371b51611b2c9ecdc8fa4413aca3d8a}{Rauch}{R\bibinitperiod}{Guillermo}{G\bibinitperiod}{}{}{}{}}%
       }
       \strng{namehash}{6371b51611b2c9ecdc8fa4413aca3d8a}
       \strng{fullhash}{6371b51611b2c9ecdc8fa4413aca3d8a}
-      \field{sortinit}{R}
-      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://socket.io/}}
@@ -830,295 +1084,15 @@
       \field{title}{Socket. IO-the cross-browser WebSocket for realtime apps}
       \field{year}{2013}
     \endentry
-    \entry{templatestrings}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=e233a52ae34baa92533a77e95ab2fd10}{Rauschmayer}{R\bibinitperiod}{Dr.\bibnamedelimi Axel}{D\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{e233a52ae34baa92533a77e95ab2fd10}
-      \strng{fullhash}{e233a52ae34baa92533a77e95ab2fd10}
-      \field{sortinit}{R}
-      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://www.2ality.com/2014/07/jsx-template-strings.html}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{React JSX via ECMAScript 6 template strings}
-      \field{year}{2015}
-    \endentry
-    \entry{reddit}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=b632c55a33530d1433e29ffc09ba1151}{Reddit}{R\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{b632c55a33530d1433e29ffc09ba1151}
-      \strng{fullhash}{b632c55a33530d1433e29ffc09ba1151}
-      \field{sortinit}{R}
-      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://reddit.com}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{The front page of the internet}
-      \field{year}{2015}
-    \endentry
-    \entry{richerichkarma}{article}{}
-      \name{author}{1}{}{%
-        {{hash=0f8b82ebb815558b4aea598f5ea0a51c}{Richerich}{R\bibinitperiod}{Annika}{A\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{0f8b82ebb815558b4aea598f5ea0a51c}
-      \strng{fullhash}{0f8b82ebb815558b4aea598f5ea0a51c}
-      \field{sortinit}{R}
-      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{2213-5316}
-      \field{journaltitle}{The Journal of Peer Production}
-      \field{title}{‘KARMA, PRECIOUS KARMA!’ KARMAWHORING ON REDDIT AND THE FRONT PAGE’S ECONOMETRISATION}
-      \field{volume}{4}
-      \field{year}{2014}
-      \verb{url}
-      \verb http://peerproduction.net/issues/issue-4-value-and-currency/peer-reviewed-articles/karma-precious-karma/
-      \endverb
-    \endentry
-    \entry{node1m}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=aab976d7eb2c6790db19d20c14e78c74}{Robinson}{R\bibinitperiod}{Aaron\bibnamedelima “Caustik”}{A\bibinitperiod\bibinitdelim “\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{aab976d7eb2c6790db19d20c14e78c74}
-      \strng{fullhash}{aab976d7eb2c6790db19d20c14e78c74}
-      \field{sortinit}{R}
-      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://blog.caustik.com/category/node-js/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Node.js w/1M concurrent connections!}
-      \field{year}{2012}
-    \endentry
-    \entry{hofram}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a9ba54b43f8a5bac7c1a432c2878480c}{Schuster}{S\bibinitperiod}{Clemens\bibnamedelima Maria}{C\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{a9ba54b43f8a5bac7c1a432c2878480c}
-      \strng{fullhash}{a9ba54b43f8a5bac7c1a432c2878480c}
-      \field{sortinit}{S}
-      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://hofrat.ch/2013/10/social-media-walls-und-twitter-walls-tools-und-anbieter/}}
-      \field{note}{[Online; accessed 06-03-2015]}
-      \field{title}{Social Media Walls und Twitter Walls: Tools und Anbieter}
-      \field{year}{2014}
-    \endentry
-    \entry{severance2012javascript}{article}{}
-      \name{author}{1}{}{%
-        {{hash=2c8b9da4e951b9bddb8adae99ff74aa4}{Severance}{S\bibinitperiod}{Charles}{C\bibinitperiod}{}{}{}{}}%
-      }
-      \list{publisher}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{2c8b9da4e951b9bddb8adae99ff74aa4}
-      \strng{fullhash}{2c8b9da4e951b9bddb8adae99ff74aa4}
-      \field{sortinit}{S}
-      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Computer}
-      \field{number}{2}
-      \field{title}{JavaScript: Designing a language in 10 days}
-      \field{year}{2012}
-      \field{pages}{7\bibrangedash 8}
-      \range{pages}{2}
-    \endentry
-    \entry{dirty}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=78648a031ae90e7f44e37e06514f1155}{Sobrepere}{S\bibinitperiod}{Josep\bibnamedelima M}{J\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{78648a031ae90e7f44e37e06514f1155}
-      \strng{fullhash}{78648a031ae90e7f44e37e06514f1155}
-      \field{sortinit}{S}
-      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://stackoverflow.com/questions/27109429/what-is-the-time-complexity-for-angularjss-dirty-checking-algorithm}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{What is the time complexity for AngularJS's dirty checking algorithm?}
-      \field{year}{2014}
-    \endentry
-    \entry{tilkov2010node}{article}{}
-      \name{author}{2}{}{%
-        {{hash=71539e822b9d217e558698b79d84a8f4}{Tilkov}{T\bibinitperiod}{Stefan}{S\bibinitperiod}{}{}{}{}}%
-        {{hash=ec36bb9d2db7215ce32871a7fb8526ee}{Vinoski}{V\bibinitperiod}{Steve}{S\bibinitperiod}{}{}{}{}}%
-      }
-      \list{publisher}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{07ea5eeb05273c4db5828278c617ab85}
-      \strng{fullhash}{07ea5eeb05273c4db5828278c617ab85}
-      \field{sortinit}{T}
-      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE Internet Computing}
-      \field{number}{6}
-      \field{title}{Node. js: Using JavaScript to build high-performance network programs}
-      \field{year}{2010}
-      \field{pages}{80\bibrangedash 83}
-      \range{pages}{4}
-    \endentry
-    \entry{treisman1987merkmale}{article}{}
-      \name{author}{1}{}{%
-        {{hash=ff086e991ec43cf244971f33013ac423}{Treisman}{T\bibinitperiod}{Anne}{A\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{ff086e991ec43cf244971f33013ac423}
-      \strng{fullhash}{ff086e991ec43cf244971f33013ac423}
-      \field{sortinit}{T}
-      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Spektrum der Wissenschaft}
-      \field{number}{1987}
-      \field{title}{Merkmale und Gegenstände in der visuellen Verarbeitung}
-      \field{volume}{1}
-      \field{year}{1987}
-      \field{pages}{72\bibrangedash 82}
-      \range{pages}{11}
-    \endentry
-    \entry{bootstrap}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=2491bc9c7d8731e1ae33124093bc7026}{Twitter}{T\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{2491bc9c7d8731e1ae33124093bc7026}
-      \strng{fullhash}{2491bc9c7d8731e1ae33124093bc7026}
-      \field{sortinit}{T}
-      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://getbootstrap.com/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{The world's most popular mobile-first and responsive front-end framework.}
-      \field{year}{2011}
-    \endentry
-    \entry{emberjs}{misc}{}
-      \true{moreauthor}
-      \name{author}{1}{}{%
-        {{hash=07dc18cc6f5a3e8ee5f86ef060237f1d}{Wagenet}{W\bibinitperiod}{Peter}{P\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{207b6f5a291e7692ecc1488bebe358aa}
-      \strng{fullhash}{207b6f5a291e7692ecc1488bebe358aa}
-      \field{sortinit}{W}
-      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://angularjs.org/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{emberJS - a framework for creating ambitious web applications}
-      \field{year}{2011}
-    \endentry
-    \entry{wallsio}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=5e55960e771ce09c378338cb4662c3b0}{walls.io}{w\bibinitperiod}{}{}{}{}{}{}}%
-      }
-      \strng{namehash}{5e55960e771ce09c378338cb4662c3b0}
-      \strng{fullhash}{5e55960e771ce09c378338cb4662c3b0}
-      \field{sortinit}{w}
-      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://walls.io/starbucks}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Starbucks}
-      \field{year}{2013}
-    \endentry
-    \entry{airbnb}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=6d6b4fd2355ec3e2c2ff6548bb40d8b5}{Wren}{W\bibinitperiod}{Chris}{C\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{6d6b4fd2355ec3e2c2ff6548bb40d8b5}
-      \strng{fullhash}{6d6b4fd2355ec3e2c2ff6548bb40d8b5}
-      \field{sortinit}{W}
-      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://medium.com/code-stories/dev-chats-spike-brehm-of-airbnb-87e155f3475d}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{Dev Chats: Spike Brehm of Airbnb}
-      \field{year}{2014}
-    \endentry
-    \entry{zakai2011emscripten}{inproceedings}{}
-      \name{author}{1}{}{%
-        {{hash=c4cfe1bc600036ecf862fcbdf7b6d1cf}{Zakai}{Z\bibinitperiod}{Alon}{A\bibinitperiod}{}{}{}{}}%
-      }
-      \list{organization}{1}{%
-        {ACM}%
-      }
-      \strng{namehash}{c4cfe1bc600036ecf862fcbdf7b6d1cf}
-      \strng{fullhash}{c4cfe1bc600036ecf862fcbdf7b6d1cf}
-      \field{sortinit}{Z}
-      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the ACM international conference companion on Object oriented programming systems languages and applications companion}
-      \field{title}{Emscripten: an LLVM-to-JavaScript compiler}
-      \field{year}{2011}
-      \field{pages}{301\bibrangedash 312}
-      \range{pages}{12}
-    \endentry
-    \entry{eslint}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=247666522c59c5d84db77d915c83e802}{Zakas}{Z\bibinitperiod}{Nicholas\bibnamedelima C.}{N\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{247666522c59c5d84db77d915c83e802}
-      \strng{fullhash}{247666522c59c5d84db77d915c83e802}
-      \field{sortinit}{Z}
-      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://eslint.org/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{The pluggable linting utility for JavaScript and JSX}
-      \field{year}{2015}
-    \endentry
-    \entry{es6features}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=a9ea55ef1626791912e00e486d2db1e9}{Zaytsev}{Z\bibinitperiod}{Juriy\bibnamedelima ``kangax''}{J\bibinitperiod\bibinitdelim `\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{a9ea55ef1626791912e00e486d2db1e9}
-      \strng{fullhash}{a9ea55ef1626791912e00e486d2db1e9}
-      \field{sortinit}{Z}
-      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://kangax.github.io/compat-table/es5/}}
-      \field{note}{[Online, accessed 07-19-2015]}
-      \field{title}{The es6 compatibility table}
-      \field{year}{2015}
-    \endentry
-    \entry{zichermann2011gamification}{book}{}
-      \name{author}{2}{}{%
-        {{hash=e4298ecb77a36c0bf44b61fcda638788}{Zichermann}{Z\bibinitperiod}{Gabe}{G\bibinitperiod}{}{}{}{}}%
-        {{hash=79f8eea005d76ae385a1b5d4aca35566}{Cunningham}{C\bibinitperiod}{Christopher}{C\bibinitperiod}{}{}{}{}}%
-      }
-      \list{publisher}{1}{%
-        {" O'Reilly Media, Inc."}%
-      }
-      \strng{namehash}{efb8037e33469a05e32de14b3a9116c1}
-      \strng{fullhash}{efb8037e33469a05e32de14b3a9116c1}
-      \field{sortinit}{Z}
-      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Gamification by design: Implementing game mechanics in web and mobile apps}
-      \field{year}{2011}
-    \endentry
   \endsortlist
-  \missing{17}
-  \missing{56}
-  \missing{55}
-  \missing{36}
   \missing{38 - 39}
+  \missing{36}
+  \missing{50 - 51}
+  \missing{56}
+  \missing{17}
   \missing{38}
   \missing{57}
-  \missing{50 - 51}
+  \missing{55}
 \endrefsection
 \endinput
 
