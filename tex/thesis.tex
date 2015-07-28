@@ -242,29 +242,29 @@ Die Benutzung von Gamification im Enterprise-Bereich bzw. in kleinen sozialen Kr
 
 \section{Anforderungen}
 
-Die Anforderungen an die Applikation waren anfangs größtenteils noch offen. Die genauen Spezifikationen haben sich während der Ausarbeitung ergeben.
+Die Anforderungen an die Applikation waren anfangs größtenteils noch offen. Die genauen Spezifikationen haben sich erst während der Ausarbeitung ergeben.
 
 \begin{description}
 
 \item[Darstellung von Daten]
 
-Einer der Hauptanforderungen ist die Darstellung von Suchergebnissen (im zukünftigen Verlauf des Textes wird sie als Kacheln bezeichnet) im Stil einer \textit{Social Media Wall}. Daraus folgen weitere Anforderungen, z.B. dass es unterschiedliche Kacheln gibt - also für verschiedene Daten verschiedene Darstellungen. Es könnten auch Suchergebnisse für Kontakte und Webseiten ganz unterschiedlich aufgebaut sein. Die dargestellten Inhalte sind weiterhin dynamisch, während des Betriebes können Kacheln hinzukommen, entfernt oder anderen Suchbegriffen zugeordnet werden. Die Kacheln bieten zudem Interaktionsmöglichkeiten, sie können bewertet und favorisiert werden.
+Eine der Hauptanforderungen ist die Darstellung von Suchergebnissen (im zukünftigen Verlauf des Textes wird sie als Kacheln bezeichnet) im Stil einer \textit{Social Media Wall}. Daraus folgen weitere Ansprüche, z.B. dass es unterschiedliche Kacheln gibt - also für verschiedene Daten verschiedene Darstellungen. Suchergebnisse für Kontakte und Webseiten können ganz unterschiedlich aufgebaut sein. Die dargestellten Inhalte sind weiterhin dynamisch, während des Betriebes können Kacheln hinzukommen, entfernt oder anderen Suchbegriffen zugeordnet werden. Die Kacheln bieten zudem Interaktionsmöglichkeiten, sie können bewertet und favorisiert werden.
 
 \item[Bewertungssystem]
 
   Der Benutzer soll in der Lage sein, angezeigte Suchergebnisse zu bewerten und dadurch die Priorisierung von Suchergebnissen zukünftiger Anfragen für \textbf{alle} Benutzer zu verändern.
 
 \item[Benutzung mehrerer Datenquellen]
-  Die angezeigten Suchergebnisse können aus mehreren Datenquellen kommen, d.h. die gleichzeitige Darstellung von Suchergebnissen von z.B. Facebook mit denen von Twitter. Hier war es wieder besonders wichtig, dass man einfach neue Datenquellen hinzufügen kann.
+  Die angezeigten Suchergebnisse können aus mehreren Datenquellen kommen, d.h. die gleichzeitige Darstellung von Suchergebnissen von Facebook mit denen von Twitter. Hier ist es wieder besonders wichtig, dass man einfach neue Datenquellen hinzufügen kann.
 
 \item[Authentifizierungssystem]
-	Zur Benutzung der Gamification-Elemente und der Suchanfrage bedarf es einer Authentifizierung. Es muss sichergestellt werden, dass kein Benutzer der nicht authentifiziert ist, Zugriff auf die Applikation hat.
+	Zur Benutzung der Gamification-Elemente und der Suchanfrage bedarf es einer Authentifizierung. Die Suchergebnisse können unternehmensinterne Dokumente enthalten, deswegen muss sichergestellt werden, dass kein Benutzer der nicht authentifiziert ist, Zugriff auf die Applikation hat.
 
 \item[Single Page Application]
-  Es soll eine sogenannte \textit{Single Page Application} erstellt werden, d.h. eine Webapplikation bei der JavaScript abseits des initialen Seitenaufrufes alles rendert. Im Gegensatz zur klassischen Methodik bei der jede Interaktion in einer komplett neuen Seite, die vom Server gerendert wird, resultiert.
+  Es soll eine sogenannte \textit{Single Page Application} erstellt werden, d.h. eine Webapplikation bei der JavaScript abseits des initialen Seitenaufrufes alles rendert. Im Gegensatz zur klassischen Methodik, bei der jede Interaktion in einer komplett neuen Seite, die vom Server gerendert wird, resultiert.
 
 \item[Gamification]
-  Um die Benutzung der Seite zu animieren sollen Gamification-Methoden eingeführt werden wie z.B. Punkte für das tägliche einloggen bis hinzu erweiterten Methoden wie der Erstellung eines Compulsion Loop.
+  Um die Benutzung der Seite zu animieren sollen Gamification-Methoden eingeführt werden wie z.B. Punkte für das tägliche einloggen bis hin zu erweiterten Methoden wie der Erstellung eines Compulsion Loop.
 
 \item[Konfiguration]
   Es muss möglich sein viele Parameter anzupassen, einige davon auch als Benutzerinterface für den Benutzer andere wiederum als simple Konfigurationsdatei für verwendete URLs und ähnliches.
@@ -273,11 +273,11 @@ Einer der Hauptanforderungen ist die Darstellung von Suchergebnissen (im zukünf
 
 \section{Relevante Arbeiten}
 
-Da die Applikation mehrere Gebiete vereint als etwas bestehendes weiterzuentwickeln, gibt es direkt keine relevanten Arbeiten. Jedoch ist es nützlich bestehendes in den einzelnen Gebieten zu untersuchen.
+Da die Applikation mehrere Gebiete vereint und nicht etwas Bestehendes weiterzuentwickelt, gibt es keine direkten relevanten Arbeiten. Jedoch ist es nützlich bereits vorhandenes in den einzelnen Gebieten zu untersuchen.
 
 \subsection{Social Media Walls}
 
-Eine sehr gute Auflistung verschiedener \textit{Social Media Wall}-Applikationen bietet \citep{hofram}. Die Homogenität dieser Angebote ist erstaunlich, würde man die Produkte zweier verschiedener Anbieter nebeneinander sehen, wären die größten Unterschiede stilistischer Natur wie benutzte Farben und Schriftarten. Leider sind die wenigsten Produkte in einer Demo zu testen, da die Lösungen üblicherweise auf den Kunden zugeschnitten werden. Der Verwendungszweck mit dem am meisten geworben wird sind große Veranstaltungen wie Konzerte, weswegen auch keine im Produktiveinsatz eingesehen werden konnten. In \ref{fig:socialwall} kann eine der Implementierungen gesehen werden.\\
+Eine sehr gute Auflistung verschiedener \textit{Social Media Wall}-Applikationen bietet \citep{hofram}. Die Homogenität dieser Angebote ist erstaunlich, würde man die Produkte zweier verschiedener Anbieter nebeneinander sehen, wären die größten Unterschiede stilistischer Natur wie benutzte Farben und Schriftarten. Leider sind die wenigsten Produkte in einer Demo zu testen, da die Lösungen üblicherweise auf den Kunden zugeschnitten werden. Der Verwendungszweck mit dem am meisten geworben wird sind große Veranstaltungen wie Konzerte, weswegen auch keine im Produktiveinsatz eingesehen werden konnten. In \ref{fig:socialwall} kann eine der Implementierungen sehen.\\
 
 \begin{figure}[h]
     \centering
@@ -286,39 +286,39 @@ Eine sehr gute Auflistung verschiedener \textit{Social Media Wall}-Applikationen
     \label{fig:socialwall}
 \end{figure}
 
-Insofern sind diese Angebote für diese Arbeit nicht wirklich lohnenswert weiter zu analysieren und werden als grobe Inspiration für das Design benutzt.
+Es lohnt sich also nicht weiter diese Angebote zu analysieren, die Darstellungsform ist aber dennoch weiterhin interessant und wird als grobe Inspiration die Darstellung der Suchergebnisse dienen.
 
 \subsection {Gamification}
 
-Es gibt einige gute Beispiele von Seiten die ähnliche Inhalte anzeigen und erfolgreich Gamification implementiert haben. Einen schwachen aber effektiven Ansatz verfolgt die Social-News-Seite reddit \cite{reddit}. Jegliche Inhalte (eingereichte Links, Kommentare) der Seite können binär bewertet werden (im reddit-jargon wird hier von \textit{upvotes} und \textit{downvotes} gesprochen). Reicht man nun selbst etwas ein und andere Benutzer bewerten den eingereichten Inhalt, wird die Differenz aus \textit{upvotes} und \textit{downvotes} einem als Karma gutgeschrieben. Karma besitzt ähnlich wie die in Videospielen erreichte Punktzahl keinen Wert in dem Sinne, dass mit ihr nichts weiter gemacht werden kann als den Wert mit den von anderen zu vergleichen.
-Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von reddit bzw. dem Erfolg von reddit welcher beachtlich ist, laut Alexa ist reddit die 32 meist besuchte Webseite der Welt, in den USA ist sie sogar Platz 10 \cite{alexa}.
-Eine ausführliche Untersuchung von \citep{richerichkarma} zeigt die Tragweite von reddits Karma-System. Es dient demnach vor dienlich als Bewertung des eingereichten Inhalts durch andere bzw. die daraus resultierende Selbstbestätigung wenn das eigene Karma erhöht wird.
-Benutzer reddits werden dadurch jedoch darauf gepolt ihre eingereichten Beiträge nach der Anzahl an Karma, welches der Beitrag liefern wird, auszusuchen.
+Es gibt einige gute Beispiele von Seiten, die ähnliche Inhalte anzeigen, und erfolgreich Gamification implementiert haben. Einen schwachen aber effektiven Ansatz verfolgt die Social-News-Seite reddit \cite{reddit}. Jegliche Inhalte (eingereichte Links, Kommentare) der Seite können binär bewertet werden (im reddit-jargon wird hier von \textit{upvotes} und \textit{downvotes} gesprochen). Reicht man nun selbst etwas ein und andere Benutzer bewerten den eingereichten Inhalt, wird die Differenz aus \textit{upvotes} und \textit{downvotes} einem als Karma gutgeschrieben. Karma besitzt ähnlich wie die in Videospielen erreichte Punktzahl keinen Wert in dem Sinne, dass mit ihr nichts weiter gemacht werden kann, als den Wert mit den von anderen zu vergleichen.
+Dieser Gamification-Aspekt ist ein nicht zu unterschätzender Teil von vom Erfolg reddits, welcher beachtlich ist. Laut Alexa ist reddit die 32 meist besuchte Webseite der Welt, in den USA ist sie sogar auf Platz 10 \cite{alexa}.
+Eine ausführliche Untersuchung von \citep{richerichkarma} zeigt die Tragweite von reddits Karma-System. Es dient demnach vor allem als Bewertung des eingereichten Inhalts durch andere bzw. die daraus resultierende Selbstbestätigung wenn das eigene Karma erhöht wird.
+Benutzer reddits werden dadurch jedoch darauf gepolt ihre eingereichten Beiträge nach der Anzahl an der Höhe des Karmas, welches der Beitrag liefern wird, auszusuchen.
 
-DAIKnow \citep{meder2014daiknow} ist eine Bookmarking Seite ähnlich zu delicous.com\cite{delicious} bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Abzeichen und Bestenlisten wird die Benutzung der Seite durch die Benutzer gesteigert. Im Gegensatz zu reddit ist dieses System jedoch weitaus komplexer, so bekommt man z.B. Punkte für den täglichen Aufruf, Punkte für das Einrechen eines Links oder das jemand anderes seinen Link kopiert hat.
-Ein Problem das sich auftat bei DAIKnow war dass häufige Benutzer alle verfügbaren Abzeichen freischalteten und damit der Gamification-Aspekt damit kein Grund mehr ist die Applikation weiter zu benutzen.
+DAIKnow \citep{meder2014daiknow} ist eine Bookmarking Seite ähnlich zu delicous.com\cite{delicious}, bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Abzeichen und Bestenlisten wird die Benutzung der Seite gesteigert. Im Gegensatz zu reddit ist dieses System jedoch weitaus komplexer, so bekommt man unter anderem Punkte für den täglichen Aufruf, Punkte für das Einrechen eines Links oder das jemand anderes seinen Link kopiert hat.
+Ein Problem das sich auftat bei DAIKnow, war dass häufige Benutzer alle verfügbaren Abzeichen freischalteten und damit der Gamification-Aspekt verloren ging.
 
 \chapter{Konzeptuelle Umsetzung}\label{chap:concept}
 
-Einer der wichtigsten Aspekte einen Interface-getriebene Applikation ist das Nutzererlebnis, in diesem Kapitel werden die zwei wichtigsten Punkte dieser Arbeit die für das Nutzererlebnis wichtig sind, vornehmlich Gamification und die Visualisierung der Suchergebnisse analysiert und ein Konzept wird ausgearbeitet welches schlussendlich in \ref{chap:tech} umgesetzt wird.
+Einer der wichtigsten Aspekte einen Interface-getriebene Applikation ist das Nutzererlebnis. In diesem Kapitel werden die zwei wichtigsten Punkte dieser Arbeit, die für das Nutzererlebnis wichtig sind, vornehmlich Gamification und die Visualisierung der Suchergebnisse, analysiert und ein Konzept wird ausgearbeitet, welches schlussendlich in \ref{chap:tech} umgesetzt wird.
 
 \section{Visualisierung der Suchergebnisse}\label{chap:concept:wall}
 
-Heutige Webtechnologien erlauben nahezu uneingeschränkte Möglichkeiten Daten zu visualisieren, abseits von der initialen Idee eine Darstellung ähnlich einer \textit{Social Media Wall} zu benutzen gibt es eine viel zahl an Parametern betrachtet werden müssen - vornehmlich jedoch Layout, Animationen und das Design der individuellen Suchergebnisse.
+Heutige Webtechnologien erlauben nahezu uneingeschränkte Möglichkeiten Daten zu visualisieren, abseits von der initialen Idee eine Darstellung ähnlich einer \textit{Social Media Wall}, zu benutzen gibt es eine Vielzahl an Parametern, die betrachtet werden müssen - in erster Linie das Layout, Animationen und das Design der individuellen Suchergebnisse.
 
 \subsection{Layout}
 
-Wie Pinterest\cite{pinterest} oder das Metro-Design von Microsoft gezeigt haben ist aktuell eine der besten Darstellung für Medieninhalte verschiedener Art ein Layout basierend auf Kacheln, siehe \ref{fig:metro_pinterest}.
+Wie Pinterest\cite{pinterest} oder das Metro-Design von Microsoft gezeigt haben, ist ein Layout basierend auf Kacheln aktuell eine der besten Darstellung für Medieninhalte verschiedener Art, siehe \ref{fig:metro_pinterest}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{images/metro_pinterest.png}
-    \caption{Links das Rasterbasierte Layout von Windows 8, rechts das Spaltenbasierte Layout von Pinterest. Das Linke Bild ist genommen von \cite{metrodesign}}
+    \caption{Links das Rasterbasierte Layout von Windows 8, rechts das Spaltenbasierte Layout von Pinterest. Das Linke Bild ist aus \cite{metrodesign}}
     \label{fig:metro_pinterest}
   \end{figure}
 
-Es gibt oft eine Regel nach welchem Muster die Kacheln angeordnet werden sollen, z.B. sollten die neuesten Kacheln an oberster Stelle gezeigt werden oder \textit{wichtigere} Kacheln prominenter dargestellt werden. Die Kacheln für das Infoboard unterliegen der Regel das sie anhand ihrer Wertung angeordnet werden müssen. Die folgende Analyse wird deshalb viel Wert darauf legen wie sich das Layout verhält, wenn neue Kacheln hinzukommen und damit neu sortiert werden müssen.
-Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Kacheln verglichen, da diese populäre Darstellungen in diesem Bereich sind, die erfolgreich verwendet wurden.
+Es gibt oft eine Regel, nach welchem Muster die Kacheln angeordnet werden sollen, z.B. sollten die neuesten Kacheln an oberster Stelle gezeigt werden oder \textit{wichtigere} Kacheln prominenter dargestellt werden. Die Kacheln für das Infoboard unterliegen der Regel, dass sie anhand ihrer Wertung angeordnet werden müssen. Die folgende Analyse wird deshalb viel Wert darauf legen, wie sich das Layout verhält, wenn neue Kacheln hinzukommen und damit neu sortiert werden müssen.
+Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Kacheln verglichen, da sie die populärsten in diesem Bereich sind, die erfolgreich verwendet wurden.
 
 \begin{itemize}
   \item \textbf{Spaltenbasierte Anordnung} \\
@@ -332,23 +332,23 @@ Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Ka
   \end{figure}
 
   \textbf{Vorteile} \\
-  Die Vorteile liegen in der Simplizität der Implementierung und der Intuitivität des Inhalt-Flusses d.h. neuer Inhalt wird oben eingefügt und alter rutscht nach unten, wobei jeweils nur eine Spalte \textit{verrutscht} je neu eingefügter Kachel.
-  Weiterhin ermöglicht die Variable Höhe viel Flexibilität bei dem Anzeigen des Inhalts - z.B. können lange Texte angemessen gut angezeigt werden ohne die Zeichenanzahl zu begrenzen oder ähnliche Limitierungen einzuführen.
+  Die Vorteile liegen in der Simplizität der Implementierung und der Intuitivität des Inhaltflusses, d.h. neuer Inhalt wird oben eingefügt und alter rutscht nach unten, wobei jeweils nur eine Spalte \textit{verrutscht} je neu eingefügter Kachel.
+  Weiterhin ermöglicht die variable Höhe viel Flexibilität bei dem Anzeigen des Inhalts - z.B. können lange Texte angemessen angezeigt werden, ohne die Zeichenanzahl zu begrenzen oder ähnliche Limitierungen einzuführen.
 
   \textbf{Nachteile}\\
-  Der größte Nachteil ist die Starrheit des Layouts, da alle Objekte die gleiche Breite haben ist man stark limitiert wie man die Inhalte darstellt. Abstriche müssen auch gemacht werden bei der Sortierung der Inhalte: Sobald die angezeigten Kacheln einer Sortierung unterliegen, kann der Inhaltsfluss nicht optimal funktionieren, siehe \ref{fig:livewall_sort} für eine visuelle Erklärung.
+  Der größte Nachteil ist die Starrheit des Layouts. Da alle Objekte die gleiche Breite haben ist man stark limitiert wie man die Inhalte darstellt. Abstriche müssen auch gemacht werden bei der Sortierung der Inhalte: Sobald die angezeigten Kacheln einer Sortierung unterliegen, kann der Inhaltsfluss nicht optimal funktionieren, siehe \ref{fig:livewall_sort} für eine visuelle Erklärung.
 
   \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{images/livewall_sort.png}
-    \caption{Links wird eine neue Kachel eingefügt die die höchsten Wert besitzt von allen Kacheln, rechts ist das Ergebnis bei Beibehaltung der Sortierung von links nach rechts.}
+    \caption{Links wird eine neue Kachel eingefügt die den höchsten Wert besitzt von allen Kacheln, rechts ist das Ergebnis bei Beibehaltung der Sortierung von links nach rechts.}
     \label{fig:livewall_sort}
   \end{figure}
 
-Man kann den optimalen Fluss nur behalten indem man die Sortierung Spaltenweise macht, dazu müssen jedoch die Kacheln auf eine Spalte festgesetzt werden z.B. mittels einer Hash-Funktion oder einem simplen Modulo. Dies kann zu verwirrenden Ergebnissen führen, auch wenn es ästhetisch die beste Variante ist.
+Man kann den optimalen Fluss nur beibehalten indem man die Sortierung Spaltenweise gliedert, dazu müssen jedoch die Kacheln auf eine Spalte festgesetzt werden z.B. mittels einer Hash-Funktion oder einem simplen Modulo. Dies kann zu verwirrenden Ergebnissen führen, auch wenn es ästhetisch die beste Variante ist.
 
   \item \textbf{Rasterbasierte Anordnung}
-  Bei dieser Form werden die einzelnen Datenpunkte in einem einheitlichen Raster dargestellet, d.h. die darstellende Fläche wird in einem Raster der Größe $(a, b)$ unterteilt, die Kacheln können nun die Größe $(x, y)$ mit $ x \in \{1, \dots, a, y \in 1, \dots, b$ besitzen.
+  Bei dieser Form werden die einzelnen Datenpunkte in einem einheitlichen Raster dargestellt, d.h. die darstellende Fläche wird in einem Raster der Größe $(a, b)$ unterteilt, die Kacheln können nun die Größe $(x, y)$ mit $ x \in \{1, \dots, a, y \in 1, \dots, b\}$ besitzen.
 
   \begin{figure}[h]
     \centering
@@ -360,7 +360,7 @@ Man kann den optimalen Fluss nur behalten indem man die Sortierung Spaltenweise 
   \textbf{Vorteile} \\
   \begin{itemize}
     \item Ansprechendes Aussehen
-    \item Wichtigkeit kann durch die Größe der Kachel dargestellt werden
+    \item Bedeutung kann durch die Größe der Kachel dargestellt werden
     \item Unterschiede in der Darstellung gleicher Datenpunkte durch unterschiedliche Größe
     \item Vorteilhaft bei der Anzeige ohne Interaktion, da es keine abgeschnittenen Inhalte gibt wie bei dem Spaltendesign
   \end{itemize}
@@ -374,7 +374,7 @@ Man kann den optimalen Fluss nur behalten indem man die Sortierung Spaltenweise 
   \end{itemize}
 
   \subsection{Probleme beim Flow-Verhalten}
-  Das Flow-Verhalten beim einfügen neuer Inhalte ist bei einem grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex, im ersten Schritt müsste das Behälterproblem gelöst werden und im zweiten Schritt müssten die Elemente anhand ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblem darauf hin zu optimieren das der optische Fluss der Elemente minimiert wird ist keine triviale Aufgabe, weshalb man sich mit den \textit{schlechten} Lösungen zufrieden geben muss. Die JavaScript-Bibliothek packery\cite{packery} implementiert den ersten Schritt und ordnet die Elemente anhand einer Lösung des Behälterproblems, bei deren \texttt{prepend}-Methode kann sehr gut erahnt werden wie \textit{verwirrend} der Fluss bei jedem neuen Element wäre, siehe \ref{fig:grid_flow}.
+  Das Flussverhalten beim Einfügen neuer Inhalte ist bei einem grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex. Zunächst müsste das Behälterproblem gelöst werden, und im zweiten Schritt müssten die Elemente anhand ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblems so zu optimieren, dass der optische Fluss der Elemente minimiert wird, ist von derartiger Komplexität, dass dies nicht in Betracht gezogen werden kann. Die JavaScript-Bibliothek packery\cite{packery} implementiert den ersten Schritt und ordnet die Elemente anhand einer Lösung des Behälterproblems. Anhand der packery-Methode \texttt{prepend} kann sehr gut erahnt werden, wie \textit{verwirrend} der Fluss, bei jedem neuen Element wäre, siehe \ref{fig:grid_flow}.
 
   \begin{figure}[h]
     \centering
@@ -388,109 +388,115 @@ Man kann den optimalen Fluss nur behalten indem man die Sortierung Spaltenweise 
 
 \subsection{Animationen}
 
-Sinnvolle Animationen sind in den letzten Jahren immer mehr benutzt worden um die Nutzererfahrung zu verbessern, Vergleich hier zu Googles Material Design bei dem dies ein integraler Bestandteil des neuen Design-Konzeptes ist.
-So war es auch hier eines der gesetzten Ziele Animationen zu entwickeln die neben dem rein ästhetischen Aspekt einen Vorteil im Verständnis des Datenflusses der Applikation ermöglichen.
+Sinnvolle Animationen sind in den letzten Jahren immer mehr benutzt worden, um die Nutzererfahrung zu verbessern. Vergleich hier zu Googles Material Design, bei dem dies ein integraler Bestandteil des neuen Design-Konzeptes ist.
+So war es auch hier eines der gesetzten Ziele, Animationen zu entwickeln, die, neben dem rein ästhetischen Aspekt, einen Vorteil im Verständnis des Datenflusses der Applikation ermöglichen.
 
 \begin{enumerate}
-  \item Neue Kacheln sollen von \textit{oben} kommen um einerseits zu zeigen dass es neue Inhalte gibt und andererseits um das vertraute Konzept zu benutzen dass neue Dinge von oben kommen sollten, Beispiele im echten Leben sind z.B. Börsenticker, Nachrichtenseiten oder die Abfahrttafeln am Bahnhöfen.
+  \item Neue Kacheln sollen von \textit{oben} kommen um einerseits zu zeigen, dass es neue Inhalte gibt, und andererseits um das vertraute Konzept zu benutzen, dass neue Dinge von oben kommen. Beispiele im echten Leben sind z.B. Börsenticker, Nachrichtenseiten oder die Abfahrttafeln an Bahnhöfen.
 
   \item Die neuen Kacheln ordnen sich an ihrem Platz ein, alte Kacheln machen dementsprechend Platz.
   \item Die Anzahl an Bewegungen soll minimal sein um nicht unnötig vom eigentlichen Inhalt abzulenken.
 \end{enumerate}
 
-Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da die Neuberechnung des Layouts bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann wie die Kacheln sich bewegen und welchen Gesetzmäßigkeiten sie unterliegen.
+Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da die Neuberechnung des Layouts bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann, wie die Kacheln sich bewegen, und welchen Gesetzmäßigkeiten sie unterliegen.
 
 \subsection{Kacheln}\label{sec:tiles}
 
-Das Design der Kacheln ist neben derer Anordnung die wichtigste Design-Entscheidung. Neben dem rein funktionalen Aspekt ist auch das Aussehen wichtig um z.B. die einzelnen Inhalte gut voneinander zu unterscheiden und den Benutzer nicht zu überfordern.
+Das Design der Kacheln ist neben ihrer Anordnung die wichtigste Design-Entscheidung. Zusätzlich zu dem rein funktionalen Aspekt ist auch das Aussehen wichtig, um z.B. die einzelnen Inhalte gut voneinander zu unterscheiden und den Benutzer nicht zu überfordern.
 
 Rein funktional besitzt eine Kachel folgende Anforderung:
 
 \begin{itemize}
   \item Anzeige des gefundenen Inhalts und Möglichkeit diesen zu öffnen. Die Anzeige des Inhalts kann variieren.
   \item Benutzer können den Inhalt favorisieren (speichern) und bewerten.
-  \item Es werden Metainformationen wie der Typ des Inhalts (PDF, Kontakt, ...) angezeigt.
-  \item Kacheln können schnell zu dem Suchbegriff zugeordnet werden von dem Sie stammen.
-  \item Anzeige der letzten Interaktion mit der Komponente um den sozialen Aspekt der Anwendung zu verdeutlichen.
+  \item Es werden Metainformationen wie der Typ des Inhalts (PDF, Kontakt, etc) angezeigt.
+  \item Kacheln können schnell zu dem Suchbegriff zugeordnet werden, von dem sie stammen.
+  \item Anzeige der letzten Interaktion mit der Komponente, um den sozialen Aspekt der Anwendung zu verdeutlichen.
 \end{itemize}
 
-Obwohl die Kacheln je nach dargestellten Inhalt stark variieren können ist es ratsam ein einheitliches Benutzerinterface für die Benutzerinteraktionen zu bieten. Auch sollten die Metainformationen gleich angezeigt werden.
+Obwohl die Kacheln je nach dargestellten Inhalt stark variieren können, ist es ratsam ein einheitliches Benutzerinterface für die Interaktionen zu bieten. Auch sollten die Metainformationen gleich angezeigt werden.
 Mit diesen Anforderungen kann eine funktionale Kachel konzipiert werden, siehe \ref{fig:tile_prototype}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{images/tiles.eps}
-    \caption{Eine prototyp-Kachel mit rein funktionalen Aspekten.}
+    \caption{Eine Prototyp-Kachel mit rein funktionalen Aspekten.}
     \label{fig:tile_prototype}
 \end{figure}
 
-Menschen sind äußerst gut darin Farben und unterschiedliche Formen schnell zu gruppieren, da nach aktuellem Kenntnisstand, dies Teile der ersten Verarbeitungsstufe von visuellen Informationen ist \citep{treisman1987merkmale}. Da eine schnelle Assoziation von Suchbegriff und Kachel äußerst wichtig ist, wurde die Hintergrundfarbe der Kachel dafür benutzt. Dies schränkt das Design aber insofern ein dass bis auf Grautöne und Abstufungen der verwendeten Hintergrundfarbe keine anderen Farben möglich sind, man könnte z.B. das Symbol zum Favorisieren nicht überall rot anzeigen. Doch waren das dadurch erzielte Design so überzeugend, dass dies in Kauf genommen wurde.
+Menschen sind äußerst gut darin, Farben und unterschiedliche Formen schnell zu gruppieren, da nach aktuellem Kenntnisstand, diese Teile der ersten Verarbeitungsstufe von visuellen Informationen ist \citep{treisman1987merkmale}. Da eine schnelle Assoziation von Suchbegriff und Kachel äußerst wichtig ist, wurde die Hintergrundfarbe der Kachel dafür benutzt. Dies schränkt das Design aber insofern ein, dass bis auf Grautöne und Abstufungen der verwendeten Hintergrundfarbe keine Anderen mehr möglich sind, man könnte z.B. das Symbol zum Favorisieren nicht überall rot anzeigen. Doch war das dadurch erzielte Design so überzeugend, dass dies in Kauf genommen wurde.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{images/tiles_real.eps}
-    \caption{Ein erstes Design dass verschiedene Darstellungsformen für unterschiedliche Typen von Informationen benutzt.}
+    \caption{Ein erstes Design, das verschiedene Darstellungsformen für unterschiedliche Typen von Informationen benutzt.}
     \label{fig:awesome_image}
 \end{figure}
 
 \subsection{Eindeutige Zuordnung von Farben zu Suchbegriffen}
 
-Da in \ref{sec:tiles} entschieden wurde die Hintergrundfarbe der Kacheln als Hauptunterscheidungsmerkmal der Suchbegriffe zu verwenden, muss entschieden werden wie eine Farbe zu einem Suchbegriff ausgewählt werden soll.
-Alle angezeigten Farben sollten optisch zueinander gehören und miteinander harmonieren, um dies zu erreichen gibt es verschiedene Ansätze, bei allen ist jedoch der \textit{erste} Schritt die Konvertierung der Suchbegriffe zu einer Zahl. Diese Funktion sollte die typischen Eigenschaften einer \text{guten} Hash-Funktion mitbringen: gleichmässige Verteilung der Funktionswerte auf den Zielraum und Linkstotalität.
-Die hier verwendete Funktion stammt von Dan Berstein und ist bekannt unter der Bezeichnung \textit{djb2}.
+Da in \ref{sec:tiles} entschieden wurde, die Hintergrundfarbe der Kacheln als Hauptunterscheidungsmerkmal der Suchbegriffe zu verwenden, muss nun festgelegt werden wie eine Farbe zu einem Suchbegriff ausgewählt werden soll.
+Alle angezeigten Farben sollten optisch zueinander gehören und miteinander harmonieren. Um das zu erreichen, gibt es verschiedene Ansätze, bei allen ist die Konvertierung der Suchbegriffe zu einer Zahl, der \textit{erste} Schritt. Diese Funktion soll die typischen Eigenschaften einer \text{guten} Hash-Funktion mitbringen: gleichmässige Verteilung der Funktionswerte auf den Zielraum und Linkstotalität.
+Die hier Verwendete stammt von Dan Berstein und ist bekannt unter der Bezeichnung \textit{djb2}.
 
-Der erste Ansatz wäre es eine Liste mit zueinander harmonierenden Farben zu verwenden und jeweils eine auszusuchen. Dieser Ansatz kann jedoch nur mit einer langen Liste von Farben funktionieren, auch passiert es bei dieser Methode öfter das Suchbegriffe dieselbe Farbe zugewiesen bekommen, was äußerst unerwünscht ist. Man könnte sich nun überlegen ob komplexe Konfliktresolution betrieben werden sollte - dass wenn Suchbegriffe aufeinander kollidieren eine davon eine andere Farbe bekommt.
-Dadurch wird aber verhindert das jeder Suchbegriff Konsistent die gleiche Farbe bekommt.
+Der erste Ansatz wäre es, eine Liste mit zueinander harmonierenden Farben zu verwenden und jeweils eine auszusuchen. Das kann jedoch nur mit einer langen Liste von Farben funktionieren. Außerdem kann es bei dieser Methode öfter vorkommen, das Suchbegriffe dieselbe Farbe zugewiesen bekommen, was äußerst unerwünscht ist. Man könnte sich nun überlegen, ob komplexe Konfliktresolution betrieben werden sollte - dass wenn Suchbegriffe miteinander kollidieren, Einer davon eine andere Farbe bekommt.
+Dadurch wird aber verhindert, dass jeder Suchbegriff konsistent die gleiche Farbe bekommt.
 
-Der zweite Ansatz besteht darin die Farben prozedural zu erstellen,
-der naivste Ansatz wäre es hierbei den Wertebereich der Hash-Funktion auf $0 - 2^{16})$ einzuschränken, das Ergebnis in Hexadezimal umzurechnen und als RGB-Farbe zu benutzen. Die dadurch entstehenden Farben sind jedoch unberechenbar und würden nur per Zufall harmonieren, es gibt auch das Problem das zu viele dunkle und helle Farben erstellt werden.
-Der RGB-Farbraum ist jedoch nicht dazu geeignet die Helligkeit der entstehenden Farben zu kontrollieren, dafür sind Wahrnehmungsorientierte Modelle  die Farben durch Helligkeit, Sättigung und Farbton beschreiben deutlich geeigneter wie z.B. HSV oder HSL.
-Probleme von den HSx Farbräumen sind die für den Menschen ungünstige Verteilung der Farben, da wir z.B. besser im Unterscheiden von Blautönen besser sind als welche mit Grün/Rot-Anteilen, auch variiert die Helligkeit der Farben bei Änderung des Farbtons zu sehr.
-Abhilfe schaffen hier die dafür erstellen Farbräume LAB bzw. die Weiterentwicklung HCL. Diese sind jedoch nicht einfach zu benutzen, da der valide Wertebereich der Eingabeparameter je nach Kombination der Werte unterschiedlich ist. Dies macht es schwer mit diesen Farbräumen Farben zu erstellen. Es gibt im speziellen um den Chroma-Wert, dieser kann grob mit der Helligkeit verglichen werden. Der Wertebereich der Sättigung und des Farbtons sind vom Chroma-Wert abhängig.
+%TODO der satz mit naiv ist doof
 
-Die Wahl des idealen Farbraums ist damit nicht wirklich möglich, mittels HSL ist es einfach eine gute Farbskala prozedural zu erstellen, der Farbbereich ist jedoch ungünstig für den Menschen. LAB/HCL bieten die beste Farbverteilung für die menschliche Wahrnehmung, sind jedoch äußerst schwer zu benutzen. Eine mögliche Kombination der Vorteile beider Farbräume zeigt \citep{husl}, hier wird ein Farbraum mit der Bezeichnung \textit{human-friendly HSL} vorgestellt.
+Der zweite Ansatz besteht darin, die Farben prozedural zu erstellen,
+der naivste Ansatz wäre es hierbei den Wertebereich der Hash-Funktion auf $0 - 2^{16}$ einzuschränken, das Ergebnis in Hexadezimal umzurechnen und als RGB-Farbe zu benutzen. Die dadurch entstehenden Farben sind jedoch unberechenbar und würden nur per Zufall harmonieren. Ein weiteres Problem ist, das zu viele dunkle und helle Farben erstellt werden.
+Der RGB-Farbraum ist nicht dazu geeignet die Helligkeit der entstehenden Farben zu kontrollieren, dafür sind Wahrnehmungsorientierte Modelle, die Farben durch Helligkeit, Sättigung und Farbton beschreiben, deutlich geeigneter wie HSV oder HSL.
+Probleme von den HSx Farbräumen sind die für den Menschen ungünstige Verteilung der Farben, da wir z.B. besser im Unterscheiden von Blautönen sind als solche mit Grün/Rot-Anteilen und die Helligkeit der Farben, die bei Änderung des Farbtons stark varriert.
+Abhilfe schaffen die dafür erstellten Farbräume LAB bzw. die Weiterentwicklung HCL. Sie sind jedoch nicht einfach zu benutzen, weil der valide Wertebereich der Eingabeparameter je nach Kombination der Werte unterschiedlich ist. Das macht es schwer, mit diesen Farbräumen Farben zu erstellen.
+% Es gibt im speziellen um den Chroma-Wert, dieser kann grob mit der Helligkeit verglichen werden. Der Wertebereich der Sättigung und des Farbtons sind vom Chroma-Wert abhängig.
 
-Doch keiner der Farbräume konnte eine \textit{ideale} Farbskala erstellen, es konnten in allen Farbräumen sehr anspruchsvolle Farbskalen mit wenig Kollisionen erstellt werden. Da Farbskalen ein subjektives Thema sind wurde die Möglichkeit eingebaut diese in der Applikation zu verändern - dies wurde gleich mit dem Gamification-Aspekt verbunden wodurch man nach und nach neue Freischalten kann und sich die aussuchen kann die einem am besten gefallen.
+Die Wahl eines idealen Farbraums ist damit nicht wirklich möglich, mittels HSL ist es einfach, eine gute Farbskala prozedural zu erstellen, der Farbbereich ist jedoch ungünstig für den Menschen. LAB und HCL bieten die beste Farbverteilung für die menschliche Wahrnehmung, sind jedoch äußerst schwer zu benutzen. Eine mögliche Kombination der Vorteile beider Farbräume zeigt \citep{husl}. Hier wird ein Farbraum mit der Bezeichnung \textit{human-friendly HSL} (kurz HUSL) vorgestellt. HUSL bietet einen einfach zu bedienenden Farbraum, welcher versucht die Helligkeitsschwankungen bei Farbtonänderung zu minimieren und die Farbverteilung für das menschliche Auge zu optimieren.
 
-Zum testen der Farbskalen wurde eine Liste an möglichen Suchbegriffen benutzt, die Ergebnisse sind in \ref{fig:colors} zu sehen.
+Doch keiner der Farbräume konnte eine \textit{ideale} Farbskala erstellen. Es konnten in allen Farbräumen sehr anspruchsvolle Farbskalen mit wenig Kollisionen erstellt werden. Da Farbskalen ein subjektives Thema sind, wurde die Möglichkeit eingebaut, sie in der Applikation zu verändern - dies wurde gleich mit dem Gamification-Aspekt verbunden wodurch man nach und nach neue Farbskalen Freischalten kann und sich diejenigen aussuchen kann die einem am besten gefallen.
+
+Zum testen der Farbskalen wurde eine Liste an möglichen Suchbegriffen benutzt. Die Ergebnisse sind in \ref{fig:colors} zu sehen.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{images/colors}
-    \caption{Farbskalen die mit verschiedenen Farbrepräsentationen erstellt wurden.}
+    \caption{Farbskalen, die mit verschiedenen Farbräumen erstellt wurden.}
     \label{fig:colors}
 \end{figure}
 
 \section{Gamification}
 
-Wie in der Einleitung erwähnt ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik um das sogenanntes \textit{User-Engagement} erhöhen, allein durch Gamification konnte z.B. die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep{zichermann2011gamification, 17}. Zahlreiche StartUps feiern große Erfolge mit dem hinzufügen von Gamification zu anstrengenden bzw. langweiligen Aufgaben, wie z.B. das Lernen einer Sprache (Duolingo\footnote{https://de.duolingo.com/}) oder Programmieren Lernen (Codecademy\footnote{http://www.codecademy.com/}).
+Wie in der Einleitung erwähnt, ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik, um das sogenannte \textit{User-Engagement} zu erhöhen. Allein durch Gamification konnte die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep{zichermann2011gamification, 17}. Zahlreiche StartUps feiern große Erfolge mit dem Hinzufügen von Gamification zu anstrengenden oder langweiligen Aufgaben, wie z.B. das Lernen einer Sprache (Duolingo\footnote{https://de.duolingo.com/}) oder Programmieren Lernen (Codecademy\footnote{http://www.codecademy.com/}).
 
-Doch was ist Gamification eigentlich? Der Begriff entstand erst 2008 und hat seitdem viele Bedeutungen erlangt, \citep{deterding2011game} bemühten sich eine einheitliche Definition zu finden, die auch im folgenden Kontext verwendet wird.
+Doch was ist Gamification eigentlich? Der Begriff entstand erst 2008 und hat seitdem viele Bedeutungen erlangt. \citep{deterding2011game} bemühten sich eine einheitliche Definition zu finden, die auch im folgenden Kontext verwendet wird.
 
 \begin{quote}
 	``Gamification'' is the use of game design elements in non-game contexts.
 \end{quote}
 
 Das Infoboard dient als Interface für Unternehmensinterne Suchmaschinen, welches zu besserem Wissensaustausch führen soll. Dies ist offensichtlich ein nicht-Spiele-Kontext der durch erhöhtes \textit{Engagement} positive Effekte für ein Unternehmen erzielen kann.
-Mit dem Einsatz von Gamification-Elementen werden von uns zwei Ziele verfolgt, einerseits soll durch die Verspielisierung der Applikationsmechaniken deren Benutzung erhöht werden bzw. soll ein konstanteres \textit{User-Engangement} erzielt werden, andererseits sollen die Mechaniken zur Bewertung der Suchergebnisse gefördert werden wodurch diese noch besser werden.
+Mit dem Einsatz von Gamification-Elementen werden von uns zwei Ziele verfolgt: einerseits soll durch die Verspielisierung der Applikationsmechaniken deren Benutzung erhöht bzw. ein konstanteres \textit{User-Engangement} erzielt werden, andererseits sollen die Mechaniken zur Bewertung der Suchergebnisse gefördert werden, wodurch diese noch besser werden.
 
 % Es ist schwer neue Technologien im Unternehmensfeld einzuführen, vor allem wenn sie freiwillig benutzt werden können - so wie das hier entwickelte Enterprise Infoboard. Ziel ist es also durch die Gamification der Benutzung die Benutzer dazu zu motivieren die Anwendung gewohnheitsmäßig zu benutzen.
 
-Die Grundlage jedes Spieledesigns ist der \textit{Compulsion Loop} welcher eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden um eine neurochemische Belohnung zu erhalten.
+Die Grundlage jedes Spieledesigns ist der \textit{Compulsion Loop}, der eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden, um eine neurochemische Belohnung zu erhalten.
 
 Nach \citep{gamasutra} besteht diese modellierte Kette aus 3 Schritten:
 
 \begin{enumerate}
-  \item \textbf{Anerkennung der Leistung} Die Ausführung der Aktionen wird belohnt, der Benutzer bekommt etwas was er gerne möchte. Die Herausforderung hierbei ist es etwas zu erschaffen, dass der Benutzer möchte und die Belohnung so einzuteilen das er gerade soviel bekommt dass es eine Belohnung darstellt. Am Beispiel des Rollenspieles wäre eine Belohnung z.B. die verbesserte Rüstung mit der der gespielte Charakter widerstandsfähiger wird und neue bisher verschlossene Abenteuer bestreiten kann.
-  \item \textbf{Belohnung einer Aktion} Jede Aktion die der Benutzer ausführt hat eine direkte Belohnung zur Folge, diese ist jedoch so klein, dass sie direkt keine Glücksgefühle auslöst sondern erst eine Anhäufung der Belohnungen führt dazu dass der Benutzer die eigentliche \textbf{Belohnung der Leistung} erhält. Es ist zu beachten dass diese direkten Belohnungen nicht allzu schnell die Möglichkeit freischalten sie gegen dass einzutauschen wonach der Benutzer strebt. Dies könnte im Rollenspiel das Gold sein, dass benötigt wird um eine neue Rüstung zu kaufen.
-  \item \textbf{Aktion} Die Aktion ist die Grundlage der Schleife, Aktionen sind das was der Benutzer ausführen soll. Im Rollenspiel könnte dies z.B. das lösen von Aufträgen sein.
+  \item \textbf{Anerkennung der Leistung} \hfill
+  Die Ausführung der Aktionen wird belohnt, der Benutzer bekommt etwas das er gerne möchte. Die Herausforderung hierbei ist es etwas zu erschaffen, dass der Benutzer möchte und die Belohnung so einzuteilen, dass er gerade soviel bekommt, dass es eine Belohnung darstellt. Am Beispiel des Rollenspieles wäre eine Belohnung die verbesserte Rüstung, mit der der gespielte Charakter widerstandsfähiger wird und neue bisher verschlossene Abenteuer bestreiten kann.
+  \item \textbf{Belohnung einer Aktion}\hfill
+  Jede Aktion, die der Benutzer ausführt, hat eine direkte Belohnung zur Folge. Diese ist jedoch so klein, dass nicht direkt Glücksgefühle ausgelöst werden, sondern erst eine Anhäufung der Belohnungen führt dazu, dass der Benutzer die eigentliche \textbf{Belohnung der Leistung} erhält. Es ist zu beachten, dass diese direkten Belohnungen nicht allzu schnell die Möglichkeit freischalten, sie gegen dass einzutauschen wonach der Benutzer strebt. Im Rollenspiel könnte das Gold sein, dass benötigt wird um eine neue Rüstung zu kaufen.
+  \item \textbf{Aktion}\\hfill
+  Die Aktion ist die Grundlage der Schleife. Aktionen sind das was der Benutzer ausführen soll. Im Rollenspiel könnte das das Lösen von Aufträgen sein.
 \end{enumerate}
 
-Im folgenden wird für die Gamification des Infoboard anhand dieser Schritten modelliert.
+Im Folgenden wird die Gamification des Infoboard anhand dieser Schritten modelliert.
 
 \subsection{Aktionen und deren Belohnung}
 
-Das Infoboard besitzt ausgewählte Interaktionsmöglichkeiten die alle Teil der Aktionen sind die eine Belohnung geben.
+Das Infoboard besitzt ausgewählte Interaktionsmöglichkeiten, die alle Teil der Aktionen sind, die eine Belohnung geben.
 
 \begin{itemize}
   \item Bewertung der Suchergebnisse
