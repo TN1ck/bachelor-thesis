@@ -610,7 +610,7 @@ Die Technische Umsetzung wird sich größtenteils mit dem Frontend beschäftigen
 
 Die erste Frage die sich bei der Umsetzung stellt, ist welche Technologie verwendet werden soll.
 
-Die Wahl der zu verwendeten Technologie ist ein wichtiger Punkt der die darauffolgende Entwicklung und spätere Wartung beeinflusst. Es wird versucht auf folgende Punkte einzugehen:
+Die Wahl der zu verwendeten Technologie ist ein wichtiger Punkt der die darauffolgende Entwicklung und spätere Wartung beeinflusst \cite{graham2004beating}. Es wird versucht auf folgende Punkte einzugehen:
 
 \begin{itemize}
   \item Die Technologie ist \textit{erwachsen} \\
@@ -623,7 +623,7 @@ Die Wahl der zu verwendeten Technologie ist ein wichtiger Punkt der die darauffo
 
 \subsection{Programmiersprache}
 
-Die wichtigste Wahl ist die Wahl der Programmiersprache, im Frontend wird diese Entscheidung größtenteils dadurch abgenommen das aktuelle Browser exklusiv die Ausführung von JavaScript beherrschen, andere Sprachen sind nur über Erweiterungen (Flash, Java, Silverlight) verfügbar deren Relevanz in den letzten Jahrzehnten soweit abgenommen hat, dass sie für uns keine Option mehr darstellen \cite{clientside}.
+Die wichtigste Wahl ist die Wahl der Programmiersprache \cite{graham2004beating}, im Frontend wird diese Entscheidung größtenteils dadurch abgenommen das aktuelle Browser exklusiv die Ausführung von JavaScript beherrschen, andere Sprachen sind nur über Erweiterungen (Flash, Java, Silverlight) verfügbar deren Relevanz in den letzten Jahrzehnten soweit abgenommen hat, dass sie für uns keine Option mehr darstellen \cite{clientside}.
 
 JavaScript ist jedoch nicht die beliebteste Sprache, die Tatsache das die Sprache in ca. 10 Tagen geschrieben wurde mag dies erklären \citep{severance2012javascript}, so kam es dass JavaScript in den letzten Jahren immer mehr zu einem Kompilierungsziel geworden ist, d.h. andere Programmiersprachen kompilieren zu validem JavaScript-Code. Diese Praxis ist mittlerweile so populär geworden, dass JavaScript auch als \textit{Assembly of the Web} \cite{webassembly} bezeichnet wird. Die populärsten Programmiersprachen die zu JavaScript kompilieren sind vermutlich CoffeeScript, TypeScript und Java (mittels GWT). Die Liste der Sprachen ist jedoch endlos mit über 300-Sprachen die zu JavaScript kompilieren. Eine Auflistung dieser ist auf dem Github-repository von CoffeeScript zu finden \cite{javascriptcompile}.
 
@@ -647,7 +647,7 @@ Neben reinem ES6 benutzen wir jedoch auch noch eine von Facebook entwickelte Erw
     var header = <h1>Überschrift</h1>;
 \end{minted}
 
-Die direkte Einbettung von HTML-Markup in JavaScript wird derzeit kontrovers diskutiert, doch wird dadurch die Benutzung von der hier verwendeten Interface-Bibliothek React.js deutlich vereinfacht.
+Die direkte Einbettung von HTML-Markup in JavaScript wird derzeit kontrovers diskutiert \cite{jsxcontrovers}, doch wird dadurch die Benutzung von der hier verwendeten Interface-Bibliothek React.js deutlich vereinfacht.
 Bisher ist JSX ein Vorschlag von Facebook an ECMA, doch ist die Benutzung von JSX mittlerweile sehr verbreitet. So unterstützt eslint \cite{eslint} wie auch der ES6-ES5-Kompilierer Babel JSX \cite{babel}, dass eine Integration etwas JSX-ähnlichem ziemlich wahrscheinlich ist.
 Mittels ES6-templatestrings ist es möglich \textit{Domain Specific Languages} zu schreiben, so gibt es mittlerweile auch ein proof-of-concept JSX rein in ES6 zu schreiben \cite{templatestrings}.
 
