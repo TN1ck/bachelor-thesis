@@ -226,7 +226,8 @@ Berlin, \today\\
 
 \chapter{Einleitung}
 
-Die gemeinsame Darstellung von Inhalten aus verschiedenen Quellen ist ein interessantes und weit erforschtes Thema. Die Idee dabei ist es, dem Benutzer die Benutzung bzw. die Konsumierung von Inhalten angenehmer und effizienter zu gestalten, indem ein einheitliches Interface für Inhalte geschaffen wird. Vor der \textit{digitalen Revolution} war das ein äußerst aufwendiges und kostspieliges Unterfangen, als Beispiel seien die frühen Enzyklopädien genannt, welche versuchen, sämtliches Wissen an einem Ort in homogener Sprache und Darstellung bereitzustellen. Durch die momentan verfügbaren Technologien ist das Erstellen einer einheitlichen Datenquelle für verschiedene Inhalte deutlich einfacher geworden, wobei die Schwierigkeit einer guten Zusammenführung dennoch weiterhin besteht und Produkte, die das gut lösen, sehr erfolgreich sind - wie z.B. die Aggregation sozialer Aktivitäten bei Facebook.
+Die gemeinsame Darstellung von Inhalten aus verschiedenen Quellen ist ein interessantes und weit erforschtes Thema. Die Idee dabei ist es, dem Benutzer die Benutzung bzw. die Konsumierung von Inhalten angenehmer und effizienter zu gestalten, indem ein einheitliches Interface für Inhalte geschaffen wird. Vor der \textit{digitalen Revolution} war das ein äußerst aufwendiges und kostspieliges Unterfangen \footnote{Vergleich hier zu der Encyclopædia Britannica
+und Wikipedia, letztere konnte in wenigen Jahren mehr Inhalte mit gleicher Qualität aggregieren, also das Traditionsunternehmen in 200 Jahren \cite{giles2005internet}.}, als Beispiel seien die frühen Enzyklopädien genannt, welche versuchen, sämtliches Wissen an einem Ort in homogener Sprache und Darstellung bereitzustellen. Durch die momentan verfügbaren Technologien ist das Erstellen einer einheitlichen Datenquelle für verschiedene Inhalte deutlich einfacher geworden, wobei die Schwierigkeit einer guten Zusammenführung dennoch weiterhin besteht und Produkte, die das gut lösen, sehr erfolgreich sind - wie z.B. die Aggregation sozialer Aktivitäten bei Facebook.
 
 Wenn man sich jedoch auf eine Teilmenge der verfügbaren Informationen beschränkt, wie Nachrichten die per RSS verfügbar sind, ist es deutlich einfacher eine angemessene Zusammenstellung der Inhalte zu gestalten. Prominentes Beispiel für eine Anwendung dieser Art ist die Nachrichten-Applikation pulse \cite{pulse}, die auf Basis von RSS ein angenehmes und attraktives Interface für die gleichzeitige Konsumierung mehrerer Nachrichtenseiten anbietet. Der Erfolg von \textit{pulse} spricht für sich mit ca. 22 Millionen Downloads auf dem Android-System.
 
@@ -258,7 +259,7 @@ Eine der Hauptanforderungen ist die Darstellung von Suchergebnissen (im zukünft
   Der Benutzer soll in der Lage sein, angezeigte Suchergebnisse zu bewerten und dadurch die Priorisierung von Suchergebnissen zukünftiger Anfragen für \textbf{alle} Benutzer zu verändern.
 
 \item[Benutzung mehrerer Datenquellen]
-  Die angezeigten Suchergebnisse können aus mehreren Datenquellen kommen, das heißt die gleichzeitige Darstellung von Suchergebnissen von Facebook mit denen von Twitter. Auch hier ist wichtig, dass zusätzliche Datenquellen hinzufügt werden können.
+  Die angezeigten Suchergebnisse können aus mehreren Datenquellen kommen, das heißt die gleichzeitige Darstellung von Suchergebnissen von zum Beispiel Facebook mit denen von Twitter. Auch hier ist wichtig, dass zusätzliche Datenquellen hinzufügt werden können.
 
 \item[Authentifizierungssystem]
 	Zur Benutzung der Gamification-Elemente und der Suchanfrage bedarf es einer Authentifizierung. Die Suchergebnisse können unternehmensinterne Dokumente enthalten, deswegen muss sichergestellt werden, dass kein Benutzer der nicht authentifiziert ist, Zugriff auf die Applikation hat.
@@ -276,20 +277,19 @@ Eine der Hauptanforderungen ist die Darstellung von Suchergebnissen (im zukünft
 
 \section{Relevante Arbeiten}
 
-Da es Bestandteil dieser Arbeit ist, Erkenntnisse aus verschiedenen Gebieten zu Aggregieren, gibt es keine direkten zu Grunde liegenden Arbeiten. Vielmehr werden Erkenntnisse verschiedener Bereiche untersucht und zusammengeführt.
+Da es Bestandteil dieser Arbeit ist, Erkenntnisse aus verschiedenen Gebieten zu Aggregieren, gibt es keine direkt zu Grunde liegenden Arbeiten. Vielmehr werden Erkenntnisse verschiedener Bereiche untersucht und zusammengeführt.
 
 \subsection{Social Media Walls}
 
 % TODO
 Im folgenden werden verschiedene Angebote von \textit{Social Media Walls} untersucht um Unterschiede und Gemeinsamkeiten dieser festzustellen.
 
-Eine sehr gute Auflistung verschiedener \textit{Social Media Wall}-Applikationen bietet \citep{hofram}. Die Homogenität dieser Angebote ist erstaunlich. Würde man die Produkte zweier verschiedener Anbieter nebeneinander sehen, wären die größten Unterschiede stilistischer Natur wie etwa die benutzten Farbschemas und Schriftarten. Leider sind die wenigsten Produkte in einer Demo zu testen, da die Lösungen üblicherweise auf den Kunden zugeschnitten werden. Primärer Use-Case sind große Veranstaltungen wie Konzerte, weswegen auch keine im Produktiveinsatz eingesehen werden konnten. In Abbildung \ref{fig:socialwall} kann eine der Implementierungen gesehen werden.\\
+Eine sehr gute Auflistung verschiedener \textit{Social Media Wall}-Applikationen bietet \citep{hofram}. Die Homogenität dieser Angebote ist jedoch erstaunlich. Würde man die Produkte zweier verschiedener Anbieter nebeneinander sehen, wären die größten Unterschiede stilistischer Natur wie etwa die benutzten Farbschemas und Schriftarten. Leider sind die wenigsten Produkte in einer Demo zu testen, da die Lösungen üblicherweise auf den Kunden zugeschnitten werden. Primärer Use-Case sind große Veranstaltungen wie Konzerte, weswegen auch keine im Produktiveinsatz eingesehen werden konnten. In Abbildung \ref{fig:socialwall} kann eine der Implementierungen gesehen werden.\\
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Starbucks.png}
-    \caption{Eine \textit{Social Media Wall} vom Anbieter walls.io \cite{wallsio}}
-    \label{fig:socialwall}
+    \caption{Eine \textit{Social Media Wall} vom Anbieter walls.io \cite{wallsio}}\label{fig:socialwall}
 \end{figure}
 
 Es lohnt sich also nicht weiter diese Angebote tiefergehend zu untersuchen, die Darstellungsform ist aber dennoch weiterhin interessant und wird als grobe Inspiration die Darstellung der Suchergebnisse dienen.
@@ -297,29 +297,29 @@ Es lohnt sich also nicht weiter diese Angebote tiefergehend zu untersuchen, die 
 
 \subsection {Gamification}\label{sec:intro_game}
 
-Neben der Visualisierung ist Gamification der zweite große Aspekt der Applikation. Wie in der Einleitung erwähnt, ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik, um das sogenannte \textit{User-Engagement} zu erhöhen. Allein durch Gamification konnte die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep{zichermann2011gamification, 17}. Zahlreiche StartUps feiern große Erfolge mit dem Hinzufügen von Gamification zu anstrengenden oder langweiligen Aufgaben, wie z.B. das Lernen einer Sprache (Duolingo\footnote{https://de.duolingo.com/}) oder Programmieren Lernen (Codecademy\footnote{http://www.codecademy.com/}).
+Neben der Visualisierung ist Gamification der zweite große Aspekt der Applikation. Wie in der Einleitung erwähnt, ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik, um das sogenannte \textit{User-Engagement} zu erhöhen. Allein durch Gamification konnte die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep[pp. 17]{zichermann2011gamification}. Zahlreiche StartUps feiern große Erfolge mit dem Hinzufügen von Gamification zu anstrengenden oder langweiligen Aufgaben, wie das Lernen einer Sprache (Duolingo\footnote{https://de.duolingo.com/}) oder Programmieren (Codecademy\footnote{http://www.codecademy.com/}).
 
-Der Begriff Gamification entstand erst 2008 und hat seitdem viele Bedeutungen erlangt. \citep{deterding2011game} bemühten sich eine einheitliche Definition zu finden, die auch im folgenden Kontext verwendet wird: ``Gamification is the use of game design elements in non-game contexts''.
+Der Begriff Gamification entstand erst 2008 und hat seitdem viele Bedeutungen erlangt. \citep{deterding2011game} bemühten sich eine einheitliche Definition zu finden, die auch im folgenden Kontext verwendet wird: ``Gamification is the use of game design elements in non-game contexts'' \citep{deterding2011game}.
 
 Das Infoboard dient als Interface für Unternehmensinterne Suchmaschinen, welches zu besserem Wissensaustausch führen soll. Dies ist offensichtlich ein nicht-Spiele-Kontext der durch erhöhtes \textit{Engagement} positive Effekte für ein Unternehmen erzielen kann.
 Mit dem Einsatz von Gamification-Elementen werden von uns zwei Ziele verfolgt: einerseits soll durch die Verspielisierung der Applikationsmechaniken deren Benutzung erhöht bzw. ein konstanteres \textit{User-Engangement} erzielt werden, andererseits sollen die Mechaniken zur Bewertung der Suchergebnisse gefördert werden, wodurch diese noch besser werden.
 
 Im Folgenden werden bisherige Arbeiten analysiert, die ähnliche Inhalte anzeigen, und Gamification implementiert haben.
 
-Einen schwachen aber effektiven Ansatz verfolgt die Social-News-Seite reddit \cite{reddit}. Jegliche Inhalte (eingereichte Links, Kommentare) der Seite können binär bewertet werden (im reddit-jargon wird hier von \textit{upvotes} und \textit{downvotes} gesprochen). Reicht man nun selbst etwas ein und andere Benutzer bewerten den eingereichten Inhalt, wird die Differenz aus \textit{upvotes} und \textit{downvotes} einem als Karma gutgeschrieben. Wie in klassischen Spielen hat Karma einen endogenen Wert \citep{costikyan2005have, 21 - 22}, das heißt der Wert besitzt keinerlei Wert außerhalb des Systems, in diesem Falle außerhalb von reddit.
+Einen schwachen aber effektiven Ansatz verfolgt die Social-News-Seite reddit \cite{reddit}. Jegliche Inhalte (eingereichte Links, Kommentare) der Seite können binär bewertet werden (im reddit-jargon wird hier von \textit{upvotes} und \textit{downvotes} gesprochen). Reicht man nun selbst etwas ein und andere Benutzer bewerten den eingereichten Inhalt, wird die Differenz aus \textit{upvotes} und \textit{downvotes} einem als Karma gutgeschrieben. Wie in klassischen Spielen hat Karma einen endogenen Wert \citep[pp. 21 - 22]{costikyan2005have}, das heißt der Wert besitzt keinerlei Wert außerhalb des Systems, in diesem Falle außerhalb von reddit.
 
 Eine Analyse reddits im Spielekontext führte \cite{massanari2013playful} durch und zeigte auf, dass viele Muster reddits Teil eines Spiels aufbauend auf Karma sind, die die Nutzung und Nutzer reddits weitreichend formten.
 Dies zeigt, dass Gamification ein großer Teil reddits, und damit auch dessen Erfolgs ist. Laut der Webanalyseplattform Alexa ist reddit die 32 meist besuchte Webseite der Welt, in den USA ist sie sogar auf Platz 10 \cite{alexa}.
 Doch besitzt die Gamification reddits auch negative Seiten, so legt \citep{richerichkarma}  dar, das eine Anhäufung Karmas zum Zweck der Selbstbestätigung der eigenen Meinung betrieben wird. Benutzer reddits werden darauf gepolt ihre eingereichten Beiträge anhand der Höhe des Karmas, welches der Beitrag voraussichtlich liefern wird, auszusuchen - und nicht anhand Qualität oder Relevanz.
 
-DAIKnow \citep{meder2014daiknow} ist eine Bookmarking Seite wie auch delicous.com \cite{delicious}, bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Abzeichen und Bestenlisten wird die Benutzung der Seite gesteigert. Im Gegensatz zu reddit ist dieses System jedoch weitaus komplexer, so bekommt man unter anderem Punkte für den täglichen Aufruf, Punkte für das Einrechen eines Links oder das jemand anderes seinen Link kopiert hat.
+DAIKnow \citep{meder2014daiknow} ist eine Bookmarking Seite wie auch delicous.com \cite{delicious}, bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Abzeichen und Bestenlisten wird die Benutzung der Seite gesteigert. Im Gegensatz zu reddit ist dieses System jedoch weitaus komplexer, so bekommt der Benutzer unter anderem Punkte für den täglichen Aufruf, Punkte für das Einrechen eines Links oder das ein andere Benutzer seinen Link kopiert hat.
 Ein Problem des Konzeptes von DAIKnow ist, dass häufige Benutzer alle verfügbaren Abzeichen freischalteten und damit der Gamification-Aspekt verloren ging.
 
 Die Untersuchung hat gezeigt, dass Gamification bei den untersuchten Beispiele erfolgreich eingesetzt werden konnte, und im Beispiel reddits ein so integraler Bestandteil der Seite wurde, dass viele Nutzungsmuster auf reddit kopmlett davon abhängig sind. Es wurde damit bestätigt dass Gamification einen positiven Nutzen für das Infoboard erzielen kann, jedoch ist damit nicht endgültig geklärt wie die Gamification im Detail implementiert wird, da das Infoboard im Gegensatz zu reddit oder DAIKnow, keine Möglichkeit besitzt eigenen Inhalt einzureichen. Die genaue Spezifikation der Gamification wird im Verlauf der Arbeit erarbeitet.
 
 \chapter{Konzeptuelle Umsetzung}\label{chap:concept}
 
-Einer der wichtigsten Aspekte von Interface-getriebenen Applikationen, ist das Nutzererlebnis \citep{garrett2010elements, 8 - 17}. In diesem Kapitel werden die zwei wichtigsten Punkte dieser Arbeit, die für das Nutzererlebnis wichtig sind, vornehmlich Gamification und die Visualisierung der Suchergebnisse, analysiert. Auf Basis dessen wird ein Konzept erarbeitet, welches schlussendlich in Kapitel \ref{chap:tech} umgesetzt wird.
+Einer der wichtigsten Aspekte von Interface-getriebenen Applikationen, ist das Nutzererlebnis \citep[8 - 17]{garrett2010elements}. In diesem Kapitel werden die zwei wichtigsten Punkte dieser Arbeit, die für das Nutzererlebnis wichtig sind, vornehmlich Gamification und die Visualisierung der Suchergebnisse, analysiert. Auf Basis dessen wird ein Konzept erarbeitet, welches schlussendlich in Kapitel \ref{chap:tech} umgesetzt wird.
 
 \section{Visualisierung der Suchergebnisse}\label{chap:concept:wall}
 
@@ -327,7 +327,7 @@ Wie \cite{bostock2011d3} gezeigt hat, erlauben heutige Webtechnologien nahezu un
 
 \subsection{Layout}
 
-Wie Pinterest\cite{pinterest} oder das Metro-Design von Microsoft gezeigt haben, ist ein Layout basierend auf Kacheln aktuell eine der populärsten Darstellung für Medieninhalte verschiedener Art, siehe Abbildung \ref{fig:metro_pinterest}.
+Wie Pinterest \cite{pinterest} oder das Metro-Design von Microsoft gezeigt haben, ist ein Layout basierend auf Kacheln aktuell eine der populärsten Darstellung für Medieninhalte verschiedener Art, siehe Abbildung \ref{fig:metro_pinterest}.
 
 \begin{figure}[htbp]
     \centering
@@ -336,7 +336,7 @@ Wie Pinterest\cite{pinterest} oder das Metro-Design von Microsoft gezeigt haben,
     \label{fig:metro_pinterest}
   \end{figure}
 
-Es gibt oft eine Regel, nach welchem Muster die Kacheln angeordnet werden sollen, z.B. sollten die neuesten Kacheln an oberster Stelle gezeigt werden oder \textit{wichtigere} Kacheln prominenter dargestellt werden. Die Kacheln für das Infoboard unterliegen der Regel, dass sie anhand ihrer Wertung angeordnet werden müssen. Die folgende Analyse wird deshalb auf das Verhaltensmuster des Layouts fokussiert sein, für den Fall dass neue Kacheln hinzukommen und damit neu sortiert werden müssen.
+Es gibt oft eine Regel, nach welchem Muster die Kacheln angeordnet werden sollen, zum Beispiel sollten die neuesten Kacheln an oberster Stelle gezeigt werden oder \textit{wichtigere} Kacheln prominenter dargestellt werden. Die Kacheln für das Infoboard unterliegen der Regel, dass sie anhand ihrer Wertung angeordnet werden müssen. Die folgende Analyse wird deshalb auf das Verhaltensmuster des Layouts fokussiert sein, für den Fall dass neue Kacheln hinzukommen und damit neu sortiert werden müssen.
 Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Kacheln verglichen, da sie die wie die vorherigen Beispiele gezeigt haben, sie in diesem Bereich erfolgreich benutzt wurden.
 
 \begin{itemize}
@@ -351,7 +351,7 @@ Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Ka
   \end{figure}
 
   \textbf{Vorteile} \\
-  Die Vorteile liegen in der Simplizität der Implementierung und der Intuitivität des Inhaltflusses, d.h. neuer Inhalt wird oben eingefügt und alter rutscht nach unten, wobei jeweils nur eine Spalte \textit{verrutscht} je neu eingefügter Kachel.
+  Die Vorteile liegen in der Simplizität der Implementierung und der Intuitivität des Inhaltflusses, das heißt neuer Inhalt wird oben eingefügt und alter rutscht nach unten, wobei jeweils nur eine Spalte \textit{verrutscht} je neu eingefügter Kachel.
   Weiterhin ermöglicht die variable Höhe viel Flexibilität bei dem Anzeigen des Inhalts - z.B. können lange Texte angemessen angezeigt werden, ohne die Zeichenanzahl zu begrenzen oder ähnliche Limitierungen einzuführen.
 
   \textbf{Nachteile}\\
@@ -364,10 +364,10 @@ Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Ka
     \label{fig:livewall_sort}
   \end{figure}
 
-Man kann den optimalen Fluss nur beibehalten indem man die Sortierung Spaltenweise gliedert, dazu müssen jedoch die Kacheln auf eine Spalte festgesetzt werden z.B. mittels einer Hash-Funktion oder einem simplen Modulo. Dies kann zu verwirrenden Ergebnissen führen, auch wenn es ästhetisch die beste Variante ist.
+Man kann den optimalen Fluss nur beibehalten indem man die Sortierung Spaltenweise gliedert, dazu müssen jedoch die Kacheln auf eine Spalte festgesetzt werden z.B. mittels einer Hash-Funktion wie einem simplen Modulo. Dies kann zu verwirrenden Ergebnissen führen, auch wenn es ästhetisch die beste Variante ist.
 
   \item \textbf{Rasterbasierte Anordnung}
-  Bei dieser Form werden die einzelnen Datenpunkte in einem einheitlichen Raster dargestellt, d.h. die darstellende Fläche wird in einem Raster der Größe $(a, b)$ unterteilt, die Kacheln können nun die Größe $(x, y)$ mit $ x \in \{1, \dots, a, y \in 1, \dots, b\}$ besitzen.
+  Bei dieser Form werden die einzelnen Datenpunkte in einem einheitlichen Raster dargestellt, das heißt die darstellende Fläche wird in einem Raster der Größe $(a, b)$ unterteilt, die Kacheln können nun die Größe $(x, y)$ mit $ x \in \{1, \dots, a, y \in 1, \dots, b\}$ besitzen.
 
   \begin{figure}[htbp]
     \centering
@@ -395,7 +395,7 @@ Man kann den optimalen Fluss nur beibehalten indem man die Sortierung Spaltenwei
 \end{itemize}
 
   \subsection{Probleme beim Flussverhalten}
-  Das Flussverhalten beim Einfügen neuer Inhalte ist bei einem grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex. Zunächst müsste das Behälterproblem gelöst werden, und im zweiten Schritt müssten die Elemente anhand ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblems so zu optimieren, dass der optische Fluss der Elemente minimiert wird, ist von derartiger Komplexität, dass dies nicht in Betracht gezogen werden kann. Die JavaScript-Bibliothek packery\cite{packery} implementiert den ersten Schritt und ordnet die Elemente anhand einer Lösung des Behälterproblems. Anhand der packery-Methode \texttt{prepend} kann sehr gut erahnt werden, wie intransparent der Fluss, bei jedem neuen Element wäre, siehe Abbildung \ref{fig:grid_flow}.
+  Das Flussverhalten beim Einfügen neuer Inhalte ist bei einem Grid-basierten Layout mit unterschiedlichen Kachelgrößen äußerst komplex. Zunächst müsste das Behälterproblem gelöst werden, und im zweiten Schritt müssten die Elemente anhand ihrer Bewertung nochmals sortiert werden. Die Lösungen des Behälterproblems so zu optimieren, dass der optische Fluss der Elemente minimiert wird, ist von derartiger Komplexität, dass dies nicht in Betracht gezogen werden kann. Die JavaScript-Bibliothek packery \cite{packery} implementiert den ersten Schritt und ordnet die Elemente anhand einer Lösung des Behälterproblems. Anhand der packery-Methode \texttt{prepend} kann sehr gut erahnt werden, wie intransparent der Fluss, bei jedem neuen Element wäre, siehe Abbildung \ref{fig:grid_flow}.
 
   \begin{figure}[htbp]
     \centering
@@ -443,7 +443,7 @@ Mit diesen Anforderungen kann eine funktionale Kachel konzipiert werden, siehe A
     \label{fig:tile_prototype}
 \end{figure}
 
-Menschen sind äußerst gut darin, Farben und unterschiedliche Formen schnell zu gruppieren, da nach aktuellem Kenntnisstand, diese Teile der ersten Verarbeitungsstufe von visuellen Informationen ist \citep{treisman1987merkmale}. Da eine schnelle Assoziation von Suchbegriff und Kachel äußerst wichtig ist, wurde die Hintergrundfarbe der Kachel dafür benutzt. Dies schränkt das Design aber insofern ein, dass bis auf Grautöne und Abstufungen der verwendeten Hintergrundfarbe keine Anderen mehr möglich sind. Man könnte zum Beispiel das Symbol zum Favorisieren nicht überall rot anzeigen. Doch war das dadurch erzielte Design so überzeugend, dass dies in Kauf genommen wurde.
+Menschen sind äußerst gut darin, Farben und unterschiedliche Formen schnell zu gruppieren, da nach aktuellem Kenntnisstand, dies Teile der ersten Verarbeitungsstufe von visuellen Informationen sind \citep{treisman1987merkmale}. Da eine schnelle Assoziation von Suchbegriff und Kachel äußerst wichtig ist, wurde die Hintergrundfarbe der Kachel dafür benutzt. Dies schränkt das Design aber insofern ein, dass bis auf Grautöne und Abstufungen der verwendeten Hintergrundfarbe keine Anderen mehr möglich sind. Man könnte zum Beispiel das Symbol zum Favorisieren nicht überall rot anzeigen. Doch war das dadurch erzielte Design so überzeugend, dass dies in Kauf genommen wurde.
 
 \begin{figure}[htbp]
     \centering
@@ -467,7 +467,7 @@ Dadurch wird aber verhindert, dass jeder Suchbegriff konsistent die gleiche Farb
 Der zweite Ansatz besteht darin, die Farben prozedural zu erstellen.
 Der naivste Ansatz wäre es hierbei den Wertebereich der Hash-Funktion auf $0 - 2^{16}$ einzuschränken, das Ergebnis in Hexadezimal umzurechnen und als RGB-Farbe zu benutzen. Die dadurch entstehenden Farben sind jedoch zufällig und würden nur per Zufall harmonieren. Ein weiteres Problem ist, das zu viele dunkle und helle Farben erstellt werden.
 
-Der RGB-Farbraum ist nicht dazu geeignet die Helligkeit der entstehenden Farben zu kontrollieren, dafür sind Wahrnehmungsorientierte Modelle, die Farben durch Helligkeit, Sättigung und Farbton beschreiben, deutlich geeigneter \cite{meier2004interactive}. Die populärsten Wahrnehmungsorienterten Modelle sind die HSx-Räume wie HSV oder HSL.
+Der RGB-Farbraum ist nicht dazu geeignet die Helligkeit der entstehenden Farben zu kontrollieren, dafür sind Wahrnehmungsorientierte Modelle, die Farben durch Helligkeit, Sättigung und Farbton beschreiben, deutlich geeigneter \cite{meier2004interactive}. Die populärsten Wahrnehmungsorientierten Modelle sind die HSx-Räume wie HSV oder HSL.
 Probleme von den HSx Farbräumen sind die für den Menschen ungünstige Verteilung der Farben und die Helligkeit der Farben, die bei Änderung des Farbtons stark varriert \cite{husl}.
 Abhilfe schaffen die dafür erstellten Farbräume LAB bzw. die Weiterentwicklung HCL. Sie sind jedoch nicht einfach zu benutzen, weil der valide Wertebereich der Eingabeparameter je nach Kombination der Werte unterschiedlich ist. Das macht es schwer, mit diesen Farbräumen Farben prozedural zu erstellen.
 % Es gibt im speziellen um den Chroma-Wert, dieser kann grob mit der Helligkeit verglichen werden. Der Wertebereich der Sättigung und des Farbtons sind vom Chroma-Wert abhängig.
@@ -517,7 +517,7 @@ Das Infoboard besitzt ausgewählte Interaktionsmöglichkeiten, die alle Teil der
   \item Anmeldung und Abmeldung
 \end{itemize}
 
-Durch einige dieser Aktionen wird der Benutzer Punkte bekommen, zum Beispiel ist es üblich, für das tägliche Besuchen der Seite dem Benutzer Punkte gutzuschreiben. Wichtig für uns ist es, dass die Bewertung der Suchergebnisse besonders gefördert wird, weswegen für diese Aktionen eine größere Punktzahl im Vergleich zu den anderen Aktionen vergeben wird.
+Durch einige dieser Aktionen wird der Benutzer Punkte bekommen, zum Beispiel ist es üblich, für das tägliche Besuchen der Seite, dem Benutzer Punkte gutzuschreiben. Wichtig für uns ist es, dass die Bewertung der Suchergebnisse besonders gefördert wird, weswegen für diese Aktionen eine größere Punktzahl im Vergleich zu den anderen Aktionen vergeben wird.
 
 \subsection{Anerkennung der Leistung}
 
@@ -525,7 +525,7 @@ Die Leistung des Benutzers muss anerkannt werden. Im Folgenden werden verschiede
 
 \subsubsection*{Punkte}
 
-Punkte sind unerlässlich im Spielekontext. Auch wenn die Punkte für den Benutzer nicht sichtbar gemacht werden, sind sie wichtig um dem Spieledesigner die Möglichkeit zu geben, das System zu evaluieren und daraufhin zu verändern \cite{zichermann2011gamification, 36}. Nach \citep{zichermann2011gamification, 38} unterscheidet man erhaltene Punkte in folgende Kategorien:
+Punkte sind unerlässlich im Spielekontext. Auch wenn die Punkte für den Benutzer nicht sichtbar gemacht werden, sind sie wichtig um dem Spieledesigner die Möglichkeit zu geben, das System zu evaluieren und daraufhin zu verändern \citep[pp. 36]{zichermann2011gamification}. Nach \citep[pp. 38]{zichermann2011gamification} unterscheidet man erhaltene Punkte in folgende Kategorien:
 
 \begin{itemize}
 	\item Erfahrungspunkte
@@ -535,13 +535,13 @@ Punkte sind unerlässlich im Spielekontext. Auch wenn die Punkte für den Benutz
     \item Ansehenspunkte
 \end{itemize}
 
-Anstelle eines komplexen Spielesystems wo verschiedene Punktesysteme benutzt werden, wurde hier entschieden nur eine Art von Punkten zu benutzen, welche größtenteils auf den Erfahrungspunkten aufbauen.
+Anstelle eines komplexen Spielesystems, wo verschiedene Punktesysteme benutzt werden, wurde hier entschieden, nur eine Art von Punkten zu benutzen, welche größtenteils auf den Erfahrungspunkten aufbauen.
 
-Erfahrungspunkte stellen die wichtigste Kategorie von Punkten dar, jede Interaktion des Benutzers wird mittels Erfahrungspunkte festgehalten (\citep{zichermann2011gamification, 38 - 39}) und stellen bei einer bedachten Punktevergabe  eine gute Quantifizierung der Leistung des Benutzers da. Dadurch kann man Erfahrungspunkte gleichzeitig für eine Bestenliste benutzen - und damit als eine Art Ansehenspunkte. Um den Punktemechanismus noch etwas spannender zu gestalten, wurde Entschieden, dass sie gegen \textit{Booster} eingetauscht werden können. Mittels Boostern wird jeder Erhalt von Punkten für einen gewissen Zeitraum mit einem Multiplikator erhöht. So kann eine Kategorie von Boostern bewirken, dass der Benutzer für einen Tag die doppelte Anzahl an Punkten erhält.
+Erfahrungspunkte stellen die wichtigste Kategorie von Punkten dar, jede Interaktion des Benutzers wird mittels Erfahrungspunkten festgehalten \citep[38 - 39]{zichermann2011gamification} und stellen bei einer bedachten Punktevergabe  eine gute Quantifizierung der Leistung des Benutzers da. Dadurch kann man Erfahrungspunkte gleichzeitig für eine Bestenliste benutzen - und damit als eine Art Ansehenspunkte. Um den Punktemechanismus noch etwas spannender zu gestalten, wurde Entschieden, dass sie gegen \textit{Booster} eingetauscht werden können. Mittels Boostern wird jeder Erhalt von Punkten für einen gewissen Zeitraum mit einem Multiplikator erhöht. So kann eine Kategorie von Boostern bewirken, dass der Benutzer für einen Tag die doppelte Anzahl an Punkten erhält.
 
-Die Idee hinter den Boostern ist es, den Compulsion-Loop daraufhin zu unterstützen, dass der Nutzer sie kaufen wird um seine Punktzahl noch weiter zu erhöhen. Durch die kurze Verweildauer des Boosters und dem Ziel des Benutzers seine Punkte zu erhöhen, wird dieser zwangsläufig seine Nutzung mit dem System erhöhen, da sich der Booster sonst nicht gelohnt hätte.
+Die Idee hinter den Boostern ist es, den Compulsion-Loop daraufhin zu unterstützen, dass der Nutzer sie kaufen wird, um seine Punktzahl noch weiter zu erhöhen. Durch die kurze Verweildauer des Boosters und dem Ziel des Benutzers seine Punkte zu erhöhen, wird dieser zwangsläufig seine Nutzung mit dem System erhöhen, da sich der Booster sonst nicht gelohnt hätte.
 
-Die Punkte sind für den Benutzer immer sichtbar und aktualisieren sich in Echtzeit, sobald der Benutzer eine Aktion ausführt die Punkte bringt. Zudem werden sie auf der Abzeichenseite nochmals angezeigt, wobei ein Balkendiagramm eine genauer Kategorisierung anzeigt, woher der Benutzer diese Punkte überhaupt hat, siehe Abbildung \ref{fig:points}.
+Die Punkte sind für den Benutzer immer sichtbar und aktualisieren sich in Echtzeit, sobald der Benutzer eine Aktion ausführt, die Punkte bringt. Zudem werden sie auf der Abzeichenseite nochmals dargestellt, wobei ein Balkendiagramm eine genauer Kategorisierung anzeigt, wie der Benutzer diese Punkte genau erlangt hat, siehe Abbildung \ref{fig:points}.
 
 \begin{figure}[htbp]
     \centering
@@ -550,19 +550,19 @@ Die Punkte sind für den Benutzer immer sichtbar und aktualisieren sich in Echtz
     \label{fig:points}
 \end{figure}
 
-Zusammengefasst benutzen wir \textbf{Erfahrungspunkte} die für alle Aktionen vergeben werden und für \textit{Booster} ausgegeben werden können. Bestenlisten ermöglichen einen Vergleich der Punkte zu anderen Benutzern.
+Zusammengefasst benutzen wir \textbf{Erfahrungspunkte}, die für alle Aktionen vergeben werden und für \textit{Booster} ausgegeben werden können. Bestenlisten ermöglichen einen Vergleich der Punkte mit anderen Benutzern.
 
 \subsubsection*{Bestenliste}
 
-Der Sinn von Bestenlisten ist es einen einfachen Vergleich von Dingen (in unserem Fall Benutzern) zu bieten. Nach \citep{zichermann2011gamification, 49 - 50} sind Bestenlisten zu so einem integralen Bestandteil unseres alltäglichen Lebens geworden, dass wir sofort eine erkennen wenn wir eine sehen. Beispiele für Bestenlisten im echten Leben umfassen die Ergebnisse der Stiftung Warentest, Klausurnotenhaushänge oder die Bundesligatabellen.
+Der Sinn von Bestenlisten ist es, einen einfachen Vergleich von Dingen Benutzern zu bieten. Nach \citep[pp. 49 - 50]{zichermann2011gamification} sind Bestenlisten zu so einem integralen Bestandteil unseres alltäglichen Lebens geworden, dass wir sofort eine erkennen, wenn wir sie sehen. Beispiele für Bestenlisten im echten Leben umfassen die Ergebnisse der Stiftung Warentest, Klausurnotenhaushänge oder die Bundesligatabellen.
 
-Nach \citep{zichermann2011gamification, 50 - 51} kann zwischen zwei Arten von Bestenlisten unterschieden werden, die \textit{lass-dich-nicht-entmutigen} und die \textit{unendliche} Bestenliste. Bei ersterer wird der Benutzer, egal welchen Platz er in der Bestenliste inne hat, immer direkt in der Mitte angezeigt. Hierbei ist es irrelevant ob er Platz 43 oder 40000 ist, er sieht sich selbst immer in der Mitte der Liste. Um sich herum sieht er seine direkte Konkurrenz. Wenn der Benutzer auf einen der Top 10/20/30 Plätze kommt, sollte sich dieses Verhalten jedoch ändern und er sollte die \textit{korrekte} Liste sehen.
-Bei der \textit{unendlichen} Bestenliste werden alle Benutzer angezeigt, es gibt jedoch meistens die Möglichkeit die Anzahl der Benutzer zu verringern, so hat z.B. das Spiel Doodle Jump 3 Arten des Leaderboards: Lokal, Freunde und Global \citep{zichermann2011gamification, 51}.
+Nach \citep[pp. 50 - 51]{zichermann2011gamification} kann zwischen zwei Arten von Bestenlisten unterschieden werden, die \textit{lass-dich-nicht-entmutigen} und die \textit{unendliche} Bestenliste. Bei ersterer wird der Benutzer, egal welchen Platz er in der Bestenliste inne hat, immer direkt in der Mitte angezeigt. Hierbei ist es irrelevant ob er Platz 43 oder 40000 ist, er sieht sich selbst immer in der Mitte der Liste. Um sich herum sieht er seine direkte Konkurrenz. Wenn der Benutzer auf einen der Top 10/20/30 Plätze kommt, sollte sich dieses Verhalten jedoch ändern und er sollte die \textit{korrekte} Liste sehen.
+Bei der \textit{unendlichen} Bestenliste werden alle Benutzer angezeigt, es gibt jedoch meistens die Möglichkeit die Anzahl der Benutzer zu verringern, so hat z.B. das Spiel Doodle Jump 3 Arten des Leaderboards: Lokal, Freunde und Global \citep[pp. 51]{zichermann2011gamification}.
 
-Ein weiterer Aspekt ist der Zeitraum der angezeigt wird. Vor allem bei Applikationen bei denen die Punktzahl immer weiter akkumuliert werden kann und demnach unendlich Punkte zulassen, kann eine Bestenliste, die auf dem kompletten verfügbaren Zeitraum aufbaut, für Neuanfänger entmutigend wirken, da sie es wohl nie schaffen werden einen höheren Platz zu erreichen, wenn jeder doch gleich viele Punkte pro Tag erzielen kann.
-Eine offensichtliche Lösung wäre es den Zeitraum zu beschränken, zum Beispiel auf die letzen 7 Tage. Dies hat dann aber einen ähnlich negativen Effekt auf die dauerhaften Nutzer: Sie können ihre Vormachtstellung nicht demonstrieren.
+Ein weiterer Aspekt ist der Zeitraum, der angezeigt wird. Vor allem bei Applikationen bei denen die Punktzahl immer weiter akkumuliert werden kann, und demnach unendlich viele Punkte zulassen, kann eine Bestenliste, die auf dem kompletten verfügbaren Zeitraum aufbaut, für Neuanfänger entmutigend wirken, da sie es wohl nie schaffen werden einen höheren Platz zu erreichen, wenn jeder doch gleich viele Punkte pro Tag erzielen kann.
+Eine offensichtliche Lösung wäre es, den Zeitraum zu beschränken, zum Beispiel auf die letzen 7 Tage. Dies hat dann aber einen ähnlich negativen Effekt auf die dauerhaften Nutzer: Sie können ihre Vormachtstellung nicht demonstrieren.
 
-Wir haben uns deswegen entschieden immer 2 Bestenlisten anzuzeigen: Eine mit dem kompletten Zeitraum und eine mit den letzten 30 Tage. Dadurch ist es möglich beide Parteien zufrieden zu stellen ohne Kompromisse eingehen zu müssen. Es werden ebenfalls beide Arten der Bestenliste benutzt: Im persönlichen Dashboard wird die \textit{lass-dich-nicht-entmutigen}-Bestenliste und in den globalen Statistiken wird eine \textit{unendliche} Bestenliste benutzt. Siehe Abbildung \ref{fig:leaderboarduser} für die \textit{lass-dich-nicht-entmutigen}-Bestenliste.
+Es wurde deswegen entschieden immer 2 Bestenlisten anzuzeigen: Eine mit dem kompletten Zeitraum und eine mit den letzten 30 Tage. Dadurch ist es möglich beide Parteien zufriedenzustellen, ohne Kompromisse eingehen zu müssen. Es werden ebenfalls beide Arten der Bestenliste benutzt: Im persönlichen Dashboard wird die \textit{lass-dich-nicht-entmutigen}-Bestenliste und in den globalen Statistiken wird eine \textit{unendliche} Bestenliste benutzt. Siehe Abbildung \ref{fig:leaderboarduser} für die \textit{lass-dich-nicht-entmutigen}-Bestenliste.
 
 \begin{figure}[htbp]
     \centering
@@ -572,17 +572,17 @@ Wir haben uns deswegen entschieden immer 2 Bestenlisten anzuzeigen: Eine mit dem
 \end{figure}
 
 \subsection{Abzeichen}
-Abzeichen bzw. Badges sind ein etabliertes Element der Gamification. Nach \citep{zichermann2011gamification, 55} nutzen sie viele Eigenschaften der menschlichen Natur um begehrenswert zu sein: das menschliche Sammelverhalten, die plötzliche (positive) Überraschung wenn ein unerwartetes Abzeichen erhalten wurde, Sozialer Status (ähnlich zu Punkten), Pure Ästhetik der Abzeichen und das Aufgabenziel das hinter jedem Abzeichen steckt.
+Abzeichen bzw. Badges sind ein etabliertes Element der Gamification. Nach \citep[pp. 55]{zichermann2011gamification} nutzen sie zahlreiche Eigenschaften der menschlichen Psyche, um begehrenswert zu sein: das menschliche Sammelverhalten, die plötzliche (positive) Überraschung wenn ein unerwartetes Abzeichen erhalten wurde, Sozialer Status (ähnlich zu Punkten), pure Ästhetik der Abzeichen und das Aufgabenziel, das hinter jedem Abzeichen steckt.
 
-In manchen Fällen sind Abzeichen so effektiv eingesetzt dass sie sogar Level ersetzen - z.B. mit speziellen Level-Abzeichen, als Beispiel sei Foursquare gennant, bei der der Benutzer das Abzeichen für das erreichen einer bestimmten Anzahl an \textit{check-ins}\footnote{Der Begriff \textit{check-in} wird von vielen sozialen Diensten benutzt um an sich an einem realen Ort ``einzuchecken'' - um dies z.B. seinen Freunden mitzuteilen} erhält. Dies funktioniert bei Foursquare darum gut, da \textit{check-ins} der wichtigste Bestandteil der Applikation sind \citep{zichermann2011gamification, 57}. Auch haben \textit{check-ins} keine negative Konnotation da es zumeist als überaus positiv angesehen wird, wenn man häufig ausgeht und neue Orte kennen lernt.
+In manchen Fällen sind Abzeichen so effektiv eingesetzt, dass sie sogar Level mit speziellen Abzeichen ersetzen, als Beispiel sei Foursquare gennant, bei der der Benutzer das Abzeichen für das Erreichen einer bestimmten Anzahl an \textit{check-ins}\footnote{Der Begriff \textit{check-in} wird von vielen sozialen Diensten benutzt um an sich an einem realen Ort ``einzuchecken'' - um dies z.B. seinen Freunden mitzuteilen} erhält. Dies funktioniert bei Foursquare deswegen gut, weil \textit{check-ins} der wichtigste Bestandteil der Applikation sind \citep[pp. 57]{zichermann2011gamification}. Auch haben \textit{check-ins} keine negative Konnotation, da es zumeist als überaus positiv angesehen wird, wenn man häufig ausgeht und neue Orte kennen lernt.
 
-Trotz aller positiven Aspekte von Abzeichen sind sie nicht einfach zu benutzen, so benutzt \citep{zichermann2011gamification, 56} den Begriff ``badgenfreude'' für ein Konzept, bei dem zu viele langweilige und sinnlose Abzeichen den Sinn von Abzeichen zunichte machen und sogar negative Folgen für das \textit{User Engagement} haben können.
+Trotz aller positiven Aspekte von Abzeichen sind sie nicht einfach zu verwenden, so benutzt \citep[pp. 56]{zichermann2011gamification} den Begriff ``badgenfreude'' für ein Konzept, bei dem zu viele langweilige und sinnlose Abzeichen den Sinn von Abzeichen zunichte machen und sogar negative Folgen für das \textit{User Engagement} haben können.
 
-Es ist sehr wichtig dass die Abzeichen den Benutzer nicht stören, er soll es mögen sie zu bekommen. Aber wann mag es ein Benutzer Abzeichen zu bekommen und wann fangen sie an zu stören?
-Als erstes kann die Frequenz des Erhalts betrachten werden. Um anfangs den Benutzer zu motivieren gibt man ihm in der ersten Zeit meistens relativ viele Abzeichen, so ist es typisch ein Abzeichen für die erste Anmeldung oder die erste geschaffte Herausforderung zu geben.
-Die Frequenz muss jedoch mit der Zeit nachlassen, damit sie den Benutzer nicht von der eigentlichen Applikation ablenken und damit die Abzeichen weiterhin als wertvoll betrachtet werden.
-Es sollte für den Benutzer weiterhin immer offensichtlich sein wofür er ein Abzeichen bekommen hat und welchen Wert es besitzt. Der Wert des Abzeichens sollte graphisch repräsentiert werden zum Beispiel werden sehr oft die Farben Bronze/Silber/Gold als Analogie zu Medaillen benutzt um den Wert zu symbolisieren.
-Damit der Benutzer weiß welche Abzeichen es noch gibt und wie er sie erhalten kann, sollte es möglich sein alle erhältlichen Abzeichen mit einer jeweiligen Beschreibung wie man es denn erhält einzusehen.
+Es ist sehr wichtig, dass die Abzeichen den Benutzer nicht stören. Er soll es mögen, sie zu bekommen. Aber wann mag er es Abzeichen zu bekommen, und wann stören sie?
+Zunächst kann die Frequenz des Erhalts betrachten werden. Um anfangs den Benutzer zu motivieren gibt man ihm in der ersten Zeit meistens relativ viele Abzeichen, so ist es typisch ein Abzeichen für die erste Anmeldung oder die erste geschaffte Herausforderung zu geben.
+Die Frequenz muss mit der Zeit nachlassen, damit sie den Benutzer nicht von der eigentlichen Applikation ablenken, und damit die Abzeichen weiterhin als wertvoll betrachtet werden.
+Es sollte für den Benutzer weiterhin immer offensichtlich sein wofür, er ein Abzeichen bekommen hat und welchen Wert es besitzt. Der Wert des Abzeichens sollte graphisch repräsentiert werden, zum Beispiel werden sehr oft die Farben Bronze/Silber/Gold als Analogie zu Medaillen benutzt, um den Wert zu symbolisieren.
+Damit der Benutzer weiß, welche Abzeichen es noch gibt, und wie er sie erhalten kann, sollte es möglich sein, alle erhältlichen Abzeichen mit einer jeweiligen Beschreibung, wie man es denn erhält, einzusehen.
 
 \begin{figure}[htbp]
     \centering
@@ -591,59 +591,59 @@ Damit der Benutzer weiß welche Abzeichen es noch gibt und wie er sie erhalten k
     \label{fig:badges}
 \end{figure}
 
-So hat sich schlussendlich folgendes Schema für die Abzeichen des Infoboards ergeben. Es gibt 3 Kategorien von Abzeichen, die jeweils eine anderen Wert darstellen. Die erste Kategorie sind leicht zu erhaltene Abzeichen, die zweite Kategorie sind mittelmäßig schwer zu erhaltene Abzeichen, d.h. wenn man das Abzeichen haben möchte kann man es auch in angemessener Zeit erhalten. Die Abzeichen der letzten Kategorie benötigen ca. 50x mehr Zeit als die der ersten, dadurch sollen auch Vielbenutzer weiterhin durch das Abzeichensystem motiviert werden. Visuell wird der Wert durch eine Krone dargestellt, wobei die der letzten Kategorie am imposantesten aussieht, siehe dazu Abbildung \ref{fig:badges}.
-Der Erhalt von neuen Abzeichen wird so schnell wie möglich dem Benutzer mitgeteilt werden - jede vom Benutzer ausgeführte Aktion wird an das Backend gesendet, welches \textbf{immer} berechnet ob dieser dafür ein neues Abzeichen bekommt. Ist dies der Fall wird das dem Frontend mitgeteilt und der Benutzer bekommt eine Nachricht angezeigt, siehe Abbildung \ref{fig:flashmessage}. Dieser Vorgang dauert weniger als eine halbe Sekunde.
-Damit das Abzeichensammeln nicht langweilig und obsolet wird, sollten regelmäßig neue Abzeichen eingeführt werden, der Quelltext wurde daraufhin optimiert damit dies nicht länger als ein paar Minuten dauert.
+So hat sich schlussendlich folgendes Schema für die Abzeichen des Infoboards ergeben. Es gibt 3 Kategorien von Abzeichen, die jeweils einen anderen Wert darstellen. Die erste Kategorie sind leicht zu erhaltene Abzeichen, die zweite sind mittelmäßig schwer zu erhaltene Abzeichen, d.h. wenn man es haben möchte, kann man es auch in angemessener Zeit erhalten. Die Abzeichen der letzten Kategorie benötigen ca. 50x mehr Zeit als die der ersten. Dadurch sollen auch Vielbenutzer weiterhin durch das System motiviert werden. Visuell wird der Wert durch eine Krone dargestellt, wobei die der letzten Kategorie am imposantesten aussieht, siehe dazu Abbildung \ref{fig:badges}.
+Der Erhalt von neuen Abzeichen wird so schnell wie möglich dem Benutzer mitgeteilt - jede vom Benutzer ausgeführte Aktion wird an das Backend gesendet, welches \textbf{immer} berechnet, ob dieser dafür ein neues Abzeichen bekommt. Ist dies der Fall, wird das dem Frontend mitgeteilt und der Benutzer bekommt eine Nachricht angezeigt, siehe Abbildung \ref{fig:flashmessage}. Dieser Vorgang dauert weniger als eine halbe Sekunde.
+Damit das Abzeichensammeln nicht langweilig und obsolet wird, sollten regelmäßig Neue eingeführt werden. Der Quelltext wurde daraufhin optimiert, dass dies keinen größeren Aufwand darstellt.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{images/infoboard_flashmessage.png}
-    \caption{Eine gezeigte Flashmessage, diese werden benutzt um den Benutzer um ein gerade erreichtes Level oder ein neu erhaltenes Abzeichen zu informieren.}
+    \caption{Um den Benutzer über das Erreichen eines neuen Levels oder den Erhalt eines Abzeichens zu informieren, werden Flashmessages benutzt.}
     \label{fig:flashmessage}
 \end{figure}
 
 \chapter{Technische Umsetzung}\label{chap:tech}
 
-In Kapitel \ref{chap:concept} wurde die Applikation soweit geplant, dass die Technische Umsetzung erfolgen kann. Viel Wert wurde darauf gelegt die getroffene Technologieentscheidungen zu begründen, wie auch die getroffene Architekturentscheidung.
-Die Technische Umsetzung wird sich größtenteils mit dem Frontend beschäftigen, das Backend wird kurz in Kapitel \ref{sec:backend} behandelt.
+In Kapitel \ref{chap:concept} wurde die Applikation soweit geplant, dass die technische Umsetzung erfolgen kann. Viel Wert wurde darauf gelegt, die getroffenen Technologieentscheidungen, wie auch die gewählte Architektur, zu begründen.
+Die technische Umsetzung wird sich größtenteils mit dem Frontend beschäftigen, das Backend wird kurz in Kapitel \ref{sec:backend} behandelt.
 
 
 \section{Wahl der Technologie}
 
 Die erste Frage die sich bei der Umsetzung stellt, ist welche Technologie verwendet werden soll.
 
-Die Wahl der zu verwendeten Technologie ist ein wichtiger Punkt der die darauffolgende Entwicklung und spätere Wartung beeinflusst \cite{graham2004beating}. Es wird versucht auf folgende Punkte einzugehen:
+Die Wahl derer ist ein wichtiger Punkt, der die darauffolgende Entwicklung und spätere Wartung beeinflusst \cite{graham2004beating}. Es wird versucht auf folgende Punkte einzugehen:
 
 \begin{itemize}
   \item Die Technologie ist \textit{erwachsen} \\
-  Die verwendete Bibliothek oder ähnliches ist nicht allzu neu und hat sich in vielen Applikationen bewährt, sie ist soweit ausgereift das Umgehungslösungen oder Fehlerbehebung nur in den seltensten Fällen nötig sein sollten.
+  Die verwendete Bibliothek oder ähnliches ist nicht allzu neu und hat sich in vielen Applikationen bewährt. Sie ist soweit ausgereift, dass Umgehungslösungen oder Fehlerbehebungen nur in den seltensten Fällen nötig sein sollten.
   \item Die Technologie hat keine große Einstiegsbarriere \\
-  Es wird versucht nicht allzu viele Frameworks zu benutzen und wenn, dann welche die weitestgehend bekannt sind und/oder in dem DAI-Labor viel benutzt werden. Wenn Bibliotheken verwendet werden, wird darauf geachtet das sie einfach zu lernen sind und intuitiv in der Benutzung.
+  Es wird versucht, nicht allzu viele Frameworks zu benutzen und wenn, dann welche, die weitestgehend bekannt sind, und/oder in dem DAI-Labor viel benutzt werden. Wenn Bibliotheken verwendet werden, wird darauf geachtet, dass sie einfach zu lernen sind und intuitiv in der Benutzung sind.
   \item Die Technologie ist zukunftssicher \\
-  Es ist immer schwer abzuschätzen welche Technologie länger überleben wird, doch wird versucht anhand von Faktoren wie Popularität, Aktivität der Entwicklung und Einsatz bei großen Firmen dies so gut wie möglich zu garantieren.
+  Es ist immer schwer abzuschätzen, welche Technologie länger überleben wird, doch wird versucht anhand von Faktoren wie Popularität, Aktivität der Entwicklung und Einsatz bei großen Firmen, dies so gut wie möglich zu garantieren.
 \end{itemize}
 
 \subsection{Programmiersprache}
 
-Die wichtigste Wahl ist die Wahl der Programmiersprache \cite{graham2004beating}, im Frontend wird diese Entscheidung größtenteils dadurch abgenommen das aktuelle Browser exklusiv die Ausführung von JavaScript beherrschen, andere Sprachen sind nur über Erweiterungen (Flash, Java, Silverlight) verfügbar deren Relevanz in den letzten Jahrzehnten soweit abgenommen hat, dass sie für uns keine Option mehr darstellen \cite{clientside}.
+Die wichtigste Wahl ist die Wahl der Programmiersprache \cite{graham2004beating}. Im Frontend wird diese Entscheidung größtenteils dadurch abgenommen, dass aktuelle Browser exklusiv die Ausführung von JavaScript beherrschen, andere Sprachen sind nur über Erweiterungen (Flash, Java, Silverlight) verfügbar, deren Relevanz in den letzten Jahrzehnten soweit abgenommen hat, dass sie für uns keine Option mehr darstellen \cite{clientside}.
 
-JavaScript ist jedoch nicht die beliebteste Sprache, die Tatsache das die Sprache in ca. 10 Tagen geschrieben wurde mag dies erklären \citep{severance2012javascript}, so kam es dass JavaScript in den letzten Jahren immer mehr zu einem Kompilierungsziel geworden ist, d.h. andere Programmiersprachen kompilieren zu validem JavaScript-Quelltext. Diese Praxis ist mittlerweile so populär geworden, dass JavaScript auch als \textit{Assembly of the Web} bezeichnet wird \cite{webassembly}. Die populärsten Programmiersprachen die zu JavaScript kompilieren sind vermutlich CoffeeScript, TypeScript und Java (mittels GWT). Die Liste der Sprachen ist jedoch endlos mit über 300-Sprachen die zu JavaScript kompilieren. Eine Auflistung dieser ist auf dem Github-repository von CoffeeScript zu finden \cite{javascriptcompile}.
+JavaScript ist allerdings nicht die beliebteste Sprache. Die Tatsache das die Sprache in ca. 10 Tagen geschrieben wurde mag dazu beigetragen haben \citep{severance2012javascript}. So kam es, dass JavaScript in den letzten Jahren immer mehr zu einem Kompilierungsziel geworden ist, d.h. andere Programmiersprachen kompilieren zu validem JavaScript-Quelltext. Diese Praxis ist mittlerweile so populär geworden, dass JavaScript auch als \textit{Assembly of the Web} bezeichnet wird \cite{webassembly}. Die populärsten Programmiersprachen, die zu JavaScript kompilieren, sind vermutlich CoffeeScript, TypeScript und Java (mittels GWT). Die Liste der Sprachen ist endlos mit über 300-Sprachen, die zu JavaScript kompilieren. Eine Auflistung jener ist auf dem Github-repository von CoffeeScript zu finden \cite{javascriptcompile}.
 
-\citep{zakai2011emscripten} veröffentlichten mit \textit{emscripten} das mit Abstand aufwändigste Projekt in diesem Bereich. Dies ist ein LLVM-zu-JavaScript-Kompilierer mit dem es unter anderem möglich ist C++-Quelltext zu JavaScript zu kompilieren, wodurch zum Beispiel der TeX-Compiler im Browser ausgeführt werden konnten \cite{texlive}.
+\citep{zakai2011emscripten} veröffentlichten mit \textit{emscripten}, das mit Abstand aufwändigste Projekt in diesem Bereich. Dies ist ein LLVM-zu-JavaScript-Kompilierer, mit dem es unter anderem möglich ist C++-Quelltext zu JavaScript zu kompilieren, wodurch zum Beispiel der TeX-Compiler im Browser ausgeführt werden konnten \cite{texlive}.
 
-Die Nutzung dieser Sprachen, vor allem der populärsten hat viele Vorteile von vereinfachter Syntax (CoffeeScript) hin zu statischer Typisierung (GWT), so bleibt die Frage ob es überhaupt noch zukunftssicher bzw. praktikabel ist reines JavaScript zu benutzen.
+Die Nutzung dieser Sprachen, vor allem der populärsten, hat viele Vorteile: von vereinfachter Syntax (CoffeeScript) bis hin zu statischer Typisierung (GWT). So bleibt die Frage, ob es überhaupt noch zukunftssicher bzw. praktikabel ist reines JavaScript zu benutzen.
 Die Frage kann mit einem klaren Ja beantworten werden, wenn eine Prämisse an die Ausführungsumgebung gesetzt wird: Sie unterstützt JavaScript in der Version 6, bzw. ECMAScript 6 (Im nachfolgenden mit ESx abgekürzt).
-Die für JavaScript zuständige Organisation ECMA investierte viel Arbeit darein, die Tatsache dass JavaScript nur in 10 Tagen geschrieben wurde etwas weniger offensichtlich zu machen. Mit ECMAScript 6 \cite{es6} zeigt diese Arbeit am deutlichsten Früchte. Funktionalitäten wie Destructuring, Generators , Modules, Template Strings oder Promises lassen ES6 zu einer modernen Sprache werden.
+Die für JavaScript zuständige Organisation ECMA investierte viel Arbeit, um die Tatsache, dass JavaScript nur in 10 Tagen geschrieben wurde, etwas weniger offensichtlich zu machen. Mit ECMAScript 6 \cite{es6} trägt diese Arbeit am deutlichsten Früchte. Funktionalitäten wie Destructuring, Generators , Modules, Template Strings oder Promises lassen ES6 zu einer modernen Sprache werden.
 
-Die aktuellen Browser unterstützen bisher jedoch nur einen Bruchteil der ES6 Spezifikation, eine komplette Übersicht ist unter \cite{es6features} zu finden. Es gibt keine offizielle Stellungnahme seitens der Browser-Hersteller wann ES6 komplett unterstützt werden wird, doch kann davon ausgegangen werden, dass dies in den nächsten Jahren geschieht, wenn die ES5-Unterstützung als Vergleich benutzt wird. Etwa zwei Jahre nach offizieller Festlegung von ES5, unterstützten die populärsten Browser ES5 vollständig \cite{es5adoption}.
+Die aktuellen Browser unterstützen bisher nur einen Bruchteil der ES6 Spezifikation, eine komplette Übersicht ist unter \cite{es6features} zu finden. Es gibt keine offizielle Stellungnahme seitens der Browser-Hersteller wann ES6 komplett unterstützt werden wird, doch kann davon ausgegangen werden, dass dies in den nächsten Jahren geschieht, wenn die ES5-Unterstützung als Vergleich benutzt wird. Etwa zwei Jahre nach offizieller Festlegung von ES5, unterstützten die populärsten Browser ES5 vollständig \cite{es5adoption}.
 
 Doch sind die Vorteile so überwiegend im Vergleich zu ES5, dass eine Nutzung von ES6 äußerst wünschenswert ist.
 Die Lösung des Problems wurde im Grunde schon erwähnt: Man kompiliert JavaScript zu JavaScript bzw. ES6 zu ES5.
-Die Tatsache das JavaScript heutzutage immer im Zusammenhang mit Build-Tools benutzt wird, um zum Beispiel den Quelltext verkleinern oder ihn unlesbarer zu machen, bedeutet dass der Entwickler nur minimalen Aufwand betreiben muss damit er ES6 auch in ES5 Umgebungen benutzen kann.
+Die Tatsache, dass JavaScript heutzutage immer im Zusammenhang mit Build-Tools benutzt wird, um zum Beispiel den Quelltext verkleinern oder ihn unlesbarer zu machen, bedeutet, dass der Entwickler nur minimalen Aufwand betreiben muss damit er ES6 auch in ES5 Umgebungen benutzen kann.
 
-So wurde für diese Arbeit entschieden, dass ES6 die beste Wahl für die Programmiersprache ist. Alle Browser werden ES6 in Zukunft unterstützen, womit ES6 keinesfalls eine obsolete Sprache werden wird. Außerdem ist im Vergleich zu den richtigen Kompilier-zu-JavaScript-Sprachen, ES6 die geringste Hürde für neue Entwickler die JavaScript schon kennen: ES6 ist abwärtskompatibel und die neuen Funktionalitäten können in ein paar wenigen Stunden gelernt werden, wenn dies überhaupt nötig ist.
+So wurde für diese Arbeit entschieden, dass ES6 die beste Wahl für die Programmiersprache ist. Alle Browser werden ES6 in Zukunft unterstützen, womit ES6 keinesfalls eine obsolete Sprache werden wird. Außerdem ist im Vergleich zu den richtigen Kompilier-zu-JavaScript-Sprachen ES6 die geringste Hürde für neue Entwickler, die JavaScript schon kennen: ES6 ist abwärtskompatibel und die neuen Funktionalitäten können in wenigen Stunden gelernt werden, wenn das überhaupt nötig ist.
 
-Neben reinem ES6 benutzen wir jedoch auch noch eine von Facebook entwickelte Erweiterung namens JSX \cite{jsx}, diese Erweitert JavaScript mit der Möglichkeit UI-Komponenten mit einer HTML-Syntax zu beschreiben. Dies wäre z.B. valides JSX:
+Neben reinem ES6 benutzen wir jedoch auch noch eine von Facebook entwickelte Erweiterung namens JSX \cite{jsx}. Diese erweitert JavaScript mit der Möglichkeit, UI-Komponenten mit einer HTML-Syntax zu beschreiben. Dies wäre z.B. valides JSX:
 
 \begin{minted}{text}
     var header = <h1>Überschrift</h1>;
@@ -657,11 +657,11 @@ Neben Javascript, muss, um die Anwendung zu gestalten, CSS (kurz für Cascading 
 Allgemein werden diese Projekte CSS-preprocessors gennant, und funktionieren,
 ähnlich wie den Kompilier-Zu-JavaScript-Sprachen, indem sie die in ihrer Sprache geschrieben Dateien in CSS übersetzen \cite{csspre}.
 Es hat sich bewährt less oder sass zu benutzen, da damit die Effizienz der Entwicklung gesteigert werden kann \cite{csspre}. So wurde auch für diese Applikation entschieden less zu benutzen, da damit auch Bootstrap geschrieben wurde - das hier verwendete CSS-Framework.
-Das Ausmaß dieser Entscheidung ist jedoch kein Vergleich zu der Programmiersprachen-Entscheidung, weswegen es nicht lohnt die Kosten/Nutzen genauer zu betrachten.
+Das Ausmaß dieser Entscheidung ist jedoch kein Vergleich zu der Programmiersprachen-Entscheidung, weswegen es sich nicht lohnt, die Kosten/Nutzen genauer zu betrachten.
 
 \subsection{Ladezeiten}\label{sec:loadingtimes}
 
-Ein großer Faktor der in anderen Umgebungen lange Zeit keine Rolle mehr spielt ist die Größe des Quelltextes. Bevor in JavaScript irgendeine Bibliothek benutzt werden kann, muss sie zuerst beim Benutzer heruntergeladen und ausgeführt werden, was bei langsamen Computern mit nicht perfekter Internetverbindung ein enormer Bestandteil ist. Um den Punkt nochmal zu verdeutlichen wurde ein kleiner Test durchgeführt. Dazu wurde eine EmberJS-Demoapplikation ausgeführt\footnote{Auf einem Macbook Air mid 2013 in minimal Konfiguration und dem Chrome Browser in Version 41, die vorhandene Internetverbindung hatte eine Übertragungsrate von $50000 \frac{\text{bit}}{s}$} die sehr wenig wirkliche Logik besitzt, sodass gut zu zeigen ist wie viel das Herunterladen und Ausführen nur der Bibliotheken ausmachen.
+Ein großer Faktor der in anderen Umgebungen schon lange keine Rolle mehr spielt, ist die Größe des Quelltextes. Bevor in JavaScript irgendeine Bibliothek benutzt werden kann, muss sie zuerst beim Benutzer heruntergeladen und ausgeführt werden, was bei langsamen Computern mit schlechter Internetverbindung einen großen Zeitaufwand bedeutet. Um den Punkt nochmal zu verdeutlichen, wurde ein kleiner Test durchgeführt. Dazu wurde eine EmberJS-Demoapplikation ausgeführt,\footnote{Auf einem Macbook Air mid 2013 in Minimalkonfiguration und dem Chrome Browser in Version 41, die vorhandene Internetverbindung hatte eine Übertragungsrate von $50000 \frac{\text{bit}}{s}$} die sehr wenig wirkliche Logik besitzt, sodass gut zu zeigen ist, wie viel das Herunterladen und Ausführen nur der Bibliotheken ausmachen.
 Die Anwendung ist auf Github zu finden \cite{embercrud}.
 \begin{figure}[htbp]
     \centering
@@ -677,24 +677,24 @@ Die Anwendung ist auf Github zu finden \cite{embercrud}.
 \end{figure}
 Die Ergebnisse zeigen, dass ganze $1.86s$ zum Übertragen und etwa $600ms$ zum ausführen den Anwendung benötigt wurden.
 
-Aufgrund dessen wurde neben dem Versuch möglichst wenige Bibliotheken oder Frameworks zu benutzen (z.B. wenn nur eine Funktion einer großen Bibliothek benutzt wurde, wurde diese Funktion durch eine minimalere Bibliothek ersetzt oder selbst geschrieben bzw. kopiert.) auch diverse Techniken zum minimieren des Quelltextes genutzt.
+Aufgrund dessen wurde, neben dem Versuch möglichst wenige Bibliotheken oder Frameworks zu benutzen (z.B. wenn nur eine Funktion einer großen Bibliothek benutzt wurde, wurde diese Funktion durch eine minimalere Bibliothek ersetzt oder selbst geschrieben bzw. kopiert), auch diverse Techniken zum minimieren des Quelltextes genutzt.
 
 \subsection{Frameworks und Bibliotheken}
 
-Es wurden schon etliche Webanwendungen entwickelt, somit gibt es kaum ein Problem das noch nicht gelöst wurde. Es gibt tausende JavaScript-Bibliotheken und Frameworks die einem das Leben einfacher machen sollen, ein klarer Platzhirsch ist jedoch nur für Subkategorien wie Datenvisualisierung zu finden. So ist die Wahl der Frameworks/Bibliotheken keinesfalls so trivial wie etwa in Java, wo Spring/Hibernate der Standard sind wenn man eine Webanwendung schreiben will.
+Es wurden schon etliche Webanwendungen entwickelt, somit gibt es kaum ein Problem, das noch nicht gelöst wurde. Es gibt tausende JavaScript-Bibliotheken und Frameworks, die einem das Leben einfacher machen sollen. Ein klarer Platzhirsch ist jedoch nur für Subkategorien wie Datenvisualisierung zu finden. So ist die Wahl der Frameworks/Bibliotheken keinesfalls so trivial wie etwa in Java, wo Spring/Hibernate der Standard sind, wenn man eine Webanwendung schreiben will.
 
-Es ist schwer in der Welt der Webanwendungen mit der Geschwindigkeit, in der neue (und auch praktikable) Bibliotheken und Frameworks veröffentlicht werden, mitzuhalten. Der nachfolgende Abschnitt befasst sich deshalb ausführlicher mit dem Entscheidungsfindungsprozess in diesem Bereich und zeigt auf welche Dinge alles geachtet werden muss.
+Es ist schwer in der Welt der Webanwendungen mit der Geschwindigkeit, in der neue (und auch praktikable) Bibliotheken und Frameworks veröffentlicht werden, mitzuhalten. Der nachfolgende Abschnitt befasst sich deshalb ausführlicher mit der Entscheidungsfindung in diesem Bereich und zeigt auf, welche Dinge alles geachtet werden muss.
 
-Die einflussreichste Entscheidung hierbei ist die Entscheidung für ein Framework wie Dojo\cite{dojo}, AngularJS\cite{angularjs} oder EmberJS\cite{emberjs}.
+Die einflussreichste Entscheidung hierbei ist diejenige für ein Framework wie Dojo\cite{dojo}, AngularJS\cite{angularjs} oder EmberJS\cite{emberjs}.
 Nach \cite{prosandcons} gibt viele Vorteile die für die Benutzung eines Frameworks sprechen: Große Benutzergemeinde, getestete Komponenten, Cross-Browser Unterstützung, eine immense Anzahl an vorgefertigten Lösungen für häufige Probleme/Aufgaben, eine klare Projektstruktur und viele vorgefertigte Komponenten.
 
-Die Benutzung eines Frameworks spart also Zeit und beschleunigt die Entwicklung, doch gibt es auch Gründe warum immer mehr Leute sich den großen Frameworks abwenden \cite{nomoreframeworks, frameworkless}.
-Alle Frameworks besitzen eine große Lernkurve, jeder Entwickler ist gezwungen das Framework zu lernen um produktiv mitzuarbeiten, da ein Framework jeden Aspekt der Anwendung berührt. Frameworks veralten gerne und auch bei aktiver Entwicklung sind ständige API-Änderungen der Standard. Dem Entwickler bleibt nichts anderes übrig als sich mit dem Framework zu bewegen. Die vom Framework bereitgestellten Abstraktionen sind oft nicht optimal und verbergen zu viel oder sind auf einen bestimmten Benutzungszweck hin optimiert, womit sie mehr ein Hindernis darstellen können sobald etwas gemacht werden muss dass die Entwickler vergessen haben zu beachten.
-Weiterhin ist jede vom Framework erschaffene Abstraktion mehr ausgeführter Quelltext und wenn diese nicht gerade direkt der Geschwindigkeit der Applikation zu gute kommen, verlangsamen sie die Applikation. Dies ist normalerweise nicht so sonderlich wichtig, jedoch sind Webanwendungen Benutzerinterfaces bei der die Geschwindigkeit einen erheblichen Teil der Benutzererfahrung ausmacht, siehe dazu auch Abschnitt \ref{sec:loadingtimes}, indem gezeigt wird, dass die Größe des Quelltextes einen erheblichen Einfluss auf Ladezeiten hat.
+Die Benutzung eines Frameworks spart also Zeit und beschleunigt die Entwicklung, doch gibt es auch Gründe, warum immer mehr Leute sich von den großen Frameworks abwenden \cite{nomoreframeworks, frameworkless}.
+Alle Frameworks besitzen eine große Lernkurve, jeder Entwickler ist gezwungen, das Framework zu lernen, um produktiv mitzuarbeiten, da ein Framework jeden Aspekt der Anwendung berührt. Frameworks veralten schnell, und auch bei aktiver Entwicklung sind ständige API-Änderungen der Standard. Dem Entwickler bleibt nichts anderes übrig als sich mit dem Framework zu bewegen. Die vom Framework bereitgestellten Abstraktionen sind oft nicht optimal und verbergen zu viel, oder sind auf einen bestimmten Benutzungszweck hin optimiert, womit sie mehr ein Hindernis darstellen können, sobald etwas gemacht werden muss, das die Entwickler vergessen haben zu beachten.
+Weiterhin ist jede vom Framework erschaffene Abstraktion mehr ausgeführter Quelltext, und wenn diese nicht gerade direkt der Geschwindigkeit der Applikation zu gute kommen, verlangsamen sie die Applikation. Dies ist normalerweise nicht so sonderlich wichtig, jedoch sind Webanwendungen Benutzerinterfaces, bei der die Geschwindigkeit einen erheblichen Teil der Benutzererfahrung ausmacht, siehe dazu auch Abschnitt \ref{sec:loadingtimes}, indem gezeigt wird, dass die Größe des Quelltextes einen erheblichen Einfluss auf Ladezeiten hat.
 
-Allen Vorteilen zu trotz wurde für diese Arbeit entschieden das die Benutzung eines Frameworks nicht die optimale Lösung ist, da zum Beispiel die Visualisierung so aufwändig ist, dass unsere Erfahrung mit großen Frameworks es deutlich machten das die gegebenen Abstraktionen derer nicht ausreichen würden.
+Allen Vorteilen zum Trotz wurde für diese Arbeit entschieden, dass die Benutzung eines Frameworks nicht die optimale Lösung ist, weil zum Beispiel die Visualisierung so aufwändig ist, dass unsere Erfahrung mit großen Frameworks es deutlich machten, dass die gegebenen Abstraktionen derer nicht ausreichen würden.
 
-Es wurde deshalb entschieden eine Ansammlung von Bibliotheken zu benutzen, die sich für ihren Bereich bewährt haben. Dadurch wird garantiert dass die bestmögliche Benutzererfahrung möglich ist, da sobald eine Bibliothek nicht ausreicht ersetzt oder ergänzt werden kann.
+Es wurde deshalb entschieden eine Ansammlung von Bibliotheken zu benutzen, die sich für ihren Bereich bewährt haben. Dadurch wird garantiert, dass die bestmögliche Benutzererfahrung möglich ist, weil sobald eine Bibliothek nicht ausreicht, ersetzt oder ergänzt werden kann.
 
 Es wurden am Ende folgende Bibliotheken verwendet
 
@@ -702,27 +702,27 @@ Es wurden am Ende folgende Bibliotheken verwendet
 	\item[React.js \cite{react}] wird für die komplette Darstellung der Applikation benutzt. Im nächsten Abschnitt wird auf React.js noch genauer eingegangen, da es viele Innovationen in diesen Bereich bringt.
 	\item[react-router \cite{reactrouter}] ist eine routing-Bibliothek für react und macht es sehr einfach URLs zu einer View zuzuordnen.
 	\item[refluxjs \cite{reflux}] ist eine Bibliothek für eine unidirektionelle-Datenfluss Architektur, mehr dazu im nächsten Abschnitt.
-	\item[bootstrap \cite{bootstrap}] ist das meist benutzte CSS-Framkework und vereinfacht das erstellen von responsiven Applikationen. Weiterhin stellt es einige nützliche Komponenten wie z.B. eine Navigationsleiste bereit.
+	\item[bootstrap \cite{bootstrap}] ist das meist benutzte CSS-Framkework und vereinfacht das Erstellen von responsiven Applikationen. Weiterhin stellt es einige nützliche Komponenten wie z.B. eine Navigationsleiste bereit.
 	\item[react-bootstrap \cite{reactrouter}] bietet für alle verfügbaren bootstrap-Komponenten die entsprechenden react-Komponenten.
 	\item[d3.js \cite{bostock2011d3}] ist die berühmteste Bibliothek für Visualisierungen. Hiermit wurde das animierte Säulendiagramm geschrieben, aber auch vieles der Farberzeugung entstand mithilfe von d3.js.
 	\item[immutable.js \cite{Immutable}] bringt nicht veränderbare Datenstrukturen in die Welt von JavaScript. Sie wurde bei der Verarbeitung der Suchergebnisse bis hin zu deren Darstellung benutzt, der Vorteil wird unten noch genauer betrachtet.
 	\item[lodash \cite{lodash}] ist eine utility-Bibliothek mit einem starken Fokus auf funktionaler Programmierung. Sie wurde so ziemlich überall in der Applikation benutzt.
-	\item[cookies-js \cite{cookiesjs} / store.js \cite{storejs}]sind mini-Bibliotheken die das arbeiten mit \texttt{cookies} und \texttt{localstorage} vereinfachen. \texttt{cookies} werden benutzt um den Benutzer eingeloggt zu lassen und \texttt{localstorage} um Suchergebnisse zu cachen.
+	\item[cookies-js \cite{cookiesjs} / store.js \cite{storejs}]sind mini-Bibliotheken, die das Arbeiten mit \texttt{cookies} und \texttt{localstorage} vereinfachen. \texttt{cookies} werden benutzt, um den Benutzer eingeloggt zu lassen und \texttt{localstorage} um Suchergebnisse zu cachen.
 	\item[moment.js \cite{momentjs}] vereinfacht den Umgang mit Datums-Objekten und bietet Funktionen wie \texttt{add(1, \'day\')} und erweiterte Formattierungsmöglichkeiten.
 \end{description}
 
 \subsection{Tooling}
 
-Das Tooling im Frontend hat sich in den letzten Jahren rasant verändert, kaum jemand schreibt heutzutage noch JavaScript oder CSS ohne das ein sogenanntes Build-Tool diese Dateien nochmals verändern.
+Das Tooling im Frontend hat sich in den letzten Jahren rasant verändert, kaum jemand schreibt heutzutage noch JavaScript oder CSS, ohne dass ein sogenanntes Build-Tool diese Dateien nochmals verändert.
 
 Die bekanntesten Build-Tools sind Gulp\cite{gulp}, Grunt\cite{grunt}, Webpack\cite{webpack} und Brunch\cite{brunch}.
 
-Webpack stellt eine Ausnahme da, da es im Grunde gar kein Build-Tool ist, sondern ein \textit{module bundler} d.h. es verarbeitet alle in der Entwicklung relevanten JavaScript/CSS/Bild-Dateien und bündelt diese. Durch die Architektur von Webpack ist es möglich so ziemlich jeden Datei-Typ zu verarbeiten den es gibt.
+Webpack stellt eine Ausnahme dar, da es im Grunde gar kein Build-Tool ist, sondern ein \textit{module bundler}, d.h. es verarbeitet alle in der Entwicklung relevanten JavaScript/CSS/Bild-Dateien und bündelt diese. Durch die Architektur von Webpack ist es möglich, so ziemlich jeden Datei-Typ zu verarbeiten.
 Da die meisten Build-Systeme eben diese Ausgabe haben, kann Webpack die meisten Aufgaben von Build-Tools ersetzen.
 
-Zwar ist Webpack noch ein junges Projekt es hat sich jedoch schon für große Projekte wie Instagram bewährt \cite{petehuntwebpack}.
+Zwar ist Webpack noch ein junges Projekt, aber es hat sich schon für große Projekte wie Instagram bewährt \cite{petehuntwebpack}.
 
-Für dieses Projekt habe ich mich auch für Webpack entschieden, da es von allen Build-Tools die folgenden Dinge am besten realisieren konnte:
+Für dieses Projekt viel die Wahl auf Webpack, weil es von allen Build-Tools die folgenden Dinge am besten realisieren konnte:
 
 \begin{enumerate}
 	\item Es muss möglich sein JavaScript-Bibliotheken mittels dem \texttt{npm}-Packetmanager zu benutzen.
@@ -736,22 +736,22 @@ Die Konfigurationsdatei von Webpack dafür ist keine 50-Zeilen lang und einfach 
 
 \subsection{Facebook React und die Flux Architektur}\label{sec:flux}
 
-Facebooks React.js ist eine JavaScript-Bibliothek die seit ihrem erscheinen im Jahr 2013 viel Beifall geerntet hat. Zum Zeitpunkt dieser Arbeit wird sie produktiv von zahlreichen Firmen benutzt wie z.B. Khan Academy\cite{khan}, Netflix\cite{netflix}, AirBnB\cite{airbnb} und anderen. Facebook benutzt sie selbst für ihre größten Produkte Facebook und Instagram (Google benutzt ihr Framework AngularJS z.B. nicht für das Flagschiff Google Mail).
+Facebooks React.js ist eine JavaScript-Bibliothek, die seit ihrem erscheinen im Jahr 2013 viel Beifall geerntet hat. Zum Zeitpunkt dieser Arbeit wird sie produktiv von zahlreichen Firmen benutzt wie z.B. Khan Academy\cite{khan}, Netflix\cite{netflix} und AirBnB\cite{airbnb}. Facebook benutzt sie für seine größten Produkte: Facebook und Instagram (Google benutzt das hauseigene Framework AngularJS nicht für das Flagschiff Google Mail).
 
-React.js ist jedoch kein Framework wie AngularJS oder Ember, es gibt keine Directives, Controllers, Templates oder Models. Das einzige was React bietet sind Components, welche ähnlich wie der kommende Standard der \textit{Web Components}\cite{webcomponents} wiederverwendbare Interface-Widgets darstellen indem Sie HTML/CSS und JavaScript koppeln und vom Rest des System separieren.
+React.js ist jedoch kein Framework wie AngularJS oder Ember, es gibt keine Directives, Controllers, Templates oder Models. Das Einzige, was React.js bietet, sind Components, welche ähnlich wie der kommende Standard der \textit{Web Components} \cite{webcomponents} wiederverwendbare Interface-Widgets darstellen, indem Sie HTML/CSS und JavaScript koppeln und vom Rest des Systems separieren.
 
-Dabei folgt React nicht den \textit{best-practices} die in den letzten Jahren in Webentwicklung entstanden sind und sich in MVC-Frameworks widerspiegeln. Klassisch gibt es ein Template, dass in HTML oder einem ähnlichen Sprache wie YAML geschrieben ist und Platzhalter enthält die später gefüllt werden - dies ist das V in MVC.
-Dazu kommt ein Controller der diese Templates mit Daten füllt, auf welche Art ist nicht relevant. Kommuniziert der Controller mit einem Server um Daten zu übertragen wie die eines Benutzers stellt dies das M da, also nicht die Kommunikation selbst sondern die Datenstrukturen auf beiden Seiten die den Benutzer darstellen.
-Applikationen auf diese Weise zu erstellen hat sich bewährt was jedoch nicht heißt es gibt keine Kritik.
+Dabei folgt React.js nicht den \textit{best-practices}, die in den letzten Jahren in Webentwicklung entstanden sind und sich in MVC-Frameworks widerspiegeln. Klassisch gibt es ein Template, das in HTML oder einer ähnlichen Sprache wie YAML geschrieben ist und Platzhalter enthält, die später gefüllt werden - dies ist das V in MVC.
+Dazu kommt ein Controller, der diese Templates mit Daten füllt, auf welche Art ist nicht relevant. Kommuniziert der Controller mit einem Server, um Daten zu übertragen wie die eines Benutzers, stellt dies das M dar, also nicht die Kommunikation selbst, sondern die Datenstrukturen auf beiden Seiten, die den Benutzer darstellen.
+Applikationen auf diese Weise zu erstellen, hat sich bewährt, was allerdings nicht heißt, dass es keine Kritik gibt.
 
 \subsubsection*{Virtual DOM}
 
-Einer der innovativsten Aspekte von React ist die virtuelle Repräsentation des DOMs\cite{DOM}. Die normale Interaktion mit dem DOM ist langsam und kompliziert, es ist schwer den aktuellen Status der Applikation darüber abzubilden - so geschieht das häufig über CSS-Klassen oder speziellen Attributen.
-Eine Lösung dieses Problems ist es die Applikation so zu schreiben, dass der ganze DOM bei jeder Veränderung des Zustands neu gerendert wird. (Vergleich hier zu Server-seitigem Rendern wo genau dies gemacht wird.) Natürlich wäre die Applikation bei so einem Vorgehen langsam (wegen des rendern durch den Browser) und Dinge wie Fokus auf Eingabe-Feldern würde verloren gehen was der Benutzer nicht gerade angenehm finden würde.
+Einer der innovativsten Aspekte von React ist die virtuelle Repräsentation des DOMs\cite{DOM}. Die normale Interaktion mit dem DOM ist langsam und kompliziert. Es ist schwer den aktuellen Status der Applikation darüber abzubilden - so geschieht das häufig über CSS-Klassen oder spezielle Attribute.
+Eine Lösung dieses Problems ist es, die Applikation so zu schreiben, dass der ganze DOM bei jeder Veränderung des Zustands neu gerendert wird. (Vergleich hier zu Server-seitigem Rendern wo genau dies gemacht wird.) Natürlich wäre die Applikation bei so einem Vorgehen langsam (weil der Browser das rendern übernimmt) und Dinge, wie der Fokus auf Eingabe-Feldern, würde verloren gehen, was nicht besonders benutzerfreundlich wäre.
 
-Mittels eines virtuellen DOMs kann dies deutlich effizienter und Benutzerfreundlicher gestaltet werden. Bei jeder Zustandsänderung wird ein neuer virtueller DOM erstellt und mit dem alten virtuellen verglichen wodurch die minimalen Änderungen erfasst werden können um den derzeitigen DOM zum Zustand des neuen zu bringen. Dies macht Frameworks die einen virtual DOM benutzen deutlich schneller als welche die die Hauptarbeit auf dem richtigen DOM verrichten. Das ganze Konzept ist skalierbar im Gegensatz zu Technologien wie dem \textit{dirty checking} von AngularJS welches eine Komplexität von $O(n^2)$ bis $O(n^10)$ (Ab 10 Iterationen wird abgebrochen) besitzt, wobei $n$ die Anzahl der veränderbaren Inhalte ist \cite{dirty}.
-Der von React.js verwendete Algorithmus besitzt eine Komplexität von $O(n)$ wobei $n$ die Anzahl der DOM-Element ist \cite{reactreconciliation}.
-Ein Geschwindigkeitsvergleich von Frameworks die einen virtuellen DOM benutzen zeigt Abbildung \ref{fig:elm} Grafik vom Elm-Entwickler bei der die verschiedenen Frameworks anhand ihrer TodoMVC Implementierung.\footnote{Der TodoMVC ist ein Versuch die schiere Anzahl an Webframeworks anhand eines realen Beispiels zu vergleichen. Siehe \url{http://todomvc.com/}}.
+Mittels eines virtuellen DOMs kann dies deutlich effizienter und benutzerfreundlicher gestaltet werden. Bei jeder Zustandsänderung wird ein neuer virtueller DOM erstellt und mit dem alten virtuellen verglichen, wodurch die minimalen Änderungen erfasst werden können, um den derzeitigen DOM zum Zustand des Neuen zu überführen. Dies macht Frameworks, die einen virtuellen DOM benutzen deutlich schneller, als solche die die Hauptarbeit auf dem richtigen DOM verrichten. Das ganze Konzept ist im Gegensatz zu Technologien wie dem \textit{dirty checking} von AngularJS, welches eine Komplexität von $O(n^2)$ bis $O(n^10)$ (Ab 10 Iterationen wird abgebrochen) besitzt, wobei $n$ die Anzahl der veränderbaren Inhalte ist \cite{dirty}, skalierbar.
+Der von React.js verwendete Algorithmus besitzt eine Komplexität von $O(n)$, wobei $n$ die Anzahl der DOM-Elemente ist \cite{reactreconciliation}.
+Ein Geschwindigkeitsvergleich von Frameworks, die einen virtuellen DOM benutzen, zeigt Abbildung \ref{fig:elm}, bei welcher die verschiedenen Frameworks anhand ihrer TodoMVC Implementierung verglichen werden.\footnote{Der TodoMVC ist ein Versuch die schiere Anzahl an Webframeworks anhand eines realen Beispiels zu vergleichen. Siehe \url{http://todomvc.com/}}.
 
 \begin{figure}[htbp]
     \centering
@@ -760,43 +760,43 @@ Ein Geschwindigkeitsvergleich von Frameworks die einen virtuellen DOM benutzen z
     \label{fig:elm}
 \end{figure}
 
-Es ist zu sehen, dass Ember und AngularJS am langsamsten sind. Backbone ist in diesem Benchmark schneller als React.js, wobei die verwendete Implementierung der React.js-App nicht optimiert ist - Om\cite{om} kann als optimierte React-Version betrachtet werden, da Om im Grunde React mit nicht veränderbaren Datenstrukturen\footnote{Durch nicht veränderbare Datenstrukturen kann das diffing noch effizienter gestaltet werden, da viele Teilbäume nicht betrachtet werden müssen.} (immutable data-structures) ist. Backbone wie aber auch JQuery oder Dojo können theoretisch so schnell gemacht werden wie es möglich ist. Dafür müsste der Programmiere bei jeder Zustandsänderung wissen, welche Teile des DOMs genau upgedatet werden müssen. Dieser Ansatz ist Erfahrungsmäßig nicht skalierbar, da bei solchen Optimierungen oft Grenzfälle vergessen werden.
+Es ist zu sehen, dass Ember und AngularJS am langsamsten sind. Backbone ist in diesem Benchmark schneller als React.js, wobei die verwendete Implementierung der React.js-App nicht optimiert ist - Om\cite{om} kann als optimierte React-Version betrachtet werden, da Om im Grunde React.js mit nicht veränderbaren Datenstrukturen\footnote{Durch nicht veränderbare Datenstrukturen kann das diffing noch effizienter gestaltet werden, da viele Teilbäume nicht betrachtet werden müssen.} (immutable data-structures) ist. Backbone wie aber auch JQuery oder Dojo können theoretisch so schnell gemacht werden wie es möglich ist. Dafür müsste der Programmierer bei jeder Zustandsänderung wissen, welche Teile des DOMs genau upgedatet werden müssen. Dieser Ansatz ist Erfahrungsmäßig nicht skalierbar, da bei solchen Optimierungen oft Grenzfälle vergessen werden und die Größe und Komplexität des Quelltextes stark zunimmt.
 
 Die beiden schnellsten Frameworks, benutzen ebenso eine virtual-DOM Implementierung und wie Om, auch nicht veränderbare Datenstrukturen.
-Dies ist auch der Grund weswegen immutable.js\citep{Immutable} verwendet wurde, da dies die render-Geschwindigkeit in den aufwändigsten Teilen verbessern konnte.
+Dies ist auch der Grund, weswegen immutable.js\cite{Immutable} verwendet wurde, denn dies konnte die render-Geschwindigkeit in den aufwändigsten Teilen verbessern.
 
-Ein weiterer Vorteil der virtuellen Darstellung ist die Unabhängigkeit des Browsers um die Applikation zu rendern, dass schlussendliche rendern des virtuellen DOMs in den richtigen DOM ist nicht zwingend. Es ist z.B. möglich den virtuellen DOM in ein Canvas-Element zu rendern, oder in einen HTML-String zu konvertieren.
-Durch das simple rendern zum HTML-String, was ganz ohne Browser möglich ist, beherrscht React.js isomorphes Rendering, d.h. Inhalte können auf dem Server und im Clienten gerendert werden. So wird zum Beispiel bei Instagram der erste Seitenaufruf auf dem Server, alles weitere vom Clienten gerendert. Erste Versuche zeigen auch, dass man dies komplett agnostisch machen kann und alles kann auf Server/Client gerendert werden ohne das der Benutzer einen Unterschied merkt \cite{overblog}. So ist es denkbar das schwache Geräte mehr auf dem Server rendern und somit komplexe Inhalte vergleichsweise schnell darstellen können.
+Ein weiterer Vorteil der virtuellen Darstellung ist die Unabhängigkeit des Browsers, um die Applikation zu rendern. Das schlussendliche Rendern des virtuellen DOMs in den richtigen DOM ist nicht zwingend. Es ist z.B. möglich, den virtuellen DOM in ein Canvas-Element zu rendern, oder in einen HTML-String zu konvertieren.
+Durch das simple rendern zum HTML-String, was ganz ohne Browser möglich ist, beherrscht React.js isomorphes Rendering, d.h. Inhalte können auf dem Server und im Clienten gerendert werden. Erste Versuche zeigen, dass man dies komplett agnostisch machen kann und alles auf dem Server/Client gerendert werden kann, ohne dass der Benutzer einen Unterschied merkt \cite{overblog}. So ist es denkbar das schwache Geräte mehr auf dem Server rendern und somit komplexe Inhalte vergleichsweise schnell darstellen können.
 
 \subsubsection*{Flux Architektur}
 
-Flux ist die Applikations-Architektur die Facebook für ihre Frontend-Applikationen benutzt, es ergänzt React.js insoweit dass es einen unidirektionalen Datenfluss ermöglicht \cite{flux}. Es ist wie eine alternative zu MVC zu verstehen und ist mehr ein Muster um Applikationen zu schreiben als ein Framework das einem rigoros die Struktur vorschreibt. Im Allgemeinen benutzt Flux das Paradigma der Datenfluss Programmierung\cite{johnston2004advances}, bei welchem ein Programm als gerichteter Graph modelliert wird. Typisch für das Paradigma ist die Benutzung eines Beobachter-Entwursfmuster wie z.B. eines pub/sub-System. Eine Auflistung und Bewertung typischer Muster ist zu finden unter \citep{signals}. Bei Flux wird für letzteres eine Abwandlung eines pub/sub-Systems benutzt.
+Flux ist die Applikations-Architektur, die Facebook für ihre Frontend-Applikationen benutzt. Es ergänzt React.js insoweit, dass es einen unidirektionalen Datenfluss ermöglicht \cite{flux}. Es ist wie eine Alternative zu MVC zu verstehen und ist eher ein Muster um Applikationen zu schreiben als ein Framework, das einem rigoros die Struktur vorschreibt. Im Allgemeinen benutzt Flux das Paradigma der Datenfluss Programmierung\cite{johnston2004advances}, bei der ein Programm als gerichteter Graph modelliert wird. Typisch für das Paradigma ist die Benutzung eines Beobachter-Entwursfmuster, wie eines pub/sub-System. Eine Auflistung und Bewertung typischer Muster ist unter \citep{signals} zu finden. Bei Flux wird für letzteres eine Abwandlung eines pub/sub-Systems benutzt.
 
-Flux besitzt drei große Bestandteile: Einen Dispatcher, Stores und Views (React.js components). Desweiteren gibt es Actions, dies sind Hilfsmethoden vom Dispatcher und werden benutzt um eine semantische API zu unterstützen die alle Veränderungen die möglich sind in der Applikation beschreibt.
+Flux besitzt drei große Bestandteile: Einen Dispatcher, Stores und Views (React.js components). Des Weiteren gibt es Actions, sie sind Hilfsmethoden vom Dispatcher und werden benutzt, um eine semantische API zu unterstützen, die alle Veränderungen, die möglich sind,zu finden in der Applikation beschreibt.
 
 Das wichtigste Designziel von Flux ist der unidirektionale Datenfluss, wodurch die Logik deutlich verständlicher und nachvollziehbarer wird, siehe Abbildung \ref{fig:flux}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{images/flux.png}
-    \caption{Dispatcher, Stores und Views sind unabhängige Knoten mit unterschiedlichen Ein und Ausgaben. Die Aktionen sind einfache Objekte die die neuen Daten enthalten und den Typ der Daten.}
+    \caption{Dispatcher, Stores und Views sind unabhängige Knoten mit unterschiedlichen Ein und Ausgaben. Die Aktionen sind einfache Objekte die den Typ und die Daten selbst enthalten.}
     \label{fig:flux}
 \end{figure}
 
-Abbildung \ref{fig:flux} zufolge ist es jedoch unmöglich dass eine Component den Zustand der Applikation verändern kann, was jedoch so gut wie immer nötig ist. Hier für werden die \textit{actions} benutzt, diese können von den Components benutzte werden um neue Daten an den Dispatcher zu schicken, welcher diese dann an den Store weiterleitet - welche dann die Darstellung der Component beeinflussen kann, siehe Abbildung \ref{fig:flux_actions}.
+Abbildung \ref{fig:flux} zufolge ist es unmöglich, dass eine Component den Zustand der Applikation verändern kann, was jedoch so gut wie immer nötig ist. Hierfür werden die Actions benutzt. Diese können von den Components benutzt werden, um neue Daten an den Dispatcher zu schicken, der die dann an den Store weiterleitet - sie können dann die Darstellung der Component beieinflussen, siehe Abbildung \ref{fig:flux_actions}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{images/flux_actions.png}
-    \caption{Mithilfe von Actions ist die View in der Lage den Zustand der Applikation zu verändern.}
+    \caption{Mithilfe von Actions ist die View in der Lage, den Zustand der Applikation, zu verändern.}
     \label{fig:flux_actions}
 \end{figure}
 
-Allem in allem ist die Facebook-Flux Architektur in Kombination mit React ein äußerst fortschrittlicher und zukunftssicherer Weg eine Webapplikation zu schreiben, womit die Anwendung dieser für die Erstellung der Enterprise-Infoboard eine gute Wahl erscheint.
+Allem in Allem ist die Facebook-Flux Architektur in Kombination mit React.js ein äußerst fortschrittlicher und zukunftssicherer Weg, eine Webapplikation zu schreiben, womit deren Anwendung für die Erstellung des Infoboards eine gute Wahl erscheint.
 
 \section{Architektur der Applikation}
 
-Wie im vorherigen Abschnitt beschrieben wurde die Applikation mittels React und der Flux-Architektur realisiert. Anstelle der Flux-Implementierung von Facebook wurde jedoch \textit{reflux} benutzt, reflux vereinfacht Flux insofern als das es keinen einzelnen Dispatcher benutzt, jede Action ist ihr eigener Dispatcher mit dem Ziel Flux eben mehr zu vereinfachen und unnötigen Quelltext (sogennanten Boilerplate) zu reduzieren\footnote{Keinen zentralen Dispatcher zu benutzen hat auch Nachteile, für dieses Projekt waren die jedoch nicht von Relevanz.}. Eine Vollständige Erklärung für reflux ist auf dem Blog des Autors zu finden unter \cite{reflux}. reflux ist nicht der einzige Versuch eine alternative bereitzustellen, mittlerweile gibt es über 10 verschiedene Flux-Bibliotheken\footnote{Ein Vergleich dieser ist hier zu finden \url{https://github.com/voronianski/flux-comparison}} - mit teilweise großen Gemeinden dahinter oder Firmen wie z.B. \textit{Yahoo} mit \textit{Fluxible}. Der Funktionsinhalt der verschiedenen Flux-Bibliotheken ist mehr oder minder gleich, somit könnte reflux mit Leichtigkeit ausgetauscht werden, wenn es denn nötig wäre.
+Wie im vorherigen Abschnitt beschrieben, wurde die Applikation mittels React.js und der Flux-Architektur realisiert. Anstelle der Flux-Implementierung von Facebook, wurde allerdings \textit{reflux} benutzt. Reflux vereinfacht Flux insofern, als dass es keinen einzelnen Dispatcher benutzt. Jede Action ist ihr eigener Dispatcher, mit dem Ziel Flux noch mehr zu vereinfachen und unnötigen Quelltext (sogennanten Boilerplate) zu reduzieren\footnote{Keinen zentralen Dispatcher zu benutzen hat auch Nachteile, für dieses Projekt waren die jedoch nicht von Relevanz.}. Eine Vollständige Erklärung für reflux ist auf dem Blog des Autors zu finden \cite{reflux}. Reflux ist nicht der einzige Versuch, eine Alternative bereitzustellen. Mittlerweile gibt es über 10 verschiedene Flux-Bibliotheken\footnote{Ein Vergleich dieser ist hier zu finden \url{https://github.com/voronianski/flux-comparison}} - mit teilweise großen Gemeinden dahinter oder Firmen wie z.B. \textit{Yahoo} mit \textit{Fluxible}. Der Funktionsinhalt der verschiedenen Flux-Bibliotheken ist mehr oder minder gleich, somit könnte reflux mit Leichtigkeit ausgetauscht werden, wenn es denn nötig wäre.
 Die Entwicklung in diesem Bereich ist jedoch äußerst spannend und hat zum Zeitpunkt dieser Arbeit mit redux \cite{gitredux} ihren Höhepunkt gefunden, wo die Stores gar keinen State mehr besitzen und nur noch als Action-Aggregatoren dienen. Dadurch ergibt sich die Möglichkeit, dass der Zustand der Applikation vor- und zurückgespult werden kann, da er rein von den gesendeten Actions abhängig ist\citep{redux}.
 
 \subsection{Überblick}
@@ -808,11 +808,11 @@ Die Entwicklung in diesem Bereich ist jedoch äußerst spannend und hat zum Zeit
     \label{fig:architecture}
 \end{figure}
 
-Die Abbildung \ref{fig:architecture} zeigt einen Überblick über die gesamte Architektur, sie wurde bewusst nicht in einem Klassendiagramm dargestellt da die Applikation keinen Strengen Objektorientierten Stil verfolgt und das Schaubild nicht sonderlich zum Verständnis beitragen würde. Dies ist eine grobe Abstraktion, doch reicht diese Abbildung um sich im Quelltext zurecht zu finden.
+Die Abbildung \ref{fig:architecture} zeigt einen Überblick über die gesamte Architektur. Sie wurde bewusst nicht in einem Klassendiagramm dargestellt, da die Applikation keinen strengen objektorientierten Stil verfolgt, und das Schaubild nicht sonderlich zum Verständnis beitragen würde. Dies ist eine grobe Abstraktion, doch reicht die Abbildung, um sich im Quelltext zurecht zu finden.
 
-Es ist deutlich zu sehen das der komplette Datenfluss bzw. Programmfluss mittels der Flux-Architektur modelliert wurde, was daran zu erkennen ist dass jegliche Interaktionen der View werden mittels Actions an die jeweiligen Stores weitergegeben wird die dann den neuen Zustand an die View abermals weitergeben.
+Es ist deutlich zu sehen, dass der komplette Datenfluss bzw. Programmfluss mittels der Flux-Architektur modelliert wurde, was daran zu erkennen ist, dass jegliche Interaktionen der View mittels Actions an die jeweiligen Stores weitergegeben werden, die dann den neuen Zustand an die View abermals weitergeben.
 
-Zusätzlich zu Flux gibt es noch drei Klassen die von den jeweiligen Stores benutzt werden, die Auslagerung dieser Logik in eigene Klassen dient der Übersichtlichkeit, verdeutlicht jedoch auch dass alle Komponenten mit denen der Benutzer nicht direkt interagiert nicht Teil des Flux-Datenflusses sein müssen.
+Zusätzlich zu Flux gibt es noch drei Klassen, die von den jeweiligen Stores benutzt werden, die Auslagerung dieser Logik in eigene Klassen dient der Übersichtlichkeit, verdeutlicht aber auch dass alle Komponenten, mit denen der Benutzer nicht direkt interagiert, nicht Teil des Flux-Datenflusses sein müssen.
 
 Im folgenden werde ich genauer auf die Stores eingehen.
 
@@ -834,15 +834,15 @@ Damit das ganze noch effizient bleibt wurden WebSockets verwendet die deutlich w
 
 \subsubsection*{DataStore}
 
-Der \texttt{DataStore} stellt alle Daten bereit die für die Darstellung benötigt werden, dies sind die Suchergebnisse die mit dem Profil des Benutzers verbunden werden um anzuzeigen welche Ergebnisse bewertet/favorisiert wurden und die Suchanfragen, die zur Laufzeit verändert werden können. Herausforderungen hier waren es Duplikate in den Suchergebnissen zu verarbeiten und die Interaktion mit den Suchergebnissen.
+Der \texttt{DataStore} stellt alle Daten bereit, die für die Darstellung benötigt werden, dies sind die Suchergebnisse, die mit dem Profil des Benutzers verbunden werden, um anzuzeigen welche Ergebnisse bewertet/favorisiert wurden, und die Suchanfragen, die zur Laufzeit verändert werden können. Herausforderungen hier waren es, Duplikate in den Suchergebnissen zu verarbeiten, und die Interaktion mit den Suchergebnissen.
 
-Hierzu hört er auf die Nachricht \texttt{addItems} welche eine Liste mit Suchergebnissen enthält. Diese Daten sind noch ganz ohne die Bewertungsdaten, welche hier angefragt werden und in die Suchergebnisse integriert werden. Sobald das geschehen ist, wird allen Abonnenten (in dem Fall der \texttt{LayoutStore} mitgeteilt dass der Datensatz sich verändert hat.
+Hierzu hört er auf die Nachricht \texttt{addItems}, welche eine Liste mit Suchergebnissen enthält. Diese Daten sind noch ganz ohne die Bewertungsdaten, welche hier angefragt werden und in die Suchergebnisse integriert werden. Sobald das geschehen ist, wird allen Abonnenten (in dem Fall der \texttt{LayoutStore} mitgeteilt dass der Datensatz sich verändert hat.
 
-Eine Besonderheit ist die Benutzung einer nicht veränderbaren \texttt{OrderedMap} in welcher die Suchergebnisse mit ihrer URL als Schlüssel gespeichert sind. Die Suchergebnisse werden in der Applikation noch viel weitergereicht weswegen viele Fehler vorgebeugt werden da nur der \texttt{DataStore} selbst die Suchergebnisse verändern kann.
+Eine Besonderheit ist die Benutzung einer nicht veränderbaren \texttt{OrderedMap}, in welcher die Suchergebnisse mit ihrer URL als Schlüssel gespeichert sind. Die Suchergebnisse werden in der Applikation noch viel weitergereicht, weswegen viele Fehler vorgebeugt werden, da nur der \texttt{DataStore} selbst die Suchergebnisse verändern kann.
 
 \subsubsection*{LayoutStore}
 
-Im Design-Abschnitt wurde ausführlich darauf eingegangen was die Layouting-Engine alles leisten muss, leider konnte keine der OpenSource-Bibliotheken allen Anforderungen gerecht werden. Deswegen wurde für die Darstellung eine eigene Layouting-Engine erstellt.
+Im Design-Abschnitt wurde ausführlich darauf eingegangen, was die Layouting-Engine alles leisten muss, leider konnte keine der OpenSource-Bibliotheken allen Anforderungen gerecht werden. Deswegen wurde für die Darstellung eine eigene Layouting-Engine erstellt.
 Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist notwendig um Animationen zu ermöglichen. Es gibt verschiedene Arten DOM-Elemente mittels CSS zu positionieren:
 
 \begin{enumerate}
@@ -906,7 +906,7 @@ Als View wird das Interface bezeichnet, mit dem der Benutzer schlussendlich inte
 
 Responsives Webdesign bezeichnet ein Paradigma bei dem Webseiten daraufhin geschrieben werden, dass die Darstellung der Inhalte auf unterschiedlichen Geräten, ohne Einbußen in der Benutzerfreundlich möglich ist. Praktikabel bedeutet dies, dass die Darstellung abhängig von der Bildschirmbreite des Gerätes ist. \cite{natda2013responsive}.
 
-Aktuell wird dies so umgesetzt, dass jeglicher Inhalt mit der Benutzung eines \textit{Grid}-Systems dargestellt wird. Grid-Systeme werden benutzt um ``... Seitenlayouts mittels Zeilen und Spalten, die Inhalte aufnehmen, zu kreieren.'' (\cite{bootstrap, übersetzt aus dem Englischen). 
+Aktuell wird dies so umgesetzt, dass jeglicher Inhalt mit der Benutzung eines \textit{Grid}-Systems dargestellt wird. Grid-Systeme werden benutzt um ``... Seitenlayouts mittels Zeilen und Spalten, die Inhalte aufnehmen, zu kreieren.'' (\cite{bootstrap}, übersetzt aus dem Englischen). 
 
 Eine genaue Erklärung von Grid-Systemen ist nicht im Rahmen der Arbeit, für mehr Informationen zu Grid-Systemen wird auf \cite{bootstrap} verwiesen.
 In dieser Applikation wird das von Bootstrap bereitgestellte Grid intensiv benutzt, um auf jedem Endgerät eine möglichst gute Benutzererfahrung zu garantieren.
@@ -917,7 +917,7 @@ Wie auch in anderen Interface-Bibliotheken wird in React.js das Interface in Kom
 
 An dieser Stelle wurde überlegt eine eine Einführung in React.js zu schreiben, jedoch würde dies den Rahmen übersteigen. Stattdessen wird auf das offiziele Tutorial von Facebook verwiesen \cite{tutorial}.
 
-Es wurden ca. 30 React-Komponenten erstellt, viele davon sind nicht Anwendungsspezifisch und wurden an mehreren Stellen der Applikation verwendet. Unterteilt sind sie semantisch nach Aufgabe/Seiten wie zum Beispiel \texttt{settings}, \texttt{stats} oder \texttt{utility}.
+Es wurden 30 React-Komponenten erstellt, viele davon sind nicht Anwendungsspezifisch und wurden an mehreren Stellen der Applikation verwendet. Unterteilt sind sie semantisch nach Aufgabe/Seiten wie zum Beispiel \texttt{settings}, \texttt{stats} oder \texttt{utility}.
 Eine Minimalübersicht findet sich in Abbildung \ref{fig:architecture}, in welchem Alle Komponenten gezeigt werden die Teil des Flux-Kreises sind, alle restlichen sind statisch und spielen für die Architektur keine Rolle.
 
 Die erstellten Seiten sind in den Abbildungen \ref{fig:booster}, \ref{fig:settings}, \ref{fig:stats} und \ref{fig:badges} zu sehen.
@@ -927,8 +927,7 @@ Die wichtigste Seite ist die mit der eigentlichen Applikation, nämlich der Such
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{images/infoboard_wall.png}
-    \caption{Dies ist die Hauptapplikation, hier kann der Benutzer nach verschiedenen Begriffen suchen, die Suchergebnisse Bewerten/Favorisieren und sehen wer welche Aktion als letztes auf ein Suchergebnis ausgeführt hat.}
-    \label{fig:wall}
+    \caption{Dies ist die Hauptapplikation, hier kann der Benutzer nach verschiedenen Begriffen suchen, die Suchergebnisse Bewerten/Favorisieren und sehen wer welche Aktion als letztes auf ein Suchergebnis ausgeführt hat.}\label{fig:wall}
 \end{figure}
 
 Neben der Seite mit der Suchmaschine, sind noch 4 weitere Seiten verfügbar. Diese dienen hauptsächlich der Gamification. Für den Nutzer am interessantesten ist die Seite mit den Benutzerstatistiken, zu sehen in Abbildung \ref{fig:usersite}.
@@ -1060,7 +1059,7 @@ React.createClass({
   }
 });
 		\end{minted}
-		Im Detail heißt das, dass die ersten Daten die die Komponente anzeigen wird mittels \texttt{getInitialState} vom \texttt{QueryStore} bezogen werden, bei jeder Veränderung wird der Zustand der Komponente mittels \texttt{this.setState} auf den Zustand des \texttt{QueryStore} aktualisiert.
+		Im Detail heißt das, dass die ersten Daten, die die Komponente anzeigen wird, mittels \texttt{getInitialState} vom \texttt{QueryStore} bezogen werden. Bei jeder Veränderung wird der Zustand der Komponente mittels \texttt{this.setState} auf den Zustand des \texttt{QueryStore} aktualisiert.
 		\texttt{setState} bewirkt dass die Komponente neu gerendert wird.
 	\item Diese Art der Benutzung ist jedoch so häufig, dass \textit{reflux} ihn mittels \texttt{connect} vereinfacht hat:
 	\begin{minted}{javascript}
