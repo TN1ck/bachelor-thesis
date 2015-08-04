@@ -9,12 +9,16 @@ import SETTINGS   from '../settings.js';
 
 import Query      from '../models/Query.js';
 
-//
-// QUERY STORE
-//
-
+/**
+ * The Querystore handles the querying of queries
+ */
 export default Reflux.createStore({
 
+    /**
+     * Initialization of the Querystore, will set the inital state, create
+     * listeners and load all queries that are saved by the user when he
+     * sucessfully authenticates
+     */
     init: function () {
 
         this.queries = {};
@@ -22,18 +26,31 @@ export default Reflux.createStore({
         this.listenTo(actions.addQuery,    this.addQuery);
         this.listenTo(actions.removeQuery, this.removeQuery);
 
+        // load all saved queries when the user authenticates
         user.whenProfileIsLoaded((profile) => {
             _.each(profile.queries, query => {
+
+                // we do not want to track the queries, that's why false
                 actions.addQuery(query.name, false);
             });
         });
 
     },
 
+    /**
+     * Returns the initial state
+     * @returns {Object} The initial state
+     */
     getInitialState: function () {
         return this.queries;
     },
 
+    /**
+     * QUery all brokers for the given term, will send the action `addItems`
+     * when the qUerying is finished
+     *
+     * @param {String} term The term that will be queried
+     */
     addQuery: function (term) {
 
         if (this.queries[term]) {
@@ -74,6 +91,11 @@ export default Reflux.createStore({
         this.trigger(this.queries);
     },
 
+    /**
+     * Remove a query
+     *
+     * @param {String} The query that will be removed
+     */
     removeQuery: function (term) {
 
         var query = this.queries[term];

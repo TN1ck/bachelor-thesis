@@ -11,15 +11,19 @@ import Booster  from './components/booster/booster.js';
 import Badges   from './components/badges/badges.js';
 import Stats    from './components/stats/stats.js';
 
+/* here we load the styles via webpack, this will enable us to load hotloading
+   for styles as well
+*/
 import '../styles/main.less';
 
 var { Route, RouteHandler, Link, DefaultRoute } = Router;
 
-// React dev tools
+// needed for React dev tools
 if (typeof window !== 'undefined') {
     window.react = React;
 }
 
+// configuration of the used routes in the application
 var routes = (
     <Route handler={App}>
         <Route name='login'               handler={Login}/>
@@ -34,6 +38,7 @@ var routes = (
     </Route>
 );
 
+// initiate the root-component and mount it onto the DOM-node
 Router.run(routes, function (Handler) {
     React.render(<Handler/>, document.getElementById('react'));
 });

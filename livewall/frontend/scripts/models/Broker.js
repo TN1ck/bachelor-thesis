@@ -2,11 +2,18 @@ import $ from 'jquery';
 
 import {getDomain} from '../../shared/util/utils.js';
 
-// The options you can give a source should not change their returned json, i.e. this is how we seperate them
-// Due to this, we have a PiaSource for every broker it can can use
+/**
+ * Creates a new Broker. The Broker is used to fetch query-results.
+ *
+ * @class
+ */
+export default class Broker {
 
-export default class Pia {
-
+    /**
+     * Initialize the Broker
+     * @param {{url: String, name: String, restricted: Boolean, action: String, autocomplete: Boolean}}
+     * @returns {Broker} `this`
+     */
     constructor(broker = {
             url:          '',
             name:         '',
@@ -17,24 +24,45 @@ export default class Pia {
         this.broker = broker;
         this.query = query;
         this.filter = filter;
+        return this;
     }
 
+    /**
+     * Get the key of the broker
+     * @returns {String}
+     */
     get key () {
         return `${this.name} - ${this.broker.name} - ${this.query}`;
     }
 
+    /**
+     * Get the name of the broker
+     * @returns {String}
+     */
     get name () {
         return `${this.name}|${this.broker.name}`;
     }
 
+    /**
+     * Abort all running requests
+     */
     abort () {
         this.request.abort();
     }
 
+    /**
+     * Get status of request
+     */
     get status () {
         return this.promise ? this.promise.state() : 'pending';
     }
 
+    /**
+     * Process the request-result
+     *
+     * @param {Object} The result of the request
+     * @returns {Objects[]} The processed items
+     */
     processJSON (json) {
 
         if (json.status && json.status.code !== 200) {
@@ -82,6 +110,12 @@ export default class Pia {
 
     }
 
+    /**
+     * Start the request for the saved query
+     *
+     * @param {{username: String, token: String}} The user, needed for restricted sources
+     * @returns {Promise} The promise of the request
+     */
     getData (user) {
 
         if (this.broker.name === '') {

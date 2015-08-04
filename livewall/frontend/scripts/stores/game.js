@@ -13,12 +13,18 @@ import * as pointApi      from '../api/points.js';
 import * as api           from '../api/api.js';
 import LEVELS             from '../../shared/gamification/levels.js';
 
-//
-// GAME STORE
-//
-
+/**
+ * The Gamestore, will handle everything related to gamification:
+ * Send every action to the backend, provide leaderboards/points and
+ * Listen to the actions of others via a websocket.
+ */
 export default Reflux.createStore({
 
+    /**
+     * Initialization of the Gamestore, will set the inital state, create the listeners,
+     * open a websocket to listen to changes by others and fetch the leaderboards/points when
+     * the user sucessfully authenticated.
+     */
     init: function () {
 
         var initialState = {
@@ -47,19 +53,6 @@ export default Reflux.createStore({
             alltime: initialState
         };
 
-        // WEBSOCKET
-        this.socket = io(SETTINGS.SOCKET_URL);
-        this.socket.on('connect', function () {
-            console.log('connection is working!');
-        });
-
-        this.socket.on('action_created', (action) => {
-            this.state.actions.unshift(action);
-            this.state.actions.pop();
-            this.updateGlobalPoints(action);
-            this.trigger(this.state);
-        });
-
         this.items = Immutable.OrderedMap();
 
         this.listenTo(actions.voteItem,      this.voteItem);
@@ -68,7 +61,8 @@ export default Reflux.createStore({
         this.listenTo(actions.removeQuery,   this.removeQuery);
         this.listenTo(actions.buyBooster,   this.buyBooster);
 
-        // get the data after the user logs in
+        // request the leaderboards and the points when the user sucessfully
+        // authenticated
         user.whenLogedIn(() => {
 
             pointApi.getMonthlyPoints().then(result => {
@@ -80,6 +74,22 @@ export default Reflux.createStore({
                 this.state.alltime = result;
                 this.calcLevel();
                 this.trigger(this.state);
+
+                // open the websocket and listen to actions by others, update
+                // the global points when an action happened
+                this.socket = io(SETTINGS.SOCKET_URL);
+                this.socket.on('connect', function () {
+                    console.log('connection is working!');
+                });
+
+                this.socket.on('action_created', (action) => {
+                    this.state.actions.unshift(action);
+                    this.state.actions.pop();
+                    this.updateGlobalPoints(action);
+                    this.trigger(this.state);
+                });
+
+
             }).then(() => {
                 this.postAction('auth', 'login');
             });
@@ -88,14 +98,27 @@ export default Reflux.createStore({
                 this.state.actions = result.actions;
                 this.trigger(this.state);
             });
+
         });
 
     },
 
+    /**
+     * Returns the state of the store
+     * @returns the state
+     */
     getInitialState: function () {
         return this.state;
     },
 
+    /**
+     * Post an action to the backend and check for badges in the answer
+     *
+     * @param {string} group The group of the action
+     * @param {string} label The label of the action
+     * @param {Object} _dict Other values that will be send
+     * @returns
+     */
     postAction: function (group, label, _dict) {
 
         var dict = {
@@ -107,6 +130,8 @@ export default Reflux.createStore({
             dict = _.extend(dict, _dict);
         }
 
+        /* post the action to the backend and create flashmessages for new
+           badges */
         return api.postAction(dict).then((answer) => {
             var {action, badges} = answer;
             if (badges.length > 0) {
@@ -204,19 +229,36 @@ export default Reflux.createStore({
 
     },
 
+    /**
+     * Track the querying of a new query if `track` is `true`
+     *
+     * @param {string} queryTerm The term that was queried
+     * @param {bool} track Specifies if the query should be tracked
+     */
     addQuery: function (queryTerm, track) {
         // we do not want to track the queries that are added when the wall is started
         if (track) {
             owa.track('query', queryTerm, 'add');
             this.postAction('query', 'add', queryTerm);
-
         }
     },
+
+    /**
+     * Track the removement of a query
+     *
+     * @param {string} queryTerm The query that was removed by the user
+     */
     removeQuery: function (queryTerm) {
         owa.track('query', queryTerm, 'remove');
         this.postAction('query', 'remove', {value: queryTerm});
     },
 
+    /**
+     * Track the vote of an item
+     *
+     * @param {string} uuid The uuid of the item
+     * @param {number} value The vote-amount
+     */
     voteItem: function (uuid, value) {
         var label = value > 0 ? 'up' : 'down';
         owa.track('vote', uuid, label);
@@ -226,6 +268,11 @@ export default Reflux.createStore({
         });
     },
 
+    /**
+     * Track the favourting/unfavouriting of an item
+     *
+     * @param {string} uuid The uuid of the item
+     */
     favouriteItem: function (uuid) {
         owa.track('favourite', uuid, 'toggle');
         this.postAction('favourite', 'toggle', {
@@ -235,6 +282,12 @@ export default Reflux.createStore({
 
     },
 
+    /**
+     * Buy a booster for the current user, show a flash message after
+     * the booster is sucessfully bought
+     *
+     * @param {string} id The id of the booster
+     */
     buyBooster: function (id) {
         api.postBooster(id).then((booster) => {
             actions.addFlashMessage({

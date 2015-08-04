@@ -1,30 +1,45 @@
 import _     from 'lodash';
 import store from 'store';
 
-// DEFAULTS
+
 var settings = {};
 
-settings.save = (id, value) => {
+/**
+ * Permantly save values.
+ *
+ * @param {string} id - The key of the attribute
+ * @param {*} value -  The value of the attribute, must be JSON-serializable
+ */
+function save (id, value) {
     settings[id] = value;
     store.set(id, value);
-};
+}
 
+settings.save = save;
+
+// used for authentication
 settings.LOGIN_URL   = 'http://pia-dev-intern.dai-labor.de/login/';
-settings.PROFILE_URL = 'http://pia-dev-intern.dai-labor.de/service';
-settings.PIA_URL     = 'http://pia-dev-intern.dai-labor.de';
 
+// the profile URLs, used for searches/favourites
+settings.PROFILE_URL = 'http://pia-dev-intern.dai-labor.de/service';
+
+// url to the http-endpoints, when developing it is http://localhost:4000
 settings.SERVER_URL  = 'http://localhost:4000';
+
+// url to the websocket-endpoints, when developing it is http://localhost:4001
 settings.SOCKET_URL  = 'http://localhost:4001';
 
+// owa settings
 settings.OWA = {
     owa_baseUrl: 'http://ia.dailab.de/owa/',
-    // owa_baseUrl: 'http://localhost:4000/',
     siteId: '87a70ce46ea04de7c28dd1e4da31904c',
     apiKey: '1cd6f4568986197d6a0c0c179930f382'
 };
 
+// when set, will hide the header, useful for public displays of the application
 settings.HIDE_HEADER = false;
 
+// the used broker in the application
 settings.broker = [
     {
         url:          "http://pia-dev-intern.dai-labor.de/service",
@@ -41,43 +56,24 @@ settings.broker = [
         restricted:   false,
         autocomplete: true
     }
-    // {
-    //     url:          "http://localhost:8083/jiac/",
-    //     action:       "ACTION_LOCAL_SEARCH",
-    //     brokerName:   "LocalBroker",
-    //     restricted:   false,
-    //     autocomplete: false
-    // }
 ];
 
+// default color scheme
 settings.color_scheme = 'color_pastel';
 
-settings.QUERIES = [
-    // 'politics',
-    // 'machine',
-    // 'dai',
-    // 'test',
-    // 'wurst',
-    // 'hamburg',
-    // 'münchen',
-    // 'berlin',
-    // 'münster',
-    // 'systeme',
-    // 'tastatur',
-    // 'apple',
-    // 'gamification'
-];
-
+// client-side filter of the search-results
 settings.FILTER = {
 	'content': [
-        // 'dai',
         'kiel'
     ],
 	'title': ['no title']
 };
 
-// // check if there are import SETTINGS set
-var setFromLocal = function () {
+/**
+ * Loads settings from localstorage.
+ *
+ */
+function setFromLocal () {
     _.each(settings, (v, k) => {
         var value = store.get(k);
         if (value) {

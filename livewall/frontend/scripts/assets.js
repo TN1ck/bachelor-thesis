@@ -1,3 +1,5 @@
+/** @module assets */
+
 export default {
     icons: {
         downvote:      require('file!../assets/downvote.png'),

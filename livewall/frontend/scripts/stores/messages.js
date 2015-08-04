@@ -6,12 +6,15 @@ import actions    from '../actions/actions.js';
 import {user}     from '../auth.js';
 import SETTINGS   from '../settings.js';
 
-//
-// FLASH MESSAGE STORE
-//
-
+/**
+ * The Messagestore handles flashmessages
+ */
 export default Reflux.createStore({
 
+    /**
+     * Initialization of the Messagestore, will set the inital state and create
+     * listeners
+     */
     init: function () {
         this.duration = 5;
         this.isRunnig = false;
@@ -22,16 +25,29 @@ export default Reflux.createStore({
 
     },
 
+    /**
+     * Returns the initial state
+     * @returns {Object} The initial state
+     */
     getInitialState: function () {
         return this.state;
     },
 
+    /**
+     * Triggers the first message in the queue
+     */
     triggerState: function () {
         this.trigger({
             messages: this.state.messages.slice(0, 1)
         });
     },
 
+    /**
+     * Will add a message to the current queue, it will be shown after all
+     * its successors were shown
+     *
+     * @param {Object} message The message that should be shown
+     */
     addFlashMessage: function (message) {
         message.duration = this.duration;
         this.state.messages.push(message);
@@ -40,6 +56,9 @@ export default Reflux.createStore({
         }
     },
 
+    /**
+     * Show the first message of the queue and destroy it after `this.duration` seconds
+     */
     showAndDestroy: function () {
         this.isRunning = true;
         this.triggerState();
