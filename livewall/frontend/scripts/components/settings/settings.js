@@ -16,37 +16,44 @@ import {
     Jumbotron, Alert, PageHeader, Label, Well, Panel
 } from 'react-bootstrap';
 
-// import {ReactSourceSelect, ReactSource} from './sources.js';
-//
+// words used for the coloschemas
+var WORDS = [
+    'politics',
+    'machine',
+    'dai',
+    'test',
+    'wurst',
+    'hamburg',
+    'münchen',
+    'berlin',
+    'münster',
+    'systeme',
+    'tastatur',
+    'apple',
+    'gamification',
+    'microsoft',
+    'musik',
+    'hund',
+    'katze',
+    'kiel',
+    'buch'
+];
 
+/**
+ * Creates a list of colored words with the specified colorschema and gives
+ * the user the possibility to switch to the schema - if his level is high enough.
+ */
 var ColorSchema = React.createClass({
-    render: function () {
 
-        var words = [
-            'politics',
-            'machine',
-            'dai',
-            'test',
-            'wurst',
-            'hamburg',
-            'münchen',
-            'berlin',
-            'münster',
-            'systeme',
-            'tastatur',
-            'apple',
-            'gamification',
-            'microsoft',
-            'musik',
-            'hund',
-            'katze',
-            'kiel',
-            'buch'
-        ];
+    propTypes: {
+        schema: React.PropTypes.object
+    },
+
+    render: function () {
 
         var {schema, id, name, level} = this.props.schema;
 
-        var coloredWords = words.map(word => {
+        var coloredWords = WORDS.map(word => {
             var color = schema(hashCode(word));
             return <span><Label style={{backgroundColor: color}}>{word}</Label> </span>;
         });

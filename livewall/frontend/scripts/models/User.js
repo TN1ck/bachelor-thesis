@@ -4,7 +4,7 @@ import SETTINGS   from '../settings.js';
 
 
 /**
- * Creates a new User. Proides functions to authenticate User, as well as
+ * Creates a new User. Proides functions to authenticate the user, as well as
  * favourite items and load his profile.
  *
  * @class

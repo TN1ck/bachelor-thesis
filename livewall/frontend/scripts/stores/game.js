@@ -14,7 +14,7 @@ import * as api           from '../api/api.js';
 import LEVELS             from '../../shared/gamification/levels.js';
 
 /**
- * The Gamestore, will handle everything related to gamification:
+ * The Gamestore handles everything related to gamification:
  * Send every action to the backend, provide leaderboards/points and
  * Listen to the actions of others via a websocket.
  */

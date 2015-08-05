@@ -35,7 +35,7 @@ export default Reflux.createStore({
     },
 
     /**
-     * Login the user with the provided credentials
+     * Log in the user with the provided credentials
      *
      * @param {String} username The username of the user
      * @param {String} password The password of the user

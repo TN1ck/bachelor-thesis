@@ -10,10 +10,17 @@ import Action      from './action.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
+/**
+ * The stats-page
+ */
 export default React.createClass({
-    mixins: [
-        Reflux.connect(gameStore),
-    ],
+    displayName: 'StatsPage',
+
+    mixins: [Reflux.connect(gameStore)],
+
+    /**
+     * Creates a barchart which shows the point-distribution of all users
+     */
     createBarChart: function () {
 
         var alltime = this.state.alltime;
@@ -55,6 +62,10 @@ export default React.createClass({
         );
 
     },
+
+    /**
+     * Creats the infinite leaderboards
+     */
     createLeaderBoards: function () {
 
         var alltime = this.state.alltime;
@@ -77,6 +88,10 @@ export default React.createClass({
             </Col>
         );
     },
+
+    /**
+     * Visualize the last actions performed by the user
+     */
     createActions: function () {
         var actions = this.state.actions;
         var _actions = actions.map(action => {
@@ -97,6 +112,7 @@ export default React.createClass({
             </Col>
         );
     },
+
     render: function () {
         return (
             <Row>

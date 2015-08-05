@@ -8,6 +8,7 @@ import {colors}    from '../../../shared/util/colors.js';
 import IconCard    from '../utility/iconcard.js';
 import Icon        from '../utility/icon.js';
 
+// specifies how we visualize each action-type
 var actions = {
     auth: {
         login: {
@@ -49,6 +50,9 @@ var actions = {
     }
 };
 
+/**
+ * Creates a visualization of an action
+ */
 export default React.createClass({
     render: function () {
         var {action, user, item} = this.props.action;

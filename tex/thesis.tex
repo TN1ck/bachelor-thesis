@@ -199,10 +199,10 @@ sorting=none
 \vfill
 \begin{center}{\Large\textbf{Abstract}}\end{center}
 
-Das DAI-Labor ist eine der führenden Forschungseinrichtungen im Bereich verteilte Suchmaschinen - welche nun nicht mehr reine Forschung sind, sondern wie deren PIA-System von zahlreichen Verwaltungen als Alternative zu privaten Suchmaschinen benutzt wird. Ein interessantes Problem bei Suchmaschinen mit komplett separaten Suchindizes ist es die Ergebnisse dieser zusammen zu führen und dem Endbenutzer zu visualisieren. Diese Arbeit zielt darauf ab eine Visualisierungsform die ähnlich zu einer \textit{Social Media Wall} sein soll, für diese Ergebnisse zu untersuchen und zu erstellen.
-Ein weiteres Themengebiet des DAI-Labors ist die Gamification im Enterprise Bereich, so werden auch diese Mechanismen untersucht und benutzt, um die Benutzung der Applikation zu fördern.
-Außerdem wird ausführlich auf die neuen Entwicklungsmethoden im Bereich der Webapplikationen eingegangen und aufgezeigt, wie diese die Entwicklung vereinfachen und verbessern können.
-Das Ergebnis dieser Arbeit ist eine voll funktionsfähige und mit neuesten Methoden entwickelte Webapplikation, die ein innovatives Interface für Suchergebnisse besitzt und deren Benutzung durch nahtlos eingebundene Spielelemente gefördert wird.
+Das DAI-Labor (Distributed Artificial Intelligence) ist eine der führenden Forschungseinrichtungen im Bereich verteilte Suchmaschinen - welche nun nicht mehr reine Forschung sind, sondern wie deren PIA-System (Personal Information Assistant) von zahlreichen Verwaltungen als Alternative zu privaten Suchmaschinen benutzt wird. Eine interessante Aufgabe besteht darin, die Suchergebnisse von verschiedenen Suchmaschinen zusammenzuführen und für den Suchenden in einem visuell einheitlichen Format darzustellen. In dieser Arbeit wird eine Visualisierung in der Art einer \textit{Social Media Wall} untersucht und realisiert.
+Ein weiteres Themengebiet des DAI-Labors ist die Gamification im Enterprise Bereich. Auch diese Mechanismen werden untersucht und benutzt, um die Benutzung der Applikation zu fördern.
+Ausführlich wird auf die neuen Entwicklungsmethoden im Bereich der Webapplikationen eingegangen und aufgezeigt, wie diese die Entwicklung der Applikation vereinfachen und verbessern können.
+Das Ergebnis dieser Arbeit ist eine funktionsfähige und mit neuesten Methoden entwickelte Webapplikation, die ein neuartiges Interface für Suchergebnisse unterschiedlicher Herkunft besitzt und deren Benutzung durch nahtlos eingebundene Spielelemente gefördert wird.
 
 \end{titlepage}
 
@@ -226,22 +226,22 @@ Berlin, \today\\
 
 \chapter{Einleitung}
 
-Die gemeinsame Darstellung von Inhalten aus verschiedenen Quellen ist ein interessantes und weit erforschtes Thema. Die Idee dabei ist es, dem Benutzer die Benutzung bzw. die Konsumierung von Inhalten angenehmer und effizienter zu gestalten, indem ein einheitliches Interface für Inhalte geschaffen wird. Vor der \textit{digitalen Revolution} war das ein äußerst aufwendiges und kostspieliges Unterfangen \footnote{Vergleich hier zu der Encyclopædia Britannica
-und Wikipedia, letztere konnte in wenigen Jahren mehr Inhalte mit gleicher Qualität aggregieren, also das Traditionsunternehmen in 200 Jahren \cite{giles2005internet}.}, als Beispiel seien die frühen Enzyklopädien genannt, welche versuchen, sämtliches Wissen an einem Ort in homogener Sprache und Darstellung bereitzustellen. Durch die momentan verfügbaren Technologien ist das Erstellen einer einheitlichen Datenquelle für verschiedene Inhalte deutlich einfacher geworden, wobei die Schwierigkeit einer guten Zusammenführung dennoch weiterhin besteht und Produkte, die das gut lösen, sehr erfolgreich sind - wie z.B. die Aggregation sozialer Aktivitäten bei Facebook.
+Die gemeinsame Darstellung von Inhalten aus verschiedenen Quellen ist ein interessantes und weit erforschtes Thema. Die Idee ist, dem Benutzer die Benutzung bzw. die Konsumierung von Inhalten angenehmer und effizienter zu gestalten, indem ein einheitliches Interface für Inhalte geschaffen wird. Vor der \textit{digitalen Revolution} war das ein äußerst aufwendiges und kostspieliges Unterfangen \footnote{Vergleich hier zu der Encyclopædia Britannica
+und Wikipedia, letztere konnte in wenigen Jahren mehr Inhalte mit gleicher Qualität aggregieren, also das Traditionsunternehmen in 200 Jahren \cite{giles2005internet}.}. Als Beispiel seien die frühen Enzyklopädien genannt, welche versuchten, sämtliches Wissen an einem Ort in homogener Sprache und Darstellung bereitzustellen. Durch die momentan verfügbaren Technologien ist das Erstellen einer einheitlichen Datenquelle für verschiedene Inhalte deutlich einfacher geworden. Die Schwierigkeit einer qualifizierten Zusammenführung besteht dennoch weiter. Produkte die diese Aufgabe entsprechend lösen sind sehr erfolgreich. Wie zum Beispiel Facebook mit der Aggregation von sozialen Aktivitäten.
 
-Wenn man sich jedoch auf eine Teilmenge der verfügbaren Informationen beschränkt, wie Nachrichten die per RSS verfügbar sind, ist es deutlich einfacher eine angemessene Zusammenstellung der Inhalte zu gestalten. Prominentes Beispiel für eine Anwendung dieser Art ist die Nachrichten-Applikation pulse \cite{pulse}, die auf Basis von RSS ein angenehmes und attraktives Interface für die gleichzeitige Konsumierung mehrerer Nachrichtenseiten anbietet. Der Erfolg von \textit{pulse} spricht für sich mit ca. 22 Millionen Downloads auf dem Android-System.
+Wenn man sich jedoch auf eine Teilmenge der verfügbaren Informationen beschränkt, wie Nachrichten die als RSS (Rich Site Summary) verfügbar sind, ist es deutlich einfacher eine angemessene Zusammenstellung der Inhalte zu gestalten. Prominentes Beispiel für eine Anwendung dieser Art ist die Nachrichten-Applikation pulse \cite{pulse}, die auf Basis von RSS ein angenehmes und attraktives Interface für die gleichzeitige Konsumierung mehrerer Nachrichtenseiten anbietet. Der Erfolg von \textit{pulse} spricht mit ca. 22 Millionen Downloads auf dem Android-System für sich.
 
 Eine der komplexesten Zusammenführungen von Informationen unterschiedlichster Art stellen Suchmaschinen da, da hier eine Reduzierung der benutzten Informationen, eine sofortige Verschlechterung der Suchergebnisse bewirkt - die ideale Suchmaschine würde jede mögliche Datenquelle und jedes existierende Dateiformat indizieren.
-Suchmaschinen der jetzigen Zeit versuchen sich diesem Optimum immer weiter zu nähern und können mittlerweile eine Vielzahl an Datenformaten und Datenquellen benutzen.
-Trotz der unendlichen Diversität der indizierten Daten werden die Suchergebnisse meistens über eine einfache Auflistung in Textform dargestellt, weil jedes Dateiformat mehr oder minder auf Text reduziert werden kann.
+Suchmaschinen der Gegenwart versuchen sich diesem Optimum immer weiter zu nähern und können mittlerweile eine Vielzahl an Datenformaten und Datenquellen nutzen und verarbeiten.
+Trotz der beinahe unendlichen Diversität der indizierten Daten werden die Suchergebnisse meistens über eine einfache Auflistung in Textform dargestellt, weil jedes Dateiformat mehr oder minder auf Text reduziert werden kann.
 
-Neue Visualisierungsformen für Suchergebnisse sind überraschenderweise bisher wenig untersucht worden, andere Bereiche waren da experimentierfreudiger, wie zum Beispiel die Zusammenführung von Social-Media-Kanälen mithilfe von \textit{Social Media Walls}.
+Neue Visualisierungsformen für Suchergebnisse sind bisher überraschenderweise wenig untersucht worden. Andere Bereiche sind auf diesem Gebiet experimentierfreudiger, wie zum Beispiel die \textit{Social Media Walls} mit der Zusammenführung von Social-Media-Kanälen.
 Sie sind eine Form der Darstellung für Inhalte mit kurzen Texten und Bildern aus verschiedenen sozialen Kanälen. Die Besonderheit liegt in der Homogenisierung der Inhalte und in der gleichzeitigen Darstellung von verschiedenen Kanälen.
 Suchergebnisse besitzen ganz ähnliche Attribute wie die Datenpunkte von Social-Media-Kanälen, womit die Frage nahe liegt, ob die Visualisierung von Suchergebnissen verbessert werden kann, indem eine ähnliche Darstellung wie der von \textit{Social Media Walls} benutzt wird.
 Diese Arbeit bemüht sich diese Frage zu beantworten und eine neue Visualisierungsform für Suchergebnisse zu finden mit der Inspiration von \textit{Social Medial Walls}.
 
-Der Einsatz von Gamification hat in den letzten Jahren stetig zugenommen, da es ein äußerst effektives Mittel ist, um das Erlebnis des Nutzers zu erhöhen und dadurch seine Interaktionen mit der Seite zu fördern.
-Die Benutzung von Gamification im Enterprise-Bereich bzw. in kleinen sozialen Kreisen ist jedoch bisher noch nicht allzu populär. Die prominentesten Beispiele sind Sport-Apps, bei denen Freunde sich miteinander vergleichen können, wie Strava \cite{strava} oder Nike+ \cite{nike}. Eine Integration stellt damit in diesem Bereich eine interessante Herausforderung dar, da dessen Potential bisher noch nicht vollständig geklärt ist.
+Der Einsatz von Gamification hat in den letzten Jahren stetig zugenommen, da es ein effektives Mittel ist, um das Erlebnis des Nutzers zu erhöhen und seine Interaktionen mit der Seite zu fördern.
+Die Benutzung von Gamification im Enterprise-Bereich bzw. in kleinen sozialen Kreisen ist bisher noch nicht allzu populär. Die prominentesten Beispiele sind Sport-Apps, wie Strava \cite{strava} oder Nike+ \cite{nike}, bei denen Freunde sich miteinander vergleichen können. Eine Integration von Gamification stellt damit in diesem Bereich eine interessante Herausforderung dar, da deren Potential bisher noch nicht vollständig geklärt ist.
 
 
 \section{Anforderungen}
@@ -819,31 +819,31 @@ Im folgenden werde ich genauer auf die Stores eingehen.
 \subsection{Stores}
 
 Die Stores sind zuständig den Datenfluss zu verwalten, insgesamt enthält die Applikation 6 Stores: \texttt{UserStore}, \texttt{QueryStore}, \texttt{DataStore}, \texttt{LayoutStore}, \texttt{GameStore} und \texttt{MessagesStore}.
-Der \texttt{UserStore} und \texttt{MessagesStore} sind jedoch äußerst trivial und sind nur wenige Zeilen lang. Die wichtigsten sind die anderen vier, diese werde ich nun im Detail behandeln.
+Der \texttt{UserStore} und \texttt{MessagesStore} sind jedoch äußerst trivial und sind nur wenige Zeilen lang. Die wichtigsten sind die anderen vier, diese werden nun im Detail behandelt.
 
 \subsubsection*{QueryStore}
 
-Der \texttt{QueryStore} abonniert die Aktionen \texttt{addQuery} und \texttt{removeQuery}, er abstrahiert die Anfrage an die \texttt{Broker} d.h. für jeden Suchbegriff werden alle verfügbaren \texttt{Broker} angefragt, nach jeder Antwort eines Brokers wird die Nachricht \texttt{addItems} mit den Ergebnissen gesendet. Auf diese Nachricht hört der \texttt{DataStore}.
+Der \texttt{QueryStore} abonniert die Aktionen \texttt{addQuery} und \texttt{removeQuery}, er abstrahiert die Anfrage an die \texttt{Broker}, d.h. für jeden Suchbegriff werden alle verfügbaren \texttt{Broker} angefragt. Nach jeder Antwort eines solchen wird die Nachricht \texttt{addItems} mit den Ergebnissen gesendet. Auf diese Nachricht hört der \texttt{DataStore}.
 
 \subsubsection*{GameStore}
 
-Der \texttt{GameStore} liefert alles was für die Verspielisierung der Applikation relevant ist - wie die Bereitstellung der Punkte, der Bestenlisten und Trophäen aller Benutzer der Applikation. Weiterhin abonniert er alle Aktionen auf denen Punkte definiert sind wie das bewerten eines Suchergebnisses und sorgt dafür dass diese Aktionen vom Backend verarbeitet werden.
+Der \texttt{GameStore} liefert alles, was für die Verspielisierung der Applikation relevant ist - wie die Bereitstellung der Punkte, der Bestenlisten und Trophäen aller Benutzer der Applikation. Weiterhin abonniert er alle Aktionen auf denen Punkte definiert sind, wie das Bewerten eines Suchergebnisses und sorgt dafür, dass diese Aktionen vom Backend verarbeitet werden.
 
-Um den sozialen Faktor zu erhöhen reagiert der \texttt{GameStore} ebenfalls auf alle Aktionen aller anderen Benutzer, dies geschieht quasi in Echtzeit und sorgt dadurch z.B. für eine äußert lebendige Statistikseite (auf dieser werden die Daten aller Benutzer angezeigt).
-Damit das ganze noch effizient bleibt wurden WebSockets verwendet die deutlich weniger ``Overhead'' besitzen als normale HTTP-requests.
+Um den sozialen Faktor zu erhöhen, reagiert der \texttt{GameStore} ebenfalls auf die Aktionen aller anderen Benutzer. Dies geschieht quasi in Echtzeit und sorgt dadurch z.B. für eine äußert lebendige Statistikseite (auf dieser werden die Daten aller Benutzer angezeigt).
+Damit das ganze noch effizient bleibt, wurden WebSockets verwendet, die deutlich weniger ``Overhead'' besitzen als normale HTTP-requests.
 
 \subsubsection*{DataStore}
 
-Der \texttt{DataStore} stellt alle Daten bereit, die für die Darstellung benötigt werden, dies sind die Suchergebnisse, die mit dem Profil des Benutzers verbunden werden, um anzuzeigen welche Ergebnisse bewertet/favorisiert wurden, und die Suchanfragen, die zur Laufzeit verändert werden können. Herausforderungen hier waren es, Duplikate in den Suchergebnissen zu verarbeiten, und die Interaktion mit den Suchergebnissen.
+Der \texttt{DataStore} stellt alle Daten bereit, die für die Darstellung benötigt werden. Das sind in der Regel die Suchergebnisse, die mit dem Profil des Benutzers verbunden werden, um anzuzeigen, welche Ergebnisse bewertet/favorisiert wurden, und die Suchanfragen, die zur Laufzeit verändert werden können. Herausforderungen hier waren es, Duplikate in den Suchergebnissen zu verarbeiten sowie die Interaktion mit den Suchergebnissen.
 
-Hierzu hört er auf die Nachricht \texttt{addItems}, welche eine Liste mit Suchergebnissen enthält. Diese Daten sind noch ganz ohne die Bewertungsdaten, welche hier angefragt werden und in die Suchergebnisse integriert werden. Sobald das geschehen ist, wird allen Abonnenten (in dem Fall der \texttt{LayoutStore} mitgeteilt dass der Datensatz sich verändert hat.
+Hierzu hört er auf die Nachricht \texttt{addItems}, welche eine Liste mit Suchergebnissen enthält. Diese Daten sind noch ganz ohne die Bewertungsdaten, welche hier angefragt werden und in die Suchergebnisse integriert werden. Sobald das geschehen ist, wird allen Abonnenten (in dem Fall der \texttt{LayoutStore} mitgeteilt, dass der Datensatz sich verändert hat.
 
-Eine Besonderheit ist die Benutzung einer nicht veränderbaren \texttt{OrderedMap}, in welcher die Suchergebnisse mit ihrer URL als Schlüssel gespeichert sind. Die Suchergebnisse werden in der Applikation noch viel weitergereicht, weswegen viele Fehler vorgebeugt werden, da nur der \texttt{DataStore} selbst die Suchergebnisse verändern kann.
+Eine Besonderheit ist die Benutzung einer nicht veränderbaren \texttt{OrderedMap}, in der die Suchergebnisse mit ihrer URL als Schlüssel gespeichert sind. Die Suchergebnisse werden in der Applikation noch viel weitergereicht, weswegen viele Fehler vorgebeugt werden, da nur der \texttt{DataStore} selbst die Suchergebnisse verändern kann.
 
 \subsubsection*{LayoutStore}
 
 Im Design-Abschnitt wurde ausführlich darauf eingegangen, was die Layouting-Engine alles leisten muss, leider konnte keine der OpenSource-Bibliotheken allen Anforderungen gerecht werden. Deswegen wurde für die Darstellung eine eigene Layouting-Engine erstellt.
-Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist notwendig um Animationen zu ermöglichen. Es gibt verschiedene Arten DOM-Elemente mittels CSS zu positionieren:
+Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist notwendig um Animationen zu ermöglichen. Es gibt verschiedene Arten, DOM-Elemente durch CSS zu positionieren:
 
 \begin{enumerate}
   \item Mithilfe von \texttt{top/left}.\\
@@ -854,7 +854,7 @@ Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist 
       left: 50px;
   }
   \end{minted}
-  \item Mithilfe von \texttt{transform: translate(x, y)}. Dies ist allgemein anerkannt schneller als zu sein und hat den Vorteil das subpixel-animationen möglich sind was im Allgemeinen flüssigere Animationen erlaubt \cite{translate}. \\
+  \item Mithilfe von \texttt{transform: translate(x, y)}. Dies ist allgemein anerkannt schneller zu sein und hat den Vorteil, dass subpixel-animationen möglich sind, was im Allgemeinen flüssigere Animationen erlaubt \cite{translate}. \\
   \begin{minted}{css}
   .position-translate {
       position: absolute; /* or relative/fixed */
@@ -862,7 +862,7 @@ Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist 
       -webkit-transform: translate(50px, 50px);
   }
   \end{minted}
-  \item Mithilfe von \texttt{transform: translate3D(x, y, z)}. Dies ist mit Abstand der schnellste Ansatz \cite{translate3dvstranslate}. Hierbei werden die Elemente zu Texturen gerendert und mit Einsatz des Grafikprozessors animiert. Dadurch ist es sogar möglich auf mobilen Endgeräten flüssige Animationen zu haben, da diese gewöhnlich dedizierte Grafikprozessoren besitzen.
+  \item Mithilfe von \texttt{transform: translate3D(x, y, z)}. Dies ist mit Abstand der schnellste Ansatz \cite{translate3dvstranslate}. Hierbei werden die Elemente zu Texturen gerendert und mit Einsatz des Grafikprozessors animiert. Dadurch ist es sogar möglich, auf mobilen Endgeräten flüssige Animationen zu gewährleisten, da diese gewöhnlich dedizierte Grafikprozessoren besitzen.
   \begin{minted}{css}
   .position-translate3D {
       position: absolute; /* or relative/fixed */
@@ -870,7 +870,7 @@ Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist 
       -webkit-transform: translate3D(50px, 50px);
   }
   \end{minted}
-  \texttt{transform3D} wird von allen aktuellen Browsern soweit unterstützt das unser Szenario möglich ist\cite{transform3d}. Was weiterhin zu beachten ist, dass am Ende immer gerundete Pixelwerte innerhalb von \texttt{translate3D(x, y, z)} benutzt werden sollten. Da Ansonsten die Elemente unscharf sind, siehe Abbildung \ref{fig:blurry}.
+  \texttt{transform3D} wird von allen aktuellen Browsern soweit unterstützt, dass unser Szenario möglich ist\cite{transform3d}. Was weiterhin zu beachten ist, dass am Ende immer gerundete Pixelwerte innerhalb von \texttt{translate3D(x, y, z)} benutzt werden sollten, weil die Elemente ansonsten unscharf sind, siehe Abbildung \ref{fig:blurry}.
 
 \begin{figure}[htbp]
 	\centering
@@ -881,32 +881,32 @@ Die Grundlage ist die absolute Positionierung innerhalb des Browsers, diese ist 
 
 \end{enumerate}
 
-Es ist eine Grundanforderung Geräte mit unterschiedlich großen Bildschirmen zu unterstützen, was dadurch erzielt wird, dass die die Anzahl der Spalten variabel ist.
-Es gibt zwei Möglichkeiten die Anzahl der Spalten variabel zu machen:
+Es ist eine Grundanforderung Geräte mit unterschiedlich großen Bildschirmen zu unterstützen, was dadurch erzielt wird, dass die Anzahl der Spalten variabel ist.
+Es gibt zwei Möglichkeiten, die Anzahl der Spalten variabel zu machen:
 
 \begin{enumerate}
   \item Berechne die Breite mittels Javascript bevor das Element in den DOM eingefügt wird und setze die Breite mittels style-Attribut.
   \item Durch die Benutzung von \textit{Media Queries} können direkt in CSS verschiedene Darstellungen für unterschiedliche Bildschirmbreiten beschrieben werden.
 \end{enumerate}
 
-Für die Positionierung müssen wir wissen wie viele Spalten zu jedem Zeitpunkt dargestellt werden sollen. Dafür muss die Breite in Javascript berechnet werden, somit liegt 1. nahe. Von Uns durchgeführte Versuche haben jedoch gezeigt, dass es schneller ist, die Breite des Elementes nicht per Javascript zu setzen, sondern diese über die \texttt{Media Queries} zu bestimmen. Zwar bedeutet dies, dass die gleiche Logik an zwei Orten in 2 Sprachen steht, aber da dies nicht mehr als jeweils 10 Zeilen sind ist es für die resultierende bessere Geschwindigkeit hinnehmbar.
+Für die Positionierung müssen, wir wissen wie viele Spalten zu jedem Zeitpunkt dargestellt werden sollen. Dafür muss die Breite in Javascript berechnet werden, somit liegt 1. nahe. Von uns durchgeführte Versuche haben jedoch gezeigt, dass es schneller ist, die Breite des Elementes nicht per Javascript zu setzen, sondern diese über die \texttt{Media Queries} zu bestimmen. Zwar bedeutet dies, dass die gleiche Logik an zwei Orten in 2 Sprachen steht, aber da das nicht mehr als jeweils 10 Zeilen sind, ist es für die resultierende bessere Geschwindigkeit hinnehmbar.
 
-Die Breite aller Elemente ist zu jedem Zeitpunkt gleich, die Höhe ist jedoch variabel. Da es unmöglich ist die Höhe auszurechnen ohne eine komplette Browser-Engine zu implementieren, muss das Element in den DOM eingefügt werden, bevor wir dessen korrekte y-Position berechnen können. Hierfür existiert die Aktion \texttt{addDOMElement}, welche die gleichnamige Funktion im \texttt{LayoutStore} ausführt. Diese Funktion ist, neben der \texttt{relayout}-Funktion, der einzige Ort an dem der DOM direkt ausgelesen wird, nämlich die Höhe des Elementes mit \texttt{offsetHeight}. Solange kein \texttt{resize}-Event getriggert wird müssen wir diesen Wert auch nicht ein zweites mal auslesen.
-Wenn zu allen Suchergebnissen eine Kachel angelegt wurde, wird die \texttt{layout}-Funktion aufgerufen, womit die korrekte Position der Kacheln ausgerechnet wird und auf diese weitergeben wird.
+Die Breite aller Elemente ist zu jedem Zeitpunkt gleich, die Höhe ist jedoch variabel. Da es unmöglich ist, die Höhe auszurechnen, ohne eine komplette Browser-Engine zu implementieren, muss das Element in den DOM eingefügt werden, bevor wir dessen korrekte y-Position berechnen können. Hierfür existiert die Aktion \texttt{addDOMElement}, welche die gleichnamige Funktion im \texttt{LayoutStore} ausführt. Diese Funktion ist neben der \texttt{relayout}-Funktion der einzige Ort, an dem der DOM direkt ausgelesen wird, nämlich die Höhe des Elementes mit \texttt{offsetHeight}. Solange kein \texttt{resize}-Event getriggert wird, muss dieser Wert auch nicht ein zweites Mal ausgelesen werden.
+Wenn es zu allen Suchergebnissen eine Kachel gibt, wird die \texttt{layout}-Funktion aufgerufen, womit die korrekte Position der Kacheln ausgerechnet wird und auf diese weitergegeben wird.
 
 Der vollständige Programmfluss ist komplex, da er sehr auf Geschwindigkeit getrimmt wurde. Der Programmteil ist ausführlich kommentiert und beschrieben.
 
-Allgemein hat die Flux-Architektur hier gut funktioniert, der größte Manko entstand beim Abgleichen des LayoutStores mit dem \texttt{DataStore}. Wenn nun ein Element positiv bewertet wird, muss das Layout neu berechnet werden. Der LayoutStore weiß inhärent jedoch nicht welches Element sich verändert hat, es muss durch alle Elemente des \texttt{DataStores} mit den eigenen abgleichen. Dies fühlt sich nicht optimal an, jedoch stellt sich die Frage, ob mit einer anderen Architektur sich das Problem einfacher lösen ließe.
+Allgemein hat die Flux-Architektur hier gut funktioniert. Das größte Manko entstand beim Abgleichen des LayoutStores mit dem \texttt{DataStore}. Wenn nun ein Element positiv bewertet wird, muss das Layout neu berechnet werden. Der LayoutStore weiß nicht direkt, welches Element sich verändert hat, es muss durch alle Elemente des \texttt{DataStores} mit den Eigenen abgleichen. Dies ist nicht unbedingt optima, allerdings stellt sich die Frage, ob eine andere Architektur das Problem einfacher lösen würde.
 
 \subsection{Views}
 
-Als View wird das Interface bezeichnet, mit dem der Benutzer schlussendlich interagiert. Für jede View wird React.js und React-Bootstrap verwendet, die Gründe warum React.js verwendet wird, sind in Abschnitt \ref{sec:flux} genauer ausgeführt.
+Als View wird das Interface bezeichnet, mit dem der Benutzer schlussendlich interagiert. Für jedes View wird React.js und React-Bootstrap verwendet. Die Gründe, warum React.js verwendet wird, sind in Abschnitt \ref{sec:flux} genauer ausgeführt.
 
 \subsubsection*{Responsives Design}
 
-Responsives Webdesign bezeichnet ein Paradigma bei dem Webseiten daraufhin geschrieben werden, dass die Darstellung der Inhalte auf unterschiedlichen Geräten, ohne Einbußen in der Benutzerfreundlich möglich ist. Praktikabel bedeutet dies, dass die Darstellung abhängig von der Bildschirmbreite des Gerätes ist. \cite{natda2013responsive}.
+Responsives Webdesign bezeichnet ein Paradigma, bei dem Webseiten daraufhin geschrieben werden, dass die Darstellung der Inhalte auf unterschiedlichen Geräten, ohne Einbußen in der Benutzerfreundlichkeit möglich ist. Praktikabel bedeutet das, dass die Darstellung abhängig von der Bildschirmbreite des Gerätes ist. \cite{natda2013responsive}.
 
-Aktuell wird dies so umgesetzt, dass jeglicher Inhalt mit der Benutzung eines \textit{Grid}-Systems dargestellt wird. Grid-Systeme werden benutzt um ``... Seitenlayouts mittels Zeilen und Spalten, die Inhalte aufnehmen, zu kreieren.'' (\cite{bootstrap}, übersetzt aus dem Englischen). 
+Aktuell wird das so umgesetzt, dass jeglicher Inhalt mit der Benutzung eines \textit{Grid}-Systems dargestellt wird. Grid-Systeme werden benutzt, um ``... Seitenlayouts mittels Zeilen und Spalten, die Inhalte aufnehmen, zu kreieren.'' (\cite{bootstrap}, übersetzt aus dem Englischen). 
 
 Eine genaue Erklärung von Grid-Systemen ist nicht im Rahmen der Arbeit, für mehr Informationen zu Grid-Systemen wird auf \cite{bootstrap} verwiesen.
 In dieser Applikation wird das von Bootstrap bereitgestellte Grid intensiv benutzt, um auf jedem Endgerät eine möglichst gute Benutzererfahrung zu garantieren.
@@ -915,46 +915,46 @@ In dieser Applikation wird das von Bootstrap bereitgestellte Grid intensiv benut
 
 Wie auch in anderen Interface-Bibliotheken wird in React.js das Interface in Komponenten unterteilt (in anderen Bibliotheken auch \textit{widgets} gennant).
 
-An dieser Stelle wurde überlegt eine eine Einführung in React.js zu schreiben, jedoch würde dies den Rahmen übersteigen. Stattdessen wird auf das offiziele Tutorial von Facebook verwiesen \cite{tutorial}.
+An dieser Stelle wurde überlegt, eine Einführung in React.js zu schreiben, jedoch würde auch dies die Ansprüche dieser Arbeit übersteigen. Stattdessen wird auf das offizielle Tutorial von Facebook verwiesen \cite{tutorial}.
 
-Es wurden 30 React-Komponenten erstellt, viele davon sind nicht Anwendungsspezifisch und wurden an mehreren Stellen der Applikation verwendet. Unterteilt sind sie semantisch nach Aufgabe/Seiten wie zum Beispiel \texttt{settings}, \texttt{stats} oder \texttt{utility}.
-Eine Minimalübersicht findet sich in Abbildung \ref{fig:architecture}, in welchem Alle Komponenten gezeigt werden die Teil des Flux-Kreises sind, alle restlichen sind statisch und spielen für die Architektur keine Rolle.
+Es wurden 30 React-Komponenten erstellt, viele davon sind nicht anwendungsspezifisch und wurden an mehreren Stellen der Applikation verwendet. Unterteilt sind sie semantisch nach Aufgabe/Seiten, wie zum Beispiel \texttt{settings}, \texttt{stats} oder \texttt{utility}.
+Eine Minimalübersicht findet sich in Abbildung \ref{fig:architecture}, in welchem alle Komponenten gezeigt werden die Teil des Flux-Kreises sind, alle Restlichen sind statisch und spielen für die Architektur keine Rolle.
 
 Die erstellten Seiten sind in den Abbildungen \ref{fig:booster}, \ref{fig:settings}, \ref{fig:stats} und \ref{fig:badges} zu sehen.
 
-Die wichtigste Seite ist die mit der eigentlichen Applikation, nämlich der Suchmaschine, zu sehen in Abbildung \ref{fig:wall}. Der Benutzer wird sich voraussichtlich die meiste Zeit auf dieser Seite befinden, deshalb sind auch alle relevanten Aktionen, neben dem einloggen und Booster kaufen, nur auf dieser Seite möglich. Für weitere Details zu dem Konzept dieser Seite, siehe Abschnitt \ref{chap:concept:wall}.
+Die wichtigste Seite ist die mit der eigentlichen Applikation, nämlich der Suchmaschine, zu sehen in Abbildung \ref{fig:wall}. Der Benutzer wird sich voraussichtlich die meiste Zeit auf dieser Seite befinden, deshalb sind auch alle relevanten Aktionen, neben dem Einloggen und dem Kaufen von Boostern, nur auf dieser Seite möglich. Für weitere Details zu dem Konzept dieser Seite, siehe Abschnitt \ref{chap:concept:wall}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{images/infoboard_wall.png}
-    \caption{Dies ist die Hauptapplikation, hier kann der Benutzer nach verschiedenen Begriffen suchen, die Suchergebnisse Bewerten/Favorisieren und sehen wer welche Aktion als letztes auf ein Suchergebnis ausgeführt hat.}\label{fig:wall}
+    \caption{Dies ist die Hauptapplikation, hier kann der Benutzer nach verschiedenen Begriffen suchen, die Suchergebnisse bewerten/favorisieren und sehen, wer welche Aktion als letztes auf ein Suchergebnis ausgeführt hat.}\label{fig:wall}
 \end{figure}
 
 Neben der Seite mit der Suchmaschine, sind noch 4 weitere Seiten verfügbar. Diese dienen hauptsächlich der Gamification. Für den Nutzer am interessantesten ist die Seite mit den Benutzerstatistiken, zu sehen in Abbildung \ref{fig:usersite}.
-Weiterhin gibt es noch die Seite auf dem der Benutzer den derzeitigen Status seines aktuellen Boosters sehen kann und falls er keinen hat, die Möglichkeit besitzt einen neuen Booster zu erwerben, siehe Abbildung \ref{fig:booster}. Einstellungen, wie das Auswählen des Farbschemas kann der Nutzer ebenfalls auf einer dedizierten Seite tätigen, siehe Abbildung \ref{fig:settings}.
+Weiterhin gibt es noch die Seite, auf dem der Benutzer den derzeitigen Status seines aktuellen Boosters sehen kann, und falls er keinen hat, die Möglichkeit besitzt, einen neuen Booster zu erwerben, siehe Abbildung \ref{fig:booster}. Einstellungen, wie das Auswählen des Farbschemas, kann der Nutzer ebenfalls auf einer dedizierten Seite tätigen, siehe Abbildung \ref{fig:settings}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{images/infoboard_booster.png}
-    \caption{Auf dieser Seite kann der Benutzer verschiedene Booster erwerben und sehen wie lange der aktuelle noch aktiv ist.}
+    \caption{Auf dieser Seite kann der Benutzer verschiedene Booster erwerben und sehen, wie lange der Aktuelle noch aktiv ist.}
     \label{fig:booster}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{images/infoboard_usersite.png}
-    \caption{Auf dieser Seite kann der Benutzer einsehen wie viele Punkte er hat, wie sie aufgeteilt sind, welche Abzeichen er besitzt und welche Personen um ihm auf der Bestenliste sind. }
+    \caption{Auf dieser Seite kann der Benutzer einsehen, wie viele Punkte er hat, wie sie aufgeteilt sind, welche Abzeichen er besitzt und welche Personen direkt über oder unter ihm auf der Bestenliste stehen. }
     \label{fig:usersite}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{images/infoboard_settings.png}
-    \caption{Auf dieser Seite kann der Benutzer einsehen wie viele Punkte er hat, wie sie aufgeteilt sind, welche Abzeichen er besitzt und welche Personen um ihm auf der Bestenliste sind.}
+    \caption{Auf dieser Seite kann der Benutzer einsehen, wie viele Punkte er hat, wie sie aufgeteilt sind, welche Abzeichen er besitzt und welche Personen direkt über oder unter ihm auf der Bestenliste stehen.}
     \label{fig:settings}
 \end{figure}
 
-Eine allgemeine Übersicht der Aktivität aller Nutzer ist auf der Statistik-Seite zu sehen. Diese Seite ist dafür gedacht auf einem Fernseher, der in einem öffentlichen Raum des Betriebes aufgehängt ist, angezeigt zu werden. Die Seite unterteilt sich in drei Abschnitte. Der erste Teil zeigt zwei Bestenlisten an, eine für den kompletten Zeitraum und eine für den letzten Monat. Im zweiten Teil ist die Gesamtpunktzahl der Mitarbeiter zu sehen, wie auf der Seite mit den Benutzerstatistiken, ist sie aufgeteilt in die einzelnen Kategorien. Der Dritte Teil besteht aus einem Livestream der Nutzeraktivitäten, jedes mal wenn eine Aktion ausgeführt wurde wird dies dort angezeigt. Die Seite ist zu sehen in Abbildung \ref{fig:stats}.
+Eine allgemeine Übersicht der Aktivität aller Nutzer ist auf der Statistik-Seite zu sehen. Diese Seite ist dafür gedacht, auf einem Fernseher, der in einem öffentlichen Raum des Betriebes aufgehängt ist, angezeigt zu werden. Die Seite unterteilt sich in drei Abschnitte. Der erste Teil zeigt zwei Bestenlisten an, eine für den kompletten Zeitraum und eine für den letzten Monat. Im zweiten Teil ist die Gesamtpunktzahl der Mitarbeiter zu sehen. Wie auf der Seite mit den Benutzerstatistiken, ist sie aufgeteilt in die einzelnen Kategorien. Der Dritte Teil besteht aus einem Livestream der Nutzeraktivitäten, jedes Mal wenn eine Aktion ausgeführt wurde, dort anzeigt. Die Seite ist zu sehen in Abbildung \ref{fig:stats}.
 
 \begin{figure}[htbp]
     \centering
@@ -967,9 +967,9 @@ Der Aufbau der eigentlichen Komponenten, wird Beispielhaft in Appendix \ref{chap
 
 \section{Backend}\label{sec:backend}
 
-Im Verlaufe der Arbeit wurde erkannt das eine dedizierte Backend-Applikation nötig ist um den Grad der Interaktion und Dynamik zu ermöglichen die als Ziel gesetzt wurde. Es gibt einige Frameworks die zur Frage standen, aber schließlich viel fiel die Entscheidung auf node.js, da dadurch die Möglichkeit bestand einiges an Quelltext mit dem Frontend zu teilen. Das node.js \textit{non-blocking} ist und \textit{event-driven IO} benutzt macht es Vorteilhaft für Applikation die viele Anfragen verarbeiten müssen \citep{tilkov2010node}. Anders als in klassischen Frameworks wie rails oder django, wo bei jedem request ein neuer Thread aufgemacht der solange blockiert ist, bis er abgehandelt wurde, wird jede Anfrage von einem \textit{event-loop} abgehandelt \citep{tilkov2010node}. Alles in node.js ist asynchron, weswegen diese Anfragen nicht blockieren. Damit ist es mit node.js möglich bis zu 1 Million gleichzeitige Verbindungen zu halten \cite{node1m}.
+Im Verlaufe der Arbeit wurde erkannt, dass eine dedizierte Backend-Applikation nötig ist, um den Grad der Interaktion und der Dynamik zu ermöglichen, die als Ziele gesetzt wurden. Es gibt einige Frameworks, die zur Frage standen, aber schließlich fiel die Entscheidung auf node.js, da dadurch die Möglichkeit bestand, einiges an Quelltext mit dem Frontend zu teilen. Das node.js \textit{non-blocking} ist und \textit{event-driven IO} benutzt, macht es vorteilhaft für Applikationen, die viele Anfragen verarbeiten müssen \citep{tilkov2010node}. Anders als in klassischen Frameworks wie rails oder django, wo bei jeder Anfrage ein neuer Thread aufgemacht wird, der solange blockiert ist, bis er abgehandelt wurde, wird jede Anfrage von einem \textit{event-loop} beantwortet \citep{tilkov2010node}. Alles in node.js ist asynchron, weswegen diese Anfragen nicht blockieren. Damit ist es mit node.js möglich, bis zu 1 Million Verbindungen zeitgleich zu halten \cite{node1m}.
 
-Als Datenbank wurde mysql verwendet, die mittels einem Object Relationship Mapper (kurz ORM) angesteuert wird. Mit einem ORM ist es möglich Datenbanken mittels Klassen und Objekten zu abstrahieren. Ein ORM ist jedoch nur eine einfach Abstraktion und beherrscht nicht alle Funktionalitaten SQLs, jedoch reichen die Fähigkeiten des ORMs meistens aus und es kann immer auf direkte SQL-Anfragen zurückgeriffen werden. Das hier Verwendete ORM ist sequelize \cite{sequelize}. Als Datenbank wird mysql verwendet, da viel internes know-how mit dieser Datenbank bestand. Es können aber ohne Einschränkungen andere von sequelize unterstützte Datenbanken benutzt werden.
+Als Datenbank wurde mysql verwendet, die durch einem Object Relationship Mapper (kurz ORM) angesteuert wird. Mit einem ORM ist es möglich, Datenbanken mittels Klassen und Objekten zu abstrahieren. Ein ORM ist jedoch nur eine einfach Abstraktion und beherrscht nicht alle Funktionalitaten SQLs, jedoch reichen die Fähigkeiten des ORMs meistens aus und es kann immer auf direkte SQL-Anfragen zurückgegriffen werden. Das hier Verwendete ORM ist sequelize \cite{sequelize}. Als Datenbank wird mysql verwendet, da viel internes Knowhow mit dieser Datenbank bestand. Es können aber ohne Einschränkungen andere von sequelize unterstützte Datenbanken benutzt werden.
 
 Das verwendete Datenmodell kann in Abbildung \ref{fig:database} betrachtet werden, es ist komplett mit sequelize beschrieben und ist damit ohne viel Aufwand veränderbar.
 

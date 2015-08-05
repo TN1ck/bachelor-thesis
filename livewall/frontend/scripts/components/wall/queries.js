@@ -2,26 +2,41 @@ import React      from 'react/addons';
 import Reflux     from 'reflux';
 import _          from 'lodash';
 
+import Query      from '../../models/Query.js';
 import actions    from '../../actions/actions.js';
 import dataStore  from '../../stores/data.js';
 import queryStore from '../../stores/queries.js';
 
+/**
+ * React-Compnonent that visualizes a query with its request-state
+ */
 var Query = React.createClass({
-    displayName: 'query',
+    displayName: 'Query',
+
+    propTypes: {
+        query: React.ProptTypes.instanceOf(Query).isRequired
+        remove: React.PropTypes.func.isRequired
+    },
+
+    /**
+     * Returns the correct icon of the query with respect to the request-state
+     * @returns {React.ProptTypes.element} The icon
+     */
     createIcon: function () {
         var loading = _.some(this.props.query.broker, b => {
             return b.status === 'pending';
         });
 
-        if (loading) {
-            return <span className="fa-gear fa-spin"></span>;
-        } else {
-            return <span className="fa-remove"></span>;
-        }
+        return (
+            <span className={`${loading ? 'fa-gear fa-spin' : 'fa-remove'}`}>
+            </span>
+        );
     },
+
     render: function () {
 
         var query = this.props.query;
+        var remove = this.props.remove;
         var color = query.color;
 
         return (
@@ -29,7 +44,7 @@ var Query = React.createClass({
                 <div className='query__container'>
                     <div className='query__term'>{query.term}</div>
                     <div className='query__button'
-                        onClick={this.props.removeQuery}>
+                        onClick={remove}>
                         {this.createIcon()}
                     </div>
                 </div>
@@ -38,11 +53,20 @@ var Query = React.createClass({
     }
 });
 
+/**
+ * React-Compnonent with an input-field were new queries can be entered
+ */
 var AddQuery = React.createClass({
-    displayName: 'add-query',
+    displayName: 'AddQuery',
+
+    propTypes: {
+        submitCallback: React.PropTypes.func
+    },
+
     shouldComponentUpdate: function () {
         return false;
     },
+
     handleSubmit: function (e) {
 
         e.preventDefault();
@@ -50,6 +74,7 @@ var AddQuery = React.createClass({
         this.props.submitCallback(query);
 
     },
+
     render: function () {
         return (
             <form className='query__element' onSubmit={this.handleSubmit}>
@@ -65,20 +90,39 @@ var AddQuery = React.createClass({
     }
 });
 
+/**
+ * Will visualize all current queries with their state, as well draw
+ * an input-field for entering new queries. Provides the needded callbacks
+ * for deleting and creating queries
+ */
 export default React.createClass({
-    displayName: 'queries',
+    displayName: 'Queries',
+
+    propTypes: {
+        queries: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Query))
+    },
+
+    // update when the queryStore changed
     mixins: [Reflux.connect(queryStore, 'queries')],
+
     removeQuery: function (query) {
         actions.removeQuery(query);
     },
+
     addQuery: function (result) {
-        actions.addQuery(result, true, true);
+        // true means that we want to track the action
+        actions.addQuery(result, true);
     },
+
+    /**
+     * Create a Query-Component for every query
+     * @returns {Component} List of queries
+     */
     createQueries: function () {
         var queries = _.map(this.state.queries, (s, k) => {
-            return <Query
-                removeQuery={() => this.removeQuery(k)}
-                query={s}/>;
+            return (
+                <Query remove={() => this.removeQuery(k)} query={s}/>
+            );
         });
 
         return (
@@ -87,6 +131,7 @@ export default React.createClass({
             </ul>
         );
     },
+
     render: function () {
         return (
             <div className='queries'>

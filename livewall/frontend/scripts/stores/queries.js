@@ -10,7 +10,7 @@ import SETTINGS   from '../settings.js';
 import Query      from '../models/Query.js';
 
 /**
- * The Querystore handles the querying of queries
+ * The Querystore handles the querying of Brokers
  */
 export default Reflux.createStore({
 
