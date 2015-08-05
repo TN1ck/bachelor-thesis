@@ -19,14 +19,24 @@ import t from '../../../shared/translations/translation.js';
 
 export default React.createClass({
     displayName: 'header',
+
     mixins: [
         Reflux.connect(gameStore),
         Reflux.connect(userStore)
     ],
+
+    /**
+     * Creates all links in the header, will show different links according to
+     * the state of the user-authentication
+     * @returns {Component}
+     */
     createLinks: function () {
+
         var style = {lineHeight: 0};
         var isLoggedIn = this.state.user.isLoggedIn();
 
+        /* The links that will be shown, if the restricted-flag is set, the link
+            won't be shown if the user isn't authenticated */
         var links = [
             {
                 name: t.label.brand,
@@ -34,30 +44,38 @@ export default React.createClass({
                 restricted: true
             },
             {
-                name: <span>
-                    <i style={style} className='fa fa-gears'></i> {t.label.settings}
-                    </span>,
+                name: (
+                    <span>
+                        <i style={style} className='fa fa-gears'></i> {t.label.settings}
+                    </span>
+                ),
                 link: 'settings',
                 restricted: true
             },
             {
-                name: <span>
-                    <i style={style} className='fa fa-trophy'></i> {t.label.badges}
-                </span>,
+                name: (
+                    <span>
+                        <i style={style} className='fa fa-trophy'></i> {t.label.badges}
+                    </span>
+                ),
                 link: 'badges',
                 restricted: true
             },
             {
-                name: <span>
-                    <i style={style} className='fa fa-dollar'></i> {t.label.booster}
-                </span>,
+                name: (
+                    <span>
+                        <i style={style} className='fa fa-dollar'></i> {t.label.booster}
+                    </span>
+                ),
                 link: 'booster',
                 restricted: true
             },
             {
-                name: <span>
-                    <i style={style} className='fa fa-bar-chart'></i> {t.label.stats}
-                </span>,
+                name: (
+                    <span>
+                        <i style={style} className='fa fa-bar-chart'></i> {t.label.stats}
+                    </span>
+                ),
                 link: 'stats',
                 restricted: true
             },
@@ -67,10 +85,11 @@ export default React.createClass({
             }
         ];
 
+        // create the links depending on the state of the user-authentication
         var nav = links.filter(l => {
             return !l.restricted || isLoggedIn;
         }).map((link, i) => {
-            return <NavItemLink to={link.link}>{link.name}</NavItemLink>
+            return <NavItemLink to={link.link}>{link.name}</NavItemLink>;
         });
 
         return (
@@ -79,6 +98,12 @@ export default React.createClass({
             </Nav>
         );
     },
+
+    /**
+     * Creates the user-info, were his current points, his level and his position
+     * are shown
+     * @returns {Component}
+     */
     createUser: function () {
 
         var monthly = this.state.monthly.user;
@@ -98,8 +123,10 @@ export default React.createClass({
             </Nav>
         );
     },
+
     render: function () {
 
+        // hide the header if its set in the settings
         if (SETTINGS.HIDE_HEADER) {
             return <span></span>;
         }

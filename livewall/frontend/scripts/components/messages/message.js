@@ -6,19 +6,32 @@ import BADGES                    from '../../../shared/gamification/badges.js';
 import BOOSTER                   from '../../../shared/gamification/booster.js';
 import Icon                      from '../utility/icon.js';
 
+/**
+ * Creates a message for an acquired booster, level or badge
+ */
 export default React.createClass({
+    displayName: 'Message',
+
+    propTypes: {
+        message: React.ProptTypes.object
+    },
+
     getInitialState: function () {
         return {
             progress: 0
         };
     },
+
     componentDidMount: function () {
+        /* to animate the loading bar we set the progress to 100, the 50ms seconds
+           make sure it wont start with 100 */
         setTimeout(() => {
             this.setState({
                 progress: 100
             });
-        }, 0);
+        }, 50);
     },
+
     render: function () {
 
         var {type, content, duration} = this.props.message;
@@ -91,4 +104,5 @@ export default React.createClass({
             </div>
         );
     }
+
 });

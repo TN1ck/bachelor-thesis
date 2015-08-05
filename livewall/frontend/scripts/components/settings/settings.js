@@ -46,7 +46,10 @@ var WORDS = [
 var ColorSchema = React.createClass({
 
     propTypes: {
-        schema: React.PropTypes.object
+        schema: React.PropTypes.object,
+        active: React.PropTypes.bool,
+        onClick: React.PropTypes.func,
+        level: React.PropTypes.number
     },
 
     render: function () {
@@ -58,6 +61,7 @@ var ColorSchema = React.createClass({
             return <span><Label style={{backgroundColor: color}}>{word}</Label> </span>;
         });
 
+        // he can choose the schema if his level is high enough
         var isAllowedToUse = level <= this.props.level;
 
         var buttonText = {
@@ -89,35 +93,58 @@ var ColorSchema = React.createClass({
     }
 });
 
+/**
+ * The settings-page
+ */
 export default React.createClass({
     displayName: 'setings',
+
     mixins: [
         Reflux.connect(gameStore),
     ],
+
     getDefaultProps: function () {
         return {
             settings: SETTINGS
         };
     },
+
+    /**
+     * Permantly save a setting
+     *
+     * @param {String} id The key of the setting to be saved
+     * @param {*} value The value of the setting to be saved
+     */
     save: function (id, value) {
         SETTINGS.save(id, value);
         this.setState({
             settings: SETTINGS
         });
     },
+
+    /**
+     * Creates a list of colorschemes
+     * @returns
+     */
     createColorSchemes: function () {
 
         var currentlySelected = SETTINGS.color_scheme;
         var level = this.state.level;
-        var points = this.state.alltime.user.points.all;
 
         return rewards.filter(r => {
+            // only use the rewards that have the type `color_scheme`
             return r.type === 'color_scheme';
         }).map(schema => {
+            // is true when the schema is currently selected
             var active = schema.id === currentlySelected;
-            return <ColorSchema onClick={this.save} active={active} level={level} points={points} schema={schema}/>
+            return <ColorSchema
+                onClick={this.save}
+                active={active}
+                level={level}
+                schema={schema}/>
         });
     },
+
     render: function () {
         return (
             <Grid>

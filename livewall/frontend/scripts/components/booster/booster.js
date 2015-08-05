@@ -15,7 +15,7 @@ import Icon                from '../utility/icon.js';
 
 import t                   from '../../../shared/translations/translation.js';
 
-import booster             from '../../../shared/gamification/booster.js';
+import BOOSTER             from '../../../shared/gamification/booster.js';
 
 import {postBooster}       from '../../api/api.js';
 
@@ -26,26 +26,36 @@ import {
     Jumbotron, Alert, PageHeader, Label, Well, Panel
 }                          from 'react-bootstrap';
 
-// import {ReactSourceSelect, ReactSource} from './sources.js';
-//
-
+/**
+ * Provides all the functionality of showing and buying a booster
+ */
 var BoosterComponent = React.createClass({
+    displayName: 'Booster',
+
+    propTypes: {
+        booster: React.PropTypes.object,
+        userPoints: React.PropTypes.number,
+        disable: React.PropTypes.bool,
+        active: Recat.PropTypes.bool
+    },
+
     getInitialState: function () {
         return {
             loading: false
         };
     },
+
     buyBooster: function () {
-        this.setState({
-            loading: true
-        });
+        // show a loding indicitor as long as the request is running
+        this.setState({loading: true});
         actions.buyBooster(this.props.booster.id);
     },
+
     componentWillReceiveProps: function () {
-        this.setState({
-            loading: false
-        });;
+        // request finished, turn off the loading
+        this.setState({loading: false});
     },
+
     render: function () {
         var {
             name, duration, text, image,
@@ -60,12 +70,15 @@ var BoosterComponent = React.createClass({
             true: <span>{t.label.booster} {t.label.active}</span>
         }[this.props.disable];
 
+        /* the user cannot buy new boosters if he does not have enough points or
+           has another booster currently active */
         if (!this.props.disable && !enoughPoints) {
             buttonText = <span>{t.boosterPage.missing} {points - userPoints} {t.label.points}</span>;
         }
 
         var _active;
 
+        // this is the booster the user is currently using, visualize this
         if (this.props.active) {
             _active = <strong>{t.boosterPage.isActive}</strong>;
         }
@@ -108,10 +121,10 @@ var BoosterComponent = React.createClass({
 });
 
 export default React.createClass({
-    displayName: 'booster',
-    mixins: [
-        Reflux.listenTo(gameStore, 'onStoreChange')
-    ],
+    displayName: 'BoosterPage',
+
+    mixins: [Reflux.listenTo(gameStore, 'onStoreChange')],
+
     getInitialState: function () {
         var state = gameStore.state;
         var booster = this.calcBooster(state)
@@ -120,6 +133,7 @@ export default React.createClass({
             left: this.calcTimeLeft(booster)
         });
     },
+
     onStoreChange: function (state) {
         var booster = this.calcBooster(state)
         this.setState(_.extend(state, {
@@ -127,6 +141,15 @@ export default React.createClass({
             left: this.calcTimeLeft(booster)
         }));
     },
+
+    /**
+     * Takes the state and returns a dictionary that holds the currently active
+     * Booster (only when there is an active Booster) and how long it will stay
+     * active
+     *
+     * @param {Object} state The current state
+     * @returns {{isActive: Boolean, last: Object, validUntil: Duration}}
+     */
     calcBooster: function (state) {
 
         var b = {
@@ -146,12 +169,25 @@ export default React.createClass({
 
         return b;
     },
+
+    /**
+     * Calculates the duration the given Booster will stay active
+     *
+     * @param {Object} booster The Booster w
+     * @returns {Duration}
+     */
     calcTimeLeft: function (booster) {
         var left = moment.duration(moment(booster.validUntil).diff(moment()));
         return left;
     },
-    createBooster: function () {
-        return booster.map(b => {
+
+    /**
+     * Creates a Booster Component for every `Booster` in `BOOSTERS`
+     *
+     * @returns {Component}
+     */
+    createBoosters: function () {
+        return BOOSTER.map(b => {
             var active = _.get(this.state.booster, '.last.name') === b.id;
             return <BoosterComponent
                 key={b.id}
@@ -162,6 +198,7 @@ export default React.createClass({
             />
         })
     },
+
     componentDidMount: function () {
         this.interval = setInterval(() => {
             var left = this.calcTimeLeft(this.state.booster);
@@ -170,9 +207,11 @@ export default React.createClass({
             });
         }, 500);
     },
+
     componentWillUnmount: function () {
         clearInterval(this.interval);
     },
+
     render: function () {
 
         var _booster;
@@ -194,7 +233,7 @@ export default React.createClass({
                         {_booster}
                     </Col>
                     <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionEnter={true}>
-                        {this.createBooster()}
+                        {this.createBoosters()}
                     </ReactCSSTransitionGroup>
                 </Row>
             </Grid>

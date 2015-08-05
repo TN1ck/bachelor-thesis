@@ -98,10 +98,6 @@ var AddQuery = React.createClass({
 export default React.createClass({
     displayName: 'Queries',
 
-    propTypes: {
-        queries: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Query))
-    },
-
     // update when the queryStore changed
     mixins: [Reflux.connect(queryStore, 'queries')],
 
