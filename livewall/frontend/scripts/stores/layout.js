@@ -209,19 +209,18 @@ export default Reflux.createStore({
                 var cssClass = 'animate-opacity';
 
                 newTile = tile.merge({
-                    position: Immutable.Map({
-                        left: left,
-                        top: 0,
-                        column: columnIndex
-                    }),
                     relayout: true,
+                    class: cssClass,
                     css: css,
-                    class: cssClass
+                    position: {
+                        top: 0,
+                        left: left,
+                        column: columnIndex
+                    }
                 });
 
             } else {
-                var updatedTile = tile.updateIn(['position', 'left'], left, () => left);
-                newTile = oldTile.merge(updatedTile);
+                newTile = oldTile.merge(tile);
             }
 
             return newTile;
@@ -230,11 +229,7 @@ export default Reflux.createStore({
 
         // instantly update
         // we only want to debounce when new items are added
-        if (temp.count() >= this.items.count()) {
-            this.layout(true);
-        } else {
-            this.debouncedLayout();
-        }
+        this.layout(true);
     },
 
     /**
@@ -288,7 +283,7 @@ export default Reflux.createStore({
         this.calculateColumns();
 
         this.items = this.items
-            .filter(item => item && !item.get('dom'))
+            .filter(item => item && item.get('dom'))
             .map((item) => {
                 return item.set('height', item.get('dom').offsetHeight);
             });
@@ -304,6 +299,8 @@ export default Reflux.createStore({
      * @param {Boolean} transition Specify if transitions should be active
      */
     layout: function (transition = true) {
+
+        console.log('LAYOUT');
 
         // calculate columns using the groupFunction and the sortFunction
         var columns = this.groupFunction(
@@ -395,32 +392,10 @@ export default Reflux.createStore({
             return;
         }
 
-        // these values will specify where the item will start its animation
-        var columnIndex = 0;
-        var left = 0;
-
-        // calculate the height of the item
-        var height = dom.offsetHeight;
-
-        // create initial CSS
-        var translate = `translate3D(${left}px , 0px, 0)`;
-        var css = {
-            transform: translate,
-            '-webkit-transform': translate
-        };
-        var cssClass = 'animate-opacity';
-
         // update the tile with its DOM-node and its height
         item = item.merge({
             dom: dom,
-            height: height,
-            position: Immutable.Map({
-                left: left,
-                top: 0,
-                column: columnIndex
-            }),
-            css: css,
-            class: cssClass
+            height: dom.offsetHeight
         });
 
         this.items = this.items.set(uuid, item);

@@ -193,7 +193,7 @@ export default Reflux.createStore({
 
         // trigger the change
         this.items = this.items.set(uuid, item);
-        this.triggerState.bind(this)(this.items);
+        this.triggerState();
 
         // persist the vote in the backend
         api.postVote({

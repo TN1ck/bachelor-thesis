@@ -40,7 +40,6 @@ var PiaTile = React.createClass({
                 <div className="tile__content__title">
                     <a target='_blank' href={this.props.tile.get('url')}>
                         <i className={'tile__content__icon fa ' + icon}></i>
-                        // the results contain styled markup
                         <p dangerouslySetInnerHTML={{__html: html}}>
                         </p>
                     </a>
@@ -226,7 +225,7 @@ export default React.createClass({
             ['favourite'],
             ['score']
         ], attr => {
-            this.props.tile.getIn(attr) !== props.tile.getIn(attr);
+            return this.props.tile.getIn(attr) !== props.tile.getIn(attr);
         });
 
     },
