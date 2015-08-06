@@ -1,10 +1,6 @@
-import _          from 'lodash';
 import Reflux     from 'reflux';
-import moment     from 'moment';
 
 import actions    from '../actions/actions.js';
-import {user}     from '../auth.js';
-import SETTINGS   from '../settings.js';
 
 /**
  * The Messagestore handles flashmessages
@@ -67,7 +63,7 @@ export default Reflux.createStore({
             if (this.state.messages.length !== 0) {
                 setTimeout(() => {
                     this.showAndDestroy();
-                }, 500)
+                }, 500);
             } else {
                 this.triggerState();
                 this.isRunning = false;

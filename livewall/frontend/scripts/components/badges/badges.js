@@ -2,13 +2,13 @@ import React                from 'react/addons';
 import _                    from 'lodash';
 import Reflux               from 'reflux';
 import {
-    Grid, Row, Col, Input, Button,
-    Jumbotron, Alert, PageHeader, Badge,
-    Table, Well
+    Grid,
+    Row,
+    Col,
+    PageHeader
 }                           from 'react-bootstrap';
 
 import gameStore            from '../../stores/game.js';
-import {user, requireAuth}  from '../../auth.js';
 
 import BADGES               from '../../../shared/gamification/badges.js';
 import LEVELS               from '../../../shared/gamification/levels.js';
@@ -29,14 +29,14 @@ var BadgeComponent = React.createClass({
     displayName: 'Badge',
 
     propTypes: {
-        badge: React.propTypes.object
+        badge: React.PropTypes.object
     },
 
     render: function () {
         var {
             number, name, text,
-            points, image, name,
-            type, fill, image
+            points, image,
+            type, fill
         } = this.props.badge;
 
         var body = (
@@ -115,8 +115,8 @@ export default React.createClass({
 
     render: function () {
 
-        var userBadges = this.state.alltime.user.badges.map(t => {
-            return _.find(BADGES, {id : t.id});
+        var userBadges = this.state.alltime.user.badges.map(tt => {
+            return _.find(BADGES, {id : tt.id});
         });
 
         // create Badges and sort them by color

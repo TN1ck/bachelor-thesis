@@ -1,8 +1,6 @@
 import _                  from 'lodash';
 import Reflux             from 'reflux';
 import Immutable          from 'immutable';
-import $                  from 'jquery';
-import moment             from 'moment';
 import io                 from 'socket.io-client';
 
 import actions            from '../actions/actions.js';
@@ -35,7 +33,7 @@ export default Reflux.createStore({
                 points: {
                     all: 0,
                     place: 0,
-                    badges: 0,
+                    badges: 0
                 }
             },
             users: [
@@ -79,7 +77,6 @@ export default Reflux.createStore({
                 // the global points when an action happened
                 this.socket = io(SETTINGS.SOCKET_URL);
                 this.socket.on('connect', function () {
-                    console.log('connection is working!');
                 });
 
                 this.socket.on('action_created', (action) => {
@@ -133,7 +130,7 @@ export default Reflux.createStore({
         /* post the action to the backend and create flashmessages for new
            badges */
         return api.postAction(dict).then((answer) => {
-            var {action, badges} = answer;
+            var {badges} = answer;
             if (badges.length > 0) {
                 badges.forEach((badge) => {
                     actions.addFlashMessage({
@@ -149,7 +146,7 @@ export default Reflux.createStore({
     },
 
     updateGlobalPoints: function (answer) {
-        var {action, badges, states} = answer;
+        var {action, badges} = answer;
 
         var {
             group, label, points
@@ -182,7 +179,7 @@ export default Reflux.createStore({
 
     updateUserPoints: function (answer) {
 
-        var {action, badges, stats} = answer;
+        var {action, badges} = answer;
 
         var {
             group, label, points
@@ -213,8 +210,8 @@ export default Reflux.createStore({
 
     calcLevel: function () {
         var current = this.state.level;
-        var level = (_.findLast(LEVELS, (level) => {
-            return level.points <= this.state.alltime.user.points.all;
+        var level = (_.findLast(LEVELS, (_level) => {
+            return _level.points <= this.state.alltime.user.points.all;
         }) || LEVELS[0]);
 
         // user arrived new level, send message

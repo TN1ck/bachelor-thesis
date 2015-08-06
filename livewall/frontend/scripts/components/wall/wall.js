@@ -1,6 +1,5 @@
 import React        from 'react/addons';
 import Reflux       from 'reflux';
-import Immutable    from 'immutable';
 
 import layoutStore  from '../../stores/layout.js';
 
@@ -22,8 +21,7 @@ export default React.createClass({
     mixins: [Reflux.connect(layoutStore, 'items')],
 
     componentDidMount: function() {
-        // append the resize-listener to the DOM of the wall
-        var dom = this.refs.wall.getDOMNode();
+        // append the resize-listener to the window
         this.resize = layoutStore.getResizeCallback();
         window.addEventListener('resize', this.resize);
         this.resize();
@@ -59,7 +57,7 @@ export default React.createClass({
             // sanity-check to remove all tiles that are undefined
             .filter(t => t)
             // create the components
-            .map((tile) => <Tile tile={tile} key={tile.get('uuid')}/>);
+            .map(tile => <Tile tile={tile} key={tile.get('uuid')}/>);
     },
 
     render: function () {
@@ -70,11 +68,11 @@ export default React.createClass({
                     <ReactCSSTransitionGroup
                         transitionName="fade"
                         transitionAppear={false}
-                        transitionEnter={false}>
+                        transitionEnter={false}
+                        >
                         {this.createTiles()}
                     </ReactCSSTransitionGroup>
                     {this.createLoader()}
-                    </div>
                 </div>
             </div>
         );

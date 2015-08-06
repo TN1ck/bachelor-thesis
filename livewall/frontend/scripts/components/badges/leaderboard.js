@@ -1,10 +1,6 @@
-import React from 'react';
-import _     from 'lodash';
-import {
-    Grid, Row, Col, Input, Button,
-    Jumbotron, Alert, PageHeader, Badge,
-    Table, Well
-} from 'react-bootstrap';
+import React     from 'react';
+import _         from 'lodash';
+import { Table } from 'react-bootstrap';
 
 import t from '../../../shared/translations/translation.js';
 
@@ -26,24 +22,22 @@ export default React.createClass({
         // when a user is given we create the user-centric Leaderboard
         if (highlightUser) {
             var place = highlightUser.place;
-            var length = users.length;
-
-            users = _.slice(users, Math.max(place - 5, 0), (place + 5))
+            users = _.slice(users, Math.max(place - 5, 0), (place + 5));
         }
 
-        var sortFn = (a, b) => b.place - a.place;
+        var sortFn = (a, b) => a.place - b.place;
 
         // sort and take best 20
         users = users.sort(sortFn).slice(0, 20);
 
         // create the leaderboard
         var list = users.map(_user => {
-            var {points, badges, actions} = _user;
+            var {points, badges} = _user;
             var name = _user.username;
 
             var _badges = badges.length;
 
-            var trClass = ''
+            var trClass = '';
 
             // if a user was given, highlight his row
             if (highlightUser && name === highlightUser.username) {

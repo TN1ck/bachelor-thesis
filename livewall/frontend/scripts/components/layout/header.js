@@ -1,17 +1,12 @@
 import React     from 'react/addons';
 import Reflux    from 'reflux';
-import {Link}    from 'react-router';
 import gameStore from '../../stores/game.js';
 import userStore from '../../stores/user.js';
 import SETTINGS  from '../../settings.js';
 
 import {
     Nav, Navbar,
-    DropdownButton,
-    MenuItem,
-    NavItem,
     CollapsibleNav,
-    Badge
 } from 'react-bootstrap';
 import {NavItemLink} from 'react-router-bootstrap';
 
@@ -106,7 +101,6 @@ export default React.createClass({
      */
     createUser: function () {
 
-        var monthly = this.state.monthly.user;
         var alltime = this.state.alltime.user;
         var level   = this.state.level;
 

@@ -10,13 +10,13 @@ export default React.createClass({
     displayName: 'Icon',
 
     propTypes: {
-        image: React.propTypes.string,
-        type: React.propTypes.string,
-        scale: React.propTypes.number,
-        x: React.propTypes.number,
-        y: React.propTypes.number,
-        rotate: React.propTypes.rotate,
-        fill: Recat.propTypes.string,
+        image: React.PropTypes.string,
+        type: React.PropTypes.string,
+        scale: React.PropTypes.number,
+        x: React.PropTypes.number,
+        y: React.PropTypes.number,
+        rotate: React.PropTypes.rotate,
+        fill: React.PropTypes.string
     },
 
     getDefaultProps: function() {
@@ -28,8 +28,8 @@ export default React.createClass({
             scale: 0.8,
             x: 105,
             y: 205,
-            fill: '#F6A623',
-        }
+            fill: '#F6A623'
+        };
     },
 
     render: function () {

@@ -16,7 +16,7 @@ import Stats    from './components/stats/stats.js';
 */
 import '../styles/main.less';
 
-var { Route, RouteHandler, Link, DefaultRoute } = Router;
+var { Route, DefaultRoute } = Router;
 
 // needed for React dev tools
 if (typeof window !== 'undefined') {

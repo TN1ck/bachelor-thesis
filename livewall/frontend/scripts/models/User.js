@@ -62,7 +62,7 @@ export default class User {
             url: SETTINGS.PROFILE_URL,
             data: params,
             dataType: 'jsonp',
-            jsonp: 'json.wrf',
+            jsonp: 'json.wrf'
 
         }).promise().then(json => {
             return this.processProfile(json);
@@ -129,6 +129,7 @@ export default class User {
     favourite (item) {
 
         // Only happens when the profile was not correctly loaded
+        /*eslint-disable */
         if (!this.profileRoots.favourites) {
             console.error('No favourite root set.');
             return;
@@ -140,6 +141,7 @@ export default class User {
             console.error('Only Elements that are conform to the DAI-Apis can be favourited.');
             return;
         }
+        /*eslint-enable */
 
         var escapedRawItem = escape(JSON.stringify(rawItem));
 
@@ -157,16 +159,18 @@ export default class User {
         };
 
         // favourite the item
+        /*eslint-disable */
         return $.ajax({
             type: 'GET',
             url: SETTINGS.PROFILE_URL,
             data: params,
             dataType: 'jsonp',
-            jsonp: 'json.wrf',
+            jsonp: 'json.wrf'
 
         }).then(json => {
             return json;
         });
+        /*eslint-enable */
     }
 
     /**
@@ -179,7 +183,9 @@ export default class User {
         var _item  = this.favourites[item.get('uuid')];
 
         if (!_item) {
+            /*eslint-disable */
             console.error('Cannot unfavourite things that aren not favorited yet');
+            /*eslint-enable */
             return;
         }
 
@@ -187,19 +193,21 @@ export default class User {
             username: this.username,
             token: this.token,
             action: 'ACTION_MANAGE_REMOVE',
-            itemId: _item.id,
+            itemId: _item.id
         };
 
+        /*eslint-disable */
         return $.ajax({
             type: 'GET',
             url: SETTINGS.PROFILE_URL,
             data: params,
             dataType: 'jsonp',
-            jsonp: 'json.wrf',
+            jsonp: 'json.wrf'
 
         }).then(json => {
             return json;
         });
+        /*eslint-enable */
     }
 
     //
@@ -254,7 +262,7 @@ export default class User {
             data: {
                 username: username,
                 token: token,
-                action: 'ACTION_CHECK_LOGIN',
+                action: 'ACTION_CHECK_LOGIN'
             },
             dataType: 'jsonp',
             jsonp: 'json.wrf',
@@ -264,15 +272,14 @@ export default class User {
             if (response &&
                 response.status &&
                 response.status.code === 200) {
-                    this.initUser({
-                        username: username,
-                        token: token
-                    });
-                    return true;
+                this.initUser({
+                    username: username,
+                    token: token
+                });
+                return true;
             // token is not valid, auth failed
-            } else {
-                return false;
             }
+            return false;
         });
     }
 
@@ -285,9 +292,9 @@ export default class User {
         var token = cookies.get('token');
 
         if (token) {
-            this.loginPromise = this.checkLogin(token, username).then((data) => {
+            this.loginPromise = this.checkLogin(token, username).then(() => {
                 this.loginPromise = false;
-            }).fail((result) => {
+            }).fail(() => {
                 this.loginPromise = false;
             });
         }
@@ -310,7 +317,7 @@ export default class User {
             }).fail(() => {
                 cb(false);
             });
-            return;
+            return false;
         }
 
         if (cb) {

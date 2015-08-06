@@ -4,16 +4,14 @@ import Reflux              from 'reflux';
 import SETTINGS            from '../../settings.js';
 
 import gameStore           from '../../stores/game.js';
-import actions             from '../../actions/actions.js';
-import {camelCaseToBar, hashCode}    from '../../../shared/util/utils.js';
+import {hashCode}    from '../../../shared/util/utils.js';
 import rewards             from '../../../shared/gamification/rewards.js';
-import LEVELS              from '../../../shared/gamification/levels.js';
 
 import t from '../../../shared/translations/translation.js';
 
 import {
-    Grid, Row, Col, Input, Button, Badge,
-    Jumbotron, Alert, PageHeader, Label, Well, Panel
+    Grid, Row, Col, Button,
+    Label, Panel
 } from 'react-bootstrap';
 
 // words used for the coloschemas
@@ -99,9 +97,7 @@ var ColorSchema = React.createClass({
 export default React.createClass({
     displayName: 'setings',
 
-    mixins: [
-        Reflux.connect(gameStore),
-    ],
+    mixins: [Reflux.connect(gameStore)],
 
     getDefaultProps: function () {
         return {
@@ -141,7 +137,7 @@ export default React.createClass({
                 onClick={this.save}
                 active={active}
                 level={level}
-                schema={schema}/>
+                schema={schema}/>;
         });
     },
 

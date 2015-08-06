@@ -42,17 +42,17 @@ settings.HIDE_HEADER = false;
 // the used broker in the application
 settings.broker = [
     {
-        url:          "http://pia-dev-intern.dai-labor.de/service",
-        brokerName:   "PIA_Dev_intern_BrokerBean",
-        action:       "ACTION_SOLR",
+        url:          'http://pia-dev-intern.dai-labor.de/service',
+        brokerName:   'PIA_Dev_intern_BrokerBean',
+        action:       'ACTION_SOLR',
         restricted:   true,
         autocomplete: true
     },
     {
-        url:          "http://pia-dev.dai-labor.de/service",
-        brokerName:   "PIA_Dev_BrokerBean",
-        action:       "ACTION_SOLR",
-        filter:       "dai-labor",
+        url:          'http://pia-dev.dai-labor.de/service',
+        brokerName:   'PIA_Dev_BrokerBean',
+        action:       'ACTION_SOLR',
+        filter:       'dai-labor',
         restricted:   false,
         autocomplete: true
     }
@@ -63,10 +63,8 @@ settings.color_scheme = 'color_pastel';
 
 // client-side filter of the search-results
 settings.FILTER = {
-	'content': [
-        'kiel'
-    ],
-	'title': ['no title']
+    content: ['kiel'],
+    title: ['no title']
 };
 
 /**
@@ -80,7 +78,7 @@ function setFromLocal () {
             settings[k] = value;
         }
     });
-};
+}
 
 setFromLocal(settings);
 

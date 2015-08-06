@@ -11,7 +11,7 @@ function getDomain (url) {
     var matches = url.match(/\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     var domain = (matches && matches[1]) || 'not found';
     return domain;
-};
+}
 
 /**
  * Create a numerical hash for the provided string
@@ -41,16 +41,12 @@ function hashCode(str) {
 function compareStrings (a, b) {
     if (a === b) {
         return 0;
-    } else {
-        return a > b ? 1 : -1;
     }
-};
+    return a > b ? 1 : -1;
+}
 
 module.exports = {
-    camelCaseToBar: camelCaseToBar,
     getDomain:      getDomain,
     hashCode:       hashCode,
-    parseColor:     parseColor,
-    colorLuminance: colorLuminance,
     compareStrings: compareStrings
 };

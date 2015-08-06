@@ -122,4 +122,4 @@ export default React.createClass({
             </Row>
         );
     }
-})
+});

@@ -1,4 +1,4 @@
-var schemas = require('../util/colors.js').colorFunctions
+var schemas = require('../util/colors.js').colorFunctions;
 
 /* The rewards used in this application.
    Currently, only one type is available, that's

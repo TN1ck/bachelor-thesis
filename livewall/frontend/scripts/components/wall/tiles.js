@@ -18,7 +18,7 @@ var PiaTile = React.createClass({
     displayName: 'PiaTile',
 
     propTypes: {
-        tile: React.propTypes.instanceOf(Immutable.Map).isRequired
+        tile: React.PropTypes.instanceOf(Immutable.Map).isRequired
     },
 
     mixins: [PureRenderMixin],
@@ -59,7 +59,7 @@ var PiaTile = React.createClass({
 var tileTypes = {
     'pia-pdf': PiaTile,
     'pia-web': PiaTile,
-    'pia-contact': PiaTile,
+    'pia-contact': PiaTile
 };
 
 /**
@@ -146,7 +146,7 @@ var Header = React.createClass({
                         <div
                             className={`tile__header__favourite-button
                                         ${favourited}
-                                        ${loadingFavourite ? 'animate-rotate': ''}`}
+                                        ${loadingFavourite ? 'animate-rotate' : ''}`}
                             onClick={this.handleFavourite}>
                         </div>
                     </OverlayTrigger>
@@ -213,7 +213,7 @@ export default React.createClass({
         tile: React.PropTypes.instanceOf(Immutable.Map).isRequired
     },
 
-    shouldComponentUpdate: function (props, state) {
+    shouldComponentUpdate: function (props) {
         /* A simple reference check is not faster here, because
            the layoutstore updates the components regardless of change.
            This is one drawback in the seperation of the item and layoutstore.
@@ -223,10 +223,10 @@ export default React.createClass({
             ['css', 'transform'],
             ['css', 'opacity'],
             ['ownVote'],
-            ['favourite']
-            ['score'],
+            ['favourite'],
+            ['score']
         ], attr => {
-            this.props.getIn(attr) !== props.tile.getIn(attr);
+            this.props.tile.getIn(attr) !== props.tile.getIn(attr);
         });
 
     },
@@ -245,10 +245,10 @@ export default React.createClass({
         // if we do not know the type, we cannot visualize it
         if (!tileTypes[type]) {
             console.error('No tile for type ', type);
-            return;
+            return <span></span>;
         }
 
-        var tile = React.createElement(tileTypes[type], this.props});
+        var tile = React.createElement(tileTypes[type], this.props);
 
         // color the tile according to the query
         var style = _.extend(this.props.tile.get('css').toJS(), {
@@ -263,15 +263,15 @@ export default React.createClass({
         var score = Math.round(this.props.tile.get('score') + (this.props.tile.get('votes') || 0));
         var userVote = this.props.tile.get('ownVote');
 
-        var actions = this.props.tile.get('actions');
-        actions = actions ? actions.toJS() : [];
+        var _actions = this.props.tile.get('actions');
+        _actions = _actions ? _actions.toJS() : [];
 
         // the most recent action a user did
-        var lastAction = _.last(actions);
+        var lastAction = _.last(_actions);
 
         var domain = this.props.tile.get('domain');
 
-        var component = (
+        return (
             <article
                 className={`tile white ${cssClass} tile--${this.props.tile.get('type')}`}
                 style={style}>
@@ -285,8 +285,5 @@ export default React.createClass({
                 <Footer domain={domain} action={lastAction}/>
             </article>
         );
-
-        return component;
-
     }
 });

@@ -1,10 +1,8 @@
-import React                     from 'react';
-import { Col, Row, ProgressBar } from 'react-bootstrap';
+import React           from 'react';
 
-import t                         from '../../../shared/translations/translation.js';
-import BADGES                    from '../../../shared/gamification/badges.js';
-import BOOSTER                   from '../../../shared/gamification/booster.js';
-import Icon                      from '../utility/icon.js';
+import t               from '../../../shared/translations/translation.js';
+import BOOSTER         from '../../../shared/gamification/booster.js';
+import Icon            from '../utility/icon.js';
 
 /**
  * Creates a message for an acquired booster, level or badge
@@ -13,7 +11,7 @@ export default React.createClass({
     displayName: 'Message',
 
     propTypes: {
-        message: React.ProptTypes.object
+        message: React.PropTypes.object
     },
 
     getInitialState: function () {
@@ -65,7 +63,7 @@ export default React.createClass({
 
             icon = (
                 <Icon fill={booster.fill} type='none' image={booster.image}/>
-            )
+            );
         }
 
         if (type === 'level') {

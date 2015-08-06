@@ -1,7 +1,6 @@
 import _          from 'lodash';
 import Reflux     from 'reflux';
 import Immutable  from 'immutable';
-import moment     from 'moment';
 
 import actions    from '../actions/actions.js';
 import {user}     from '../auth.js';
@@ -61,7 +60,7 @@ export default Reflux.createStore({
 
         var processItems = items => {
 
-            var _items = items.map((d, i) => {
+            var _items = items.map((d) => {
                 d.query = query;
                 var dIm = Immutable.Map(d);
 
@@ -70,10 +69,10 @@ export default Reflux.createStore({
             });
 
             actions.addItems(_items);
+            this.trigger(this.queries);
 
             return _items;
 
-            this.trigger(this.queries);
 
         };
 
@@ -104,7 +103,7 @@ export default Reflux.createStore({
 
         this.trigger(this.queries);
 
-    },
+    }
 
 
 });

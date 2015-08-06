@@ -50,7 +50,7 @@ module.exports = {
         'booster_x3_2': {
             name: 'VERDREIFACHUNG DER PUNKTE FÜR 2 TAGE',
             text: 'Verdreifache deine Punkte für 2 Tage.'
-        },
+        }
     },
 
     messages: {
@@ -84,7 +84,7 @@ module.exports = {
                 down: 'hat etwas negativ bewertet.'
             },
             body: _.template('Dies Aktion wurde um ${ createdAt } Uhr ausgeführt. Sie hat ${ username } ${ points } Punkte erbracht.')
-        },
+        }
     },
 
     leaderboard: {
@@ -138,10 +138,10 @@ module.exports = {
         actions: {
             vote: {
                 up: 'berwertete dies positiv.',
-                down: 'berwertete dies negativ.',
+                down: 'berwertete dies negativ.'
             },
             favourite: {
-                toggle: 'favorisierte dies.',
+                toggle: 'favorisierte dies.'
             }
         }
     },
@@ -163,7 +163,7 @@ module.exports = {
             subHeader: 'Erreichen Sie eine bestimmte Punktzahl werden hier automatisch Features freigeschaltet.',
             colors: {
                 header: 'Farbschemas',
-                subHeader: 'Mittels der Farbschema können Sie die Farben der Suchergebnisse variieren. Sie müsen die Seite neu laden um das Schema anzuwenden.',
+                subHeader: 'Mittels der Farbschema können Sie die Farben der Suchergebnisse variieren. Sie müsen die Seite neu laden um das Schema anzuwenden.'
             },
             backgrounds: {
                 header: 'Hintergrundbilder und Farben',
@@ -173,7 +173,7 @@ module.exports = {
                 header: 'Erweiterte Funktionen',
                 subHeader: 'Durch Erweiterte Funktionen erhalten Sie mehr Macht in der Darstellung der Suchergebnissen, sei es die Art der Gruppierung oder die Prioriesierung der Broker.'
             }
-        },
+        }
     },
 
     rewards: {

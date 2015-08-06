@@ -25,7 +25,7 @@ var colorFunctions = {
             {s: 0.4, l: 0.4},
             {s: 0.5, l: 0.4},
             {s: 0.6, l: 0.3},
-            {s: 0.7, l: 0.3},
+            {s: 0.7, l: 0.3}
         ];
 
         // above 270 we get pink values, they do not look good
@@ -40,7 +40,7 @@ var colorFunctions = {
             {s: 0.5, l: 0.4},
             {s: 0.6, l: 0.4},
             {s: 0.7, l: 0.3},
-            {s: 0.8, l: 0.3},
+            {s: 0.8, l: 0.3}
         ];
 
         var h = hash % 270;
@@ -55,7 +55,7 @@ var colorFunctions = {
             {h: 207, s: 0.8, l: 0.5},
             {h: 240, s: 0.5, l: 0.4},
             {h: 270, s: 0.5, l: 0.6},
-            {h: 260, s: 0.5, l: 0.4},
+            {h: 260, s: 0.5, l: 0.4}
         ];
 
         var s = sScale((hash / 1000) % 1.0);
@@ -71,7 +71,7 @@ var colorFunctions = {
             {h: 80, s: 0.8,  l: 0.5},
             {h: 90, s: 0.5,  l: 0.3},
             {h: 100, s: 0.5, l: 0.4},
-            {h: 140, s: 0.5, l: 0.4},
+            {h: 140, s: 0.5, l: 0.4}
         ];
 
         var s = sScale((hash / 1000) % 1.0);
@@ -84,7 +84,7 @@ var colorFunctions = {
         var lScale = d3.scale.linear().domain([0, 1]).range([0, 0.6]);
 
         var hslStarts = [
-            {h: 207, s: 0, l: 0.5},
+            {h: 207, s: 0, l: 0.5}
         ];
 
         var l = lScale((hash / 1000) % 1.0);

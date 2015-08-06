@@ -4,17 +4,16 @@ import _          from 'lodash';
 
 import Query      from '../../models/Query.js';
 import actions    from '../../actions/actions.js';
-import dataStore  from '../../stores/data.js';
 import queryStore from '../../stores/queries.js';
 
 /**
  * React-Compnonent that visualizes a query with its request-state
  */
-var Query = React.createClass({
+var QueryComponent = React.createClass({
     displayName: 'Query',
 
     propTypes: {
-        query: React.ProptTypes.instanceOf(Query).isRequired
+        query: React.PropTypes.instanceOf(Query).isRequired,
         remove: React.PropTypes.func.isRequired
     },
 
@@ -117,7 +116,7 @@ export default React.createClass({
     createQueries: function () {
         var queries = _.map(this.state.queries, (s, k) => {
             return (
-                <Query remove={() => this.removeQuery(k)} query={s}/>
+                <QueryComponent remove={() => this.removeQuery(k)} query={s}/>
             );
         });
 

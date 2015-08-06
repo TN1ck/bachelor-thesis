@@ -1,7 +1,5 @@
 import React                     from 'react/addons';
 import Reflux                    from 'reflux';
-import { RouteHandler }          from 'react-router';
-import { Col, Row, Grid }        from 'react-bootstrap';
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 import messageStore              from '../../stores/messages.js';
@@ -14,10 +12,10 @@ export default React.createClass({
     displayName: 'Messages',
 
     mixins: [Reflux.connect(messageStore)],
-    
+
     createMessages: function () {
         return this.state.messages.map(message => {
-            return <MessageCard message={message}/>
+            return <MessageCard message={message}/>;
         });
     },
 

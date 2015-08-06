@@ -5,8 +5,8 @@ var t      = require('../translations/translation.js');
 module.exports = [
     {
         id: 'booster_x2_1',                   // the id, will be saved in the database
-        name: t.booster['booster_x2_1'].name, // the general name of the booster
-        text: t.booster['booster_x2_1'].text, // what will this booster do
+        name: t.booster.booster_x2_1.name, // the general name of the booster
+        text: t.booster.booster_x2_1.text, // what will this booster do
         type: 'none',                         // crown of the booster, should be `none`
         fill: colors.vinrouge,                // color of the booster
         image: 'rocket',                      // icon of the booster
@@ -16,8 +16,8 @@ module.exports = [
     },
     {
         id: 'booster_x2_2',
-        name: t.booster['booster_x2_2'].name,
-        text: t.booster['booster_x2_2'].text,
+        name: t.booster.booster_x2_2.name,
+        text: t.booster.booster_x2_2.text,
         type: 'none',
         fill: colors.vinrouge,
         image: 'rocket',
@@ -27,8 +27,8 @@ module.exports = [
     },
     {
         id: 'booster_x3_1',
-        name: t.booster['booster_x3_1'].name,
-        text: t.booster['booster_x3_1'].text,
+        name: t.booster.booster_x3_1.name,
+        text: t.booster.booster_x3_1.text,
         type: 'none',
         fill: colors.buttercup,
         image: 'rocket',
@@ -38,8 +38,8 @@ module.exports = [
     },
     {
         id: 'booster_x3_2',
-        name: t.booster['booster_x3_2'].name,
-        text: t.booster['booster_x3_2'].text,
+        name: t.booster.booster_x3_2.name,
+        text: t.booster.booster_x3_2.text,
         type: 'none',
         fill: colors.buttercup,
         image: 'rocket',

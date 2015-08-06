@@ -6,14 +6,14 @@ import SETTINGS   from './settings.js';
 import {user}     from './auth.js';
 
 /* important settings for our owa instance */
-var owa_baseUrl = SETTINGS.OWA.owa_baseUrl;
+var owaBaseUrl = SETTINGS.OWA.owa_baseUrl;
 var siteId = SETTINGS.OWA.siteId;
 var apiKey = SETTINGS.OWA.apiKey;
 
 /* make owa visible */
-var owa_cmds = window.owa_cmds || [];
-window.owa_cmds    = owa_cmds;
-window.owa_baseUrl = owa_baseUrl;
+var owaCmds = window.owa_cmds || [];
+window.owa_cmds    = owaCmds;
+window.owa_baseUrl = owaBaseUrl;
 
 /**
  * initial events - siteID and which events we automatically we want to capture
@@ -30,6 +30,7 @@ var appendToDom = function () {
     var _owa = document.createElement('script');
     _owa.type = 'text/javascript';
     _owa.async = true;
+    /* eslint-disable */
     owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
     _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
     var _owa_s = document.getElementsByTagName('script')[0];

@@ -1,8 +1,7 @@
 import moment                       from 'moment';
 import _                            from 'lodash';
 import $                            from 'jquery';
-import * as owa                     from '../owa.js';
-import SETTINGS                     from '../settings.js'
+import SETTINGS                     from '../settings.js';
 import {user}                       from '../auth.js';
 
 /**

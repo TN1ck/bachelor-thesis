@@ -99,7 +99,7 @@ export default class Query {
         try {
             store.set(`query-${this.term}`, items);
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
         return this;
     }

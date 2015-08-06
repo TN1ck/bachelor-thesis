@@ -27,7 +27,7 @@ var actions = {
             text: t.stats.actions.query.remove,
             icon: 'query',
             fill: colors.buttercup
-        },
+        }
     },
     favourite: {
         toggle: {
@@ -55,7 +55,7 @@ var actions = {
  */
 export default React.createClass({
     render: function () {
-        var {action, user, item} = this.props.action;
+        var {action, user} = this.props.action;
         var username = _.get(user, 'username', '[Gelöscht]');
 
         var a = actions[action.group][action.label];

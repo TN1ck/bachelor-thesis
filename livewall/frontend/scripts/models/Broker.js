@@ -19,7 +19,7 @@ export default class Broker {
             name:         '',
             restricted:   false,
             action:       'ACTION_SOLR',
-            autocomplete: false,
+            autocomplete: false
         }, query, filter) {
         this.broker = broker;
         this.query = query;
@@ -118,11 +118,6 @@ export default class Broker {
      */
     getData (user) {
 
-        if (this.broker.name === '') {
-            console.error('PIA SOURCE HAS NO BROKER SET, ABORT REQUEST');
-            return;
-        }
-
         var url = this.broker.url;
 
         var params = {
@@ -148,9 +143,9 @@ export default class Broker {
             url:      url,  // Send the login info to this page
             data:     params,
             dataType: 'jsonp',
-            jsonp:    'json.wrf',
+            jsonp:    'json.wrf'
 
-        })
+        });
 
         var promise = request.then(json => {
             return this.processJSON(json);

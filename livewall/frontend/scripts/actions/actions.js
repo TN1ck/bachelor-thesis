@@ -5,13 +5,13 @@ import Reflux from 'reflux';
  */
 var actions = Reflux.createActions([
 	// layoutstore
-	'changeSort',
-	'relayout',
+    'changeSort',
+    'relayout',
     'addDomElement',
 
 	// datastore
-	'addItems',
-	'voteItem',
+    'addItems',
+    'voteItem',
     'favouriteItem',
 
 	// queries
@@ -19,14 +19,14 @@ var actions = Reflux.createActions([
     'removeQuery',
 
 	// messages
-	'addFlashMessage',
+    'addFlashMessage',
 
 	// gamification
-	'buyBooster',
+    'buyBooster',
 
 	// auth
-	'login',
-	'logout'
+    'login',
+    'logout'
 ]);
 
 export default actions;

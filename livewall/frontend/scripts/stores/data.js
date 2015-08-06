@@ -1,8 +1,6 @@
 import _          from 'lodash';
 import Reflux     from 'reflux';
 import Immutable  from 'immutable';
-import $          from 'jquery';
-import moment     from 'moment';
 
 import actions    from '../actions/actions.js';
 import {user}     from '../auth.js';
@@ -52,7 +50,7 @@ export default Reflux.createStore({
      */
     matchFavourites: function () {
         this.items = this.items.map((item) => {
-            var uuid = item.get('uuid')
+            var uuid = item.get('uuid');
             if (this.profile.favourites[uuid]) {
                 item = item.set('favourite', true);
             }
@@ -78,12 +76,12 @@ export default Reflux.createStore({
      * @returns
      */
     filterItem: function (item) {
-        return _.some(SETTINGS.FILTER, (v, k) => {
+        return !_.some(SETTINGS.FILTER, (v, k) => {
             return _.some(v, (filter) => {
                 var contentToBeFiltered = JSON.stringify(item.get(k)) || item.get(k) || '';
                 return contentToBeFiltered.toLowerCase().indexOf(filter.toLowerCase()) > -1;
-            })
-        })
+            });
+        });
     },
 
     /**
@@ -92,7 +90,7 @@ export default Reflux.createStore({
      * @param {Object[]} itmes The itmes that will be filtered
      */
     filterItems: function (items) {
-        return items.filter(filterItem);
+        return items.filter(this.filterItem);
     },
 
     /**

@@ -133,11 +133,10 @@ class BarChart {
         // text
         var textSelection = this.text.selectAll('.barchart__text').data(this.data);
 
-        var largerThanCenter = function (d) {
-            var x = this.xScale(d.x);
+        var largerThanCenter = (d) => {
             var max = this.xScale.domain()[1];
             return ((d.x * 2) >= max);
-        }
+        };
 
         // ENTER TEXT
         textSelection.enter()
@@ -148,7 +147,7 @@ class BarChart {
                 y: (d, i) => this.yScale(i) + barHeight / 2 + 5,
                 x: 10
             }).style({
-                'text-anchor': (d, i) => {
+                'text-anchor': (d) => {
                     return largerThanCenter(d) ? 'end' : 'start';
                 }
             });
@@ -159,16 +158,17 @@ class BarChart {
             .duration(1000)
             .text(d => `${d.y} - ${d.x}`)
             .attr({
-                class: (d, i) => {
+                class: (d) => {
                     return `barchart__text barchart__text--${largerThanCenter(d) ? 'inner' : 'outer'}`;
                 },
                 y: (d, i) => this.yScale(i) + barHeight / 2 + 5,
-                x: (d, i) => {
+                x: (d) => {
+                    var x = this.xScale(d.x);
                     return largerThanCenter(d) ? x - 10 : x + 10;
                 }
             })
             .style({
-                'text-anchor': (d, i) => {
+                'text-anchor': (d) => {
                     return largerThanCenter(d) ? 'end' : 'start';
                 }
             });

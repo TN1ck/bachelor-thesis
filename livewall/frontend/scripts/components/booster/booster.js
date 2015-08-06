@@ -1,11 +1,6 @@
 import React               from 'react/addons';
 import Reflux              from 'reflux';
 import moment              from 'moment';
-import durationFormat      from 'moment-duration-format';
-
-
-import SETTINGS            from '../../settings.js';
-import {user, requireAuth} from '../../auth.js';
 
 import gameStore           from '../../stores/game.js';
 import actions             from '../../actions/actions.js';
@@ -17,13 +12,13 @@ import t                   from '../../../shared/translations/translation.js';
 
 import BOOSTER             from '../../../shared/gamification/booster.js';
 
-import {postBooster}       from '../../api/api.js';
-
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 import {
-    Grid, Row, Col, Input, Button, Badge,
-    Jumbotron, Alert, PageHeader, Label, Well, Panel
+    Grid,
+    Row,
+    Col,
+    Button
 }                          from 'react-bootstrap';
 
 /**
@@ -36,7 +31,7 @@ var BoosterComponent = React.createClass({
         booster: React.PropTypes.object,
         userPoints: React.PropTypes.number,
         disable: React.PropTypes.bool,
-        active: Recat.PropTypes.bool
+        active: React.PropTypes.bool
     },
 
     getInitialState: function () {
@@ -58,7 +53,7 @@ var BoosterComponent = React.createClass({
 
     render: function () {
         var {
-            name, duration, text, image,
+            name, text, image,
             points, type, fill
         } = this.props.booster;
 
@@ -127,7 +122,7 @@ export default React.createClass({
 
     getInitialState: function () {
         var state = gameStore.state;
-        var booster = this.calcBooster(state)
+        var booster = this.calcBooster(state);
         return _.extend({}, gameStore.state, {
             booster: booster,
             left: this.calcTimeLeft(booster)
@@ -135,7 +130,7 @@ export default React.createClass({
     },
 
     onStoreChange: function (state) {
-        var booster = this.calcBooster(state)
+        var booster = this.calcBooster(state);
         this.setState(_.extend(state, {
             booster: booster,
             left: this.calcTimeLeft(booster)
@@ -190,7 +185,7 @@ export default React.createClass({
         return BOOSTER.map(b => {
             // mark the booster as active if he is the last on purchased and is still active
             var active = _.get(this.state.booster, '.booster.name') === b.id
-                         && this.state.booste.isActive;
+                         && this.state.booster.isActive;
             return (
                 <BoosterComponent
                     key={b.id}
@@ -200,7 +195,7 @@ export default React.createClass({
                     booster={b}
                 />
             );
-        })
+        });
     },
 
     componentDidMount: function () {

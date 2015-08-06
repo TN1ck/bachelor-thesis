@@ -1,10 +1,7 @@
-import _          from 'lodash';
 import Reflux     from 'reflux';
-import moment     from 'moment';
 
 import actions    from '../actions/actions.js';
 import {user}     from '../auth.js';
-import SETTINGS   from '../settings.js';
 
 
 /**
@@ -44,13 +41,13 @@ export default Reflux.createStore({
      * @param {Function} errCb Callback that will be called when the login fails
      * @returns {Promise} Promise that will be resolved when the user sucessfully logins
      */
-    login: function(username, password, remember, cb, errCb) {
+    login: function(username, password, remember, cb = () => {}, errCb = () => {}) {
         return user.login(username, password, remember)
-            .then(cb    || () => {})
+            .then(cb)
             .then(() => {
                 this.trigger(this.state);
             })
-            .fail(errCb || () => {});
+            .fail(errCb);
     },
 
     logout: function () {

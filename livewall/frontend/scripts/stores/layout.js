@@ -20,7 +20,7 @@ function sortResolver (a, b) {
     var _b = (b.get('query') + b.get('uuid'));
 
     return _a > _b ? 1 : -1;
-};
+}
 
 /**
  * Possible sorters that can be used. Currently only the score-sorter can be used
@@ -33,7 +33,7 @@ export var sorters = {
             (b.get('score') + (b.get('votes') || 0))
         );
         if (result === 0) {
-          return sortResolver(a, b);
+            return sortResolver(a, b);
         }
         return result;
     },
@@ -68,7 +68,7 @@ export var groupers = {
 
         items
         .toList()
-        .groupBy((_item, i) => {
+        .groupBy((_item) => {
             return _item.get('query');
         })
         .entrySeq().sort((entryA, entryB) => {
@@ -190,15 +190,41 @@ export default Reflux.createStore({
     onStoreChange: function (items) {
 
         var temp = this.items;
-        this.items = items.map((item) => {
+        this.items = items.map((tile) => {
 
-            var uuid = item.get('uuid');
-            var oldItem = this.items.get(uuid);
+            var uuid = tile.get('uuid');
+            var oldTile = this.items.get(uuid);
 
-            // update old item, new items are handled in `addDomElement`
-            if (oldItem) {
-                return oldItem.merge(updatedTile);
+            var columnIndex = 0;
+            var left = 0;
+
+            var newTile;
+            if (!oldTile) {
+
+                var translate = `translate3D(${left}px , 0px, 0)`;
+                var css = {
+                    transform: translate,
+                    '-webkit-transform': translate
+                };
+                var cssClass = 'animate-opacity';
+
+                newTile = tile.merge({
+                    position: Immutable.Map({
+                        left: left,
+                        top: 0,
+                        column: columnIndex
+                    }),
+                    relayout: true,
+                    css: css,
+                    class: cssClass
+                });
+
+            } else {
+                var updatedTile = tile.updateIn(['position', 'left'], left, () => left);
+                newTile = oldTile.merge(updatedTile);
             }
+
+            return newTile;
 
         });
 
@@ -261,15 +287,11 @@ export default Reflux.createStore({
 
         this.calculateColumns();
 
-        this.items = this.items.map((item) => {
-
-            if (!item || !item.get('dom')) {
-                return;
-            }
-
-            return item.set('height', item.get('dom').offsetHeight);
-
-        });
+        this.items = this.items
+            .filter(item => item && !item.get('dom'))
+            .map((item) => {
+                return item.set('height', item.get('dom').offsetHeight);
+            });
 
         this.layout(transition);
 
@@ -297,7 +319,7 @@ export default Reflux.createStore({
             var top = 0;
 
             // calculate the position for every item
-            column.forEach((item, i) => {
+            column.forEach((item) => {
 
                 // if the element isn't mounted yet by react we skip it
                 if (!item.get('dom')) {
@@ -381,7 +403,7 @@ export default Reflux.createStore({
         var height = dom.offsetHeight;
 
         // create initial CSS
-        var translate = `translate3D(${left}px , 0px, 0)`
+        var translate = `translate3D(${left}px , 0px, 0)`;
         var css = {
             transform: translate,
             '-webkit-transform': translate

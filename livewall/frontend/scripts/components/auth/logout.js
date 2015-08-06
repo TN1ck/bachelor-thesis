@@ -1,11 +1,10 @@
 import React     from 'react/addons';
 import {Link}    from 'react-router';
-import dataStore from '../../stores/data.js';
 import actions   from '../../actions/actions.js';
 
 import {
-    Grid, Row, Col, Input,
-    Button, Jumbotron, Alert, PageHeader
+    Grid, Row, Col,
+    Button, PageHeader
 } from 'react-bootstrap';
 
 import t from '../../../shared/translations/translation.js';
