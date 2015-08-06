@@ -8,18 +8,22 @@ import {
 
 import t from '../../../shared/translations/translation.js';
 
+/**
+ * Leaderboard which supports the infinite and the user-centric view
+ */
 export default React.createClass({
+    displayName: 'Leaderboard',
+
+    propTypes: {
+        user: React.PropTypes.object,
+        users: React.PropTypes.arrayOf(React.PropTypes.object)
+    },
+
     render: function () {
         var users = this.props.users;
         var highlightUser = this.props.user;
 
-        //
-        // remove user, sort and take only the 50 best, add the user again
-        //
-
-        // remove user
-        //
-
+        // when a user is given we create the user-centric Leaderboard
         if (highlightUser) {
             var place = highlightUser.place;
             var length = users.length;
@@ -27,15 +31,12 @@ export default React.createClass({
             users = _.slice(users, Math.max(place - 5, 0), (place + 5))
         }
 
-
-        var sortFn = (a, b) => b.points.all - a.points.all;
+        var sortFn = (a, b) => b.place - a.place;
 
         // sort and take best 20
-
         users = users.sort(sortFn).slice(0, 20);
 
-        users = users.sort(sortFn);
-
+        // create the leaderboard
         var list = users.map(_user => {
             var {points, badges, actions} = _user;
             var name = _user.username;
@@ -44,6 +45,7 @@ export default React.createClass({
 
             var trClass = ''
 
+            // if a user was given, highlight his row
             if (highlightUser && name === highlightUser.username) {
                 trClass = 'active';
             }

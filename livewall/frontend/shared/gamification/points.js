@@ -1,7 +1,8 @@
+// Describes how many points a user will get for a certain action
 module.exports = {
     vote: {
-        up: 1,
-        down: 1
+        up: 2,
+        down: 2
     },
     query: {
         add: 1,

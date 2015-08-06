@@ -3,6 +3,7 @@ var d3       = require('d3');
 var _        = require('lodash');
 var husl     = require('husl');
 
+// every function in this dictionary, will return a color for a numerical hash
 var colorFunctions = {
     color_rgb: function (hash) {
         hash = hash % 65535;
@@ -27,7 +28,7 @@ var colorFunctions = {
             {s: 0.7, l: 0.3},
         ];
 
-        // above 270 we get pink values, do not look good
+        // above 270 we get pink values, they do not look good
         var h = (hash / 100) % 270;
         var sl = hslStarts[hash % hslStarts.length];
         var hsl = d3.hsl(h, sl.s, sl.l);
@@ -105,6 +106,14 @@ var colorFunctions = {
     }
 };
 
+/**
+ * Will return a consistent color for the provided string.
+ * The color is generated with the provided colorscheme
+ *
+ * @param {String} str
+ * @param {Function} scheme The colorscheme
+ * @returns
+ */
 var getColorByString = function (str, scheme) {
 
     var hash = hashCode(str);
@@ -113,6 +122,7 @@ var getColorByString = function (str, scheme) {
 };
 
 // names of the colors accourding to: http://chir.ag/projects/name-that-color/
+// list of nice colors, that are used throughout the application
 var colors = {
     vinrouge:     '#9C4274',
     buttercup:    '#F5A623',

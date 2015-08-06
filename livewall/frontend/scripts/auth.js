@@ -1,5 +1,3 @@
-/** @module authentication */
-
 import User from './models/User.js';
 
 /** @global */

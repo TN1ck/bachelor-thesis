@@ -22,8 +22,16 @@ import LeaderBoard          from './leaderboard.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-
+/**
+ * Creates a Badge
+ */
 var BadgeComponent = React.createClass({
+    displayName: 'Badge',
+
+    propTypes: {
+        badge: React.propTypes.object
+    },
+
     render: function () {
         var {
             number, name, text,
@@ -58,19 +66,19 @@ var BadgeComponent = React.createClass({
     }
 });
 
+/**
+ * Page for the userstats
+ */
 export default React.createClass({
-    displayName: 'badges',
-    mixins: [
-        Reflux.connect(gameStore),
-    ],
-    render: function () {
+    displayName: 'Badges',
 
-        var userBadges = this.state.alltime.user.badges.map(t => {
-            return _.find(BADGES, {id : t.id});
-        });
+    mixins: [Reflux.connect(gameStore)],
 
-        var badgeComponents = _.sortBy(userBadges, 'fill')
-            .map(x => <BadgeComponent key={x.id} badge={x}/>);
+    /**
+     * Creates a barchart which shows the point-distribution of the user
+     * @returns {Component}
+     */
+    createBarChart: function () {
 
         var user = this.state.alltime.user;
 
@@ -102,11 +110,26 @@ export default React.createClass({
 
         ].sort((a, b) => b.x - a.x);
 
+        return <BarChart data={data}/>;
+    },
+
+    render: function () {
+
+        var userBadges = this.state.alltime.user.badges.map(t => {
+            return _.find(BADGES, {id : t.id});
+        });
+
+        // create Badges and sort them by color
+        var badgeComponents = _.sortBy(userBadges, 'fill')
+            .map(x => <BadgeComponent key={x.id} badge={x}/>);
+
         var points = this.state.alltime.user.points.all;
-        // works because LEVELS is an array and the current level
-        // is the indice for the next one
-        var pointsNeededForNextLevel = _.get(LEVELS, [this.state.level, 'points']);
-        pointsNeededForNextLevel = pointsNeededForNextLevel ? pointsNeededForNextLevel - points : 0;
+
+        /* works because LEVELS is an array and the current level
+           is the indice for the next one */
+        var pointsForNextLevel = _.get(LEVELS, [this.state.level, 'points'], 0);
+        // If the maximum level is reached, the points needed are 0
+        var pointsNeededForNextLevel = Math.min(0, pointsForNextLevel - points);
 
         return (
             <Grid>
@@ -114,7 +137,7 @@ export default React.createClass({
                     <Col xs={12}>
                         <h1>{points} {t.label.points} / {this.state.level} {t.label.level}</h1>
                         <p>{pointsNeededForNextLevel} {t.badgesPage.nextLevel}</p>
-                        <BarChart data={data}/>
+                        {this.createBarChart()}
                     </Col>
                     <Col xs={12}>
                         <PageHeader>

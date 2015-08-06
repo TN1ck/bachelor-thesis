@@ -10,10 +10,17 @@ import {
 
 import t from '../../../shared/translations/translation.js';
 
+/**
+ * Trigger the sign-out and shows a success-message
+ */
 export default React.createClass({
+    displayName: 'Logout',
+
     componentWillMount: function () {
+        // log out the user
         actions.logout();
     },
+
     render: function () {
 
         return (

@@ -1,17 +1,18 @@
 var colors = require('../util/colors.js').colors;
 var t      = require('../translations/translation.js');
 
+// All boosters used in this application
 module.exports = [
     {
-        id: 'booster_x2_1',
-        name: t.booster['booster_x2_1'].name,
-        text: t.booster['booster_x2_1'].text,
-        type: 'none',
-        fill: colors.vinrouge,
-        image: 'rocket',
-        points: 200,
-        multiplicator: 2,
-        duration: 1
+        id: 'booster_x2_1',                   // the id, will be saved in the database
+        name: t.booster['booster_x2_1'].name, // the general name of the booster
+        text: t.booster['booster_x2_1'].text, // what will this booster do
+        type: 'none',                         // crown of the booster, should be `none`
+        fill: colors.vinrouge,                // color of the booster
+        image: 'rocket',                      // icon of the booster
+        points: 200,                          // price of the booster
+        multiplicator: 2,                     // the provided multiplicator
+        duration: 1                           // how many days this booster will be active
     },
     {
         id: 'booster_x2_2',

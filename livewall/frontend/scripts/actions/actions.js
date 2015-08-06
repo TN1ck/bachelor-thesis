@@ -1,5 +1,8 @@
 import Reflux from 'reflux';
 
+/**
+ * All actions that are used in the application
+ */
 var actions = Reflux.createActions([
 	// layoutstore
 	'changeSort',

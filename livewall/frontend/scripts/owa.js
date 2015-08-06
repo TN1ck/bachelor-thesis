@@ -1,5 +1,3 @@
-/** @module owa */
-
 import $          from 'jquery';
 import _          from 'lodash';
 import moment     from 'moment';

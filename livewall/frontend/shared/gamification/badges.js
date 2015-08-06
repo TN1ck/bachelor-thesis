@@ -1,27 +1,26 @@
 var colors = require('../util/colors.js').colors;
 var t      = require('../translations/translation.js');
 
+// All badges used in this application
 module.exports = [
     /*
         NUMBER OF LOGINS
     */
     {
-        id: 'login_1',
-        name: t.badges['login_1'].header,
-        why: t.badges['login_1'].why,
-        text: t.badges['login_1'].text,
-        number: '1',
-        type: 'none',
-        fill: colors.vinrouge,
-        image: 'key',
-        points: 50
+        id: 'login_1',                    // the id of the badge, will be saved in the database
+        name: t.badges['login_1'].header, // the general name of the badge
+        why: t.badges['login_1'].why,     // why did the user get the badge
+        text: t.badges['login_1'].text,   // what the user needs to do, to get the badge
+        type: 'none',                     // specifies the crown of the badge
+        fill: colors.vinrouge,            // specifies the color
+        image: 'key',                     // specifies the icon, see `assets`
+        points: 50                        // how many points will this badge earn the user
     },
     {
         id: 'login_50',
         name: t.badges['login_50'].header,
         why: t.badges['login_50'].why,
         text: t.badges['login_50'].text,
-        number: '50',
         type: 'king',
         fill: colors.vinrouge,
         image: 'key',
@@ -32,7 +31,6 @@ module.exports = [
         name: t.badges['login_100'].header,
         why: t.badges['login_100'].why,
         text: t.badges['login_100'].text,
-        number: '100',
         type: 'emperor',
         fill: colors.vinrouge,
         image: 'key',
@@ -46,7 +44,6 @@ module.exports = [
         name: t.badges['login_3_c'].header,
         why: t.badges['login_3_c'].why,
         text: t.badges['login_3_c'].text,
-        number: '3',
         type: 'none',
         fill: colors.buttercup,
         image: 'repeat',
@@ -57,7 +54,6 @@ module.exports = [
         name: t.badges['login_7_c'].header,
         why: t.badges['login_7_c'].why,
         text: t.badges['login_7_c'].text,
-        number: '7',
         type: 'king',
         fill: colors.buttercup,
         image: 'repeat',
@@ -68,7 +64,6 @@ module.exports = [
         name: t.badges['repeat_15_c'].header,
         why: t.badges['repeat_15_c'].why,
         text: t.badges['repeat_15_c'].text,
-        number: '15',
         type: 'emperor',
         fill: colors.buttercup,
         image: 'repeat',
@@ -82,7 +77,6 @@ module.exports = [
         name: t.badges['upvotes_10'].header,
         why: t.badges['upvotes_10'].why,
         text: t.badges['upvotes_10'].text,
-        number: '10',
         type: 'none',
         fill: colors.sushi,
         image: 'upvote',
@@ -93,7 +87,6 @@ module.exports = [
         name: t.badges['upvotes_100'].header,
         why: t.badges['upvotes_100'].why,
         text: t.badges['upvotes_100'].text,
-        number: '100',
         type: 'king',
         fill: colors.sushi,
         image: 'upvote',
@@ -104,7 +97,6 @@ module.exports = [
         name: t.badges['upvotes_1000'].header,
         why: t.badges['upvotes_1000'].why,
         text: t.badges['upvotes_1000'].text,
-        number: '1000',
         type: 'emperor',
         fill: colors.sushi,
         image: 'upvote',
@@ -118,7 +110,6 @@ module.exports = [
         name: t.badges['downvotes_10'].header,
         why: t.badges['downvotes_10'].why,
         text: t.badges['downvotes_10'].text,
-        number: '10',
         type: 'none',
         fill: colors.burnt_sienna,
         image: 'downvote',
@@ -129,7 +120,6 @@ module.exports = [
         name: t.badges['downvotes_100'].header,
         why: t.badges['downvotes_100'].why,
         text: t.badges['downvotes_100'].text,
-        number: '100',
         type: 'king',
         fill: colors.burnt_sienna,
         image: 'downvote',
@@ -140,7 +130,6 @@ module.exports = [
         name: t.badges['downvotes_1000'].header,
         why: t.badges['downvotes_1000'].why,
         text: t.badges['downvotes_1000'].text,
-        number: '1000',
         type: 'emperor',
         fill: colors.burnt_sienna,
         image: 'downvote',
@@ -154,7 +143,6 @@ module.exports = [
         name: t.badges['queries_add_10'].header,
         why: t.badges['queries_add_10'].why,
         text: t.badges['queries_add_10'].text,
-        number: '10',
         type: 'none',
         fill: colors.puerto_rico,
         image: 'query',
@@ -165,7 +153,6 @@ module.exports = [
         name: t.badges['queries_add_100'].header,
         why: t.badges['queries_add_100'].why,
         text: t.badges['queries_add_100'].text,
-        number: '100',
         type: 'king',
         fill: colors.puerto_rico,
         image: 'query',
@@ -176,7 +163,6 @@ module.exports = [
         name: t.badges['queries_add_1000'].header,
         why: t.badges['queries_add_1000'].why,
         text: t.badges['queries_add_1000'].text,
-        number: '1000',
         type: 'emperor',
         fill: colors.puerto_rico,
         image: 'query',
@@ -190,7 +176,6 @@ module.exports = [
         name: t.badges['favourites_10'].header,
         why: t.badges['favourites_10'].why,
         text: t.badges['favourites_10'].text,
-        number: '10',
         type: 'none',
         fill: colors.curious_blue,
         image: 'star',
@@ -201,7 +186,6 @@ module.exports = [
         name: t.badges['favourites_50'].header,
         why: t.badges['favourites_50'].why,
         text: t.badges['favourites_50'].text,
-        number: '50',
         type: 'king',
         fill: colors.curious_blue,
         image: 'star',
@@ -212,7 +196,6 @@ module.exports = [
         name: t.badges['favourites_100'].header,
         why: t.badges['favourites_100'].why,
         text: t.badges['favourites_100'].text,
-        number: '100',
         type: 'emperor',
         fill: colors.curious_blue,
         image: 'star',

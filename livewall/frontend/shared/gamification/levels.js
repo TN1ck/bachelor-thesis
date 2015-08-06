@@ -1,11 +1,12 @@
 var colors = require('../util/colors.js').colors
 
+// The levels the user can achieve
 module.exports = [
     {
-        fill: colors.concrete,
-        image: 'ribbon',
-        points: 0,
-        level: 1,
+        fill: colors.concrete, // color of the level
+        image: 'ribbon',       // the icon of the level
+        points: 0,             // points needed to have this level
+        level: 1,              // the level in numerical form
     },
     {
         fill: colors.concrete,

@@ -1,5 +1,4 @@
-/** @module assets */
-
+// Will provide all file-paths for the used assets in this application
 export default {
     icons: {
         downvote:      require('file!../assets/downvote.png'),

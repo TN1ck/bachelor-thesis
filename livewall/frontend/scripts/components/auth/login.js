@@ -11,11 +11,18 @@ import {user} from '../../auth.js';
 
 import t from '../../../shared/translations/translation.js';
 
+/**
+ * This Component provides a sign-in form. It will
+ * correctly display errors when the authentication fails and transition
+ * to the requested path if it succeeds.
+ */
 export default React.createClass({
-    displayName: 'login',
+    displayName: 'Login',
+
     contextTypes: {
         router: React.PropTypes.func.isRequired
     },
+
     getInitialState: function () {
         return {
             remember: true,
@@ -24,6 +31,12 @@ export default React.createClass({
             isLoggedIn: 'loading'
         };
     },
+
+    /**
+     * Use the provided username/password to sign in the user.
+     * Transition to the requested path, if not provided, transition to
+     * `/`
+     */
     handleSubmit: function (e) {
 
         e.preventDefault();
@@ -48,18 +61,20 @@ export default React.createClass({
             this.setState({error: true, loading: false});
         });
 
-
     },
+
     componentWillMount: function () {
         user.isLoggedIn((result) => {
             this.setState({isLoggedIn: result});
         });
     },
+
     handleChange: function (e) {
         this.setState({
             remember: !this.state.remember
         });
     },
+
     render: function () {
 
         var loading = <i className="fa fa-spinner fa-pulse"></i>;
@@ -75,49 +90,55 @@ export default React.createClass({
 
         var bsStyle = this.state.error ? 'error' : '';
 
-        var loginForm = <form onSubmit={this.handleSubmit}>
-            <Input
-                disabled={this.state.loading}
-                bsStyle={bsStyle}
-                type='text'
-                autofocus
-                placeholder={t.auth.label.username}
-                hasFeedback
-                label={t.auth.label.username}
-                ref='username'
-            />
-            <Input
-                disabled={this.state.loading}
-                bsStyle={bsStyle}
-                type='password'
-                placeholder={t.auth.label.password}
-                hasFeedback
-                label={t.auth.label.password}
-                ref='password'
-            />
-            <Input
-                disabled={this.state.loading}
-                onChange={this.handleChange}
-                value={this.state.remember}
-                type='checkbox'
-                hasFeedback
-                label={t.auth.label.remember}
-                ref='remember'
-            />
-            <Button
-                disabled={this.state.loading}
-                bsStyle='primary' type='submit'
-                onSubmit={this.handelSubmit}>
-                {t.auth.label.login} {this.state.loading ? loading : ''}
-            </Button>
-        </form>;
+        // shown when the user isn't signed in
+        var loginForm = (
+            <form onSubmit={this.handleSubmit}>
+                <Input
+                    disabled={this.state.loading}
+                    bsStyle={bsStyle}
+                    type='text'
+                    autofocus
+                    placeholder={t.auth.label.username}
+                    hasFeedback
+                    label={t.auth.label.username}
+                    ref='username'
+                />
+                <Input
+                    disabled={this.state.loading}
+                    bsStyle={bsStyle}
+                    type='password'
+                    placeholder={t.auth.label.password}
+                    hasFeedback
+                    label={t.auth.label.password}
+                    ref='password'
+                />
+                <Input
+                    disabled={this.state.loading}
+                    onChange={this.handleChange}
+                    value={this.state.remember}
+                    type='checkbox'
+                    hasFeedback
+                    label={t.auth.label.remember}
+                    ref='remember'
+                />
+                <Button
+                    disabled={this.state.loading}
+                    bsStyle='primary' type='submit'
+                    onSubmit={this.handelSubmit}>
+                    {t.auth.label.login} {this.state.loading ? loading : ''}
+                </Button>
+            </form>
+        );
 
-        var logoutForm = <div>
-            <ButtonGroup justified>
-                <Button href="#/logout" bsStyle='danger'>{t.auth.label.logout}</Button>
-                <Button href="#/" bsStyle='primary'>{t.auth.label.wall}</Button>
-            </ButtonGroup>
-        </div>;
+        // shown when the user is signed in
+        var logoutForm = (
+            <div>
+                <ButtonGroup justified>
+                    <Button href="#/logout" bsStyle='danger'>{t.auth.label.logout}</Button>
+                    <Button href="#/" bsStyle='primary'>{t.auth.label.wall}</Button>
+                </ButtonGroup>
+            </div>
+        );
 
         var headerText = {
             true: t.auth.login.already,

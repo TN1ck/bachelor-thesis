@@ -1,8 +1,10 @@
-var camelCaseToBar = function (str) {
-    return str[0].toLowerCase() + str.slice(1, str.length).replace(/([A-Z])/g, function($1){return '|'+$1.toLowerCase();});
-};
-
-var getDomain = function (url) {
+/**
+ * Extract the domain from an URL
+ *
+ * @param {String} URL The URL where the domain shall be extracted
+ * @returns {String} The domain of the provided URL
+ */
+function getDomain (url) {
     if (!url) {
         return 'not found';
     }
@@ -11,8 +13,13 @@ var getDomain = function (url) {
     return domain;
 };
 
-// An Implementation of djb2 by DAN BERNSTEIN
-var hashCode = function(str) {
+/**
+ * Create a numerical hash for the provided string
+ * An Implementation of djb2 by DAN BERNSTEIN.
+ *
+ * @param {String} The string to be hashed
+ */
+function hashCode(str) {
     var hash = 5381;
     if (str.length === 0) {
         return hash;
@@ -24,45 +31,14 @@ var hashCode = function(str) {
     return hash >>> 0; // make it positive
 }
 
-var parseColor = function (hex) {
-    hex = String(hex).replace(/[^0-9a-f]/gi, '');
-    if (hex.length < 6) {
-        hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-    }
-    var result = [];
-
-    for (var i = 0; i < 3; i++) {
-        var c = parseInt(hex.substr(i*2,2), 16);
-        result.push(c);
-    }
-    return {
-        r: result[0],
-        g: result[1],
-        b: result[2]
-    };
-};
-
-var colorLuminance = function (hex, lum) {
-
-    // validate hex string
-    hex = String(hex).replace(/[^0-9a-f]/gi, '');
-    if (hex.length < 6) {
-        hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-    }
-    lum = lum || 0;
-
-    // convert to decimal and change luminosity
-    var rgb = "#", c, i;
-    for (i = 0; i < 3; i++) {
-        c = parseInt(hex.substr(i*2,2), 16);
-        c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-        rgb += ("00"+c).substr(c.length);
-    }
-
-    return rgb;
-};
-
-var compareStrings = function (a, b) {
+/**
+ * Returns 1 if a is larger than b, -1 if it is smaller and 0 when they are the same
+ *
+ * @param {String} a
+ * @param {String} b
+ * @returns {Number}
+ */
+function compareStrings (a, b) {
     if (a === b) {
         return 0;
     } else {

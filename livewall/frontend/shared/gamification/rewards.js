@@ -1,12 +1,15 @@
 var schemas = require('../util/colors.js').colorFunctions
 
+/* The rewards used in this application.
+   Currently, only one type is available, that's
+   why all rewards have the same structure. */
 module.exports = [
     {
-        level: 1,
-        type: 'color_scheme',
-        id: 'color_pastel',
-        name: 'Pastel',
-        schema: schemas.color_pastel
+        level: 1,                    // at which level this reward will be available
+        type: 'color_scheme',        // the type of the reward
+        id: 'color_pastel',          // the id of the reward
+        name: 'Pastel',              // The name of the reward
+        schema: schemas.color_pastel // the color_schema of the reward, this is special for this type
     },
     {
         level: 1,

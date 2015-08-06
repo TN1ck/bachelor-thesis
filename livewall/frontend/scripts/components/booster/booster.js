@@ -164,7 +164,7 @@ export default React.createClass({
             var boosterIsActive = moment().isBefore(validUntil);
             b.validUntil = validUntil;
             b.isActive = boosterIsActive;
-            b.last = lastBooster;
+            b.booster = lastBooster;
         }
 
         return b;
@@ -188,18 +188,23 @@ export default React.createClass({
      */
     createBoosters: function () {
         return BOOSTER.map(b => {
-            var active = _.get(this.state.booster, '.last.name') === b.id;
-            return <BoosterComponent
-                key={b.id}
-                disable={this.state.booster.isActive}
-                userPoints={this.state.alltime.user.points.all}
-                active={active}
-                booster={b}
-            />
+            // mark the booster as active if he is the last on purchased and is still active
+            var active = _.get(this.state.booster, '.booster.name') === b.id
+                         && this.state.booste.isActive;
+            return (
+                <BoosterComponent
+                    key={b.id}
+                    disable={this.state.booster.isActive}
+                    userPoints={this.state.alltime.user.points.all}
+                    active={active}
+                    booster={b}
+                />
+            );
         })
     },
 
     componentDidMount: function () {
+        // update the time left counter every 0.5s
         this.interval = setInterval(() => {
             var left = this.calcTimeLeft(this.state.booster);
             this.setState({
@@ -209,15 +214,16 @@ export default React.createClass({
     },
 
     componentWillUnmount: function () {
+        // clear the interval when the component is removed
         clearInterval(this.interval);
     },
 
     render: function () {
 
-        var _booster;
+        var timeLeft;
 
         if (this.state.booster.isActive) {
-            _booster = (
+            timeLeft = (
                 <strong><h3>{t.boosterPage.timeLeft} {this.state.left.format('hh:mm:ss')}</h3></strong>
             );
         }
@@ -230,7 +236,7 @@ export default React.createClass({
                         <hr/>
                         <p>{t.boosterPage.subHeader}</p>
                         <p>{this.state.alltime.user.booster.length} {t.boosterPage.bought}</p>
-                        {_booster}
+                        {timeLeft}
                     </Col>
                     <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionEnter={true}>
                         {this.createBoosters()}

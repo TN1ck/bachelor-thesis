@@ -1,5 +1,6 @@
 var _ = require('lodash');
 
+// german translation of the application
 module.exports = {
 
     label: {
@@ -185,7 +186,7 @@ module.exports = {
         'login_1': {
             header: 'ANMELDUNG',
             text: 'Melde dich einmal an der DAI-Wall an um diese Trophäe zu erhalten.',
-            why: 'Erste Anmeldung and der DAI-Wall.'
+            why: 'Erste Anmeldung an der DAI-Wall.'
         },
 
         'login_50': {
