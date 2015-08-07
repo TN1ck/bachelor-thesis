@@ -47,7 +47,7 @@ export default React.createClass({
         */
 
         // the id of the filter, we need to strip the #
-        var colorID = `color-${this.props.fill.slice(1, -1)}`;
+        var colorID = `color${this.props.fill.slice(1, -1)}`;
         var colorFilter = (
             <filter
                 id={colorID}
@@ -57,13 +57,9 @@ export default React.createClass({
                     {
                         __html: `<feColorMatrix
                             color-interpolation-filters="sRGB"
-                            in="SourceGraphic"
                             type="matrix"
-                            values="
-                                0 0 0 0 ${r}
-                                0 0 0 0 ${g}
-                                0 0 0 0 ${b}
-                                0 0 0 1 0"/>`
+                            values="0 0 0 0 ${r}, 0 0 0 0 ${g}, 0 0 0 0 ${b}, 0 0 0 1 0">
+                            </feColorMatrix>`
                     }
             }/>
         );
@@ -71,17 +67,13 @@ export default React.createClass({
         // white-color-filter
         var whiteFilter = (
             <filter
-                id="white"
+                id='white'
                 dangerouslySetInnerHTML={
                     {
                         __html: `<feColorMatrix
-                            in="SourceGraphic"
                             type="matrix"
-                            values="
-                                0 0 0 0 1
-                                0 0 0 0 1
-                                0 0 0 0 1
-                                0 0 0 1 0"/>`
+                            values="0 0 0 0 1, 0 0 0 0 1, 0 0 0 0 1, 0 0 0 1 0">
+                                </feColorMatrix>`
                     }
                 }
             />
@@ -157,7 +149,12 @@ export default React.createClass({
 
 
         return (
-            <svg width='251px' height='340px' viewBox={`0 40 251 ${viewBoxY}`}>
+            <svg
+                width='251px'
+                height='340px'
+                viewBox={`0 40 251 ${viewBoxY}`}
+                xmlns='http://www.w3.org/2000/svg'
+                xmlnsXlink='http://www.w3.org/1999/xlink'>
                 <defs>
                     {whiteFilter}
                     {colorFilter}
@@ -165,10 +162,10 @@ export default React.createClass({
                 <g>
                     <g transform={`translate(-24.00, ${translateY})`}>
                         <circle fill={this.props.fill} cx='150' cy='250' r='100'></circle>
-                        {crown}
                         <g>
                             {image}
                         </g>
+                        {crown}
                     </g>
                 </g>
             </svg>

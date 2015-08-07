@@ -1,6 +1,8 @@
 import React               from 'react/addons';
 import Reflux              from 'reflux';
 import moment              from 'moment';
+// we need to import moment-duration-format to display the time-left for the booster
+import duration            from 'moment-duration-format';
 
 import gameStore           from '../../stores/game.js';
 import actions             from '../../actions/actions.js';
@@ -152,7 +154,7 @@ export default React.createClass({
         };
 
         var userBooster = state.alltime.user.booster;
-        var lastBooster = _.sortBy(userBooster, '-validUntil')[0];
+        var lastBooster = _.last(_.sortBy(userBooster, _b => _b.validUntil));
 
         if (lastBooster) {
             var validUntil = moment(lastBooster.validUntil);
@@ -219,7 +221,9 @@ export default React.createClass({
 
         if (this.state.booster.isActive) {
             timeLeft = (
-                <strong><h3>{t.boosterPage.timeLeft} {this.state.left.format('hh:mm:ss')}</h3></strong>
+                <strong>
+                    <h3>{t.boosterPage.timeLeft} {this.state.left.format('hh:mm:ss')}</h3>
+                </strong>
             );
         }
 
