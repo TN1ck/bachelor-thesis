@@ -292,10 +292,12 @@ export default class User {
         var token = cookies.get('token');
 
         if (token) {
-            this.loginPromise = this.checkLogin(token, username).then(() => {
+            this.loginPromise = this.checkLogin(token, username).then(res => {
                 this.loginPromise = false;
-            }).fail(() => {
+                return res;
+            }).fail(res => {
                 this.loginPromise = false;
+                return res;
             });
         }
 
@@ -317,7 +319,7 @@ export default class User {
             }).fail(() => {
                 cb(false);
             });
-            return false;
+            return !!this.token;
         }
 
         if (cb) {

@@ -12,7 +12,7 @@ export default React.createClass({
         xs: React.PropTypes.number,
         md: React.PropTypes.number,
         icon: React.PropTypes.element,
-        body: React.PropTypes.body
+        body: React.PropTypes.element
     },
 
     getDefaultProps: function () {

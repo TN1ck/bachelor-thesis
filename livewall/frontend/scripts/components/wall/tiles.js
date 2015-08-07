@@ -1,6 +1,6 @@
 import React     from 'react/addons';
 import _         from 'lodash';
-import Immutable from 'Immutable';
+import Immutable from 'immutable';
 import actions   from '../../actions/actions.js';
 
 import t from '../../../shared/translations/translation.js';
@@ -67,7 +67,7 @@ var tileTypes = {
  * to favourite the tile.
  */
 var Header = React.createClass({
-    displayName: 'tile-header',
+    displayName: 'TileHeader',
 
     propTypes: {
         uuid: React.PropTypes.string.isRequired,
@@ -160,11 +160,11 @@ var Header = React.createClass({
  * Show the domain and the last performed action.
  */
 var Footer = React.createClass({
-    displayName: 'tile-footer',
+    displayName: 'TileFooter',
 
     propTypes: {
         domain: React.PropTypes.string,
-        action: React.PropTypes.action
+        action: React.PropTypes.object
     },
 
     mixins: [PureRenderMixin],
@@ -206,7 +206,7 @@ var Footer = React.createClass({
  */
 export default React.createClass({
 
-    displayName: 'tile',
+    displayName: 'Tile',
 
     propTypes: {
         tile: React.PropTypes.instanceOf(Immutable.Map).isRequired

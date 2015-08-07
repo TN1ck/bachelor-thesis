@@ -15,7 +15,7 @@ export default React.createClass({
         scale: React.PropTypes.number,
         x: React.PropTypes.number,
         y: React.PropTypes.number,
-        rotate: React.PropTypes.rotate,
+        rotate: React.PropTypes.number,
         fill: React.PropTypes.string
     },
 

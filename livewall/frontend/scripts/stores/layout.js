@@ -6,6 +6,15 @@ import {compareStrings} from '../../shared/util/utils.js';
 import actions          from '../actions/actions.js';
 import dataStore        from './data.js';
 
+// all versions of transform
+var TRANSFORM_VENDOR = [
+    'transform',
+    'WebkitTransform',
+    'MozTransform',
+    'msTransform',
+    'OTransform'
+];
+
 
 /**
  * When the score of two items equals, this function will provide conistency
@@ -189,23 +198,21 @@ export default Reflux.createStore({
      */
     onStoreChange: function (items) {
 
-        var temp = this.items;
         this.items = items.map((tile) => {
 
             var uuid = tile.get('uuid');
             var oldTile = this.items.get(uuid);
 
+            // specify the starting position of the tile
             var columnIndex = 0;
             var left = 0;
 
             var newTile;
             if (!oldTile) {
 
+                // initial values
                 var translate = `translate3D(${left}px , 0px, 0)`;
-                var css = {
-                    transform: translate,
-                    '-webkit-transform': translate
-                };
+                var css = _.zipObject(TRANSFORM_VENDOR.map(v => [v, translate]));
                 var cssClass = 'animate-opacity';
 
                 newTile = tile.merge({
@@ -228,7 +235,6 @@ export default Reflux.createStore({
         });
 
         // instantly update
-        // we only want to debounce when new items are added
         this.layout(true);
     },
 
@@ -300,8 +306,6 @@ export default Reflux.createStore({
      */
     layout: function (transition = true) {
 
-        console.log('LAYOUT');
-
         // calculate columns using the groupFunction and the sortFunction
         var columns = this.groupFunction(
             this.items.sort(this.sortFunction),
@@ -309,7 +313,7 @@ export default Reflux.createStore({
             this.sortFunction
         );
 
-        // iterate over each column and calculate the position of each
+        // iterate over each column and calculate the position
         columns.forEach((column, j) => {
 
             // top specifies the y-coordinate of an item
@@ -332,11 +336,9 @@ export default Reflux.createStore({
                 */
                 var translate = `translate3D(${Math.round(left)}px, ${Math.round(top)}px, 0)`;
 
-                var css = {
-                    transform: translate,
-                    '-webkit-transform': translate,
-                    opacity: 1
-                };
+                var css = _.zipObject(TRANSFORM_VENDOR.map(v => [v, translate]));
+
+                css.opacity = 1;
 
                 /* when transitions are turned off, we only animate the opacity,
                    this is only really needed for window-resizing

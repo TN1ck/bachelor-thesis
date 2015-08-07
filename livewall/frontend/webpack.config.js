@@ -1,7 +1,4 @@
-'use strict';
-
 var webpack           = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     devtool: 'eval',
@@ -17,43 +14,38 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin("[name].css")
+        new webpack.NoErrorsPlugin()
     ],
     resolve: {
         extensions: ['', '.js', '.css', '.scss']
     },
     module: {
         preLoaders: [
+            // Lint javascript using eslint
             {
                 test: /\.js$/,
                 loader: 'eslint-loader',
                 exclude: /node_modules/
             }
         ],
+        // file transformers
         loaders: [
+            // We use react-hot and babel-loader for javascript files.
+            // Babel will compile the ES6 code to ES5 and react-hot Will
+            // update the application on the fly
             {
                 test: /\.js$/,
                 loaders: [
                     'react-hot',
-                    'babel-loader',
+                    'babel-loader'
                 ],
                 exclude: /node_modules/
             },
-            {
-                test: /\.css$/,
-                loaders: [
-                    'style-loader',
-                    'css-loader',
-                    'autoprefixer-loader',
-                ],
-                exclude: /node_modules/
-            },
+            // Transform less files
             {
                 test: /\.less$/,
-                // loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
-                loader: "style!css!less"
-            },
+                loader: 'style!css!autoprefixer!less'
+            }
         ]
     }
 };

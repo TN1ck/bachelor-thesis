@@ -116,7 +116,7 @@ export default React.createClass({
     createQueries: function () {
         var queries = _.map(this.state.queries, (s, k) => {
             return (
-                <QueryComponent remove={() => this.removeQuery(k)} query={s}/>
+                <QueryComponent key={k} remove={() => this.removeQuery(k)} query={s}/>
             );
         });
 

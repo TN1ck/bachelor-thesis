@@ -83,8 +83,8 @@ export default React.createClass({
         // create the links depending on the state of the user-authentication
         var nav = links.filter(l => {
             return !l.restricted || isLoggedIn;
-        }).map((link, i) => {
-            return <NavItemLink to={link.link}>{link.name}</NavItemLink>;
+        }).map((link) => {
+            return <NavItemLink key={link.link} to={link.link}>{link.name}</NavItemLink>;
         });
 
         return (
