@@ -1,14 +1,12 @@
 
-
-
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 %!BIB TS-program = biber
 %!BIB program = biber
 \documentclass[12pt,twoside]{book}
 %\usepackage{extsizes}
-\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-\geometry{a4paper}                   % ... or a4paper or a5paper or ...
+\usepackage{geometry}                 % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                        % ... or a4paper or a5paper or ...
 %\geometry{landscape}                % Activate for for rotated page geometry
 %\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent section
 \geometry{left=3cm}
@@ -315,29 +313,29 @@ Doch besitzt die Gamification reddits auch negative Seiten, so legt \citep{riche
 DAIKnow \citep{meder2014daiknow} ist eine Bookmarking Seite wie auch delicous.com \cite{delicious}, bei der Links mit Beschreibungen und Keywords eingereicht werden können. Durch den gezielten Einsatz von Punkten, Abzeichen und Bestenlisten wird die Benutzung der Seite gesteigert. Im Gegensatz zu reddit ist dieses System jedoch weitaus komplexer, so bekommt der Benutzer unter anderem Punkte für den täglichen Aufruf, Punkte für das Einrechen eines Links oder das ein andere Benutzer seinen Link kopiert hat.
 Ein Problem des Konzeptes von DAIKnow ist, dass häufige Benutzer alle verfügbaren Abzeichen freischalteten und damit der Gamification-Aspekt verloren ging.
 
-Die Untersuchung hat gezeigt, dass Gamification bei den untersuchten Beispiele erfolgreich eingesetzt werden konnte, und im Beispiel reddits ein so integraler Bestandteil der Seite wurde, dass viele Nutzungsmuster auf reddit kopmlett davon abhängig sind. Es wurde damit bestätigt dass Gamification einen positiven Nutzen für das Infoboard erzielen kann, jedoch ist damit nicht endgültig geklärt wie die Gamification im Detail implementiert wird, da das Infoboard im Gegensatz zu reddit oder DAIKnow, keine Möglichkeit besitzt eigenen Inhalt einzureichen. Die genaue Spezifikation der Gamification wird im Verlauf der Arbeit erarbeitet.
+Die Untersuchung zeigt, dass Gamification bei den untersuchten Beispiele erfolgreich eingesetzt wird, und im Beispiel reddits ein so integraler Bestandteil der Seite ist, dass viele Nutzungsmuster auf reddit davon komplett abhängig sind. Es ist damit bestätigt, dass Gamification einen positiven Nutzen für das Infoboard erzielen kann. Allerdings ist damit nicht endgültig geklärt - für wen? wie die Gamification im Detail implementiert wird, da das Infoboard im Gegensatz zu reddit oder DAIKnow, keine Möglichkeit besitzt eigenen Inhalt einzureichen. Die genaue Spezifikation der Gamification welcher? wird im Verlauf der Untersuchung erarbeitet.
 
 \chapter{Konzeptuelle Umsetzung}\label{chap:concept}
 
-Einer der wichtigsten Aspekte von Interface-getriebenen Applikationen, ist das Nutzererlebnis \citep[8 - 17]{garrett2010elements}. In diesem Kapitel werden die zwei wichtigsten Punkte dieser Arbeit, die für das Nutzererlebnis wichtig sind, vornehmlich Gamification und die Visualisierung der Suchergebnisse, analysiert. Auf Basis dessen wird ein Konzept erarbeitet, welches schlussendlich in Kapitel \ref{chap:tech} umgesetzt wird.
+Einer der wichtigsten Aspekte von Interface-getriebenen Applikationen ist das Nutzererlebnis \citep[8 - 17]{garrett2010elements}. In diesem Kapitel werden die zwei Hauptmerkmale dieser Arbeit, die für das Nutzererlebnis wichtig sind analysiert: Gamification und die Visualisierung der Suchergebnisse. Auf dieser Basis wird ein Konzept vorgestellt, welches in Kapitel \ref{chap:tech} umgesetzt wird.
 
 \section{Visualisierung der Suchergebnisse}\label{chap:concept:wall}
 
-Wie \cite{bostock2011d3} gezeigt hat, erlauben heutige Webtechnologien nahezu uneingeschränkte Möglichkeiten Daten zu visualisieren. Abseits von der initialen Idee eine Darstellung ähnlich einer \textit{Social Media Wall}, zu benutzen gibt es eine Vielzahl an Parametern, die betrachtet werden müssen - in erster Linie das Layout, Animationen und das Design der individuellen Suchergebnisse.
+ Wie \cite{bostock2011d3} gezeigt hat, erlauben heutige Webtechnologien nahezu uneingeschränkte Möglichkeiten Daten zu visualisieren. Abseits von der initialen Idee, eine Darstellung ähnlich einer \textit{Social Media Wall} zu benutzen, gibt es eine Vielzahl von Parametern, die betrachtet werden müssen: Das Layout, die Animationen und das Design der individuellen Suchergebnisse.
 
 \subsection{Layout}
 
-Wie Pinterest \cite{pinterest} oder das Metro-Design von Microsoft gezeigt haben, ist ein Layout basierend auf Kacheln aktuell eine der populärsten Darstellung für Medieninhalte verschiedener Art, siehe Abbildung \ref{fig:metro_pinterest}.
+Wie Pinterest \cite{pinterest} oder das Metro-Design von Microsoft zeigen, ist ein auf Kacheln  basierendes Layout aktuell eine der populärsten Darstellungen für Medieninhalte verschiedener Art, siehe Abbildung \ref{fig:metro_pinterest}.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{images/metro_pinterest.png}
-    \caption{Links das Rasterbasierte Layout von Windows 8 \cite{metrodesign}, rechts das Spaltenbasierte Layout von Pinterest.}
+    \caption{Links das Rasterbasierte Layout von Windows 8 \cite{metrodesign}, rechts das spaltenbasierte Layout von Pinterest.}
     \label{fig:metro_pinterest}
   \end{figure}
 
-Es gibt oft eine Regel, nach welchem Muster die Kacheln angeordnet werden sollen, zum Beispiel sollten die neuesten Kacheln an oberster Stelle gezeigt werden oder \textit{wichtigere} Kacheln prominenter dargestellt werden. Die Kacheln für das Infoboard unterliegen der Regel, dass sie anhand ihrer Wertung angeordnet werden müssen. Die folgende Analyse wird deshalb auf das Verhaltensmuster des Layouts fokussiert sein, für den Fall dass neue Kacheln hinzukommen und damit neu sortiert werden müssen.
-Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Kacheln verglichen, da sie die wie die vorherigen Beispiele gezeigt haben, sie in diesem Bereich erfolgreich benutzt wurden.
+Oft existiert eine Regel, nach welchem Muster die Kacheln angeordnet werden. Zum Beispiel sind die neuesten Kacheln an oberster Stelle positioniert,  oder \textit{wichtigere} Kacheln werden prominenter dargestellt.  Die Kacheln für das Infoboard unterliegen der Regel, dass sie anhand ihrer Wertung angeordnet werden müssen. Die folgende Analyse wird deshalb auf das Verhaltensmuster des Layouts fokussiert sein, für den Fall dass neue Kacheln hinzukommen und damit neu sortiert werden müssen.
+Im folgenden wird die rasterbasierte mit der spaltenbasierten Darstellung der Kacheln verglichen.
 
 \begin{itemize}
   \item \textbf{Spaltenbasierte Anordnung} \\
@@ -351,8 +349,8 @@ Im folgenden wird die Rasterbasierte mit der Spaltenbasierten Darstellung der Ka
   \end{figure}
 
   \textbf{Vorteile} \\
-  Die Vorteile liegen in der Simplizität der Implementierung und der Intuitivität des Inhaltflusses, das heißt neuer Inhalt wird oben eingefügt und alter rutscht nach unten, wobei jeweils nur eine Spalte \textit{verrutscht} je neu eingefügter Kachel.
-  Weiterhin ermöglicht die variable Höhe viel Flexibilität bei dem Anzeigen des Inhalts - z.B. können lange Texte angemessen angezeigt werden, ohne die Zeichenanzahl zu begrenzen oder ähnliche Limitierungen einzuführen.
+  Die Vorteile liegen in der Simplizität der Implementierung und der Intuitivität des Inhaltflusses. Neuer Inhalt wird oben eingefügt und älterer Inhalt rutscht nach unten, wobei je neu hinzugekommener Kachel jeweils nur eine Spalte verrutscht. Ist das rivhtig? Spalte - senkrecht, Zeile waagrecht.
+  Weiterhin ermöglicht die variable Höhe viel Flexibilität beim Anzeigen des Inhalts - z.B. können lange Texte angemessen angezeigt werden, ohne die Zeichenanzahl zu begrenzen oder ähnliche Limitierungen einzuführen.
 
   \textbf{Nachteile}\\
   Der größte Nachteil ist die Starrheit des Layouts. Da alle Objekte die gleiche Breite haben ist man stark limitiert wie man die Inhalte darstellt. Abstriche müssen auch gemacht werden bei der Sortierung der Inhalte. Sobald die angezeigten Kacheln einer Sortierung unterliegen, kann der Inhaltsfluss nicht optimal funktionieren. Siehe Abbildung \ref{fig:livewall_sort} für eine detaillierte visuelle Erklärung.
@@ -381,7 +379,7 @@ Man kann den optimalen Fluss nur beibehalten indem man die Sortierung Spaltenwei
     \item Ansprechendes Aussehen
     \item Bedeutung kann durch die Größe der Kachel dargestellt werden
     \item Unterschiede in der Darstellung gleicher Datenpunkte durch unterschiedliche Größe
-    \item Vorteilhaft bei der Anzeige ohne Interaktion, da es keine abgeschnittenen Inhalte gibt wie bei dem Spaltendesign
+    \item Vorteilhaft bei der Anzeige ohne Interaktion, da es keine abgeschnittenen Inhalte gibt wie beim Spaltendesign
   \end{itemize}
 
   \textbf{Nachteile}\\
@@ -407,7 +405,7 @@ Man kann den optimalen Fluss nur beibehalten indem man die Sortierung Spaltenwei
 
 \subsection{Animationen}
 
-Die Nutzung von funktionalen Animationen wurden in den letzten Jahren zu einem populären Mittel um die Nutzererfahrung zu verbessern \cite{functionalanimations}. Vergleich hier zu Googles Material Design \cite{materialdesign}, bei dem eines der genannten Designziele ``Motion provides meaning'' ist. Bei diesem wird viel Wert darauf gelegt wurde, mittels Animationen die Nutzererfahrung zu erhöhen. Genauer wird bei den Animationen geschrieben: ``In the world of material design, motion describes spatial relationships, functionality, and intention with beauty and fluidity'' \cite{materialdesign}.
+Die Nutzung von funktionalen Animationen wurde in den letzten Jahren zu einem populären Mittel, um die Nutzererfahrung zu verbessern \cite{functionalanimations}. Vergleich hier zu Googles Material Design \cite{materialdesign}, bei dem eines der genannten Designziele ``Motion provides meaning'' ist. Bei diesem Design wird viel Wert darauf gelegt, mittels Animationen die Nutzererfahrung zu erhöhen. Genauer wird bei den Animationen geschrieben: ``In the world of material design, motion describes spatial relationships, functionality, and intention with beauty and fluidity'' \cite{materialdesign}.
 So war es auch hier eines der gesetzten Ziele, Animationen zu entwickeln, die, neben dem rein ästhetischen Aspekt, einen Vorteil im Verständnis des Datenflusses der Applikation ermöglichen.
 
 \begin{enumerate}
@@ -417,11 +415,11 @@ So war es auch hier eines der gesetzten Ziele, Animationen zu entwickeln, die, n
   \item Die Anzahl an Bewegungen soll minimal sein, um nicht unnötig vom eigentlichen Inhalt abzulenken.
 \end{enumerate}
 
-Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da die die Beispiele gezeigt haben, dass eine Neuberechnung des Layouts bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann, wie die Kacheln sich bewegen, und welchen Gesetzmäßigkeiten sie unterliegen.
+Nur das Spaltenbasierte Layout erfüllt diese Anforderungen für Animationen, da die die Beispiele gezeigt haben, dass eine Neuberechnung des Layouts bei dem Kachelbasierten zu aufwändig ist, als dass nachverfolgt werden kann, wie die Kacheln sich bewegen, und welchen Gesetzmäßigkeiten sie unterliegen. - Wie wäre es mit Spuren, um den Weg der Kacheln zu verfolgen?
 
 \subsection{Kacheln}\label{sec:tiles}
 
-Das Design der Kacheln ist neben ihrer Anordnung die wichtigste Design-Entscheidung. Zusätzlich zu dem rein funktionalen Aspekt ist auch das Aussehen wichtig, da gewährleistet sein muss, dass Inhalte leicht voneinander unterschieden werden können und die Fülle an Information den Benutzer nicht überfordern.
+Das Design der Kacheln ist neben ihrer Anordnung die wichtigste Design-Entscheidung. Zusätzlich zu dem rein funktionalen Aspekt ist natürlich auch das Aussehen wichtig, da gewährleistet sein muss, dass Inhalte leicht voneinander unterschieden werden können und die Fülle an Information den Benutzer nicht überfordert.
 
 Rein funktional besitzt eine Kachel folgende Funktionalitäten:
 
@@ -443,7 +441,7 @@ Mit diesen Anforderungen kann eine funktionale Kachel konzipiert werden, siehe A
     \label{fig:tile_prototype}
 \end{figure}
 
-Menschen sind äußerst gut darin, Farben und unterschiedliche Formen schnell zu gruppieren, da nach aktuellem Kenntnisstand, dies Teile der ersten Verarbeitungsstufe von visuellen Informationen sind \citep{treisman1987merkmale}. Da eine schnelle Assoziation von Suchbegriff und Kachel äußerst wichtig ist, wurde die Hintergrundfarbe der Kachel dafür benutzt. Dies schränkt das Design aber insofern ein, dass bis auf Grautöne und Abstufungen der verwendeten Hintergrundfarbe keine Anderen mehr möglich sind. Man könnte zum Beispiel das Symbol zum Favorisieren nicht überall rot anzeigen. Doch war das dadurch erzielte Design so überzeugend, dass dies in Kauf genommen wurde.
+Menschen sind äußerst gut darin, Farben und unterschiedliche Formen schnell zu gruppieren, da nach aktuellem Kenntnisstand, dies Teile der ersten Verarbeitungsstufe von visuellen Informationen sind \citep{treisman1987merkmale}. Da eine schnelle Assoziation von Suchbegriff und Kachel elementar wichtig ist, wird die Hintergrundfarbe der Kachel dafür benutzt. Dies schränkt das Design aber insofern ein, dass bis auf Grautöne und Abstufungen der verwendeten Hintergrundfarbe keine anderen was? mehr möglich sind. Man könnte zum Beispiel das Symbol zum Favorisieren nicht überall rot anzeigen. Doch war das dadurch erzielte Design so überzeugend, dass dies in Kauf genommen wurde. Die beiden letzten Sätze sind etwas unverständlich.
 
 \begin{figure}[htbp]
     \centering
@@ -457,9 +455,9 @@ Menschen sind äußerst gut darin, Farben und unterschiedliche Formen schnell zu
 % TODO hash-qulle
 Da in Abschnitt \ref{sec:tiles} entschieden wurde, die Hintergrundfarbe der Kacheln als Hauptunterscheidungsmerkmal der Suchbegriffe zu verwenden, muss nun festgelegt werden wie eine Farbe zu einem Suchbegriff ausgewählt werden soll.
 Alle angezeigten Farben sollen optisch zueinander gehören und miteinander harmonieren. Um das zu erreichen, gibt es verschiedene Ansätze. Bei allen ist die Konvertierung der Suchbegriffe zu einer Zahl, der \textit{erste} Schritt. Diese Funktion sollte die typischen Eigenschaften einer \textit{guten} Hash-Funktion mitbringen: gleichmässige Verteilung der Funktionswerte auf den Zielraum, minimale Kollisionen und Determinismus.
-Die hier Verwendete stammt von Dan Berstein und ist bekannt unter der Bezeichnung djb2 \cite{djb2}.
+Die hier Verwendete stammt von Dan Bernstein und ist bekannt unter der Bezeichnung djb2 \cite{djb2}.
 
-Der erste Ansatz wäre es, eine Liste mit zueinander harmonierenden Farben zu verwenden und jeweils eine auszusuchen. Das kann jedoch nur mit einer langen Liste von Farben funktionieren. Außerdem kann es bei dieser Methode häufiger vorkommen, das Suchbegriffe dieselbe Farbe zugewiesen bekommen, was äußerst unerwünscht ist. Man könnte sich nun überlegen, ob komplexe Konfliktresolution, also wenn Suchbegriffe miteinander kollidieren und einer davon eine andere Farbe bekommt, betrieben werden sollte. .
+Der erste Ansatz wäre es, eine Liste mit zueinander harmonierenden Farben zu verwenden und jeweils eine auszusuchen. Das kann jedoch nur mit einer langen Liste von Farben funktionieren. Außerdem kann es bei dieser Methode häufiger vorkommen, das Suchbegriffe dieselbe Farbe zugewiesen bekommen, was äußerst unerwünscht ist. Man könnte sich nun überlegen, ob komplexe Konfliktresolution, also wenn Suchbegriffe miteinander kollidieren und einer davon eine andere Farbe bekommt, betrieben werden sollte.
 Dadurch wird aber verhindert, dass jeder Suchbegriff konsistent die gleiche Farbe bekommt.
 
 %TODO der satz mit naiv ist doof
@@ -472,11 +470,11 @@ Probleme von den HSx Farbräumen sind die für den Menschen ungünstige Verteilu
 Abhilfe schaffen die dafür erstellten Farbräume LAB bzw. die Weiterentwicklung HCL. Sie sind jedoch nicht einfach zu benutzen, weil der valide Wertebereich der Eingabeparameter je nach Kombination der Werte unterschiedlich ist. Das macht es schwer, mit diesen Farbräumen Farben prozedural zu erstellen.
 % Es gibt im speziellen um den Chroma-Wert, dieser kann grob mit der Helligkeit verglichen werden. Der Wertebereich der Sättigung und des Farbtons sind vom Chroma-Wert abhängig.
 
-Die Wahl eines idealen Farbraums ist damit nicht eindeutig möglich, mittels der HSx-Räume ist es einfach, eine gute Farbskala prozedural zu erstellen, der Farbbereich ist jedoch ungünstig für den Menschen. LAB und HCL bieten die beste Farbverteilung für die menschliche Wahrnehmung, sind jedoch äußerst schwer zu benutzen. Eine mögliche Kombination der Vorteile beider Farbräume zeigt \citep{husl}. Hier wird ein Farbraum mit der Bezeichnung \textit{human-friendly HSL} (kurz HUSL) vorgestellt. HUSL bietet einen einfach zu bedienenden Farbraum, welcher versucht die Helligkeitsschwankungen bei Farbtonänderung zu minimieren und die Farbverteilung für das menschliche Auge zu optimieren.
+Die Wahl eines idealen Farbraums ist damit nicht eindeutig möglich, mittels der HSx-Räume ist es einfach, eine gute Farbskala prozedural zu erstellen, der Farbbereich ist jedoch ungünstig für den Menschen. LAB und HCL bieten die beste Farbverteilung für die menschliche Wahrnehmung, sind jedoch schwierig einzurichten. Eine mögliche Kombination der Vorteile beider Farbräume zeigt \citep{husl}. Hier wird ein Farbraum mit der Bezeichnung \textit{human-friendly HSL} (kurz HUSL) vorgestellt. HUSL bietet einen einfach zu bedienenden Farbraum, welcher versucht die Helligkeitsschwankungen bei Farbtonänderung zu minimieren und die Farbverteilung für das menschliche Auge zu optimieren.
 
-Doch keiner der Farbräume konnte eine \textit{ideale} Farbskala erstellen. Es konnten in allen Farbräumen sehr anspruchsvolle Farbskalen mit wenig Kollisionen erstellt werden. Da Farbskalen ein subjektives Thema sind, wurde die Möglichkeit eingebaut, sie in der Applikation zu verändern - dies wurde gleich mit dem Gamification-Aspekt verbunden, wodurch man nach und nach neue Farbskalen Freischalten kann und sich diejenigen aussuchen kann die einem am besten gefallen.
+Doch keiner der Farbräume konnte eine \textit{ideale} Farbskala erstellen. Es konnten in allen Farbräumen sehr anspruchsvolle Farbskalen mit wenig Kollisionen erstellt werden. Da Farbskalen ein subjektives Thema sind, wurde die Möglichkeit eingebaut, sie in der Applikation zu verändern - dies wurde gleich mit dem Gamification-Aspekt verbunden, wodurch man nach und nach neue Farbskalen Freischalten kann und der Nutzer sich diejenigen aussuchen kann, die ihm am meisten zusagen.
 
-Zum Testen der Farbskalen wurde eine Liste an möglichen Suchbegriffen benutzt. Die Ergebnisse sind in Abbildung \ref{fig:colors} zu sehen.
+Zum Testen der Farbskalen wurde eine Liste von möglichen Suchbegriffen benutzt. Die Ergebnisse sind in Abbildung \ref{fig:colors} zu sehen.
 
 \begin{figure}[htbp]
     \centering
@@ -489,7 +487,7 @@ Zum Testen der Farbskalen wurde eine Liste an möglichen Suchbegriffen benutzt. 
 
 % Es ist schwer neue Technologien im Unternehmensfeld einzuführen, vor allem wenn sie freiwillig benutzt werden können - so wie das hier entwickelte Enterprise Infoboard. Ziel ist es also durch die Gamification der Benutzung die Benutzer dazu zu motivieren die Anwendung gewohnheitsmäßig zu benutzen.
 
-In Abschnitt \ref{sec:intro_game} wurde Gamification definiert, sowie anhand von Beispielen gezeigt, dass Gamification einen Mehrwert für das Infoboard erzeugen kann. Im Folgenden werden die für das Infoboard eingesetzten Gamification-Mechanismen erarbeitet.
+In Abschnitt \ref{sec:intro_game} wurde Gamification definiert, sowie anhand von Anwendungen gezeigt, dass Gamification einen Mehrwert für das Infoboard erzeugen kann. Im Folgenden werden die für das Infoboard eingesetzten Gamification-Mechanismen erläutert.
 
 Die Grundlage jedes Spieledesigns ist der \textit{Compulsion Loop}, der eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden, um eine neurochemische Belohnung zu erhalten.
 
@@ -497,9 +495,9 @@ Nach \citep{gamasutra} besteht diese modellierte Kette aus 3 Schritten:
 
 \begin{enumerate}
   \item \textbf{Anerkennung der Leistung} \\
-  Die Ausführung der Aktionen wird belohnt, der Benutzer bekommt etwas das er gerne möchte. Die Herausforderung hierbei ist es etwas zu erschaffen, dass der Benutzer möchte und die Belohnung so einzuteilen, dass er gerade soviel bekommt, dass es eine Belohnung darstellt. Am Beispiel des Rollenspieles wäre eine Belohnung die verbesserte Rüstung, mit der der gespielte Charakter widerstandsfähiger wird und neue, bisher verschlossene, Abenteuer bestreiten kann.
+  Die Ausführung der Aktionen wird belohnt, der Benutzer bekommt etwas das einen Wert für ihn besitzt. Die Herausforderung hierbei ist, etwas zu erschaffen, dass der Benutzer möchte und die Belohnung so einzuteilen, dass er gerade soviel bekommt, dass es eine Belohnung darstellt. Am Beispiel des Rollenspieles wäre eine Belohnung die verbesserte Rüstung, mit der der gespielte Charakter widerstandsfähiger wird und neue, bisher verschlossene Abenteuer bestreiten kann.
   \item \textbf{Belohnung einer Aktion}\\
-  Jede Aktion, die der Benutzer ausführt, hat eine direkte Belohnung zur Folge. Diese ist jedoch so klein, dass nicht direkt Glücksgefühle ausgelöst werden. Erst eine Anhäufung der Belohnungen führt dazu, dass der Benutzer die eigentliche \textbf{Belohnung der Leistung} erhält. Es ist zu beachten, dass diese direkten Belohnungen nicht allzu schnell die Möglichkeit freischalten, sie gegen dass einzutauschen wonach der Benutzer strebt. Im Rollenspiel könnte das Gold sein, dass benötigt wird um eine neue Rüstung zu kaufen.
+  Jede Aktion, die der Benutzer ausführt, hat eine direkte Belohnung zur Folge. Diese ist jedoch zu gering, um sofortige Glücksgefühle auszulösen. Erst die  Anhäufung vieler Belohnungen führt dazu, dass der Benutzer die eigentliche \textbf{Belohnung der Leistung} erhält. Es ist zu beachten, dass diese direkten Belohnungen nicht allzu schnell die Möglichkeit freischalten, sie gegen dass einzutauschen wonach der Benutzer strebt. Im Rollenspiel könnte das Gold sein, dass benötigt wird um eine neue Rüstung zu kaufen.
   \item \textbf{Aktion}\\
   Die Aktion ist die Grundlage der Schleife. Aktionen sind das was der Benutzer ausführen soll. Im Rollenspiel könnte dies das Lösen von Aufträgen sein.
 \end{enumerate}
@@ -799,6 +797,7 @@ Allem in Allem ist die Facebook-Flux Architektur in Kombination mit React.js ein
 Wie im vorherigen Abschnitt beschrieben, wurde die Applikation mittels React.js und der Flux-Architektur realisiert. Anstelle der Flux-Implementierung von Facebook, wurde allerdings \textit{reflux} benutzt. Reflux vereinfacht Flux insofern, als dass es keinen einzelnen Dispatcher benutzt. Jede Action ist ihr eigener Dispatcher, mit dem Ziel Flux noch mehr zu vereinfachen und unnötigen Quelltext (sogennanten Boilerplate) zu reduzieren\footnote{Keinen zentralen Dispatcher zu benutzen hat auch Nachteile, für dieses Projekt waren die jedoch nicht von Relevanz.}. Eine Vollständige Erklärung für reflux ist auf dem Blog des Autors zu finden \cite{reflux}. Reflux ist nicht der einzige Versuch, eine Alternative bereitzustellen. Mittlerweile gibt es über 10 verschiedene Flux-Bibliotheken\footnote{Ein Vergleich dieser ist hier zu finden \url{https://github.com/voronianski/flux-comparison}} - mit teilweise großen Gemeinden dahinter oder Firmen wie z.B. \textit{Yahoo} mit \textit{Fluxible}. Der Funktionsinhalt der verschiedenen Flux-Bibliotheken ist mehr oder minder gleich, somit könnte reflux mit Leichtigkeit ausgetauscht werden, wenn es denn nötig wäre.
 Die Entwicklung in diesem Bereich ist jedoch äußerst spannend und hat zum Zeitpunkt dieser Arbeit mit redux \cite{gitredux} ihren Höhepunkt gefunden, wo die Stores gar keinen State mehr besitzen und nur noch als Action-Aggregatoren dienen. Dadurch ergibt sich die Möglichkeit, dass der Zustand der Applikation vor- und zurückgespult werden kann, da er rein von den gesendeten Actions abhängig ist\citep{redux}.
 
+
 \subsection{Überblick}
 
 \begin{figure}[htbp]
@@ -906,7 +905,7 @@ Als View wird das Interface bezeichnet, mit dem der Benutzer schlussendlich inte
 
 Responsives Webdesign bezeichnet ein Paradigma, bei dem Webseiten daraufhin geschrieben werden, dass die Darstellung der Inhalte auf unterschiedlichen Geräten, ohne Einbußen in der Benutzerfreundlichkeit möglich ist. Praktikabel bedeutet das, dass die Darstellung abhängig von der Bildschirmbreite des Gerätes ist. \cite{natda2013responsive}.
 
-Aktuell wird das so umgesetzt, dass jeglicher Inhalt mit der Benutzung eines \textit{Grid}-Systems dargestellt wird. Grid-Systeme werden benutzt, um ``... Seitenlayouts mittels Zeilen und Spalten, die Inhalte aufnehmen, zu kreieren.'' (\cite{bootstrap}, übersetzt aus dem Englischen). 
+Aktuell wird das so umgesetzt, dass jeglicher Inhalt mit der Benutzung eines \textit{Grid}-Systems dargestellt wird. Grid-Systeme werden benutzt, um ``... Seitenlayouts mittels Zeilen und Spalten, die Inhalte aufnehmen, zu kreieren.'' (\cite{bootstrap}, übersetzt aus dem Englischen).
 
 Eine genaue Erklärung von Grid-Systemen ist nicht im Rahmen der Arbeit, für mehr Informationen zu Grid-Systemen wird auf \cite{bootstrap} verwiesen.
 In dieser Applikation wird das von Bootstrap bereitgestellte Grid intensiv benutzt, um auf jedem Endgerät eine möglichst gute Benutzererfahrung zu garantieren.
