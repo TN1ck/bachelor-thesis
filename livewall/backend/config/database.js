@@ -1,7 +1,7 @@
 module.exports = {
     database: 'livewall',
-    username: 'test',
-    password: 'testpassword',
+    username: 'livewalluser',
+    password: 'dai2015',
     config: {
         pool: {
             max: 5,

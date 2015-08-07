@@ -26,9 +26,6 @@ settings.PROFILE_URL = 'http://pia-dev-intern.dai-labor.de/service';
 // url to the http-endpoints, when developing it is http://localhost:4000
 settings.SERVER_URL  = 'http://localhost:4000';
 
-// url to the websocket-endpoints, when developing it is http://localhost:4001
-settings.SOCKET_URL  = 'http://localhost:4001';
-
 // owa settings
 settings.OWA = {
     owa_baseUrl: 'http://ia.dailab.de/owa/',

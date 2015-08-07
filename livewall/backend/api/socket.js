@@ -1,5 +1,4 @@
 var io         = require('socket.io')();
-var ioPort     = 4001;
 
 //
 // WEBSOCKET
@@ -10,7 +9,5 @@ io.on('connection', function(socket){
         socket.on('event', function(data){});
         socket.on('disconnect', function(){});
 });
-
-io.listen(ioPort);
 
 module.exports = io;

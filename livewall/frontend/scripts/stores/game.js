@@ -75,7 +75,7 @@ export default Reflux.createStore({
 
                 // open the websocket and listen to actions by others, update
                 // the global points when an action happened
-                this.socket = io(SETTINGS.SOCKET_URL);
+                this.socket = io(SETTINGS.SERVER_URL);
                 this.socket.on('connect', function () {
                 });
 

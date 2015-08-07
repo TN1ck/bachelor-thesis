@@ -1,18 +1,23 @@
-var express    = require('express');
-var bodyParser = require('body-parser');
-var Promise    = require('bluebird');
-var cors       = require('cors');
-var http       = require('http');
-var _          = require('lodash');
+var express     = require('express');
+var bodyParser  = require('body-parser');
+var compression = require('compression')
+var Promise     = require('bluebird');
+var cors        = require('cors');
+var http        = require('http');
+var _           = require('lodash');
 
-var models     = require('./models');
-var User       = models.User;
-var Action     = models.Action;
-var Vote       = models.Vote;
-var Item       = models.Item;
+var models      = require('./models');
+var User        = models.User;
+var Action      = models.Action;
+var Vote        = models.Vote;
+var Item        = models.Item;
 
-var app        = express();
-var port       = 4000;
+var io          = require('./api/socket.js');
+
+var port        = 4000;
+var app         = express();
+var server      = http.createServer(app);
+io.listen(server);
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -34,5 +39,7 @@ router.get('/points',        cors(), require('./api/points/points.js'));
 router.get('/actions',       cors(), require('./api/actions/actions.js'));
 
 app.use('/api', router);
+app.use(compression());
+app.use(express.static('../frontend/dist'))
 
-app.listen(port);
+server.listen(port);
