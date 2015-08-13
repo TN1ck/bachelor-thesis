@@ -1,3 +1,7 @@
+/**
+ * Utility command to fill the database with mockup users / items / votes and actions
+ */
+
 var _      = require('lodash');
 var models = require('../models');
 var POINTS = require('../../frontend/shared/gamification/points');
@@ -15,6 +19,7 @@ var sequelize = models.sequelize;
 //
 
 var NAMES = ['Shenita' , 'Joye' , 'Reina' , 'Jenae' , 'Valrie' , 'Louvenia' , 'Millie' , 'Randolph' , 'Liane' , 'Dianne' , 'Bernice' , 'Layla' , 'Victorina' , 'Bernardo' , 'Genie' , 'Hung' , 'Lashunda' , 'Cammy' , 'Jamaal' , 'Nada' , 'Bettye' , 'Wendie' , 'Nellie' , 'Tonie' , 'Mica' , 'Aleshia' , 'Daisy' , 'Ashly' , 'Garfield' , 'Ouida' , 'Junko' , 'Ema' , 'Micki' , 'Freeda' , 'Renae' , 'Jessica' , 'Louella' , 'Collene' , 'Marvin' , 'Issac' , 'Lucina' , 'Ada' , 'Jamar' , 'Verda' , 'Emilia' , 'Janett' , 'Sarina' , 'Charmaine' , 'Herbert', 'Bettina'];
+
 // wurst
 var wurst = ['http://www.tu-berlin.de/?id=65718', 'http://www.tu-berlin.de/?id=78442', 'http://www.tu-berlin.de/fileadmin/f3/PIW/PIW2013-14/Einfuehrung_in_die_Nutzung_der_Universitaetsbibliothek_2013_12_13.pdf', 'http://www.tu-berlin.de/fileadmin/abt4/Bilder/JPG/Welcome_Center/Wohnungsboerse/Expose_Winterfeldtstrasse.pdf', 'http://www.tu-berlin.de/fileadmin/f27/PDFs/Publikationen/Broschuere_Kurfuersten.pdf', 'http://www.tu-berlin.de/fileadmin/f3/PIW/PIW2012-13/PIW2012-13_Zeitplan_2012-10-25.pdf', 'http://www.tu-berlin.de/uploads/media/Nr_20_Herde_01.pdf', 'http://www.tu-berlin.de/uploads/media/Nr_30_Noelting.pdf'];
 // gamification
@@ -26,78 +31,80 @@ var berlin = ['https://daiknow.dai-labor.de/DAIKnowWebGui/items/details/2152', '
 
 var ITEMS = _.range(300).concat(wurst, gamification, test, berlin);
 
-var users          = 40;
-var actionsPerUser = 200;
-var votesPerUser   = 50;
-var items          = 100;
+var users          = 40;  // number of users that should be created
+var actionsPerUser = 200; // number of actions per user
+var votesPerUser   = 50;  // number of votes per user
+var items          = 100; // number of items in the system
 
 
+// mockup users
 var usersToInsert = _.sample(NAMES, users).map(function(name) {
     return {
         username: name
     }
 });
 
+// mockup items
+var itemsToInsert = _.sample(ITEMS, items).map(function(i) {
+    return {
+        uuid: i
+    };
+});
+
+// mockup votes
+var votesToInsert = _.range(votesPerUser * users).map(function (i) {
+    return {
+        value: _.sample([-1, 1])
+    }
+});
+
+// mockup actions
+var actionsToInsert = _.range(users * actionsPerUser).map(function () {
+    var group = _.sample(_.pairs(POINTS));
+    var label = _.sample(_.pairs(group[1]));
+
+    return {
+        group: group[0],
+        label: label[0],
+        points: label[1]
+    };
+});
+
+// bluck insert them
 User.bulkCreate(usersToInsert).then(function() {
-    var itemsToInsert = _.sample(ITEMS, items).map(function(i) {
-        return {
-            uuid: i
-        };
-    });
-    User.findAll().then(function(_users) {
+    return Item.bulkCreate(itemsToInsert);
+}).then(function() {
+    return Vote.bulkCreate(votesToInsert);
+}).then(function() {
+    return Action.bulkCreate(actionsToInsert);
+}).then(function() {
+    return User.findAll();
+}).then(function(_users) {
 
-        // create items
+    Item.findAll().then(function(_items) {
 
-        Item.bulkCreate(itemsToInsert).then(function () {
-
-            Item.findAll().then(function(_items) {
-                var votesToInsert = _.range(votesPerUser * users).map(function (i) {
-                    return {
-                        value: _.sample([-1, 1])
-                    }
-                });
-
-                // create votes
-                Vote.bulkCreate(votesToInsert).then(function () {
-                    Vote.findAll().then(function(_votes) {
-                        _votes.forEach(function(vote) {
-                            vote.setUser(_.sample(_users));
-                            vote.setItem(_.sample(_items));
-                        });
-                    });
-                });
-
-                // create actions
-
-                var actionsToInsert = _.range(users * actionsPerUser).map(function () {
-                    var group = _.sample(_.pairs(POINTS));
-                    var label = _.sample(_.pairs(group[1]));
-
-                    return {
-                        group: group[0],
-                        label: label[0],
-                        points: label[1]
-                    };
-                });
-
-                Action.bulkCreate(actionsToInsert).then(function() {
-                    Action.findAll().then(function(_actions) {
-                        _actions.forEach(function(action) {
-                            action.setUser(_.sample(_users));
-                            var group = action.get('group');
-                            if (['auth', 'query'].indexOf(group) === -1) {
-                                var _item = _.sample(_items);
-                                action.setItem(_item).then(function(_action) {
-                                    // _item.setActions([_action]);
-                                });
-                            }
-                        });
-                    });
-                });
-
+        // create votes
+        Vote.findAll().then(function(_votes) {
+            _votes.forEach(function(vote) {
+                vote.setUser(_.sample(_users));
+                vote.setItem(_.sample(_items));
             });
+        });
 
+        // create actions
+        Action.findAll().then(function(_actions) {
+            _actions.forEach(function(action) {
+                action.setUser(_.sample(_users));
+                var group = action.get('group');
+                if (['auth', 'query'].indexOf(group) === -1) {
+                    var _item = _.sample(_items);
+                    action.setItem(_item).then(function(_action) {
+                        // _item.setActions([_action]);
+                    });
+                }
+            });
         });
 
     });
+
 });

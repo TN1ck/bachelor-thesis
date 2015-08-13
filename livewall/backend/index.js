@@ -14,12 +14,16 @@ var Item        = models.Item;
 
 var io          = require('./api/socket.js');
 
+// create the server
+
 var port        = 4000;
 var app         = express();
 var server      = http.createServer(app);
+
+// the websocket listens on the same port
 io.listen(server);
 
-
+// middleware
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -34,12 +38,17 @@ router.post('/user/vote',    cors(), require('./api/user/vote.js'));
 router.post('/user/booster', cors(), require('./api/user/booster.js'));
 
 router.get('/items',         cors(), require('./api/items/items.js'));
-router.get('/points',        cors(), require('./api/points/points.js'));
 
+router.get('/points',        cors(), require('./api/points/points.js'));
 router.get('/actions',       cors(), require('./api/actions/actions.js'));
 
+// make the routes available under /api
 app.use('/api', router);
+// activate compression
 app.use(compression());
+// host the static frontend-files via express
 app.use(express.static('../frontend/dist'))
 
+
+// listen for requests
 server.listen(port);

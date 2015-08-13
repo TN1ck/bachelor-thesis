@@ -1,3 +1,8 @@
+/**
+ * Utility command that calculates the badges for all users in the system,
+ * this is used normally in combination with the `fill.js` command
+ */
+
 var _      = require('lodash');
 var models = require('../models');
 var Promise = require("bluebird");
@@ -16,7 +21,7 @@ User.findAll().then(function(_users) {
     _users
     .forEach(function(user, i) {
 
-        var createBadges = function (user) {
+        function createBadges (user) {
             return function (data) {
                 // check which one the user already has
                 return new Promise(function(resolve) {

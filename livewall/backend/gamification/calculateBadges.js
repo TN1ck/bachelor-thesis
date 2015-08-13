@@ -1,3 +1,8 @@
+/**
+ * This file holds all functions which are used to compute if a user
+ * earned a badge
+ */
+
 var models = require('../models');
 var _       = require('lodash');
 var moment  = require('moment');
@@ -7,7 +12,19 @@ var Action = models.Action;
 var Vote = models.Vote;
 var Item = models.Item;
 
-var authLoginBadges = function (user) {
+/**
+ * Compute the badges for the group `authentication` and label `login`
+ *
+ * @param {Object} user The user for which the badges will be computed
+ * @returns {{
+        stats: {
+            maxConsecutiveLogins: Number,
+            numberOfLogins: Number
+        },
+        badges: String[]
+    }}
+ */
+function authLoginBadges (user) {
     return user.getActions({
         where: {group: 'auth', label: 'login'},
         order: [['createdAt', 'DESC']]
@@ -90,7 +107,18 @@ var authLoginBadges = function (user) {
     });
 };
 
-var addQueryBadges = function (user) {
+/**
+ * Compute the badges for the group `query` and label `add`
+ *
+ * @param {Object} user The user for which the badges will be computed
+ * @returns {{
+        stats: {
+            numberOfQueriesAdded: Number
+        },
+        badges: String[]
+    }}
+ */
+function addQueryBadges (user) {
     return user.getActions({where: {group: 'query', label: 'add'}}).then(function(actions) {
         var badges = [];
 
@@ -110,14 +138,25 @@ var addQueryBadges = function (user) {
 
         return {
             stats: {
-                numberOfUpvotes: count
+                numberOfQueriesAdded: count
             },
             badges: badges
         };
     });
 };
 
-var voteUpBadges = function (user) {
+/**
+ * Compute the badges for the group `vote` and label `up`
+ *
+ * @param {Object} user The user for which the badges will be computed
+ * @returns {{
+        stats: {
+            numberOfUpvotes: Number,
+        },
+        badges: String[]
+    }}
+ */
+function voteUpBadges (user) {
     return user.getActions({where: {group: 'vote', label: 'up'}}).then(function(actions) {
 
         var badges = [];
@@ -145,7 +184,18 @@ var voteUpBadges = function (user) {
     });
 };
 
-var voteDownBadges = function (user) {
+/**
+ * Compute the badges for the group `vote` and label `down`
+ *
+ * @param {Object} user The user for which the badges will be computed
+ * @returns {{
+        stats: {
+            numberOfDownvotes: Number
+        },
+        badges: String[]
+    }}
+ */
+function voteDownBadges (user) {
     return user.getActions({where: {group: 'vote', label: 'down'}}).then(function(actions) {
         var badges = [];
 
@@ -172,7 +222,18 @@ var voteDownBadges = function (user) {
     });
 };
 
-var toggleFavouriteBadges = function (user) {
+/**
+ * Compute the badges for the group `favourite` and label `toggle`
+ *
+ * @param {Object} user The user for which the badges will be computed
+ * @returns {{
+        stats: {
+            numberOfFavourites: Number
+        },
+        badges: String[]
+    }}
+ */
+function toggleFavouriteBadges (user) {
     return user.getActions({where: {group: 'favourite', label: 'toggle'}}).then(function(actions) {
         var badges = [];
 
@@ -200,6 +261,7 @@ var toggleFavouriteBadges = function (user) {
 };
 
 
+// the functions grouped after `group` and `label`
 var calcBadges = {
     favourite: {
         toggle: toggleFavouriteBadges
@@ -217,12 +279,17 @@ var calcBadges = {
 };
 
 module.exports = function (action, user) {
+
+    // to calculate the queries we perform async io-operations, that's
+    // why a promise is used
     return new Promise(function (resolve) {
         var group = action.group;
         var label = action.label;
 
+        // get the function for the group/label
         var fn = _.get(calcBadges, [group, label]);
 
+        // if it exists, execute it, else resolve the promise with an empty set
         if (fn) {
             fn(user).then(resolve);
         } else {

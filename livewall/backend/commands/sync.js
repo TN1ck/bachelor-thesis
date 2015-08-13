@@ -1,7 +1,6 @@
-//
-// DROP ALL TABLES AND CREATE THEM FROM SCRATCH
-//
+/**
+ * DROP ALL TABLES ARE CRATE THEM AGAIN
+ */
 var sequelize = require('../models').sequelize;
-
-// ATTENTION!
+ 
 sequelize.sync({force: true});
