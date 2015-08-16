@@ -30,7 +30,7 @@ export default React.createClass({
             image: icons.query,
             rotate: 0,
             type: 'none',
-            scale: 0.8,
+            scale: 1.0,
             x: 105,
             y: 205,
             fill: '#F6A623'

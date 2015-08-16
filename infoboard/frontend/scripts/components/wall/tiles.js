@@ -206,11 +206,10 @@ var Footer = React.createClass({
 });
 
 /**
- * The complete visualization of an item, also called tile.
+ * To increase the performance, the innertile is a seperate component
  */
-export default React.createClass({
-
-    displayName: 'Tile',
+var InnerTile = React.createClass({
+    displayName: 'InnerTile',
 
     propTypes: {
         tile: React.PropTypes.instanceOf(Immutable.Map).isRequired
@@ -223,8 +222,6 @@ export default React.createClass({
            This will lazily check if we need to update the tile.
        */
         return _.some([
-            ['css', 'transform'],
-            ['css', 'opacity'],
             ['ownVote'],
             ['favourite'],
             ['score']
@@ -234,14 +231,9 @@ export default React.createClass({
 
     },
 
-    componentDidMount: function () {
-        /* A DOM-node is sucessfully created, we send it to the layoutstore so
-           it can be used for layouting */
-        var dom = this.getDOMNode();
-        actions.addDomElement(this.props.tile.get('uuid'), dom);
-    },
-
     render: function () {
+
+        console.log('RENDER');
 
         var type = this.props.tile.get('type');
 
@@ -252,13 +244,6 @@ export default React.createClass({
         }
 
         var tile = React.createElement(tileTypes[type], this.props);
-
-        // color the tile according to the query
-        var style = _.extend(this.props.tile.get('css').toJS(), {
-            backgroundColor: this.props.tile.get('query').color
-        });
-
-        var cssClass = this.props.tile.get('class');
 
         var favourited = this.props.tile.get('favourite') ? 'favourite' : 'unfavourite';
 
@@ -275,9 +260,7 @@ export default React.createClass({
         var domain = this.props.tile.get('domain');
 
         return (
-            <article
-                className={`tile white ${cssClass} tile--${this.props.tile.get('type')}`}
-                style={style}>
+            <span>
                 <Header
                     userVote={userVote}
                     score={score}
@@ -286,6 +269,47 @@ export default React.createClass({
                 />
                 {tile}
                 <Footer domain={domain} action={lastAction}/>
+            </span>
+        );
+    }
+});
+
+/**
+ * The complete visualization of an item, also called tile.
+ */
+export default React.createClass({
+
+    displayName: 'Tile',
+
+    propTypes: {
+        tile: React.PropTypes.instanceOf(Immutable.Map).isRequired
+    },
+
+    shouldComponentUpdate: function (props) {
+        return props !== this.props;
+    },
+
+    componentDidMount: function () {
+        /* A DOM-node is sucessfully created, we send it to the layoutstore so
+           it can be used for layouting */
+        var dom = this.getDOMNode();
+        actions.addDomElement(this.props.tile.get('uuid'), dom);
+    },
+
+    render: function () {
+
+        // color the tile according to the query
+        var style = _.extend(this.props.tile.get('css').toJS(), {
+            backgroundColor: this.props.tile.get('query').color
+        });
+
+        var cssClass = this.props.tile.get('class');
+
+        return (
+            <article
+                className={`tile white ${cssClass} tile--${this.props.tile.get('type')}`}
+                style={style}>
+                <InnerTile {...this.props}/>
             </article>
         );
     }
