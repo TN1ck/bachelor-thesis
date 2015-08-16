@@ -22,7 +22,7 @@ var QueryComponent = React.createClass({
      * @returns {React.ProptTypes.element} The icon
      */
     createIcon: function () {
-        var loading = _.some(this.props.query.broker, b => {
+        var loading = _.some(this.props.query.brokers, b => {
             return b.status === 'pending';
         });
 

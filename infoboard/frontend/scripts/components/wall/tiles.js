@@ -233,8 +233,6 @@ var InnerTile = React.createClass({
 
     render: function () {
 
-        console.log('RENDER');
-
         var type = this.props.tile.get('type');
 
         // if we do not know the type, we cannot visualize it

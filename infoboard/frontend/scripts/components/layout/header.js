@@ -12,11 +12,44 @@ import {NavItemLink} from 'react-router-bootstrap';
 
 import t from '../../../shared/translations/translation.js';
 
-export default React.createClass({
-    displayName: 'header',
+/**
+ * Navigation Tab for the user-statistics
+ */
+var UserStatsNav = React.createClass({
+
+    displayName: 'UserStatsNav',
+
+    propTypes: {
+        user: React.PropTypes.object
+    },
 
     mixins: [
-        Reflux.connect(gameStore),
+        Reflux.connect(gameStore)
+    ],
+
+    render: function () {
+        var alltime = this.state.alltime.user;
+        var level   = this.state.level;
+
+        return (
+            <Nav navbar>
+                <NavItemLink to='badges' active={false}>
+                    <span>{this.props.user.username} - {alltime.points.all} {t.label.points}</span>
+                    <span> - #{alltime.place} {t.label.place} - {level} {t.label.level}</span>
+                </NavItemLink>
+            </Nav>
+        );
+    }
+});
+
+/**
+ * The Header of the application, serves as a navigation and info about the current
+ * user-statistics
+ */
+export default React.createClass({
+    displayName: 'Header',
+
+    mixins: [
         Reflux.connect(userStore)
     ],
 
@@ -100,22 +133,10 @@ export default React.createClass({
      * @returns {Component}
      */
     createUser: function () {
-
-        var alltime = this.state.alltime.user;
-        var level   = this.state.level;
-
-        if (!this.state.user.isLoggedIn()) {
-            return <span></span>;
+        if (this.state.user.isLoggedIn()) {
+            return <UserStatsNav user={this.state.user}/>;
         }
-
-        return (
-            <Nav navbar>
-                <NavItemLink to='badges' active={false}>
-                    <span>{this.state.user.username} - {alltime.points.all} {t.label.points}</span>
-                    <span> - #{alltime.place} {t.label.place} - {level} {t.label.level}</span>
-                </NavItemLink>
-            </Nav>
-        );
+        return <span></span>;
     },
 
     render: function () {

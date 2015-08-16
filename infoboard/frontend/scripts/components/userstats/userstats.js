@@ -58,7 +58,7 @@ var BadgeComponent = React.createClass({
             <Icon
                 image={image}
                 type={type}
-                fill={fill}
+                fill={this.props.owns ? fill : '#95a5a6'}
             />
         );
 

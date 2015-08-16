@@ -16,7 +16,7 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
  * item in the emitted list.
  */
 export default React.createClass({
-    displayName: 'wall',
+    displayName: 'Wall',
 
     mixins: [Reflux.connect(layoutStore, 'items')],
 
