@@ -19,7 +19,7 @@ export default React.createClass({
 
     getInitialState: function () {
         return {
-            remember: true,
+            remember: false,
             loading: false,
             error: false,
             isLoggedIn: 'loading'
@@ -39,9 +39,6 @@ export default React.createClass({
         this.setState({loading: true});
 
         actions.login(username, password, this.state.remember, () => {
-            if (!user.isLoggedIn()) {
-                return this.setState({ error: true, loading: false });
-            }
             if (nextPath) {
                 router.replaceWith(nextPath);
             } else {

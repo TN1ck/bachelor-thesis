@@ -60,13 +60,14 @@ export default React.createClass({
 
         var a = actions[action.group][action.label];
 
-        var createdAt = moment(action.updatedAt).format('HH:MM');
+        var createdAt = moment(action.createdAt).format('H:mm');
 
         var dict = {
             username: username,
             createdAt: createdAt,
             points: action.points
         };
+
         var body = (
             <span>
                 <h5>{username} {a.text}</h5>

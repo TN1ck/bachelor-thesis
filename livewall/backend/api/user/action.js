@@ -1,4 +1,5 @@
 var _               = require('lodash');
+var Promise         = require('bluebird');
 var io              = require('../socket.js');
 var models          = require('../../models');
 var calculateBadges = require('../../gamification/calculateBadges');
@@ -25,17 +26,38 @@ module.exports = function (req, res) {
     User.findOrCreate({
         where: {username: username}
     }).then(_.first).then(function(user) {
-        user.getBoosters({
-            where: {
-                validUntil: {
-                    $gt: new Date()
+
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        Promise.all([
+            // get the current booster
+            user.getBoosters({
+                where: {
+                    validUntil: {
+                        $gt: new Date()
+                    }
                 }
-            }
-        }).then(function (booster) {
+            }),
+            // find todays auth action
+            user.getActions({
+                where: {
+                    createdAt: {
+                        $gt: today
+                    },
+                    group: 'auth',
+                    label: 'login'
+                }
+            })
+        ]).then(function (results) {
+
+            var booster = results[0];
+            var authAction = results[1];
+
+            console.error(booster, authAction);
 
             var createActionAndAnswer = function (props) {
                 return Action.create(actionProps).then(function (action) {
-                    // action sucessfully created
                     res.json(action);
                 });
             };
@@ -45,6 +67,11 @@ module.exports = function (req, res) {
             if (booster) {
                 // there should always be only one Booster
                 points = points * _.get(booster, '[0].multiplicator', 1);
+            }
+
+            // authentication is allowed once per day
+            if (group === 'auth' && label === 'login' && authAction) {
+                points = 0;
             }
 
             var actionProps = {

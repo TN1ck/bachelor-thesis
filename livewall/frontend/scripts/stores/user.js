@@ -43,10 +43,11 @@ export default Reflux.createStore({
      */
     login: function(username, password, remember, cb = () => {}, errCb = () => {}) {
         return user.login(username, password, remember)
-            .then(cb)
-            .then(() => {
+            .then(res => {
                 this.trigger(this.state);
+                return res;
             })
+            .then(cb)
             .fail(errCb);
     },
 
