@@ -1092,7 +1092,7 @@ Fertig implementiert kann die \texttt{Queries} Komponente in Abbildung \ref{fig:
 
 \begin{enumerate}
 	\item Die \texttt{Queries} Komponente soll den aktuellen Stand der \texttt{Queries} aufzeigen, dieser wird vom \texttt{QueryStore} verwaltet, weswegen wir seine Veränderungen abonnieren, dies wird in reflux mittels eines Mixin bewerkstelligt.
-		\begin{minted}{javascript}
+		\begin{minted}{text}
 React.createClass({
   mixins: [Reflux.listenTo(queryStore, 'onStoreChange')],
     onStoreChange: function (queries) {
@@ -1115,7 +1115,7 @@ React.createClass({
 		Im Detail heißt das, dass die ersten Daten, die die Komponente anzeigen wird, mittels \texttt{getInitialState} vom \texttt{QueryStore} bezogen werden. Bei jeder Veränderung wird der Zustand der Komponente mittels \texttt{this.setState} auf den Zustand des \texttt{QueryStore} aktualisiert.
 		\texttt{setState} bewirkt dass die Komponente neu gerendert wird.
 	\item Diese Art der Benutzung ist jedoch so häufig, dass reflux ihn mittels \texttt{connect} vereinfacht hat:
-	\begin{minted}{javascript}
+	\begin{minted}{text}
 React.createClass({
   mixins: [Reflux.connect(queryStore)],
   render: function () {
@@ -1126,7 +1126,7 @@ React.createClass({
 });
 	\end{minted}
 	\item Als nächstes rendern wir die Queries, dies ist wiederum eine eigenständige Komponente die wir hier nur verwenden werden.
-	\begin{minted}{javascript}
+	\begin{minted}{text}
 React.createClass({
   mixins: [Reflux.connect(queryStore)],
   createQueries: function () {
@@ -1151,7 +1151,7 @@ React.createClass({
 	\end{minted}
 Die Funktion \texttt{createQueries} benutzt die Liste von Suchbegriffen und erstellt für jeden eine \texttt{Query}-Komponente. In der render-Methode wird sie dann aufgerufen.
 \item Bleibt zuletzt noch das Löschen von Suchbegriffen, wir könnten diese Methode genauso gut auch in die Query-Komponente tun, hier übergeben wir sie jedoch mit einer weiteren \texttt{property} an die \texttt{Query}-Komponente.
-	\begin{minted}{javascript}
+	\begin{minted}{text}
 React.createClass({
   mixins: [Reflux.connect(queryStore)],
   removeQuery: function (query) {
