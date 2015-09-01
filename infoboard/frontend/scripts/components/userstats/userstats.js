@@ -21,8 +21,6 @@ import IconCard             from '../utility/iconcard.js';
 
 import LeaderBoard          from './leaderboard.js';
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
 /**
  * Creates a Badge
  */
