@@ -15,6 +15,7 @@
 \geometry{top=2cm}
 \usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage[ngerman]{babel}
 
 \usepackage{polyglossia}
 \usepackage[babel]{csquotes}
@@ -268,7 +269,7 @@ Eine der Hauptanforderungen ist die Darstellung von Suchergebnissen (heterogene 
   Es soll eine sogenannte \textit{Single Page Application} erstellt werden, das heißt eine Webapplikation bei der JavaScript, abseits des initialen Seitenaufrufes, alles rendert. Im Gegensatz zur klassischen Methodik, bei der jede Interaktion in einer komplett neuen Seite, die vom Server gerendert wird, resultiert \cite{mesbah2007migrating}.
 
 \item[Gamification]
-  Um zur Benutzung der Seite zu animieren sollen Gamification-Methoden eingeführt werden, zum Beispiel Punkte für das tägliche einloggen bis hin zu erweiterten Methoden wie der Erstellung eines Compulsion Loop. ``Der Compulsion Loop ist eine modellierte Kette an Aktivitäten, die gewohnheitsmäßig wiederholt werden, um eine neurochemische Belohnung zu erhalten'' (\cite{gamasutra}, übersetzt aus dem Englischen).
+  Um zur Benutzung der Seite zu animieren sollen Gamification-Methoden eingeführt werden, zum Beispiel Punkte für das tägliche einloggen bis hin zu erweiterten Methoden wie der Erstellung eines Compulsion Loop. \glqq Der Compulsion Loop ist eine modellierte Kette an Aktivitäten, die gewohnheitsmäßig wiederholt werden, um eine neurochemische Belohnung zu erhalten\grqq{} (\cite{gamasutra}, übersetzt aus dem Englischen).
 
 \item[Konfiguration]
   Es muss möglich sein eine Vielzahl an Parameter anzupassen, einige davon dienen auch als Benutzerinterface für den Benutzer, andere wiederum als simple Konfigurationsdatei für verwendete URLs und ähnliches.
@@ -299,7 +300,7 @@ Da die dargebotenen Angebote sehr ähnlich sind, wird in dieser Arbeit nicht wei
 
 Neben der Visualisierung  von Suchergebnissen aus heterogenen Unternehmensquellen, ist Gamification der zweite große Aspekt der Applikation. Wie in der Einleitung erwähnt, ist Gamification eine mittlerweile weitverbreitete und äußerst effektive Technik, um das sogenannte \textit{User-Engagement} zu erhöhen. Allein durch Gamification konnte die Seite DevHub ihre \textit{Engagement}-Rate um 20\% steigern \citep[pp. 17]{zichermann2011gamification}. Zahlreiche StartUps feiern große Erfolge mit dem Hinzufügen von Gamification zu anstrengenden oder langwierigen Aufgaben, wie dem Lernen einer Sprache (Duolingo\footnote{https://de.duolingo.com/}) oder Programmieren (Codecademy\footnote{http://www.codecademy.com/}).
 
-Der Begriff Gamification entstand erst 2008 und hat seitdem viele Bedeutungen erlangt. Deterding \cite{deterding2011game} bemühte sich eine einheitliche Definition zu finden, die auch im folgenden Kontext verwendet wird: ``Gamification is the use of game design elements in non-game contexts'' \citep{deterding2011game}.
+Der Begriff Gamification entstand erst 2008 und hat seitdem viele Bedeutungen erlangt. Deterding \cite{deterding2011game} bemühte sich eine einheitliche Definition zu finden, die auch im folgenden Kontext verwendet wird: \glqq Gamification is the use of game design elements in non-game contexts\grqq{} \citep{deterding2011game}.
 
 Das Infoboard dient als Interface für den Benutzer die heterogenen Unternehmensquellen komfortabel zu benutzen, welches zu besserem Wissensaustausch führen soll. Dies ist offensichtlich ein nicht-Spiele-Kontext, der durch erhöhte Benutzerbeteiligung positive Effekte für ein Unternehmen erzielen kann.
 Mit dem Einsatz von Gamification-Elementen werden von uns zwei Ziele verfolgt: einerseits soll durch die Verspielisierung der Applikationsmechaniken deren Benutzung erhöht bzw. ein konstanteres \textit{User-Engangement} erzielt werden, andererseits sollen die Mechaniken zur Bewertung der Suchergebnisse gefördert werden, wodurch diese noch besser werden.
@@ -407,7 +408,7 @@ Der optimale Fluss kann nur beibehalten werden, indem die Sortierung Spaltenweis
 
 \subsection{Animationen}
 
-Die Nutzung von funktionalen Animationen wurde in den letzten Jahren zu einem populären Mittel, um die Nutzererfahrung zu verbessern \cite{functionalanimations}. Vergleich hier zu Googles Material Design \cite{materialdesign}, bei dem eines der genannten Designziele ``Motion provides meaning'' ist. Bei diesem Design wird viel Wert darauf gelegt, mittels Animationen die Nutzererfahrung zu erhöhen. Genauer wird bei den Animationen geschrieben: ``In the world of material design, motion describes spatial relationships, functionality, and intention with beauty and fluidity'' (Google 2014, \cite{materialdesign}).
+Die Nutzung von funktionalen Animationen wurde in den letzten Jahren zu einem populären Mittel, um die Nutzererfahrung zu verbessern \cite{functionalanimations}. Vergleich hier zu Googles Material Design \cite{materialdesign}, bei dem eines der genannten Designziele \glqq Motion provides meaning\grqq{} ist. Bei diesem Design wird viel Wert darauf gelegt, mittels Animationen die Nutzererfahrung zu erhöhen. Genauer wird bei den Animationen geschrieben: \glqq In the world of material design, motion describes spatial relationships, functionality, and intention with beauty and fluidity\grqq{} (Google 2014, \cite{materialdesign}).
 So war es auch hier eines der gesetzten Ziele, Animationen zu entwickeln, die, neben dem rein ästhetischen Aspekt, einen Vorteil im Verständnis des Datenflusses der Applikation ermöglichen.
 
 \begin{enumerate}
@@ -493,7 +494,7 @@ Zum Testen der Farbskalen wurde eine Liste von möglichen Suchbegriffen benutzt.
 
 In Abschnitt \ref{sec:intro_game} wurde Gamification definiert, sowie anhand von Anwendungen gezeigt, dass Gamification einen Mehrwert für das Infoboard erzeugen kann. Im Folgenden werden die für das Infoboard eingesetzten Gamification-Mechanismen erläutert.
 
-Die Grundlage unseres Spieledesigns ist der \textit{Compulsion Loop}, der ``eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden, um eine neurochemische Belohnung zu erhalten'' (\cite{gamasutra}, übersetzt aus dem Englischen)..
+Die Grundlage unseres Spieledesigns ist der \textit{Compulsion Loop}, der \glqq eine modellierte Kette an Aktivitäten darstellt, die gewohnheitsmäßig wiederholt werden, um eine neurochemische Belohnung zu erhalten\grqq{} (\cite{gamasutra}, übersetzt aus dem Englischen)..
 
 Nach Kim (2014) \citep{gamasutra} besteht diese modellierte Kette aus 3 Schritten:
 
@@ -576,9 +577,9 @@ Es wurde deswegen entschieden immer zwei Bestenlisten anzuzeigen: Eine mit dem k
 \subsection{Abzeichen}
 Abzeichen bzw. Badges sind ein etabliertes Element der Gamification. Nach Zichermann (2011) \citep[pp. 55]{zichermann2011gamification} nutzen sie zahlreiche Eigenschaften der menschlichen Psyche, um begehrenswert zu sein: das menschliche Sammelverhalten, die plötzliche (positive) Überraschung wenn ein unerwartetes Abzeichen erhalten wurde, Sozialer Status (ähnlich zu Punkten), pure Ästhetik der Abzeichen und das Aufgabenziel, das hinter jedem Abzeichen steckt.
 
-In manchen Fällen sind Abzeichen so effektiv eingesetzt, dass sie sogar Level mit speziellen Abzeichen ersetzen, als Beispiel sei Foursquare gennant, bei welcher der Benutzer das Abzeichen für das Erreichen einer bestimmten Anzahl an \textit{check-ins}\footnote{Der Begriff \textit{check-in} wird von vielen sozialen Diensten benutzt, um an sich an einem realen Ort ``einzuchecken'' und dies damit seinen Freunden mitzuteilen} erhält. Dies funktioniert bei Foursquare deswegen gut, weil \textit{check-ins} der wichtigste Bestandteil der Applikation sind \citep[pp. 57]{zichermann2011gamification}. Auch haben \textit{check-ins} keine negative Konnotation, da es zumeist als überaus positiv angesehen wird, wenn man häufig ausgeht und neue Orte erkundet.
+In manchen Fällen sind Abzeichen so effektiv eingesetzt, dass sie sogar Level mit speziellen Abzeichen ersetzen, als Beispiel sei Foursquare gennant, bei welcher der Benutzer das Abzeichen für das Erreichen einer bestimmten Anzahl an \textit{check-ins}\footnote{Der Begriff \textit{check-in} wird von vielen sozialen Diensten benutzt, um an sich an einem realen Ort \glqq einzuchecken\grqq{} und dies damit seinen Freunden mitzuteilen} erhält. Dies funktioniert bei Foursquare deswegen gut, weil \textit{check-ins} der wichtigste Bestandteil der Applikation sind \citep[pp. 57]{zichermann2011gamification}. Auch haben \textit{check-ins} keine negative Konnotation, da es zumeist als überaus positiv angesehen wird, wenn man häufig ausgeht und neue Orte erkundet.
 
-Trotz aller positiven Aspekte von Abzeichen sind sie nicht einfach zu verwenden, so benutzt Zichermann (2011) \citep[pp. 56]{zichermann2011gamification} den Begriff ``badgenfreude'' für ein Konzept, bei dem zu viele langweilige und sinnlose Abzeichen den Sinn von Abzeichen zunichtemachen und sogar negative Folgen für das \textit{User Engagement} haben können.
+Trotz aller positiven Aspekte von Abzeichen sind sie nicht einfach zu verwenden, so benutzt Zichermann (2011) \citep[pp. 56]{zichermann2011gamification} den Begriff \glqq badgenfreude\grqq{} für ein Konzept, bei dem zu viele langweilige und sinnlose Abzeichen den Sinn von Abzeichen zunichtemachen und sogar negative Folgen für das \textit{User Engagement} haben können.
 
 Es ist sehr wichtig, dass die Abzeichen den Benutzer nicht stören. Er soll es schätzen, sie zu bekommen. Die Frage ist, wann gefällt es ihm Abzeichen zu bekommen und wann stören sie.
 Zunächst kann die Frequenz des Erhalts betrachten werden. Um anfangs den Benutzer zu motivieren gibt man ihm in der ersten Zeit meistens relativ viele Abzeichen, so ist es typisch ein Abzeichen für die erste Anmeldung oder die erste geschaffte Herausforderung zu geben.
@@ -831,7 +832,7 @@ Der \texttt{QueryStore} abonniert die Aktionen \texttt{addQuery} und \texttt{rem
 Der \texttt{GameStore} liefert alles, was für die Verspielisierung der Applikation relevant ist, wie die Bereitstellung der Punkte, der Bestenlisten und Trophäen aller Benutzer der Applikation. Weiterhin abonniert er alle Aktionen auf denen Punkte definiert sind, wie das Bewerten eines Suchergebnisses und sorgt dafür, dass diese Aktionen vom Backend verarbeitet werden.
 
 Um den sozialen Faktor zu erhöhen, reagiert der \texttt{GameStore} ebenfalls auf die Aktionen aller anderen Benutzer. Dies geschieht quasi in Echtzeit und sorgt dadurch zum Beispiel für eine äußert lebendige Statistikseite (auf dieser werden die Daten aller Benutzer angezeigt).
-Damit es insgesamt effizient bleibt, wurden WebSockets verwendet, die deutlich weniger ``Overhead'' besitzen als normale HTTP-Anfragen.
+Damit es insgesamt effizient bleibt, wurden WebSockets verwendet, die deutlich weniger \glqq Overhead\grqq{} besitzen als normale HTTP-Anfragen.
 
 \subsubsection*{DataStore}
 
@@ -907,7 +908,7 @@ Als View wird das Interface bezeichnet, mit dem der Benutzer schlussendlich inte
 
 Responsives Webdesign bezeichnet ein Paradigma, bei dem Webseiten daraufhin geschrieben werden, dass die Darstellung der Inhalte auf unterschiedlichen Geräten, ohne Einbußen in der Benutzerfreundlichkeit möglich ist. Praktikabel bedeutet das, dass die Darstellung abhängig von der Bildschirmbreite des Gerätes ist. \cite{natda2013responsive}.
 
-Aktuell wird das so umgesetzt, dass jeglicher Inhalt mit der Benutzung eines \textit{Grid}-Systems dargestellt wird. Grid-Systeme werden benutzt, um ``... Seitenlayouts mittels Zeilen und Spalten, die Inhalte aufnehmen, zu kreieren.'' (\cite{bootstrap}, übersetzt aus dem Englischen).
+Aktuell wird das so umgesetzt, dass jeglicher Inhalt mit der Benutzung eines \textit{Grid}-Systems dargestellt wird. Grid-Systeme werden benutzt, um \glqq ... Seitenlayouts mittels Zeilen und Spalten, die Inhalte aufnehmen, zu kreieren.\grqq{} (\cite{bootstrap}, übersetzt aus dem Englischen).
 
 Eine genaue Erklärung von Grid-Systemen ist nicht im Rahmen der Arbeit, für mehr Informationen zu Grid-Systemen wird auf die Webseite von Bootstrap \cite{bootstrap} verwiesen.
 In dieser Applikation wird das von Bootstrap bereitgestellte Grid intensiv benutzt, um auf jedem Endgerät eine möglichst gute Benutzererfahrung zu garantieren.
@@ -992,15 +993,16 @@ Wie jedes Softwaresystem ist auch dieses nie im finalen Entwicklungsstadium, son
 
 \pagenumbering{roman}
 \setcounter{page}{\thesavepage}
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \printbibliography
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \cleardoublepage
 
-\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \cleardoublepage
-\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+
 \chapter*{Abkürzungsverzeichnis}
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
 
 \begin{tabbing}
     RSS \hspace{3cm} \= Rich  Site Summary \kill
@@ -1023,10 +1025,11 @@ Wie jedes Softwaresystem ist auch dieses nie im finalen Entwicklungsstadium, son
 \end{tabbing}
 \cleardoublepage
 
-\addcontentsline{toc}{chapter}{Anlagen – Inhalte der beiliegenden CD}
 \chapter*{Anlagen – Inhalte der beiliegenden CD}
+\addcontentsline{toc}{chapter}{Anlagen – Inhalte der beiliegenden CD}
 \begin{itemize}
 	\item Quelltext
+	\item Bachelorarbeit als PDF
 \end{itemize}
 
 \addcontentsline{toc}{chapter}{Appendix}
@@ -1079,15 +1082,16 @@ Wie jedes Softwaresystem ist auch dieses nie im finalen Entwicklungsstadium, son
 	\label{fig:database}
 \end{figure}
 
-\addcontentsline{toc}{section}{Beispiel einer interaktiven Kompononte}
+
 \section*{Beispiel einer interaktiven Kompononte}\label{chap:appendix:component}
+\addcontentsline{toc}{section}{Beispiel einer interaktiven Kompononte}
 
 Ich werde exemplarisch eine Komponente behandeln um aufzuzeigen wie deren Verwendung ist und wie sie erstellt wurde. Ich habe dazu die \texttt{Queries} Komponente ausgewählt, da sie kurz ist jedoch viele Konzepte benutzt. Ich werde sie minimal vereinfachen, damit der Abschnitt nicht allzu lang wird.
 
 Fertig implementiert kann die \texttt{Queries} Komponente in Abbildung \ref{fig:wall} gesehen werden, ich werde nun Schritt für Schritt deren Implementierung angehen.
 
 \begin{enumerate}
-	\item Die \texttt{Queries} Komponente soll den aktuellen Stand der \texttt{Queries} aufzeigen, dieser wird vom \texttt{QueryStore} verwaltet, weswegen wir seine Veränderungen abonnieren, dies wird in \textit{reflux} mittels eines Mixin bewerkstelligt.
+	\item Die \texttt{Queries} Komponente soll den aktuellen Stand der \texttt{Queries} aufzeigen, dieser wird vom \texttt{QueryStore} verwaltet, weswegen wir seine Veränderungen abonnieren, dies wird in reflux mittels eines Mixin bewerkstelligt.
 		\begin{minted}{javascript}
 React.createClass({
   mixins: [Reflux.listenTo(queryStore, 'onStoreChange')],
@@ -1110,7 +1114,7 @@ React.createClass({
 		\end{minted}
 		Im Detail heißt das, dass die ersten Daten, die die Komponente anzeigen wird, mittels \texttt{getInitialState} vom \texttt{QueryStore} bezogen werden. Bei jeder Veränderung wird der Zustand der Komponente mittels \texttt{this.setState} auf den Zustand des \texttt{QueryStore} aktualisiert.
 		\texttt{setState} bewirkt dass die Komponente neu gerendert wird.
-	\item Diese Art der Benutzung ist jedoch so häufig, dass \textit{reflux} ihn mittels \texttt{connect} vereinfacht hat:
+	\item Diese Art der Benutzung ist jedoch so häufig, dass reflux ihn mittels \texttt{connect} vereinfacht hat:
 	\begin{minted}{javascript}
 React.createClass({
   mixins: [Reflux.connect(queryStore)],
