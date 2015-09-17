@@ -15,17 +15,17 @@ export default class Broker {
      * @returns {Broker} `this`
      */
     constructor(broker = {
-            url:          '',
-            name:         '',
-            restricted:   false,
-            action:       'ACTION_SOLR',
-            autocomplete: false
-        }, query, filter) {
-        this.broker = broker;
-        this.query = query;
-        this.filter = filter;
-        return this;
-    }
+        url:          '',
+        name:         '',
+        restricted:   false,
+        action:       'ACTION_SOLR',
+        autocomplete: false
+    }, query, filter) {
+            this.broker = broker;
+            this.query = query;
+            this.filter = filter;
+            return this;
+        }
 
     /**
      * Get the key of the broker
