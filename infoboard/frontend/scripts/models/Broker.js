@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import _ from 'lodash';
 
 import {getDomain} from '../../shared/util/utils.js';
 
@@ -118,16 +119,15 @@ export default class Broker {
      */
     getData (user) {
 
-        var url = this.broker.url;
+        var url = `${this.broker.url}?query=${this.query}`;
 
         var params = {
-            query:        this.query,
             start:        0,
             num:          10,
             autocomplete: this.broker.autocomplete,
             username:     user.username,
             action:       this.broker.action,
-            sort:         'xmp_date desc'
+            sort:         'xmp_date%20desc'
         };
 
         if (this.filter) {
@@ -138,10 +138,13 @@ export default class Broker {
             params.token = user.token;
         }
 
+        _.each(params, (v, k) => {
+            url += `&${k}=${v}`;
+        });
+
         var request = $.ajax({
             type:     'GET',
             url:      url,  // Send the login info to this page
-            data:     params,
             dataType: 'jsonp',
             jsonp:    'json.wrf'
 
