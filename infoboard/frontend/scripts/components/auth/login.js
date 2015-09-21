@@ -3,6 +3,7 @@ import {
     Grid, Row, Col, Input, Button,
     PageHeader, Alert, ButtonGroup
 } from 'react-bootstrap';
+import CheckBoxInput from '../utility/CheckBoxInput.js';
 
 import actions from '../../actions/actions.js';
 
@@ -19,7 +20,7 @@ export default React.createClass({
 
     getInitialState: function () {
         return {
-            remember: false,
+            remember: true,
             loading: false,
             error: false,
             isLoggedIn: 'loading'
@@ -56,9 +57,9 @@ export default React.createClass({
         });
     },
 
-    handleChange: function () {
+    handleChange: function (value) {
         this.setState({
-            remember: !this.state.remember
+            remember: value
         });
     },
 
@@ -99,21 +100,19 @@ export default React.createClass({
                 label={t.auth.label.password}
                 ref='password'
             />
-            <Input
-                disabled={this.state.loading}
-                onChange={this.handleChange}
-                value={this.state.remember}
-                type='checkbox'
-                hasFeedback
-                label={t.auth.label.remember}
-                ref='remember'
-            />
-            <Button
-                disabled={this.state.loading}
-                bsStyle='primary' type='submit'
-                onSubmit={this.handelSubmit}>
-                {t.auth.label.login} {this.state.loading ? loading : ''}
-            </Button>
+            <div>
+                <CheckBoxInput
+                    checked={this.state.remember}
+                    onChange={this.handleChange}
+                    label={t.auth.label.remember}/>
+                <Button
+                    className='pull-right'
+                    disabled={this.state.loading}
+                    bsStyle='primary' type='submit'
+                    onSubmit={this.handelSubmit}>
+                    {t.auth.label.login} {this.state.loading ? loading : ''}
+                </Button>
+            </div>
         </form>;
 
         var logoutForm = <div>
