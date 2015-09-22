@@ -25,7 +25,6 @@ module.exports = function (req, res) {
         }
     };
 
-    console.time('points query');
     User.findAll({
         include: [
             {

@@ -48,13 +48,22 @@ module.exports = function (req, res) {
                     group: 'auth',
                     label: 'login'
                 }
+            }),
+            user.getActions({
+                where: {
+                    createdAt: {
+                        $gt: today
+                    }
+                },
+                include: [
+                    {model: Item}
+                ]
             })
         ]).then(function (results) {
 
             var booster = results[0];
             var authAction = results[1];
-
-            console.error(booster, authAction);
+            var allActions = results[2];
 
             var createActionAndAnswer = function (props) {
                 return Action.create(actionProps).then(function (action) {
@@ -72,6 +81,23 @@ module.exports = function (req, res) {
             // authentication is allowed once per day
             if (group === 'auth' && label === 'login' && authAction) {
                 points = 0;
+            }
+
+            // if its a vote or a favourite, check if the item was already rated today
+            if (group === 'vote' || group === 'favourite') {
+
+                var _action = _.find(allActions, function (a) {
+                    var _item = a.get('Item');
+                    if (!_item) {
+                        return false;
+                    }
+                    return _item.get('uuid') === body.item;
+                });
+
+                // action with same uuid found, give no points
+                if (_action) {
+                    points = 0;
+                }
             }
 
             var actionProps = {

@@ -40,7 +40,7 @@ function authLoginBadges (user) {
             return plain;
         });
 
-        // remave date duplicates, day-precision
+        // remove date duplicates, day-precision
         actions = _.unique(actions, true, function (action) {
             return action.createdAt.format(format);
         });
