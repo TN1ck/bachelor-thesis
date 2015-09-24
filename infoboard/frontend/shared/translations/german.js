@@ -70,7 +70,7 @@ module.exports = {
     stats: {
         actions: {
             auth: {
-                login: 'hat sicht angemeldet.'
+                login: 'hat sich angemeldet.'
             },
             query: {
                 add: 'hat nach etwas gesucht.',
@@ -83,7 +83,7 @@ module.exports = {
                 up: 'hat etwas positiv bewertet.',
                 down: 'hat etwas negativ bewertet.'
             },
-            body: _.template('Dies Aktion wurde um ${ createdAt } Uhr ausgeführt. Sie hat ${ username } ${ points } Punkte erbracht.')
+            body: _.template('Diese Aktion wurde um ${ createdAt } Uhr ausgeführt. Sie hat ${ username } ${ points } Punkte erbracht.')
         }
     },
 

@@ -20,7 +20,7 @@ module.exports = function (req, res) {
     var username = body.username;
     var group    = body.group;
     var label    = body.label;
-    var value    = JSON.stringify(body.value);
+    var value    = body.value;
 
     // get or create user
     User.findOrCreate({
@@ -95,6 +95,17 @@ module.exports = function (req, res) {
                 });
 
                 // action with same uuid found, give no points
+                if (_action) {
+                    points = 0;
+                }
+            }
+
+            // query for the term will only gain the user points once a day
+            if (group === 'query') {
+                var _action = _.find(allActions, function (a) {
+                    return a.get('value') === value;
+                });
+
                 if (_action) {
                     points = 0;
                 }

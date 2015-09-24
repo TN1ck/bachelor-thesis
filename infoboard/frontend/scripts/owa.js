@@ -82,8 +82,6 @@ export var api = function (
 
     var format = 'YYYYMMDD';
 
-    console.log(constraints, dimensions);
-
     var data = _.pairs({
         'owa_do':             'getResultSet',
         'owa_siteId':         siteId,

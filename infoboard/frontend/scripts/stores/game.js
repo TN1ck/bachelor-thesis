@@ -236,7 +236,7 @@ export default Reflux.createStore({
         // we do not want to track the queries that are added when the wall is started
         if (track) {
             owa.track('query', queryTerm, 'add');
-            this.postAction('query', 'add', queryTerm);
+            this.postAction('query', 'add', {value: queryTerm});
         }
     },
 
