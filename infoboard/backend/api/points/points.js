@@ -2,6 +2,8 @@ var models = require('../../models');
 var moment = require('moment');
 var _       = require('lodash');
 
+var hideUsers = require('../../config/gamification.js').hideUsers;
+
 var POINTS = require('../../../frontend/shared/gamification/points');
 var BADGES = require('../../../frontend/shared/gamification/badges');
 
@@ -50,6 +52,11 @@ module.exports = function (req, res) {
                 model: Badge,
             }
         ],
+        where: {
+            username: {
+                $notIn: hideUsers
+            }
+        },
         group: [
             'Actions.label',
             'Badges.id',
@@ -57,8 +64,6 @@ module.exports = function (req, res) {
             'Boosters.id'
         ]
     }).then(function(users) {
-
-        console.timeEnd('points query');
 
         users = users.map(function (x) { return x.get({plain: true}); });
 
