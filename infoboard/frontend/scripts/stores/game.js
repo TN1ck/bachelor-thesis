@@ -64,28 +64,16 @@ export default Reflux.createStore({
         user.whenLogedIn(() => {
 
             pointApi.getMonthlyPoints().then(result => {
-                this.state.monthly = result;
+                this.state.monthly = this.processPoints(result);
                 this.trigger(this.state);
             });
 
             pointApi.getAllTimePoints().then(result => {
-                this.state.alltime = result;
+                this.state.alltime = this.processPoints(result);
                 this.calcLevel();
                 this.trigger(this.state);
 
-                // open the websocket and listen to actions by others, update
-                // the global points when an action happened
-                this.socket = io(SETTINGS.SERVER_URL);
-                this.socket.on('connect', function () {
-                });
-
-                this.socket.on('action_created', (action) => {
-                    this.state.actions.unshift(action);
-                    this.state.actions.pop();
-                    this.updateGlobalPoints(action);
-                    this.trigger(this.state);
-                });
-
+                this.initSockets();
 
             }).then(() => {
                 this.postAction('auth', 'login');
@@ -98,6 +86,48 @@ export default Reflux.createStore({
 
         });
 
+    },
+
+    /**
+     * Initialize the websocket-channels
+     */
+    initSockets: function () {
+
+        // open the websocket and listen to actions by others, update
+        // the global points when an action happened
+        this.socket = io(SETTINGS.SERVER_URL);
+
+        this.socket.on('updated_points', ({monthly, all}) => {
+            this.state.monthly = this.processPoints(monthly);
+            this.state.alltime = this.processPoints(all);
+            this.calcLevel();
+            this.trigger(this.state);
+        });
+
+        this.socket.on('action_created', (action) => {
+            this.state.actions.unshift(action);
+            this.state.actions.pop();
+            this.trigger(this.state);
+        });
+
+    },
+
+    /**
+     * Process the pointApi-result and hydrate the local user
+     * @param result - The result of the pointApi-call
+     * @returns The points-data from the backend hydrated with the local user
+     */
+    processPoints: function (result) {
+        return _.extend(result, {
+            user: _.find(result.users, {username: user.username})  || {
+                booster: [],
+                badges: [],
+                actions: [],
+                points: {
+                    all: 0
+                }
+            }
+        });
     },
 
     /**
@@ -140,41 +170,9 @@ export default Reflux.createStore({
                 });
             }
 
-            this.updateUserPoints(answer);
+            // this.updateUserPoints(answer);
 
         });
-    },
-
-    updateGlobalPoints: function (answer) {
-        var {action, badges} = answer;
-
-        var {
-            group, label, points
-        } = action;
-
-        [this.state.alltime, this.state.monthly].forEach((state) => {
-            state.points += points;
-            var oldPoints = _.get(state, ['actions', group, label], {
-                count: 0,
-                points: 0
-            });
-            _.set(state, ['actions', group, label, 'points'], points + oldPoints.points);
-            _.set(state, ['actions', group, label, 'count'],  1 + oldPoints.count);
-
-
-            badges.forEach(b => {
-                var oldBadgesPoints = _.get(state, ['badges', 'all'], {
-                    count: 0,
-                    points: 0
-                });
-                state.points += b.points;
-                _.set(state, ['badges', 'all', 'count'],  1 + oldBadgesPoints.count);
-                _.set(state, ['badges', 'all', 'points'], b.points + oldBadgesPoints.points);
-            });
-
-        });
-
-        this.trigger(this.state);
     },
 
     updateUserPoints: function (answer) {

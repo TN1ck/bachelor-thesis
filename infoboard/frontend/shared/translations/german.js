@@ -26,7 +26,7 @@ module.exports = {
 
     boosterPage: {
         header: 'Booster kaufen',
-        subHeader: 'Durch den Kauf von Boostern können Sie schneller Punkte sammeln, sie kosten jedoch Punkte und die Dauer ist begrenzt.',
+        subHeader: 'Durch den Kauf von Boostern kannst du schneller Punkte sammeln, sie kosten jedoch Punkte und die Dauer ist begrenzt. Es ist immer nur ein Booster aktiv, falls du einen Booster kaufst während ein anderer noch aktiv ist, verfällt dieser.',
         timeLeft: 'Booster aktiv, verbleibende Zeit:',
         bought: 'Booster hast du bisher gekauft.',
         isActive: 'Dieser Booster ist im Moment aktiv.',

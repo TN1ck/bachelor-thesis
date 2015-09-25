@@ -114,6 +114,7 @@ export default React.createClass({
     },
 
     render: function () {
+
         return (
             <Row>
                 {this.createLeaderBoards()}

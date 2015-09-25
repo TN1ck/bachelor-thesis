@@ -11,7 +11,7 @@ var sequelize = models.sequelize;
 
 module.exports = function (req, res) {
 
-    var limit = req.limit || 50;
+    var limit = req.limit || 20;
 
     Action.findAll({
         include: [

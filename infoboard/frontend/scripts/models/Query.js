@@ -1,6 +1,6 @@
 import moment             from 'moment';
-import _                  from 'lodash';
-import $                  from 'jquery';
+// import _                  from 'lodash';
+// import $                  from 'jquery';
 
 import {getColorByString} from '../../shared/util/colors.js';
 import {user}             from '../auth.js';
@@ -65,8 +65,13 @@ export default class Query {
      * @returns {Object[]} List of items
      */
     readData () {
-        var items = localStorage.getItem(`query-${this.term}`);
-        return items ? JSON.parse(items) : [];
+
+        // disabled, quota was reached too often
+
+        // var items = localStorage.getItem(`query-${this.term}`);
+        // return items ? JSON.parse(items) : [];
+
+        return [];
     }
 
     /**
@@ -81,9 +86,11 @@ export default class Query {
             return b.getData(user);
         });
 
-        $.when(...promises).then((...results) => {
-            this.saveData(_.flatten(results));
-        });
+        // disabled, the quoto was reached too often
+
+        // $.when(...promises).then((...results) => {
+        //     this.saveData(_.flatten(results));
+        // });
 
         return promises;
 

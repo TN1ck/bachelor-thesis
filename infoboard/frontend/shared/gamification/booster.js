@@ -45,6 +45,6 @@ module.exports = [
         image: 'rocket',
         points: 1000,
         multiplicator: 3,
-        duration: 1
+        duration: 2
     }
 ];

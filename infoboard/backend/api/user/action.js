@@ -1,7 +1,9 @@
 var _               = require('lodash');
+var moment          = require('moment');
 var Promise         = require('bluebird');
 var io              = require('../socket.js');
 var models          = require('../../models');
+var calculatePoints = require('../points/calculatePoints.js');
 var calculateBadges = require('../../gamification/calculateBadges');
 var POINTS          = require('../../../frontend/shared/gamification/points');
 var BADGES          = require('../../../frontend/shared/gamification/badges');
@@ -127,11 +129,27 @@ module.exports = function (req, res) {
                     action: action
                 });
 
+                // update info screen
                 io.emit('action_created', {
                     user: user,
                     action: action,
                     badges: badges
                 });
+
+                // update the points off all clients
+                Promise.all([
+                    calculatePoints(),
+                    calculatePoints(
+                        moment().subtract(30, 'days'),
+                        moment()
+                    )
+                ]).then(function (results) {
+                    io.emit('updated_points', {
+                        all: results[0],
+                        monthly: results[1]
+                    });
+                });
+
             };
 
             // calculate the badges and if there are new ones, add them

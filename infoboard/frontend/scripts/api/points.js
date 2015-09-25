@@ -1,8 +1,6 @@
 import moment                       from 'moment';
-import _                            from 'lodash';
 import $                            from 'jquery';
 import SETTINGS                     from '../settings.js';
-import {user}                       from '../auth.js';
 
 /**
  * Fetch the points for the last 30 days
@@ -16,17 +14,6 @@ export var getMonthlyPoints = () => {
         contentType: 'application/json; charset=utf-8',
         from: moment().subtract(30, 'days').toString(),
         to: moment().toString()
-    }).then(result => {
-        return _.extend(result, {
-            user: _.find(result.users, {username: user.username})  || {
-                booster: [],
-                badges: [],
-                actions: [],
-                points: {
-                    all: 0
-                }
-            }
-        });
     });
 };
 
@@ -39,16 +26,5 @@ export var getAllTimePoints = () => {
     return $.get(`${SETTINGS.SERVER_URL}/api/points`, {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8'
-    }).then(result => {
-        return _.extend(result, {
-            user: _.find(result.users, {username: user.username}) || {
-                booster: [],
-                badges: [],
-                actions: [],
-                points: {
-                    all: 0
-                }
-            }
-        });
     });
 };

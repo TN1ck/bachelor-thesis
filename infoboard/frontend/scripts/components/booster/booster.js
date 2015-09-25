@@ -32,7 +32,6 @@ var BoosterComponent = React.createClass({
     propTypes: {
         booster: React.PropTypes.object,
         userPoints: React.PropTypes.number,
-        disable: React.PropTypes.bool,
         active: React.PropTypes.bool
     },
 
@@ -62,14 +61,11 @@ var BoosterComponent = React.createClass({
         var userPoints   = this.props.userPoints || 0;
         var enoughPoints = points <= userPoints;
 
-        var buttonText = {
-            false: <span>{t.boosterPage.buyFor} {points} {t.label.points}</span>,
-            true: <span>{t.label.booster} {t.label.active}</span>
-        }[this.props.disable];
+        var buttonText = <span>{t.boosterPage.buyFor} {points} {t.label.points}</span>;
 
         /* the user cannot buy new boosters if he does not have enough points or
            has another booster currently active */
-        if (!this.props.disable && !enoughPoints) {
+        if (!enoughPoints) {
             buttonText = <span>{t.boosterPage.missing} {points - userPoints} {t.label.points}</span>;
         }
 
@@ -92,7 +88,7 @@ var BoosterComponent = React.createClass({
                 <div className='pull-right'>
                     <Button
                         bsStyle={!enoughPoints ? 'alert' : 'success'}
-                        disabled={this.props.disable || !enoughPoints}
+                        disabled={!enoughPoints}
                         active={this.props.active}
                         onClick={this.buyBooster}
                         >
@@ -154,7 +150,7 @@ export default React.createClass({
         };
 
         var userBooster = state.alltime.user.booster;
-        var lastBooster = _.last(_.sortBy(userBooster, _b => _b.validUntil));
+        var lastBooster = _.last(_.sortBy(userBooster, _b => _b.createdAt));
 
         if (lastBooster) {
             var validUntil = moment(lastBooster.validUntil);
@@ -191,7 +187,6 @@ export default React.createClass({
             return (
                 <BoosterComponent
                     key={b.id}
-                    disable={this.state.booster.isActive}
                     userPoints={this.state.alltime.user.points.all}
                     active={active}
                     booster={b}
