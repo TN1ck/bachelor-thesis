@@ -60,8 +60,10 @@ module.exports = function (req, res) {
                 ]
             })
         ]).then(function (results) {
+            var booster = _.last(_.sortBy(results[0], function (b) {
+                return b.get('createdAt');
+            }));
 
-            var booster = results[0];
             var authAction = results[1];
             var allActions = results[2];
 
@@ -75,7 +77,7 @@ module.exports = function (req, res) {
 
             if (booster) {
                 // there should always be only one Booster
-                points = points * _.get(booster, '[0].multiplicator', 1);
+                points = points * booster.get('multiplicator');
             }
 
             // authentication is allowed once per day

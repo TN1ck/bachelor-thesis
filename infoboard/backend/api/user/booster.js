@@ -17,8 +17,12 @@ module.exports = function (req, res) {
 
     // get or create user
     User.findOrCreate({where: {username: username}}).then(function(_user) {
+
         var user = _user[0];
         var b = _.find(booster, {id: boosterId});
+
+        // TODO: check if the user has enough points
+
         Booster.create({
             name: b.id,
             validUntil: moment().add(b.duration, 'day').toDate(),
