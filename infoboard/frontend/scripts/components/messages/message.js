@@ -1,6 +1,5 @@
 import React           from 'react';
 
-import t               from '../../../shared/translations/translation.js';
 import BOOSTER         from '../../../shared/gamification/booster.js';
 import Icon            from '../utility/icon.js';
 
@@ -36,6 +35,8 @@ export default React.createClass({
 
         var body = <span></span>;
         var icon = <Icon fill='#222222' type='none' image='rocket'/>;
+
+        var t = this.props.translation;
 
         if (type === 'badge') {
             var badge = content;

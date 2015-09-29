@@ -1,13 +1,17 @@
 import React               from 'react/addons';
+import _                   from 'lodash';
 import Reflux              from 'reflux';
 
 import SETTINGS            from '../../settings.js';
 
+import RadioInput          from '../utility/RadioInput.js';
+import actions             from '../../actions/actions.js';
 import gameStore           from '../../stores/game.js';
-import {hashCode}    from '../../../shared/util/utils.js';
+import translationStore    from '../../stores/translation.js';
+import {hashCode}          from '../../../shared/util/utils.js';
 import rewards             from '../../../shared/gamification/rewards.js';
 
-import t from '../../../shared/translations/translation.js';
+import translations        from '../../../shared/translations';
 
 import {
     Grid, Row, Col, Button,
@@ -53,6 +57,7 @@ var ColorSchema = React.createClass({
     render: function () {
 
         var {schema, id, name, level} = this.props.schema;
+        var t = this.props.translation;
 
         var coloredWords = WORDS.map(word => {
             var color = schema(hashCode(word));
@@ -99,12 +104,6 @@ export default React.createClass({
 
     mixins: [Reflux.connect(gameStore)],
 
-    getDefaultProps: function () {
-        return {
-            settings: SETTINGS
-        };
-    },
-
     /**
      * Permantly save a setting
      *
@@ -134,6 +133,7 @@ export default React.createClass({
             // is true when the schema is currently selected
             var active = schema.id === currentlySelected;
             return <ColorSchema
+                translation={this.props.translation}
                 onClick={this.save}
                 active={active}
                 level={level}
@@ -141,7 +141,33 @@ export default React.createClass({
         });
     },
 
+    createLanguageSettings: function () {
+
+        var t = this.props.translation;
+
+        var languages = _.map(translations, (v, k) => {
+            return (
+                <RadioInput
+                    checked={k === translationStore.state.language}
+                    onChange={() => actions.changeLanguage(k)}
+                    value={k}
+                    label={v.full}/>
+            );
+        });
+
+        return (
+            <Col xs={12}>
+                <h3>{t.settings.language.header}</h3>
+                <p>{t.settings.language.subHeader}</p>
+                {languages}
+            </Col>
+        );
+    },
+
     render: function () {
+
+        var t = this.props.translation;
+
         return (
             <Grid>
                 <Row>
@@ -150,6 +176,7 @@ export default React.createClass({
                         <hr/>
                         <p>{t.settings.subHeader}</p>
                     </Col>
+                    {this.createLanguageSettings()}
                     <Col xs={12}>
                         <h3>{t.settings.rewards.colors.header}</h3>
                         <p>{t.settings.rewards.colors.subHeader}</p>

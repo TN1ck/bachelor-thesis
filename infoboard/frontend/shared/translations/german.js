@@ -175,6 +175,10 @@ module.exports = {
                 header: 'Erweiterte Funktionen',
                 subHeader: 'Durch Erweiterte Funktionen erhalten Sie mehr Macht in der Darstellung der Suchergebnissen, sei es die Art der Gruppierung oder die Prioriesierung der Broker.'
             }
+        },
+        language: {
+            header: 'Sprache',
+            subHeader: 'Stellen Sie hier ihre bevorzugte Sprache ein.'
         }
     },
 

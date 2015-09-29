@@ -11,7 +11,7 @@ export default React.createClass({
     render: function () {
         return (
             <div className='wall'>
-                <RouteHandler />
+                <RouteHandler translation={this.props.translation}/>
             </div>
         );
     }

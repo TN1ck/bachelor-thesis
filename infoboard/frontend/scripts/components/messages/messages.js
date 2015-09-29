@@ -15,7 +15,7 @@ export default React.createClass({
 
     createMessages: function () {
         return this.state.messages.map(message => {
-            return <MessageCard message={message}/>;
+            return <MessageCard translation={this.props.translation} message={message}/>;
         });
     },
 

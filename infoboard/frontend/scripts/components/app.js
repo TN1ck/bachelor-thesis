@@ -1,18 +1,27 @@
 import React               from 'react/addons';
 import {RouteHandler}      from 'react-router';
+import Reflux              from 'reflux';
+import translationStore    from '../stores/translation.js';
 
 import Header              from './layout/header.js';
 import Messages            from './messages/messages.js';
 
-// Header and Messages are used through the whole app
+/**
+ * Component that serves as wrapper for the whole application, also provides
+ * the translation files
+ */
 export default React.createClass({
-    displayName: 'app',
+
+    displayName: 'App',
+
+    mixins: [Reflux.connect(translationStore, 'translation')],
+
     render: function () {
         return (
             <div>
-                <Header/>
-                <Messages />
-                <RouteHandler />
+                <Header       translation={this.state.translation} />
+                <Messages     translation={this.state.translation} />
+                <RouteHandler translation={this.state.translation} />
             </div>
         );
     }

@@ -2,7 +2,6 @@ import React       from 'react';
 import Reflux      from 'reflux';
 import {Row, Col}  from 'react-bootstrap';
 
-import t           from '../../../shared/translations/translation.js';
 import gameStore   from '../../stores/game.js';
 import BarChart    from '../charts/barChart.js';
 import LeaderBoard from '../userstats/leaderboard.js';
@@ -24,6 +23,7 @@ export default React.createClass({
     createBarChart: function () {
 
         var alltime = this.state.alltime;
+        var t = this.props.translation;
 
         var data = [
             {
@@ -71,6 +71,8 @@ export default React.createClass({
         var alltime = this.state.alltime;
         var monthly = this.state.monthly;
 
+        var t = this.props.translation;
+
         return (
             <Col xs={12} sm={12} md={6}>
                 <h1>{t.leaderboard.header}</h1>
@@ -78,11 +80,15 @@ export default React.createClass({
                 <Row>
                     <Col md={12} lg={6}>
                         <h3>{t.leaderboard.alltime}</h3>
-                        <LeaderBoard users={alltime.users}/>
+                        <LeaderBoard
+                            translation={this.props.translation}
+                            users={alltime.users}/>
                     </Col>
                     <Col md={12} lg={6}>
                         <h3>{t.leaderboard.monthly}</h3>
-                        <LeaderBoard users={monthly.users}/>
+                        <LeaderBoard
+                            translation={this.props.translation}
+                            users={monthly.users}/>
                     </Col>
                 </Row>
             </Col>
@@ -93,11 +99,14 @@ export default React.createClass({
      * Visualize the last actions performed by the user
      */
     createActions: function () {
+
         var actions = this.state.actions;
+        var t = this.props.translation;
+
         var _actions = actions.map(action => {
             return (
                 <Row key={action.action.id}>
-                    <Action action={action} />
+                    <Action translation={this.props.translation} action={action} />
                 </Row>
             );
         });

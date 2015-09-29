@@ -57,7 +57,11 @@ export default React.createClass({
             // sanity-check to remove all tiles that are undefined
             .filter(t => t)
             // create the components
-            .map(tile => <Tile tile={tile} key={tile.get('uuid')}/>);
+            .map(tile => <Tile
+                            translation={this.props.translation}
+                            tile={tile}
+                            key={tile.get('uuid')}/>
+                );
     },
 
     render: function () {

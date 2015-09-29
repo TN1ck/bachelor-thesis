@@ -1,0 +1,112 @@
+// Radio Buttons
+@radio-fill-color: @brand-primary;
+@radio-empty-color: #5a5a5a;
+@input-disabled-color: rgba(0,0,0, .26);
+@input-disabled-solid-color: #BDBDBD;
+
+.radio {
+    /* Remove default Radio Buttons */
+    [type="radio"]:not(:checked),
+    [type="radio"]:checked {
+      position: absolute;
+      left: -9999px;
+      visibility: hidden;
+    }
+
+    [type="radio"]:not(:checked) + label,
+    [type="radio"]:checked + label {
+      position: relative;
+      padding-left: 35px;
+      cursor: pointer;
+      display: inline-block;
+      height: 25px;
+      line-height: 25px;
+      font-weight: normal;
+      font-size: @font-size-base;
+      transition: transform 240ms ease;
+
+      -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+      -moz-user-select: none; /* mozilla browsers */
+      -khtml-user-select: none; /* webkit (konqueror) browsers */
+      -ms-user-select: none; /* IE10+ */
+    }
+
+    [type="radio"] + label:before,
+    [type="radio"] + label:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 4px;
+      width: 19px;
+      height: 19px;
+      z-index: 0;
+     transition: transform 240ms ease;
+    }
+
+
+    /* Unchecked styles */
+    [type="radio"]:not(:checked) + label:before {
+      border-radius: 50%;
+      border: 1px solid @radio-empty-color;
+    }
+    [type="radio"]:not(:checked) + label:after {
+      border-radius: 50%;
+      border: 1px solid @radio-empty-color;
+      z-index: -1;
+      transform: scale(0);
+    }
+
+    /* Checked styles */
+    [type="radio"]:checked + label:before {
+      border-radius: 50%;
+      border: 1px solid transparent;
+    }
+    [type="radio"]:checked + label:after {
+      border-radius: 50%;
+      border: 1px solid @radio-fill-color;
+      background-color: @radio-fill-color;
+      z-index: 0;
+      transform: scale(1.0);
+    }
+
+    /* Radio With gap */
+    [type="radio"].with-gap:checked + label:before {
+      border-radius: 50%;
+      border: 1px solid @radio-fill-color;
+    }
+    [type="radio"].with-gap:checked + label:after {
+      border-radius: 50%;
+      background-color: @radio-fill-color;
+      z-index: 0;
+      transform: scale(.5);
+    }
+
+    /* Disabled Radio With gap */
+    [type="radio"].with-gap:disabled:checked + label:before {
+      border: 1px solid @input-disabled-color;
+    }
+    [type="radio"].with-gap:disabled:checked + label:after {
+      border: none;
+      background-color: @input-disabled-color;
+    }
+
+    /* Disabled style */
+    [type="radio"]:disabled:not(:checked) + label:before,
+    [type="radio"]:disabled:checked + label:before {
+      background-color: transparent;
+      border-color: @input-disabled-color;
+    }
+    [type="radio"]:disabled + label {
+      color: @input-disabled-color;
+    }
+    [type="radio"]:disabled:not(:checked) + label:before {
+      border-color: @input-disabled-color;
+    }
+    [type="radio"]:disabled:checked + label:after {
+      background-color: @input-disabled-color;
+      border-color:     @input-disabled-solid-color;
+    }
+
+
+}

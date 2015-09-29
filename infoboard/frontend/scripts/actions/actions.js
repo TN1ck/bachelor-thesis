@@ -26,7 +26,10 @@ var actions = Reflux.createActions([
 
 	// auth
     'login',
-    'logout'
+    'logout',
+
+    // translation
+    'changeLanguage'
 ]);
 
 export default actions;

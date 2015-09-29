@@ -9,8 +9,6 @@ import actions from '../../actions/actions.js';
 
 import {user} from '../../auth.js';
 
-import t from '../../../shared/translations/translation.js';
-
 export default React.createClass({
     displayName: 'Login',
 
@@ -64,6 +62,8 @@ export default React.createClass({
     },
 
     render: function () {
+
+        var t = this.props.translation;
 
         var loading = <i className="fa fa-spinner fa-pulse"></i>;
 

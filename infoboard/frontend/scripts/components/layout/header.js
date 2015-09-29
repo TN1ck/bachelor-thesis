@@ -10,8 +10,6 @@ import {
 } from 'react-bootstrap';
 import {NavItemLink} from 'react-router-bootstrap';
 
-import t from '../../../shared/translations/translation.js';
-
 /**
  * Navigation Tab for the user-statistics
  */
@@ -30,6 +28,8 @@ var UserStatsNav = React.createClass({
     render: function () {
         var alltime = this.state.alltime.user;
         var level   = this.state.level;
+
+        var t = this.props.translation;
 
         return (
             <Nav navbar>
@@ -59,6 +59,8 @@ export default React.createClass({
      * @returns {Component}
      */
     createLinks: function () {
+
+        var t = this.props.translation;
 
         var style = {lineHeight: 0};
         var isLoggedIn = this.state.user.isLoggedIn();
@@ -134,7 +136,7 @@ export default React.createClass({
      */
     createUser: function () {
         if (this.state.user.isLoggedIn()) {
-            return <UserStatsNav user={this.state.user}/>;
+            return <UserStatsNav translation={this.props.translation} user={this.state.user}/>;
         }
         return <span></span>;
     },

@@ -13,7 +13,6 @@ import gameStore            from '../../stores/game.js';
 
 import BADGES               from '../../../shared/gamification/badges.js';
 import LEVELS               from '../../../shared/gamification/levels.js';
-import t                    from '../../../shared/translations/translation.js';
 
 import BarChart             from '../charts/barChart.js';
 import Icon                 from '../utility/icon.js';
@@ -38,14 +37,16 @@ var BadgeComponent = React.createClass({
             type, fill
         } = this.props.badge;
 
+        var t = this.props.translation;
+
         var pointsText = this.props.owns ? t.userstats.badges.points : t.userstats.badges.pointsWill;
 
         var body = (
             <span>
-                <h5>{number} {name}</h5>
+                <h5>{number} {_.get(t, name)}</h5>
                 <hr />
                 <p>
-                    {text}
+                    {_.get(t, text)}
                     <br/>
                     <strong>{points}</strong> {pointsText}
                 </p>
@@ -88,6 +89,7 @@ export default React.createClass({
     createBarChart: function () {
 
         var user = this.state.alltime.user;
+        var t = this.props.translation;
 
         var data = [
             {
@@ -122,6 +124,8 @@ export default React.createClass({
 
     render: function () {
 
+        var t = this.props.translation;
+
         var userBadges = BADGES.filter(b => {
             if (this.state.showAllBadges) {
                 return true;
@@ -137,7 +141,10 @@ export default React.createClass({
                 var owns = _.find(this.state.alltime.user.badges, {
                     id: x.id
                 });
-                return <BadgeComponent key={x.id} owns={owns} badge={x}/>;
+                return <BadgeComponent
+                    translation={t}
+                    key={x.id} owns={owns}
+                    badge={x}/>;
             });
 
         var points = this.state.alltime.user.points.all;
@@ -187,11 +194,17 @@ export default React.createClass({
                         <Row>
                             <Col xs={12} md={6}>
                                 <h3>{t.leaderboard.alltime}</h3>
-                                <LeaderBoard users={this.state.alltime.users} user={this.state.alltime.user}/>
+                                <LeaderBoard
+                                    translation={this.props.translation}
+                                    users={this.state.alltime.users}
+                                    user={this.state.alltime.user}/>
                             </Col>
                             <Col xs={12} md={6}>
                                 <h3>{t.leaderboard.monthly}</h3>
-                                <LeaderBoard users={this.state.monthly.users} user={this.state.monthly.user}/>
+                                <LeaderBoard
+                                    translation={this.props.translation}
+                                    users={this.state.monthly.users}
+                                    user={this.state.monthly.user}/>
                             </Col>
                         </Row>
                     </Col>

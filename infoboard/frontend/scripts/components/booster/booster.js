@@ -10,8 +10,6 @@ import actions             from '../../actions/actions.js';
 import IconCard            from '../utility/iconcard.js';
 import Icon                from '../utility/icon.js';
 
-import t                   from '../../../shared/translations/translation.js';
-
 import BOOSTER             from '../../../shared/gamification/booster.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -53,6 +51,9 @@ var BoosterComponent = React.createClass({
     },
 
     render: function () {
+
+        var t = this.props.translation;
+
         var {
             name, text, image,
             points, type, fill
@@ -79,10 +80,10 @@ var BoosterComponent = React.createClass({
         var body = (
             <div>
                 <div>
-                    <h5>{name}</h5>
+                    <h5>{_.get(t, name)}</h5>
                     <hr />
                     <p>
-                        {text} {_active}
+                        {_.get(t, text)} {_active}
                     </p>
                 </div>
                 <div className='pull-right'>
@@ -186,6 +187,7 @@ export default React.createClass({
                          && this.state.booster.isActive;
             return (
                 <BoosterComponent
+                    translation={this.props.translation}
                     key={b.id}
                     userPoints={this.state.alltime.user.points.all}
                     active={active}
@@ -213,6 +215,7 @@ export default React.createClass({
     render: function () {
 
         var timeLeft;
+        var t = this.props.translation;
 
         if (this.state.booster.isActive) {
             timeLeft = (

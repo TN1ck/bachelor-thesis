@@ -35,6 +35,12 @@ settings.OWA = {
 // when set, will hide the header, useful for public displays of the application
 settings.HIDE_HEADER = false;
 
+// which language should be used, there is none set in default
+settings.LANGUAGE = '';
+
+// language that should be used as default
+settings.DEFAULT_LANGUAGE = 'de';
+
 // the used broker in the application
 settings.broker = [
     {

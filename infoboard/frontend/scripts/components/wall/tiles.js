@@ -3,8 +3,6 @@ import _         from 'lodash';
 import Immutable from 'immutable';
 import actions   from '../../actions/actions.js';
 
-import t from '../../../shared/translations/translation.js';
-
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 /* PureRenderMixin provides a `shouldComponentUpdate`-method with a simple
@@ -117,6 +115,8 @@ var Header = React.createClass({
         var userVote         = this.props.userVote;
         var loadingFavourite = this.state.loadingFavourite;
 
+        var t = this.props.translation;
+
         var favouriteText = t.tile.tooltip.favourite[favourited];
 
         var downvoteClass, upvoteClass;
@@ -177,6 +177,8 @@ var Footer = React.createClass({
 
         var domain = this.props.domain;
         var action = this.props.action;
+
+        var t = this.props.translation;
 
         var text;
 
@@ -260,13 +262,17 @@ var InnerTile = React.createClass({
         return (
             <span>
                 <Header
+                    translation={this.props.translation}
                     userVote={userVote}
                     score={score}
                     favourited={favourited}
                     uuid={this.props.tile.get('uuid')}
                 />
                 {tile}
-                <Footer domain={domain} action={lastAction}/>
+                <Footer
+                    translation={this.props.translation}
+                    domain={domain}
+                    action={lastAction}/>
             </span>
         );
     }

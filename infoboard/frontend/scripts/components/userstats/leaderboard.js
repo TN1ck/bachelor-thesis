@@ -2,8 +2,6 @@ import React     from 'react';
 import _         from 'lodash';
 import { Table } from 'react-bootstrap';
 
-import t from '../../../shared/translations/translation.js';
-
 /**
  * Leaderboard which supports the infinite and the user-centric view
  */
@@ -18,6 +16,7 @@ export default React.createClass({
     render: function () {
         var users = this.props.users;
         var highlightUser = this.props.user;
+        var t = this.props.translation;
 
         // when a user is given we create the user-centric Leaderboard
         if (highlightUser) {

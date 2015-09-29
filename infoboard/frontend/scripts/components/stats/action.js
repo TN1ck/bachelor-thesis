@@ -2,7 +2,6 @@ import React       from 'react';
 import moment      from 'moment';
 import _           from 'lodash';
 
-import t           from '../../../shared/translations/translation.js';
 import {colors}    from '../../../shared/util/colors.js';
 
 import IconCard    from '../utility/iconcard.js';
@@ -12,38 +11,38 @@ import Icon        from '../utility/icon.js';
 var actions = {
     auth: {
         login: {
-            text: t.stats.actions.auth.login,
+            text: '.stats.actions.auth.login',
             icon: 'key',
             fill: colors.vinrouge
         }
     },
     query: {
         add: {
-            text: t.stats.actions.query.add,
+            text: '.stats.actions.query.add',
             icon: 'query',
             fill: colors.buttercup
         },
         remove: {
-            text: t.stats.actions.query.remove,
+            text: '.stats.actions.query.remove',
             icon: 'query',
             fill: colors.buttercup
         }
     },
     favourite: {
         toggle: {
-            text: t.stats.actions.query.favourite,
+            text: '.stats.actions.query.favourite',
             icon: 'star',
             fill: colors.curious_blue
         }
     },
     vote: {
         up: {
-            text: t.stats.actions.vote.up,
+            text: '.stats.actions.vote.up',
             icon: 'upvote',
             fill: colors.sushi
         },
         down: {
-            text: t.stats.actions.vote.down,
+            text: '.stats.actions.vote.down',
             icon: 'downvote',
             fill: colors.burnt_sienna
         }
@@ -59,6 +58,7 @@ export default React.createClass({
         var username = _.get(user, 'username', '[Gelöscht]');
 
         var a = actions[action.group][action.label];
+        var t = this.props.translation;
 
         var createdAt = moment(action.createdAt).format('H:mm');
 
@@ -70,7 +70,7 @@ export default React.createClass({
 
         var body = (
             <span>
-                <h5>{username} {a.text}</h5>
+                <h5>{username} {_.get(t, a.text)}</h5>
                 <hr />
                 <p>{t.stats.actions.body(dict)}</p>
             </span>

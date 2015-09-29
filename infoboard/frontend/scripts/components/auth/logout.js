@@ -7,8 +7,6 @@ import {
     Button, PageHeader
 } from 'react-bootstrap';
 
-import t from '../../../shared/translations/translation.js';
-
 /**
  * Trigger the sign-out and shows a success-message
  */
@@ -21,6 +19,8 @@ export default React.createClass({
     },
 
     render: function () {
+
+        var t = this.props.translation;
 
         return (
             <Grid>
