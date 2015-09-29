@@ -15,6 +15,7 @@ import BADGES               from '../../../shared/gamification/badges.js';
 import LEVELS               from '../../../shared/gamification/levels.js';
 
 import BarChart             from '../charts/barChart.js';
+import CheckBoxInput        from '../utility/CheckBoxInput.js';
 import Icon                 from '../utility/icon.js';
 import IconCard             from '../utility/iconcard.js';
 
@@ -177,14 +178,10 @@ export default React.createClass({
                                 </strong>
                                 <span> {t.userstats.badges.collected}</span>
                             </p>
-                            <Input
-                                onChange={() => this.setState({showAllBadges: !this.state.showAllBadges}) }
-                                type='checkbox'
-                                hasFeedback
+                            <CheckBoxInput
                                 checked={this.state.showAllBadges}
-                                label={t.userstats.showAllBadges}
-                                ref='remember'
-                            />
+                                onChange={() => this.setState({showAllBadges: !this.state.showAllBadges})}
+                                label={t.userstats.showAllBadges}/>
                         </PageHeader>
                     </Col>
                         {badgeComponents}
