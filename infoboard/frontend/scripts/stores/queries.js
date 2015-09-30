@@ -25,6 +25,7 @@ export default Reflux.createStore({
         this.listenTo(actions.addQuery,    this.addQuery);
         this.listenTo(actions.removeQuery, this.removeQuery);
         this.listenTo(actions.changeColorScheme, this.changeColorScheme);
+        this.listenTo(actions.reloadQueries, this.reloadQueries);
 
         // load all saved queries when the user authenticates
         user.whenProfileIsLoaded((profile) => {
@@ -57,6 +58,33 @@ export default Reflux.createStore({
     },
 
     /**
+     * Load the items from the given query
+     *
+     * @param {Query} query Load the items from the query and process its items
+     */
+    loadQuery: function (query) {
+
+        var processItems = (items) => {
+            var _items = items.map((d) => {
+                d.query = query;
+                var dIm = Immutable.Map(d);
+
+                return dIm;
+
+            });
+
+            actions.addItems(_items);
+            this.trigger(this.queries);
+
+            return _items;
+        };
+
+        query.loadData().forEach(promise => {
+            promise.then(processItems);
+        });
+    },
+
+    /**
      * QUery all brokers for the given term, will send the action `addItems`
      * when the qUerying is finished
      *
@@ -70,34 +98,22 @@ export default Reflux.createStore({
 
         var query = new Query(term, SETTINGS.broker);
 
-        var processItems = items => {
-
-            var _items = items.map((d) => {
-                d.query = query;
-                var dIm = Immutable.Map(d);
-
-                return dIm;
-
-            });
-
-            actions.addItems(_items);
-            this.trigger(this.queries);
-
-            return _items;
-
-
-        };
-
-        // first get the items from localstorage
-        var savedItems = query.readData();
-        processItems(savedItems);
-
         // make the real request
-        query.loadData().forEach(promise => {
-            promise.then(processItems);
-        });
+        this.loadQuery(query);
 
         this.queries[term] = query;
+
+        this.trigger(this.queries);
+    },
+
+    /**
+     * Requery all Queries
+     */
+    reloadQueries: function () {
+
+        _.each(this.queries, q => {
+            this.loadQuery(q);
+        });
 
         this.trigger(this.queries);
     },

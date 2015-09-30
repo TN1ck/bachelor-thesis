@@ -69,6 +69,9 @@ settings.FILTER = {
     title: ['no title']
 };
 
+// defines the polling-rate in seconds
+settings.POLLING_RATE = false;
+
 /**
  * Loads settings from localstorage.
  *

@@ -47,6 +47,8 @@ var WORDS = [
  */
 var ColorSchema = React.createClass({
 
+    displayName: 'ColorSchema',
+
     propTypes: {
         schema: React.PropTypes.object,
         active: React.PropTypes.bool,
@@ -61,7 +63,9 @@ var ColorSchema = React.createClass({
 
         var coloredWords = WORDS.map(word => {
             var color = schema(hashCode(word));
-            return <span><Label style={{backgroundColor: color}}>{word}</Label> </span>;
+            return (
+                <span key={word}><Label style={{backgroundColor: color}}>{word}</Label> </span>
+            );
         });
 
         // he can choose the schema if his level is high enough
@@ -100,7 +104,7 @@ var ColorSchema = React.createClass({
  * The settings-page
  */
 export default React.createClass({
-    displayName: 'setings',
+    displayName: 'Settings',
 
     mixins: [Reflux.connect(gameStore)],
 
@@ -123,22 +127,36 @@ export default React.createClass({
      */
     createColorSchemes: function () {
 
+        var t = this.props.translation;
+
         var currentlySelected = SETTINGS.color_scheme;
         var level = this.state.level;
 
-        return rewards.filter(r => {
+        var schemes = rewards.filter(r => {
             // only use the rewards that have the type `color_scheme`
             return r.type === 'color_scheme';
-        }).map(schema => {
+        }).map((schema, i) => {
             // is true when the schema is currently selected
             var active = schema.id === currentlySelected;
             return <ColorSchema
+                key={i}
                 translation={this.props.translation}
                 onClick={this.save}
                 active={active}
                 level={level}
                 schema={schema}/>;
         });
+
+        return (
+            <Col xs={12}>
+                <h3>{t.settings.rewards.colors.header}</h3>
+                <p>{t.settings.rewards.colors.subHeader}</p>
+                <hr/>
+                <Row>
+                {schemes}
+                </Row>
+            </Col>
+        );
     },
 
     /**
@@ -151,6 +169,7 @@ export default React.createClass({
         var languages = _.map(translations, (v, k) => {
             return (
                 <RadioInput
+                    key={k}
                     checked={k === translationStore.state.language}
                     onChange={() => actions.changeLanguage(k)}
                     value={k}
@@ -163,6 +182,51 @@ export default React.createClass({
                 <h3>{t.settings.language.header}</h3>
                 <p>{t.settings.language.subHeader}</p>
                 {languages}
+            </Col>
+        );
+    },
+
+    /**
+     * Creates radios to select a polling-rate
+     */
+    createPollingRateSettings: function () {
+
+        var t = this.props.translation;
+
+        var onChange = (value) => {
+            SETTINGS.save('POLLING_RATE', value);
+            this.setState({
+                settings: SETTINGS
+            });
+        };
+
+        var radios = [10, 30, 60, 120, 240].map(seconds => {
+            return (
+                <RadioInput
+                    key={seconds}
+                    checked={seconds === SETTINGS.POLLING_RATE}
+                    onChange={onChange}
+                    value={seconds}
+                    label={t.settings.polling.seconds({seconds: seconds})}/>
+            );
+        });
+
+        var none = (
+            <RadioInput
+                key={false}
+                checked={!SETTINGS.POLLING_RATE}
+                onChange={onChange}
+                value={false}
+                label={t.settings.polling.none}/>
+        );
+
+        radios.unshift(none);
+
+        return (
+            <Col xs={12}>
+                <h3>{t.settings.polling.header}</h3>
+                <p>{t.settings.polling.subHeader}</p>
+                {radios}
             </Col>
         );
     },
@@ -180,14 +244,8 @@ export default React.createClass({
                         <p>{t.settings.subHeader}</p>
                     </Col>
                     {this.createLanguageSettings()}
-                    <Col xs={12}>
-                        <h3>{t.settings.rewards.colors.header}</h3>
-                        <p>{t.settings.rewards.colors.subHeader}</p>
-                        <hr/>
-                        <Row>
-                            {this.createColorSchemes()}
-                        </Row>
-                    </Col>
+                    {this.createColorSchemes()}
+                    {this.createPollingRateSettings()}
                 </Row>
             </Grid>
         );

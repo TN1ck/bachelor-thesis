@@ -17,6 +17,7 @@ var actions = Reflux.createActions([
 	// queries
     'addQuery',
     'removeQuery',
+    'reloadQueries',
 
 	// messages
     'addFlashMessage',

@@ -184,6 +184,12 @@ module.exports = {
         language: {
             header: 'Sprache',
             subHeader: 'Stellen Sie hier ihre bevorzugte Sprache ein.'
+        },
+        polling: {
+            header: 'Zeitabstand für ein automatische aktualisierung des Inhaltes',
+            subHeader: 'Hier können sie den Zeitabstand setzen, bei welchem der Inhalt auf dem Infoboard aktualisiert wird. Diese Einstellung sollte in den meisten Fällen auf "Keine automatische Aktualisierung" gesetzt sein.',
+            seconds: _.template('Aktualisiere alle ${ seconds } Sekunden'),
+            none: 'Keine automatische Aktualisierung'
         }
     },
 

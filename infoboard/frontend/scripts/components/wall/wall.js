@@ -2,6 +2,7 @@ import React        from 'react/addons';
 import Reflux       from 'reflux';
 
 import layoutStore  from '../../stores/layout.js';
+import SETTINGS      from '../../settings.js';
 
 import actions      from '../../actions/actions.js';
 
@@ -25,12 +26,23 @@ export default React.createClass({
         this.resize = layoutStore.getResizeCallback();
         window.addEventListener('resize', this.resize);
         this.resize();
+
+        var pollingRate = SETTINGS.POLLING_RATE;
+        if (pollingRate) {
+            this.intervalFunction = setInterval(() => {
+                actions.reloadQueries();
+            }, pollingRate * 1000);
+        }
+
         actions.relayout();
+
     },
 
     componentWillUnmount: function () {
         // remove the resize listener
         window.removeEventListener('resize', this.resize);
+        // remove the polling
+        clearInterval(this.intervalFunction);
     },
 
     /**

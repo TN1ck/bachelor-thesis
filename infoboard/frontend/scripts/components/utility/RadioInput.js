@@ -8,7 +8,7 @@ module.exports = React.createClass({
         // Label for input
         label: React.PropTypes.string.isRequired,
         // Set value of input
-        value: React.PropTypes.string.isRequired,
+        value: React.PropTypes.any,
         // Function that is executed on change
         onChange: React.PropTypes.func,
         // Set if icon is in checked state
@@ -16,6 +16,9 @@ module.exports = React.createClass({
     },
 
     onChange: function () {
+        if (this.props.onChange) {
+            this.props.onChange(this.props.value);
+        }
     },
 
     onClick: function (e) {
@@ -32,7 +35,6 @@ module.exports = React.createClass({
     render: function () {
         let value    = this.props.value;
         let checked  = this.props.checked  || false;
-        let onChange = this.props.onChange || this.onChange;
         let label    = this.props.label;
 
         return (
@@ -43,7 +45,7 @@ module.exports = React.createClass({
                     className='with-gap'
                     value={value}
                     checked={checked}
-                    onChange={onChange}
+                    onChange={this.onChange}
                 />
                 <label>{label}</label>
             </span>
