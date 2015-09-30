@@ -25,7 +25,7 @@ export default class Query {
     constructor (term, brokers) {
         this.term = term;
         this.date = moment();
-        this.color = getColorByString(term, SETTINGS.color_scheme);
+        this.setColor(SETTINGS.color_scheme);
         this.brokerSettings = brokers;
 
         this.initBroker();
@@ -109,6 +109,14 @@ export default class Query {
             console.error(e);
         }
         return this;
+    }
+
+    /**
+     * Change the color of the query via a new color-scheme
+     * @param {String} scheme The new color-scheme
+     */
+    setColor (scheme) {
+        this.color = getColorByString(this.term, scheme);
     }
 
     /**

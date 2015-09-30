@@ -163,7 +163,7 @@ module.exports = {
 
     settings: {
         header: 'Einstellungen',
-        subHeader: 'Hier können Sie permanente Einstellungen an der DAI-wall vornehmen. Klicken Sie auf speichern um die Änderungen zu übernehmen.',
+        subHeader: 'Hier können Sie permanente Einstellungen am Infoboard vornehmen. Die Änderungen werden sofort übernommen und gespeichert, sie müssen nicht extra neuladen.',
         youAreMissing: 'Dir fehlen',
         rewards: {
             header: 'Freigeschaltete Features',

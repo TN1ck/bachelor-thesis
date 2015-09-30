@@ -24,6 +24,7 @@ export default Reflux.createStore({
 
         this.listenTo(actions.addQuery,    this.addQuery);
         this.listenTo(actions.removeQuery, this.removeQuery);
+        this.listenTo(actions.changeColorScheme, this.changeColorScheme);
 
         // load all saved queries when the user authenticates
         user.whenProfileIsLoaded((profile) => {
@@ -42,6 +43,17 @@ export default Reflux.createStore({
      */
     getInitialState: function () {
         return this.queries;
+    },
+
+    /**
+     * Change the color of the queries via a new color-scheme
+     * @param {String} scheme The new color-scheme
+     */
+    changeColorScheme: function (scheme) {
+        _.each(this.queries, q => {
+            q.setColor(scheme);
+        });
+        this.trigger(this.queries);
     },
 
     /**
@@ -104,6 +116,5 @@ export default Reflux.createStore({
         this.trigger(this.queries);
 
     }
-
 
 });

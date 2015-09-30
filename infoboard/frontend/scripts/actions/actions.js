@@ -29,7 +29,10 @@ var actions = Reflux.createActions([
     'logout',
 
     // translation
-    'changeLanguage'
+    'changeLanguage',
+
+    // colors
+    'changeColorScheme'
 ]);
 
 export default actions;

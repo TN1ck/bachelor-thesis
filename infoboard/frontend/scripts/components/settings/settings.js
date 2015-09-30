@@ -115,11 +115,11 @@ export default React.createClass({
         this.setState({
             settings: SETTINGS
         });
+        actions.changeColorScheme(value);
     },
 
     /**
      * Creates a list of colorschemes
-     * @returns
      */
     createColorSchemes: function () {
 
@@ -141,6 +141,9 @@ export default React.createClass({
         });
     },
 
+    /**
+     * Creates radios to select between languages
+     */
     createLanguageSettings: function () {
 
         var t = this.props.translation;
