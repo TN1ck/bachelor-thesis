@@ -45,7 +45,7 @@ export default Reflux.createStore({
         };
 
         this.state = {
-            actions: [],
+            activities: [],
             level: 0,
             monthly: initialState,
             alltime: initialState
@@ -79,11 +79,6 @@ export default Reflux.createStore({
                 this.postAction('auth', 'login');
             });
 
-            api.getActions().then(result => {
-                this.state.actions = result.actions;
-                this.trigger(this.state);
-            });
-
         });
 
     },
@@ -93,8 +88,8 @@ export default Reflux.createStore({
      */
     initSockets: function () {
 
-        // open the websocket and listen to actions by others, update
-        // the global points when an action happened
+        // open the websocket and listen to acivities by others, update
+        // the global points when an activity happened
         this.socket = io(SETTINGS.SERVER_URL);
 
         this.socket.on('updated_points', ({monthly, all}) => {
@@ -105,8 +100,27 @@ export default Reflux.createStore({
         });
 
         this.socket.on('action_created', (action) => {
-            this.state.actions.unshift(action);
-            this.state.actions.pop();
+
+            this.state.activities.unshift({
+                data: action.action,
+                type: 'action',
+                username: action.user.username,
+                createdAt: action.action.createdAt,
+                points: action.action.points
+            });
+
+            action.badges.forEach(b => {
+                this.state.activities.unshift({
+                    data: b,
+                    type: 'badge',
+                    username: action.user.username,
+                    createdAt: action.action.createdAt,
+                    points: b.points
+                });
+            });
+
+            this.state.activities = this.state.activities.slice(0, 30);
+
             this.trigger(this.state);
         });
 

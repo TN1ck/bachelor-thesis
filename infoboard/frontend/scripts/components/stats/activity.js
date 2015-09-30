@@ -30,7 +30,7 @@ var actions = {
     },
     favourite: {
         toggle: {
-            text: '.stats.actions.query.favourite',
+            text: '.stats.actions.favourite.toggle',
             icon: 'star',
             fill: colors.curious_blue
         }
@@ -50,42 +50,63 @@ var actions = {
 };
 
 /**
- * Creates a visualization of an action
+ * Creates a visualization of an activity
  */
 export default React.createClass({
     render: function () {
-        var {action, user} = this.props.action;
-        var username = _.get(user, 'username', '[Gelöscht]');
 
-        var a = actions[action.group][action.label];
         var t = this.props.translation;
 
-        var createdAt = moment(action.createdAt).format('H:mm');
+        var activity = this.props.activity;
 
-        var dict = {
-            username: username,
-            createdAt: createdAt,
-            points: action.points
-        };
+        var activityDict, body, header;
 
-        var body = (
+        if (activity.type === 'action') {
+
+            activityDict = actions[activity.data.group][activity.data.label];
+            header = `${activity.username} ${_.get(t, activityDict.text)}`;
+
+            body = t.stats.actions.body({
+                username: activity.username || t.label.deleted,
+                createdAt: moment(activity.createdAt).format('H:mm'),
+                points: activity.points
+            });
+
+        }
+
+        if (activity.type === 'badge') {
+
+            activityDict = {
+                fill: activity.data.fill,
+                icon: activity.data.image,
+                type: activity.data.type
+            };
+
+            header = `${activity.username} ${t.stats.badges.header}`;
+            body = t.stats.badges.body({
+                username: activity.username,
+                why: _.get(t, activity.data.why)
+            });
+        }
+
+        var iconBody = (
             <span>
-                <h5>{username} {_.get(t, a.text)}</h5>
+                <h5>{header}</h5>
                 <hr />
-                <p>{t.stats.actions.body(dict)}</p>
+                <p>{body}</p>
             </span>
         );
 
         var icon = (
             <Icon
-                image={a.icon}
-                type='none'
-                fill={a.fill}
+                image={activityDict.icon}
+                type={activityDict.type}
+                fill={activityDict.fill}
             />
         );
 
         return (
-            <IconCard xs={12} md={12} icon={icon} body={body}/>
+            <IconCard xs={12} md={12} icon={icon} body={iconBody}/>
         );
     }
 });

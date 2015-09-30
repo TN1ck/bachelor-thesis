@@ -119,7 +119,17 @@ function authLoginBadges (user) {
     }}
  */
 function addQueryBadges (user) {
-    return user.getActions({where: {group: 'query', label: 'add'}}).then(function(actions) {
+    return Action.aggregate(
+        'value',
+        'DISTINCT', {
+            where: {
+                group: 'query',
+                label: 'add',
+                UserId: user.get('id')
+            },
+            plain: false
+        }).then(function(actions) {
+
         var badges = [];
 
         var count = actions.length;
@@ -157,7 +167,16 @@ function addQueryBadges (user) {
     }}
  */
 function voteUpBadges (user) {
-    return user.getActions({where: {group: 'vote', label: 'up'}}).then(function(actions) {
+    return Action.aggregate(
+        'value',
+        'DISTINCT', {
+            where: {
+                group: 'vote',
+                label: 'up',
+                UserId: user.get('id')
+            },
+            plain: false
+        }).then(function(actions) {
 
         var badges = [];
 
@@ -196,7 +215,17 @@ function voteUpBadges (user) {
     }}
  */
 function voteDownBadges (user) {
-    return user.getActions({where: {group: 'vote', label: 'down'}}).then(function(actions) {
+    return Action.aggregate(
+        'value',
+        'DISTINCT', {
+            where: {
+                group: 'vote',
+                label: 'down',
+                UserId: user.get('id')
+            },
+            plain: false
+        }).then(function(actions) {
+
         var badges = [];
 
         var count = actions.length;
@@ -234,7 +263,17 @@ function voteDownBadges (user) {
     }}
  */
 function toggleFavouriteBadges (user) {
-    return user.getActions({where: {group: 'favourite', label: 'toggle'}}).then(function(actions) {
+    return Action.aggregate(
+        'value',
+        'DISTINCT', {
+            where: {
+                group: 'favourite',
+                label: 'toggle',
+                UserId: user.get('id')
+            },
+            plain: false
+        }).then(function(actions) {
+
         var badges = [];
 
         var count = actions.length;

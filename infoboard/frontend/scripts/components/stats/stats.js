@@ -5,7 +5,7 @@ import {Row, Col}  from 'react-bootstrap';
 import gameStore   from '../../stores/game.js';
 import BarChart    from '../charts/barChart.js';
 import LeaderBoard from '../userstats/leaderboard.js';
-import Action      from './action.js';
+import Activity    from './activity.js';
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -104,17 +104,17 @@ export default React.createClass({
     },
 
     /**
-     * Visualize the last actions performed by the user
+     * Visualize the last actions performed by the users as well as the last badges they received
      */
-    createActions: function () {
+    createActivities: function () {
 
-        var actions = this.state.actions;
+        var activities = this.state.activities;
         var t = this.props.translation;
 
-        var _actions = actions.map(action => {
+        var _activities = activities.map((activity, i) => {
             return (
-                <Row key={action.action.id}>
-                    <Action translation={this.props.translation} action={action} />
+                <Row key={i}>
+                    <Activity translation={this.props.translation} activity={activity} />
                 </Row>
             );
         });
@@ -124,7 +124,7 @@ export default React.createClass({
                 <h1>Aktionen</h1>
                 <hr/>
                 <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionEnter={true}>
-                    {_actions}
+                    {_activities}
                 </ReactCSSTransitionGroup>
             </Col>
         );
@@ -136,7 +136,7 @@ export default React.createClass({
             <Row>
                 {this.createLeaderBoards()}
                 {this.createBarChart()}
-                {this.createActions()}
+                {this.createActivities()}
             </Row>
         );
     }

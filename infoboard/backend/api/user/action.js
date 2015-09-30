@@ -24,6 +24,8 @@ module.exports = function (req, res) {
     var label    = body.label;
     var value    = body.value;
 
+    var doNotEmitAction = false;
+
     // get or create user
     User.findOrCreate({
         where: {username: username}
@@ -79,6 +81,8 @@ module.exports = function (req, res) {
 
                 if (authAction) {
                     points = 0;
+                    // we do not want to show repeated authentications
+                    doNotEmitAction = true;
                 }
             }
 
@@ -126,11 +130,13 @@ module.exports = function (req, res) {
                 });
 
                 // update info screen
-                io.emit('action_created', {
-                    user: user,
-                    action: action,
-                    badges: badges
-                });
+                if (!doNotEmitAction) {
+                    io.emit('action_created', {
+                        user: user,
+                        action: action,
+                        badges: badges
+                    });
+                }
 
                 // update the points off all clients
                 return Promise.all([

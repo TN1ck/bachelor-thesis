@@ -21,7 +21,8 @@ module.exports = {
         name: 'Name',
         active: 'aktiv',
         currentlySelected: 'Aktuell ausgewählt',
-        select: 'Benutzen'
+        select: 'Benutzen',
+        deleted: '[Gelöscht]'
     },
 
     boosterPage: {
@@ -84,6 +85,10 @@ module.exports = {
                 down: 'hat etwas negativ bewertet.'
             },
             body: _.template('Diese Aktion wurde um ${ createdAt } Uhr ausgeführt. Sie hat ${ username } ${ points } Punkte erbracht.')
+        },
+        badges: {
+            header: 'erhielt ein Abzeichen!',
+            body: _.template('Das Abzeichen wurde vergeben, weil ${ username } folgendes geleistet hat: ${ why }')
         }
     },
 
