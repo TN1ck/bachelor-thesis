@@ -22,7 +22,7 @@ module.exports = function (req, res) {
         limit: limit
     }).then(function(actions) {
         res.json({
-            actions: actions.map(function (action) {
+            actions: (actions || []).map(function (action) {
                 return {
                     action: action,
                     user: action.User,

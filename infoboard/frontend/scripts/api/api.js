@@ -20,11 +20,16 @@ export function postAction (data) {
 /**
  * Fetch all Items from the server with that match one of the provided uuids
  *
- * @param {String} uuids A comma-seperated string of the uuids of the items
+ * @param {String[]} uuids A list of the uuids of the items
  * @returns {Promise} The request
  */
 export function getItems (uuids) {
-    return $.get(`${SETTINGS.SERVER_URL}/api/items?items=${uuids}&username=${user.username}`);
+    return $.post(`${SETTINGS.SERVER_URL}/api/items`, {
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        username: user.username,
+        items: uuids
+    });
 }
 
 /**

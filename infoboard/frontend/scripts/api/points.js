@@ -12,8 +12,7 @@ export var getMonthlyPoints = () => {
 
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
-        from: moment().subtract(30, 'days').toString(),
-        to: moment().toString()
+        from: moment().subtract(30, 'days').format()
     });
 };
 

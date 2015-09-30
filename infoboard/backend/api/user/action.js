@@ -41,16 +41,6 @@ module.exports = function (req, res) {
                     }
                 }
             }),
-            // find todays auth action
-            user.getActions({
-                where: {
-                    createdAt: {
-                        $gt: today
-                    },
-                    group: 'auth',
-                    label: 'login'
-                }
-            }),
             user.getActions({
                 where: {
                     createdAt: {
@@ -66,8 +56,7 @@ module.exports = function (req, res) {
                 return b.get('createdAt');
             }));
 
-            var authAction = results[1];
-            var allActions = results[2];
+            var allActions = results[1];
 
             var createActionAndAnswer = function (props) {
                 return Action.create(actionProps).then(function (action) {
@@ -83,8 +72,14 @@ module.exports = function (req, res) {
             }
 
             // authentication is allowed once per day
-            if (group === 'auth' && label === 'login' && authAction) {
-                points = 0;
+            if (group === 'auth' && label === 'login') {
+                var authAction = _.find(allActions, function (a) {
+                    return a.get('group') === 'auth' && a.get('label') === 'login';
+                });
+
+                if (authAction) {
+                    points = 0;
+                }
             }
 
             // if its a vote or a favourite, check if the item was already rated today
@@ -123,6 +118,7 @@ module.exports = function (req, res) {
             };
 
             var answer = function (badges, stats, action) {
+
                 res.json({
                     badges: badges,
                     stats: stats,
@@ -137,11 +133,10 @@ module.exports = function (req, res) {
                 });
 
                 // update the points off all clients
-                Promise.all([
+                return Promise.all([
                     calculatePoints(),
                     calculatePoints(
-                        moment().subtract(30, 'days'),
-                        moment()
+                        moment().subtract(30, 'days')
                     )
                 ]).then(function (results) {
                     io.emit('updated_points', {
@@ -159,9 +154,10 @@ module.exports = function (req, res) {
                 var stats = {};
 
                 // recalculate the badges and points
-                var result = calculateBadges(action, user);
-
-                result.then(function (data) {
+                return calculateBadges({
+                    group: group,
+                    label: label},
+                user).then(function (data) {
 
                     // check which one the user already has
                     if (data && data.badges && data.badges.length > 0) {
@@ -169,7 +165,7 @@ module.exports = function (req, res) {
                         badges = data.badges;
                         stats  = data.stats;
 
-                        user.getBadges().then(function(result) {
+                        return user.getBadges().then(function(result) {
 
                             result = result.map(function(x) { return x.get({plain: true})});
 
@@ -180,17 +176,19 @@ module.exports = function (req, res) {
                             });
 
                             // insert them into the db but not wait for it to finish
-                            filteredBadges.forEach(function(badge) {
-                                Badge.create({
+                            var promises = filteredBadges.map(function(badge) {
+                                return Badge.create({
                                     type: badge.type,
                                     name: badge.id,
                                     points: badge.points
                                 }).then(function (b) {
-                                    b.setUser(user);
+                                    return b.setUser(user);
                                 });
-                            });
+                            })
 
-                            return answer(filteredBadges, stats, action);
+                            return Promise.all(promises).then(function(results) {
+                                return answer(filteredBadges, stats, action);
+                            });
 
                         });
                     } else {
@@ -202,21 +200,23 @@ module.exports = function (req, res) {
 
             // if the action has an item-uuid add it to the action props
             if (body.item) {
-                promise = Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
+                return Item.findOrCreate({where: {uuid: body.item}}).then(function(_item) {
                     var item = _item[0];
-                    Action.create(actionProps).then(function(action) {
-                        action.setItem(item);
-                        action.setUser(user);
-                        action.save().then(function (a) {
-                            item.setActions([a]);
-                            calcBadges(a);
+                    return Action.create(actionProps).then(function(action) {
+                        return action.setItem(item)
+                    }).then(function(action) {
+                        return action.setUser(user);
+                    }).then(function (action) {
+                        return item.setActions([action]).then(function () {
+                            return calcBadges(action);
                         });
                     });
                 });
             } else {
                 return Action.create(actionProps).then(function(action) {
-                    action.setUser(user);
-                    action.save().then(calcBadges);
+                    return action.setUser(user).then(function () {
+                        return calcBadges(action);
+                    });
                 });
             }
         });

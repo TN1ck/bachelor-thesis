@@ -7,8 +7,9 @@ var Vote = models.Vote;
 var Item = models.Item;
 
 module.exports = function (req, res) {
-    var ids = req.query.items.split(',');
-    var username = req.query.username;
+
+    var ids = req.body.items;
+    var username = req.body.username;
 
     User.findOrCreate({
         where: {username: username},

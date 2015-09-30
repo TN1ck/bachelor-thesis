@@ -4,7 +4,9 @@ var _       = require('lodash');
 var calculatePoints = require('./calculatePoints.js');
 
 module.exports = function (req, res) {
-    return calculatePoints(req.from, req.to).then(function(result) {
+    return calculatePoints(
+        req.query.from
+    ).then(function(result) {
         res.json(result);
     });
 };

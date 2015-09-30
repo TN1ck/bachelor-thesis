@@ -21,6 +21,7 @@ module.exports = function (req, res) {
         var user = _user[0];
         var b = _.find(booster, {id: boosterId});
 
+<<<<<<< HEAD
         // TODO: check if the user has enough points
 
         Booster.create({
@@ -31,6 +32,40 @@ module.exports = function (req, res) {
         }).then(function(b) {
             b.setUser(user).then(function (b) {
                 res.json(b);
+=======
+        calculatePoints(
+            moment().subtract(10, 'years'),
+            username
+        ).then(function (result) {
+
+            if (result.points < b.points) {
+                return res.json({
+                    error: true
+                });
+            }
+
+            Booster.create({
+                name: b.id,
+                validUntil: moment().add(b.duration, 'day').toDate(),
+                multiplicator: b.multiplicator,
+                points: b.points
+            }).then(function(b) {
+                return b.setUser(user).then(function (b) {
+                    res.json(b);
+                });
+            }).then(function () {
+                Promise.all([
+                    calculatePoints(),
+                    calculatePoints(
+                        moment().subtract(30, 'days')
+                    )
+                ]).then(function (results) {
+                    io.emit('updated_points', {
+                        all: results[0],
+                        monthly: results[1]
+                    });
+                });
+>>>>>>> 67eb89d... changed getItems to an post-api to prevent url-formatting errors, fixed point-updating
             });
         });
 

@@ -120,7 +120,7 @@ export default Reflux.createStore({
         });
 
         // all the uuids that will be checked by the backends for votes/actions
-        var uuids = _.keys(tempItems).join(',');
+        var uuids = _.keys(tempItems);
 
         // get upvotes and actions of the tiles
         api.getItems(uuids).then(result => {

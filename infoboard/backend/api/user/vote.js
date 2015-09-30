@@ -8,9 +8,9 @@ var Item = models.Item;
 
 module.exports = function (req, res) {
     // get params and body
-    var username = req.body.username;
-    var item     = req.body.item;
     var body     = req.body;
+    var username = body.username;
+    var item     = body.item;
 
     // get or create user
     User.findOrCreate({where: {username: username}}).then(function(_user) {

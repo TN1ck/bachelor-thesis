@@ -15,15 +15,13 @@ var Badge = models.Badge;
 var Booster = models.Booster;
 var sequelize = models.sequelize;
 
-module.exports = function (from, to) {
+module.exports = function (from, username) {
 
     var dateFrom = from ? moment(from) : moment().subtract(10, 'years');
-    var dateTo   = to   ? moment(to)   : moment();
 
     var where = {
         createdAt: {
-            $gt: dateFrom.toDate(),
-            $lt: dateTo.toDate()
+            $gt: dateFrom.toDate()
         }
     };
 
@@ -184,7 +182,8 @@ module.exports = function (from, to) {
 
         return {
             users: users,
-            points: badgesAccAll.points + actionsAccAll.points - boosterAccAll.points,
+            points: badgesAccAll.points + actionsAccAll.points,
+            pointsWithBoosters:  badgesAccAll.points + actionsAccAll.points - boosterAccAll.points,
             count:  badgesAccAll.count  + actionsAccAll.count + boosterAccAll.count,
             actions: actionsAcc,
             badges: badgesAcc,

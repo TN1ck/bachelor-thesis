@@ -43,7 +43,7 @@ export default React.createClass({
             body = (
                 <span>
                     <h4>{t.messages.badge.header}</h4>
-                    <h5>{badge.why}</h5>
+                    <h5>{_.get(t, badge.why)}</h5>
                     <p><strong>{badge.points}</strong> {t.messages.badge.body}</p>
                 </span>
             );
@@ -58,7 +58,7 @@ export default React.createClass({
             body = (
                 <span>
                     <h4>Booster erfolgreich erworben!</h4>
-                    <p>{booster.text}</p>
+                    <p>{_.get(t, booster.text)}</p>
                 </span>
             );
 
