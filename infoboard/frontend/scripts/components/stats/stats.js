@@ -44,14 +44,22 @@ export default React.createClass({
 
             {
                 y: t.label.query,
-                x: _.get(alltime.actions, ['query', 'add', 'points'], 0)
+                x: _.get(alltime.actions, ['query', 'add', 'points'], 0) + _.get(alltime.actions, ['query', 'remove', 'points'], 0)
             },
             {
                 y: t.label.badge,
-                x: alltime.badges.all.points
+                x: _.get(alltime, ['badges', 'all', 'points'], 0)
             }
 
         ].sort((a, b) => b.x - a.x);
+
+        data = [
+            {
+                y: t.label.booster,
+                x: _.get(alltime, ['booster', 'points'], 0),
+                negative: true
+            }
+        ].concat(data);
 
         return (
             <Col xs={12} sm={12} md={3}>

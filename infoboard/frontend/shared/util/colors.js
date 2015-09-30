@@ -124,6 +124,7 @@ var getColorByString = function (str, scheme) {
 // names of the colors accourding to: http://chir.ag/projects/name-that-color/
 // list of nice colors, that are used throughout the application
 var colors = {
+    crimson:      '#ef233c',
     vinrouge:     '#9C4274',
     buttercup:    '#F5A623',
     sushi:        '#96BF48',

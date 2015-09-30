@@ -98,6 +98,7 @@ module.exports = function (from, username) {
 
             var points = {
                 all: all,
+                withoutBooster: all + boosterPoints,
                 badges: badgesPoints,
                 actions: actionsPoints,
                 booster: boosterPoints
@@ -182,8 +183,8 @@ module.exports = function (from, username) {
 
         return {
             users: users,
-            points: badgesAccAll.points + actionsAccAll.points,
-            pointsWithBoosters:  badgesAccAll.points + actionsAccAll.points - boosterAccAll.points,
+            pointsWithoutBooster: badgesAccAll.points + actionsAccAll.points,
+            points: badgesAccAll.points + actionsAccAll.points - boosterAccAll.points,
             count:  badgesAccAll.count  + actionsAccAll.count + boosterAccAll.count,
             actions: actionsAcc,
             badges: badgesAcc,

@@ -5,8 +5,7 @@ import {
     Grid,
     Row,
     Col,
-    PageHeader,
-    Input
+    PageHeader
 }                           from 'react-bootstrap';
 
 import gameStore            from '../../stores/game.js';
@@ -120,6 +119,14 @@ export default React.createClass({
 
         ].sort((a, b) => b.x - a.x);
 
+        data = [
+            {
+                y: t.label.booster,
+                x: _.get(user, '.points.booster', 0),
+                negative: true
+            }
+        ].concat(data);
+
         return <BarChart data={data}/>;
     },
 
@@ -149,19 +156,22 @@ export default React.createClass({
             });
 
         var points = this.state.alltime.user.points.all;
+        var pointsWithoutBooster = this.state.alltime.user.points.withoutBooster;
 
         /* works because LEVELS is an array and the current level
            is the indice for the next one */
         var pointsForNextLevel = _.get(LEVELS, [this.state.level, 'points'], 0);
         // If the maximum level is reached, the points needed are 0
-        var pointsNeededForNextLevel = Math.max(0, pointsForNextLevel - points);
+        var pointsNeededForNextLevel = Math.max(0, pointsForNextLevel - pointsWithoutBooster);
 
         return (
             <Grid>
                 <Row>
                     <Col xs={12}>
                         <h1>{points} {t.label.points} / {this.state.level} {t.label.level}</h1>
-                        <p>{pointsNeededForNextLevel} {t.userstats.nextLevel}</p>
+                        <p>
+                            {t.userstats.nextLevel({points: pointsWithoutBooster, pointsNeeded: pointsNeededForNextLevel})}
+                        </p>
                         {this.createBarChart()}
                     </Col>
                     <Col xs={12}>

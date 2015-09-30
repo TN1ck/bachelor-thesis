@@ -209,7 +209,7 @@ export default Reflux.createStore({
     calcLevel: function () {
         var current = this.state.level;
         var level = (_.findLast(LEVELS, (_level) => {
-            return _level.points <= this.state.alltime.user.points.all;
+            return _level.points <= this.state.alltime.user.points.withoutBooster;
         }) || LEVELS[0]);
 
         // user arrived new level, send message

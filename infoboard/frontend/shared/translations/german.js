@@ -117,7 +117,7 @@ module.exports = {
     },
 
     userstats: {
-        nextLevel: 'Punkte benötigst du um das nächste Level zu erreichen.',
+        nextLevel: _.template('Das Level wird berechnet indem die Gesamtpunktzahl benutzt wird, ohne die minus-Punkte der Booster mit einzubeziehen. Hierbei haben Sie derzeit eine Punktzahl von ${ points }, Sie benötigen weitere ${ pointsNeeded } Punkte um das nächste Level zu erreichen.'),
         showAllBadges: 'Zeige alle Abzeichen',
         badges: {
             points: 'Punkte hast du für dieses Abzeichen erhalten.',

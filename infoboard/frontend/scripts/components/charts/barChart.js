@@ -32,6 +32,7 @@ class BarChart {
 
         // used colors
         this.colors = [
+            colors.crimson,
             colors.vinrouge,
             colors.buttercup,
             colors.sushi,
@@ -156,7 +157,10 @@ class BarChart {
         this.text.selectAll('.barchart__text')
             .transition()
             .duration(1000)
-            .text(d => `${d.y} - ${d.x}`)
+            .text(d => {
+                var sign = d.negative ? -1 : 1;
+                return `${d.y} ${d3.format('+')(sign * d.x)}`;
+            })
             .attr({
                 class: (d) => {
                     return `barchart__text barchart__text--${largerThanCenter(d) ? 'inner' : 'outer'}`;
