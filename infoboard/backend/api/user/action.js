@@ -8,6 +8,8 @@ var calculateBadges = require('../../gamification/calculateBadges');
 var POINTS          = require('../../../frontend/shared/gamification/points');
 var BADGES          = require('../../../frontend/shared/gamification/badges');
 
+var createActivityFromAction = require('../activities/createActivityFromAction.js');
+
 var User = models.User;
 var Action = models.Action;
 var Vote = models.Vote;
@@ -24,7 +26,7 @@ module.exports = function (req, res) {
     var label    = body.label;
     var value    = body.value;
 
-    var doNotEmitAction = false;
+    var doNotCreateActivity = false;
 
     // get or create user
     User.findOrCreate({
@@ -82,7 +84,7 @@ module.exports = function (req, res) {
                 if (authAction) {
                     points = 0;
                     // we do not want to show repeated authentications
-                    doNotEmitAction = true;
+                    doNotCreateActivity = true;
                 }
             }
 
@@ -130,10 +132,10 @@ module.exports = function (req, res) {
                 });
 
                 // update info screen
-                if (!doNotEmitAction) {
-                    io.emit('action_created', {
-                        user: user,
-                        action: action,
+                if (!doNotCreateActivity) {
+                    createActivityFromAction({
+                        user: user.get({plain: true}),
+                        action: action.get({plain: true}),
                         badges: badges
                     });
                 }

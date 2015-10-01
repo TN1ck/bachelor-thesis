@@ -33,13 +33,13 @@ export function getItems (uuids) {
 }
 
 /**
- * Fetch the last performed Actions
+ * Fetch the last performed Activities
  *
- * @param {Number} limit Number of actions to fetch, default 50
+ * @param {Number} limit Number of activities to fetch, default 50
  * @returns {Promise} The request
  */
-export function getActions (limit = 50) {
-    return $.get(`${SETTINGS.SERVER_URL}/api/actions?${limit}`);
+export function getActivities (limit = 30) {
+    return $.get(`${SETTINGS.SERVER_URL}/api/activities?${limit}`);
 }
 
 /**

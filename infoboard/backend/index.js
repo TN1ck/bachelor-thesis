@@ -37,10 +37,10 @@ router.post('/user/action',  cors(), require('./api/user/action.js'));
 router.post('/user/vote',    cors(), require('./api/user/vote.js'));
 router.post('/user/booster', cors(), require('./api/user/booster.js'));
 
-router.post('/items',         cors(), require('./api/items/items.js'));
+router.post('/items',        cors(), require('./api/items/items.js'));
 
 router.get('/points',        cors(), require('./api/points/points.js'));
-router.get('/actions',       cors(), require('./api/actions/actions.js'));
+router.get('/activities',    cors(), require('./api/activities/activities.js'));
 
 // make the routes available under /api
 app.use('/api', router);
