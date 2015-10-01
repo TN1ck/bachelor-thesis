@@ -23,10 +23,11 @@ module.exports = function (action) {
         });
     });
 
-
     newActivities.forEach(function (activity) {
         activities.unshift(activity);
         io.emit('activity_created', activity);
     });
+
+    activities.splice(100, activities.length);
 
 };
