@@ -1,7 +1,13 @@
 var activities = require('./currentActivities.js');
+var hideUsers  = require('../../config/gamification.js').hideUsers;
 var io         = require('../socket.js');
 
 module.exports = function (action) {
+
+    // do not process activities from blocked users
+    if (hideUsers.indexOf(action.user.username) > -1) {
+        return;
+    }
 
     var newActivities = [];
 
