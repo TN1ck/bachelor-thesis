@@ -27,7 +27,7 @@ var Item = models.Item;
 function authLoginBadges (user) {
     return user.getActions({
         where: {group: 'auth', label: 'login'},
-        order: [['createdAt', 'DESC']]
+        order: [['createdAt', 'ASC']]
     }).then(function(actions) {
         var badges = [];
 
