@@ -76,6 +76,7 @@ export var groupers = {
         var chunks = _.range(numberOfColumns).map(() => { return []; });
 
         items
+        .sort(sortFunction)
         .toList()
         .groupBy((_item) => {
             return _item.get('query');
@@ -111,8 +112,30 @@ export var groupers = {
 
         var chunks = _.range(numberOfColumns).map(() => { return []; });
 
-        items.toList().forEach((_item, i) => {
+        items.sort(sortFunction).toList().forEach((_item, i) => {
             var columnIndex = i % numberOfColumns;
+            chunks[columnIndex].push(_item);
+        });
+
+        var columns = chunks.map( (chunk) => {
+            chunk.sort(sortFunction);
+            return chunk;
+        });
+
+        return columns;
+    },
+    /**
+     * Group the items by modulo, will yield the version with the best flow
+     * @param {Object[]} items The items that will be grouped
+     * @param {Number} numberOfColumns The number of columns
+     * @param {Function} The function that will provide the inner-column sorting
+     * @returns {Object[][]} The grouped items
+     */
+    modulo: (items, numberOfColumns, sortFunction) => {
+        var chunks = _.range(numberOfColumns).map(() => { return []; });
+
+        items.toList().forEach((_item) => {
+            var columnIndex = hashCode(_item.get('uuid')) % numberOfColumns;
             chunks[columnIndex].push(_item);
         });
 
@@ -198,14 +221,35 @@ export default Reflux.createStore({
      */
     onStoreChange: function (items) {
 
+        var columns = this.groupFunction(
+            items,
+            this.numberOfColumns,
+            this.sortFunction
+        );
+
         this.items = items.map((tile) => {
 
             var uuid = tile.get('uuid');
             var oldTile = this.items.get(uuid);
 
             // specify the starting position of the tile
-            var columnIndex = 0;
-            var left = 0;
+            // specify the starting position of the tile
+            var _columnIndex = _.map(columns, (c, i) => {
+                let b = _.find(c, t => t.get('uuid') === uuid);
+                if (b) {
+                    return {
+                        index: i
+                    };
+                }
+                return false;
+            }).filter(d => d)[0];
+
+            var columnIndex = _columnIndex.index;
+
+            var left = (this.columnWidth + this.margin) * columnIndex + this.margin / 2;
+
+            // var columnIndex = 0;
+            // var left = 0;
 
             var newTile;
             if (!oldTile) {
@@ -308,7 +352,7 @@ export default Reflux.createStore({
 
         // calculate columns using the groupFunction and the sortFunction
         var columns = this.groupFunction(
-            this.items.sort(this.sortFunction),
+            this.items,
             this.numberOfColumns,
             this.sortFunction
         );
