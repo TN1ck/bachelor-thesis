@@ -13,6 +13,11 @@ module.exports = {
         publicPath: '/build/'
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'BACKEND_URL': JSON.stringify('http://localhost:4000'),
+            }
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ],
