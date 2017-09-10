@@ -161,7 +161,9 @@ export default class User {
         //     this.initUser(data);
         // });
 
-        return Promise.resolve(this.initUser({username, token: 'test'}));
+        return new Promise(resolve => {
+            this.initUser({username, token: 'test'}).then(resolve);
+        });
 
     }
 
@@ -206,7 +208,9 @@ export default class User {
         //     return false;
         // });
 
-        return Promise.resolve(this.initUser({username, token}));
+        return new Promise(resolve => {
+            this.initUser({username, token}).then(resolve);
+        });
     }
 
     /**
