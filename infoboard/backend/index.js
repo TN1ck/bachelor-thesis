@@ -16,7 +16,7 @@ var io          = require('./api/socket.js');
 
 // create the server
 
-var port        = 4000;
+var port        = parseInt(process.env.PORT, 10) || 4000;
 var app         = express();
 var server      = http.createServer(app);
 
