@@ -27,7 +27,8 @@ const config = {
 // means we are on heroku
 if (process.env.DATABASE_URL) {
     config.url = process.env.DATABASE_URL;
-    config.config.dialect = 'postgres';
+    // postgres is still not working
+    config.config.dialect = 'mysql';
 }
 
 module.exports = config;
