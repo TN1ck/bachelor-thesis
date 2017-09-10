@@ -21,18 +21,6 @@ module.exports = function (req, res) {
         var user = _user[0];
         var b = _.find(booster, {id: boosterId});
 
-<<<<<<< HEAD
-        // TODO: check if the user has enough points
-
-        Booster.create({
-            name: b.id,
-            validUntil: moment().add(b.duration, 'day').toDate(),
-            multiplicator: b.multiplicator,
-            points: b.points
-        }).then(function(b) {
-            b.setUser(user).then(function (b) {
-                res.json(b);
-=======
         calculatePoints(
             moment().subtract(10, 'years'),
             username
@@ -65,7 +53,6 @@ module.exports = function (req, res) {
                         monthly: results[1]
                     });
                 });
->>>>>>> 67eb89d... changed getItems to an post-api to prevent url-formatting errors, fixed point-updating
             });
         });
 
