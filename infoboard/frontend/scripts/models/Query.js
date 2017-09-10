@@ -5,7 +5,7 @@ import moment             from 'moment';
 import {getColorByString} from '../../shared/util/colors.js';
 import {user}             from '../auth.js';
 import SETTINGS           from '../settings.js';
-import Broker             from './Broker.js';
+import Broker             from './RedditBroker.js';
 
 /**
  * Creates a new Query. Queries are an abstraction on top of the Broker.

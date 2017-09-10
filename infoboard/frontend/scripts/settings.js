@@ -43,20 +43,24 @@ settings.DEFAULT_LANGUAGE = 'de';
 
 // the used broker in the application
 settings.broker = [
+    // {
+    //     url:          'http://pia-dev-intern.dai-labor.de/service',
+    //     brokerName:   'PIA_Dev_intern_BrokerBean',
+    //     action:       'ACTION_SOLR',
+    //     restricted:   true,
+    //     autocomplete: true
+    // },
+    // {
+    //     url:          'http://pia-dev.dai-labor.de/service',
+    //     brokerName:   'PIA_Dev_BrokerBean',
+    //     action:       'ACTION_SOLR',
+    //     filter:       'dai-labor',
+    //     restricted:   false,
+    //     autocomplete: true
+    // }
     {
-        url:          'http://pia-dev-intern.dai-labor.de/service',
-        brokerName:   'PIA_Dev_intern_BrokerBean',
-        action:       'ACTION_SOLR',
-        restricted:   true,
-        autocomplete: true
-    },
-    {
-        url:          'http://pia-dev.dai-labor.de/service',
-        brokerName:   'PIA_Dev_BrokerBean',
-        action:       'ACTION_SOLR',
-        filter:       'dai-labor',
-        restricted:   false,
-        autocomplete: true
+        url: 'http://www.reddit.com/search.json',
+        brokerName: 'Reddit',
     }
 ];
 
