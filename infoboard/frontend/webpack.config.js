@@ -20,14 +20,14 @@ module.exports = {
         extensions: ['', '.js', '.css', '.scss']
     },
     module: {
-        preLoaders: [
-            // Lint javascript using eslint
-            {
-                test: /\.js$/,
-                loader: 'eslint-loader',
-                exclude: /node_modules/
-            }
-        ],
+        // preLoaders: [
+        //     // Lint javascript using eslint
+        //     {
+        //         test: /\.js$/,
+        //         loader: 'eslint-loader',
+        //         exclude: /node_modules/
+        //     }
+        // ],
         // file transformers
         loaders: [
             // We use react-hot and babel-loader for javascript files.
