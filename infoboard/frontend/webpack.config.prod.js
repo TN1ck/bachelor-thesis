@@ -18,7 +18,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production'),
-                'BACKEND_URL': JSON.stringify(process.env.BACKEND_URL || ''),
+                'BACKEND_URL': JSON.stringify(process.env.BACKEND_URL || 'http://localhost:4000'),
             }
         }),
         new webpack.NoErrorsPlugin(),

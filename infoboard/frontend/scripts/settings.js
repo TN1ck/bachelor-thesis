@@ -23,7 +23,7 @@ settings.LOGIN_URL   = '';
 settings.PROFILE_URL = '';
 
 // url to the http-endpoints, when developing it is http://localhost:4000
-settings.SERVER_URL  = process.env.BACKEND_URL || 'http://localhost:4000';
+settings.SERVER_URL  = process.env.BACKEND_URL;
 
 // owa settings
 settings.OWA = {
