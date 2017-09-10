@@ -17,13 +17,13 @@ export default Reflux.createStore({
         var lang = SETTINGS.LANGUAGE;
 
         // if it is not set, detect it
-        if (!lang) {
-            var locale = require('browser-locale')();
-            lang = SETTINGS.LANGUAGE_DEFAULT;
-            if (locale.toLowerCase().indexOf('en') > -1) {
-                lang = 'en';
-            }
-        }
+        // if (!lang) {
+        //     var locale = require('browser-locale')();
+        //     lang = SETTINGS.LANGUAGE_DEFAULT;
+        //     if (locale.toLowerCase().indexOf('en') > -1) {
+        //         lang = 'en';
+        //     }
+        // }
 
         this.state = {
             translations: require('../../shared/translations'),
