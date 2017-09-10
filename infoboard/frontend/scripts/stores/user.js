@@ -44,11 +44,12 @@ export default Reflux.createStore({
     login: function(username, password, remember, cb = () => {}, errCb = () => {}) {
         return user.login(username, password, remember)
             .then(res => {
+                console.log(res);
                 this.trigger(this.state);
                 return res;
             })
             .then(cb)
-            .fail(errCb);
+            .catch(errCb);
     },
 
     logout: function () {

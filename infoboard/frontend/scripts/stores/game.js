@@ -6,7 +6,7 @@ import io                 from 'socket.io-client';
 import actions            from '../actions/actions.js';
 import {user}             from '../auth.js';
 import SETTINGS           from '../settings.js';
-import * as owa           from '../owa.js';
+// import * as owa           from '../owa.js';
 import * as pointApi      from '../api/points.js';
 import * as api           from '../api/api.js';
 import LEVELS             from '../../shared/gamification/levels.js';
@@ -233,7 +233,7 @@ export default Reflux.createStore({
     addQuery: function (queryTerm, track) {
         // we do not want to track the queries that are added when the wall is started
         if (track) {
-            owa.track('query', queryTerm, 'add');
+            // owa.track('query', queryTerm, 'add');
             this.postAction('query', 'add', {value: queryTerm});
         }
     },
@@ -244,7 +244,7 @@ export default Reflux.createStore({
      * @param {string} queryTerm The query that was removed by the user
      */
     removeQuery: function (queryTerm) {
-        owa.track('query', queryTerm, 'remove');
+        // owa.track('query', queryTerm, 'remove');
         this.postAction('query', 'remove', {value: queryTerm});
     },
 
@@ -256,7 +256,7 @@ export default Reflux.createStore({
      */
     voteItem: function (uuid, value) {
         var label = value > 0 ? 'up' : 'down';
-        owa.track('vote', uuid, label);
+        // owa.track('vote', uuid, label);
         this.postAction('vote', label, {
             item: uuid,
             value: uuid
@@ -269,7 +269,7 @@ export default Reflux.createStore({
      * @param {string} uuid The uuid of the item
      */
     favouriteItem: function (uuid) {
-        owa.track('favourite', uuid, 'toggle');
+        // owa.track('favourite', uuid, 'toggle');
         this.postAction('favourite', 'toggle', {
             item: uuid,
             value: uuid

@@ -18,9 +18,12 @@ export default class User {
         this.username = 'Gast';
         this.password = '';
         this.token = '';
-        this.loginViaCookie();
         this.whenLogedInPromise = $.Deferred();
         this.whenProfileIsLoadedPromise = $.Deferred();
+        this.loginViaCookie();
+        this.checkLogin = this.checkLogin.bind(this);
+        this.loginViaCookie = this.loginViaCookie.bind(this);
+        this.initUser = this.initUser.bind(this);
     }
 
     /**
@@ -33,6 +36,7 @@ export default class User {
         this.username = username;
         this.token    = token;
         this.setCookie();
+        console.log(this);
         this.whenLogedInPromise.resolve(this.username);
         this.profile().then(result => {
             this.whenProfileIsLoadedPromise.resolve(result);
@@ -51,22 +55,24 @@ export default class User {
      */
     profile () {
 
-        var params = {
-            username: this.username,
-            token: this.token,
-            action: 'ACTION_MANAGE_LOAD_PROFILE'
-        };
+        // var params = {
+        //     username: this.username,
+        //     token: this.token,
+        //     action: 'ACTION_MANAGE_LOAD_PROFILE'
+        // };
 
-        return $.ajax({
-            type: 'GET',
-            url: SETTINGS.PROFILE_URL,
-            data: params,
-            dataType: 'jsonp',
-            jsonp: 'json.wrf'
+        // return $.ajax({
+        //     type: 'GET',
+        //     url: SETTINGS.PROFILE_URL,
+        //     data: params,
+        //     dataType: 'jsonp',
+        //     jsonp: 'json.wrf'
 
-        }).promise().then(json => {
-            return this.processProfile(json);
-        });
+        // }).promise().then(json => {
+        //     return this.processProfile(json);
+        // });
+
+        return Promise.resolve(this.processProfile({}));
 
     }
 
@@ -86,30 +92,30 @@ export default class User {
     processProfile (json) {
 
         // extract queries and favourites
-        var extract = function (node, results) {
-            // is it a leave?
-            var isLeave = !node.itemgroup;
-            // if leave, end recursion
-            if (isLeave) {
-                results[node.source] = node;
-            // recursion
-            } else {
-                node.itemgroup.forEach((n) => extract(n, results));
-            }
-            return;
-        };
+        // var extract = function (node, results) {
+        //     // is it a leave?
+        //     var isLeave = !node.itemgroup;
+        //     // if leave, end recursion
+        //     if (isLeave) {
+        //         results[node.source] = node;
+        //     // recursion
+        //     } else {
+        //         node.itemgroup.forEach((n) => extract(n, results));
+        //     }
+        //     return;
+        // };
 
         // favourites are the first entry, queries second
-        this.profileRoots = {
-            favourites: json[0],
-            queries: json[1]
-        };
+        // this.profileRoots = {
+        //     favourites: json[0],
+        //     queries: json[1]
+        // };
 
         var queries = {};
         var favourites = {};
 
-        extract(this.profileRoots.favourites, favourites);
-        extract(this.profileRoots.queries, queries);
+        // extract(this.profileRoots.favourites, favourites);
+        // extract(this.profileRoots.queries, queries);
 
         this.queries = queries;
         this.favourites = favourites;
@@ -228,16 +234,18 @@ export default class User {
         this.password = password;
         this.remember = remember;
 
-        return $.ajax({
-            url: SETTINGS.LOGIN_URL,
-            data: {
-                username: this.username,
-                password: this.password
-            },
-            type: 'POST'
-        }).then(data => {
-            this.initUser(data);
-        });
+        // return $.ajax({
+        //     url: SETTINGS.LOGIN_URL,
+        //     data: {
+        //         username: this.username,
+        //         password: this.password
+        //     },
+        //     type: 'POST'
+        // }).then(data => {
+        //     this.initUser(data);
+        // });
+
+        return Promise.resolve(this.initUser({username, token: 'test'}));
 
     }
 
@@ -257,30 +265,32 @@ export default class User {
      * @returns {Promise}
      */
     checkLogin (token, username) {
-        return $.ajax({
-            url: SETTINGS.PROFILE_URL,
-            data: {
-                username: username,
-                token: token,
-                action: 'ACTION_CHECK_LOGIN'
-            },
-            dataType: 'jsonp',
-            jsonp: 'json.wrf',
-            type: 'GET'
-        }).then( response => {
-            // token is valid, auth sucessfull
-            if (response &&
-                response.status &&
-                response.status.code === 200) {
-                this.initUser({
-                    username: username,
-                    token: token
-                });
-                return true;
-            // token is not valid, auth failed
-            }
-            return false;
-        });
+        // return $.ajax({
+        //     url: SETTINGS.PROFILE_URL,
+        //     data: {
+        //         username: username,
+        //         token: token,
+        //         action: 'ACTION_CHECK_LOGIN'
+        //     },
+        //     dataType: 'jsonp',
+        //     jsonp: 'json.wrf',
+        //     type: 'GET'
+        // }).then( response => {
+        //     // token is valid, auth sucessfull
+        //     if (response &&
+        //         response.status &&
+        //         response.status.code === 200) {
+        //         this.initUser({
+        //             username: username,
+        //             token: token
+        //         });
+        //         return true;
+        //     // token is not valid, auth failed
+        //     }
+        //     return false;
+        // });
+
+        return Promise.resolve(this.initUser({username, token}));
     }
 
     /**
@@ -295,7 +305,7 @@ export default class User {
             this.loginPromise = this.checkLogin(token, username).then(res => {
                 this.loginPromise = false;
                 return res;
-            }).fail(res => {
+            }).catch(res => {
                 this.loginPromise = false;
                 return res;
             });
@@ -316,7 +326,7 @@ export default class User {
         if (this.loginPromise && cb) {
             this.loginPromise.then((result) => {
                 cb(result);
-            }).fail(() => {
+            }).catch(() => {
                 cb(false);
             });
             return !!this.token;
