@@ -1,4 +1,5 @@
 import React               from 'react/addons';
+import {Alert}               from 'react-bootstrap';
 import {RouteHandler}      from 'react-router';
 import Reflux              from 'reflux';
 import translationStore    from '../stores/translation.js';
@@ -19,6 +20,10 @@ export default React.createClass({
     render: function () {
         return (
             <div>
+                <div className="test-version">
+                    {this.state.translation.testVersion.main}
+                    <a href={this.state.translation.testVersion.link}>{this.state.translation.testVersion.link}</a>
+                </div>
                 <Header       translation={this.state.translation} />
                 <Messages     translation={this.state.translation} />
                 <RouteHandler translation={this.state.translation} />

@@ -3,6 +3,11 @@ var _ = require('lodash');
 // german translation of the application
 module.exports = {
 
+    testVersion: {
+        main: 'Dies ist nur eine Testversion! Sie ist nur teilweise funktionsfähig. Für mehr Informationen folgen sie diesem Link: ',
+        link: 'https://github.com/TN1ck/bachelor-thesis'
+    },
+
     label: {
         brand: 'Infoboard',
         points: 'Punkte',
@@ -99,6 +104,7 @@ module.exports = {
     },
 
     auth: {
+        everythingWorks: 'Dies ist eine Testversion der eigentlichen Applikationen, jede login Kombination wird funktionieren. z.B. Gast / Passwort.',
         label: {
             login: 'Anmelden',
             logout: 'Abmelden',

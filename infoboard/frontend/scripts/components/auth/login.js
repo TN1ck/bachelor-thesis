@@ -1,7 +1,7 @@
 import React from 'react/addons';
 import {
     Grid, Row, Col, Input, Button,
-    PageHeader, Alert, ButtonGroup
+    PageHeader, Alert, ButtonGroup,
 } from 'react-bootstrap';
 import CheckBoxInput from '../utility/CheckBoxInput.js';
 
@@ -134,6 +134,9 @@ export default React.createClass({
                         <PageHeader>
                             <h1>{headerText}</h1>
                             <hr/>
+                            <Alert bsStyle='danger'>
+                                {t.auth.everythingWorks}
+                            </Alert>
                         </PageHeader>
                         {error}
                         {this.state.isLoggedIn ? logoutForm : loginForm}

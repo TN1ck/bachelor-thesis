@@ -219,14 +219,10 @@ export default Reflux.createStore({
             user.profile().then(this.setProfile.bind(this));
         };
 
-        var failCallback = () => {
-        };
-
         var fn = favourite ? 'unfavourite' : 'favourite';
 
         user[fn](item)
-            .then(successCallback)
-            .fail(failCallback);
+            .then(successCallback);
 
     }
 

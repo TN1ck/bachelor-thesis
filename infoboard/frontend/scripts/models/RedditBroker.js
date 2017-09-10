@@ -45,7 +45,8 @@ export default class Broker {
      * Abort all running requests
      */
     abort () {
-        this.request.abort();
+        // Not implemented
+        return;
     }
 
     /**
@@ -116,8 +117,12 @@ export default class Broker {
 
         url += '/.json';
 
-        return $.getJSON(url).promise().then(json => {
+        this.promise = $.getJSON(url).promise().then(json => {
             return this.processJSON(json);
+        }).fail(() => {
+            return [];
         });
+
+        return this.promise;
     }
 }

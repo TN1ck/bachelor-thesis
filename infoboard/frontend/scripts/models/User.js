@@ -24,6 +24,8 @@ export default class User {
         this.checkLogin = this.checkLogin.bind(this);
         this.loginViaCookie = this.loginViaCookie.bind(this);
         this.initUser = this.initUser.bind(this);
+        this.favourite = this.favourite.bind(this);
+        this.unfavourite = this.unfavourite.bind(this);
     }
 
     /**
@@ -36,7 +38,6 @@ export default class User {
         this.username = username;
         this.token    = token;
         this.setCookie();
-        console.log(this);
         this.whenLogedInPromise.resolve(this.username);
         this.profile().then(result => {
             this.whenProfileIsLoadedPromise.resolve(result);
@@ -55,22 +56,7 @@ export default class User {
      */
     profile () {
 
-        // var params = {
-        //     username: this.username,
-        //     token: this.token,
-        //     action: 'ACTION_MANAGE_LOAD_PROFILE'
-        // };
-
-        // return $.ajax({
-        //     type: 'GET',
-        //     url: SETTINGS.PROFILE_URL,
-        //     data: params,
-        //     dataType: 'jsonp',
-        //     jsonp: 'json.wrf'
-
-        // }).promise().then(json => {
-        //     return this.processProfile(json);
-        // });
+        // here was some code to request the user profile
 
         return Promise.resolve(this.processProfile({}));
 
@@ -87,38 +73,17 @@ export default class User {
     /**
      * Will process the profile and recursivly find all saved queries and
      * favourited items
-     * @returns {{queries: Object[], favourites: Object[]}} The queries and favourites
+     * @returns {{queries: Object[], favourites: Object}} The queries and favourites
      */
     processProfile (json) {
 
-        // extract queries and favourites
-        // var extract = function (node, results) {
-        //     // is it a leave?
-        //     var isLeave = !node.itemgroup;
-        //     // if leave, end recursion
-        //     if (isLeave) {
-        //         results[node.source] = node;
-        //     // recursion
-        //     } else {
-        //         node.itemgroup.forEach((n) => extract(n, results));
-        //     }
-        //     return;
-        // };
+        // Here was some code where the user profile was processed to get the queries/favourites
 
-        // favourites are the first entry, queries second
-        // this.profileRoots = {
-        //     favourites: json[0],
-        //     queries: json[1]
-        // };
-
-        var queries = {};
+        var queries = [{name: 'earthporn'}, {name: 'art'}];
         var favourites = {};
 
-        // extract(this.profileRoots.favourites, favourites);
-        // extract(this.profileRoots.queries, queries);
-
         this.queries = queries;
-        this.favourites = favourites;
+        this.favourites = this.favourites || favourites;
 
         return {
             queries: queries,
@@ -134,49 +99,13 @@ export default class User {
      */
     favourite (item) {
 
-        // Only happens when the profile was not correctly loaded
-        /*eslint-disable */
-        if (!this.profileRoots.favourites) {
-            console.error('No favourite root set.');
-            return;
-        }
+        // here was some code to favourite items
 
-        var rawItem = item.get('raw');
-
-        if (!rawItem) {
-            console.error('Only Elements that are conform to the DAI-Apis can be favourited.');
-            return;
-        }
-        /*eslint-enable */
-
-        var escapedRawItem = escape(JSON.stringify(rawItem));
-
-        // all the parameters needed to favourite the item
-        var params = {
-            username: this.username,
-            token: this.token,
-            action: 'ACTION_MANAGE_ADD',
-            parentId: this.profileRoots.favourites.id,
-            item: JSON.stringify({
-                name: item.get('title'),
-                source: item.get('uuid'),
-                document: escapedRawItem
-            })
-        };
-
-        // favourite the item
-        /*eslint-disable */
-        return $.ajax({
-            type: 'GET',
-            url: SETTINGS.PROFILE_URL,
-            data: params,
-            dataType: 'jsonp',
-            jsonp: 'json.wrf'
-
-        }).then(json => {
-            return json;
+        return new Promise(resolve => {
+            this.favourites[item.get('uuid')] = true;
+            // some fake loading
+            setTimeout(() => resolve(), 500);
         });
-        /*eslint-enable */
     }
 
     /**
@@ -195,25 +124,12 @@ export default class User {
             return;
         }
 
-        var params = {
-            username: this.username,
-            token: this.token,
-            action: 'ACTION_MANAGE_REMOVE',
-            itemId: _item.id
-        };
-
-        /*eslint-disable */
-        return $.ajax({
-            type: 'GET',
-            url: SETTINGS.PROFILE_URL,
-            data: params,
-            dataType: 'jsonp',
-            jsonp: 'json.wrf'
-
-        }).then(json => {
-            return json;
+        return new Promise(resolve => {
+            this.favourites[item.get('uuid')] = false;
+            // some fake loading
+            setTimeout(() => resolve(), 500);
         });
-        /*eslint-enable */
+
     }
 
     //
