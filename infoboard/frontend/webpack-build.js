@@ -5,5 +5,5 @@ webpack(config, function (err, stats) {
     if (err) {
         console.error(err);
     }
-    console.log(stats);
+    // console.log(stats);
 });
