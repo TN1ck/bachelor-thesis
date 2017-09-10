@@ -12,6 +12,8 @@ Currently not working:
 * Favouriting and voting are not persisted
 
 Nice things for the future:
+* Update the used packages
+* Typescript
 * Build the assets on the server instead of commiting them
 * CI
 
