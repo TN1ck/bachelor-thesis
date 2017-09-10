@@ -1,7 +1,8 @@
-module.exports = {
+const config = {
     database: 'infoboard',
     username: 'infoboarduser',
     password: 'dai2015',
+
     config: {
         pool: {
             max: 5,
@@ -10,7 +11,7 @@ module.exports = {
         },
         // sqlite
         dialect: 'sqlite',
-        storage: './database.sqlite',
+        // storage: './database.sqlite',
 
         // THERE IS A BUG WITH POSTGRES AND A GROUP-BY QUERY. sqlite and mysql are working fine
 
@@ -22,3 +23,11 @@ module.exports = {
 
     }
 };
+
+// means we are on heroku
+if (process.env.DATABASE_URL) {
+    config.url = process.env.DATABASE_URL;
+    config.config.dialect = 'postgres';
+}
+
+module.exports = config;

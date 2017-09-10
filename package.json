@@ -1,0 +1,33 @@
+{
+  "name": "bachelor-thesis",
+  "version": "1.0.0",
+  "description": "Bachelor thesis of Tom Nick",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd infoboard/backend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TN1ck/bachelor-thesis.git"
+  },
+  "dependencies": {
+    "@tom/infoboard-backend": "./infoboard/backend",
+    "@tom/infoboard-frontend": "./infoboard/frontend"
+  },
+  "keywords": [
+    "bachelor",
+    "layout",
+    "data",
+    "visualition",
+    "gamification",
+    "tom",
+    "nick"
+  ],
+  "author": "Tom Nick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TN1ck/bachelor-thesis/issues"
+  },
+  "homepage": "https://github.com/TN1ck/bachelor-thesis#readme"
+}

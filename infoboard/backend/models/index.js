@@ -2,7 +2,12 @@ var Sequelize = require('sequelize');
 var db = require('../config/database.js');
 
 // connect to the dabatase
-var sequelize = new Sequelize(db.database, db.username, db.password, db.config);
+var sequelize;
+if (db.url) {
+    sequelize = new Sequelize(db.url);
+} else {
+    sequelize = new Sequelize(db.database, db.username, db.password, db.config)
+}
 
 // used models in this application
 var models = [
