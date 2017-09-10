@@ -9,9 +9,10 @@ const config = {
             min: 0,
             idle: 10000
         },
+
         // sqlite
         dialect: 'sqlite',
-        // storage: './database.sqlite',
+        storage: './database.sqlite',
 
         // THERE IS A BUG WITH POSTGRES AND A GROUP-BY QUERY. sqlite and mysql are working fine
 
@@ -29,6 +30,7 @@ if (process.env.DATABASE_URL) {
     config.url = process.env.DATABASE_URL;
     // postgres is still not working
     config.config.dialect = 'mysql';
+    delete config.config.storage;
 }
 
 module.exports = config;
