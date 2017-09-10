@@ -161,9 +161,7 @@ export default class User {
         //     this.initUser(data);
         // });
 
-        return new Promise(resolve => {
-            this.initUser({username, token: 'test'}).then(resolve);
-        });
+        return Promise.resolve(this.initUser({username, token: 'test'}));
 
     }
 
