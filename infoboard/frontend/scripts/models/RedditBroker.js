@@ -62,60 +62,62 @@ export default class Broker {
      * @returns {Objects[]} The processed items
      */
     processJSON (json) {
+        
+        var endsWith = function(str, term)
+        {
+            var lastIndex = str.lastIndexOf(term);
+            return (lastIndex !== -1) && (lastIndex + term.length === str.length);
+        }
 
-        var items = [];
+        let height;
+        let width;
 
-        var types = {
-            Leibniz: 'pia-pdf',
-            Kontakte: 'pia-contact',
-            Web: 'pia-web'
-        };
+        var items = json.data.children.map((d, i) => {
+            d = d.data;
+            var type = 'link';
 
-        json.data.children.forEach((child) => {
-            items.push({
+            if (d.domain.indexOf('imgur.com') > -1 && !(d.url.indexOf('/a/') > -1)
+                && !endsWith(d.url, '.gifv') || endsWith(d.url, '.jpg')) {
+
+                type = 'image';
+                if (!(endsWith(d.url, '.jpg') || endsWith(d.url, '.png'))) {
+                    d.url = 'http://firesize.com/x/500x500/g_none/' + d.url + '.jpg';
+                }
+
+                height = d.preview.images[0].source.height;
+                width = d.preview.images[0].source.width;
+            }
+
+            return {
                 query: this.query,
-                uuid: child.data.id,
-                author: child.data.author,
-                created: child.data.created,
-                title: child.data.title,
-                content: child.data.url,
-                domain: child.data.domain,
-                type: types.Leibniz,
-                score: child.data.score,
-                raw: child,
-            });
+                uuid: d.permalink,
+                author: d.author,
+                created: d.created,
+                title: d.title,
+                url: d.url,
+                imageHeight: height,
+                imageWidth: width,
+                score: Math.round(d.score / 100),
+                domain: d.domain,
+                type: type,
+                // score: _.random(0, 10)
+            };
         });
-
         return items;
-
     }
 
-    /**
-     * Start the request for the saved query
-     *
-     * @param {{username: String, token: String}} The user, needed for restricted sources
-     * @returns {Promise} The promise of the request
-     */
-    getData (user) {
+    getData () {
 
-        var url = `${this.broker.url}?q=${this.query}`;
+        var url = 'https://www.reddit.com';
 
-        var request = $.ajax({
-            type:     'GET',
-            url:      url,  // Send the login info to this page
-            dataType: 'json',
-        });
+        if (this.query) {
+            url += '/r/' + this.query;
+        }
 
-        var promise = request.then(json => {
+        url += '/.json';
+
+        return $.getJSON(url).promise().then(json => {
             return this.processJSON(json);
-        }).fail(() => {
-            return [];
         });
-
-        this.promise = promise;
-
-        this.request = request;
-
-        return promise;
     }
 }

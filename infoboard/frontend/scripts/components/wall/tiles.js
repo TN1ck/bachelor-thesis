@@ -9,6 +9,45 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
    reference-check */
 var PureRenderMixin = React.addons.PureRenderMixin;
 
+
+var ReactImageTile = React.createClass({
+    displayName: 'ImageTile',
+    mixins: [PureRenderMixin],
+    render: function () {
+        const url = this.props.tile.get('url');
+        const height = this.props.tile.get('imageHeight');
+        const width = this.props.tile.get('imageWidth');
+        const ratio = (height / width) * 100;
+        return (
+            <div className="tile__content tile--image">
+                <div className="tile__content__image">
+                    <a target='_blank' href={url}>
+                        <div style={{width: '100%', paddingBottom: `${ratio}%`, position: 'relative'}}>
+                            <img src={url} style={{position: 'absolute', top: 0, bottom: 0, left: 0, width: '100%', height: '100%'}}></img>
+                        </div>
+                    </a>
+                </div>
+                <div className="tile__content__title"><a target='_blank' href={url}>{this.props.tile.get('title')}</a></div>
+            </div>
+        );
+    }
+});
+
+
+var ReactLinkTile = React.createClass({
+    displayName: 'LinkTile',
+    render: function () {
+        return (
+            <div className="tile__content tile--link">
+                <div className="tile__content__title">
+                    <a href={this.props.tile.get('url')}>{this.props.tile.get('title')}</a>
+                </div>
+            </div>
+        );
+    }
+});
+
+
 /**
  * Tile for results from a PIA-Broker
  */
@@ -56,7 +95,9 @@ var PiaTile = React.createClass({
 var tileTypes = {
     'pia-pdf': PiaTile,
     'pia-web': PiaTile,
-    'pia-contact': PiaTile
+    'pia-contact': PiaTile,
+    'image': ReactImageTile,
+    'link': ReactLinkTile,
 };
 
 /**
