@@ -2,6 +2,7 @@ var _       = require('lodash');
 var moment  = require('moment');
 var models  = require('../../models');
 var booster = require('../../../frontend/shared/gamification/booster.js');
+var calculatePoints = require('../points/calculatePoints.js');
 
 var User    = models.User;
 var Action  = models.Action;
